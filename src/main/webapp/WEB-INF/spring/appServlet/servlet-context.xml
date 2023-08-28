@@ -30,9 +30,10 @@
 	
 	<!-- Interceptor 인터셉터 -->
 	<!-- Interceptor 로그인 객체 생성 -->
+	<!-- 
 	<beans:bean class="kh.project.dml.common.LoginInterceptor" id="LoginInterceptor"/>
 	<interceptors>
-		<!-- Interceptor 로그인 설정 -->
+		Interceptor 로그인 설정
 		<interceptor>
 			<mapping path="/**"/>
 			<exclude-mapping path="/resources/**"/>
@@ -44,5 +45,5 @@
 			<beans:ref bean="LoginInterceptor"/>
 		</interceptor>
 	</interceptors>
-	
+	 -->
 </beans:beans>
