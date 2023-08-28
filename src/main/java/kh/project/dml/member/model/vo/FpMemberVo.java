@@ -1,4 +1,4 @@
-package kh.project.dml.member.vo;
+package kh.project.dml.member.model.vo;
 
 import org.springframework.stereotype.Component;
 
