@@ -25,10 +25,8 @@ public class FpMemberExSetService {
 	public int insert(FpMemberExSetVo vo)  {
 		return fpMemberExSetDao.insert(vo);
 	}
-	@Transactional
 	public int update(FpMemberExSetVo vo) {
 		return fpMemberExSetDao.update(vo);
-		
 	}
 	public int delete(String mid)  {
 		return fpMemberExSetDao.delete(mid);

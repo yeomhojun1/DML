@@ -7,20 +7,21 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Component
 @Data
+@Component
+@Getter
+@Setter
+@ToString
 public class FpMemberExSetVo {
-
-	
 	private String mid;
 	private int ecode;
 	private int exercieseId;
 	private int exercieseSet;
 	private int exercieseNumber;
-	
+
+	public FpMemberExSetVo() {}
 	
 	public FpMemberExSetVo(String mid, int ecode, int exercieseId, int exercieseSet, int exercieseNumber) {
-		super();
 		this.mid = mid;
 		this.ecode = ecode;
 		this.exercieseId = exercieseId;
@@ -28,10 +29,4 @@ public class FpMemberExSetVo {
 		this.exercieseNumber = exercieseNumber;
 	}
 
-
-	public FpMemberExSetVo() {
-		super();
-	}
-	
-	
 }

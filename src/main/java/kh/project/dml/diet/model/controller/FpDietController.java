@@ -1,5 +1,8 @@
 package kh.project.dml.diet.model.controller;
 
-public class FpDietController {
+import org.springframework.stereotype.Controller;
 
+@Controller
+public class FpDietController {
+	
 }

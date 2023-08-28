@@ -3,11 +3,15 @@
 <configuration>
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL"/>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	<typeAliases>
-		<typeAlias type="kh.project.dml.member.vo.FpMemberVo" alias="MemberVO"/>
+		<typeAlias type="kh.project.dml.member.vo.FpMemberVo" alias="FpMemberVo"/>
+		<typeAlias type="kh.project.dml.member.vo.FpDietVo" alias="FpDietVo"/>
+		<typeAlias type="kh.project.dml.memberexset.model.vo.FpMemberExSetVo" alias="FpMemberExSetVo"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
+		<mapper resource="mappers/diet-mapper.xml"/>
 	</mappers>
 </configuration>

@@ -1,5 +1,8 @@
 package kh.project.dml.memberexset.controller;
 
-class FpMemberExSetController {
+import org.springframework.stereotype.Controller;
 
+@Controller
+class FpMemberExSetController {
+	
 }

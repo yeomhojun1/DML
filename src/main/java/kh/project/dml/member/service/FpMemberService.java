@@ -24,10 +24,8 @@ public class FpMemberService {
 	public int insert(FpMemberVo vo)  {
 		return fpMemberDao.insert(vo);
 	}
-	@Transactional
 	public int update(FpMemberVo vo) {
 		return fpMemberDao.update(vo);
-		
 	}
 	public int delete(String mid)  {
 		return fpMemberDao.delete(mid);

@@ -20,7 +20,6 @@ public class FpMemberDao {
 	public FpMemberVo selectOne(String mid) {
 		return sqlSession.selectOne("member.selectOne", mid);
 	}
-	
 	public int insert(FpMemberVo vo)  {
 		return sqlSession.insert("member.insert", vo);
 	}
