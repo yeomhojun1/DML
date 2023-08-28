@@ -15,27 +15,21 @@ public class FpMemberService {
 	@Autowired
 	private FpMemberDao fpMemberDao;
 	
-	public List<FpMemberVo> selectList() throws Exception {
-		List<FpMemberVo> result = fpMemberDao.selectList();
-		return result;
+	public List<FpMemberVo> selectList()  {
+		return fpMemberDao.selectList();
 	}
-	public FpMemberVo selectOne(String mid) throws Exception {
+	public FpMemberVo selectOne(String mid)  {
 		return fpMemberDao.selectOne(mid);
 	}
-	public int insert(FpMemberVo vo)  throws Exception {
-		fpMemberDao.insert(vo);
+	public int insert(FpMemberVo vo)  {
 		return fpMemberDao.insert(vo);
 	}
 	@Transactional
-	public int insertReply(FpMemberVo vo)  throws Exception {
-		fpMemberDao.insert(vo);
-		return fpMemberDao.insert(vo);
-	}
-	public int update(FpMemberVo vo)  throws Exception {
+	public int update(FpMemberVo vo) {
 		return fpMemberDao.update(vo);
 		
 	}
-	public int delete(String mid)  throws Exception {
+	public int delete(String mid)  {
 		return fpMemberDao.delete(mid);
 	}
 }

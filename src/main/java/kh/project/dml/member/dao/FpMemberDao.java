@@ -14,21 +14,20 @@ public class FpMemberDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<FpMemberVo> selectList() throws Exception {
+	public List<FpMemberVo> selectList()  {
 		return sqlSession.selectList("member.selectList");
 	}
-	public FpMemberVo selectOne(String mid) throws Exception {
+	public FpMemberVo selectOne(String mid) {
 		return sqlSession.selectOne("member.selectOne", mid);
 	}
 	
-	public int insert(FpMemberVo vo) throws Exception {
-		int result = sqlSession.insert("member.insert", vo);
+	public int insert(FpMemberVo vo)  {
 		return sqlSession.insert("member.insert", vo);
 	}
-	public int update(FpMemberVo vo) throws Exception {
+	public int update(FpMemberVo vo)  {
 		return sqlSession.update("member.update", vo);
 	}
-	public int delete(String mid) throws Exception {
+	public int delete(String mid) {
 		return sqlSession.delete("member.delete",  mid);
 	}
 }
