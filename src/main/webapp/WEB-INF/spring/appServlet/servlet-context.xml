@@ -23,14 +23,14 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.project.dml" />
+	<context:component-scan base-package="kh.project.dml" />
 	
 	<!-- @Aspect AOP annotation -->
 	<aop:aspectj-autoproxy />
 	
 	<!-- Interceptor 인터셉터 -->
 	<!-- Interceptor 로그인 객체 생성 -->
-	<beans:bean class="com.project.dml.common.LoginInterceptor" id="LoginInterceptor"/>
+	<beans:bean class="kh.project.dml.common.LoginInterceptor" id="LoginInterceptor"/>
 	<interceptors>
 		<!-- Interceptor 로그인 설정 -->
 		<interceptor>

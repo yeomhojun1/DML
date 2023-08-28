@@ -1,4 +1,4 @@
-package com.project.dml.common;
+package kh.project.dml.common;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
