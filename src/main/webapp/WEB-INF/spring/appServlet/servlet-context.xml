@@ -28,4 +28,21 @@
 	<!-- @Aspect AOP annotation -->
 	<aop:aspectj-autoproxy />
 	
+	<!-- Interceptor 인터셉터 -->
+	<!-- Interceptor 로그인 객체 생성 -->
+	<beans:bean class="com.project.dml.common.LoginInterceptor" id="LoginInterceptor"/>
+	<interceptors>
+		<!-- Interceptor 로그인 설정 -->
+		<interceptor>
+			<mapping path="/**"/>
+			<exclude-mapping path="/resources/**"/>
+			<exclude-mapping path="/login"/>
+			<exclude-mapping path="/signup"/>
+			<exclude-mapping path="/findid"/>
+			<exclude-mapping path="/findpwd"/>
+			<exclude-mapping path="/shop/**"/>
+			<beans:ref bean="LoginInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>
