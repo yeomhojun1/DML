@@ -1,4 +1,4 @@
-package kh.project.dml.member.service;
+package kh.project.dml.member.model.service;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import kh.project.dml.member.dao.FpMemberDao;
-import kh.project.dml.member.vo.FpMemberVo;
+import kh.project.dml.member.model.dao.FpMemberDao;
+import kh.project.dml.member.model.vo.FpMemberVo;
 
 @Service
 public class FpMemberService {
@@ -24,10 +24,8 @@ public class FpMemberService {
 	public int insert(FpMemberVo vo)  {
 		return fpMemberDao.insert(vo);
 	}
-	@Transactional
 	public int update(FpMemberVo vo) {
 		return fpMemberDao.update(vo);
-		
 	}
 	public int delete(String mid)  {
 		return fpMemberDao.delete(mid);

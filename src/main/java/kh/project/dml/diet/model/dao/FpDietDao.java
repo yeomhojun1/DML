@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import kh.project.dml.diet.model.vo.FpDietVo;
 
 public class FpDietDao {
-
 	
 	@Autowired
 	private SqlSession sqlSession;
@@ -19,7 +18,6 @@ public class FpDietDao {
 	public FpDietVo selectOne(String mid) {
 		return sqlSession.selectOne("diet.selectOne", mid);
 	}
-	
 	public int insert(FpDietVo vo)  {
 		return sqlSession.insert("diet.insert", vo);
 	}
