@@ -1,7 +1,8 @@
-package kh.project.dml.diet.model.vo;
+package kh.project.dml.diet.model.Vo;
 
 import org.springframework.stereotype.Component;
 
+import kh.project.dml.food.model.vo.FpFoodVo;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,17 +15,21 @@ import lombok.ToString;
 @ToString
 public class FpDietVo {
 	private String mid;
-	private String foodCode;
-	private String foodDaily;
-	private String foodQuality;
-
-	public FpDietVo() {}
+	private String foodDaliy;
+	private String foodTime;
 	
-	public FpDietVo(String mid, String foodCode, String foodDaily, String foodQuality) {
+	
+	public FpDietVo(String mid, String foodDaliy, String foodTime) {
+		super();
 		this.mid = mid;
-		this.foodCode = foodCode;
-		this.foodDaily = foodDaily;
-		this.foodQuality = foodQuality;
+		this.foodDaliy = foodDaliy;
+		this.foodTime = foodTime;
 	}
 
+
+	public FpDietVo() {
+		super();
+	}
+	
+	
 }
