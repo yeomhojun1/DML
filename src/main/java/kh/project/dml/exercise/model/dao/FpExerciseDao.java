@@ -1,5 +1,8 @@
 package kh.project.dml.exercise.model.dao;
 
-public class FpExerciseDao {
+import org.springframework.stereotype.Repository;
 
+@Repository
+public class FpExerciseDao {
+	
 }

@@ -8,9 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import kh.project.dml.diet.model.vo.FpDietVo;
 
-
-
-
 @Repository("FpDietVo")
 public class FdDietDao {
 	@Autowired

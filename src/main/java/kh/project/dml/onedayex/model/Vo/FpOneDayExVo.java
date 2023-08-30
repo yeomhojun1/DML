@@ -14,24 +14,19 @@ import lombok.ToString;
 @ToString
 public class FpOneDayExVo {
 	
-private int exerciesId;
-private String exerciesName;
-private int exerciesDay;
-private int exerciesOrder;
+	private int exerciesId;
+	private String exerciesName;
+	private int exerciesDay;
+	private int exerciesOrder;
 
+	public FpOneDayExVo() {}
 
-public FpOneDayExVo(int exerciesId, String exerciesName, int exerciesDay, int exerciesOrder) {
-	super();
-	this.exerciesId = exerciesId;
-	this.exerciesName = exerciesName;
-	this.exerciesDay = exerciesDay;
-	this.exerciesOrder = exerciesOrder;
-}
-
-
-public FpOneDayExVo() {
-	super();
-}
-
+	public FpOneDayExVo(int exerciesId, String exerciesName, int exerciesDay, int exerciesOrder) {
+		super();
+		this.exerciesId = exerciesId;
+		this.exerciesName = exerciesName;
+		this.exerciesDay = exerciesDay;
+		this.exerciesOrder = exerciesOrder;
+	}
 
 }

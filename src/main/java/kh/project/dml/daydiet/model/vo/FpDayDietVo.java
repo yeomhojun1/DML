@@ -18,15 +18,14 @@ public class FpDayDietVo {
 	private String foodDate;
 	private String feedBack;
 	
+	public FpDayDietVo() {}
+	
 	public FpDayDietVo(String foodDate, String feedBack) {
 		super();
 		this.foodDate = foodDate;
 		this.feedBack = feedBack;
 	}
 
-	public FpDayDietVo() {
-		super();
-	}
 	
 	
 }

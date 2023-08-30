@@ -13,7 +13,6 @@ public class TempController {
 	public String mainPageOpen2() {
 		return "temp/blog-single2";
 	}
-
 	
 //	체중관리
 	@GetMapping("/frame2")

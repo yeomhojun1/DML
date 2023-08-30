@@ -8,8 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import kh.project.dml.onedayex.model.Vo.FpOneDayExVo;
 
-
-
 @Repository("FpOneDayExVo")
 public class FpOneDayExDao {
 

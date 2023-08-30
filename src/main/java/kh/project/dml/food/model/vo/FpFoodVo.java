@@ -20,6 +20,7 @@ public class FpFoodVo {
 	private String foodDaily;
 	private int foodQuality;
 	
+	public FpFoodVo() {}
 	
 	public FpFoodVo(String mid, String foodCode, String foodDaily, int foodQuality) {
 		super();
@@ -29,13 +30,4 @@ public class FpFoodVo {
 		this.foodQuality = foodQuality;
 	}
 
-
-	public FpFoodVo() {
-		super();
-	}
-	
-	
-	
-	
-	
 }

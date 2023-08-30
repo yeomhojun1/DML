@@ -13,7 +13,6 @@ import kh.project.dml.memberexset.model.vo.FpMemberExSetVo;
 @Service
 public class FpFoodApiService {
 
-
 	@Autowired
 	private FdFoodApiDao fdFoodApiDao;
 	

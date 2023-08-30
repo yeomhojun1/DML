@@ -18,6 +18,7 @@ public class FpDietVo {
 	private String foodDaliy;
 	private String foodTime;
 	
+	public FpDietVo() {}
 	
 	public FpDietVo(String mid, String foodDaliy, String foodTime) {
 		super();
@@ -26,10 +27,4 @@ public class FpDietVo {
 		this.foodTime = foodTime;
 	}
 
-
-	public FpDietVo() {
-		super();
-	}
-	
-	
 }

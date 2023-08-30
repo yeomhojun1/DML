@@ -1,5 +1,8 @@
 package kh.project.dml.exercise.model.service;
 
-public class FpExerciseService {
+import org.springframework.stereotype.Service;
 
+@Service
+public class FpExerciseService {
+	
 }

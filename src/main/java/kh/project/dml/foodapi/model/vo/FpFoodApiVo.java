@@ -14,7 +14,6 @@ import lombok.ToString;
 @Setter
 @ToString
 public class FpFoodApiVo {
-
 	
 	private int foodCd;
 	private String foodName;
@@ -23,6 +22,7 @@ public class FpFoodApiVo {
 	private int protein;
 	private int fat;
 	
+	public FpFoodApiVo() {}
 	
 	public FpFoodApiVo(int foodCd, String foodName, int calorie, int crabs, int protein, int fat) {
 		super();
@@ -33,14 +33,5 @@ public class FpFoodApiVo {
 		this.protein = protein;
 		this.fat = fat;
 	}
-
-
-	public FpFoodApiVo() {
-		super();
-	}
-	
-	
-	
-	
 
 }

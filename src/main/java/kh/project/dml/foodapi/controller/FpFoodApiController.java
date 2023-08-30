@@ -9,7 +9,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kh.project.dml.foodapi.model.service.FpFoodApiService;
 import kh.project.dml.foodapi.model.vo.FpFoodApiVo;
 
-
 public class FpFoodApiController {
 	@Autowired
 	private FpFoodApiService fpfoodapiService;
@@ -88,4 +87,5 @@ public class FpFoodApiController {
 		}
 		return viewPage;
 	}
+
 }
