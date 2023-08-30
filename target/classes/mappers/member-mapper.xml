@@ -13,8 +13,7 @@
 	</insert>
 	
 	<update id="updateMember" parameterType="FpMemberVo">
-		update set member(member_id, mname, memail, mbirthday, gender, address, height, weight) 
-    	values (#{memberId}, #{mname}, #{memail}, #{mbirthday}, #{gender}, #{address}, #{height}, #{weight})
+		
 	</update>
 	
 	<delete id="deleteMember" parameterType="FpMemberVo">

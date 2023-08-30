@@ -11,7 +11,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kh.project.dml.food.model.service.FpFoodService;
 import kh.project.dml.food.model.vo.FpFoodVo;
 
-
 @Controller
 @RequestMapping("/food")
 public class FpFoodController {

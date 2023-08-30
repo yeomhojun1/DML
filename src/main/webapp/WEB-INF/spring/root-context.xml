@@ -12,7 +12,7 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
 	<!-- properties 이용 -->
-	<context:property-placeholder location="classpath:properties/dml.properties"/>
+	<context:property-placeholder  location="classpath:properties/dml.properties"/>
 	
 	<!-- DB 관련 -->
 	<!-- DBCP -->

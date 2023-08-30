@@ -10,8 +10,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kh.project.dml.memberexset.model.service.FpMemberExSetService;
 import kh.project.dml.memberexset.model.vo.FpMemberExSetVo;
 
-
-@Controller
 class FpMemberExSetController {
 	@Autowired
 	private FpMemberExSetService fpmemberexsetService;
