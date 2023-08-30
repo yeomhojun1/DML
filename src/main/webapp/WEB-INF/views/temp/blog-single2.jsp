@@ -4,696 +4,530 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description"
-	content="Fitness - provide the easy responsive free website templates. You can easily customize and make your own website for your startup business.">
-<meta name="keywords"
-	content="bootstrap template, Responsive Template, Website Template, free website templates, free website template download ">
-<title>Fitness-The Gym Club | Bootstrap | Free Responsive
-	Website Templates</title>
-<!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<!-- style CSS -->
-<link href="css/style.css" rel="stylesheet">
-<!-- animsition css -->
-<link rel="stylesheet" type="text/css" href="css/animsition.min.css">
-<!-- Font Awesome CSS -->
-<link href="resources/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/fontello.css">
-<!-- font css -->
-<link
-	href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i%7cRoboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
-	rel="stylesheet">
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Fitness - provide the easy responsive free website templates. You can easily customize and make your own website for your startup business.">
+    <meta name="keywords" content="bootstrap template, Responsive Template, Website Template, free website templates, free website template download ">
+    <title>Fitness-The Gym Club | Bootstrap | Free Responsive Website Templates</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- style CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- animsition css -->
+    <link rel="stylesheet" type="text/css" href="css/animsition.min.css">
+    <!-- Font Awesome CSS -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/fontello.css">
+    <!-- font css -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i%7cRoboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 
 <body class="animsition">
-	<div class="top-bar">
-		<!-- top-bar -->
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 hidden-sm hidden-xs bdr">
-					<div class="time-info">
-						<p class="time-text">Mon - Sat : 6 am-9pm - Sun : 8am-6pm</p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-4 hidden-xs bdr">
-					<div class="call-info">
-						<!-- call-info -->
-						<p class="call-no">+1 (800)-123-456 / 856</p>
-					</div>
-					<!-- /.call-info -->
-				</div>
-				<div class="col-md-3 col-sm-4 hidden-xs bdr">
-					<div class="mail-info">
-						<p class="mail-text">ghwnswkd123@naver.com</p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-4 col-xs-12">
-					<div class="top-search">
-						<div class="custom-search-input">
-							<div class="input-group  ">
-								<input type="text" class="  search-query form-control"
-									placeholder="Search"> <span class="input-group-btn">
-									<button class="btn btn-default" type="button">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="page-header">
-		<div class="header">
-			<!-- navigation -->
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3 col-sm-6 col-xs-6">
-						<div class="logo">
-							<a href="index.html"><img src="images/logo.png" alt=""></a>
-						</div>
-					</div>
-					<div class="col-md-9 col-sm-12">
-						<div class="navigation pull-right" id="navigation">
-							<ul>
-								<li class="active"><a href="index.html" title="Home"
-									class="animsition-link">Home</a></li>
-								<li><a href="classes-list.html" title="Classes"
-									class="animsition-link">ì²´ì¤ê´ë¦¬</a>
-									<ul>
-										<li><a href="classes-list.html" title="Classes List"></a>ì²´ì¤ê´ë¦¬</li>
-										<li><a href="classes-list.html" title="Classes List"></a>ì²´ì¡°ì±
-											ê¸°ë¡</li>
-										<li><a href="classes-list.html" title="Classes List"></a>íë
-											ê´ë¦¬</li>
-
-									</ul></li>
-								<li><a href="blog-default.html" title="Blog"
-									class="animsition-link">ìë¨ ê´ë¦¬</a>
-									<ul>
-										<li><a href="blog-default.html" title="Blog"
-											class="animsition-link">ìë¨ ì§ê¸°</a></li>
-										<li><a href="blog-default.html" title="Blog"
-											class="animsition-link">ë°íë© ëì°ë¯¸</a></li>
-										<li><a href="blog-default.html" title="Blog"
-											class="animsition-link">ë³´ì¶©ì  íì©</a></li>
-
-									</ul></li>
-								<li><a href="testimonial.html" title="Features"
-									class="animsition-link">ì´ë ëì°ë¯¸</a>
-									<ul>
-										<li><a href="testimonial.html" title="Testimonial"
-											class="animsition-link">ë¤ì´ì´í¸ ëì°ë¯¸</a></li>
-										<li><a href="testimonial.html" title="Testimonial"
-											class="animsition-link">ë°ëíë¡í ëì°ë¯¸</a></li>
-										<li><a href="testimonial.html" title="Testimonial"
-											class="animsition-link">ì¹íë°ì´ ëì°ë¯¸</a></li>
-										<li><a href="testimonial.html" title="Testimonial"
-											class="animsition-link">ì ì§ì´í¸ ëì°ë¯¸</a></li>
-										<li><a href="testimonial.html" title="Testimonial"
-											class="animsition-link">ë°´ë©/ë¡ë© ëì°ë¯¸</a></li>
-										<li><a href="testimonial.html" title="Testimonial"
-											class="animsition-link">íìíë¬¼ ì¬ì´í´ë§</a></li>
-
-									</ul></li>
-								<li><a href="contact.html" title="Contact Us"
-									class="animsition-link">ë¡ê·¸ì¸</a></li>
-								<li><a href="style-guide.html" title="Style Guide"
-									class="animsition-link">íìê°ì</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="page-caption pinside40">
-						<h1 class="page-title">ì¬ê¸°ë ì°¨ê·¼ì°¨ê·¼ ì±ìê°
-							ìì </h1>
-						<p>dmlì daily muscle lifeì ì¤ìë§ì´ë¤</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="content">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-					<div class="content-area">
-						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="post-holder">
-									<div class="post-block">
-										<div class="post-img mb40">
-											<img src="images/blog-single.jpg" class="img-responsive"
-												alt="Fitness Website Template">
-										</div>
-										<div class="post-header">
-											<div class="post-title">
-												<h1 class="text-white">Give the gift of fitness this
-													holiday</h1>
-											</div>
-											<div class="post-meta">
-												<span class="meta-date"><i
-													class="icon-primary icon-1x icon-calendar"></i>30 november,
-													2017</span> <span class="meta-author"><i
-													class="icon-user icon-primary icon-1x"></i><a href="#"
-													class="text-white"> Admin</a></span><span class="meta-comment"><i
-													class="icon-speech-bubble-12 icon-primary icon-1x"></i>08 <a
-													href="#" class="text-white">Comments</a> </span>
-											</div>
-										</div>
-									</div>
-									<div class="post-content mb40">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing eed
-											velaugue scelerisque tristique esvarius sitamet its
-											liberSuspendisse venenatis purus at lorem malesuada suscium
-											sociis natoque penatibus etmagnis disese parturient monte
-											nascetur ridiculus mused augue lacus egestas utnunc
-											sullamcorper ultrices enimnes or dolor non orci semper
-											accumsan acnonuis aliquet nisisit amet condimentum pretium.</p>
-										<p>Dolor sit amet consectetur adipiscing eed velaugue
-											scelerisque tristique esvarius sitamet its uspendisse
-											venenatis purus at lorem malesuada suscium sociis natoque
-											penatibus etmagnis disese parturient monte nascetur ridiculus
-											mused augue lacus egestas utnunc sullamcorper ultrices
-											enimnes or dolornon orci penatibus etmagnis semper accumsan
-											acnonuis aliquet nisisit amet condimen.</p>
-										<p>Aesmet consectetur adipiscing eed velaugue scelerisque
-											tristique esvarius sitamet its uspendisse lorem venenatis
-											purus at lorem malesuada suscium sociis natoque penatibus
-											etmagnis disese parturient monte penatibus etmagnis semper
-											accumsan acnonuis aliquet tristique sitamet its uspendisse.</p>
-										<p>Etmagnis semper accumsan smet consectetur adipiscing
-											eed velaugue scelerisque tristique esvarius sitamet its
-											uspendisse lorem venenatis purus at lorem malesuada suscium
-											sociis natoque penatibus etmagnis disese parturient monte
-											penatibus acnonuis aliquet tristique sitamet..</p>
-									</div>
-									<div class="related-post mb40">
-										<!-- related post -->
-										<div class="row">
-											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<h1 class="related-post-title mb40">Related Post</h1>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-												<div class="post-block">
-													<div class="post-img">
-														<a href="#" class="imghover"><img
-															src="images/blog-2.jpg" class="img-responsive"
-															alt="Fitness Website Template"></a>
-													</div>
-													<div class="post-header">
-														<div class="post-title">
-															<h3>
-																<a href="#" class="text-white">HOW TO ESTABLISH A
-																	NEW FITNESS ROUTINE</a>
-															</h3>
-														</div>
-														<div class="post-meta">
-															<span class="meta-date"><i
-																class="icon-primary icon-1x icon-calendar"></i>29
-																november, 2017</span>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-												<div class="post-block mb40">
-													<div class="post-img">
-														<a href="#" class="imghover"><img
-															src="images/blog-3.jpg" class="img-responsive"
-															alt="Fitness Website Template"></a>
-													</div>
-													<div class="post-header">
-														<div class="post-title">
-															<h3>
-																<a href="#" class="text-white">ARE SIX PACK ABS
-																	SIGN OF GOOD HEALTH?</a>
-															</h3>
-														</div>
-														<div class="post-meta">
-															<span class="meta-date"><i
-																class="icon-primary icon-1x icon-calendar"></i>28
-																november, 2017</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="post-navigation mb40">
-										<!-- post navigation -->
-										<div class="row">
-											<div class="nav-links">
-												<!-- nav links -->
-												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-													<div class="nav-previous">
-														<!-- nav previous -->
-														<a href="#" class="prev-link mb30"> <i
-															class="fa fa-angle-left"> </i> Previous post
-														</a>
-														<h3 class="previous-next-title">
-															<a href="#" class="text-white">ARE SIX PACK ABS SIGN
-																OF GOOD HEALTH?</a>
-														</h3>
-													</div>
-													<!-- /.nav previous -->
-												</div>
-												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-													<div class="nav-next text-right">
-														<!-- nav next -->
-														<a href="#" class="next-link mb30">Next post <i
-															class="fa fa-angle-right"> </i>
-														</a>
-														<h3 class="previous-next-title">
-															<a href="#" class="text-white">HOW TO ESTABLISH A NEW
-																FITNESS ROUTINE</a>
-														</h3>
-													</div>
-													<!-- /.nav next -->
-												</div>
-											</div>
-											<!-- /.nav links -->
-										</div>
-									</div>
-									<div class="author-post mb40 ">
-										<!-- author post -->
-										<div class="row">
-											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<h1 class="mb40">Author Post</h1>
-											</div>
-										</div>
-										<div class="author-block dark-bdr">
-											<div class="row">
-												<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-													<div class="author-img">
-														<a href="#"><img src="images/author.jpg"
-															class="img-responsive" alt=""></a>
-													</div>
-												</div>
-												<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-													<div class="author-content">
-														<h1 class="author-name">
-															Lois Larkin <span class="small"> Author </span>
-														</h1>
-
-														<p>Etma gnis sem per accum san smet consec tetur adipi
-															scin is gat lorem male suada sus cium sociis nato que
-															pena tibus on etma gnis dis ese partu rient monte pena
-															tibus ali quet lorem male suada sus cium sociis nat tris
-															tique sit amet.</p>
-
-														<div class="author-link">
-															<a href="#" class="btn-link">View All Posts</a>
-														</div>
-
-													</div>
-													<div class="author-social">
-														<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-															class="fa fa-twitter"></i></a> <a href="#"><i
-															class="fa fa-google-plus"></i></a> <a href="#"><i
-															class="fa fa-instagram"></i></a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- comments area -->
-									<h1 class="comments-title mb40">04 Comments</h1>
-									<div class="comments-area pinside40 outline mb40">
-										<ul class="comment-list listnone">
-											<li class="comment">
-												<div class="comment-body">
-													<div class="">
-														<div class="comment-author">
-															<img src="images/user1.jpg" alt="" class="">
-														</div>
-														<div class="comment-info">
-															<div class="comment-header">
-																<div class="reply">
-																	<a href="#" class="title"><i
-																		class="fa fa-mail-reply"></i> Reply</a>
-																</div>
-																<h4 class="user-title mb10">James Christensen</h4>
-																<div class="comment-meta">
-																	<span class="comment-meta-date">29 november,
-																		2017</span>
-																</div>
-															</div>
-															<div class="comment-content">
-																<p>Semper accumsan smet consectetur adipiscing eed
-																	velaugu malesuad suscium sociis natoque etmagnis disese
-																	paurient monte penatis.</p>
-															</div>
-															<hr>
-														</div>
-													</div>
-												</div>
-												<ul class="childern listnone">
-													<li class="comment">
-														<div class="comment-body">
-															<div class="">
-																<div class="comment-author">
-																	<img src="images/user2.jpg" alt="" class="">
-																</div>
-																<div class="comment-info">
-																	<div class="comment-header">
-																		<div class="reply">
-																			<a href="#" class="title"><i
-																				class="fa fa-mail-reply"></i> Reply</a>
-																		</div>
-																		<h4 class="user-title mb10">Josefina Rogers</h4>
-																		<div class="comment-meta">
-																			<span class="comment-meta-date">29 november,
-																				2017</span>
-																		</div>
-																	</div>
-																	<div class="comment-content">
-																		<p>Asanmet consectetur adipiscing eed velaugu
-																			malesuad suscium sociis natoque etmagnis disese.</p>
-																	</div>
-																</div>
-															</div>
-															<hr>
-														</div>
-													</li>
-												</ul>
-											</li>
-										</ul>
-										<ul class="comment-list listnone">
-											<li class="comment">
-												<div class="comment-body">
-													<div class="">
-														<div class="comment-author">
-															<img src="images/user3.jpg" alt="" class="">
-														</div>
-														<div class="comment-info">
-															<div class="comment-header">
-																<div class="reply">
-																	<a href="#" class="title"><i
-																		class="fa fa-mail-reply"></i> Reply</a>
-																</div>
-																<h4 class="user-title mb10">Eunice Travis</h4>
-																<div class="comment-meta">
-																	<span class="comment-meta-date">29 november,
-																		2017</span>
-																</div>
-															</div>
-															<div class="comment-content">
-																<p>Semper accumsan smet consectetur adipiscing
-																	velaugu malesuad suscium sociis natoque etmagnis disese
-																	paurient.</p>
-															</div>
-														</div>
-													</div>
-												</div>
-											</li>
-										</ul>
-										<hr>
-										<ul class="comment-list listnone">
-											<li class="comment">
-												<div class="comment-body">
-													<div class="">
-														<div class="comment-author">
-															<img src="images/user4.jpg" alt="" class="">
-														</div>
-														<div class="comment-info">
-															<div class="comment-header">
-																<div class="reply">
-																	<a href="#" class="title"><i
-																		class="fa fa-mail-reply"></i> Reply</a>
-																</div>
-																<h4 class="user-title mb10">Katy Garry</h4>
-																<div class="comment-meta">
-																	<span class="comment-meta-date">29 november,
-																		2017</span>
-																</div>
-															</div>
-															<div class="comment-content">
-																<p>Consectetur adipiscing accumsan smeteed velaugu
-																	sociis natoque etmagnis disese paurient monte penatis
-																	malesuad suscium.</p>
-															</div>
-														</div>
-													</div>
-												</div>
-											</li>
-										</ul>
-									</div>
-									<div class="leave-comments">
-										<!-- leave comments -->
-										<h1 class="reply-title  mb40">Leave A Comment</h1>
-										<form class="reply-form">
-											<div class="row">
-												<!-- Textarea -->
-												<div class="form-group">
-													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-														<label class="control-label" for="textarea">Comments</label>
-														<textarea class="form-control" id="textarea"
-															name="textarea" rows="6" placeholder=" "></textarea>
-													</div>
-												</div>
-												<div class="col-lg-4 col-md-7 col-sm-12 col-xs-12">
-													<!-- Text input-->
-													<div class="form-group">
-														<label class="control-label" for="name">Name</label> <input
-															id="name" name="name" type="text" class="form-control"
-															placeholder=" " required>
-													</div>
-												</div>
-												<!-- Text input-->
-												<div class="col-lg-4 col-md-7 col-sm-12 col-xs-12">
-													<div class="form-group">
-														<label class="control-label" for="email">E-mail</label> <input
-															id="email" name="email" type="text" class="form-control"
-															placeholder="" required>
-													</div>
-												</div>
-												<!-- Text input-->
-												<div class="col-lg-4 col-md-7 col-sm-12 col-xs-12">
-													<div class="form-group">
-														<label class="control-label" for="Website">Website</label>
-														<input id="Website" name="Website" type="text"
-															class="form-control" placeholder="" required>
-													</div>
-												</div>
-												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-													<!-- Button -->
-													<div class="form-group">
-														<button id="singlebutton" name="singlebutton"
-															class="btn btn-default">Submit</button>
-													</div>
-												</div>
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-					<div class="sidebar-area">
-						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="widget widget-search mb40">
-									<h2 class="widget-title">searchBar</h2>
-									<form>
-										<div class="input-group">
-											<input type="text" class="form-control"
-												placeholder="Seacrh Here"> <span
-												class="input-group-btn">
-												<button class="btn btn-default" type="button">
-													<i class="fa fa-search"></i>
-												</button>
-											</span>
-										</div>
-									</form>
-								</div>
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class=" widget widget-categories">
-									<h2 class="widget-title">Categories</h2>
-									<ul class="listnone bullet bullet-long-arrow">
-										<li><a href="#">Beginners Classes</a></li>
-										<li><a href="#">Women Classes</a></li>
-										<li><a href="#">Men classes</a></li>
-										<li><a href="#">Powerlifting classes</a></li>
-										<li><a href="#">Advance Classes</a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="widget widget-recent-post">
-									<h2 class="widget-title">Recent post</h2>
-									<div class="row">
-										<div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 mb40">
-											<div class="recent-block">
-												<div class="recent-content mb30">
-													<!-- recent block -->
-													<h3 class="recent-title">
-														<a href="#" class="title">HOW TO ESTABLISH A NEW
-															FITNESS ROUTINE</a>
-													</h3>
-													<div class="post-meta">
-														<span class="meta-date"><i
-															class="icon-primary icon-1x icon-calendar"></i>29
-															november, 2017</span>
-													</div>
-												</div>
-												<div class="recent-content mb30">
-													<!-- recent block -->
-													<h3 class="recent-title">
-														<a href="#" class="title">ARE SIX PACK ABS SIGN OF
-															GOOD HEALTH?</a>
-													</h3>
-													<div class="post-meta">
-														<span class="meta-date"><i
-															class="icon-primary icon-1x icon-calendar"></i>28
-															november, 2017</span>
-													</div>
-												</div>
-												<div class="recent-content mb30">
-													<!-- recent block -->
-													<h3 class="recent-title">
-														<a href="#" class="title">Give the gift of fitness
-															this holiday</a>
-													</h3>
-													<div class="post-meta">
-														<span class="meta-date"><i
-															class="icon-primary icon-1x icon-calendar"></i>27
-															november, 2017</span>
-													</div>
-												</div>
-												<!-- /.recent block -->
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class=" widget widget-archives">
-									<h2 class="widget-title">Archives</h2>
-									<ul class="listnone bullet bullet-long-arrow">
-										<li><a href="#">September</a> 2016</li>
-										<li><a href="#">August</a> 2016</li>
-										<li><a href="#">July</a> 2016</li>
-										<li><a href="#">June</a> 2016</li>
-										<li><a href="#">May</a> 2016</li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<!--  tags -->
-								<div class="widget widget-tags">
-									<h2 class="widget-title">Tags</h2>
-									<!-- widget title -->
-									<a href="#" title="Beginners">Beginners</a> <a href="#"
-										title="Women class">Women class</a> <a href="#"
-										title="men class">men class</a> <a href="#"
-										title="Powerlifting">Powerlifting</a> <a href="#"
-										title="Advance">Advance</a>
-								</div>
-								<!-- /.widget well bg -->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="footer space-medium">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-					<div class="footer-logo mb30">
-						<img src="images/logo.png" class="" alt="Fitness Website Template">
-					</div>
-				</div>
-				<div
-					class="col-lg-offset-1 col-lg-3 col-md-offset-1 col-md-3 col-sm-3 col-xs-12">
-					<div class="footer-widget mb30">
-						<h3 class="footer-title">Contact Info</h3>
-						<ul class="listnone">
-							<li>
-								<address>
-									2687 Broadcast Drive Monroe, <br> NC 28112
-								</address>
-							</li>
-							<li>+1 (800)-123-456</li>
-							<li>fitnessgym@gmail.com</li>
-						</ul>
-					</div>
-				</div>
-				<div
-					class="col-lg-offset-1 col-lg-2 col-md-offset-1 col-md-2 col-sm-3 col-xs-12">
-					<div class="footer-widget mb30">
-						<h3 class="footer-title">Quick Links</h3>
-						<ul class="listnone">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="classes.html">Classes</a></li>
-							<li><a href="blog-default.html">News</a></li>
-							<li><a href="pricing.html">Pricing</a></li>
-							<li><a href="testimonial.html">Testimonial</a></li>
-							<li><a href="contact.html">Contactus</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-					<div class="footer-widget mb30">
-						<h3 class="footer-title">Connect With us</h3>
-						<div class="footer-social">
-							<a href="#"><i class="fa fa-twitter"></i></a> <a href="#"
-								class="active"><i class="fa fa-facebook"></i> </a> <a href="#">
-								<i class="fa fa-google-plus"></i>
-							</a> <a href="#"> <i class="fa fa-pinterest"></i>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tiny-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					Shared by <i class="fa fa-love"></i><a
-						href="https://bootstrapthemes.co">BootstrapThemes</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- back to top icon -->
-	<a href="#0" class="cd-top" title="Go to top">Top</a>
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="js/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/menumaker.js"></script>
-	<!-- sticky header -->
-	<script type="text/javascript" src="js/jquery.sticky.js"></script>
-	<script type="text/javascript" src="js/sticky-header.js"></script>
-	<!-- animsition -->
-	<script type="text/javascript" src="js/animsition.js"></script>
-	<script type="text/javascript" src="js/animsition-script.js"></script>
-	<!-- Back to top script -->
-	<script src="js/back-to-top.js" type="text/javascript"></script>
+    <div class="top-bar">
+        <!-- top-bar -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 hidden-sm hidden-xs bdr">
+                    <div class="time-info">
+                        <p class="time-text">Mon - Sat : 6 am-9pm - Sun : 8am-6pm</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 hidden-xs bdr">
+                    <div class="call-info">
+                        <!-- call-info -->
+                        <p class="call-no">+1 (800)-123-456 / 856</p>
+                    </div>
+                    <!-- /.call-info -->
+                </div>
+                <div class="col-md-3 col-sm-4 hidden-xs bdr">
+                    <div class="mail-info">
+                        <p class="mail-text">ghwnswkd123@naver.com</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <div class="top-search">
+                        <div class="custom-search-input">
+                            <div class="input-group  ">
+                                <input type="text" class="  search-query form-control" placeholder="Search">
+                                <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
+                        </span> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-header">
+        <div class="header">
+            <!-- navigation -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="logo">
+                            <a href="index.html"><img src="images/logo.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-12">
+                        <div class="navigation pull-right" id="navigation">
+                            <ul>
+                                <li class="active"><a href="index.html" title="Home" class="animsition-link">Home</a></li>
+                                <li><a href="classes-list.html" title="Classes" class="animsition-link">체중관리</a>
+                                    <ul>
+                                        <li><a href="classes-list.html" title="Classes List"></a>체중관리</li>
+                                        <li><a href="classes-list.html" title="Classes List"></a>체조성 기록</li>
+                                        <li><a href="classes-list.html" title="Classes List"></a>활동 관리</li>
+                                        
+                                    </ul>
+                                </li>
+                                <li><a href="blog-default.html" title="Blog" class="animsition-link">식단 관리</a>
+                                    <ul>
+                                        <li><a href="blog-default.html" title="Blog" class="animsition-link">식단 짜기</a></li>
+                                        <li><a href="blog-default.html" title="Blog" class="animsition-link">밀프랩 도우미</a></li>
+                                        <li><a href="blog-default.html" title="Blog" class="animsition-link">보충제 활용</a></li>
+                                 
+                                    </ul>
+                                </li>
+                                <li><a href="testimonial.html" title="Features" class="animsition-link">운동 도우미</a>
+                                    <ul>
+                                        <li><a href="testimonial.html" title="Testimonial" class="animsition-link">다이어트 도우미</a></li>
+                                        <li><a href="testimonial.html" title="Testimonial" class="animsition-link">바디프로필 도우미</a></li>
+                                        <li><a href="testimonial.html" title="Testimonial" class="animsition-link">치팅데이 도우미</a></li>
+                                        <li><a href="testimonial.html" title="Testimonial" class="animsition-link">유지어트 도우미</a></li>
+                                        <li><a href="testimonial.html" title="Testimonial" class="animsition-link">밴딩/로딩 도우미</a></li>
+                                        <li><a href="testimonial.html" title="Testimonial" class="animsition-link">탄수화물 사이클링</a></li>
+                                  
+                                    </ul>
+                                </li>
+                                <li><a href="contact.html" title="Contact Us" class="animsition-link">로그인</a> </li>
+                                <li><a href="style-guide.html" title="Style Guide" class="animsition-link">회원가입</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="page-caption pinside40">
+                        <h1 class="page-title">여기는 차근차근 채워갈 예정</h1>
+                        <p>dml은 daily muscle life의 줄임말이다</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                    <div class="content-area">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="post-holder">
+                                    <div class="post-block">
+                                        <div class="post-img mb40">
+                                            <img src="images/blog-single.jpg" class="img-responsive" alt="Fitness Website Template">
+                                        </div>
+                                        <div class="post-header">
+                                            <div class="post-title">
+                                                <h1 class="text-white">Give the gift of fitness this holiday</h1>
+                                            </div>
+                                            <div class="post-meta"> <span class="meta-date"><i class="icon-primary icon-1x icon-calendar"></i>30 november, 2017</span> <span class="meta-author"><i class="icon-user icon-primary icon-1x"></i><a href="#" class="text-white"> Admin</a></span><span class="meta-comment"><i class="icon-speech-bubble-12 icon-primary icon-1x"></i>08 <a href="#" class="text-white">Comments</a> </span></div>
+                                        </div>
+                                    </div>
+                                    <div class="post-content mb40">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing eed velaugue scelerisque tristique esvarius sitamet its liberSuspendisse venenatis purus at lorem malesuada suscium sociis natoque penatibus etmagnis disese parturient monte nascetur ridiculus mused augue lacus egestas utnunc sullamcorper ultrices enimnes or dolor non orci semper accumsan acnonuis aliquet nisisit amet condimentum pretium.</p>
+                                        <p>Dolor sit amet consectetur adipiscing eed velaugue scelerisque tristique esvarius sitamet its uspendisse venenatis purus at lorem malesuada suscium sociis natoque penatibus etmagnis disese parturient monte nascetur ridiculus mused augue lacus egestas utnunc sullamcorper ultrices enimnes or dolornon orci penatibus etmagnis semper accumsan acnonuis aliquet nisisit amet condimen.</p>
+                                        <p>Aesmet consectetur adipiscing eed velaugue scelerisque tristique esvarius sitamet its uspendisse lorem venenatis purus at lorem malesuada suscium sociis natoque penatibus etmagnis disese parturient monte penatibus etmagnis semper accumsan acnonuis aliquet tristique sitamet its uspendisse.</p>
+                                        <p>Etmagnis semper accumsan smet consectetur adipiscing eed velaugue scelerisque tristique esvarius sitamet its uspendisse lorem venenatis purus at lorem malesuada suscium sociis natoque penatibus etmagnis disese parturient monte penatibus acnonuis aliquet tristique sitamet..</p>
+                                    </div>
+                                    <div class="related-post mb40">
+                                        <!-- related post -->
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <h1 class="related-post-title mb40">Related Post</h1>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="post-block">
+                                                    <div class="post-img">
+                                                        <a href="#" class="imghover"><img src="images/blog-2.jpg" class="img-responsive" alt="Fitness Website Template"></a>
+                                                    </div>
+                                                    <div class="post-header">
+                                                        <div class="post-title">
+                                                            <h3><a href="#" class="text-white" >HOW TO ESTABLISH A NEW FITNESS ROUTINE</a></h3>
+                                                        </div>
+                                                        <div class="post-meta"> <span class="meta-date"><i class="icon-primary icon-1x icon-calendar"></i>29 november, 2017</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="post-block mb40">
+                                                    <div class="post-img">
+                                                        <a href="#" class="imghover"><img src="images/blog-3.jpg" class="img-responsive" alt="Fitness Website Template"></a>
+                                                    </div>
+                                                    <div class="post-header">
+                                                        <div class="post-title">
+                                                            <h3><a href="#" class="text-white" >ARE SIX PACK ABS SIGN OF GOOD HEALTH?</a></h3>
+                                                        </div>
+                                                        <div class="post-meta"> <span class="meta-date"><i class="icon-primary icon-1x icon-calendar"></i>28 november, 2017</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-navigation mb40">
+                                        <!-- post navigation -->
+                                        <div class="row">
+                                            <div class="nav-links">
+                                                <!-- nav links -->
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="nav-previous">
+                                                        <!-- nav previous -->
+                                                        <a href="#" class="prev-link mb30"> <i class="fa fa-angle-left"> </i> Previous post </a>
+                                                        <h3 class="previous-next-title"><a href="#" class="text-white">ARE SIX PACK ABS SIGN OF GOOD HEALTH?</a></h3>
+                                                    </div>
+                                                    <!-- /.nav previous -->
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="nav-next text-right">
+                                                        <!-- nav next -->
+                                                        <a href="#" class="next-link mb30">Next post <i class="fa fa-angle-right"> </i> </a>
+                                                        <h3 class="previous-next-title"><a href="#" class="text-white">HOW TO ESTABLISH A NEW FITNESS ROUTINE</a></h3>
+                                                    </div>
+                                                    <!-- /.nav next -->
+                                                </div>
+                                            </div>
+                                            <!-- /.nav links -->
+                                        </div>
+                                    </div>
+                                    <div class="author-post mb40 ">
+                                        <!-- author post -->
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <h1 class="mb40">Author Post</h1>
+                                            </div>
+                                        </div>
+                                        <div class="author-block dark-bdr">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                    <div class="author-img">
+                                                        <a href="#"><img src="images/author.jpg" class="img-responsive" alt=""></a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                                <div class="author-content">
+                                                    <h1 class="author-name">Lois Larkin <span class="small"> Author </span> </h1>
+                                                    
+                                                        <p>Etma gnis sem per accum san smet consec tetur adipi scin is gat lorem male suada sus cium sociis nato que pena tibus on etma gnis dis ese partu rient monte pena tibus ali quet lorem male suada sus cium sociis nat tris tique sit amet.</p>
+                                                 
+                                                    <div class="author-link">
+                                                    <a href="#" class="btn-link">View All Posts</a>
+                                                     </div>
+                                                    
+                                                </div>
+                                                <div class="author-social">
+                                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                                        <a href="#"><i class="fa fa-instagram"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- comments area -->
+                                    <h1 class="comments-title mb40">04 Comments</h1>
+                                    <div class="comments-area pinside40 outline mb40">
+                                        <ul class="comment-list listnone">
+                                            <li class="comment">
+                                                <div class="comment-body">
+                                                    <div class="">
+                                                        <div class="comment-author"><img src="images/user1.jpg" alt="" class=""> </div>
+                                                        <div class="comment-info">
+                                                            <div class="comment-header">
+                                                                <div class="reply"><a href="#" class="title"><i class="fa fa-mail-reply"></i> Reply</a></div>
+                                                                <h4 class="user-title mb10">James Christensen</h4>
+                                                                <div class="comment-meta"><span class="comment-meta-date">29 november, 2017</span></div>
+                                                            </div>
+                                                            <div class="comment-content">
+                                                                <p>Semper accumsan smet consectetur adipiscing eed velaugu malesuad suscium sociis natoque etmagnis disese paurient monte penatis.</p>
+                                                            </div>
+                                                            <hr>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ul class="childern listnone">
+                                                    <li class="comment">
+                                                        <div class="comment-body">
+                                                            <div class="">
+                                                                <div class="comment-author"><img src="images/user2.jpg" alt="" class=""> </div>
+                                                                <div class="comment-info">
+                                                                    <div class="comment-header">
+                                                                     <div class="reply"><a href="#" class="title"><i class="fa fa-mail-reply"></i> Reply</a></div>
+                                                                        <h4 class="user-title mb10">Josefina Rogers</h4>
+                                                                        <div class="comment-meta"><span class="comment-meta-date">29 november, 2017</span></div>
+                                                                    </div>
+                                                                    <div class="comment-content">
+                                                                        <p>Asanmet consectetur adipiscing eed velaugu malesuad suscium sociis natoque etmagnis disese.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <ul class="comment-list listnone">
+                                            <li class="comment">
+                                                <div class="comment-body">
+                                                    <div class="">
+                                                        <div class="comment-author"><img src="images/user3.jpg" alt="" class=""> </div>
+                                                        <div class="comment-info">
+                                                            <div class="comment-header">
+                                                             <div class="reply"><a href="#" class="title"><i class="fa fa-mail-reply"></i> Reply</a></div>
+                                                                <h4 class="user-title mb10">Eunice Travis</h4>
+                                                                <div class="comment-meta"><span class="comment-meta-date">29 november, 2017</span></div>
+                                                            </div>
+                                                            <div class="comment-content">
+                                                                <p>Semper accumsan smet consectetur adipiscing velaugu malesuad suscium sociis natoque etmagnis disese paurient.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <hr>
+                                        <ul class="comment-list listnone">
+                                            <li class="comment">
+                                                <div class="comment-body">
+                                                    <div class="">
+                                                        <div class="comment-author"><img src="images/user4.jpg" alt="" class=""> </div>
+                                                        <div class="comment-info">
+                                                            <div class="comment-header">
+                                                             <div class="reply"><a href="#" class="title"><i class="fa fa-mail-reply"></i> Reply</a></div>
+                                                                <h4 class="user-title mb10">Katy Garry</h4>
+                                                                <div class="comment-meta"><span class="comment-meta-date">29 november, 2017</span></div>
+                                                            </div>
+                                                            <div class="comment-content">
+                                                                <p>Consectetur adipiscing accumsan smeteed velaugu sociis natoque etmagnis disese paurient monte penatis malesuad suscium.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="leave-comments"> 
+                    <!-- leave comments -->
+                    <h1 class="reply-title  mb40">Leave A Comment</h1>
+                    <form class="reply-form">
+                      <div class="row"> 
+                        <!-- Textarea -->
+                        <div class="form-group">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label class="control-label" for="textarea">Comments</label>
+                            <textarea class="form-control" id="textarea" name="textarea" rows="6" placeholder=" "></textarea>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-7 col-sm-12 col-xs-12"> 
+                          <!-- Text input-->
+                          <div class="form-group">
+                            <label class="control-label" for="name">Name</label>
+                            <input id="name" name="name" type="text" class="form-control" placeholder=" " required>
+                          </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="col-lg-4 col-md-7 col-sm-12 col-xs-12">
+                          <div class="form-group">
+                            <label class="control-label" for="email">E-mail</label>
+                            <input id="email" name="email" type="text" class="form-control" placeholder="" required>
+                          </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="col-lg-4 col-md-7 col-sm-12 col-xs-12">
+                          <div class="form-group">
+                            <label class="control-label" for="Website">Website</label>
+                            <input id="Website" name="Website" type="text" class="form-control" placeholder="" required>
+                          </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+                          <!-- Button -->
+                          <div class="form-group">
+                            <button id="singlebutton" name="singlebutton" class="btn btn-default">Submit</button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="sidebar-area">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="widget widget-search mb40">
+                                    <h2 class="widget-title">searchBar</h2>
+                                    <form>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Seacrh Here">
+                                            <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                    </span> </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class=" widget widget-categories">
+                                    <h2 class="widget-title">Categories</h2>
+                                    <ul class="listnone bullet bullet-long-arrow">
+                                        <li><a href="#">Beginners Classes</a></li>
+                                        <li><a href="#">Women Classes</a></li>
+                                        <li><a href="#">Men classes</a></li>
+                                        <li><a href="#">Powerlifting classes</a></li>
+                                        <li><a href="#">Advance Classes</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="widget widget-recent-post">
+                                    <h2 class="widget-title">Recent post</h2>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 mb40">
+                                            <div class="recent-block">
+                                                <div class="recent-content mb30">
+                                                    <!-- recent block -->
+                                                    <h3 class="recent-title"><a href="#" class="title">HOW TO ESTABLISH A NEW  FITNESS ROUTINE</a></h3>
+                                                    <div class="post-meta"> <span class="meta-date"><i class="icon-primary icon-1x icon-calendar"></i>29 november, 2017</span></div>
+                                                </div>
+                                                <div class="recent-content mb30">
+                                                    <!-- recent block -->
+                                                    <h3 class="recent-title"><a href="#" class="title">ARE SIX PACK ABS SIGN OF GOOD HEALTH?</a></h3>
+                                                    <div class="post-meta"> <span class="meta-date"><i class="icon-primary icon-1x icon-calendar"></i>28 november, 2017</span></div>
+                                                </div>
+                                                <div class="recent-content mb30">
+                                                    <!-- recent block -->
+                                                    <h3 class="recent-title"><a href="#" class="title">Give the gift of fitness this holiday</a></h3>
+                                                    <div class="post-meta"> <span class="meta-date"><i class="icon-primary icon-1x icon-calendar"></i>27 november, 2017</span></div>
+                                                </div>
+                                                <!-- /.recent block -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class=" widget widget-archives">
+                                    <h2 class="widget-title">Archives</h2>
+                                    <ul class="listnone bullet bullet-long-arrow">
+                                        <li><a href="#">September</a> 2016</li>
+                                        <li><a href="#">August</a> 2016</li>
+                                        <li><a href="#">July</a> 2016</li>
+                                        <li><a href="#">June</a> 2016</li>
+                                        <li><a href="#">May</a> 2016</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <!--  tags -->
+                                <div class="widget widget-tags">
+                                    <h2 class="widget-title">Tags</h2>
+                                    <!-- widget title -->
+                                    <a href="#" title="Beginners">Beginners</a> <a href="#" title="Women class">Women class</a> <a href="#" title="men class">men class</a> <a href="#" title="Powerlifting">Powerlifting</a> <a href="#" title="Advance">Advance</a></div>
+                                <!-- /.widget well bg -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                    <div class="footer-logo mb30">
+                        <img src="images/logo.png" class="" alt="Fitness Website Template">
+                    </div>
+                </div>
+                <div class="col-lg-offset-1 col-lg-3 col-md-offset-1 col-md-3 col-sm-3 col-xs-12">
+                    <div class="footer-widget mb30">
+                        <h3 class="footer-title">Contact Info</h3>
+                        <ul class="listnone">
+                            <li>
+                                <address>
+                                    2687 Broadcast Drive Monroe,
+                                    <br> NC 28112
+                                </address>
+                            </li>
+                            <li>+1 (800)-123-456 </li>
+                            <li>fitnessgym@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-offset-1 col-lg-2 col-md-offset-1 col-md-2 col-sm-3 col-xs-12">
+                    <div class="footer-widget mb30">
+                        <h3 class="footer-title">Quick Links</h3>
+                        <ul class="listnone">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="classes.html">Classes</a></li>
+                            <li><a href="blog-default.html">News</a></li>
+                            <li><a href="pricing.html">Pricing</a></li>
+                            <li><a href="testimonial.html">Testimonial</a></li>
+                            <li><a href="contact.html">Contactus</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="footer-widget mb30">
+                        <h3 class="footer-title">Connect With us</h3>
+                        <div class="footer-social"> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#" class="active"><i class="fa fa-facebook"></i> </a>
+                            <a href="#"> <i class="fa fa-google-plus"></i> </a>
+                            <a href="#"> <i class="fa fa-pinterest"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tiny-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                   Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- back to top icon -->
+    <a href="#0" class="cd-top" title="Go to top">Top</a>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/menumaker.js"></script>
+    <!-- sticky header -->
+    <script type="text/javascript" src="js/jquery.sticky.js"></script>
+    <script type="text/javascript" src="js/sticky-header.js"></script>
+    <!-- animsition -->
+    <script type="text/javascript" src="js/animsition.js"></script>
+    <script type="text/javascript" src="js/animsition-script.js"></script>
+    <!-- Back to top script -->
+    <script src="js/back-to-top.js" type="text/javascript"></script>
 </body>
 
 </html>
+	
