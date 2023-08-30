@@ -1,4 +1,4 @@
-package kh.project.dml.diet.model.Vo;
+package kh.project.dml.diet.model.vo;
 
 import org.springframework.stereotype.Component;
 

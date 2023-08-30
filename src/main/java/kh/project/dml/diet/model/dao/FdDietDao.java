@@ -6,7 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kh.project.dml.diet.model.Vo.FpDietVo;
+import kh.project.dml.diet.model.vo.FpDietVo;
+
 
 
 

@@ -2,7 +2,6 @@ package kh.project.dml.onedayex.model.Vo;
 
 import org.springframework.stereotype.Component;
 
-import kh.project.dml.diet.model.Vo.FpDietVo;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
