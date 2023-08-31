@@ -11,7 +11,7 @@ import kh.project.dml.diet.model.vo.FpDietVo;
 
 
 
-@Repository("FpDietVo")
+@Repository("FpDietDao")
 public class FdDietDao {
 	@Autowired
 	private SqlSession sqlSession;

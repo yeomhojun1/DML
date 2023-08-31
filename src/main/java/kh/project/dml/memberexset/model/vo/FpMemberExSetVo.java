@@ -15,8 +15,8 @@ import lombok.ToString;
 public class FpMemberExSetVo {
 	private String memberId;
 	private String exerciseName;
-	private int exercieseSet;
-	private int exercieseNumber;
+	private int exerciseSet;
+	private int exerciseNumber;
 
 	
 
