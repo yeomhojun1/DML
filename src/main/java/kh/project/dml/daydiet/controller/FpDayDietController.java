@@ -36,7 +36,7 @@ public class FpDayDietController {
 		return mv;
 	}
 	@PostMapping("/insert")
-	public String insertDoMemeber(RedirectAttributes redirectAttr, FpDayDietVo vo ) {
+	public String insertDoMemeber(RedirectAttributes redirectAttr, FpDayDietVo vo) {
 		String viewPage = "redirect:/";
 		int result = fpdaydietService.insert(vo);
 		try {

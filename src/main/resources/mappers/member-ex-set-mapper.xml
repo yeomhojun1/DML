@@ -6,17 +6,17 @@
 	</select>
 
 	<select id="selectOne" resultType="FpMemberExSetVo" parameterType="string">
-		SELECT MEMBERID, EXERCISENAME, EXERCISESET, EXERCISENUMBER FROM MEMBER_EX_SET
+		SELECT MEMBERID, ECODE, EXNAME, EXERCISESET, EXERCISENUMBER FROM MEMBER_EX_SET
 		WHERE MEMBERID=#{memberId}
 	</select>
 	
 	<insert id="insert" parameterType="FpMemberExSetVo">
 		INSERT INTO MEMBER_EX_SET
-		VALUES (#{memberId}, #{exerciseName}, #{exerciseSet}, #{exerciseNumber})
+		VALUES (#{memberId}, #{ecode}, #{exName}, #{exerciseSet}, #{exerciseNumber})
 	</insert>
 	
 	<update id="update" parameterType="FpMemberExSetVo">
-		UPDATE MEMBER_EX_SET SET MEMBERID=#{memberId}, EXERCISENAME=#{exerciseName}, EXERCISESET=#{exerciseSet}, EXERCISENUMBER=#{exerciseNumber}
+		UPDATE MEMBER_EX_SET SET MEMBERID=#{memberId}, ECODE=#{ecode} EXNAME=#{exName}, EXERCISESET=#{exerciseSet}, EXERCISENUMBER=#{exerciseNumber}
 	</update>
 	
 	<delete id="delete" parameterType="string">
