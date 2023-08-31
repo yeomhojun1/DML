@@ -20,6 +20,6 @@
 	</update>
 	
 	<delete id="delete" parameterType="_int">
-	delete diet where mealCode = #{mealCode}
+	delete from diet where mealCode = #{mealCode}
 	</delete>
 </mapper>
