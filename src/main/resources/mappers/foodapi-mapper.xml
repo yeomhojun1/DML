@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="foodapi">
+
+
+<select id="selectList" resultType="FpFoodApiVo">
+		select * from foodapi
+</select> 
+	
+<select id="seletOne" resultType="FpFoodApiVo" parameterType="_int">
+select * from where foodCd=#{foodCd}
+</select>
+
+<insert id="insert">
+insert into foodapi values(#{foodCd},#{foodName},#{calorie},#{crabs},#{protein},#{fat})
+</insert>
+
+<update id="update" parameterType="FpFoodApiVo">
+update foodapi set foodName = #{foodName}, calorie = #{calorie}, crabs = #{crabs}, protein = #{protein}, fat = #{fat}
+where foodCd =#{foodCd}
+</update>
+
+<delete id="delete" parameterType="_int">
+delete from foodapi where foodCd =#{foodCd}
+</delete>
+</mapper>
