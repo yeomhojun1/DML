@@ -11,6 +11,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kh.project.dml.onedayex.model.Service.FpOneDayExService;
 import kh.project.dml.onedayex.model.Vo.FpOneDayExVo;
 
+
+@Controller
+@RequestMapping("/onedayex")
 public class FpOneDayExController {
 	@Autowired
 	private FpOneDayExService fponedayexService;

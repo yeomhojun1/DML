@@ -11,6 +11,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kh.project.dml.daydiet.model.service.FpDayDietService;
 import kh.project.dml.daydiet.model.vo.FpDayDietVo;
 
+
+@Controller
+@RequestMapping("/daydiet")
 public class FpDayDietController {
 	@Autowired
 	private FpDayDietService fpdaydietService;
