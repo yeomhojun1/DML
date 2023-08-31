@@ -19,8 +19,8 @@ public class FpDayDietDao {
 	public List<FpDayDietVo> selectList()  {
 		return sqlSession.selectList("daydiet.selectList");
 	}
-	public FpDayDietVo selectOne(int dayDietKey) {
-		return sqlSession.selectOne("daydiet.selectOne", dayDietKey);
+	public FpDayDietVo selectOne(int dayDietCode) {
+		return sqlSession.selectOne("daydiet.selectOne", dayDietCode);
 	}
 	public int insert(FpDayDietVo vo)  {
 		return sqlSession.insert("daydiet.insert", vo);
@@ -28,7 +28,7 @@ public class FpDayDietDao {
 	public int update(FpDayDietVo vo)  {
 		return sqlSession.update("daydiet.update", vo);
 	}
-	public int delete(int dayDietKey) {
-		return sqlSession.delete("daydiet.delete",  dayDietKey);
+	public int delete(int dayDietCode) {
+		return sqlSession.delete("daydiet.delete",  dayDietCode);
 	}
 }
