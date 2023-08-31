@@ -19,8 +19,8 @@ public class FpDietService {
 	public List<FpDietVo> selectList()  {
 		return fdDietDao.selectList();
 	}
-	public FpDietVo selectOne(String mid)  {
-		return fdDietDao.selectOne(mid);
+	public FpDietVo selectOne(int mealCode)  {
+		return fdDietDao.selectOne(mealCode);
 	}
 	public int insert(FpDietVo vo)  {
 		return fdDietDao.insert(vo);
@@ -28,8 +28,8 @@ public class FpDietService {
 	public int update(FpDietVo vo) {
 		return fdDietDao.update(vo);
 	}
-	public int delete(String mid)  {
-		return fdDietDao.delete(mid);
+	public int delete(int mealCode)  {
+		return fdDietDao.delete(mealCode);
 	}
 	
 }

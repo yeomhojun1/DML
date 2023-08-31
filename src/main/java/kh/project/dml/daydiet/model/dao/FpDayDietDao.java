@@ -10,7 +10,7 @@ import kh.project.dml.daydiet.model.vo.FpDayDietVo;
 
 
 
-@Repository("FpDayDietVo")
+@Repository("fpDayDietVo")
 public class FpDayDietDao {
 
 	@Autowired
@@ -19,8 +19,8 @@ public class FpDayDietDao {
 	public List<FpDayDietVo> selectList()  {
 		return sqlSession.selectList("daydiet.selectList");
 	}
-	public FpDayDietVo selectOne(String foodDate) {
-		return sqlSession.selectOne("daydiet.selectOne", foodDate);
+	public FpDayDietVo selectOne(int dayDietKey) {
+		return sqlSession.selectOne("daydiet.selectOne", dayDietKey);
 	}
 	public int insert(FpDayDietVo vo)  {
 		return sqlSession.insert("daydiet.insert", vo);
@@ -28,7 +28,7 @@ public class FpDayDietDao {
 	public int update(FpDayDietVo vo)  {
 		return sqlSession.update("daydiet.update", vo);
 	}
-	public int delete(String foodDate) {
-		return sqlSession.delete("daydiet.delete",  foodDate);
+	public int delete(int dayDietKey) {
+		return sqlSession.delete("daydiet.delete",  dayDietKey);
 	}
 }

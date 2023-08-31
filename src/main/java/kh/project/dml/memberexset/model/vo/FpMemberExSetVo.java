@@ -13,20 +13,11 @@ import lombok.ToString;
 @Setter
 @ToString
 public class FpMemberExSetVo {
-	private String mid;
-	private int ecode;
-	private int exercieseId;
+	private String memberId;
+	private String exerciseName;
 	private int exercieseSet;
 	private int exercieseNumber;
 
-	public FpMemberExSetVo() {}
 	
-	public FpMemberExSetVo(String mid, int ecode, int exercieseId, int exercieseSet, int exercieseNumber) {
-		this.mid = mid;
-		this.ecode = ecode;
-		this.exercieseId = exercieseId;
-		this.exercieseSet = exercieseSet;
-		this.exercieseNumber = exercieseNumber;
-	}
 
 }

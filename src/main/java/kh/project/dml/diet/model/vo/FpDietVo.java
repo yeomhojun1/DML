@@ -10,26 +10,10 @@ import lombok.ToString;
 
 @Data
 @Component
-@Getter
-@Setter
-@ToString
 public class FpDietVo {
-	private String mid;
-	private String foodDaliy;
+	private int mealCode;
+	private int dayDietCode;
 	private String foodTime;
 	
-	
-	public FpDietVo(String mid, String foodDaliy, String foodTime) {
-		super();
-		this.mid = mid;
-		this.foodDaliy = foodDaliy;
-		this.foodTime = foodTime;
-	}
 
-
-	public FpDietVo() {
-		super();
-	}
-	
-	
 }

@@ -2,7 +2,7 @@ package kh.project.dml.exercise.model.vo;
 
 import org.springframework.stereotype.Component;
 
-import kh.project.dml.onedayex.model.Vo.FpOneDayExVo;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,5 +16,8 @@ import lombok.ToString;
 public class FpExerciseVo {
 
 	private int ecode;
+	private String part;
+	private String epose;
+	private String eposeLink;
 	
 }
