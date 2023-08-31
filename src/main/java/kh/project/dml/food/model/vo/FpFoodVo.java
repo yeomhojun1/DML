@@ -15,19 +15,14 @@ import lombok.ToString;
 @ToString
 public class FpFoodVo {
 
-	private String mid;
-	private String foodCode;
-	private String foodDaily;
+	private int foodCd;
 	private int foodQuality;
-	
-	public FpFoodVo() {}
-	
-	public FpFoodVo(String mid, String foodCode, String foodDaily, int foodQuality) {
-		super();
-		this.mid = mid;
-		this.foodCode = foodCode;
-		this.foodDaily = foodDaily;
-		this.foodQuality = foodQuality;
-	}
+	private int mealKey;
 
+
+	
+	
+	
+	
+	
 }

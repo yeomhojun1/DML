@@ -19,8 +19,8 @@ public class FpMemberExSetService {
 	public List<FpMemberExSetVo> selectList()  {
 		return fpMemberExSetDao.selectList();
 	}
-	public FpMemberExSetVo selectOne(String mid)  {
-		return fpMemberExSetDao.selectOne(mid);
+	public FpMemberExSetVo selectOne(String memberId)  {
+		return fpMemberExSetDao.selectOne(memberId);
 	}
 	public int insert(FpMemberExSetVo vo)  {
 		return fpMemberExSetDao.insert(vo);
@@ -28,7 +28,7 @@ public class FpMemberExSetService {
 	public int update(FpMemberExSetVo vo) {
 		return fpMemberExSetDao.update(vo);
 	}
-	public int delete(String mid)  {
-		return fpMemberExSetDao.delete(mid);
+	public int delete(String memberId)  {
+		return fpMemberExSetDao.delete(memberId);
 	}
 }

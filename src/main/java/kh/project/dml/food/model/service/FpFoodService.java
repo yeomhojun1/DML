@@ -16,8 +16,8 @@ public class FpFoodService {
 	public List<FpFoodVo> selectList()  {
 		return fpFoodDao.selectList();
 	}
-	public FpFoodVo selectOne(String mid)  {
-		return fpFoodDao.selectOne(mid);
+	public FpFoodVo selectOne(int foodCd)  {
+		return fpFoodDao.selectOne(foodCd);
 	}
 	public int insert(FpFoodVo vo)  {
 		return fpFoodDao.insert(vo);
@@ -25,7 +25,7 @@ public class FpFoodService {
 	public int update(FpFoodVo vo) {
 		return fpFoodDao.update(vo);
 	}
-	public int delete(String mid)  {
-		return fpFoodDao.delete(mid);
+	public int delete(int foodCd)  {
+		return fpFoodDao.delete(foodCd);
 	}
 }

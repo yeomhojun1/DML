@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
-	<select id="readMember" resultType="FpMemberVo">
-		select *
-		from member
-		where member_id = #{memberId}
+	<select id="selectList" resultType="FpMemberVo">
+		select * from member
 	</select>
-	
-	<insert id="insertMember" parameterType="FpMemberVo">
-		insert into member(member_id, mname, memail, mbirthday, gender, address, height, weight) 
-    	values (#{memberId}, #{mname}, #{memail}, #{mbirthday}, #{gender}, #{address}, #{height}, #{weight})
-	</insert>
-	
-	<update id="updateMember" parameterType="FpMemberVo">
-		
-	</update>
-	
-	<delete id="deleteMember" parameterType="FpMemberVo">
-		delete from member 
-    	where member_id = #{memberId}
-	</delete>
+	<select id="login" resultType="string" parameterType="string">
+		select mpwd from member
+		where mid = #{mid}
+	</select>
 </mapper>

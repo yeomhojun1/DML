@@ -17,8 +17,8 @@ public class FpMemberExSetDao {
 	public List<FpMemberExSetVo> selectList()  {
 		return sqlSession.selectList("memberExSet.selectList");
 	}
-	public FpMemberExSetVo selectOne(String mid) {
-		return sqlSession.selectOne("memberExSet.selectOne", mid);
+	public FpMemberExSetVo selectOne(String memberId) {
+		return sqlSession.selectOne("memberExSet.selectOne", memberId);
 	}
 	public int insert(FpMemberExSetVo vo)  {
 		return sqlSession.insert("memberExSet.insert", vo);
@@ -26,7 +26,7 @@ public class FpMemberExSetDao {
 	public int update(FpMemberExSetVo vo)  {
 		return sqlSession.update("memberExSet.update", vo);
 	}
-	public int delete(String mid) {
-		return sqlSession.delete("memberExSet.delete",  mid);
+	public int delete(String memberId) {
+		return sqlSession.delete("memberExSet.delete",  memberId);
 	}
 }

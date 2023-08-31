@@ -15,7 +15,6 @@ import lombok.ToString;
 public class FpMemberVo {
 
 //	"MID"	VARCHAR(20)		NOT NULL,
-//	"MPWD"	VARCHAR(20)		NOT NULL,
 //	"MNAME"	VARCHAR(20)		NOT NULL,
 //	"MEMAIL"	VARCHAR((50)		NOT NULL,
 //	"MBIRTHDAY"	NUMBER		NOT NULL,
@@ -25,7 +24,6 @@ public class FpMemberVo {
 //	"WEIGHT"	NUMBER		NOT NULL
 	
 	private String mid;
-	private String mpwd;
 	private String mname;
 	private String meamil;
 	private int mbirthday;
