@@ -10,7 +10,7 @@ import kh.project.dml.daydiet.model.vo.FpDayDietVo;
 
 
 
-@Repository("fpDayDietVo")
+@Repository("fpDayDietDao")
 public class FpDayDietDao {
 
 	@Autowired
