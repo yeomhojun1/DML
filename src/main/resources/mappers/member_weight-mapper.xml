@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="memberweight">
+	<select id="selectList" resultType="FpMemberWeightVo">
+		select * from member_weight
+	</select>
+<!-- 		private String userId;
+	private Date date;
+	private int weight;
+	private int muscleMass;
+	private int bodyFatPet;
+ -->
+	<select id="selectOne" resultType="FpMemberWeightVo" parameterType="string">
+		SELECT USERID, DATE, WEIGHT, MUSCLEMASS, BODYFATPET FROM MEMBER_WEIGHT
+		WHERE USERID=#{userId} 
+	</select>
+	
+	<insert id="insert" parameterType="FpMemberWeightVo">
+		INSERT INTO MEMBER_WEIGHT 
+		VALUES (#{userId}, #{date}, #{weight}, #{muscleMass}, #{bodyFatPet})
+	</insert>
+	
+	<update id="update" parameterType="FpMemberWeightVo">
+		UPDATE MEMBER_WEIGHT SET USERID=#{userId}, DATE=#{date}, WEIGHT=#{weight}, MUSCLEMASS=#{muscleMass}, BODYFATPET=#{bodyFatPet}
+	</update>
+	
+	<delete id="delete" parameterType="string">
+		DELETE FROM MEMBER_WEIGHT WHERE USERID=#{userId}
+	</delete>
+	
+</mapper>

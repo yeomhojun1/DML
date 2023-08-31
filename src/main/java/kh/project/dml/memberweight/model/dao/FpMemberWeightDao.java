@@ -18,15 +18,15 @@ public class FpMemberWeightDao {
 		return sqlSession.selectList("memberweight.selectList");
 	}
 	public FpMemberWeightVo selectOne(String userId) {
-		return sqlSession.selectOne("memberweight.selectList", userId);
+		return sqlSession.selectOne("memberweight.selectOne", userId);
 	}
 	public int insert(FpMemberWeightVo vo) {
-		return sqlSession.insert("memberweight.selectList", vo);
+		return sqlSession.insert("memberweight.insert", vo);
 	}
 	public int update(FpMemberWeightVo vo) {
-		return sqlSession.update("memberweight.selectList", vo);
+		return sqlSession.update("memberweight.update", vo);
 	}
 	public int delete(String userId) {
-		return sqlSession.delete("memberweight.selectList", userId);
+		return sqlSession.delete("memberweight.delete", userId);
 	}
  }
