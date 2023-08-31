@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="exercise">
 	<select id="selectList" resultType="FpExerciseVo">
-		select * from exercise
+		select * from aca_student
 	</select>
 	<select id="selectOne " resultType="FpExerciseVo" parameterType="string">
 		SELECT EXERCISENAME, PART, EPOSE, EPOSELINK FROM EXERCISE

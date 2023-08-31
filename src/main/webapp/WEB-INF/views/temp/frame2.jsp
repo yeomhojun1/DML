@@ -1,18 +1,18 @@
 <link
-	href="${pageContext.request.contextPath }/resources/temp1/css/frame2.css"
+	href="${pageContext.request.contextPath }/resources/css/frame4.css"
 	rel="stylesheet">
 <link
-	href="${pageContext.request.contextPath }/resources/temp1/css/bootstrap.min.css"
+	href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css"
 	rel="stylesheet">
 <link
-	href="${pageContext.request.contextPath }/resources/temp1/css/style.css"
+	href="${pageContext.request.contextPath }/resources/css/style.css"
 	rel="stylesheet">
 
 <link
-	href="${pageContext.request.contextPath }/resources/temp1/css/font-awesome.min.css"
+	href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css"
 	rel="stylesheet">
 <link
-	href="${pageContext.request.contextPath }/resources/temp1/css/fontello.css"
+	href="${pageContext.request.contextPath }/resources/css/fontello.css"
 	rel="stylesheet">
 
 
