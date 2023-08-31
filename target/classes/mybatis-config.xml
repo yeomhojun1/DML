@@ -10,11 +10,19 @@
 		<typeAlias type="kh.project.dml.diet.model.vo.FpDietVo" alias="FpDietVo"/>
 		<typeAlias type="kh.project.dml.memberexset.model.vo.FpMemberExSetVo" alias="FpMemberExSetVo"/>
 		<typeAlias type="kh.project.dml.exercise.model.vo.FpExerciseVo" alias="FpExerciseVo"/>
+		<typeAlias type="kh.project.dml.admin.model.vo.FpAdminVo" alias="FpAdminVo"/>
+		<typeAlias type="kh.project.dml.notice.model.vo.FpNoticeVo" alias="FpNoticeVo"/>
+		<typeAlias type="kh.project.dml.memberexset.model.vo.FpMemberExSetVo" alias="FpMemberExSetVo"/>
+		<typeAlias type="kh.project.dml.memberweight.model.vo.FpMemberWeightVo" alias="FpMemberWeightVo"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
 		<mapper resource="mappers/diet-mapper.xml"/>
 		<mapper resource="mappers/member-ex-set-mapper.xml"/>
 		<mapper resource="mappers/exercise-mapper.xml"/>
+		<mapper resource="mappers/admin-mapper.xml"/>
+		<mapper resource="mappers/notice-mapper.xml"/>
+		<mapper resource="mappers/member-ex-set-mapper.xml"/>
+		<mapper resource="mappers/member_weight-mapper.xml"/>
 	</mappers>
 </configuration>

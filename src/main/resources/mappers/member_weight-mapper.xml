@@ -27,6 +27,5 @@
 	<delete id="delete" parameterType="string">
 		DELETE FROM MEMBER_WEIGHT WHERE USERID=#{userId}
 	</delete>
-
 	
 </mapper>
