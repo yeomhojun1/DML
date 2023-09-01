@@ -1,12 +1,19 @@
 package kh.project.dml.exercise.controller;
 
+import java.sql.Array;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.google.gson.Gson;
 
 import kh.project.dml.exercise.model.service.FpExerciseService;
 import kh.project.dml.exercise.model.vo.FpExerciseVo;
@@ -24,12 +31,13 @@ public class FpExerciseController {
 		mv.setViewName("exercise/list");
 		return mv;
 	}
+	
 	@GetMapping("/searchlist")
-	public ModelAndView selectSearchListexercise(ModelAndView mv, String searchword) {
-		
-		mv.addObject("exerciseSearchlist", fpexerciseService.selectSearchList(searchword));
-		mv.setViewName("exercise/searchlist");
-		return mv;
+	@ResponseBody
+	public String selectSearchListexercise(String searchword) {
+		String result = null;
+		List<FpExerciseVo> volist = fpexerciseService.selectSearchList(searchword);
+		return new Gson().toJson(volist);
 	}
 	@GetMapping("/one")
 	public ModelAndView selectOneexercise(ModelAndView mv, int ecode) {

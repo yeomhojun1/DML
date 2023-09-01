@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="exercise">
 	
-	<select id="selectSearchList" resultType="FpExerciseVo" parameterType="stirng">
-	<bind name="searchWord" value="%'+_parameter.gettitle()+'%"></bind>
+	<select id="selectSearchList" resultType="FpExerciseVo" parameterType="string">
+	
 		select * from exercise where part = #{searchWord} or exName = #{searchWord}
 	</select>
 	<select id="selectList" resultType="FpExerciseVo">
-		select * from exercise
+		select * from aca_student
 	</select>
 	<select id="selectOne " resultType="FpExerciseVo"
-		parameterType="string">
+		parameterType="_int">
 		SELECT ECODE, EXNAME, PART, EPOSE, EPOSELINK FROM
 		EXERCISE
 		WHERE ECODE=#{ecode}

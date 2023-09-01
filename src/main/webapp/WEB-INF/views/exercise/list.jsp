@@ -147,6 +147,9 @@
 	text-shadow: 1px 1px 2px gray;
 	color: white;
 }
+.btn {
+	cursor: pointer;
+}
 </style>
 </style>
 <script
@@ -199,7 +202,8 @@
 				<div class="row">
 					<div class="col-md-3 col-sm-6 col-xs-6">
 						<div class="logo">
-							<a href="index.html"><img src="${pageContext.request.contextPath }/resources/images/logo.png" ></a>
+							<a href="index.html"><img
+								src="${pageContext.request.contextPath }/resources/images/logo.png"></a>
 						</div>
 					</div>
 					<div class="col-md-9 col-sm-12">
@@ -296,16 +300,41 @@
 			</div>
 		</div>
 	</div>
-	<script>
-        const loremIpsum = document.getElementById("lorem-ipsum")
-        fetch("https://baconipsum.com/api/?type=all-meat&paras=200&format=html")
-            .then(response => response.text())
-            .then(result => loremIpsum.innerHTML = result)
-    </script>
+	<div>
+		<form
+			action="<%=request.getContextPath()%>/exercise/searchlist?searchWord=${searchWord}"
+			method="get">
+			<input type="search" name="searchWord" placeholder="검색"> <input
+				type="submit" value="찾기">
+		</form>
+	</div>
+
+
 	<div class="main_content">
 		<button id="practiceex">연습버튼</button>
 	</div>
-		<script>
+	<div class="main_content_block"> <a href="www.naver.com" ><div class="part" data-part = "shoulder">어깨</div></a>
+	<div class="big_part btn" data-part="chest">가슴</div>
+	<a href="www.naver.com" class="big_part"><div class="part">팔</div></a>
+	<div class="part"><a href="www.naver.com" class="big_part">등</a></div>
+	<a href="www.naver.com" class="big_part"><div class="part">하체</div></a></div>
+	<div class="main_content_block"></div>
+	<div class="main_content_block"></div>
+	<script>
+	$(".big_part").click(bigpartClickHandler);
+	function bigpartClickHandler(){
+		console.log($(this).data("part"));
+		$.ajax({
+		url:"${pageContext.request.contextPath}/exercise/searchlist",
+			type: "get"
+			, data : {searchword : $(this).data("part")}
+			, success : function(result){
+				console.log(result);
+				
+			}
+			, dataType: "json"
+		})
+	}
 		$("#practiceex").click(ajaxClickHandler);
 				function ajaxSuccess(result) {
 			console.log("ctrl로부터 전달받은 데이터 :");
