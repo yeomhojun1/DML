@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kh.project.dml.foodapi.model.dao.FdFoodApiDao;
+import kh.project.dml.foodapi.model.dao.FpFoodApiDao;
 import kh.project.dml.foodapi.model.vo.FpFoodApiVo;
 import kh.project.dml.memberexset.model.dao.FpMemberExSetDao;
 import kh.project.dml.memberexset.model.vo.FpMemberExSetVo;
@@ -15,7 +15,7 @@ public class FpFoodApiService {
 
 
 	@Autowired
-	private FdFoodApiDao fdFoodApiDao;
+	private FpFoodApiDao fdFoodApiDao;
 	
 	public List<FpFoodApiVo> selectList()  {
 		return fdFoodApiDao.selectList();

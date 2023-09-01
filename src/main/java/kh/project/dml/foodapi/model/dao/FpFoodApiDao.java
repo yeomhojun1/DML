@@ -10,7 +10,7 @@ import kh.project.dml.foodapi.model.vo.FpFoodApiVo;
 import kh.project.dml.memberexset.model.vo.FpMemberExSetVo;
 
 @Repository("FpFoodApiVo")
-public class FdFoodApiDao {
+public class FpFoodApiDao {
 
 	@Autowired
 	private SqlSession sqlSession;
