@@ -12,7 +12,7 @@ import kh.project.dml.diet.model.vo.FpDietVo;
 
 
 @Repository("FpDietDao")
-public class FdDietDao {
+public class FpDietDao {
 	@Autowired
 	private SqlSession sqlSession;
 	

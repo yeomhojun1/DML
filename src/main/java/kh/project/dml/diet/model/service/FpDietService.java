@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kh.project.dml.diet.model.dao.FdDietDao;
+import kh.project.dml.diet.model.dao.FpDietDao;
 import kh.project.dml.diet.model.vo.FpDietVo;
 
 
@@ -14,7 +14,7 @@ import kh.project.dml.diet.model.vo.FpDietVo;
 public class FpDietService {
 
 	@Autowired
-	private FdDietDao fdDietDao;
+	private FpDietDao fdDietDao;
 	
 	public List<FpDietVo> selectList()  {
 		return fdDietDao.selectList();
