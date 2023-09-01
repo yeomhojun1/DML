@@ -147,6 +147,7 @@
 	text-shadow: 1px 1px 2px gray;
 	color: white;
 }
+
 .btn {
 	cursor: pointer;
 }
@@ -310,51 +311,70 @@
 	</div>
 
 
-	<div class="main_content">
-		<button id="practiceex">연습버튼</button>
+
+	<div class="main_content_part">
+		<div class="ex_part btn" data-part="유">등</div>
+		<div class="ex_part btn" data-part="천">가슴</div>
+		<div class="ex_part btn" data-part="어깨">어깨</div>
+		<div class="ex_part btn" data-part="팔">팔</div>
+		<div class="ex_part btn" data-part="하체">하체</div>
 	</div>
-	<div class="main_content_block"> <a href="www.naver.com" ><div class="part" data-part = "shoulder">어깨</div></a>
-	<div class="big_part btn" data-part="chest">가슴</div>
-	<a href="www.naver.com" class="big_part"><div class="part">팔</div></a>
-	<div class="part"><a href="www.naver.com" class="big_part">등</a></div>
-	<a href="www.naver.com" class="big_part"><div class="part">하체</div></a></div>
-	<div class="main_content_block"></div>
-	<div class="main_content_block"></div>
+	<div>
+		<div class="main_content_exercise"></div>
+		<div class="main_content_exercise_one"></div>
+		<div class="add_exercise"></div>
+	</div>
 	<script>
-	$(".big_part").click(bigpartClickHandler);
-	function bigpartClickHandler(){
+	window.onload = function(){
+		$(".main_content_exercise").hide();
+		$(".main_content_exercise_one").hide();
+	}
+	<!-- 운동부위를 선택하면 관련운동 나오도록하거나 검색했을때 나오도록함-->
+	$(".ex_part").click(expartClickHandler);
+	function expartClickHandler(){
 		console.log($(this).data("part"));
 		$.ajax({
 		url:"${pageContext.request.contextPath}/exercise/searchlist",
 			type: "get"
 			, data : {searchword : $(this).data("part")}
-			, success : function(result){
-				console.log(result);
-				
-			}
+			, success : function(result){displayExercisePart(result)}		
 			, dataType: "json"
 		})
 	}
-		$("#practiceex").click(ajaxClickHandler);
-				function ajaxSuccess(result) {
-			console.log("ctrl로부터 전달받은 데이터 :");
-			console.log(result);
+	function displayExercisePart(result){
+		console.log(result);
+		htmlVal = "	<div>학생 이름</div>";
+		for (var i = 0; i < result.length; i++) {
+			htmlVal += '<div class="ex_part_one btn" data-part="'+result[i].mid2+'">'+result[i].studentName+'</div>'
 		}
-		function ajaxClickHandler() {
-			console.log("practiceex click");
-			//$.ajax(ojbect형태로매개인자전달해야함);
-			//var obj = {k1:12, k2:'dskfjsdf', k3:function(){}};
-			$.ajax({
-				url : "${pageContext.request.contextPath}/exercise/list",
-				type : "get",
-				data : {
-					n1 : '값도가나?',
-					n2 : 123
-				},
-				success : ajaxSuccess
-			});
-			console.log("practiceex로 데이터 전달 중-1");
-		}
+		$(".main_content_exercise").html(htmlVal);
+		$(".ex_part_one").click(expartoneHandler);
+		$(".main_content_exercise").show();
+		//for()
+		//$(".aaaa").html("<p>"+result[0].mid+"</p>");
+		//$(".aaaa").show();
+	}
+	<!-- 운동 하나를 선택하면 그 운동에 대한 상세정보들이 나오도록함 -->
+	function expartoneHandler(){
+		$.ajax({
+			url:"${pageContext.request.contextPath}/exercise/one",
+			type: "get",
+			data : {ecode : $(this).data("part")},
+			success : displayExercisePartOne,
+			dataType : "json"
+		})
+	}
+	
+	function displayExercisePartOne(result){
+		console.log(result);
+		htmlVal = ""
+		htmlVal += '<table><tr><td>시험 점수</td><td>입학날짜</td><td>특이사항</td><td>전화번호</td></tr></table><div class="btn" data-part="'+result.mid2+'"><div>'+result.examScore+'</div><div>'+result.enterDate+'</div><div>'+result.important+'</div><div>'+result.tele+'</div>'
+		$(".main_content_exercise_one").html(htmlVal);
+		$(".main_content_exercise_one").show();
+	}
+	
+	
+	<!--모달 -->
 		const modal = document.getElementById("modal")
 		const btnModal = document.getElementById("btn-modal")
 		btnModal.addEventListener("click", e => {
@@ -376,5 +396,6 @@ window.addEventListener("keyup", e => {
     }
 })
 		</script>
+
 </body>
 </html>

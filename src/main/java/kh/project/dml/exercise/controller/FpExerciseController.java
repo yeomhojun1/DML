@@ -40,10 +40,10 @@ public class FpExerciseController {
 		return new Gson().toJson(volist);
 	}
 	@GetMapping("/one")
-	public ModelAndView selectOneexercise(ModelAndView mv, int ecode) {
-		mv.addObject("exerciseone", fpexerciseService.selectOne(ecode));
-		mv.setViewName("exercise/one");
-		return mv;
+	@ResponseBody
+	public String selectOneexercise( String ecode) {
+		FpExerciseVo vo= fpexerciseService.selectOne(ecode);
+		return new Gson().toJson(vo);
 	}
 	@GetMapping("/insert")
 	public ModelAndView insertexercise(ModelAndView mv ) {
@@ -68,7 +68,7 @@ public class FpExerciseController {
 		return viewPage;
 	}
 	@GetMapping("/update")
-	public ModelAndView updateExercise(ModelAndView mv, int ecode ) {
+	public ModelAndView updateExercise(ModelAndView mv, String ecode ) {
 		mv.addObject("exerciseone", fpexerciseService.selectOne(ecode));
 		mv.setViewName("exercise/update");
 		return mv;

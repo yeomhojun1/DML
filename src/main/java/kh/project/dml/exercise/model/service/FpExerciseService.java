@@ -20,7 +20,7 @@ public class FpExerciseService {
 	public List<FpExerciseVo> selectSearchList(String searchWord) {
 		return fpExerciseDao.selectSearchList(searchWord);
 	}
-	public FpExerciseVo selectOne(int ecode) {
+	public FpExerciseVo selectOne(String ecode) {
 		return fpExerciseDao.selectOne(ecode);
 	}
 	public int insert(FpExerciseVo vo) {

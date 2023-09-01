@@ -3,17 +3,16 @@
 <mapper namespace="exercise">
 	
 	<select id="selectSearchList" resultType="FpExerciseVo" parameterType="string">
-	
-		select * from exercise where part = #{searchWord} or exName = #{searchWord}
+		<bind name="searchWordPer" value="'%'+searchWord+'%'"/>
+		select * from aca_student where student_name LIKE #{searchWordPer} 
 	</select>
 	<select id="selectList" resultType="FpExerciseVo">
 		select * from aca_student
 	</select>
-	<select id="selectOne " resultType="FpExerciseVo"
-		parameterType="_int">
-		SELECT ECODE, EXNAME, PART, EPOSE, EPOSELINK FROM
-		EXERCISE
-		WHERE ECODE=#{ecode}
+	<select id="selectOne" resultType="FpExerciseVo"	parameterType="string">
+		SELECT * FROM
+		aca_student
+		WHERE mid2=#{ecode}
 	</select>
 	<insert id="insert" parameterType="FpExerciseVo">
 		INSERT INTO EXERCISE
