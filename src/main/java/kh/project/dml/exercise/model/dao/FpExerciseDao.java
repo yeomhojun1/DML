@@ -17,6 +17,9 @@ public class FpExerciseDao {
 	public List<FpExerciseVo> selectList() {
 		return sqlSession.selectList("exercise.selectList");
 	}
+	public List<FpExerciseVo> selectSearchList(String searchWord) {
+		return sqlSession.selectList("exercise.selectSearchList",searchWord);
+	}
 	public FpExerciseVo selectOne(int ecode) {
 		return sqlSession.selectOne("exercise.selectOne", ecode);
 	}

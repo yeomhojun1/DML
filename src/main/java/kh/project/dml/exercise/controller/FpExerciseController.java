@@ -24,6 +24,13 @@ public class FpExerciseController {
 		mv.setViewName("exercise/list");
 		return mv;
 	}
+	@GetMapping("/searchlist")
+	public ModelAndView selectSearchListexercise(ModelAndView mv, String searchword) {
+		
+		mv.addObject("exerciseSearchlist", fpexerciseService.selectSearchList(searchword));
+		mv.setViewName("exercise/searchlist");
+		return mv;
+	}
 	@GetMapping("/one")
 	public ModelAndView selectOneexercise(ModelAndView mv, int ecode) {
 		mv.addObject("exerciseone", fpexerciseService.selectOne(ecode));
@@ -36,7 +43,7 @@ public class FpExerciseController {
 		return mv;
 	}
 	@PostMapping("/insert")
-	public String insertDoMemeber(RedirectAttributes redirectAttr, FpExerciseVo vo ) {
+	public String insertDoExercise(RedirectAttributes redirectAttr, FpExerciseVo vo ) {
 		String viewPage = "redirect:/";
 		int result = fpexerciseService.insert(vo);
 		try {
@@ -53,7 +60,7 @@ public class FpExerciseController {
 		return viewPage;
 	}
 	@GetMapping("/update")
-	public ModelAndView updateexercise(ModelAndView mv, int ecode ) {
+	public ModelAndView updateExercise(ModelAndView mv, int ecode ) {
 		mv.addObject("exerciseone", fpexerciseService.selectOne(ecode));
 		mv.setViewName("exercise/update");
 		return mv;

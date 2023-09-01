@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="exercise">
+	
+	<select id="selectSearchList" resultType="FpExerciseVo" parameterType="stirng">
+	<bind name="searchWord" value="%'+_parameter.gettitle()+'%"></bind>
+		select * from exercise where part = #{searchWord} or exName = #{searchWord}
+	</select>
 	<select id="selectList" resultType="FpExerciseVo">
 		select * from exercise
 	</select>
-	<select id="selectOne " resultType="FpExerciseVo" parameterType="string">
-		SELECT ECODE, EXNAME, PART, EPOSE, EPOSELINK FROM EXERCISE
+	<select id="selectOne " resultType="FpExerciseVo"
+		parameterType="string">
+		SELECT ECODE, EXNAME, PART, EPOSE, EPOSELINK FROM
+		EXERCISE
 		WHERE ECODE=#{ecode}
 	</select>
 	<insert id="insert" parameterType="FpExerciseVo">
 		INSERT INTO EXERCISE
-		VALUES (#{ecode}, #{exName}, #{part}, #{epose}, #{eposeLink})	
+		VALUES
+		(#{ecode}, #{exName}, #{part}, #{epose}, #{eposeLink})
 	</insert>
 	<update id="update" parameterType="FpExerciseVo">
-		update exercise set ECODE=#{ecode}, EXNAME=#{exName}, PART=#{part}, EPOSE=#{epose}, EPOSELINK=#{eposeLink}
+		update exercise set
+		ECODE=#{ecode}, EXNAME=#{exName}, PART=#{part}, EPOSE=#{epose},
+		EPOSELINK=#{eposeLink}
 	</update>
 	<delete id="delete" parameterType="FpExerciseVo">
-		DELETE FROM EXERCISE WHERE ECODE=#{ecode}
+		DELETE FROM EXERCISE WHERE
+		ECODE=#{ecode}
 	</delete>
 </mapper>

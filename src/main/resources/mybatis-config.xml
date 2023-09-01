@@ -19,7 +19,7 @@
 		<mapper resource="mappers/member-mapper.xml"/>
 		<mapper resource="mappers/diet-mapper.xml"/>
 		<mapper resource="mappers/member-ex-set-mapper.xml"/>
-		<mapper resource="mappers/exercise-mapper.xml"/>
+		<mapper resource="mappers/exercies-mapper.xml"/>
 		<mapper resource="mappers/admin-mapper.xml"/>
 		<mapper resource="mappers/notice-mapper.xml"/>
 		<mapper resource="mappers/member-ex-set-mapper.xml"/>

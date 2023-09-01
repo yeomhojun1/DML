@@ -16,6 +16,8 @@ public class FpExerciseService {
 	
 	public List<FpExerciseVo> selectList() {
 		return fpExerciseDao.selectList();
+	}public List<FpExerciseVo> selectSearchList(String searchWord) {
+		return fpExerciseDao.selectSearchList(searchWord);
 	}
 	public FpExerciseVo selectOne(int ecode) {
 		return fpExerciseDao.selectOne(ecode);
