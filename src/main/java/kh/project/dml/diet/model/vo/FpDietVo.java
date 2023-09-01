@@ -11,8 +11,8 @@ import lombok.ToString;
 @Data
 @Component
 public class FpDietVo {
-	private int mealCode;
-	private int dayDietCode;
+	private String mealCode;
+	private String dayDietCode;
 	private String foodTime;
 	
 

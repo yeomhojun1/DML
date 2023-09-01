@@ -17,7 +17,7 @@ public class FpExerciseService {
 	public List<FpExerciseVo> selectList() {
 		return fpExerciseDao.selectList();
 	}
-	public FpExerciseVo selectOne(int ecode) {
+	public FpExerciseVo selectOne(String ecode) {
 		return fpExerciseDao.selectOne(ecode);
 	}
 	public int insert(FpExerciseVo vo) {
@@ -26,7 +26,7 @@ public class FpExerciseService {
 	public int update(FpExerciseVo vo) {
 		return fpExerciseDao.update(vo);
 	}
-	public int delete(int ecode) {
+	public int delete(String ecode) {
 		return fpExerciseDao.delete(ecode);
 	}
 }

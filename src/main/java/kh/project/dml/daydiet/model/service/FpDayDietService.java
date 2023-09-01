@@ -18,7 +18,7 @@ public class FpDayDietService {
 	public List<FpDayDietVo> selectList()  {
 		return fpDayDietDao.selectList();
 	}
-	public FpDayDietVo selectOne(int dayDietCode)  {
+	public FpDayDietVo selectOne(String dayDietCode)  {
 		return fpDayDietDao.selectOne(dayDietCode);
 	}
 	public int insert(FpDayDietVo vo)  {
@@ -27,7 +27,7 @@ public class FpDayDietService {
 	public int update(FpDayDietVo vo) {
 		return fpDayDietDao.update(vo);
 	}
-	public int delete(int dayDietCode)  {
+	public int delete(String dayDietCode)  {
 		return fpDayDietDao.delete(dayDietCode);
 	}
 }

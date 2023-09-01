@@ -15,7 +15,7 @@
 	<update id="update" parameterType="FpExerciseVo">
 		update exercise set ECODE=#{ecode}, EXNAME=#{exName}, PART=#{part}, EPOSE=#{epose}, EPOSELINK=#{eposeLink}
 	</update>
-	<delete id="delete" parameterType="FpExerciseVo">
+	<delete id="delete" parameterType="string">
 		DELETE FROM EXERCISE WHERE ECODE=#{ecode}
 	</delete>
 </mapper>

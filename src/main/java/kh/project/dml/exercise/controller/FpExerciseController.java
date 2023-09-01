@@ -25,7 +25,7 @@ public class FpExerciseController {
 		return mv;
 	}
 	@GetMapping("/one")
-	public ModelAndView selectOneexercise(ModelAndView mv, int ecode) {
+	public ModelAndView selectOneexercise(ModelAndView mv, String ecode) {
 		mv.addObject("exerciseone", fpexerciseService.selectOne(ecode));
 		mv.setViewName("exercise/one");
 		return mv;
@@ -53,7 +53,7 @@ public class FpExerciseController {
 		return viewPage;
 	}
 	@GetMapping("/update")
-	public ModelAndView updateexercise(ModelAndView mv, int ecode ) {
+	public ModelAndView updateexercise(ModelAndView mv, String ecode ) {
 		mv.addObject("exerciseone", fpexerciseService.selectOne(ecode));
 		mv.setViewName("exercise/update");
 		return mv;
@@ -76,7 +76,7 @@ public class FpExerciseController {
 		return viewPage;
 	}
 	@PostMapping("/delete")
-	public String deleteDoMemeber(RedirectAttributes redirectAttr,int ecode ) {
+	public String deleteDoMemeber(RedirectAttributes redirectAttr, String ecode ) {
 		String viewPage = "redirect:/";
 		int result = fpexerciseService.delete(ecode);
 		try {

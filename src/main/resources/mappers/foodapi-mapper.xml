@@ -7,7 +7,7 @@
 		select * from foodapi
 </select> 
 	
-<select id="seletOne" resultType="FpFoodApiVo" parameterType="_int">
+<select id="seletOne" resultType="FpFoodApiVo" parameterType="string">
 select * from where foodCd=#{foodCd}
 </select>
 
@@ -20,7 +20,7 @@ update foodapi set foodName = #{foodName}, calorie = #{calorie}, crabs = #{crabs
 where foodCd =#{foodCd}
 </update>
 
-<delete id="delete" parameterType="_int">
+<delete id="delete" parameterType="string">
 delete from foodapi where foodCd =#{foodCd}
 </delete>
 </mapper>

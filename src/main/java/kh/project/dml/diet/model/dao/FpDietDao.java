@@ -19,7 +19,7 @@ public class FpDietDao {
 	public List<FpDietVo> selectList()  {
 		return sqlSession.selectList("diet.selectList");
 	}
-	public FpDietVo selectOne(int mealCode) {
+	public FpDietVo selectOne(String mealCode) {
 		return sqlSession.selectOne("diet.selectOne", mealCode);
 	}
 	public int insert(FpDietVo vo)  {
@@ -28,7 +28,7 @@ public class FpDietDao {
 	public int update(FpDietVo vo)  {
 		return sqlSession.update("diet.update", vo);
 	}
-	public int delete(int mealCode) {
+	public int delete(String mealCode) {
 		return sqlSession.delete("diet.delete",  mealCode);
 	}
 }

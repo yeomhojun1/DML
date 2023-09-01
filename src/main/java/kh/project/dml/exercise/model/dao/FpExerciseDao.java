@@ -17,7 +17,7 @@ public class FpExerciseDao {
 	public List<FpExerciseVo> selectList() {
 		return sqlSession.selectList("exercise.selectList");
 	}
-	public FpExerciseVo selectOne(int ecode) {
+	public FpExerciseVo selectOne(String ecode) {
 		return sqlSession.selectOne("exercise.selectOne", ecode);
 	}
 	public int insert(FpExerciseVo vo) {
@@ -26,7 +26,7 @@ public class FpExerciseDao {
 	public int update(FpExerciseVo vo) {
 		return sqlSession.update("exercise.update", vo);
 	}
-	public int delete(int ecode) {
+	public int delete(String ecode) {
 		return sqlSession.delete("exercise.delete", ecode);
 	}
 }

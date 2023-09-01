@@ -25,7 +25,7 @@ public class FpFoodController {
 		return mv;
 	}
 	@GetMapping("/one")
-	public ModelAndView selectOnefood(ModelAndView mv, int commentNum) {
+	public ModelAndView selectOnefood(ModelAndView mv, String commentNum) {
 		mv.addObject("foodone", fpfoodService.selectOne(commentNum));
 		mv.setViewName("food/one");
 		return mv;
@@ -53,7 +53,7 @@ public class FpFoodController {
 		return viewPage;
 	}
 	@GetMapping("/update")
-	public ModelAndView updatefood(ModelAndView mv, int commentNum ) {
+	public ModelAndView updatefood(ModelAndView mv, String commentNum ) {
 		mv.addObject("foodone", fpfoodService.selectOne(commentNum));
 		mv.setViewName("food/update");
 		return mv;
@@ -76,7 +76,7 @@ public class FpFoodController {
 		return viewPage;
 	}
 	@PostMapping("/delete")
-	public String deleteDofood(RedirectAttributes redirectAttr,int commentNum ) {
+	public String deleteDofood(RedirectAttributes redirectAttr,String commentNum ) {
 		String viewPage = "redirect:/";
 		int result = fpfoodService.delete(commentNum);
 		try {

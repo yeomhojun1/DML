@@ -18,7 +18,7 @@ public class FpFoodApiDao {
 	public List<FpFoodApiVo> selectList()  {
 		return sqlSession.selectList("foodapi.selectList");
 	}
-	public FpFoodApiVo selectOne(int foodCd) {
+	public FpFoodApiVo selectOne(String foodCd) {
 		return sqlSession.selectOne("foodapi.selectOne", foodCd);
 	}
 	public int insert(FpFoodApiVo vo)  {
@@ -27,7 +27,7 @@ public class FpFoodApiDao {
 	public int update(FpFoodApiVo vo)  {
 		return sqlSession.update("foodapi.update", vo);
 	}
-	public int delete(int foodCd) {
+	public int delete(String foodCd) {
 		return sqlSession.delete("foodapi.delete",  foodCd);
 	}
 	
