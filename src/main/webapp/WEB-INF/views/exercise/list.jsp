@@ -1,16 +1,10 @@
-<link
-	href="${pageContext.request.contextPath }/resources/css/frame4.css"
-	rel="stylesheet">
+
 <link
 	href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css"
 	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath }/resources/css/style.css"
+<link href="${pageContext.request.contextPath }/resources/css/style.css"
 	rel="stylesheet">
 
-<link
-	href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css"
-	rel="stylesheet">
 <link
 	href="${pageContext.request.contextPath }/resources/css/fontello.css"
 	rel="stylesheet">
@@ -38,15 +32,13 @@
 	content="bootstrap template, Responsive Template, Website Template, free website templates, free website template download ">
 <title>Fitness-The Gym Club | Bootstrap | Free Responsive
 	Website Templates</title>
-<!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+
 <!-- style CSS -->
-<link href="${pageContext.request.contextPath }/resources/css/style.css" rel="stylesheet">
-<!-- animsition css -->
-<link rel="stylesheet" type="text/css" href="css/animsition.min.css">
+
+
 <!-- Font Awesome CSS -->
-<link href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/fontello.css">
+
+
 <!-- font css -->
 <link
 	href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i%7cRoboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
@@ -57,15 +49,111 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style >
-    .main1{
-    	width: 1750px;
-    	height: 1000px;
-    	margin: 0 0 0 175px;
-    	
-    	
-    }
-    </style>
+<style>
+.main1 {
+	width: 1750px;
+	height: 1000px;
+	margin: 0 0 0 175px;
+}
+
+#modal {
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.4);
+	display: none;
+}
+
+.modal-content {
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+}
+
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover, .close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#modal.modal-overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(1.5px);
+	-webkit-backdrop-filter: blur(1.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#modal .modal-window {
+	background: rgba(69, 139, 197, 0.70);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(13.5px);
+	-webkit-backdrop-filter: blur(13.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	width: 400px;
+	height: 500px;
+	position: relative;
+	top: -100px;
+	padding: 10px;
+}
+
+#modal .title {
+	padding-left: 10px;
+	display: inline;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
+
+#modal .title h2 {
+	display: inline;
+}
+
+#modal .close-area {
+	display: inline;
+	float: right;
+	padding-right: 10px;
+	cursor: pointer;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
+
+#modal .content {
+	margin-top: 20px;
+	padding: 0px 10px;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
+.btn {
+	cursor: pointer;
+}
+</style>
+</style>
+<script
+	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
 </head>
 
 <body class="animsition">
@@ -114,7 +202,8 @@
 				<div class="row">
 					<div class="col-md-3 col-sm-6 col-xs-6">
 						<div class="logo">
-							<a href="index.html"><img src="images/logo.png" alt=""></a>
+							<a href="index.html"><img
+								src="${pageContext.request.contextPath }/resources/images/logo.png"></a>
 						</div>
 					</div>
 					<div class="col-md-9 col-sm-12">
@@ -181,36 +270,111 @@
 			</div>
 		</div>
 	</div>
-<!--  -->
-<!-- 체중관리 -->
-<div class="Menu_container__AYim3">
+	<!--  -->
+	<!-- 체중관리 -->
+	<div class="Menu_container__AYim3">
 		<ul class="Menu_list__XupHS">
 			<li style="font-weight: 900;"><a href="/weight/track">체중 관리</a></li>
-			<li style="font-weight: 100;"><a href="/weight/composition">체조성 기록</a></li>
+			<li style="font-weight: 100;"><a href="/weight/composition">체조성
+					기록</a></li>
 			<li><a href="/weight/activity">활동 관리</a></li>
 		</ul>
 	</div>
-	
-	<!--사이드 메뉴 바   -->
-<div id="id2">
+	<div id="container">
+		<h2>Lorem Ipsum</h2>
+		<button id="btn-modal">모달 창 열기 버튼</button>
+		<div id="lorem-ipsum"></div>
+	</div>
+	<div id="modal" class="modal-overlay">
+		<div class="modal-window">
+			<div class="title">
+				<h2>모달</h2>
+			</div>
+			<div class="close-area">X</div>
+			<div class="content">
+				<p>가나다라마바사 아자차카타파하</p>
+				<p>가나다라마바사 아자차카타파하</p>
+				<p>가나다라마바사 아자차카타파하</p>
+				<p>가나다라마바사 아자차카타파하</p>
 
- <table border="1">
-        <ul id="p1">
-      	  <li><a>홈 <br></a></li>
-          <li><a>체중 관리 <br></a></li>
-          <li><a>식단 관리 <br></a></li>
-          <li><a>운동 도우미 <br></a></li>
-          <li><a>제품 추천 <br></a></li>
-        
-        </ul>
-        </table>
-    </div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<form
+			action="<%=request.getContextPath()%>/exercise/searchlist?searchWord=${searchWord}"
+			method="get">
+			<input type="search" name="searchWord" placeholder="검색"> <input
+				type="submit" value="찾기">
+		</form>
+	</div>
 
 
-<iframe width="600" height="400" src="https://www.youtube.com/embed/sCVwn67rHZU" title="bodyweight male glutebridge side" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-	
-	<div class="main1">
-      <a href=""><img src="${pageContext.request.contextPath }/resources/temp1/images/weight.jpg" alt="Fitness Website Template"></a>
-      </div>
+	<div class="main_content">
+		<button id="practiceex">연습버튼</button>
+	</div>
+	<div class="main_content_block"> <a href="www.naver.com" ><div class="part" data-part = "shoulder">어깨</div></a>
+	<div class="big_part btn" data-part="chest">가슴</div>
+	<a href="www.naver.com" class="big_part"><div class="part">팔</div></a>
+	<div class="part"><a href="www.naver.com" class="big_part">등</a></div>
+	<a href="www.naver.com" class="big_part"><div class="part">하체</div></a></div>
+	<div class="main_content_block"></div>
+	<div class="main_content_block"></div>
+	<script>
+	$(".big_part").click(bigpartClickHandler);
+	function bigpartClickHandler(){
+		console.log($(this).data("part"));
+		$.ajax({
+		url:"${pageContext.request.contextPath}/exercise/searchlist",
+			type: "get"
+			, data : {searchword : $(this).data("part")}
+			, success : function(result){
+				console.log(result);
+				
+			}
+			, dataType: "json"
+		})
+	}
+		$("#practiceex").click(ajaxClickHandler);
+				function ajaxSuccess(result) {
+			console.log("ctrl로부터 전달받은 데이터 :");
+			console.log(result);
+		}
+		function ajaxClickHandler() {
+			console.log("practiceex click");
+			//$.ajax(ojbect형태로매개인자전달해야함);
+			//var obj = {k1:12, k2:'dskfjsdf', k3:function(){}};
+			$.ajax({
+				url : "${pageContext.request.contextPath}/exercise/list",
+				type : "get",
+				data : {
+					n1 : '값도가나?',
+					n2 : 123
+				},
+				success : ajaxSuccess
+			});
+			console.log("practiceex로 데이터 전달 중-1");
+		}
+		const modal = document.getElementById("modal")
+		const btnModal = document.getElementById("btn-modal")
+		btnModal.addEventListener("click", e => {
+		    modal.style.display = "flex"
+		})
+		const closeBtn = modal.querySelector(".close-area")
+closeBtn.addEventListener("click", e => {
+    modal.style.display = "none"
+})
+modal.addEventListener("click", e => {
+    const evTarget = e.target
+    if(evTarget.classList.contains("modal-overlay")) {
+        modal.style.display = "none"
+    }
+})
+window.addEventListener("keyup", e => {
+    if(modal.style.display === "flex" && e.key === "Escape") {
+        modal.style.display = "none"
+    }
+})
+		</script>
 </body>
 </html>

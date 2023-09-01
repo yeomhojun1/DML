@@ -1,12 +1,19 @@
 package kh.project.dml.exercise.controller;
 
+import java.sql.Array;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.google.gson.Gson;
 
 import kh.project.dml.exercise.model.service.FpExerciseService;
 import kh.project.dml.exercise.model.vo.FpExerciseVo;
@@ -24,6 +31,14 @@ public class FpExerciseController {
 		mv.setViewName("exercise/list");
 		return mv;
 	}
+	
+	@GetMapping("/searchlist")
+	@ResponseBody
+	public String selectSearchListexercise(String searchword) {
+		String result = null;
+		List<FpExerciseVo> volist = fpexerciseService.selectSearchList(searchword);
+		return new Gson().toJson(volist);
+	}
 	@GetMapping("/one")
 	public ModelAndView selectOneexercise(ModelAndView mv, String ecode) {
 		mv.addObject("exerciseone", fpexerciseService.selectOne(ecode));
@@ -36,7 +51,7 @@ public class FpExerciseController {
 		return mv;
 	}
 	@PostMapping("/insert")
-	public String insertDoMemeber(RedirectAttributes redirectAttr, FpExerciseVo vo ) {
+	public String insertDoExercise(RedirectAttributes redirectAttr, FpExerciseVo vo ) {
 		String viewPage = "redirect:/";
 		int result = fpexerciseService.insert(vo);
 		try {
@@ -53,7 +68,11 @@ public class FpExerciseController {
 		return viewPage;
 	}
 	@GetMapping("/update")
+<<<<<<< HEAD
 	public ModelAndView updateexercise(ModelAndView mv, String ecode ) {
+=======
+	public ModelAndView updateExercise(ModelAndView mv, int ecode ) {
+>>>>>>> dbc5b117a53788b923f349b655e3069626bd0967
 		mv.addObject("exerciseone", fpexerciseService.selectOne(ecode));
 		mv.setViewName("exercise/update");
 		return mv;

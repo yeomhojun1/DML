@@ -17,7 +17,14 @@ public class FpExerciseService {
 	public List<FpExerciseVo> selectList() {
 		return fpExerciseDao.selectList();
 	}
+<<<<<<< HEAD
 	public FpExerciseVo selectOne(String ecode) {
+=======
+	public List<FpExerciseVo> selectSearchList(String searchWord) {
+		return fpExerciseDao.selectSearchList(searchWord);
+	}
+	public FpExerciseVo selectOne(int ecode) {
+>>>>>>> dbc5b117a53788b923f349b655e3069626bd0967
 		return fpExerciseDao.selectOne(ecode);
 	}
 	public int insert(FpExerciseVo vo) {
