@@ -14,9 +14,9 @@ import lombok.ToString;
 @ToString
 public class FpFoodVo {
 
-	private int foodCd;
+	private String foodCd;
 	private int foodQuality;
-	private int mealKey;
+	private String mealKey;
 
 
 	

@@ -29,7 +29,7 @@ public class FpExerciseDao {
 	public int update(FpExerciseVo vo) {
 		return sqlSession.update("exercise.update", vo);
 	}
-	public int delete(int ecode) {
+	public int delete(String ecode) {
 		return sqlSession.delete("exercise.delete", ecode);
 	}
 }

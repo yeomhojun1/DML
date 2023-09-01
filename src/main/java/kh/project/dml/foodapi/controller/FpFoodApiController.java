@@ -25,7 +25,7 @@ public class FpFoodApiController {
 		return mv;
 	}
 	@GetMapping("/one")
-	public ModelAndView selectOnefoodapi(ModelAndView mv, int commentNum) {
+	public ModelAndView selectOnefoodapi(ModelAndView mv, String commentNum) {
 		mv.addObject("foodapione", fpfoodapiService.selectOne(commentNum));
 		mv.setViewName("foodapi/one");
 		return mv;
@@ -53,7 +53,7 @@ public class FpFoodApiController {
 		return viewPage;
 	}
 	@GetMapping("/update")
-	public ModelAndView updatefoodapi(ModelAndView mv, int commentNum ) {
+	public ModelAndView updatefoodapi(ModelAndView mv, String commentNum ) {
 		mv.addObject("foodapione", fpfoodapiService.selectOne(commentNum));
 		mv.setViewName("foodapi/update");
 		return mv;
@@ -76,7 +76,7 @@ public class FpFoodApiController {
 		return viewPage;
 	}
 	@PostMapping("/delete")
-	public String deleteDofoodapi(RedirectAttributes redirectAttr,int commentNum ) {
+	public String deleteDofoodapi(RedirectAttributes redirectAttr,String commentNum ) {
 		String viewPage = "redirect:/";
 		int result = fpfoodapiService.delete(commentNum);
 		try {

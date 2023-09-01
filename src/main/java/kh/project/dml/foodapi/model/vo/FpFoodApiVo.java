@@ -13,7 +13,7 @@ import lombok.ToString;
 public class FpFoodApiVo {
 
 	
-	private int foodCd;
+	private String foodCd;
 	private String foodName;
 	private int calorie;
 	private int crabs;

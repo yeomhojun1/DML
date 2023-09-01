@@ -6,7 +6,7 @@
 		select * from daydiet
 	</select>
 	
-	<select id="selectOne" resultType="FpDayDietVo" parameterType="_int">
+	<select id="selectOne" resultType="FpDayDietVo" parameterType="string">
 	select * from  where dayDietCode=#{dayDietCode}
 	</select>
 	
@@ -19,7 +19,7 @@
 	where dayDietCode = #{dayDietCode}
 	</update>
 	
-	<delete id="delete" parameterType="_int">
+	<delete id="delete" parameterType="string">
 	delete from daydiet where dayDietCode = #{dayDietCode}
 	</delete>
 </mapper>

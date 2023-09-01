@@ -25,7 +25,7 @@ public class FpDayDietController {
 		return mv;
 	}
 	@GetMapping("/one")
-	public ModelAndView selectOnedaydiet(ModelAndView mv, int commentNum) {
+	public ModelAndView selectOnedaydiet(ModelAndView mv, String commentNum) {
 		mv.addObject("daydietone", fpdaydietService.selectOne(commentNum));
 		mv.setViewName("daydiet/one");
 		return mv;
@@ -53,7 +53,7 @@ public class FpDayDietController {
 		return viewPage;
 	}
 	@GetMapping("/update")
-	public ModelAndView updatedaydiet(ModelAndView mv, int commentNum ) {
+	public ModelAndView updatedaydiet(ModelAndView mv, String commentNum ) {
 		mv.addObject("daydietone", fpdaydietService.selectOne(commentNum));
 		mv.setViewName("daydiet/update");
 		return mv;
@@ -76,7 +76,7 @@ public class FpDayDietController {
 		return viewPage;
 	}
 	@PostMapping("/delete")
-	public String deleteDoMemeber(RedirectAttributes redirectAttr,int commentNum ) {
+	public String deleteDoMemeber(RedirectAttributes redirectAttr,String commentNum ) {
 		String viewPage = "redirect:/";
 		int result = fpdaydietService.delete(commentNum);
 		try {

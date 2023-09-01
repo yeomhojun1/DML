@@ -20,7 +20,7 @@ public class FpFoodApiService {
 	public List<FpFoodApiVo> selectList()  {
 		return fdFoodApiDao.selectList();
 	}
-	public FpFoodApiVo selectOne(int foodCd)  {
+	public FpFoodApiVo selectOne(String foodCd)  {
 		return fdFoodApiDao.selectOne(foodCd);
 	}
 	public int insert(FpFoodApiVo vo)  {
@@ -29,7 +29,7 @@ public class FpFoodApiService {
 	public int update(FpFoodApiVo vo) {
 		return fdFoodApiDao.update(vo);
 	}
-	public int delete(int foodCd)  {
+	public int delete(String foodCd)  {
 		return fdFoodApiDao.delete(foodCd);
 	}
 }

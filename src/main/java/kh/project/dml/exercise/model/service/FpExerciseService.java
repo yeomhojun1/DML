@@ -17,9 +17,11 @@ public class FpExerciseService {
 	public List<FpExerciseVo> selectList() {
 		return fpExerciseDao.selectList();
 	}
+
 	public List<FpExerciseVo> selectSearchList(String searchWord) {
 		return fpExerciseDao.selectSearchList(searchWord);
 	}
+
 	public FpExerciseVo selectOne(String ecode) {
 		return fpExerciseDao.selectOne(ecode);
 	}
@@ -29,7 +31,7 @@ public class FpExerciseService {
 	public int update(FpExerciseVo vo) {
 		return fpExerciseDao.update(vo);
 	}
-	public int delete(int ecode) {
+	public int delete(String ecode) {
 		return fpExerciseDao.delete(ecode);
 	}
 }

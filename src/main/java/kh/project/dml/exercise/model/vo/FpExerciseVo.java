@@ -16,6 +16,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class FpExerciseVo {
+
 //	private int ecode;
 //	private String exName;
 //	private String part;
@@ -30,4 +31,6 @@ public class FpExerciseVo {
 	private String important;
 	private String mid;
 	private String tele;
+
+
 }

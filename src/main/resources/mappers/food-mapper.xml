@@ -6,7 +6,7 @@
 		select * from food
 	</select>
 	
-	<select id="selectOne" resultType="FpFoodVo" parameterType="_int">
+	<select id="selectOne" resultType="FpFoodVo" parameterType="string">
 	select * from  where foodCd=#{foodCd}
 	</select>
 	
@@ -19,7 +19,7 @@
 	where foodCd = #{foodCd}
 	</update>
 	
-	<delete id="delete" parameterType="_int">
+	<delete id="delete" parameterType="string">
 	delete from food where mealCode = #{foodCd}
 	</delete>
 </mapper>
