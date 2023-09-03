@@ -24,13 +24,7 @@
 		ECODE=#{ecode}, EXNAME=#{exName}, PART=#{part}, EPOSE=#{epose},
 		EPOSELINK=#{eposeLink}
 	</update>
-<<<<<<< HEAD
 	<delete id="delete" parameterType="string">
 		DELETE FROM EXERCISE WHERE ECODE=#{ecode}
-=======
-	<delete id="delete" parameterType="FpExerciseVo">
-		DELETE FROM EXERCISE WHERE
-		ECODE=#{ecode}
->>>>>>> dbc5b117a53788b923f349b655e3069626bd0967
 	</delete>
 </mapper>

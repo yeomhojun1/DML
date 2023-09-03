@@ -1,32 +1,56 @@
 package kh.project.dml.member.model.dao;
 
-import java.util.List;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.inject.Inject;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kh.project.dml.member.model.vo.FpMemberVo;
+import kh.project.dml.users.model.vo.LoginVo;
 
-@Repository("fpMemberDao")
+@Repository
 public class FpMemberDao {
-	
-	@Autowired
-	private SqlSession sqlSession;
-	
-	public List<FpMemberVo> selectList()  {
-		return sqlSession.selectList("member.selectList");
+
+	@Inject
+	private SqlSession session;
+
+	private static final String NS = "kh.project.dml.MemberMapper";
+	private static final String LOGIN = NS + ".login";
+	private static final String KEEP_LOGIN = NS + ".keepLogin";
+	private static final String CHECK_LOGIN_BEFORE = NS + ".checkLoginBefore";
+	private static final String GET_BY_SNS_NAVER = NS + ".getBySnsNaver";
+	private static final String GET_BY_SNS_GOOGLE = NS + ".getBySnsGoogle";
+	private static final String GET_BY_SNS_KAKAO = NS + ".getBySnsKakao";
+
+	public FpMemberVo login(LoginVo vo) throws Exception {
+		return session.selectOne(LOGIN, vo);
 	}
-	public FpMemberVo selectOne(String mid) {
-		return sqlSession.selectOne("member.selectOne", mid);
+
+	public void keepLogin(String mid, String sessionId, Date expire) {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("mid", mid);
+		paramMap.put("sessionkey", sessionId);
+		paramMap.put("sessionlimit", expire);
+		session.update(KEEP_LOGIN, paramMap);
 	}
-	public int insert(FpMemberVo vo)  {
-		return sqlSession.insert("member.insert", vo);
+
+	public FpMemberVo checkLoginBefore(String loginCookie) {
+		return session.selectOne(CHECK_LOGIN_BEFORE, loginCookie);
 	}
-	public int update(FpMemberVo vo)  {
-		return sqlSession.update("member.update", vo);
-	}
-	public int delete(String mid) {
-		return sqlSession.delete("member.delete",  mid);
+
+	public FpMemberVo getBySns(FpMemberVo snsMember) {
+		if (StringUtils.isNotEmpty(snsMember.getNaverid())) {
+			return session.selectOne(GET_BY_SNS_NAVER, snsMember.getNaverid());
+		} else if (StringUtils.isNotEmpty(snsMember.getGoogleid())) {
+			return session.selectOne(GET_BY_SNS_GOOGLE, snsMember.getGoogleid());
+		} else {
+			return session.selectOne(GET_BY_SNS_KAKAO, snsMember.getKakaoid());
+		}
 	}
 }
+

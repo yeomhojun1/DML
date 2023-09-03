@@ -1,33 +1,38 @@
 package kh.project.dml.member.model.service;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import kh.project.dml.member.model.dao.FpMemberDao;
 import kh.project.dml.member.model.vo.FpMemberVo;
 
+import java.util.Date;
+
+import javax.inject.Inject;
+
+import kh.project.dml.users.model.vo.LoginVo;
+
+
 @Service
 public class FpMemberService {
 	
-	@Autowired
-	private FpMemberDao fpMemberDao;
-	
-	public List<FpMemberVo> selectList()  {
-		return fpMemberDao.selectList();
+	@Inject
+	private FpMemberDao dao;
+
+	public FpMemberVo login(LoginVo vo) throws Exception {
+		return dao.login(vo);
 	}
-	public FpMemberVo selectOne(String mid)  {
-		return fpMemberDao.selectOne(mid);
+
+	public void keepLogin(String mid, String sessionId, Date expire) {
+		dao.keepLogin(mid, sessionId, expire);
 	}
-	public int insert(FpMemberVo vo)  {
-		return fpMemberDao.insert(vo);
+
+	public FpMemberVo checkLoginBefore(String loginCookie) {
+		return dao.checkLoginBefore(loginCookie);
 	}
-	public int update(FpMemberVo vo) {
-		return fpMemberDao.update(vo);
+
+	public FpMemberVo getBySns(FpMemberVo snsMember) {
+		return dao.getBySns(snsMember);
 	}
-	public int delete(String mid)  {
-		return fpMemberDao.delete(mid);
-	}
+
 }
+
