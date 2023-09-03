@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import kh.project.dml.foodapi.model.vo.FpFoodApiVo;
 import kh.project.dml.memberexset.model.vo.FpMemberExSetVo;
 
-@Repository("FpFoodApiVo")
+@Repository
 public class FpFoodApiDao {
 
 	@Autowired
