@@ -283,7 +283,7 @@
 	</div>
 	<div id="container">
 		<h2>Lorem Ipsum</h2>
-		<button id="btn-modal">모달 창 열기 버튼</button>
+
 		<div id="lorem-ipsum"></div>
 	</div>
 	<div id="modal" class="modal-overlay">
@@ -293,11 +293,11 @@
 			</div>
 			<div class="close-area">X</div>
 			<div class="content">
-				<p>가나다라마바사 아자차카타파하</p>
-				<p>가나다라마바사 아자차카타파하</p>
-				<p>가나다라마바사 아자차카타파하</p>
-				<p>가나다라마바사 아자차카타파하</p>
-
+				<div>
+				<span>세트</span><input type="text" name="exerciseSet">
+				</div>
+				<div>				<span>횟수</span><input type="text" name="exerciseNumber">
+</div>
 			</div>
 		</div>
 	</div>
@@ -332,7 +332,6 @@
 	<!-- 운동부위를 선택하면 관련운동 나오도록하거나 검색했을때 나오도록함-->
 	$(".ex_part").click(expartClickHandler);
 	function expartClickHandler(){
-		console.log($(this).data("part"));
 		$.ajax({
 		url:"${pageContext.request.contextPath}/exercise/searchlist",
 			type: "get"
@@ -342,7 +341,6 @@
 		})
 	}
 	function displayExercisePart(result){
-		console.log(result);
 		htmlVal = "	<div>운동 이름</div>";
 		for (var i = 0; i < result.length; i++) {
 			htmlVal += '<div class="ex_part_one btn" data-part="'+result[i].ecode+'">'+result[i].exName+'</div>'
@@ -368,19 +366,15 @@
 	function displayExercisePartOne(result){
 		console.log(result);
 		htmlVal = ""
-		htmlVal += '<table><tr><td>자세</td><td>유튜브링크</td><td>특이사항</td><td>전화번호</td></tr></table><div class="btn" data-part="'+result.ecode+'"><div>'+result.epose+'</div><div>'+result.eposeLink+'</div>'
+		htmlVal += '<table><tr><td>자세</td><td>유튜브링크</td></table><div class="ex_one btn" data-code="'+result.ecode+' data-name="'+result.exName+'"><div>'+result.epose+'</div><div>'+result.eposeLink+'</div><button id="btn-modal">모달 창 열기 버튼</button>'
 		$(".main_content_exercise_one").html(htmlVal);
-		$(".main_content_exercise_one").show();
-	}
-	
-	
-	<!--모달 -->
+		<!--모달이 나올수있도록 displayExercisePartOne함수 안에 넣음-->
 		const modal = document.getElementById("modal")
 		const btnModal = document.getElementById("btn-modal")
 		btnModal.addEventListener("click", e => {
 		    modal.style.display = "flex"
 		})
-		const closeBtn = modal.querySelector(".close-area")
+		const closeBtn = modal.querySelector(".close-area");
 closeBtn.addEventListener("click", e => {
     modal.style.display = "none"
 })
@@ -395,6 +389,26 @@ window.addEventListener("keyup", e => {
         modal.style.display = "none"
     }
 })
+		$(".main_content_exercise_one").show();
+	}
+	<!-- 이거는 day_ex에 넣어야하는 문장-->
+	function insertExHandler(){
+		$.ajax({
+			url:"${pageContext.request.contextPath}/memberexset/insert",
+			type: "post",
+			data : {ecode : $(".ex_one").data("code")
+				,exName : $(".ex_one").data("name")
+				//여기는 todo임, 컨트롤러에서 변수를 받아서 설정해서 getattribute를 써야할것같음
+				//,exerciseSet : $(this).value
+				//,exerciseNumber : $(this).data("number")},
+			//success : displayExercisePartOne, 이 success부분도 다시 생각해야함
+			dataType : "json"
+		})
+	}
+	
+	
+	
+	
 		</script>
 
 </body>
