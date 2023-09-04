@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
-    <title>회원가입</title>
+    <title>회원가입</title>
     <style>
         body {
     background: #222D32;
@@ -99,7 +99,7 @@ label {
 }
 
 .form-control-label {
-    font-size: 10px;
+    font-size: 15px;
     color: #6C6C6C;
     font-weight: bold;
     letter-spacing: 1px;
@@ -138,7 +138,12 @@ label {
 .loginbttm {
     padding: 0px;
 }
-    </style>
+
+.gender {
+	margin: 10px 0;
+}
+
+</style>
 </head>
 <body>
     <div class="container">
@@ -153,25 +158,27 @@ label {
                 </div>
                 <div class="col-lg-12 login-form">
                     <div class="col-lg-12 login-form">
-                        <form th:action="@{/user/signup}" th:object="${userCreateForm}" method="post">
-                            <div th:replace="~{form_errors :: formErrorsFragment}"></div>
+                        <form action="${pageContext.request.contextPath }/member/agreement" object="${userCreateForm}" method="post">
+                            <!-- <div th:replace="~{form_errors :: formErrorsFragment}"></div> -->
                             <div class="form-group">
-                                <label class="form-control-label">USERNAME</label>
-                                <input type="text" th:field="*{username}" class="form-control">
+                                <label class="form-control-label">성별</label>
+                                <br>
+                                <input type="radio" id="gender" name="gender" class="gender" value="남"><label name="gender" style="color:#fff;">남</label>
+                                <input type="radio" id="gender" name="gender" class="gender" value="여"><label name="gender" style="color:#fff;">여</label>
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label">패스워드</label>
-                                <input type="password" th:field="*{password1}" class="form-control" i>
+                                <label class="form-control-label">닉네임</label>
+                                <input type="text" name="nickname" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label">패스워드 확인</label>
-                                <input type="password" th:field="*{password2}" class="form-control" i>
+                                <label class="form-control-label">키</label>
+                                <input type="text" name="height" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label">E-Mail</label>
-                                <input type="text" th:field="*{email}" class="form-control">
+                                <label class="form-control-label">몸무게</label>
+                                <input type="text" name="weight" class="form-control">
                             </div>
-
+                            
                             <div class="col-lg-12 loginbttm">
                                 <div class="col-lg-6 login-btm login-text">
                                     <!-- Error Message -->
@@ -186,6 +193,6 @@ label {
                 <div class="col-lg-3 col-md-2"></div>
             </div>
         </div>
-        <script th:src="@{/js/bootstrap.min.js}"></script>
+        <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js}"></script>
 </body>
 </html>

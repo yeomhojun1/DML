@@ -19,6 +19,8 @@ import org.springframework.social.oauth2.OAuth2Operations;
 import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,6 +37,7 @@ import kh.project.dml.common.interceptor.SessionNames;
 import kh.project.dml.member.model.service.FpMemberService;
 import kh.project.dml.member.model.vo.FpMemberVo;
 import kh.project.dml.users.model.vo.LoginVo;
+import lombok.Value;
 
 @Controller
 public class FpMemberController {
@@ -83,9 +86,9 @@ public class FpMemberController {
 		FpMemberVo member = service.getBySns(snsMember);
 		if (member == null) {
 			model.addAttribute("result", "존재하지 않는 사용자입니다. 가입해 주세요.");
-			
+			model.addAttribute("member", snsMember);
 			//미존재시 가입페이지로!!
-			return "/social/signup";
+			return "/member/agreement";
 			
 		} else {
 			model.addAttribute("result", member.getMname() + "님 반갑습니다.");
@@ -96,7 +99,7 @@ public class FpMemberController {
 		return "/";
 	}
 	
-	@GetMapping("/logout")
+	@GetMapping("/member/logout")
 	public String logout(HttpSession session, 
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		session.removeAttribute(SessionNames.LOGIN);
@@ -113,10 +116,10 @@ public class FpMemberController {
 			service.keepLogin(member.getMid(), session.getId(), new Date());
 		}
 		
-		return "/social/login";
+		return "/member/login";
 	}
 	
-	@GetMapping("/social/login")
+	@GetMapping("/member/login")
 	public void login(Model model) throws Exception {
 		logger.info("login GET .....");
 		
@@ -132,7 +135,7 @@ public class FpMemberController {
 		model.addAttribute("kakao_url", kakaoLogin.getAuthURL());
 	}
 	
-	@PostMapping("/loginPost")
+	@PostMapping("/member/loginPost")
 	public void loginPost(LoginVo vo, Model model, HttpSession session) throws Exception {
 		logger.info("loginPost...LoginVo={}", vo); 
 		
@@ -152,7 +155,7 @@ public class FpMemberController {
 	}
 	
 	@ResponseBody
-	@GetMapping("/logoutAjax")
+	@GetMapping("/member/logoutAjax")
 	public ResponseEntity<String> logoutAjax(HttpServletRequest request, HttpServletResponse response, 
 			HttpSession session) {
 		logger.info("Logout Ajax>> " + session.getAttribute("loginUser"));
@@ -175,7 +178,7 @@ public class FpMemberController {
 	}
 	
 	@ResponseBody
-	@PostMapping("/loginAjax")
+	@PostMapping("/member/loginAjax")
 	public ResponseEntity<FpMemberVo> loginAjax(@RequestBody LoginVo vo, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		logger.info("loginPost...LoginVo={}", vo); 
@@ -204,5 +207,10 @@ public class FpMemberController {
 		}
 	}
 	
+	@GetMapping("/member/signup")
+	public String signup() {
+		return "/member/signup";
+	}
+
 }
 

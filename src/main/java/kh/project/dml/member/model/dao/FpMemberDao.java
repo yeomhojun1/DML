@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kh.project.dml.member.model.vo.FpMemberVo;
+import kh.project.dml.users.model.vo.FpUsersVo;
 import kh.project.dml.users.model.vo.LoginVo;
 
 @Repository
@@ -27,7 +28,7 @@ public class FpMemberDao {
 	private static final String GET_BY_SNS_GOOGLE = NS + ".getBySnsGoogle";
 	private static final String GET_BY_SNS_KAKAO = NS + ".getBySnsKakao";
 
-	public FpMemberVo login(LoginVo vo) throws Exception {
+	public FpUsersVo login(LoginVo vo) throws Exception {
 		return session.selectOne(LOGIN, vo);
 	}
 

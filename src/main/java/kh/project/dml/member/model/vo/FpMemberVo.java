@@ -14,16 +14,6 @@ import lombok.ToString;
 @Setter
 @ToString
 public class FpMemberVo {
-
-//	"MID"	VARCHAR(20)		NOT NULL,
-//	"MNAME"	VARCHAR(20)		NOT NULL,
-//	"MEMAIL"	VARCHAR((50)		NOT NULL,
-//	"MBIRTHDAY"	NUMBER		NOT NULL,
-//	"GENDER"	CHAR(1)		NOT NULL,
-//	"ADDRESS"	VARCHAR(40)		NOT NULL,
-//	"HEIGHT"	NUMBER		NOT NULL,
-//	"WEIGHT"	NUMBER		NOT NULL
-	
 	private String mid;
 	private String mname;
 	private String memail;
