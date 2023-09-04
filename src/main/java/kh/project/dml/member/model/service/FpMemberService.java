@@ -9,6 +9,7 @@ import java.util.Date;
 
 import javax.inject.Inject;
 
+import kh.project.dml.users.model.vo.FpUsersVo;
 import kh.project.dml.users.model.vo.LoginVo;
 
 
@@ -18,7 +19,7 @@ public class FpMemberService {
 	@Inject
 	private FpMemberDao dao;
 
-	public FpMemberVo login(LoginVo vo) throws Exception {
+	public FpUsersVo login(LoginVo vo) throws Exception {
 		return dao.login(vo);
 	}
 
