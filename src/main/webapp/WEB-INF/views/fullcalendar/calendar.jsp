@@ -19,6 +19,11 @@
     var calendar = new FullCalendar.Calendar(calendarEl, {
 				     initialView: 'dayGridMonth',
 				     locale: 'ko', // 한국어 설정
+				     height: '700px', // calendar 높이 설정
+				     expandRows: true, // 화면에 맞게 높이 재설정
+				     slotMinTime: '08:00', // Day 캘린더에서 시작 시간
+				     slotMaxTime: '20:00', // Day 캘린더에서 종료 시간
+				    
 				     
 				        headerToolbar: { // todat,달,주,일,리스트 기능
 				            left: 'prev,next today',
@@ -71,6 +76,16 @@
 						            title: '침대에누워있어야되는날',
 						            start: '2023-09-10T07:10:00'
 						      },	
+						      {
+						            title: 'KH 시험점수 확인하기',
+						            url: 'https://www.kh-academy.co.kr/', // 클릭시 해당 url로 이동
+						            start: '2023-09-26'
+						          },
+						      {
+							            title: '곱창전골 꼭 먹어야되는날 (부엉이산장)',
+							            url: 'https://www.owlmtcabin-official.com/home', // 클릭시 해당 url로 이동
+							            start: '2023-09-26'
+							       }
 
 					    
 						
@@ -96,7 +111,7 @@
   </head>
   <body>
     <div id='calendar'></div>
-    <h2 style="text-align:center;">My Calendar</h2>
+    <h2 style="text-align:center;">손범규님의 캘린더</h2>
 		<h2 style="text-align:center;">${loginedMember.name}</h2>
 	  <div id='calendar' style="position: relative;" >
 	  	<c:if test="${loginedMember ne null}"><button class="login-btn" type="button" onclick="location.href='logout'">로그아웃</button></c:if>
