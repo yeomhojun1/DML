@@ -8,7 +8,7 @@
     <meta charset='utf-8' />
     
   <script src='<c:url value="/js/fullcalendar.global.js" />'></script>
-  
+  <link href='<c:url value="/css/fullcalendar.css" />' rel='stylesheet' />
   <script>
   	document.addEventListener('DOMContentLoaded', function() {
   	
@@ -23,7 +23,7 @@
 				     expandRows: true, // 화면에 맞게 높이 재설정
 				     slotMinTime: '08:00', // Day 캘린더에서 시작 시간
 				     slotMaxTime: '20:00', // Day 캘린더에서 종료 시간
-				    
+				     businessHours: true, // 주말 표시
 				     
 				        headerToolbar: { // todat,달,주,일,리스트 기능
 				            left: 'prev,next today',
@@ -37,7 +37,14 @@
 				         dayMaxEventRows: 6 // adjust to 6 only for timeGridWeek/timeGridDay
 				       }
 				     },
-    
+				      googleCalendarApiKey : "AIzaSyCrDZYze51w5DjhysFgTIdb7KEuynMof3k" 
+				          ,eventSources : [
+				          // 대한민국의 공휴일
+				              {
+				                    googleCalendarId : "ko.south_korea#holiday@group.v.calendar.google.com"
+				                  , color : "#FF0000"
+				                  , textColor : "#FFFFFF"
+				              }],
 				     // api 관련 기능 추가 하기
 				     events: 
 				     [
@@ -45,7 +52,7 @@
 					      title: '술+치킨먹는날',// a property!
 					      start: '2023-09-01', // a property!
 					      end: '2023-09-03', // a property! ** see important note below about 'end' **
-					      display: 'background'
+					     
 					    },
 					    { // this object will be "parsed" into an Event Object
 					      title: '곱창전골먹는날', // a property!
