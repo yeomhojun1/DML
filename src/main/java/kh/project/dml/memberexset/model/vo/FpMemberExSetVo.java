@@ -14,7 +14,7 @@ import lombok.ToString;
 @ToString
 public class FpMemberExSetVo {
 	private String memberId;
-	private String ecode;
+	private int ecode;
 	private String exName;
 	private int exerciseSet;
 	private int exerciseNumber;

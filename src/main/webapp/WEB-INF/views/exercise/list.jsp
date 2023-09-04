@@ -313,8 +313,8 @@
 
 
 	<div class="main_content_part">
-		<div class="ex_part btn" data-part="유">등</div>
-		<div class="ex_part btn" data-part="천">가슴</div>
+		<div class="ex_part btn" data-part="등">등</div>
+		<div class="ex_part btn" data-part="가슴">가슴</div>
 		<div class="ex_part btn" data-part="어깨">어깨</div>
 		<div class="ex_part btn" data-part="팔">팔</div>
 		<div class="ex_part btn" data-part="하체">하체</div>
@@ -343,9 +343,9 @@
 	}
 	function displayExercisePart(result){
 		console.log(result);
-		htmlVal = "	<div>학생 이름</div>";
+		htmlVal = "	<div>운동 이름</div>";
 		for (var i = 0; i < result.length; i++) {
-			htmlVal += '<div class="ex_part_one btn" data-part="'+result[i].mid2+'">'+result[i].studentName+'</div>'
+			htmlVal += '<div class="ex_part_one btn" data-part="'+result[i].ecode+'">'+result[i].exName+'</div>'
 		}
 		$(".main_content_exercise").html(htmlVal);
 		$(".ex_part_one").click(expartoneHandler);
@@ -368,7 +368,7 @@
 	function displayExercisePartOne(result){
 		console.log(result);
 		htmlVal = ""
-		htmlVal += '<table><tr><td>시험 점수</td><td>입학날짜</td><td>특이사항</td><td>전화번호</td></tr></table><div class="btn" data-part="'+result.mid2+'"><div>'+result.examScore+'</div><div>'+result.enterDate+'</div><div>'+result.important+'</div><div>'+result.tele+'</div>'
+		htmlVal += '<table><tr><td>자세</td><td>유튜브링크</td><td>특이사항</td><td>전화번호</td></tr></table><div class="btn" data-part="'+result.ecode+'"><div>'+result.epose+'</div><div>'+result.eposeLink+'</div>'
 		$(".main_content_exercise_one").html(htmlVal);
 		$(".main_content_exercise_one").show();
 	}

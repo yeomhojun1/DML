@@ -41,7 +41,7 @@ public class FpExerciseController {
 	}
 	@GetMapping("/one")
 	@ResponseBody
-	public String selectOneexercise( String ecode) {
+	public String selectOneexercise( int ecode) {
 		FpExerciseVo vo= fpexerciseService.selectOne(ecode);
 		return new Gson().toJson(vo);
 	}
@@ -68,7 +68,7 @@ public class FpExerciseController {
 		return viewPage;
 	}
 	@GetMapping("/update")
-	public ModelAndView updateexercise(ModelAndView mv, String ecode ) {
+	public ModelAndView updateexercise(ModelAndView mv, int ecode ) {
 		mv.addObject("exerciseone", fpexerciseService.selectOne(ecode));
 		mv.setViewName("exercise/update");
 		return mv;
@@ -91,7 +91,7 @@ public class FpExerciseController {
 		return viewPage;
 	}
 	@PostMapping("/delete")
-	public String deleteDoMemeber(RedirectAttributes redirectAttr, String ecode ) {
+	public String deleteDoMemeber(RedirectAttributes redirectAttr, int ecode ) {
 		String viewPage = "redirect:/";
 		int result = fpexerciseService.delete(ecode);
 		try {

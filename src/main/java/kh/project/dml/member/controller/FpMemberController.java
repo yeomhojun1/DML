@@ -36,6 +36,7 @@ import kh.project.dml.common.auth.SnsValue;
 import kh.project.dml.common.interceptor.SessionNames;
 import kh.project.dml.member.model.service.FpMemberService;
 import kh.project.dml.member.model.vo.FpMemberVo;
+import kh.project.dml.users.model.vo.FpUsersVo;
 import kh.project.dml.users.model.vo.LoginVo;
 import lombok.Value;
 
@@ -140,10 +141,10 @@ public class FpMemberController {
 		logger.info("loginPost...LoginVo={}", vo); 
 		
 		try {
-			FpMemberVo member = service.login(vo);
+			FpUsersVo member = service.login(vo);
 			if (member != null) {
 				Date expire = new Date(System.currentTimeMillis() + SessionNames.EXPIRE * 1000);
-				service.keepLogin(member.getMid(), session.getId(), expire);
+				service.keepLogin(member.getUid(), session.getId(), expire);
 				model.addAttribute("member", member);
 				
 			} else {
@@ -184,7 +185,7 @@ public class FpMemberController {
 		logger.info("loginPost...LoginVo={}", vo); 
 		
 		try {
-			FpMemberVo member = service.login(vo);
+			FpUsersVo member = service.login(vo);
 			if (member != null) { // login success
 				// member.setUpw(null);
 				
@@ -196,7 +197,7 @@ public class FpMemberController {
 				
 				response.addCookie(loginCookie);
 				
-				return new ResponseEntity<>(member, HttpStatus.OK);
+				return new ResponseEntity<FpMemberVo>(HttpStatus.OK);
 				
 			} else {
 				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
