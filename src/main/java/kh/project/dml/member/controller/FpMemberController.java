@@ -273,11 +273,11 @@ public class FpMemberController {
         } catch(DataIntegrityViolationException e) {
             e.printStackTrace();
             bindingResult.reject("signupFailed", "이미 등록된 사용자입니다.");
-            return "/member/agreement";
+            return "/member/signup";
         } catch(Exception e) {
             e.printStackTrace();
             bindingResult.reject("signupFailed", e.getMessage());
-            return "/member/agreement";
+            return "/member/signup";
         }
         
         return "redirect:/";

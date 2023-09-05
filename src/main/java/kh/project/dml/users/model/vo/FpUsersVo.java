@@ -12,5 +12,4 @@ public class FpUsersVo {
 	private String password;
 	private int userEnabled;
 	private String authorities;
-	
 }

@@ -12,7 +12,7 @@ public interface FpMemberRepository {
 	Optional<FpUsersVo> findByUsername(String username);
 	FpMemberVo findByMemberId(String username);
 	
-    void saveUser(FpUsersVo user);
-    void saveMember(FpMemberVo member);
-    void update(FpMemberVo member);
+    int saveUser(FpUsersVo user);
+    int saveMember(FpMemberVo member);
+    int update(FpMemberVo member);
 }
