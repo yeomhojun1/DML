@@ -13,6 +13,9 @@ public class TempController {
 	public String mainPageOpen2() {
 		return "temp/blog-single2";
 	}
-
+	@GetMapping("/index")
+	public String mainPageOpen7() {
+		return "diet/index";
+	}
 	
 }
