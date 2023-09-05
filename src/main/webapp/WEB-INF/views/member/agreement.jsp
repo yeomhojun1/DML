@@ -158,17 +158,13 @@ label {
                 </div>
                 <div class="col-lg-12 login-form">
                     <div class="col-lg-12 login-form">
-                        <form action="${pageContext.request.contextPath }/member/agreement" object="${userCreateForm}" method="post">
-                            <!-- <div th:replace="~{form_errors :: formErrorsFragment}"></div> -->
+                        <form action="${pageContext.request.contextPath }/member/agreement" method="post">
+                            <jsp:include page="form_errors.jsp"/>
                             <div class="form-group">
                                 <label class="form-control-label">성별</label>
                                 <br>
-                                <input type="radio" id="gender" name="gender" class="gender" value="남"><label name="gender" style="color:#fff;">남</label>
+                                <input type="radio" id="gender" name="gender" class="gender" checked="checked" value="남"><label name="gender" style="color:#fff;">남</label>
                                 <input type="radio" id="gender" name="gender" class="gender" value="여"><label name="gender" style="color:#fff;">여</label>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">닉네임</label>
-                                <input type="text" name="nickname" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">키</label>
@@ -178,6 +174,12 @@ label {
                                 <label class="form-control-label">몸무게</label>
                                 <input type="text" name="weight" class="form-control">
                             </div>
+                            <input type="hidden" name="username" value="${member.memberId}">
+                            <input type="hidden" name="password1" value="SOCIAL_USER">
+                            <input type="hidden" name="name" value="${member.mname}">
+                            <input type="hidden" name="googleid" value="${member.googleid}">
+						    <input type="hidden" name="naverid" value="${member.naverid}">
+						    <input type="hidden" name="kakaoid" value="${member.kakaoid}">
                             
                             <div class="col-lg-12 loginbttm">
                                 <div class="col-lg-6 login-btm login-text">

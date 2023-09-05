@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kh.project.dml.MemberMapper">
     <select id="login" resultType="FpUsersVo">
-        select * from users where user_id = #{user_id} and user_pwd = password(#{user_pwd});
+        select * from users where user_id = #{username} and user_pwd = #{password};
     </select>
     
     <update id="keepLogin">
         update member set sessionkey = #{sessionkey}, sessionlimit = #{sessionlimit}
-         where uid = #{uid}
+         where member_id = #{memberId}
     </update>
     
     <select id="checkLoginBefore" resultType="FpMemberVo">

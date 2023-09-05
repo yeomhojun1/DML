@@ -64,29 +64,20 @@ public class SnsLogin {
 			String id = rootNode.get("id").asText();
 			if (sns.isGoogle())
 				member.setGoogleid(id);
+			member.setMemberId(rootNode.get("email").asText());
 			member.setMname(rootNode.get("name").asText());
-
-			Iterator<JsonNode> iterEmails = rootNode.path("emails").elements();
-			while(iterEmails.hasNext()) {
-				JsonNode emailNode = iterEmails.next();
-				String type = emailNode.get("type").asText();
-				if (StringUtils.equals(type, "account")) {
-					member.setMemail(emailNode.get("value").asText());
-					break;
-				}
-			}
 			
 		} else if (this.sns.isNaver()) {
 			JsonNode resNode = rootNode.get("response");
+			member.setMemberId(resNode.get("email").asText());
+			member.setMname(resNode.get("nickname").asText());
 			member.setNaverid(resNode.get("id").asText());
-			member.setNickname(resNode.get("nickname").asText());
-			member.setMemail(resNode.get("email").asText());
 			
 		} else if (this.sns.isKakao()) {
 			member.setKakaoid(rootNode.get("id").asText());
 			JsonNode kakaoAccountNode = rootNode.get("kakao_account");
-			member.setNickname(kakaoAccountNode.get("profile").get("nickname").asText());
-			member.setMemail(kakaoAccountNode.get("email").asText());
+			member.setMemberId(kakaoAccountNode.get("email").asText());
+			member.setMname(kakaoAccountNode.get("profile").get("nickname").asText());
 		}
 		System.out.println(member);
 		return member;

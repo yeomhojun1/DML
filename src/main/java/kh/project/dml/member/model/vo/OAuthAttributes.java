@@ -10,8 +10,9 @@ import lombok.Getter;
 public class OAuthAttributes {
     private Map<String, Object> attributes;
     private String nameAttributeKey;
+    private String id;
+    private String username;
     private String name;
-    private String email;
  
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
         if("naver".equals(registrationId)) {
@@ -25,8 +26,8 @@ public class OAuthAttributes {
  
     private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes) {
         return OAuthAttributes.builder()
+        		.username((String) attributes.get("email"))
                 .name((String) attributes.get("name"))
-                .email((String) attributes.get("email"))
                 .attributes(attributes)
                 .nameAttributeKey(userNameAttributeName)
                 .build();
@@ -36,8 +37,9 @@ public class OAuthAttributes {
         Map<String, Object> response = (Map<String, Object>) attributes.get("response");
  
         return OAuthAttributes.builder()
+        		.id((String) response.get("naverid"))
+        		.username((String) response.get("email"))
                 .name((String) response.get("name"))
-                .email((String) response.get("email"))
                 .attributes(response)
                 .nameAttributeKey(userNameAttributeName)
                 .build();
@@ -48,8 +50,9 @@ public class OAuthAttributes {
         Map<String, Object> account = (Map<String, Object>) attributes.get("profile");
  
         return OAuthAttributes.builder()
+        		.id((String) attributes.get("id"))
+        		.username((String) response.get("email"))
                 .name((String) account.get("nickname"))
-                .email((String) response.get("email"))
                 .attributes(response)
                 .nameAttributeKey(userNameAttributeName)
                 .build();
@@ -57,8 +60,8 @@ public class OAuthAttributes {
  
     public FpMemberVo toEntity() {
         return FpMemberVo.builder()
+        		.memberId(username)
                 .mname(name)
-                .memail(email)
                 .build();
     }
 }
