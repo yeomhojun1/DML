@@ -7,10 +7,13 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.social.google.connect.GoogleConnectionFactory;
@@ -20,7 +23,6 @@ import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,9 +38,10 @@ import kh.project.dml.common.auth.SnsValue;
 import kh.project.dml.common.interceptor.SessionNames;
 import kh.project.dml.member.model.service.FpMemberService;
 import kh.project.dml.member.model.vo.FpMemberVo;
+import kh.project.dml.member.model.vo.SocialCreateForm;
+import kh.project.dml.member.model.vo.UserCreateForm;
 import kh.project.dml.users.model.vo.FpUsersVo;
 import kh.project.dml.users.model.vo.LoginVo;
-import lombok.Value;
 
 @Controller
 public class FpMemberController {
@@ -62,6 +65,9 @@ public class FpMemberController {
 	
 	@Inject
 	private OAuth2Parameters googleOAuth2Parameters;
+	
+	@Autowired
+	private FpMemberService fpMemberService;
 	
 	@RequestMapping(value = "/auth/{snsService}/callback", 
 			method = { RequestMethod.GET, RequestMethod.POST})
@@ -114,7 +120,7 @@ public class FpMemberController {
 			response.addCookie(loginCookie);
 			
 			FpMemberVo member = (FpMemberVo)session.getAttribute(SessionNames.LOGIN);
-			service.keepLogin(member.getMid(), session.getId(), new Date());
+			service.keepLogin(member.getMemberId(), session.getId(), new Date());
 		}
 		
 		return "/member/login";
@@ -123,6 +129,8 @@ public class FpMemberController {
 	@GetMapping("/member/login")
 	public void login(Model model) throws Exception {
 		logger.info("login GET .....");
+		
+		model.addAttribute("loginVo", new LoginVo());
 		
 		SnsLogin snsLogin = new SnsLogin(naverSns);
 		model.addAttribute("naver_url", snsLogin.getAuthURL());
@@ -136,6 +144,35 @@ public class FpMemberController {
 		model.addAttribute("kakao_url", kakaoLogin.getAuthURL());
 	}
 	
+	@ResponseBody
+	@PostMapping(value = "/member/login", consumes = "application/json")
+	public ResponseEntity<FpUsersVo> normalLogin(@RequestBody LoginVo vo, HttpSession session,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		logger.info("login...LoginVo={}", vo); 
+		
+		try {
+			FpUsersVo member = service.login(vo);
+			if (member != null) { // login success
+				
+				session.setAttribute("loginMember", member);
+				
+				Cookie loginCookie = new Cookie("loginCookie", session.getId());
+				loginCookie.setPath("/");
+				loginCookie.setMaxAge(7 * 24 * 60 * 60);
+				
+				response.addCookie(loginCookie);
+				
+				return new ResponseEntity<>(HttpStatus.OK);
+				
+			} else {
+				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		}
+	}
+	
 	@PostMapping("/member/loginPost")
 	public void loginPost(LoginVo vo, Model model, HttpSession session) throws Exception {
 		logger.info("loginPost...LoginVo={}", vo); 
@@ -144,7 +181,7 @@ public class FpMemberController {
 			FpUsersVo member = service.login(vo);
 			if (member != null) {
 				Date expire = new Date(System.currentTimeMillis() + SessionNames.EXPIRE * 1000);
-				service.keepLogin(member.getUid(), session.getId(), expire);
+				service.keepLogin(member.getUsername(), session.getId(), expire);
 				model.addAttribute("member", member);
 				
 			} else {
@@ -159,8 +196,8 @@ public class FpMemberController {
 	@GetMapping("/member/logoutAjax")
 	public ResponseEntity<String> logoutAjax(HttpServletRequest request, HttpServletResponse response, 
 			HttpSession session) {
-		logger.info("Logout Ajax>> " + session.getAttribute("loginUser"));
-		session.removeAttribute("loginUser");
+		logger.info("Logout Ajax>> " + session.getAttribute("loginMember"));
+		session.removeAttribute("loginMember");
 		
 		FpMemberVo member = (FpMemberVo)session.getAttribute(SessionNames.LOGIN);
 		if (member != null) {
@@ -180,7 +217,7 @@ public class FpMemberController {
 	
 	@ResponseBody
 	@PostMapping("/member/loginAjax")
-	public ResponseEntity<FpMemberVo> loginAjax(@RequestBody LoginVo vo, HttpSession session,
+	public ResponseEntity<FpUsersVo> loginAjax(@RequestBody LoginVo vo, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		logger.info("loginPost...LoginVo={}", vo); 
 		
@@ -197,7 +234,7 @@ public class FpMemberController {
 				
 				response.addCookie(loginCookie);
 				
-				return new ResponseEntity<FpMemberVo>(HttpStatus.OK);
+				return new ResponseEntity<>(HttpStatus.OK);
 				
 			} else {
 				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -209,9 +246,66 @@ public class FpMemberController {
 	}
 	
 	@GetMapping("/member/signup")
-	public String signup() {
+	public String signupPage(Model model) {
+		model.addAttribute("userCreateForm", new UserCreateForm());
 		return "/member/signup";
 	}
+	
+	@PostMapping("/member/signup")
+    public String signup(@Valid UserCreateForm userCreateForm, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return "/member/signup";
+        }
+
+        if(!userCreateForm.getPassword1().equals(userCreateForm.getPassword2())) {
+            bindingResult.rejectValue("password2", "passwordInCorrect", "2개의 패스워드가 일치하지 않습니다.");
+            return "/member/signup";
+        }
+        try {
+        	fpMemberService.create(userCreateForm);
+            // 회원가입 후 자동 로그인 처리(오류 발생으로 조치 필요)
+//            Authentication authentication = authenticationManager.authenticate(
+//                new UsernamePasswordAuthenticationToken(
+//                    userCreateForm.getUsername(), userCreateForm.getPassword1()
+//                )
+//            );
+//            SecurityContextHolder.getContext().setAuthentication(authentication);
+        } catch(DataIntegrityViolationException e) {
+            e.printStackTrace();
+            bindingResult.reject("signupFailed", "이미 등록된 사용자입니다.");
+            return "/member/agreement";
+        } catch(Exception e) {
+            e.printStackTrace();
+            bindingResult.reject("signupFailed", e.getMessage());
+            return "/member/agreement";
+        }
+        
+        return "redirect:/";
+    }
+	
+	@PostMapping("/member/agreement")
+    public String agreement(@Valid SocialCreateForm socialCreateForm, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return "/member/agreement";
+        }
+        
+        try {
+        	fpMemberService.socialCreate(socialCreateForm);
+            // 회원가입 후 자동 로그인 처리(오류 발생으로 조치 필요)
+//            Authentication authentication = authenticationManager.authenticate(
+//                new UsernamePasswordAuthenticationToken(
+//                    userCreateForm.getUsername(), userCreateForm.getPassword1()
+//                )
+//            );
+//            SecurityContextHolder.getContext().setAuthentication(authentication);
+        } catch(Exception e) {
+            e.printStackTrace();
+            bindingResult.reject("signupFailed", e.getMessage());
+            return "/member/agreement";
+        }
+        
+        return "redirect:/";
+    }
 
 }
 

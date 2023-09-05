@@ -159,11 +159,11 @@ label {
                 </div>
                 <div class="col-lg-12 login-form">
                     <div class="col-lg-12 login-form">
-                        <form action="${pageContext.request.contextPath }/member/signup" object="${userCreateForm}" method="post">
-                            <!-- <div th:replace="~{form_errors :: formErrorsFragment}"></div> -->
+                        <form action="${pageContext.request.contextPath }/member/signup" modelAttribute="userCreateForm" method="post">
+                            <jsp:include page="form_errors.jsp"/>
                             <div class="form-group">
-                                <label class="form-control-label">E-Mail</label>
-                                <input type="text" name="email" class="form-control">
+                                <label class="form-control-label">아이디(E-Mail)</label>
+                                <input type="text" name="username" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">패스워드</label>
@@ -174,13 +174,13 @@ label {
                                 <input type="password" name="password2" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label">닉네임</label>
-                                <input type="text" name="nickname" class="form-control">
+                                <label class="form-control-label">이름</label>
+                                <input type="text" name="name" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">성별</label>
                                 <br>
-                                <input type="radio" id="man" name="gender" class="gender" value="남"><label for="man" style="color:#fff;">남</label>
+                                <input type="radio" id="man" name="gender" class="gender" checked="checked" value="남"><label for="man" style="color:#fff;">남</label>
                                 <input type="radio" id="woman" name="gender" class="gender" value="여"><label for="woman" style="color:#fff;">여</label>
                             </div>
                             <div class="form-group">

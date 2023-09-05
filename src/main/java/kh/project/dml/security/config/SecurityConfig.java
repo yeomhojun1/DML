@@ -3,7 +3,9 @@ package kh.project.dml.security.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -19,6 +21,7 @@ import kh.project.dml.security.service.CustomOAuth2UserService;
 public class SecurityConfig {
     
     private final CustomOAuth2UserService customOAuth2UserService;
+    
     @Autowired
     private DataSource dataSource; // 데이터소스 주입
 
@@ -26,20 +29,26 @@ public class SecurityConfig {
         this.customOAuth2UserService = customOAuth2UserService;
     }
 
-    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication()
-            .dataSource(dataSource)
-            .passwordEncoder(encoder())
-            .usersByUsernameQuery("SELECT mid username, mpwd password, enabled FROM MEMBER WHERE mid=?")
-            .authoritiesByUsernameQuery("SELECT mid username, authority as authority FROM MEMBER WHERE mid=?");
+    	auth
+	        .jdbcAuthentication()
+	        .dataSource(dataSource)
+	        .usersByUsernameQuery("SELECT username, password, userEnabled FROM users WHERE username = ?")
+	        .authoritiesByUsernameQuery("SELECT username, authorities FROM users WHERE username = ?")
+	        .passwordEncoder(encoder());
+    }
+    
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+            throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
     }
 
     @Bean
     public BCryptPasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
-
+    
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -74,8 +83,8 @@ public class SecurityConfig {
             .and()
                 .formLogin()
                 .loginPage("/member/login")
-                .successHandler(customLoginSuccess())
                 .failureUrl("/member/login")
+                .defaultSuccessUrl("/")
 
             // 로그아웃 관련 설정
             .and()
@@ -95,4 +104,6 @@ public class SecurityConfig {
      public CustomLoginSuccessHandler customLoginSuccess() {
          return new CustomLoginSuccessHandler();
      }
+     
+     
 }

@@ -49,11 +49,11 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     }
  
     private FpMemberVo saveOrUpdate(OAuthAttributes attributes) {
-    	FpMemberVo member = memberRepository.findByMemail(attributes.getEmail());
+    	FpMemberVo member = memberRepository.findByMemberId(attributes.getUsername());
         try {
         	if (member == null) {
         		member = attributes.toEntity();
-        		memberRepository.save(member);
+        		memberRepository.saveMember(member);
         	} else {
         		member.update(attributes.getName());
         		memberRepository.update(member);
