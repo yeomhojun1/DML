@@ -25,6 +25,7 @@
 		<mapper resource="mappers/notice-mapper.xml"/>
 		<mapper resource="mappers/member-ex-set-mapper.xml"/>
 		<mapper resource="mappers/member_weight-mapper.xml"/>
+		<mapper resource="mappers/users-mapper.xml"/>
 	
 	</mappers>
 </configuration>

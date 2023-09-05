@@ -294,10 +294,11 @@
 			<div class="close-area">X</div>
 			<div class="content">
 				<div>
-				<span>세트</span><input type="text" name="exerciseSet">
+					<span>세트</span><input type="text" name="exerciseSet">
 				</div>
-				<div>				<span>횟수</span><input type="text" name="exerciseNumber">
-</div>
+				<div>
+					<span>횟수</span><input type="text" name="exerciseNumber">
+				</div>
 			</div>
 		</div>
 	</div>
@@ -366,7 +367,7 @@
 	function displayExercisePartOne(result){
 		console.log(result);
 		htmlVal = ""
-		htmlVal += '<table><tr><td>자세</td><td>유튜브링크</td></table><div class="ex_one btn" data-code="'+result.ecode+' data-name="'+result.exName+'"><div>'+result.epose+'</div><div>'+result.eposeLink+'</div><button id="btn-modal">모달 창 열기 버튼</button>'
+		htmlVal += '<table><tr><td>자세</td><td>유튜브링크</td></table><div class="ex_one btn" data-code="'+result.ecode+' data-name="'+result.exName+'">'+result.epose+'<div>'+result.eposeLink+'</div><button id="btn-modal">모달 창 열기 버튼</button>'
 		$(".main_content_exercise_one").html(htmlVal);
 		<!--모달이 나올수있도록 displayExercisePartOne함수 안에 넣음-->
 		const modal = document.getElementById("modal")
@@ -391,13 +392,13 @@ window.addEventListener("keyup", e => {
 })
 		$(".main_content_exercise_one").show();
 	}
-	<!-- 이거는 day_ex에 넣어야하는 문장-->
+ /**이거는 day_ex에 넣어야하는 문장
 	function insertExHandler(){
 		$.ajax({
 			url:"${pageContext.request.contextPath}/memberexset/insert",
 			type: "post",
 			data : {ecode : $(".ex_one").data("code")
-				,exName : $(".ex_one").data("name")
+				,exName : $(".ex_one").data("name")},
 				//여기는 todo임, 컨트롤러에서 변수를 받아서 설정해서 getattribute를 써야할것같음
 				//,exerciseSet : $(this).value
 				//,exerciseNumber : $(this).data("number")},
@@ -405,8 +406,7 @@ window.addEventListener("keyup", e => {
 			dataType : "json"
 		})
 	}
-	
-	
+	*/
 	
 	
 		</script>
