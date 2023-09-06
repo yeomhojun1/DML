@@ -24,6 +24,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -160,10 +161,17 @@
 											class="animsition-link">탄수화물 사이클링</a></li>
 
 									</ul></li>
-								<li><a href="contact.html" title="Contact Us"
-									class="animsition-link">로그인</a></li>
-								<li><a href="style-guide.html" title="Style Guide"
-									class="animsition-link">회원가입</a></li>
+								<%-- 사용자가 로그인되어 있지 않은 경우 --%>
+								<c:if test="${empty sessionScope.loginUser}">
+								    <li><a href="login" title="Contact Us" class="animsition-link">로그인</a></li>
+								    <li><a href="signup" title="Style Guide" class="animsition-link">회원가입</a></li>
+								</c:if>
+								
+								<%-- 사용자가 로그인된 경우 --%>
+								<c:if test="${not empty sessionScope.loginUser}">
+								    <li><a href="logout" title="Logout" class="animsition-link">로그아웃</a></li>
+								    <li><a href="mypage" title="My Page" class="animsition-link">마이페이지</a></li>
+								</c:if>
 							</ul>
 						</div>
 					</div>

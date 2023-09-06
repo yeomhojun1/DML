@@ -2,6 +2,7 @@ package kh.project.dml.member.model.dao;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -22,22 +23,37 @@ public class FpMemberDao {
 
 	private static final String NS = "kh.project.dml.MemberMapper";
 	private static final String LOGIN = NS + ".login";
+	private static final String SELECT_LIST = NS + ".selectList";
+	private static final String NORMAL_LOGIN = NS + ".normallogin";
 	private static final String KEEP_LOGIN = NS + ".keepLogin";
+	private static final String CHECK_SESSION = NS + ".checkSession";
 	private static final String CHECK_LOGIN_BEFORE = NS + ".checkLoginBefore";
 	private static final String GET_BY_SNS_NAVER = NS + ".getBySnsNaver";
 	private static final String GET_BY_SNS_GOOGLE = NS + ".getBySnsGoogle";
 	private static final String GET_BY_SNS_KAKAO = NS + ".getBySnsKakao";
 
+	public List<FpMemberVo> selectList() {
+		return session.selectList(SELECT_LIST);
+	}
+	
 	public FpUsersVo login(LoginVo vo) throws Exception {
 		return session.selectOne(LOGIN, vo);
 	}
+	
+	public FpUsersVo normallogin(String username) throws Exception {
+		return session.selectOne(NORMAL_LOGIN, username);
+	}
 
-	public void keepLogin(String mid, String sessionId, Date expire) {
+	public void keepLogin(String memberId, String sessionId, Date expire) {
 		Map<String, Object> paramMap = new HashMap<>();
-		paramMap.put("mid", mid);
+		paramMap.put("memberId", memberId);
 		paramMap.put("sessionkey", sessionId);
 		paramMap.put("sessionlimit", expire);
 		session.update(KEEP_LOGIN, paramMap);
+	}
+	
+	public String checkSession(String sessionId) {
+		return session.selectOne(CHECK_SESSION, sessionId);
 	}
 
 	public FpMemberVo checkLoginBefore(String loginCookie) {

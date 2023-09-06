@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kh.project.dml.MemberMapper">
+
+	<select id="selectList" resultType="FpMemberVo">
+		select * from member
+	</select>
     <select id="login" resultType="FpUsersVo">
-        select * from users where user_id = #{username} and user_pwd = #{password};
+        select * from users where username = #{username} and password = #{password}
     </select>
     
-    <update id="keepLogin">
+    <select id="normallogin" parameterType="string" resultType="FpUsersVo">
+        SELECT * FROM users WHERE username = #{username}
+    </select>
+    
+    <update id="keepLogin" parameterType="map">
         update member set sessionkey = #{sessionkey}, sessionlimit = #{sessionlimit}
          where member_id = #{memberId}
     </update>
+    
+    <select id="checkSession" parameterType="string" resultType="string">
+        SELECT * FROM member WHERE sessionkey = #{sessionId}
+    </select>
     
     <select id="checkLoginBefore" resultType="FpMemberVo">
         select * from member

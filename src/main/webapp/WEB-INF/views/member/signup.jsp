@@ -159,7 +159,7 @@ label {
                 </div>
                 <div class="col-lg-12 login-form">
                     <div class="col-lg-12 login-form">
-                        <form action="${pageContext.request.contextPath }/member/signup" modelAttribute="userCreateForm" method="post">
+                        <form action="${pageContext.request.contextPath }/member/signup" method="post">
                             <jsp:include page="form_errors.jsp"/>
                             <div class="form-group">
                                 <label class="form-control-label">아이디(E-Mail)</label>

@@ -3,8 +3,9 @@
 <mapper namespace="kh.project.dml.member.model.dao.FpMemberRepository">
 
     <select id="findByMemberId" parameterType="string" resultType="FpMemberVo">
-        SELECT * FROM Member WHERE MEMAIL = #{email}
+        SELECT * FROM Member WHERE member_id = #{memberId}
     </select>
+    
     <insert id="saveUser" parameterType="FpUsersVo">
     	INSERT INTO users (username, password, user_enabled, authorities) VALUES (#{username}, #{password}, #{userEnabled}, #{authorities})
     </insert>

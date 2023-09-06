@@ -101,7 +101,7 @@ label {
 }
 
 .form-control-label {
-    font-size: 10px;
+    font-size: 15px;
     color: #6C6C6C;
     font-weight: bold;
     letter-spacing: 1px;

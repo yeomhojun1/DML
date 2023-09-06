@@ -14,6 +14,7 @@ import kh.project.dml.member.model.vo.SocialCreateForm;
 import kh.project.dml.member.model.vo.UserCreateForm;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import javax.inject.Inject;
@@ -33,6 +34,10 @@ public class FpMemberService {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	public List<FpMemberVo> selectList() {
+		return dao.selectList();
+	}
 	
 	public FpUsersVo getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -93,11 +98,30 @@ public class FpMemberService {
     }
 
 	public FpUsersVo login(LoginVo vo) throws Exception {
-		return dao.login(vo);
+		// 1. 사용자의 username을 사용하여 DB에서 사용자 정보를 가져옵니다.
+	    FpUsersVo user = dao.normallogin(vo.getUsername());
+	    
+	    // 사용자가 존재하지 않으면 null 반환
+	    if(user == null) {
+	        return null;
+	    }
+
+	    // 2. 사용자의 암호화된 비밀번호와 사용자가 입력한 평문 비밀번호를 암호화한 것을 비교합니다.
+	    if(passwordEncoder.matches(vo.getPassword(), user.getPassword())) {
+	        // 비밀번호가 일치하면, 사용자 정보 반환
+	        return user;
+	    }
+
+	    // 비밀번호가 일치하지 않으면 null 반환
+	    return null;
 	}
 
-	public void keepLogin(String mid, String sessionId, Date expire) {
-		dao.keepLogin(mid, sessionId, expire);
+	public void keepLogin(String memberId, String sessionId, Date expire) {
+		dao.keepLogin(memberId, sessionId, expire);
+	}
+	
+	public String checkSession(String sessionId) {
+		return dao.checkSession(sessionId);
 	}
 
 	public FpMemberVo checkLoginBefore(String loginCookie) {

@@ -52,4 +52,8 @@
 	</filter-mapping>
 	<!-- 한글설정 END -->
 	
+	<session-config>
+	    <session-timeout>1</session-timeout> <!-- 30분 후 세션 만료 -->
+	</session-config>
+	
 </web-app>

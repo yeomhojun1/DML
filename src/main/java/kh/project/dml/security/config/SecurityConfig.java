@@ -52,9 +52,14 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .csrf().disable()
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .sessionManagement()
+            	.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+            	.invalidSessionUrl("/member/logout") // 세션 만료 후 리다이렉트 될 URL
+                .maximumSessions(2) // 최대 동시 세션 수. 이 경우 한 번에 하나의 세션만 허용.
+                	.expiredUrl("/member/logout") // 최대 세션 수를 초과할 경우 리다이렉트 될 URL
+                .and()
             .and()
-            .httpBasic().disable()
+//            .httpBasic().disable()
             // oauth2 경로 모든 사용자에게 허용
             .authorizeRequests()
             	.antMatchers("/oauth2/*").permitAll()
@@ -69,9 +74,9 @@ public class SecurityConfig {
                 .antMatchers("/board/**").permitAll()
 
             // member 경로는 R_M 역할을 가진 사용자에게만 허용
-//            .and()
-//                .authorizeRequests()
-//                .antMatchers("/member/**").hasRole("ROLE_MEMBER")
+            .and()
+                .authorizeRequests()
+                .antMatchers("/member/**").authenticated()
 
             // admin 경로는 R_A 역할을 가진 사용자에게만 허용
 //            .and()
@@ -83,12 +88,13 @@ public class SecurityConfig {
                 .formLogin()
                 .loginPage("/member/login")
                 .failureUrl("/member/login")
+                .successHandler(customLoginSuccess())
                 .defaultSuccessUrl("/")
 
             // 로그아웃 관련 설정
             .and()
                 .logout()
-                .logoutUrl("/user/logout")
+                .logoutUrl("/member/logout")
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true)
                 .deleteCookies("remember-me", "JSESSION_ID")
@@ -103,6 +109,5 @@ public class SecurityConfig {
      public CustomLoginSuccessHandler customLoginSuccess() {
          return new CustomLoginSuccessHandler();
      }
-     
      
 }
