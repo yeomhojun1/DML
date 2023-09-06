@@ -5,12 +5,34 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import kh.project.dml.calender.model.dao.FpCalenderDao;
+import kh.project.dml.calender.model.vo.FpCalenderVo;
 
 @Service
 public class FpCalenderService {
 
+	@Autowired
+	private FpCalenderDao fpcalenderDao;
 	
+	public List<FpCalenderVo> selectList(){
+		return fpcalenderDao.selectList();
+	}
+	public FpCalenderVo seletOne(int calendarno) {
+		return fpcalenderDao.selectOne(calendarno);
+	}
+	public int insert(FpCalenderVo vo) {
+		return fpcalenderDao.insert(vo);
+	}
+	public int update(FpCalenderVo vo) {
+		return fpcalenderDao.update(vo);
+	}
+	public int delete(int calendarno) {
+		return fpcalenderDao.delete(calendarno);
+	}
 
 	    public List<Map<String, Object>> getEventList() {
 	        Map<String, Object> event = new HashMap<String, Object>();
