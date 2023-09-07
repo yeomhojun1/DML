@@ -16,6 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.social.google.connect.GoogleConnectionFactory;
 import org.springframework.social.oauth2.GrantType;
 import org.springframework.social.oauth2.OAuth2Operations;
@@ -31,6 +34,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.util.WebUtils;
 
 import kh.project.dml.common.auth.SnsLogin;
@@ -100,10 +104,16 @@ public class FpMemberController {
 		FpMemberVo member = service.getBySns(snsMember);
 		if (member == null) {
 //			model.addAttribute("result", "존재하지 않는 사용자입니다. 가입해 주세요.");
-			model.addAttribute("member", snsMember);
-			session.setAttribute("tempSnsMember", snsMember);  // 임시로 세션에 저장
-			//미존재시 가입페이지로!!
-			return "/member/agreement";
+			String checkId = service.checkId(snsMember.getMemberId());
+			if(checkId == null) {				
+				model.addAttribute("member", snsMember);
+				session.setAttribute("snsMember", snsMember);  // 임시로 세션에 저장
+				//미존재시 가입페이지로!!
+				return "/member/agreement";
+			} else {
+				model.addAttribute("result", "동일한 Email로 가입되어 있습니다. 기존에 회원가입한 방식으로 로그인해주세요.");
+				return "redirect:/member/login";
+			}
 		} else {
 //			model.addAttribute("result", member.getMname() + "님 반갑습니다.");
 			// 4. 존재시 강제로그인
@@ -111,7 +121,7 @@ public class FpMemberController {
 			service.keepLogin(member.getMemberId(), session.getId(), expire);
 			session.setAttribute(SessionNames.LOGIN, member);
 		}
-		return "redirect:/member/list";
+		return "redirect:/index";
 	}
 	
 	@GetMapping("/member/logout")
@@ -131,14 +141,14 @@ public class FpMemberController {
 	    
 	    Cookie loginCookie = WebUtils.getCookie(request, SessionNames.LOGIN_COOKIE);
 	    if (loginCookie != null) {
-	        loginCookie.setPath("/");
+	        loginCookie.setPath("/");	
 	        loginCookie.setMaxAge(0);
 	        response.addCookie(loginCookie);
 	    }
 	    
 	    session.invalidate();
 	    
-	    return "redirect:/member/list";
+	    return "redirect:/index";
 	}
 	
 	@GetMapping("/member/login")
@@ -147,7 +157,7 @@ public class FpMemberController {
 		if(service.checkSession(session.getId()) == null) {
 			System.out.println("null");
 		} else {
-			return "redirect:/member/list";
+			return "redirect:/index";
 		}
 		model.addAttribute("loginVo", new LoginVo());
 		
@@ -174,7 +184,7 @@ public class FpMemberController {
 	            Date expire = new Date(System.currentTimeMillis() + SessionNames.EXPIRE * 1000);
 	            service.keepLogin(member.getUsername(), session.getId(), expire);
 	            session.setAttribute(SessionNames.LOGIN, member); // 세션 설정
-	            return "redirect:/member/list";
+	            return "redirect:/index";
 	        } else {
 	            model.addAttribute("loginResult", "Login Fail!!");
 	        }
@@ -221,7 +231,7 @@ public class FpMemberController {
             return "/member/signup";
         }
         
-        return "redirect:/member/list";
+        return "redirect:/index";
     }
 	
 	@PostMapping("/member/agreement")
@@ -232,7 +242,7 @@ public class FpMemberController {
         
         try {
         	fpMemberService.socialCreate(socialCreateForm);
-        	FpMemberVo member = (FpMemberVo) session.getAttribute("tempSnsMember");
+        	FpMemberVo member = (FpMemberVo) session.getAttribute("snsMember");
 			Date expire = new Date(System.currentTimeMillis() + SessionNames.EXPIRE * 1000);
 			service.keepLogin(member.getMemberId(), session.getId(), expire);
 			session.setAttribute(SessionNames.LOGIN, member);
@@ -242,7 +252,7 @@ public class FpMemberController {
             return "/member/agreement";
         }
         
-        return "redirect:/member/list";
+        return "redirect:/index";
     }
 
 }

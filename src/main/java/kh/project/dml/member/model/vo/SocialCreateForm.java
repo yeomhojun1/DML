@@ -2,6 +2,7 @@ package kh.project.dml.member.model.vo;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,11 +10,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SocialCreateForm {
+	
 	@Email
 	private String username;
 
-    @NotEmpty(message = "비밀번호는 필수항목입니다.")
     private String password1;
+    
+    @Size(min = 8, max = 8)
+    @NotEmpty(message = "생년월일은 YYYYMMDD 형식으로 입력해주세요.")
+    private int birthday;
     
     private String gender;
     
@@ -30,8 +35,5 @@ public class SocialCreateForm {
     private String googleid;
     
     private String kakaoid;
-    
-    
-    
     
 }

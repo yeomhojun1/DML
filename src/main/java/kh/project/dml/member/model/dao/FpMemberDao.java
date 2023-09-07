@@ -22,6 +22,7 @@ public class FpMemberDao {
 	private SqlSession session;
 
 	private static final String NS = "kh.project.dml.MemberMapper";
+	private static final String CHECK_ID = NS + ".checkId";
 	private static final String LOGIN = NS + ".login";
 	private static final String SELECT_LIST = NS + ".selectList";
 	private static final String NORMAL_LOGIN = NS + ".normallogin";
@@ -34,6 +35,10 @@ public class FpMemberDao {
 
 	public List<FpMemberVo> selectList() {
 		return session.selectList(SELECT_LIST);
+	}
+	
+	public String checkId(String memberId) {
+		return session.selectOne(CHECK_ID, memberId);
 	}
 	
 	public FpUsersVo login(LoginVo vo) throws Exception {

@@ -52,8 +52,9 @@
 	</filter-mapping>
 	<!-- 한글설정 END -->
 	
+	 <!-- 세션 만료 시간 설정(분) -->
 	<session-config>
-	    <session-timeout>1</session-timeout> <!-- 30분 후 세션 만료 -->
+	    <session-timeout>30</session-timeout>
 	</session-config>
 	
 </web-app>

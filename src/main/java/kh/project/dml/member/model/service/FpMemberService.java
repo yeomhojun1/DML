@@ -64,7 +64,7 @@ public class FpMemberService {
         FpMemberVo member = new FpMemberVo();
         member.setMemberId(userMember.getUsername());
         member.setMname(userMember.getName());
-        member.setMbirthday(19900619);
+        member.setMbirthday(userMember.getBirthday());
         member.setGender(userMember.getGender());
         member.setHeight(userMember.getHeight());
         member.setWeight(userMember.getWeight());
@@ -85,7 +85,7 @@ public class FpMemberService {
         FpMemberVo member = new FpMemberVo();
         member.setMemberId(userMember.getUsername());
         member.setMname(userMember.getName());
-        member.setMbirthday(19900619);
+        member.setMbirthday(userMember.getBirthday());
         member.setGender(userMember.getGender());
         member.setHeight(userMember.getHeight());
         member.setWeight(userMember.getWeight());
@@ -95,6 +95,10 @@ public class FpMemberService {
         this.fpMemberRepository.saveMember(member);
         
         return user;
+    }
+    
+    public String checkId(String memberId) {
+    	return dao.checkId(memberId);
     }
 
 	public FpUsersVo login(LoginVo vo) throws Exception {
