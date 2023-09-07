@@ -171,6 +171,7 @@ public class FpMemberController {
 		
 		SnsLogin kakaoLogin = new SnsLogin(kakaoSns);
 		model.addAttribute("kakao_url", kakaoLogin.getAuthURL());
+		model.addAttribute("loginResult", "");
 		
 		return "/member/login";
 	}
@@ -190,8 +191,10 @@ public class FpMemberController {
 	        }
 	    } catch (Exception e) {
 	        e.printStackTrace();
+	        logger.error("사용자ID 또는 비밀번호를 확인해 주세요.", e);
+	        model.addAttribute("loginResult", "사용자ID 또는 비밀번호를 확인해 주세요.");
 	    }
-	    return "redirect:/member/login"; // 리다이렉트를 사용
+	    return "/member/login";
 	}
 	
 	@GetMapping("/member/signup")
