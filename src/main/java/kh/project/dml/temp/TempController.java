@@ -18,4 +18,8 @@ public class TempController {
 		return "diet/index";
 	}
 	
+	@GetMapping("/main")
+	public String mainPageOpen8() {
+		return "temp/main";
+	}
 }
