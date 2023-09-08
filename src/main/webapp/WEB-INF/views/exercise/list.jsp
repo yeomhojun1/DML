@@ -341,6 +341,7 @@
 			, dataType: "json"
 		})
 	}
+	
 	function displayExercisePart(result){
 		htmlVal = "	<div>운동 이름</div>";
 		for (var i = 0; i < result.length; i++) {

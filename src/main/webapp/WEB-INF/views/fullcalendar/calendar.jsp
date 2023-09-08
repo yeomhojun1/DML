@@ -9,6 +9,13 @@
     
   <script src='<c:url value="/js/fullcalendar.global.js" />'></script>
   <link href='<c:url value="/css/fullcalendar.css" />' rel='stylesheet' />
+  <script
+	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
+  <style>
+  	.modal{
+  	display:none;
+  	}
+  </style>
   <script>
   	document.addEventListener('DOMContentLoaded', function() {
   	
@@ -100,9 +107,14 @@
   					 
   					  
   					 
-  				      dateClick : function(info){ // 선택한 날짜 값 뽑아내기
+  				      dateClick : (info)=>{ // 선택한 날짜 값 뽑아내기
+  				    	  console.log(info);
   				    	  const clickDate = info.dateStr;
-  				    	  alert(clickDate); //경고창
+  				    	  alert(clickDate); //경고창d
+  				    	  //
+  				    	  $(".modal #date").html(clickDate);
+  				    	  $(".modal").show();
+  				    	  
   				      },
   				      eventClick: function(info){ // 클릭한 일정 값 뽑아내기
   				    	  const title = info.event.title;
@@ -126,6 +138,12 @@
 	  	<c:if test="${loginedMember ne null}"><button class="add-btn" type="button" onclick="add_btnSchedule();">일정추가</button></c:if>
 	  	<c:if test="${loginedMember eq null}"><button class="login-btn" type="button" onclick="login_form();">로그인</button></c:if>
 	  	<c:if test="${loginedMember eq null}"><button class="add-btn" type="button" onclick="location.href='join'">회원가입</button></c:if>
+	  </div>
+	  <div class="modal" >
+	  <div class="modal-content">
+	  ahekfckd
+	  <span id="date"></span>
+	  </div>
 	  </div>
   </body>
   
