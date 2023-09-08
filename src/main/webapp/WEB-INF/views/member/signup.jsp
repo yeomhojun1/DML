@@ -159,11 +159,11 @@ label {
                 </div>
                 <div class="col-lg-12 login-form">
                     <div class="col-lg-12 login-form">
-                        <form action="${pageContext.request.contextPath }/member/signup" modelAttribute="userCreateForm" method="post">
+                        <form action="${pageContext.request.contextPath }/member/signup" method="post">
                             <jsp:include page="form_errors.jsp"/>
                             <div class="form-group">
                                 <label class="form-control-label">아이디(E-Mail)</label>
-                                <input type="text" name="username" class="form-control">
+                                <input type="text" name="username" class="form-control" placeholder="이메일 형식으로 입력해주세요">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">패스워드</label>
@@ -176,6 +176,10 @@ label {
                             <div class="form-group">
                                 <label class="form-control-label">이름</label>
                                 <input type="text" name="name" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">생년월일</label>
+                                <input type="text" name="birthday" class="form-control" placeholder="YYYYMMDD 형식으로 입력해주세요">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">성별</label>

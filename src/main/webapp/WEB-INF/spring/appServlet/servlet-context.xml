@@ -103,14 +103,6 @@
 		<beans:property name="redirectUri" ref="googleRedirectUrl" />
 	</beans:bean>	
 
-	<!-- Interceptor 인터셉터 -->
-	<!-- Interceptor 로그인 객체 생성 -->
-	<!-- <beans:bean class="kh.project.dml.common.LoginInterceptor" id="LoginInterceptor"/> 
-		<interceptors> Interceptor 로그인 설정 <interceptor> <mapping path="/**"/> <exclude-mapping 
-		path="/resources/**"/> <exclude-mapping path="/login"/> <exclude-mapping 
-		path="/signup"/> <exclude-mapping path="/findid"/> <exclude-mapping path="/findpwd"/> 
-		<exclude-mapping path="/shop/**"/> <beans:ref bean="LoginInterceptor"/> </interceptor> 
-		</interceptors> -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="defaultEncoding" value="UTF-8"/>
 		<beans:property name="maxUploadSize" value="10485760"/>

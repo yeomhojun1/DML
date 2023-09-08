@@ -1,13 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-        <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Daily Muscle Life - SB Admin</title>
+        <title>Daily Muscle Life</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" />
         <link href="${pageContext.request.contextPath}/css/scss.css" rel="stylesheet" />
@@ -31,10 +32,19 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    	<%-- 사용자가 로그인되어 있지 않은 경우 --%>
+						<c:if test="${empty sessionScope.loginUser}">
+						    <li><a class="dropdown-item" href="${pageContext.request.contextPath }/member/login">로그인</a></li>
+						    <li><a class="dropdown-item" href="${pageContext.request.contextPath }/member/signup">회원가입</a></li>
+						</c:if>	
+						
+						<%-- 사용자가 로그인된 경우 --%>
+						<c:if test="${not empty sessionScope.loginUser}">
+	                        <li><a class="dropdown-item" href="${pageContext.request.contextPath }/member/mypage">마이페이지</a></li>
+	                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+	                        <li><hr class="dropdown-divider" /></li>
+	                        <li><a class="dropdown-item" href="${pageContext.request.contextPath }/member/logout">로그아웃</a></li>
+						</c:if>
                     </ul>
                 </li>
             </ul>
