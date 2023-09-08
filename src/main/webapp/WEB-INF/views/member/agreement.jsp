@@ -161,6 +161,10 @@ label {
                         <form action="${pageContext.request.contextPath }/member/agreement" method="post">
                             <jsp:include page="form_errors.jsp"/>
                             <div class="form-group">
+                                <label class="form-control-label">생년월일</label>
+                                <input type="text" name="birthday" class="form-control" placeholder="YYYYMMDD 형식으로 입력해주세요">
+                            </div>
+                            <div class="form-group">
                                 <label class="form-control-label">성별</label>
                                 <br>
                                 <input type="radio" id="gender" name="gender" class="gender" checked="checked" value="남"><label name="gender" style="color:#fff;">남</label>

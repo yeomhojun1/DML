@@ -25,6 +25,10 @@ public class FpMemberVo {
 	private String naverid;
 	private String kakaoid;
 	
+	// 세션 추가
+	private String sessionkey;
+	private String sessionlimit;
+	
 	public FpMemberVo() {}
 	
 	@Builder

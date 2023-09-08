@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css}">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
@@ -101,7 +101,7 @@ label {
 }
 
 .form-control-label {
-    font-size: 10px;
+    font-size: 15px;
     color: #6C6C6C;
     font-weight: bold;
     letter-spacing: 1px;
@@ -157,12 +157,11 @@ label {
 </head>
 <body>
     <form action="${pageContext.request.contextPath }/member/login" method="post">
-        <jsp:include page="form_errors.jsp"/>
-        <c:if test="${param.error != null}">
-		    <div class="alert alert-danger">
-		        사용자ID 또는 비밀번호를 확인해 주세요.
-		    </div>
-		</c:if>
+	    <c:if test="${not empty loginResult}">
+	        <div class="alert alert-danger" role="alert">
+	            <c:out value="${loginResult}"/>
+	        </div>
+	    </c:if>
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-2"></div>
