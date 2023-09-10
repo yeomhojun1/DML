@@ -1,54 +1,24 @@
-
-<link
-	href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath }/resources/css/style.css"
-	rel="stylesheet">
-
-<link
-	href="${pageContext.request.contextPath }/resources/css/fontello.css"
-	rel="stylesheet">
-
-
-
-
-
-
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<!-- <meta charset="UTF-8"> -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description"
-	content="Fitness - provide the easy responsive free website templates. You can easily customize and make your own website for your startup business.">
-<meta name="keywords"
-	content="bootstrap template, Responsive Template, Website Template, free website templates, free website template download ">
-<title>Fitness-The Gym Club | Bootstrap | Free Responsive
-	Website Templates</title>
-
-<!-- style CSS -->
-
-
-<!-- Font Awesome CSS -->
-
-
-<!-- font css -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Daily Muscle Life</title>
 <link
-	href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i%7cRoboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
-	rel="stylesheet">
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
+	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/styles.css"
+	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/scss.css"
+	rel="stylesheet" />
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+	crossorigin="anonymous"></script>
 <style>
 .main1 {
 	width: 1750px;
@@ -153,167 +123,211 @@
 }
 </style>
 </style>
-<script
-	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
-</head>
 
-<body class="animsition">
-	<div class="top-bar">
-		<!-- top-bar -->
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 hidden-sm hidden-xs bdr">
-					<div class="time-info">
-						<p class="time-text">Mon - Sat : 6 am-9pm - Sun : 8am-6pm</p>
+</head>
+<body class="sb-nav-fixed">
+	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+		<!-- Navbar Brand-->
+		<a class="navbar-brand ps-3" href="index.html">Daily Muscle Life</a>
+		<!-- Sidebar Toggle-->
+		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
+			id="sidebarToggle" href="#!">
+			<i class="fas fa-bars"></i>
+		</button>
+		<!-- Navbar Search-->
+		<form
+			class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+			<div class="input-group">
+				<input class="form-control" type="text" placeholder="Search for..."
+					aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+				<button class="btn btn-primary" id="btnNavbarSearch" type="button">
+					<i class="fas fa-search"></i>
+				</button>
+			</div>
+		</form>
+		<!-- Navbar-->
+		<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+				role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+					class="fas fa-user fa-fw"></i></a>
+				<ul class="dropdown-menu dropdown-menu-end"
+					aria-labelledby="navbarDropdown">
+					<%-- 사용자가 로그인되어 있지 않은 경우 --%>
+					<c:if test="${empty sessionScope.loginUser}">
+						<li><a class="dropdown-item"
+							href="${pageContext.request.contextPath }/member/login">로그인</a></li>
+						<li><a class="dropdown-item"
+							href="${pageContext.request.contextPath }/member/signup">회원가입</a></li>
+					</c:if>
+
+					<%-- 사용자가 로그인된 경우 --%>
+					<c:if test="${not empty sessionScope.loginUser}">
+						<li><a class="dropdown-item"
+							href="${pageContext.request.contextPath }/member/mypage">마이페이지</a></li>
+						<li><a class="dropdown-item" href="#!">Activity Log</a></li>
+						<li><hr class="dropdown-divider" /></li>
+						<li><a class="dropdown-item"
+							href="${pageContext.request.contextPath }/member/logout">로그아웃</a></li>
+					</c:if>
+				</ul></li>
+		</ul>
+	</nav>
+	<div id="layoutSidenav">
+		<div id="layoutSidenav_nav">
+			<nav class="sb-sidenav accordion sb-sidenav-dark"
+				id="sidenavAccordion">
+				<div class="sb-sidenav-menu">
+					<div class="nav">
+						<div class="sb-sidenav-menu-heading">메인</div>
+						<a class="nav-link" href="index.html">
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-tachometer-alt"></i>
+							</div> 홈
+						</a>
+						<div class="sb-sidenav-menu-heading">체중/식단</div>
+						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+							data-bs-target="#collapseLayouts" aria-expanded="false"
+							aria-controls="collapseLayouts">
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-columns"></i>
+							</div> 체중관리
+							<div class="sb-sidenav-collapse-arrow">
+								<i class="fas fa-angle-down"></i>
+							</div>
+						</a>
+						<div class="collapse" id="collapseLayouts"
+							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link" href="layout-static.html">Static
+									Navigation</a> <a class="nav-link" href="layout-sidenav-light.html">Light
+									Sidenav</a>
+							</nav>
+						</div>
+						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+							data-bs-target="#collapsePages" aria-expanded="false"
+							aria-controls="collapsePages">
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-book-open"></i>
+							</div> 식단관리
+							<div class="sb-sidenav-collapse-arrow">
+								<i class="fas fa-angle-down"></i>
+							</div>
+						</a>
+						<div class="collapse" id="collapsePages"
+							aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav accordion"
+								id="sidenavAccordionPages">
+								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+									data-bs-target="#pagesCollapseAuth" aria-expanded="false"
+									aria-controls="pagesCollapseAuth"> Authentication
+									<div class="sb-sidenav-collapse-arrow">
+										<i class="fas fa-angle-down"></i>
+									</div>
+								</a>
+								<div class="collapse" id="pagesCollapseAuth"
+									aria-labelledby="headingOne"
+									data-bs-parent="#sidenavAccordionPages">
+									<nav class="sb-sidenav-menu-nested nav">
+										<a class="nav-link" href="login.html">Login</a> <a
+											class="nav-link" href="register.html">Register</a> <a
+											class="nav-link" href="password.html">Forgot Password</a>
+									</nav>
+								</div>
+								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+									data-bs-target="#pagesCollapseError" aria-expanded="false"
+									aria-controls="pagesCollapseError"> Error
+									<div class="sb-sidenav-collapse-arrow">
+										<i class="fas fa-angle-down"></i>
+									</div>
+								</a>
+								<div class="collapse" id="pagesCollapseError"
+									aria-labelledby="headingOne"
+									data-bs-parent="#sidenavAccordionPages">
+									<nav class="sb-sidenav-menu-nested nav">
+										<a class="nav-link" href="401.html">401 Page</a> <a
+											class="nav-link" href="404.html">404 Page</a> <a
+											class="nav-link" href="500.html">500 Page</a>
+									</nav>
+								</div>
+							</nav>
+						</div>
+						<div class="sb-sidenav-menu-heading">운동/제품</div>
+						<a class="nav-link" href="charts.html">
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-chart-area"></i>
+							</div> 운동 도우미
+						</a> <a class="nav-link" href="tables.html">
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-table"></i>
+							</div> 제품 추천
+						</a>
 					</div>
 				</div>
-				<div class="col-md-3 col-sm-4 hidden-xs bdr">
-					<div class="call-info">
-						<!-- call-info -->
-						<p class="call-no">+1 (800)-123-456 / 856</p>
-					</div>
-					<!-- /.call-info -->
+				<div class="sb-sidenav-footer">
+					<div class="small">Logged in as:</div>
+					Start Bootstrap
 				</div>
-				<div class="col-md-3 col-sm-4 hidden-xs bdr">
-					<div class="mail-info">
-						<p class="mail-text">ghwnswkd123@naver.com</p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-4 col-xs-12">
-					<div class="top-search">
-						<div class="custom-search-input">
-							<div class="input-group  ">
-								<input type="text" class="  search-query form-control"
-									placeholder="Search"> <span class="input-group-btn">
-									<button class="btn btn-default" type="button">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
+			</nav>
+		</div>
+		<div id="layoutSidenav_content">
+			<main>
+				<div class="container-fluid px-4">
+					<h1 class="mt-4">Daily Muscle Life</h1>
+					<!--   <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol> -->
+					<div class="row">
+						<div class="col-xl-3 col-md-6">
+							<div class="card bg-primary text-white mb-4">
+								<div class="card-body">식단짜기</div>
+								<div
+									class="card-footer d-flex align-items-center justify-content-between">
+									<!--          <a class="small text-white stretched-link" href="#">View Details</a> -->
+									<div class="small text-white">
+										<i class="fas fa-angle-right"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 col-md-6">
+							<div class="card bg-warning text-white mb-4">
+								<div class="card-body">밀프렙 도우미</div>
+								<div
+									class="card-footer d-flex align-items-center justify-content-between">
+									<!--         <a class="small text-white stretched-link" href="#">View Details</a> -->
+									<div class="small text-white">
+										<i class="fas fa-angle-right"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 col-md-6">
+							<div class="card bg-success text-white mb-4">
+								<div class="card-body">보충제 활용</div>
+								<div
+									class="card-footer d-flex align-items-center justify-content-between">
+									<!--    <a class="small text-white stretched-link" href="#">View Details</a> -->
+									<div class="small text-white">
+										<i class="fas fa-angle-right"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 col-md-6">
+							<div class="card bg-danger text-white mb-4">
+								<div class="card-body">마이페이지</div>
+								<div
+									class="card-footer d-flex align-items-center justify-content-between">
+									<!--       <a class="small text-white stretched-link" href="#">View Details</a> -->
+									<div class="small text-white">
+										<i class="fas fa-angle-right"></i>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="page-header">
-		<div class="header">
-			<!-- navigation -->
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3 col-sm-6 col-xs-6">
-						<div class="logo">
-							<a href="index.html"><img
-								src="${pageContext.request.contextPath }/resources/images/logo.png"></a>
-						</div>
-					</div>
-					<div class="col-md-9 col-sm-12">
-						<div class="navigation pull-right" id="navigation">
-							<ul>
-								<li class="active"><a href="index.html" title="Home"
-									class="animsition-link">Home</a></li>
-								<li><a href="classes-list.html" title="Classes"
-									class="animsition-link">체중관리</a>
-									<ul>
-										<li><a href="classes-list.html" title="Classes List"></a>체중관리</li>
-										<li><a href="classes-list.html" title="Classes List"></a>체조성
-											기록</li>
-										<li><a href="classes-list.html" title="Classes List"></a>활동
-											관리</li>
-
-									</ul></li>
-								<li><a href="blog-default.html" title="Blog"
-									class="animsition-link">식단 관리</a>
-									<ul>
-										<li><a href="blog-default.html" title="Blog"
-											class="animsition-link">식단 짜기</a></li>
-										<li><a href="blog-default.html" title="Blog"
-											class="animsition-link">밀프랩 도우미</a></li>
-										<li><a href="blog-default.html" title="Blog"
-											class="animsition-link">보충제 활용</a></li>
-
-									</ul></li>
-								<li><a href="testimonial.html" title="Features"
-									class="animsition-link">운동 도우미</a>
-									<ul>
-										<li><a href="testimonial.html" title="Testimonial"
-											class="animsition-link">다이어트 도우미</a></li>
-										<li><a href="testimonial.html" title="Testimonial"
-											class="animsition-link">바디프로필 도우미</a></li>
-										<li><a href="testimonial.html" title="Testimonial"
-											class="animsition-link">치팅데이 도우미</a></li>
-										<li><a href="testimonial.html" title="Testimonial"
-											class="animsition-link">유지어트 도우미</a></li>
-										<li><a href="testimonial.html" title="Testimonial"
-											class="animsition-link">밴딩/로딩 도우미</a></li>
-										<li><a href="testimonial.html" title="Testimonial"
-											class="animsition-link">탄수화물 사이클링</a></li>
-
-									</ul></li>
-								<li><a href="contact.html" title="Contact Us"
-									class="animsition-link">로그인</a></li>
-								<li><a href="style-guide.html" title="Style Guide"
-									class="animsition-link">회원가입</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="page-caption pinside40">
-						<h1 class="page-title">여기는 차근차근 채워갈 예정</h1>
-						<p>dml은 daily muscle life의 줄임말이다</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--  -->
-	<!-- 체중관리 -->
-	<div class="Menu_container__AYim3">
-		<ul class="Menu_list__XupHS">
-			<li style="font-weight: 900;"><a href="/weight/track">체중 관리</a></li>
-			<li style="font-weight: 100;"><a href="/weight/composition">체조성
-					기록</a></li>
-			<li><a href="/weight/activity">활동 관리</a></li>
-		</ul>
-	</div>
-	<div id="container">
-		<h2>Lorem Ipsum</h2>
-
-		<div id="lorem-ipsum"></div>
-	</div>
-	<div id="modal" class="modal-overlay">
-		<div class="modal-window">
-			<div class="title">
-				<h2>모달</h2>
-			</div>
-			<div class="close-area">X</div>
-			<div class="content">
-				<div>
-					<span>세트</span><input type="text" name="exerciseSet">
-				</div>
-				<div>
-					<span>횟수</span><input type="text" name="exerciseNumber">
-				</div>
-			</div>
-		</div>
-	</div>
-	<div>
-		<form
-			action="<%=request.getContextPath()%>/exercise/searchlist?searchWord=${searchWord}"
-			method="get">
-			<input type="search" name="searchWord" placeholder="검색"> <input
-				type="submit" value="찾기">
-		</form>
-	</div>
-
-
-
-	<div class="main_content_part">
+					<div class="main_content_part">
 		<div class="ex_part btn" data-part="등">등</div>
 		<div class="ex_part btn" data-part="가슴">가슴</div>
 		<div class="ex_part btn" data-part="어깨">어깨</div>
@@ -325,6 +339,40 @@
 		<div class="main_content_exercise_one"></div>
 		<div class="add_exercise"></div>
 	</div>
+
+					
+				</div>
+		</div>
+	</div>
+	</main>
+	<footer class="py-4 bg-light mt-auto">
+		<div class="container-fluid px-4">
+			<div class="d-flex align-items-center justify-content-between small">
+				<div class="text-muted">Copyright &copy; Your Website 2023</div>
+				<div>
+					<a href="#">Privacy Policy</a> &middot; <a href="#">Terms &amp;
+						Conditions</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+	</div>
+	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script src="js/scripts.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+		crossorigin="anonymous"></script>
+	<script src="assets/demo/chart-area-demo.js"></script>
+	<script src="assets/demo/chart-bar-demo.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+		crossorigin="anonymous"></script>
+	<script src="js/datatables-simple-demo.js"></script>
+
+</body>
 	<script>
 	window.onload = function(){
 		$(".main_content_exercise").hide();
@@ -411,6 +459,4 @@ window.addEventListener("keyup", e => {
 	
 	
 		</script>
-
-</body>
 </html>
