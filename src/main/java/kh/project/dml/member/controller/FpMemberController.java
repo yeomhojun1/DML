@@ -257,6 +257,12 @@ public class FpMemberController {
         
         return "redirect:/index";
     }
+	
+	@GetMapping("/member/mypage")
+	public String mypage(Model model, HttpSession session) {
+		session.getAttribute(SessionNames.LOGIN);
+		return "/member/mypage";
+	}
 
 }
 
