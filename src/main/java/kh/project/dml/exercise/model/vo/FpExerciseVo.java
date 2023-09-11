@@ -10,11 +10,11 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Data
+
 @Component
 @Getter
 @Setter
-@ToString
+
 public class FpExerciseVo {
 
 	private int ecode;
@@ -22,6 +22,10 @@ public class FpExerciseVo {
 	private String part;
 	private String epose;
 	private String eposeLink;
+	@Override
+	public String toString() {
+		return "FpExerciseVo [ecode=" + ecode + ", exName=" + exName + ", part=" + part + "]";
+	}
 	
 //	private String mid2;
 //	private String studentName;
