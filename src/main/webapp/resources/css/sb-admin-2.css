@@ -41,17 +41,36 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-/* 초보자 서브메뉴 */
+/* 난이도 메뉴 */
+.row.row-menu {
+	display: none;
+}
+
+/* 난이도 메뉴 acitve */
+.row.row-menu.active {
+    display: flex;
+}
+
+/* 서브메뉴 */
 .col-lg-6.btn-menu {
 	display: none;
 }
 
-/* 초보자 서브메뉴 acitve */
+/* 서브메뉴 acitve */
 .col-lg-6.btn-menu.active {
     display: flex;
 }
 
-.beginner {
+/* 코멘트 active  */
+.menu-comment {
+	display: none;
+}
+/* 코멘트 active  */
+.menu-comment.active {
+	display: block;
+}
+
+.beginner, .export {
 	height: 500px;
 }
 
@@ -70,15 +89,16 @@
 	height: 100%;	
 }
 
-/* 초보자 버튼 메뉴 */
-.beginner div button {
+/* 난이도 버튼 메뉴 */
+.beginner div button,
+.export div button {
 	border: 0;
 	background-color: transparent;
 	color: #fff;
 	width: 100%;
 	height: 100%;
-	
 }
+
 
 *,
 *::before,

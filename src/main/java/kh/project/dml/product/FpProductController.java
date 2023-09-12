@@ -15,8 +15,5 @@ public class FpProductController {
 	public String mainPageOpen1() {
 		return "product/product";
 	}
-	@GetMapping("/product2")
-	public String mainPageOpen2() {
-		return "product/product2";
-	}
+	
 }

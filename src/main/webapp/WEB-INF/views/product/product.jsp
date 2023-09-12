@@ -364,7 +364,7 @@
 						<div class="col-xl-3 col-md-6 mb-4">
 							<div class="card border-left-success shadow h-100 py-2 difficulty">
 							
-									<button class="h5 mb-0 font-weight-bold text-gray-800 card-body difficulty-btn btn2">숙련자</button>
+									<button class="h5 mb-0 font-weight-bold text-gray-800 card-body difficulty-btn btn2 active">숙련자</button>
 									
 							</div>
 						</div>
@@ -428,7 +428,7 @@
 						<!-- Content Column -->
 						<div class="col-lg-6 mb-2" >
 
-	<div class="row">
+							<div class="row row-menu beginner active">
 
 							<!-- Color System 1 -->
 							<div class="row col-lg-6 beginner">
@@ -453,27 +453,27 @@
 								</div>
 								<div class="col-lg-12 mb-2">
 									<div class="card bg-warning text-white shadow">
-										<div class="card-body">
-											<h5>유산균(프로바이오틱스)</h5>
+										
+											<button class="btn-menu card-body beginner-btn btn-sub4" data-toggle="menu-4"><h5>유산균</h5></button>
 											
 										</div>
 									</div>
-								</div>
+								
 								<div class="col-lg-12 mb-2">
 									<div class="card bg-danger text-white shadow">
-										<div class="card-body">
-											<h5>섬유질</h5>
+										
+											<button class="btn-menu card-body beginner-btn btn-sub5" data-toggle="menu-5"><h5>섬유질</h5></button>
 											
 										</div>
 									</div>
-								</div>
+								
 								<div class="col-lg-12 mb-2">
 									<div class="card bg-secondary text-white shadow">
-										<div class="card-body">
-											<h5>글루타민</h5>
+										
+											<button class="btn-menu card-body beginner-btn btn-sub6" data-toggle="menu-6"><h5>글루타민</h5></button>
 											
 										</div>
-									</div>
+									
 
 								</div>
 
@@ -571,8 +571,17 @@
 								<div class="col-lg-12 mb-2 btn-menu-sub">
 									<div class="card bg-primary text-white shadow">
 										<div class="card-body">
+											<a style="color: white;" href="https://www.coupang.com/vp/products/171730878?vendorItemId=4242511760&src=1139000&spec=10799999&addtag=400&ctag=171730878&lptag=AF7910856&itime=20230912143530&pageType=PRODUCT&pageValue=171730878&wPcid=11963655808335908086931&wRef=&wTime=20230912143530&redirect=landing&traceid=V0-181-d9af9bf788a73fe3&mcid=eb92a671da544bf0864236b6208f0f17&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
+											청년곡물 귀리가루 3kg 17,300원  </a>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
 											<a style="color: white;" href="https://kr.iherb.com/pr/optimum-nutrition-gold-standard-100-whey-double-rich-chocolate-5-lbs-2-27-kg/27509">
-											테스트1  </a>
+											인스턴트오트  </a>
 											
 										</div>
 									</div>
@@ -583,13 +592,257 @@
 								<div class="col-lg-12 mb-2 btn-menu-sub">
 									<div class="card bg-primary text-white shadow">
 										<div class="card-body">
-											<a style="color: white;" href="https://kr.iherb.com/pr/optimum-nutrition-gold-standard-100-whey-double-rich-chocolate-5-lbs-2-27-kg/27509">
-											테스트2  </a>
+											<a style="color: white;" href="https://kr.iherb.com/pr/life-extension-two-per-day-multivitamin-60-capsules/86456">
+											투퍼데이 캡슐  </a>
 											
 										</div>
 									</div>
 								</div>
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://kr.iherb.com/pr/life-extension-two-per-day-multivitamin-120-tablets/86454">
+											투퍼데이 태블릿 </a>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://www.myprotein.co.kr/sports-nutrition/alpha-men-multivitamin-tablets/10530421.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=10751_1694498609_8e301a8cd3a40ceb430c6570ef43ff4c">
+											알파맨 </a>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://kr.iherb.com/pr/thorne-basic-nutrients-2-day-60-capsules/85476">
+											Thorne Research 종합비타민 </a>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://kr.iherb.com/pr/life-extension-two-per-day-multivitamin-120-tablets/86454">
+											쏜리서치 종합비타민 </a>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://www.coupang.com/vp/products/1152619585?itemId=2127383548&vendorItemId=70125946615&src=1139000&spec=10799999&addtag=400&ctag=1152619585&lptag=AF7910856&itime=20230912150443&pageType=PRODUCT&pageValue=1152619585&wPcid=11963655808335908086931&wRef=&wTime=20230912150443&redirect=landing&traceid=V0-181-b565f5bf26622b78&mcid=4bfe00782dbb4840a951eeae314632b9&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
+											얼라이브 </a>
+											
+										</div>
+									</div>
+								</div>
+								
 							</div>
+							<div class="row col-lg-6 btn-menu menu-4 ">
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://kr.iherb.com/pr/california-gold-nutrition-lactobif-5-probiotics-5-billion-cfu-60-veggie-capsules/64006">
+											캘리포니아골드 50억  </a>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://kr.iherb.com/pr/jarrow-formulas-jarro-dophilus-eps-10-billion-120-veggie-caps/7006">
+											자로우 50억  </a>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://www.coupang.com/vp/products/416189?itemId=277809413&vendorItemId=3179568952&src=1139000&spec=10799999&addtag=400&ctag=416189&lptag=AF7910856&itime=20230912161238&pageType=PRODUCT&pageValue=416189&wPcid=11963655808335908086931&wRef=&wTime=20230912161238&redirect=landing&traceid=V0-181-0a308c213d5fd665&mcid=39eb48a99a954aeab0e410ba92009191&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
+											자로우 50억  </a>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://www.myprotein.co.kr/sports-nutrition/daily-probiotic/11897338.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=10751_1694502785_824d28b0d6f9072c2c6479c0e4b2b8d5">
+											프로바이오틱스 150억 </a>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://www.coupang.com/vp/products/1528879?itemId=6662522&vendorItemId=3464692298&src=1139000&spec=10799999&addtag=400&ctag=1528879&lptag=AF7910856&itime=20230912161324&pageType=PRODUCT&pageValue=1528879&wPcid=11963655808335908086931&wRef=&wTime=20230912161324&redirect=landing&traceid=V0-181-8f3e5441fa09d7bc&mcid=26b12158329f4e1fb5dfde05bd5d610e&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
+											자로우 도필러스(쿠팡, 국내 로켓배송)  </a>
+											
+										</div>
+									</div>
+								</div>
+								
+								
+								</div>
+								
+							<div class="row col-lg-6 btn-menu menu-5 ">
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://www.coupang.com/vp/products/30606?itemId=73304&vendorItemId=3086191674&src=1139000&spec=10799999&addtag=400&ctag=30606&lptag=AF7910856&itime=20230912163414&pageType=PRODUCT&pageValue=30606&wPcid=11963655808335908086931&wRef=&wTime=20230912163414&redirect=landing&traceid=V0-181-399055c646def9eb&mcid=147b097a5941400b90234b970e9370a8&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
+											이눌린  </a>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://www.coupang.com/vp/products/420194?itemId=1103903&vendorItemId=3181031489&src=1139000&spec=10799999&addtag=400&ctag=420194&lptag=AF7910856&itime=20230912163433&pageType=PRODUCT&pageValue=420194&wPcid=11963655808335908086931&wRef=&wTime=20230912163433&redirect=landing&traceid=V0-181-bf07ab4af31ca34a&mcid=f14a379efdd745c3a6aa4fa90afc6a40&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
+											복함섬유질 </a>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://kr.iherb.com/pr/now-foods-certified-organic-inulin-prebiotic-pure-powder-8-oz-227-g/1100">
+											이눌린  </a>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://kr.iherb.com/pr/jarrow-formulas-gentle-fibers-soluble-insoluble-fibers-powder-16-5-oz-468-g-discontinued-item/201">
+											복함섬유질 </a>
+											
+										</div>
+									</div>
+								</div>
+								</div>
+								<div class="row col-lg-6 btn-menu menu-6 ">
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://kr.iherb.com/pr/california-gold-nutrition-l-glutamine-powder-ajipure-gluten-free-16-oz-454-g/71027">
+											글루타민(글루텐 미함유) </a>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://www.coupang.com/vp/products/209304?itemId=2075029&vendorItemId=3088278048&src=1139000&spec=10799999&addtag=400&ctag=209304&lptag=AF7910856&itime=20230912164259&pageType=PRODUCT&pageValue=209304&wPcid=11963655808335908086931&wRef=&wTime=20230912164259&redirect=landing&traceid=V0-181-ad2bddec3da0a155&mcid=9ea200b61c1f428887005dd54d75b596&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
+											글루타민 파우더 비건 </a>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://www.myprotein.co.kr/sports-nutrition/l-glutamine-powder/10636931.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=10751_1694504606_8962bf6e3b1a6581fc9ffbdb94433a2d">
+											글루타민 아미노산 </a>
+											
+										</div>
+									</div>
+								</div>
+								</div>
+							</div>
+								
+						<div class="row row-menu export">
+
+							<!-- Color System 2 -->
+							<div class="row col-lg-6 export">
+								<div class="col-lg-12 mb-2">
+									<div class="card bg-primary text-white shadow">
+										
+										<button class="btn-menu card-body export-btn btn-sub1 active" data-toggle="menu-1"><h5>카페인(집중력, 유산소 능력 증가)</h5></button>
+											
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2">
+									<div class="card bg-success text-white shadow">
+									
+											<button class="btn-menu card-body export-btn btn-sub2" data-toggle="menu-2"><h5>크레아틴(웨이트 능력 증가)</h5></button>
+									
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2">
+									<div class="card bg-info text-white shadow">
+										<button class="btn-menu card-body beginner-btn btn-sub3" data-toggle="menu-3"><h5>베타알라닌(웨이트 능력 증가)</h5></button>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2">
+									<div class="card bg-warning text-white shadow">
+										
+											<button class="btn-menu card-body beginner-btn btn-sub4" data-toggle="menu-4"><h5>Nitrate(중강도 운동능력 증가)</h5></button>
+											
+										</div>
+									</div>
+									<div class="col-lg-12 mb-2">
+									<div class="card bg-danger text-white shadow">
+										
+											<button class="btn-menu card-body beginner-btn btn-sub5" data-toggle="menu-5"><h5>Sodium Bicarbonate(웨이트 능력 증가)</h5></button>
+											
+										</div>
+									</div>
+									<div class="col-lg-12 mb-2">
+									<div class="card bg-secondary text-white shadow">
+										
+											<button class="btn-menu card-body beginner-btn btn-sub6" data-toggle="menu-6"><h5>스포츠 드링크(에너지,수분공급)</h5></button>
+											
+										</div>
+									
+
+								</div>
+								
+								
+							</div>
+							<div class="row col-lg-6 btn-menu menu-1 active">
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://kr.iherb.com/pr/optimum-nutrition-gold-standard-100-whey-double-rich-chocolate-5-lbs-2-27-kg/27509">
+											GAT 카페인 </a>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2">
+									<div class="card bg-success text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://kr.iherb.com/pr/allmax-classic-allwhey-100-whey-protein-chocolate-5-lbs-2-27-kg/69100">
+											Teacrine(느린 카페인)</a>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2">
+									<div class="card bg-info text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://www.coupang.com/vp/products/6424463926?itemId=13837679944&vendorItemId=3180840444&src=1139000&spec=10799999&addtag=400&ctag=6424463926&lptag=AF7910856&itime=20230912103354&pageType=PRODUCT&pageValue=6424463926&wPcid=11963655808335908086931&wRef=&wTime=20230912103354&redirect=landing&traceid=V0-181-0204c0f24c9440c6&mcid=91aaf995ffd744bc8c37fab610d907a4&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
+											퓨어 카페인 200mg</a>
+											
+										</div>
+									</div>
+								</div>
+								
+						</div>
 							
 </div>
 						
@@ -598,14 +851,15 @@
 
 						<div class="col-lg-6 mb-4">
 
-							<!-- Illustrations -->
+							<!-- Illustrations---------------------------------------- -->
+							
 							<div class="card shadow mb-4 ">
 							
 								<div class="card-header py-2">
 									<h6 class="m-0 font-weight-bold text-primary">*A급 
 										*B급 번외 성분</h6>
 								</div>
-								<div class="card-body">
+								<div class="card-body menu-comment comment1">
 									<div class="text-center">
 										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
 											style="width: 50rem;">
@@ -629,16 +883,124 @@
 									</p>
 
 								</div>
+								<div class="card-body menu-comment comment2">
+									<div class="text-center">
+										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+											style="width: 50rem;">
+									</div>
+									<div>
+										<p>
+										<h4 style="line-height: 7">코멘트</h4>
+										</br>식사를 통한 섭취를 더 추천합니다. </br>
+									</div>
+									</p>
+
+								</div>
+								<div class="card-body menu-comment comment3">
+									<div class="text-center">
+										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+											style="width: 50rem;">
+									</div>
+									<div>
+										<p>
+										<h4>섭취량</h4><br>
+										1/2 ~ 1서빙
+										
+										<h4>코멘트</h4>
+										</br>식사를 통한 섭취를 더 추천합니다.
+									</div>
+									</p>
+
+								</div>
+								<div class="card-body menu-comment comment4">
+									<div class="text-center">
+										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+											style="width: 50rem;">
+									</div>
+									<div>
+										<p>
+										<h4>섭취량</h4><br>
+										100억(10 Billion)
+										
+										<h4>코멘트</h4>
+										</br>소화 능력이 약한 사람에게 추천
+									</div>
+									</p>
+
+								</div>
+								<div class="card-body menu-comment comment5">
+									<div class="text-center">
+										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+											style="width: 50rem;">
+									</div>
+									<div>
+										<p>
+										<h4>섭취량</h4><br>
+										25g
+										
+										<h4>코멘트</h4>
+										</br>소화 능력이 약한 사람에게 추천, 익힌 채소 추천, 섭취량 한번에 늘리지 말것.
+									</div>
+									</p>
+
+								</div>
+									<div class="card-body menu-comment comment6">
+									<div class="text-center">
+										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+											style="width: 50rem;">
+									</div>
+									<div>
+										<p>
+										<h4>섭취량</h4><br>
+										5g
+										
+										<h4>코멘트</h4>
+										</br>소화 능력이 약한 사람에게 추천
+									</div>
+									</p>
+									
+
+								</div>
 							
 
-							<!-- Approach -->
+							<!-- Approach--------------------------------------------- -->
+							
 							<div class="card shadow mb-4">
 								<div class="card-header py-2 ">
 									<h6 class="m-0 font-weight-bold text-primary">섭취 방법</h6>
 								</div>
-								<div class="card-body">
+								<div class="card-body menu-comment comment1">
 									<p>운동후 섭취 혹은 단백질이 적은 식사 후, 운동후 식사가 바로 있다면 20g, 운동후 식사가 바로
 										없다면 40g타서 3/4을 바로 먹고 1/4은 30분후 섭취</p>
+
+								</div>
+								<div class="card-body menu-comment comment2">
+									<p>인스턴트 오트는 아침식사로 적합하며, 마이프로틴 쉐이커에 2 1/3 (100g) 큰 스쿱과 물 또는 선호하는 음료를 넣어서 섭취하세요. 
+									충분한 탄수화물을 섭취하면서 운동목표를 달성하는데 효과적입니다.
+									 해당 제품은 직사광선을 피하여 서늘하고 건조한 장소에 보관하세요.</p>
+
+								</div>
+								<div class="card-body menu-comment comment3">
+									<p>종합비타민에는 미네랄 성분과 지용성 비타민이 함께 들어있어 식사 후에 복용하는 것이 좋다.
+									 또, 신체 활력에 도움을 주기 때문에 아침 식후에 먹는 것이 좋다.
+									  아침 식사를 안 한다면, 점심 식사 후에 복용하는 것을 추천한다.
+									 공복에 아연을 먹으면 속이 쓰릴 수 있다.</p>
+
+								</div>
+								<div class="card-body menu-comment comment4">
+									<p>먼저 식후에 섭취하면 유산균이 먹이로 삼을 수 있는 것이 많아 균의 활동력이 좋아질 수 있다. 
+									또 식전이나 공복에 섭취하면 균의 대장 도달력이 높아질 수 있으나 위산의 영향을 많이 받을 수 있으므로 
+									물을 많이 마시면서 섭취하는 것이 권장됩니다.</p>
+
+								</div>
+								<div class="card-body menu-comment comment5">
+									<p>전문가들은 평소 잡곡밥(보리, 현미 등)과 채소(매 끼니 1~2접시), 
+									과일 1~2회(과일주스보다는 생과일) 정도의 식단이면 하루 식이섬유 섭취량을 충분히 보충할 수 있다고 조언합니다. 
+									특히 자녀의 변비가 걱정돼 식이섬유를 일부러 많이 먹게 하는 부모님들도 계시는데요.</p>
+
+								</div>
+								<div class="card-body menu-comment comment6">
+									<p>1일 1회, 1회 1포를 물에 타서 섭취하십시오.</p>
 
 								</div>
 							</div>
@@ -716,34 +1078,69 @@
 		$('.btn1').click(function() {
 			$('.difficulty-btn').removeClass('active');
 			$('.btn1').addClass('active');
+			$('.row-menu').removeClass('active');
+			$('.beginner').addClass('active');
 			$('.btn-menu').removeClass('active');
 			$('.btn-sub').addClass('active');
 			$('.menu-1').addClass('active');
+			$('.menu-comment').removeClass('active');
+			$('.comment1').addClass('active');
 		});
 		$('.btn2').click(function() {
 			$('.difficulty-btn').removeClass('active');
 			$('.btn2').addClass('active');
+			$('.row-menu').removeClass('active');
+			$('.export').addClass('active');
 			$('.btn-menu').removeClass('active');
 			$('.btn-sub').addClass('active');
 			$('.menu-1').addClass('active');
+			$('.menu-comment').removeClass('active');
+			$('.comment1').addClass('active');
 		});
 		
 		$('.btn-sub1').click(function() {
 			$('.btn-menu').removeClass('active');
 			$('.btn-sub').addClass('active');
 			$('.menu-1').addClass('active');
+			$('.menu-comment').removeClass('active');
+			$('.comment1').addClass('active');
 			
 		});
 		$('.btn-sub2').click(function() {
 			$('.btn-menu').removeClass('active');
 			$('.btn-sub').addClass('active');
 			$('.menu-2').addClass('active');
+			$('.menu-comment').removeClass('active');
+			$('.comment2').addClass('active');
 		});
 		
 		$('.btn-sub3').click(function() {
 			$('.btn-menu').removeClass('active');
 			$('.btn-sub').addClass('active');
 			$('.menu-3').addClass('active');
+			$('.menu-comment').removeClass('active');
+			$('.comment3').addClass('active');
+		});
+		$('.btn-sub4').click(function() {
+			$('.btn-menu').removeClass('active');
+			$('.btn-sub').addClass('active');
+			$('.menu-4').addClass('active');
+			$('.menu-comment').removeClass('active');
+			$('.comment4').addClass('active');
+		});
+		$('.btn-sub5').click(function() {
+			$('.btn-menu').removeClass('active');
+			$('.btn-sub').addClass('active');
+			$('.menu-5').addClass('active');
+			$('.menu-comment').removeClass('active');
+			$('.comment5').addClass('active');
+		});
+		$('.btn-sub6').click(function() {
+			$('.btn-menu').removeClass('active');
+			$('.btn-sub').addClass('active');
+			$('.menu-6').addClass('active');
+			$('.menu-comment').removeClass('active');
+			$('.comment6').addClass('active');
 		});
 	</script>
 
