@@ -30,4 +30,8 @@ public class TempController {
 	public String mainPageOpen8() {
 		return "temp/main";
 	}
+	@GetMapping("/product")
+	public String mainPageOpen9() {
+		return "product/home";
+	}
 }
