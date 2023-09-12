@@ -13,9 +13,9 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
 	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/resources/resources1/css/wstyles1.css"
+<link href="${pageContext.request.contextPath}/css/styles.css"
 	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/resources/resources1/css/wstyles2.css"
+<link href="${pageContext.request.contextPath}/css/scss.css"
 	rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
 	crossorigin="anonymous"></script>
@@ -175,7 +175,7 @@
 					<div class="row">
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-primary text-white mb-4">
-								<div class="card-body">식단짜기</div>
+								<div class="card-body">체중관리</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
 									<!--          <a class="small text-white stretched-link" href="#">View Details</a> -->
@@ -187,7 +187,7 @@
 						</div>
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-warning text-white mb-4">
-								<div class="card-body">밀프렙 도우미</div>
+								<div class="card-body">체조성 관리</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
 									<!--         <a class="small text-white stretched-link" href="#">View Details</a> -->
@@ -199,7 +199,7 @@
 						</div>
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-success text-white mb-4">
-								<div class="card-body">보충제 활용</div>
+								<div class="card-body">활동 관리</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
 									<!--    <a class="small text-white stretched-link" href="#">View Details</a> -->

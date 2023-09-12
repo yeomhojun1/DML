@@ -11,7 +11,7 @@ import kh.project.dml.common.interceptor.SessionNames;
 
 @Controller
 @SessionAttributes(SessionNames.LOGIN)
-public class TempController {
+public class FpTempController {
 	@GetMapping("/temp1")
 	public String mainPageOpen1() {
 		return "temp/blog-default2";
@@ -30,4 +30,10 @@ public class TempController {
 	public String mainPageOpen8() {
 		return "temp/main";
 	}
+	
+	@GetMapping("/weight")
+	public String mainPageOpen9() {
+		return "temp/weight";
+	}
+	
 }
