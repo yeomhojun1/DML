@@ -14,10 +14,9 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
 	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/styles.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/scss.css"
-	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/scss.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/mypage.css" rel="stylesheet" />
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
@@ -40,41 +39,101 @@
 			<main>
 				<div class="container-fluid px-4">
                     <!-- 마이페이지 내용 추가 필요 -->
-                    <h1>기본 정보 표시</h1>
+					<div class="ant-drawer-body">
+						<div class="Menu_container">
+							<ul class="Menu_list">
+								<li style="font-weight: bold;"><a>마이페이지</a></li>
+							</ul>
+						</div>
 						<div>
-							<div class="MyPage_basic_input_row__MlwU7">
-								<div class="MyPage_title">이름/별명</div>
-								<div class="MyPage_content">
-									<input class="ant-input css-1s3dcof MyPage_basic_input__6F21f" type="text" value="Suhyeon Yoo">
-								</div>
-								<div class="MyPage_title">이메일</div>
-								<div class="MyPage_content">
-									<input disabled="" class="ant-input ant-input-disabled css-1s3dcof MyPage_basic_input__6F21f" type="text" value="codesh123@gmail.com">
-								</div>
-							</div>
-							<div class="MyPage_basic_input_row__MlwU7">
-								<div class="MyPage_title">키</div>
-								<div class="MyPage_content">
-									<input class="ant-input css-1s3dcof MyPage_basic_input__6F21f" type="text" value="162">
-								</div>
-								<div class="MyPage_title">몸무게</div>
-								<div class="MyPage_content">
-									<input class="ant-input css-1s3dcof MyPage_basic_input__6F21f" type="text" value="80">
-								</div>
-								<div class="MyPage_title">성별</div>
-								<div class="MyPage_content">
-									<div class="ant-radio-group ant-radio-group-solid css-1s3dcof">
-										<label class="ant-radio-button-wrapper ant-radio-button-wrapper-checked MyPage_gender_btn__Obpkp MyPage_gender_btn_selected__dCSN_ css-1s3dcof"><span class="ant-radio-button ant-radio-button-checked"><input type="radio" class="ant-radio-button-input" value="M" checked=""><span class="ant-radio-button-inner"></span></span><span>남자</span></label><label class="ant-radio-button-wrapper MyPage_gender_btn__Obpkp  css-1s3dcof"><span class="ant-radio-button"><input type="radio" class="ant-radio-button-input" value="F"><span class="ant-radio-button-inner"></span></span><span>여자</span></label>
+							<div>
+								<div class="MyPage_basic_input_row">
+									<div class="MyPage_basic_input_title">이름/별명</div>
+									<div class="MyPage_basic_input_content">
+										<input class="MyPage_basic_input"
+											type="text" id="mname" value="${member.mname }">
+									</div>
+									<div class="MyPage_basic_input_title">이메일</div>
+									<div class="MyPage_basic_input_content">
+										<input disabled=""
+											class="MyPage_basic_input"
+											type="text" id="memberId" value="${member.memberId }">
 									</div>
 								</div>
+								<div class="MyPage_basic_input_row">
+									<div class="MyPage_basic_input_title">키</div>
+									<div class="MyPage_basic_input_content">
+										<input class="MyPage_basic_input"
+											type="text" id="weight" value="${member.weight }">
+									</div>
+									<div class="MyPage_basic_input_title">몸무게</div>
+									<div class="MyPage_basic_input_content">
+										<input class="MyPage_basic_input"
+											type="text" id="height" value="${member.height }">
+									</div>
+								</div>
+								<div class="MyPage_basic_input_row">
+									<div class="MyPage_basic_input_title">성별</div>
+									<div class="MyPage_basic_input_content">
+										<input disabled=""
+											class="MyPage_basic_input"
+											type="text" value="${member.gender }">
+									</div>
+								</div>
+								<button class="MyPage_basic_btn" onclick="sendData()">저장하기</button>
+
+								<button class="MyPage_basic_btn MyPage_basic_red MyPage_btn_right" onclick="sendPostRequest('${pageContext.request.contextPath}/member/withdrawal')">회원탈퇴</button>
+								
+								<button class="ant-btn css-1s3dcof ant-btn-default MyPage_basic_btn MyPage_basic_red MyPage_btn_right"><a href="${pageContext.request.contextPath}/member/logout">로그아웃</a></button>
+								
 							</div>
-							<button type="button" class="ant-btn css-1s3dcof ant-btn-default ant-btn-block MyPage_basic_btn__7B7sc">
-								<span>저장하기</span>
-							</button>
+						</div>
+					</div>
 				</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
 	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+		crossorigin="anonymous"></script>
+	<script>
+		function sendPostRequest(url) {
+		    var form = document.createElement("form");
+		    form.action = url;
+		    form.method = "post";
+		
+		    document.body.appendChild(form);
+		    form.submit();
+		}
+		
+		function sendData() {
+	        var member = {
+	        		memberId: $("#memberId").val(),
+	                mname: $("#mname").val(),
+	                height: $("#height").val(),
+	                weight: $("#weight").val()
+	        };
+
+	        $.ajax({
+	            type: "POST",
+	            url: "${pageContext.request.contextPath}/member/update",
+	            contentType: "application/json",
+	            data: JSON.stringify(member),
+	            success: function(response) {
+	            	alert("수정이 완료되었습니다.");
+	            	window.location.href = "${pageContext.request.contextPath}/member/mypage";
+	            }
+	        });
+	    }
+	</script>
 </body>
 </html>

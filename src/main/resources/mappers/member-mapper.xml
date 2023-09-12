@@ -11,6 +11,11 @@
 		where member_id = #{memberId}
 	</select>
 	
+	<update id="update" parameterType="FpMemberVo">
+		update member set mname=#{mname}, height=#{height}, weight=#{weight}
+		where member_id = #{memberId}
+	</update>
+	
 	<select id="checkId" parameterType="string" resultType="string">
         select member_id from member where member_id = #{memberId}
 	</select>
