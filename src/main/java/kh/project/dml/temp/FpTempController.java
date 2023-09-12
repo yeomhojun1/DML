@@ -12,10 +12,7 @@ import kh.project.dml.common.interceptor.SessionNames;
 @Controller
 @SessionAttributes(SessionNames.LOGIN)
 public class FpTempController {
-	@GetMapping("/temp1")
-	public String mainPageOpen1() {
-		return "temp/blog-default2";
-	}
+
 	@GetMapping("/temp2")
 	public String mainPageOpen2() {
 		return "temp/blog-single2";
@@ -28,11 +25,15 @@ public class FpTempController {
 	
 	@GetMapping("/main")
 	public String mainPageOpen8() {
-		return "temp/main";
+		return "main";
 	}
 	
-	@GetMapping("/weight")
+	@GetMapping("/weight2")
 	public String mainPageOpen9() {
+		return "temp/weight2";
+	}
+	@GetMapping("/weight")
+	public String mainPageOpen10() {
 		return "temp/weight";
 	}
 	
