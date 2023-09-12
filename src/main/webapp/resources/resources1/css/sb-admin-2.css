@@ -41,6 +41,28 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+
+.Track_c1__53XVz button.track-comment.track1 {
+    height: 80px;
+    border-radius: 30px;
+    border: 4px solid #98d3e9;
+    display: flex;
+   
+}
+
+:where(.css-1s3dcof).ant-btn.ant-btn-block {
+    width: 50%;
+}
+
+.Track_container_2__cASkN>.Track_c2__eupx_ {
+    flex: 1 1;
+    background-color: #fff;
+    border-radius: 25px;
+    font-size: 18px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
 *,
 *::before,
 *::after {

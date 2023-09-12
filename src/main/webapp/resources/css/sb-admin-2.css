@@ -51,6 +51,14 @@
     display: flex;
 }
 
+.menu-comment {
+	display: none;
+}
+
+.menu-comment.active {
+	display: block;
+}
+
 .beginner {
 	height: 500px;
 }
