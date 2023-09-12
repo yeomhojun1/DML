@@ -1,3 +1,9 @@
+<link
+	href="${pageContext.request.contextPath }/resources/resources1/css/styles.css"
+	rel="stylesheet">
+
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -16,22 +22,25 @@
         <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        
     </head>
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
+                <a class="navbar-brand" href="#page-top">DML</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#weight">체중관리</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#deit">식단관리</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#exercise">운동 도우미</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#product">제품추천</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#login">로그인</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#join">회원가입</a></li>
                     </ul>
                 </div>
             </div>
@@ -41,8 +50,8 @@
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
                 <div class="d-flex justify-content-center">
                     <div class="text-center">
-                        <h1 class="mx-auto my-0 text-uppercase">Grayscale</h1>
-                        <h2 class="text-white-50 mx-auto mt-2 mb-5">A free, responsive, one page Bootstrap theme created by Start Bootstrap.</h2>
+                        <h1 class="mx-auto my-0 text-uppercase">DML</h1>
+                        <h2 class="text-white-50 mx-auto mt-2 mb-5"></h2>
                         <a class="btn btn-primary" href="#about">Get Started</a>
                     </div>
                 </div>
@@ -213,5 +222,3 @@
 
 
 
-</body>
-</html>
