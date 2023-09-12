@@ -124,6 +124,10 @@ public class FpMemberService {
 	public FpMemberVo mypage(String memberId) {
 		return dao.mypage(memberId);
 	}
+	
+	public void update(FpMemberVo vo) {
+		dao.update(vo);
+	}
 
 	public void keepLogin(String memberId, String sessionId, Date expire) {
 		dao.keepLogin(memberId, sessionId, expire);
