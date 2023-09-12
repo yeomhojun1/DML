@@ -46,8 +46,9 @@ public class FpMemberService {
         }
 
         String username = authentication.getName();
+        System.out.println(username);
         Optional<FpUsersVo> userOptional = fpMemberRepository.findByUsername(username);
-
+        System.out.println(userOptional);
         return userOptional.orElse(null);
     }
     
@@ -118,6 +119,10 @@ public class FpMemberService {
 
 	    // 비밀번호가 일치하지 않으면 null 반환
 	    return null;
+	}
+	
+	public FpMemberVo mypage(String memberId) {
+		return dao.mypage(memberId);
 	}
 
 	public void keepLogin(String memberId, String sessionId, Date expire) {

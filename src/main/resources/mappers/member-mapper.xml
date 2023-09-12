@@ -5,6 +5,12 @@
 	<select id="selectList" resultType="FpMemberVo">
 		select * from member
 	</select>
+	
+	<select id="mypage" parameterType="string" resultType="FpMemberVo">
+		select * from member
+		where member_id = #{memberId}
+	</select>
+	
 	<select id="checkId" parameterType="string" resultType="string">
         select member_id from member where member_id = #{memberId}
 	</select>

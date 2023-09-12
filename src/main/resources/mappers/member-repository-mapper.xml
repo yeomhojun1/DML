@@ -6,6 +6,10 @@
         SELECT * FROM Member WHERE member_id = #{memberId}
     </select>
     
+    <select id="findByUsername" parameterType="string" resultType="FpUsersVo">
+        SELECT * FROM users WHERE username = #{username}
+    </select>
+    
     <insert id="saveUser" parameterType="FpUsersVo">
     	INSERT INTO users (username, password, user_enabled, authorities) VALUES (#{username}, #{password}, #{userEnabled}, #{authorities})
     </insert>

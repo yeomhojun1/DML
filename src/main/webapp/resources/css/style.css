@@ -59,6 +59,16 @@ Author:             Jitu Chauhan
     1. Body / Typography 
 -----------------------------------*/
 
+.row .col-lg-6 .btn-menu .menu-1,
+.row .col-lg-6 .btn-menu .menu-2 {
+	    display: none;
+}
+
+.row .col-lg-6 .btn-menu .menu-1 .active,
+.row .col-lg-6 .btn-menu .menu-2 .active {
+    display: block;
+}
+
 body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-size: 16px; background-color: #fff; color: #848484; font-family: 'Roboto', sans-serif; line-height: 1.6; }
 h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; margin-bottom: 10px; color: #2f2f2f; font-weight: 700; font-family: 'Roboto Condensed', sans-serif; text-transform: uppercase; }
 h1 { font-size: 32px; line-height: 24px; }
@@ -733,3 +743,4 @@ opacity: .5; }
 .hero-caption { padding-top: 50px; padding-bottom: 50px; }
 .hero-title { font-size: 32px; line-height: 45px; }
 }
+

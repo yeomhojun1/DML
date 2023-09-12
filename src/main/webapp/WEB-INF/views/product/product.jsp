@@ -1,29 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
 
-<meta charset="utf-8">
+<!-- <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
-<meta name="author" content="">
+<meta name="author" content=""> -->
 
 <title>SB Admin 2 - Dashboard</title>
 
 <!-- Custom fonts for this template-->
-<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
-	type="text/css">
+<!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css"> -->
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+<link href="css/sb-admin-2.css" rel="stylesheet">
+<script src="resources/js/jquery-3.7.0.js"></script>
 </head>
 
 <body id="page-top">
@@ -340,8 +340,9 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">보충제</h1>
-						<h1 class="h3 mb-0 text-gray-800">닭가슴살</h1>
+						<button class="h3 mb-0 text-gray-800 card h-100 py-2 btn1_title active">보충제</button>
+						<button class="h3 mb-0 text-gray-800 card h-100 py-2 btn2_title">닭가슴살</button>
+						
 						<a href="#"
 							class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 							class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
@@ -352,42 +353,22 @@
 
 						<!-- Earnings (Monthly) Card Example -->
 						<div class="col-xl-3 col-md-6 mb-4">
-							<div class="card border-left-primary shadow h-100 py-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-2">
-											<div
-												class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-												초보자</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800">초보자</div>
-										</div>
-										<div class="col-auto">
-											<i class="fas fa-calendar fa-2x text-gray-300"></i>
-										</div>
-									</div>
-								</div>
+							<div class="card border-left-primary shadow h-100 py-2 difficulty">
+							
+									<button class="h5 mb-0 font-weight-bold text-gray-800 card-body difficulty-btn btn1 active">초보자</button>
+									
 							</div>
 						</div>
 
 						<!-- Earnings (Monthly) Card Example -->
 						<div class="col-xl-3 col-md-6 mb-4">
-							<div class="card border-left-success shadow h-100 py-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-2">
-											<div
-												class="text-xs font-weight-bold text-success text-uppercase mb-1">
-												숙련자</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800">숙련자</div>
-										</div>
-										<div class="col-auto">
-											<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-										</div>
-									</div>
-								</div>
+							<div class="card border-left-success shadow h-100 py-2 difficulty">
+							
+									<button class="h5 mb-0 font-weight-bold text-gray-800 card-body difficulty-btn btn2">숙련자</button>
+									
 							</div>
 						</div>
-
+						
 						<!-- Earnings (Monthly) Card Example -->
 						<div class="col-xl-3 col-md-6 mb-4">
 							<div class="card border-left-info shadow h-100 py-2">
@@ -449,31 +430,25 @@
 
 	<div class="row">
 
-							<!-- Color System -->
-							<div class="row col-lg-6">
+							<!-- Color System 1 -->
+							<div class="row col-lg-6 beginner">
 								<div class="col-lg-12 mb-2">
 									<div class="card bg-primary text-white shadow">
-										<div class="card-body" >
 										
-											<h5>단백질</h5>
+										<button class="btn-menu card-body beginner-btn btn-sub1 active" data-toggle="menu-1"><h5>단백질</h5></button>
 											
-										</div>
 									</div>
 								</div>
 								<div class="col-lg-12 mb-2">
 									<div class="card bg-success text-white shadow">
-										<div class="card-body">
-											<h5>탄수화물</h5>
-											
-										</div>
+									
+											<button class="btn-menu card-body beginner-btn btn-sub2" data-toggle="menu-2"><h5>탄수화물</h5></button>
+									
 									</div>
 								</div>
 								<div class="col-lg-12 mb-2">
 									<div class="card bg-info text-white shadow">
-										<div class="card-body">
-											<h5>종합비타민</h5>
-											
-										</div>
+										<button class="btn-menu card-body beginner-btn btn-sub3" data-toggle="menu-3"><h5>종합비타민</h5></button>
 									</div>
 								</div>
 								<div class="col-lg-12 mb-2">
@@ -503,8 +478,8 @@
 								</div>
 
 							</div>
-							<div class="row col-lg-6">
-								<div class="col-lg-12 mb-2">
+							<div class="row col-lg-6 btn-menu menu-1 active">
+								<div class="col-lg-12 mb-2 btn-menu-sub">
 									<div class="card bg-primary text-white shadow">
 										<div class="card-body">
 											<a style="color: white;" href="https://kr.iherb.com/pr/optimum-nutrition-gold-standard-100-whey-double-rich-chocolate-5-lbs-2-27-kg/27509">
@@ -592,7 +567,30 @@
 								</div>
 
 							</div>
-
+							<div class="row col-lg-6 btn-menu menu-2">
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://kr.iherb.com/pr/optimum-nutrition-gold-standard-100-whey-double-rich-chocolate-5-lbs-2-27-kg/27509">
+											테스트1  </a>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row col-lg-6 btn-menu menu-3">
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://kr.iherb.com/pr/optimum-nutrition-gold-standard-100-whey-double-rich-chocolate-5-lbs-2-27-kg/27509">
+											테스트2  </a>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+							
 </div>
 						
 
@@ -692,28 +690,62 @@
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="login.html">Logout</a>
+					<a class="btn btn-primary" href="${pageContext.request.contextPath }/member/logout">Logout</a>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<!-- Bootstrap core JavaScript-->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- <script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
 
 	<!-- Core plugin JavaScript-->
-	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<!-- <script src="vendor/jquery-easing/jquery.easing.min.js"></script> -->
 
 	<!-- Custom scripts for all pages-->
 	<script src="js/sb-admin-2.min.js"></script>
 
 	<!-- Page level plugins -->
-	<script src="vendor/chart.js/Chart.min.js"></script>
+	<!-- <script src="vendor/chart.js/Chart.min.js"></script> -->
 
 	<!-- Page level custom scripts -->
 	<script src="js/demo/chart-area-demo.js"></script>
 	<script src="js/demo/chart-pie-demo.js"></script>
+	<script>
+		$('.btn1').click(function() {
+			$('.difficulty-btn').removeClass('active');
+			$('.btn1').addClass('active');
+			$('.btn-menu').removeClass('active');
+			$('.btn-sub').addClass('active');
+			$('.menu-1').addClass('active');
+		});
+		$('.btn2').click(function() {
+			$('.difficulty-btn').removeClass('active');
+			$('.btn2').addClass('active');
+			$('.btn-menu').removeClass('active');
+			$('.btn-sub').addClass('active');
+			$('.menu-1').addClass('active');
+		});
+		
+		$('.btn-sub1').click(function() {
+			$('.btn-menu').removeClass('active');
+			$('.btn-sub').addClass('active');
+			$('.menu-1').addClass('active');
+			
+		});
+		$('.btn-sub2').click(function() {
+			$('.btn-menu').removeClass('active');
+			$('.btn-sub').addClass('active');
+			$('.menu-2').addClass('active');
+		});
+		
+		$('.btn-sub3').click(function() {
+			$('.btn-menu').removeClass('active');
+			$('.btn-sub').addClass('active');
+			$('.menu-3').addClass('active');
+		});
+	</script>
 
 </body>
 
