@@ -260,13 +260,13 @@ public class FpMemberController {
 	
 	@GetMapping("/member/mypage")
 	public String mypage(Model model, HttpSession session) {
-		try {
-		    FpUsersVo username = (FpUsersVo)session.getAttribute(SessionNames.LOGIN);
-		    FpMemberVo member = service.mypage(username.getUsername());
-		    model.addAttribute("member", member);
-		} catch (Exception e) {
-		    e.printStackTrace();
-		}
+//		try {
+//		    FpUsersVo username = (FpUsersVo)session.getAttribute(SessionNames.LOGIN);
+//		    FpMemberVo member = service.mypage(username.getUsername());
+//		    model.addAttribute("member", member);
+//		} catch (Exception e) {
+//		    e.printStackTrace();
+//		}
 		return "/member/mypage";
 	}
 
