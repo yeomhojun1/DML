@@ -30,6 +30,7 @@ public class FpTempController {
 	public String mainPageOpen8() {
 		return "temp/main";
 	}
+
 	
 	@GetMapping("/weight")
 	public String mainPageOpen9() {
