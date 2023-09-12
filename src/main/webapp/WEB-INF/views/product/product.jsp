@@ -364,7 +364,7 @@
 						<div class="col-xl-3 col-md-6 mb-4">
 							<div class="card border-left-success shadow h-100 py-2 difficulty">
 							
-									<button class="h5 mb-0 font-weight-bold text-gray-800 card-body difficulty-btn btn2">숙련자</button>
+									<button class="h5 mb-0 font-weight-bold text-gray-800 card-body difficulty-btn btn2 active">숙련자</button>
 									
 							</div>
 						</div>
@@ -428,7 +428,7 @@
 						<!-- Content Column -->
 						<div class="col-lg-6 mb-2" >
 
-							<div class="row">
+							<div class="row row-menu beginner active">
 
 							<!-- Color System 1 -->
 							<div class="row col-lg-6 beginner">
@@ -453,27 +453,27 @@
 								</div>
 								<div class="col-lg-12 mb-2">
 									<div class="card bg-warning text-white shadow">
-										<div class="card-body">
+										
 											<button class="btn-menu card-body beginner-btn btn-sub4" data-toggle="menu-4"><h5>유산균</h5></button>
 											
 										</div>
 									</div>
-								</div>
+								
 								<div class="col-lg-12 mb-2">
 									<div class="card bg-danger text-white shadow">
-										<div class="card-body">
+										
 											<button class="btn-menu card-body beginner-btn btn-sub5" data-toggle="menu-5"><h5>섬유질</h5></button>
 											
 										</div>
 									</div>
-								</div>
+								
 								<div class="col-lg-12 mb-2">
 									<div class="card bg-secondary text-white shadow">
-										<div class="card-body">
+										
 											<button class="btn-menu card-body beginner-btn btn-sub6" data-toggle="menu-6"><h5>글루타민</h5></button>
 											
 										</div>
-									</div>
+									
 
 								</div>
 
@@ -762,6 +762,87 @@
 									</div>
 								</div>
 								</div>
+							</div>
+								
+						<div class="row row-menu export">
+
+							<!-- Color System 2 -->
+							<div class="row col-lg-6 export">
+								<div class="col-lg-12 mb-2">
+									<div class="card bg-primary text-white shadow">
+										
+										<button class="btn-menu card-body export-btn btn-sub1 active" data-toggle="menu-1"><h5>카페인(집중력, 유산소 능력 증가)</h5></button>
+											
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2">
+									<div class="card bg-success text-white shadow">
+									
+											<button class="btn-menu card-body export-btn btn-sub2" data-toggle="menu-2"><h5>크레아틴(웨이트 능력 증가)</h5></button>
+									
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2">
+									<div class="card bg-info text-white shadow">
+										<button class="btn-menu card-body beginner-btn btn-sub3" data-toggle="menu-3"><h5>베타알라닌(웨이트 능력 증가)</h5></button>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2">
+									<div class="card bg-warning text-white shadow">
+										
+											<button class="btn-menu card-body beginner-btn btn-sub4" data-toggle="menu-4"><h5>Nitrate(중강도 운동능력 증가)</h5></button>
+											
+										</div>
+									</div>
+									<div class="col-lg-12 mb-2">
+									<div class="card bg-danger text-white shadow">
+										
+											<button class="btn-menu card-body beginner-btn btn-sub5" data-toggle="menu-5"><h5>Sodium Bicarbonate(웨이트 능력 증가)</h5></button>
+											
+										</div>
+									</div>
+									<div class="col-lg-12 mb-2">
+									<div class="card bg-secondary text-white shadow">
+										
+											<button class="btn-menu card-body beginner-btn btn-sub6" data-toggle="menu-6"><h5>스포츠 드링크(에너지,수분공급)</h5></button>
+											
+										</div>
+									
+
+								</div>
+								
+								
+							</div>
+							<div class="row col-lg-6 btn-menu menu-1 active">
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://kr.iherb.com/pr/optimum-nutrition-gold-standard-100-whey-double-rich-chocolate-5-lbs-2-27-kg/27509">
+											GAT 카페인 </a>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2">
+									<div class="card bg-success text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://kr.iherb.com/pr/allmax-classic-allwhey-100-whey-protein-chocolate-5-lbs-2-27-kg/69100">
+											Teacrine(느린 카페인)</a>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 mb-2">
+									<div class="card bg-info text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="https://www.coupang.com/vp/products/6424463926?itemId=13837679944&vendorItemId=3180840444&src=1139000&spec=10799999&addtag=400&ctag=6424463926&lptag=AF7910856&itime=20230912103354&pageType=PRODUCT&pageValue=6424463926&wPcid=11963655808335908086931&wRef=&wTime=20230912103354&redirect=landing&traceid=V0-181-0204c0f24c9440c6&mcid=91aaf995ffd744bc8c37fab610d907a4&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
+											퓨어 카페인 200mg</a>
+											
+										</div>
+									</div>
+								</div>
+								
+						</div>
 							
 </div>
 						
@@ -877,6 +958,7 @@
 										</br>소화 능력이 약한 사람에게 추천
 									</div>
 									</p>
+									
 
 								</div>
 							
@@ -996,16 +1078,24 @@
 		$('.btn1').click(function() {
 			$('.difficulty-btn').removeClass('active');
 			$('.btn1').addClass('active');
+			$('.row-menu').removeClass('active');
+			$('.beginner').addClass('active');
 			$('.btn-menu').removeClass('active');
 			$('.btn-sub').addClass('active');
 			$('.menu-1').addClass('active');
+			$('.menu-comment').removeClass('active');
+			$('.comment1').addClass('active');
 		});
 		$('.btn2').click(function() {
 			$('.difficulty-btn').removeClass('active');
 			$('.btn2').addClass('active');
+			$('.row-menu').removeClass('active');
+			$('.export').addClass('active');
 			$('.btn-menu').removeClass('active');
 			$('.btn-sub').addClass('active');
 			$('.menu-1').addClass('active');
+			$('.menu-comment').removeClass('active');
+			$('.comment1').addClass('active');
 		});
 		
 		$('.btn-sub1').click(function() {
