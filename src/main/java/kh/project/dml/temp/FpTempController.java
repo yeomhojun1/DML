@@ -21,10 +21,6 @@ public class FpTempController {
 		return "temp/blog-single2";
 	}
 	
-	@GetMapping("/index")
-	public String mainPageOpen7() {
-		return "diet/index";
-	}
 	
 	@GetMapping("/main")
 	public String mainPageOpen8() {
