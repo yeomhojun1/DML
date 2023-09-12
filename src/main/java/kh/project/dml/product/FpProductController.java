@@ -1,5 +1,4 @@
-package kh.project.dml.temp;
-
+package kh.project.dml.product;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -8,27 +7,16 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kh.project.dml.common.interceptor.SessionNames;
 
-
 @Controller
 @SessionAttributes(SessionNames.LOGIN)
-public class TempController {
-	@GetMapping("/temp1")
+public class FpProductController {
+
+	@GetMapping("/product")
 	public String mainPageOpen1() {
-		return "temp/blog-default2";
+		return "product/product";
 	}
-	@GetMapping("/temp2")
+	@GetMapping("/product2")
 	public String mainPageOpen2() {
-		return "temp/blog-single2";
+		return "product/product2";
 	}
-	
-	@GetMapping("/index")
-	public String mainPageOpen7() {
-		return "diet/index";
-	}
-	
-	@GetMapping("/main")
-	public String mainPageOpen8() {
-		return "temp/main";
-	}
-	
 }
