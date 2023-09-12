@@ -229,60 +229,10 @@
 						<div class="DateBars_day_of_week__ShQrM">월</div>
 						<div class="DateBars_date_selector__ajXTR">
 							<div style="margin-top: 2px; margin-right: 10px;">
-								<!-- <button type="button"
-									class="ant-btn css-1s3dcof ant-btn-text ant-btn-icon-only"> -->
-								<div class="ant-image css-1s3dcof"
-									style="width: 10px; height: 14px;">
-									<img class="ant-image-img"
-										src="resources/beomjun/images/date_bar_left_arrow.png" width="10"
-										height="14" style="height: 14px;">
-								</div>
-								
-								</button>
+							
 							</div>
-							<div>
-								<button type="button"
-									class="ant-btn css-1s3dcof ant-btn-circle ant-btn-text DateBars_date_selector_each__bZWnQ DateBars_date_selector_each_0__T7dgs">
-									<span>2</span>
-								</button>
-							</div>
-							<div>
-								<button type="button"
-									class="ant-btn css-1s3dcof ant-btn-circle ant-btn-text DateBars_date_selector_each__bZWnQ DateBars_date_selector_each_1__IBT1a">
-									<span>3</span>
-								</button>
-							</div>
-							<div>
-								<button type="button"
-									class="ant-btn css-1s3dcof ant-btn-circle ant-btn-text DateBars_date_selector_each__bZWnQ DateBars_date_selector_each_2__4qUCb">
-									<span>4</span>
-								</button>
-							</div>
-							<div>
-								<button type="button"
-									class="ant-btn css-1s3dcof ant-btn-circle ant-btn-text DateBars_date_selector_each__bZWnQ DateBars_date_selector_each_3__g1gCq">
-									<span>5</span>
-								</button>
-							</div>
-							<div>
-								<button type="button"
-									class="ant-btn css-1s3dcof ant-btn-circle ant-btn-text DateBars_date_selector_each__bZWnQ DateBars_date_selector_each_4__KA7Bh">
-									<span>6</span>
-								</button>
-							</div>
-							<div style="margin-top: 2px; margin-left: 10px;">
-								<!-- <button type="button"
-									class="ant-btn css-1s3dcof ant-btn-text ant-btn-icon-only"> -->
-								<div class="ant-image css-1s3dcof"
-									style="width: 10px; height: 14px;">
-									<img class="ant-image-img date-pick1"
-										src="resources/beomjun/images/date_bar_right_arrow.png" width="10"
-										height="14" style="height: 14px;" >
-								</div>
-								</button>
-								
-							</div>
-						</div>
+							
+							
 						<div class="DateBars_date_picker__GCWt1">
 							<div class="DateBars_date_picker_wrapper__8Axpy">
 								<div
@@ -412,7 +362,7 @@
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
 	<script src="js/datatables-simple-demo.js"></script>
-	<script>
+	<!-- <script>
 	$(function() {
     // input을 datepicker로 선언
     $("#datepicker").datepicker({
@@ -428,7 +378,8 @@
         yearSuffix: "년",
         monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
         monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], // 달력의 월 부분 Tooltip
-        ayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'], // 달력의 요일 Tooltip
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], // 달력의 요일 텍스트
+        dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'], // 달력의 요일 Tooltip
        onSelect: function(dateText, inst) {
            $(".DateBars_date__DyX0X").text(dateText); // 맨 위의 날짜 변경
            var date=new Date($("#datepicker").datepicker({dateFormat:"yy-mm-dd"}).val());
@@ -437,6 +388,7 @@
            
            week=new Array("일","월","화","수","목","금","토");
            $(".DateBars_day_of_week__ShQrM").text(week[date.getDay()]);
+           
            
            
            var container = $(".DateBars_date_selector__ajXTR"); // 스크롤할 컨테이너
@@ -451,42 +403,88 @@
            
        }
     
-
     });
     $('#datepicker').datepicker('setDate' , new Date());
 });
-	</script>
 	
-<!-- 	<script>
-  		 $(function() {
-       // input을 datepicker로 선언
-       $("#datepicker").datepicker({
-           dateFormat: 'yy-mm-dd', // 달력 날짜 형태
-           showOtherMonths: true, // 빈 공간에 현재월의 앞뒤월의 날짜를 표시
-           showMonthAfterYear: true, // 월-년 순서가 아닌 년도-월 순서
-           changeYear: true, // 옵션값 년 선택 가능
-           changeMonth: true, // 옵션값 월 선택 가능
-           showOn: "both", // button: 버튼을 표시하고, 버튼을 눌러야만 달력 표시, both: 버튼을 표시하고, 버튼을 누르거나 input을 클릭하면 달력 표시
-           buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif", // 버튼 이미지 경로
-           buttonImageOnly: true, // 버튼 이미지만 깔끔하게 보이게 함
-           buttonText: "선택", // 버튼 호버 텍스트
-           yearSuffix: "년", // 달력의 년도 부분 뒤 텍스트
-           monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], // 달력의 월 부분 텍스트
-           monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], // 달력의 월 부분 Tooltip
-           dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], // 달력의 요일 텍스트
-           dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'], // 달력의 요일 Tooltip
-           minDate: "-5Y", // 최소 선택일자(-1D: 하루전, -1M: 한달전, -1Y: 일년전)
-           maxDate: "+5y" // 최대 선택일자(+1D: 하루후, -1M: 한달후, -1Y: 일년후)
-        ,onSelect: function() { 
-   	            var exerciseDate = $.datepicker.formatDate("yymmdd",$("#datepicker").datepicker("getDate")); 
-   	            exerciseDate = $("#datepicker").val();
-   	            alert(exerciseDate);
-        }});
+	</script> -->
+	<script>
+	$(function() {
+  var container = $(".DateBars_date_selector__ajXTR"); // 스크롤할 컨테이너
 
-       // 초기값을 오늘 날짜로 설정해줘야 합니다.
-       $('#datepicker').datepicker('setDate', 'today'); // (-1D: 하루전, -1M: 한달전, -1Y: 일년전), (+1D: 하루후, -1M: 한달후, -1Y: 일년후)
-   });
-</script> -->
+  // 스크롤 좌 우 버튼 클릭 시 이동
+  $(".ant-image-img").click(function() {
+    var currentDay = parseInt($(".DateBars_date__DyX0X").text());
+    var nextDay = currentDay + 1;
+	
 
+    var scrollTo = $(".ant-btn-circle span", container).filter(function() {
+      return parseInt($(this).text()) === nextDay;
+    });
+   
+
+    if (scrollTo.length) {
+      container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop());
+      $(".DateBars_date__DyX0X").text(nextDay);
+    }
+  });
+  console.log(scrollTo);
+  // input을 datepicker로 선언
+  $("#datepicker").datepicker({
+	    dateFormat: 'yy-mm-dd',
+        showOtherMonths: true,
+        showMonthAfterYear: true,
+        changeYear: true,
+        changeMonth: true,
+        showOn: "both",
+        buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif", // 버튼 이미지 경로
+        buttonImageOnly: true,
+        buttonText: "선택",
+        yearSuffix: "년",
+        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], // 달력의 월 부분 Tooltip
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], // 달력의 요일 텍스트
+        dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'], // 달력의 요일 Tooltip
+
+       onSelect: function(dateText, inst) {
+           $(".DateBars_date__DyX0X").text(dateText); // 맨 위의 날짜 변경
+           var date=new Date($("#datepicker").datepicker({dateFormat:"yy-mm-dd"}).val());
+           //일요일 0~
+           alert("date:"+date.getDay());
+           
+           week=new Array("일","월","화","수","목","금","토");
+           $(".DateBars_day_of_week__ShQrM").text(week[date.getDay()]);
+           
+     var scrollTo = $(".ant-btn-circle span", container).filter(function() {
+       return parseInt($(this).text()) === inst.selectedDay;
+     });
+
+     if (scrollTo.length) {
+       container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop());
+     }
+   },
+   
+   onChangeMonthYear:function(year, month, inst){
+     setTimeout(function(){
+       var selectedDay = parseInt($(".ui-datepicker-calendar .ui-state-active a", inst.dpDiv).text());
+      
+       if (!isNaN(selectedDay)) {
+         $(".DateBars_date__DyX0X").text(selectedDay);
+
+         var scrollTo = $(".ant-btn-circle span", container).filter(function() {
+           return parseInt($(this).text()) === selectedDay;
+         });
+
+         if (scrollTo.length) {
+           container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop());
+         }
+       }
+     }, 0);
+   }
+ });
+
+ $('#datepicker').datepicker('setDate', new Date());
+});
+	</script>
 </body>
 </html>
