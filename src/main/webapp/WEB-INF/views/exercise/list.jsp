@@ -112,14 +112,15 @@
 					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
 					<!-- 우리가 만져야하는 부분임 -->
 					<div class="main_content_part">
+					<div class="appendtest123"></div>
 						<div class="ex_part btn" data-part="등">등</div>
 						<div class="ex_part btn" data-part="가슴">가슴</div>
 						<div class="ex_part btn" data-part="어깨">어깨</div>
 						<div class="ex_part btn" data-part="팔">팔</div>
 						<div class="ex_part btn" data-part="하체">하체</div>
+						<div class="appendtest"></div>
 						<textarea name="bookIntro" id="bookIntro_textarea"></textarea>
 						<textarea name="bookContents" id="bookContents_textarea"></textarea>
-
 
 						<div id="modal" class="modal-overlay ">
 							<div class="modal-window">
@@ -132,13 +133,13 @@
 										날짜 : <input type="text" id="datepicker" name="calendarNo">
 									</div>
 									<div>
-										횟수 : <input type="number" name="exerciseNumber">
+										횟수 : <input type="number" class="addExerciseNumber" >
 									</div>
 									<div>
-										세트 : <input type="number" name="exerciseSet">
+										세트 : <input type="number" class="addExerciseSet">
 									</div>
 									<div>
-										무게 : <input type="number" name="exerciseWeight">
+										무게 : <input type="number" class="addExerciseWeight">
 									</div>
 									<div>
 										<button class="addMemberExSet">등록</button>
@@ -174,8 +175,8 @@
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
 
-
 </body>
+<script src="${pageContext.request.contextPath}/js/test.js"></script>
 <script>
 
 	window.onload = function(){
@@ -195,6 +196,7 @@
 	}
 	
 	function displayExercisePart(result){
+	
 		htmlVal = "	<div>운동 이름</div>";
 		for (var i = 0; i < result.length; i++) {
 			htmlVal += '<div class="ex_part_one btn" data-part="'+result[i].ecode+'">'+result[i].exName+'</div>'
@@ -208,6 +210,7 @@
 	}
 	<!-- 운동 하나를 선택하면 그 운동에 대한 상세정보들이 나오도록함 -->
 	function expartoneHandler(){
+	
 		$.ajax({
 			url:"${pageContext.request.contextPath}/exercise/one",
 			type: "get",
@@ -219,6 +222,7 @@
 	
 	function displayExercisePartOne(result){
 		console.log(result);
+		
 		htmlVal = ""
 		htmlVal += '<div class="ex_one" data-code="'+result.ecode+'" data-name="'+result.exName+'">'+result.epose+'<div>'+result.eposeLink+'</div><button id="btn-modal">모달 창 열기 버튼</button></div>'
 		$(".main_content_exercise_one").html(htmlVal);
@@ -292,17 +296,19 @@
 	function onMemberExSetHandler(){
 		console.log("123");
 		$.ajax({
-			url:"${pageContext.request.contextPath}/memberexset/insert",
-			type: "post",
+			url:"${pageContext.request.contextPath}/exercise/list",
+			type: "get",
 			data : {ecode : $(".ex_one").data("code")
 				,exName : $(".ex_one").data("name")
 			,memberId : ""
-			,exerciseSet : ""
-			,exerciseNumber : ""
-			,exerciseWeight : ""}
-			,success : "${pageContext.request.contextPath}/memberexset/list"
+			,calendarNo: $("#datepicker").val()
+			,exerciseSet : $(".addExerciseSet").val()
+			,exerciseNumber : $(".addExerciseNumber").val()
+			,exerciseWeight : $(".addExerciseWeight").val()}
+			,success : displayFrm123
 			,dataType : "json"
 		})
+		console.log(displayFrm123);
 	}
 	/* 책 소개 */
 	ClassicEditor

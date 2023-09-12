@@ -16,14 +16,15 @@
 
     <title>SB Admin 2 - Dashboard</title>
 
+    <!-- Custom styles for this template-->
+    <link href="resources/resources1/css/sb-admin-2.css" rel="stylesheet">
+    
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- Custom styles for this template-->
-    <link href="resources/resources1/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -143,10 +144,10 @@
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
+     <!--        <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-
+ -->
             <!-- Sidebar Message -->
      <!--        <div class="sidebar-card d-none d-lg-flex">
                 <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
@@ -172,7 +173,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
+              <!--       <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
@@ -183,7 +184,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> -->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -218,7 +219,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
+                         
                             </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -269,7 +270,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
+                              
                             </a>
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -335,9 +336,8 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                               
+                               
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -372,10 +372,10 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        <h1 class="h3 mb-0 text-gray-800"></h1>
+                  <!--       <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
+                    </div> -->
 
                     <!-- Content Row -->
                     <div class="row">
@@ -429,11 +429,11 @@
                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">활동 관리</div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="progress progress-sm mr-2">
+                                                    <!-- <div class="progress progress-sm mr-2">
                                                         <div class="progress-bar bg-info" role="progressbar"
                                                             style="width: 50%" aria-valuenow="50" aria-valuemin="0"
                                                             aria-valuemax="100"></div>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -499,7 +499,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary"></h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -515,20 +515,120 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Card Body -->
+                                <!--  -->
+                                <div  class="Track_c1__53XVz " >
+                                
+									<button type="button" class="track-comment track1">
+									<div class="Track_start_graph_icon__5ukIb">
+									<div class="ant-image css-1s3dcof" style="width: 32px; height: 27px;">
+									<img alt="커팅" class="ant-image-img" src="resources/resources1/assets/img/track_date_icon.png" width="32" height="27" style="height: 27px;">
+								</div>
+								</div>
+									<div class="Track_start_graph_title__f_th1">시작일 설정하기</div>
+									<div class="Track_start_graph_arrow__ct_lu">
+									<div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;">
+								<img alt="커팅" class="ant-image-img" src="resources/resources1/assets/img/track_date_arrow.png" width="10" height="14" style="height: 14px;">
+								</div>
+								</div>
+								</button>
+								</div>
+										<div class="Track_container_1__9xvu1">
+											<div class="Track_title__OqApH">개별 입력</div>
+											<div class="Track_input_container__C7E1d">
+												<div class="Track_input_container_each__YBqKT">
+													<div>
+														<div
+															style="flex: 1 1 0%; display: flex; flex-direction: row; margin-bottom: 20px;">
+															<div
+																style="flex: 0 1 0%; margin-right: 10px; min-width: 100px; align-self: center;">날짜</div>
+															<div
+																class="ant-picker css-1s3dcof Track_input_basic__yj5u2">
+																<div class="ant-picker-input">
+																	<input readonly="" placeholder="Select date"
+																		title="2023-09-12" size="12" autocomplete="off"
+																		value="2023-09-12"> <span
+																		class="ant-picker-suffix"><span role="img"
+																		aria-label="calendar" class="anticon anticon-calendar">
+																			<svg viewBox="64 64 896 896" focusable="false"
+																				data-icon="calendar" width="1em" height="1em"
+																				fill="currentColor" aria-hidden="true">
+																						<path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path>
+																					</svg>
+																	</span> 
+																	</span>
+																	 <span class="ant-picker-clear" role="button">
+																		<span role="img" aria-label="close-circle"
+																		class="anticon anticon-close-circle"> <svg
+																				viewBox="64 64 896 896" focusable="false"
+																				data-icon="close-circle" width="1em" height="1em"
+																				fill="currentColor" aria-hidden="true">
+																				<path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z">
+																			</path>
+																				</svg>
+																	</span>
+																	</span>
+																</div>
+															</div>
+														</div>
+														<div
+															style="flex: 1 1 0%; display: flex; flex-direction: row;">
+															<div
+																style="flex: 0 1 0%; margin-right: 10px; min-width: 100px; align-self: center;">몸무게</div>
+															<span
+																class="ant-input-affix-wrapper Track_input_basic__yj5u2 css-1s3dcof"><input
+																class="ant-input css-1s3dcof" type="text" value="0"><span
+																class="ant-input-suffix">kg</span> </span>
+														</div>
+													</div>
+													<div class="Track_small_desc__m9f6x">* 이미 값이 존재하는 경우,
+														새 값으로 갱신됩니다.</div>
+												</div>
+												<div class="Track_input_container_each2__V74lA">
+													<button type="button"
+														class="ant-btn css-1s3dcof ant-btn-round ant-btn-default ant-btn-lg ant-btn-block Track_btn_save__pfmx0 Global_button__iJeUH">
+														<span>저장하기</span>
+													</button>
+													<button type="button"
+														class="ant-btn css-1s3dcof ant-btn-round ant-btn-default ant-btn-lg ant-btn-block Track_btn_save__pfmx0 Global_button__iJeUH"
+														style="margin-top: 20px;">
+														<span>선택한 날짜의 데이터 삭제</span>
+													</button>
+												</div>
+											</div>
+										</div>
+
+										<div class="Track_container_2__cASkN">
+											<div class="Track_c2__eupx_">
+												<div style="display: flex; flex-direction: row;">
+													<div style="flex: 1 1 0%; font-weight: bold;">체중 추세
+														기울기</div>
+													<div style="flex: 1 1 0%; text-align: right;">0kg</div>
+												</div>
+												<div
+													style="display: flex; flex-direction: row; margin-top: 20px;">
+													<div style="flex: 1 1 0%; font-weight: bold;">기록 시작
+														날짜</div>
+													<div style="flex: 1 1 0%; text-align: right;">Invalid
+														DateTime</div>
+												</div>
+											</div>
+										</div>
+
+
+										<!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-pie pt-4 pb-2">
                                         <canvas id="myPieChart"></canvas>
                                     </div>
                                     <div class="mt-4 text-center small">
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Direct
+                                          <!--   <i class="fas fa-circle text-primary"></i> Direct -->
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
+                                            <!-- <i class="fas fa-circle text-success"></i> Social -->
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
+                                            <!-- <i class="fas fa-circle text-info"></i> Referral -->
                                         </span>
                                     </div>
                                 </div>
@@ -617,38 +717,10 @@
                         <div class="col-lg-6 mb-4">
 
                             <!-- Illustrations -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                            src="img/undraw_posting_photo.svg" alt="...">
-                                    </div>
-                                    <p>Add some quality, svg illustrations to your project courtesy of <a
-                                            target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
-                                        constantly updated collection of beautiful svg images that you can use
-                                        completely free and without attribution!</p>
-                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
-                                        unDraw &rarr;</a>
-                                </div>
-                            </div>
+      
 
                             <!-- Approach -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
-                                        CSS bloat and poor page performance. Custom CSS classes are used to create
-                                        custom components and custom utility classes.</p>
-                                    <p class="mb-0">Before working with this theme, you should become familiar with the
-                                        Bootstrap framework, especially the utility classes.</p>
-                                </div>
-                            </div>
-
+                           
                         </div>
                     </div>
 
@@ -659,13 +731,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
-                </div>
-            </footer>
+           
             <!-- End of Footer -->
 
         </div>
