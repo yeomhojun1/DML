@@ -39,14 +39,11 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">Daily Muscle Life</h1>
-					<!--   <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol> -->
-					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
-					<!-- 우리가 만져야하는 부분임 
-				!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-					 여기까지 만지면 됨 -->
+					<h1 class="mt-4">회원탈퇴</h1>
+					<form action="${pageContext.request.contextPath }/member/withdrawal" method="post">
+						<div class="MyPage_basic_input_title">패스워드</div>
+						<input type="password" id="password">
+					</form>
 				</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>

@@ -28,6 +28,8 @@ public class FpMemberDao {
 	private static final String NORMAL_LOGIN = NS + ".normallogin";
 	private static final String MYPAGE = NS + ".mypage";
 	private static final String UPDATE = NS + ".update";
+	private static final String DELETE_MEMBER = NS + ".deleteMember";
+	private static final String DELETE_USER = NS + ".deleteUser";
 	private static final String KEEP_LOGIN = NS + ".keepLogin";
 	private static final String CHECK_SESSION = NS + ".checkSession";
 	private static final String CHECK_LOGIN_BEFORE = NS + ".checkLoginBefore";
@@ -57,6 +59,14 @@ public class FpMemberDao {
 	
 	public void update(FpMemberVo vo) {
 		session.update(UPDATE, vo);
+	}
+	
+	public void deleteMember(String username) {
+		session.delete(DELETE_MEMBER, username);
+	}
+	
+	public void deleteUser(String username) {
+		session.delete(DELETE_USER, username);
 	}
 
 	public void keepLogin(String memberId, String sessionId, Date expire) {

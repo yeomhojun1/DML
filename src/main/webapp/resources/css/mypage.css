@@ -318,66 +318,6 @@ mark {
     width: 25%
 }
 
-.Admin_container__TXxQA {
-    height: 50px;
-    margin-top: 30px;
-    margin-bottom: 30px
-}
-
-.Admin_list__PS60a {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0 0 0 20px
-}
-
-.Admin_list__PS60a>li {
-    font-family: Noto Sans KR;
-    font-size: 18px;
-    font-weight: 100;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.15;
-    letter-spacing: normal;
-    width: 25%
-}
-
-.Admin_mealprep_ingredient_box__HWVYv {
-    display: flex;
-    justify-content: space-between;
-    grid-gap: 30px;
-    gap: 30px
-}
-
-.Admin_mealprep_ingredient_form__1l3pU {
-    flex: 1 1;
-    min-width: 150px;
-    max-width: 200px
-}
-
-.Admin_mealprep_table_box__AdCyd {
-    flex: 1 1
-}
-
-.Admin_mealprep_table_box_title__3fmhh {
-    font-weight: 900
-}
-
-.MyPage_basic_pictures__imQWC {
-    height: 250px
-}
-
-.MyPage_basic_title__479WA {
-    margin-bottom: 30px;
-    font-family: Noto Sans KR;
-    font-size: 26px;
-    font-weight: 100;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.15;
-    letter-spacing: normal
-}
-
 .MyPage_basic_input_row {
     display: flex;
     margin-bottom: 20px
@@ -426,13 +366,9 @@ mark {
     letter-spacing: normal
 }
 
-.MyPage_basic_btn__7B7sc:hover {
+.MyPage_basic_btn:hover {
     color: #fff!important;
     border-color: #99d3e9!important
-}
-
-.MyPage_bottom__ytYvT {
-    margin-top: 30px
 }
 
 .MyPage_btn_right {
@@ -441,157 +377,12 @@ mark {
     padding: 10px;
 }
 
-.MyPage_gender_btn__Obpkp {
-    border-radius: 30px!important;
-    font-family: Noto Sans KR;
-    font-size: 18px;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.67;
-    letter-spacing: normal;
-    height: 60px;
-    min-width: 118px;
-    border: 1 solid #99d3e9!important;
-    text-align: center;
-    margin-right: 20px;
-    padding-top: 15px
-}
-
-.MyPage_gender_btn_selected__dCSN_ {
-    background-color: #99d3e9!important;
-    border: 0!important
-}
-
-.MyPage_gender_btn__Obpkp:before {
-    border: 0!important;
-    background-color: #fff!important
-}
-
-.MyPage_basic_red a{
+.MyPage_basic_red a {
     color: red
 }
 
-.MyPage_basic_red__bO0GK:hover {
+.MyPage_basic_red a:hover {
     color: red!important
-}
-
-.MyPage_custom_activity_container___H76X {
-    display: flex;
-    margin-bottom: 80px
-}
-
-.MyPage_custom_food_container__I5czJ {
-    display: flex
-}
-
-.MyPage_custom_header__t1018 {
-    position: relative;
-    width: 240px;
-    height: 340px;
-    margin: 0 50px 0 0;
-    padding: 30px 30px 40px;
-    -o-object-fit: contain;
-    object-fit: contain;
-    border-radius: 10px;
-    background-color: #f4f7f8
-}
-
-.MyPage_custom_list__xl_c_ {
-    flex: 1 1
-}
-
-.MyPage_custom_list_list__niqu2 {
-    height: 290px;
-    width: 100%;
-    flex: 1 1;
-    overflow-y: scroll
-}
-
-.MyPage_custom_title__KKhRk {
-    font-size: 22px;
-    font-weight: 900;
-    line-height: 1.36;
-    margin-bottom: 20px
-}
-
-.MyPage_custom_desc__xVjdY,.MyPage_custom_title__KKhRk {
-    font-family: Noto Sans KR;
-    font-stretch: normal;
-    font-style: normal;
-    letter-spacing: normal
-}
-
-.MyPage_custom_desc__xVjdY {
-    width: 172px;
-    height: 142px;
-    margin: 31px 8px 0 0;
-    -o-object-fit: contain;
-    object-fit: contain;
-    font-size: 18px;
-    font-weight: 100;
-    line-height: 3.11;
-    text-align: left;
-    color: #000
-}
-
-.MyPage_custom_desc_title__5RhI8 {
-    width: 100px;
-    font-family: Noto Sans KR;
-    font-size: 26px;
-    font-weight: 900;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: normal
-}
-
-.MyPage_custom_btn_box__DxtEq {
-    display: flex;
-    right: 30px;
-    top: 30px;
-    justify-content: flex-end
-}
-
-.MyPage_custom_btn__bfUgu {
-    background-color: #99d3e9!important;
-    width: 60px!important;
-    height: 60px!important
-}
-
-.MyPage_custom_del_btn__mX92D {
-    margin-left: 10px;
-    background-color: #99d3e9!important;
-    border: 0;
-    color: #fff;
-    font-weight: 900;
-    height: auto!important
-}
-
-.MyPage_custom_del_btn__mX92D,.MyPage_each_activity__MNKen {
-    font-family: Noto Sans KR;
-    font-size: 18px;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.67;
-    letter-spacing: normal
-}
-
-.MyPage_each_activity__MNKen {
-    display: flex;
-    border: 1px solid #99d3e9;
-    border-radius: 30px;
-    padding: 10px 10px 10px 40px;
-    margin-right: 50px;
-    margin-bottom: 20px;
-    font-weight: 100
-}
-
-.MyPage_each_activity_number__zPViS {
-    min-width: 50px;
-    max-width: 50px;
-    width: 50px;
-    flex: 0 1;
-    align-self: center
 }
 
 .MyPage_each_activity_name__F1rls,.MyPage_each_activity_par__5y511,.MyPage_each_activity_time__rvSf_ {

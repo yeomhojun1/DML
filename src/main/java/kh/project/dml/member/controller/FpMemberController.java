@@ -133,7 +133,7 @@ public class FpMemberController {
 	        FpUsersVo userMember = (FpUsersVo) memberObj;
 	        service.keepLogin(userMember.getUsername(), "", new Date()); // 로그아웃 상태를 DB에 기록
 	    } else if (memberObj instanceof FpMemberVo) {
-	    	FpMemberVo member = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
+	    	FpMemberVo member = (FpMemberVo) memberObj;
 	    	service.keepLogin(member.getMemberId(), "", new Date()); // SNS 로그아웃 상태를 DB에 기록
 	    }
 	    
@@ -273,12 +273,54 @@ public class FpMemberController {
 	}
 	
 	@PostMapping("/member/update")
-	public String update(@RequestBody FpMemberVo member, Model model, HttpSession session) {
+	public String updateMember(@RequestBody FpMemberVo member, Model model, HttpSession session) {
 		service.update(member);
 	    member = service.mypage(member.getMemberId());
 	    model.addAttribute("member", member);
 		return "redirect:/member/mypage";
 	}
-
+	
+	@PostMapping("/member/withdrawal")
+	public String deleteCheck(@RequestParam String password, Model model, HttpSession session, LoginVo vo) {
+		Object memberObj = session.getAttribute(SessionNames.LOGIN);
+	    try {	    	
+	    	if (memberObj instanceof FpUsersVo) {
+	    		FpUsersVo userMember = (FpUsersVo) memberObj;
+	    		vo.setUsername(userMember.getUsername());
+	    		vo.setPassword(password);
+	    		FpUsersVo user = service.login(vo);
+	    		if(user == null) {
+	    			return "/member/errorPopup";
+	    		} else {
+	    			service.delete(user.getUsername());
+	    			return "/member/deletePopup";
+	    		}
+	    	} else if (memberObj instanceof FpMemberVo) {
+	    		FpMemberVo member = (FpMemberVo) memberObj;
+	    		service.delete(member.getMemberId());
+	    		return "/member/deletePopup";
+	    	}
+	    } catch(Exception e) {
+	    	e.printStackTrace();
+	    }
+	    return "/member/mypage";
+	}
+	
+	@GetMapping("/member/deleteCheck")
+	public String deleteCheck(HttpSession session) {
+		session.getAttribute(SessionNames.LOGIN);
+		return "/member/deleteCheck";
+	}
+	
+	@GetMapping("/member/errorPopup")
+	public String errorPopup() {
+		return "redirect:/member/errorPopup";
+	}
+	
+	@GetMapping("/member/deletePopup")
+	public String deletePopup(HttpSession session) {
+		session.setAttribute(SessionNames.LOGIN, "");
+		return "/member/deletePopup";
+	}
 }
 

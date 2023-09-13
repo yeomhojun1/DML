@@ -154,7 +154,7 @@ label {
                     <i class="fa fa-key" aria-hidden="true"></i>
                 </div>
                 <div class="col-lg-12 login-title">
-                	회원가입
+                	소셜 회원가입
                 </div>
                 <div class="col-lg-12 login-form">
                     <div class="col-lg-12 login-form">

@@ -33,5 +33,10 @@ public class FpTempController {
 		return "temp/weight";
 	}
 	
+	@GetMapping("/index")
+	public String index() {
+		return "diet/index";
+	}
+	
 }
 

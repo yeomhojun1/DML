@@ -16,6 +16,15 @@
 		where member_id = #{memberId}
 	</update>
 	
+	<delete id="deleteMember" parameterType="string">
+		delete from member
+		where member_id = #{username}
+	</delete>
+	<delete id="deleteUser" parameterType="string">
+		delete from users
+		where username = #{username}
+	</delete>
+	
 	<select id="checkId" parameterType="string" resultType="string">
         select member_id from member where member_id = #{memberId}
 	</select>
