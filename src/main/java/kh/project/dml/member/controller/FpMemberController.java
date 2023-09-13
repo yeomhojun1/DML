@@ -50,7 +50,8 @@ import kh.project.dml.users.model.vo.LoginVo;
 @Controller
 @RequestMapping("/")
 public class FpMemberController {
-
+	
+	// 로그 수집 기능
 	private static final Logger logger = LoggerFactory.getLogger(FpMemberController.class);
 	
 	@Inject
@@ -74,12 +75,14 @@ public class FpMemberController {
 	@Autowired
 	private FpMemberService fpMemberService;
 	
+	// 멤버 페이지(임시)
 	@GetMapping("/member/list")
 	public String memberList(Model model) {
 		model.addAttribute("memberList", service.selectList());
 		return "/member/list";
 	}
 	
+	// 소셜 로그인 시 각 소셜 API에서 콜백 받을때
 	@RequestMapping(value = "/auth/{snsService}/callback", 
 			method = { RequestMethod.GET, RequestMethod.POST})
 	public String SnsLoginCallback(@PathVariable String snsService,
@@ -124,6 +127,7 @@ public class FpMemberController {
 		return "redirect:/index";
 	}
 	
+	// 로그아웃 버튼 클릭
 	@GetMapping("/member/logout")
 	public String logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 	    
@@ -151,6 +155,7 @@ public class FpMemberController {
 	    return "redirect:/index";
 	}
 	
+	// 로그인 페이지
 	@GetMapping("/member/login")
 	public String login(Model model, HttpSession session) throws Exception {
 		logger.info("login GET .....");
@@ -176,6 +181,7 @@ public class FpMemberController {
 		return "/member/login";
 	}
 	
+	// 로그인 페이지에서 로그인 버튼 클릭
 	@PostMapping("/member/login")
 	public String loginPost(LoginVo vo, Model model, HttpSession session) throws Exception {
 	    logger.info("loginPost...LoginVo={}", vo); 
@@ -197,12 +203,14 @@ public class FpMemberController {
 	    return "/member/login";
 	}
 	
+	// 회원가입 페이지
 	@GetMapping("/member/signup")
 	public String signupPage(Model model) {
 		model.addAttribute("userCreateForm", new UserCreateForm());
 		return "/member/signup";
 	}
 	
+	// 회원가입 페이지에서 회원가입 버튼 클릭
 	@PostMapping("/member/signup")
     public String signup(@Valid UserCreateForm userCreateForm, BindingResult bindingResult, HttpSession session, LoginVo vo) {
         if(bindingResult.hasErrors()) {
@@ -237,6 +245,7 @@ public class FpMemberController {
         return "redirect:/index";
     }
 	
+	// 소셜 회원가입 페이지
 	@PostMapping("/member/agreement")
     public String agreement(@Valid SocialCreateForm socialCreateForm, BindingResult bindingResult, HttpSession session, LoginVo vo) {
         if(bindingResult.hasErrors()) {
@@ -258,6 +267,7 @@ public class FpMemberController {
         return "redirect:/index";
     }
 	
+	// 마이페이지
 	@GetMapping("/member/mypage")
 	public String mypage(Model model, HttpSession session) {
 		Object memberObj = session.getAttribute(SessionNames.LOGIN);
@@ -272,6 +282,7 @@ public class FpMemberController {
 		return "/member/mypage";
 	}
 	
+	// 마이페이지에서 정보 변경 후 저장버튼을 누르면 정보 업데이트
 	@PostMapping("/member/update")
 	public String updateMember(@RequestBody FpMemberVo member, Model model, HttpSession session) {
 		service.update(member);
@@ -280,6 +291,13 @@ public class FpMemberController {
 		return "redirect:/member/mypage";
 	}
 	
+	// 회원탈퇴 전 패스워드 항목 입력
+	@GetMapping("/member/deleteCheck")
+	public String deleteCheck(HttpSession session) {
+		session.getAttribute(SessionNames.LOGIN);
+		return "/member/deleteCheck";
+	}
+	// /member/deleteCheck 페이지에서 회원탈퇴 버튼 클릭
 	@PostMapping("/member/withdrawal")
 	public String deleteCheck(@RequestParam String password, Model model, HttpSession session, LoginVo vo) {
 		Object memberObj = session.getAttribute(SessionNames.LOGIN);
@@ -306,17 +324,13 @@ public class FpMemberController {
 	    return "/member/mypage";
 	}
 	
-	@GetMapping("/member/deleteCheck")
-	public String deleteCheck(HttpSession session) {
-		session.getAttribute(SessionNames.LOGIN);
-		return "/member/deleteCheck";
-	}
-	
+	// 회원탈퇴 시 아이디/패스워드가 맞지 않는 경우 에러 발생
 	@GetMapping("/member/errorPopup")
 	public String errorPopup() {
 		return "redirect:/member/errorPopup";
 	}
 	
+	// 회원탈퇴 완료 후 팝업창 화면
 	@GetMapping("/member/deletePopup")
 	public String deletePopup(HttpSession session) {
 		session.setAttribute(SessionNames.LOGIN, "");
