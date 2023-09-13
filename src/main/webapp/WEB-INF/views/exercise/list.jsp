@@ -14,19 +14,18 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
 	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/styles.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/scss.css"
-	rel="stylesheet" />
-<script
-	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<!-- ck에디터적용코드  -->
+<link href="${pageContext.request.contextPath}/css/styles.css"
+	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/scss.css"
+	rel="stylesheet" />
+<script
+	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
 <script language="javascript"
 	src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 
@@ -224,7 +223,7 @@
 		console.log(result);
 		
 		htmlVal = ""
-		htmlVal += '<div class="ex_one" data-code="'+result.ecode+'" data-name="'+result.exName+'">'+result.epose+'<div>'+result.eposeLink+'</div><button id="btn-modal">모달 창 열기 버튼</button></div>'
+		htmlVal += '<div class="ex_one" data-code="'+result.ecode+'" data-name="'+result.exName+'">'+result.epose+'<div>'+result.eposeLink+'</div><button id="btn-modal">운동 추가</button></div>'
 		$(".main_content_exercise_one").html(htmlVal);
 		$("#btn-modal").click(modalHandler);
 		$(".main_content_exercise_one").show();

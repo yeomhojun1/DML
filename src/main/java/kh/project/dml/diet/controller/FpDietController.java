@@ -14,7 +14,7 @@ import kh.project.dml.diet.model.vo.FpDietVo;
 @Controller
 @RequestMapping("/diet")
 public class FpDietController {
-	
+
 	@Autowired
 	public FpDietService fpdietService;
 	
@@ -24,6 +24,12 @@ public class FpDietController {
 		mv.setViewName("diet/list");
 		return mv;
 	}
+	
+	@GetMapping("/index")
+	public String selectList() {
+		return "diet/index"; 
+			
+	}	
 	
 	@GetMapping("/one")
 	public ModelAndView selectOnediet(ModelAndView mv, String mealCode) {
