@@ -5,7 +5,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -30,14 +33,25 @@
 <!-- ck에디터적용코드  -->
 <script language="javascript"
 	src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+<<<<<<< Updated upstream
 	<script src='<c:url value="/js/fullcalendar.global.js" />'></script>
   <link href='<c:url value="/css/fullcalendar.css" />' rel='stylesheet' />
   <script>
+=======
+<script src='<c:url value="/js/fullcalendar.global.js" />'></script>
+<link href='<c:url value="/css/fullcalendar.css" />' rel='stylesheet' />
+<script
+	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
+<style>
+.modal {
+	display: none;
+}
+</style>
+<script>
+>>>>>>> Stashed changes
   	document.addEventListener('DOMContentLoaded', function() {
-  	
   	// div id 값 
     var calendarEl = document.getElementById('calendar');
-
     // FullCalendar API 호출
     var calendar = new FullCalendar.Calendar(calendarEl, {
 				     initialView: 'dayGridMonth',
@@ -77,18 +91,7 @@
 					      end: '2023-09-03', // a property! ** see important note below about 'end' **
 					     
 					    },
-					    { // this object will be "parsed" into an Event Object
-					      title: '곱창전골먹는날', // a property!
-					      start: '2023-09-04', // a property!
-					      end: '2023-09-07' // a property! ** see important note below about 'end' **
-					     
-						},
-						{ // this object will be "parsed" into an Event Object
-						      title: '삼겹살+술먹는날', // a property!
-						      start: '2023-09-10', // a property!
-						      end: '2023-09-17' // a property! ** see important note below about 'end' **
-						     
-							},
+					 
 							//같은날짜에 스케줄이 있으면 아래에 (+2)가 생김
 							 {
 					            title: '점심 술약속',
@@ -98,14 +101,7 @@
 						            title: '조퇴하는날',
 						            start: '2023-09-10T13:10:00'
 						      },
-						      {
-						            title: '결석하는날',
-						            start: '2023-09-10T09:05:00'
-						      },
-						      {
-						            title: '침대에누워있어야되는날',
-						            start: '2023-09-10T07:10:00'
-						      },	
+						   
 						      {
 						            title: 'KH 시험점수 확인하기',
 						            url: 'https://www.kh-academy.co.kr/', // 클릭시 해당 url로 이동
@@ -117,13 +113,16 @@
 							            start: '2023-09-26'
 							       }
   					 ],
+<<<<<<< Updated upstream
   					 
+=======
+>>>>>>> Stashed changes
   				      dateClick : (info)=>{ // 선택한 날짜 값 뽑아내기
   				    	  console.log(info);
   				    	  const clickDate = info.dateStr;
   				    	  alert(clickDate); //경고창d
   				    	  //
-  				    	  $(".modal #date").html(clickDate);
+  				    	  $(".modal #date1").html(clickDate);
   				    	  $(".modal").show();
   				    	  
   				      },
@@ -146,6 +145,7 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
+<<<<<<< Updated upstream
 					 <div id='calendar'></div>
     	<h2 style="text-align:center;">손범규님의 캘린더</h2>
 		<h2 style="text-align:center;">${loginedMember.name}</h2>
@@ -162,6 +162,43 @@
 	  <span id="date"></span>
 	  </div>
 	  </div>
+=======
+					<h1 class="mt-4">Daily Muscle Life</h1>
+					<!--   <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol> -->
+					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
+					<div id='calendar'></div>
+					<h2 style="text-align: center;">손범규님의 캘린더</h2>
+					<h2 style="text-align: center;">${loginedMember.name}</h2>
+					<div id='calendar' style="position: relative;">
+						<c:if test="${loginedMember ne null}">
+							<button class="login-btn" type="button"
+								onclick="location.href='logout'">로그아웃</button>
+						</c:if>
+						<c:if test="${loginedMember ne null}">
+							<button class="mypage-btn" type="button"
+								onclick="location.href='mypage'">마이페이지</button>
+						</c:if>
+						<c:if test="${loginedMember ne null}">
+							<button class="add-btn" type="button"
+								onclick="add_btnSchedule();">일정추가</button>
+						</c:if>
+						<c:if test="${loginedMember eq null}">
+							<button class="login-btn" type="button" onclick="login_form();">로그인</button>
+						</c:if>
+						<c:if test="${loginedMember eq null}">
+							<button class="add-btn" type="button"
+								onclick="location.href='join'">회원가입</button>
+						</c:if>
+					</div>
+					<div class="modal">
+						<div class="modal-content">
+
+							<div id="date1"></div>
+						</div>
+					</div>
+>>>>>>> Stashed changes
 				</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
