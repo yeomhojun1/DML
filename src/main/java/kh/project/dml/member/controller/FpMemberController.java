@@ -14,11 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.social.google.connect.GoogleConnectionFactory;
 import org.springframework.social.oauth2.GrantType;
 import org.springframework.social.oauth2.OAuth2Operations;
@@ -33,8 +28,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.util.WebUtils;
 
 import kh.project.dml.common.auth.SnsLogin;
@@ -271,12 +264,15 @@ public class FpMemberController {
 	@GetMapping("/member/mypage")
 	public String mypage(Model model, HttpSession session) {
 		Object memberObj = session.getAttribute(SessionNames.LOGIN);
-	    
+	    System.out.println(memberObj);
+		
 	    if (memberObj instanceof FpUsersVo) {
 	        FpUsersVo userMember = (FpUsersVo) memberObj;
+	        System.out.println(userMember);
 	        model.addAttribute("member", service.mypage(userMember.getUsername()));
 	    } else if (memberObj instanceof FpMemberVo) {
-	    	FpMemberVo member = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
+	    	FpMemberVo member = (FpMemberVo) memberObj;
+	    	System.out.println(member);
 	    	model.addAttribute("member", service.mypage(member.getMemberId()));
 	    }
 		return "/member/mypage";

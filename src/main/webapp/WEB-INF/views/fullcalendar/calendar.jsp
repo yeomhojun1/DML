@@ -5,10 +5,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -33,11 +29,7 @@
 <!-- ck에디터적용코드  -->
 <script language="javascript"
 	src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
-<<<<<<< Updated upstream
-	<script src='<c:url value="/js/fullcalendar.global.js" />'></script>
-  <link href='<c:url value="/css/fullcalendar.css" />' rel='stylesheet' />
-  <script>
-=======
+
 <script src='<c:url value="/js/fullcalendar.global.js" />'></script>
 <link href='<c:url value="/css/fullcalendar.css" />' rel='stylesheet' />
 <script
@@ -48,7 +40,6 @@
 }
 </style>
 <script>
->>>>>>> Stashed changes
   	document.addEventListener('DOMContentLoaded', function() {
   	// div id 값 
     var calendarEl = document.getElementById('calendar');
@@ -113,10 +104,6 @@
 							            start: '2023-09-26'
 							       }
   					 ],
-<<<<<<< Updated upstream
-  					 
-=======
->>>>>>> Stashed changes
   				      dateClick : (info)=>{ // 선택한 날짜 값 뽑아내기
   				    	  console.log(info);
   				    	  const clickDate = info.dateStr;
@@ -145,24 +132,18 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-<<<<<<< Updated upstream
 					 <div id='calendar'></div>
     	<h2 style="text-align:center;">손범규님의 캘린더</h2>
-		<h2 style="text-align:center;">${loginedMember.name}</h2>
+		<h2 style="text-align:center;">${member.mname}님의 캘린더</h2>
 	  	<div id='calendar' style="position: relative;" >
-	  	<c:if test="${loginedMember ne null}"><button class="login-btn" type="button" onclick="location.href='logout'">로그아웃</button></c:if>
-	  	<c:if test="${loginedMember ne null}"><button class="mypage-btn" type="button" onclick="location.href='mypage'">마이페이지</button></c:if>
-	  	<c:if test="${loginedMember ne null}"><button class="add-btn" type="button" onclick="add_btnSchedule();">일정추가</button></c:if>
-	  	<c:if test="${loginedMember eq null}"><button class="login-btn" type="button" onclick="login_form();">로그인</button></c:if>
-	  	<c:if test="${loginedMember eq null}"><button class="add-btn" type="button" onclick="location.href='join'">회원가입</button></c:if>
+	  	<button class="add-btn" type="button" onclick="add_btnSchedule();">일정추가</button>
 	  </div>
 	  <div class="modal" >
 	  <div class="modal-content">
-	  ahekfckd
+	  test
 	  <span id="date"></span>
 	  </div>
 	  </div>
-=======
 					<h1 class="mt-4">Daily Muscle Life</h1>
 					<!--   <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
@@ -172,25 +153,8 @@
 					<h2 style="text-align: center;">손범규님의 캘린더</h2>
 					<h2 style="text-align: center;">${loginedMember.name}</h2>
 					<div id='calendar' style="position: relative;">
-						<c:if test="${loginedMember ne null}">
-							<button class="login-btn" type="button"
-								onclick="location.href='logout'">로그아웃</button>
-						</c:if>
-						<c:if test="${loginedMember ne null}">
-							<button class="mypage-btn" type="button"
-								onclick="location.href='mypage'">마이페이지</button>
-						</c:if>
-						<c:if test="${loginedMember ne null}">
 							<button class="add-btn" type="button"
 								onclick="add_btnSchedule();">일정추가</button>
-						</c:if>
-						<c:if test="${loginedMember eq null}">
-							<button class="login-btn" type="button" onclick="login_form();">로그인</button>
-						</c:if>
-						<c:if test="${loginedMember eq null}">
-							<button class="add-btn" type="button"
-								onclick="location.href='join'">회원가입</button>
-						</c:if>
 					</div>
 					<div class="modal">
 						<div class="modal-content">
@@ -198,11 +162,21 @@
 							<div id="date1"></div>
 						</div>
 					</div>
->>>>>>> Stashed changes
 				</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
 	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+		crossorigin="anonymous"></script>
 </body>
 </html>
