@@ -159,13 +159,16 @@
 .btn:hover {
 	background-color: red;
 }
-.exercisetest{
-	height : 400px;
+
+.exercisetest {
+	height: 400px;
 }
-.ex_part{
+
+.ex_part {
 	height: 20%;
 }
-.ex_part_one{
+
+.ex_part_one {
 	height: 10%;
 }
 </style>
@@ -236,33 +239,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="modal1" class="modal-overlay ">
-		<div class="modal-window">
-			<div class="title">
-				<h2>운동 루틴 추가</h2>
-			</div>
-			<div class="close-area">X</div>
-			<div class="content">
-				<div>
-					<span>날짜 : </span><input type="text" id="datepicker"
-						name="calendarNo">
-				</div>
-				<div>
-					<span>횟수 : </span><input type="number" class="addExerciseNumber">
-				</div>
-				<div>
-					<span>세트 : </span><input type="number" class="addExerciseSet">
-				</div>
-				<div>
-					<span>무게 : </span><input type="number" class="addExerciseWeight">
-				</div>
-				<div>
-					<button class="addMemberExSet">등록</button>
-				</div>
 
-			</div>
-		</div>
-	</div>
 	<div class="bigModalCss">
 		<div id="youtubeModal" class="modal-overlay">
 			<div class="modal-window ">
@@ -280,20 +257,20 @@
 		</div>
 	</div>
 	<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-			crossorigin="anonymous"></script>
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
 
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-			crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+		crossorigin="anonymous"></script>
 
-		<script
-			src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-			crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+		crossorigin="anonymous"></script>
 
 
-		<script src="${pageContext.request.contextPath}/js/test.js"></script>
-		<script>
+	<script src="${pageContext.request.contextPath}/js/test.js"></script>
+	<script>
 
 	<!-- 운동부위를 선택하면 관련운동 나오도록하거나 검색했을때 나오도록함-->
 	$(".ex_part").click(expartClickHandler);
@@ -364,19 +341,16 @@
 		btnModal.addEventListener("click", e => {
 		    modalOn()
 		})
-		
 		const closeBtn = modal.querySelector(".close-area")
 		closeBtn.addEventListener("click", e => {
 		    modalOff()
 		})
 		modal.addEventListener("click", e => {
 		    const evTarget = e.target
-		
 		    if(evTarget.classList.contains("modal-overlay")) {
 		        modalOff()
 		    }
 		})
-		
 	}
 	
 
@@ -399,14 +373,11 @@
 			</div>
 		</div>
 		`
-		
 		$(".bigModalCss").append(bigModal);
-		
 		const youtubeModal= document.getElementById("youtubeModal")
 	   	if(!isYoutubeModalOn()) {
 	   		youtubeModalOn();
     	}
-		
 		youtubeModal.addEventListener("click", e => {
 	    	const evTarget = e.target
 	  		  if(evTarget.classList.contains("modal-overlay")) {
@@ -432,10 +403,7 @@
 		$(".exModalTitle").append(result.exName);
 		$(".exModalContent").append(eposeLink1);
 		$(".eposeLinkCss>iframe").prop("width", "100%");
-	
 	}
-	
-	
 	 $(function() {
 	       //input을 datepicker로 선언
 	       $("#datepicker").datepicker({

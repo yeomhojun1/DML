@@ -34,11 +34,7 @@
 <link href='<c:url value="/css/fullcalendar.css" />' rel='stylesheet' />
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
-<style>
-.modal {
-	display: none;
-}
-</style>
+
 <script>
   	document.addEventListener('DOMContentLoaded', function() {
   	// div id 값 
@@ -108,9 +104,6 @@
   				    	  console.log(info);
   				    	  const clickDate = info.dateStr;
   				    	  alert(clickDate); //경고창d
-  				    	  //
-  				    	  $(".modal #date1").html(clickDate);
-  				    	  $(".modal").show();
   				    	  
   				      },
   				      eventClick: function(info){ // 클릭한 일정 값 뽑아내기
@@ -121,7 +114,173 @@
 				   });
 				   calendar.render();		
   	});
+  	$("#btn-modal1").click(()=>youtubeModalHandler(testOjbect));
+  	function youtubeModalHandler(result){
+		console.log(result);
+		$("#youtubeModal").remove();
+		const bigModal=`
+			<div id="youtubeModal" class="modal-overlay">
+			<div class="modal-window ">
+				<div class="title">
+					<h2 class="exModalTitle"></h2>
+				</div>
+				<div class="close-area">X</div>
+				<div class="content col-xl-12">
+					<div class="col-xl-12">
+						<div class="exModalContent col-xl-12"></div>
+						<div class="close-area">닫기</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		`
+		$(".bigModalCss").append(bigModal);
+		const youtubeModal= document.getElementById("youtubeModal")
+	   	if(!isYoutubeModalOn()) {
+	   		youtubeModalOn();
+    	}
+		youtubeModal.addEventListener("click", e => {
+	    	const evTarget = e.target
+	  		  if(evTarget.classList.contains("modal-overlay")) {
+		    	if(isYoutubeModalOn) {
+		    		youtubeModalOff()
+		    	}
+		    }
+		})
+		function isYoutubeModalOn(){
+			return modal.style.display === "flex"
+		}
+		function youtubeModalOn() {
+			youtubeModal.style.display ="flex"
+		}
+		function youtubeModalOff() {
+			youtubeModal.style.display = "none"
+		}
+		const closeBtn1 = youtubeModal.querySelector(".close-area")
+			closeBtn1.addEventListener("click", e => {
+			youtubeModalOff()
+		})
+		const eposeLink1 = '<div class="eposeLinkCss">'+result.eposeLink+'</div>'
+		$(".exModalTitle").append(result.exName);
+		$(".exModalContent").append(eposeLink1);
+		$(".eposeLinkCss>iframe").prop("width", "100%");
+	}
   </script>
+<style>
+#modal.modal-overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(1.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#modal .modal-window {
+	background: beige;
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	width: 35%;
+	height: 500px;
+	position: relative;
+	top: -200px;
+	padding: 10px;
+}
+
+#modal .title {
+	padding-left: 10px;
+	display: inline;
+	text-shadow: 1px 1px 2px gray;
+	color: black;
+}
+
+#modal .title h2 {
+	display: inline;
+}
+
+#modal .close-area {
+	display: inline;
+	float: right;
+	padding-right: 10px;
+	cursor: pointer;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
+
+#modal .content {
+	margin-top: 20px;
+	padding: 0px 10px;
+	text-shadow: 1px 1px 2px gray;
+	color: black;
+}
+
+#youtubeModal.modal-overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(1.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#youtubeModal .modal-window {
+	background: beige;
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	width: 50%;
+	height: 80%;
+	position: fix;
+	right: 20%;
+	left: 30%;
+	top: 20%;
+	padding: 10px;
+}
+
+#youtubeModal .title {
+	padding-left: 10px;
+	display: inline;
+	text-shadow: 1px 1px 2px gray;
+	color: black;
+}
+
+#youtubeModal .title h2 {
+	display: inline;
+}
+
+#youtubeModal .close-area {
+	display: inline;
+	float: right;
+	padding-right: 10px;
+	cursor: pointer;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
+
+#youtubeModal .content {
+	margin-top: 20px;
+	padding: 0px 10px;
+	text-shadow: 1px 1px 2px gray;
+	color: black;
+}
+</style>
 </head>
 <body class="sb-nav-fixed">
 	<jsp:include page="/WEB-INF/views/frame/nav.jsp"></jsp:include>
@@ -132,34 +291,33 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					 <div id='calendar'></div>
-    	<h2 style="text-align:center;">손범규님의 캘린더</h2>
-		<h2 style="text-align:center;">${member.mname}님의 캘린더</h2>
-	  	<div id='calendar' style="position: relative;" >
-	  	<button class="add-btn" type="button" onclick="add_btnSchedule();">일정추가</button>
-	  </div>
-	  <div class="modal" >
-	  <div class="modal-content">
-	  test
-	  <span id="date"></span>
-	  </div>
-	  </div>
-					<h1 class="mt-4">Daily Muscle Life</h1>
+
+					<div>
+						<h1 class="mt-4">Daily Muscle Life</h1>
+					</div>
 					<!--   <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol> -->
 					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
 					<div id='calendar'></div>
-					<h2 style="text-align: center;">손범규님의 캘린더</h2>
-					<h2 style="text-align: center;">${loginedMember.name}</h2>
-					<div id='calendar' style="position: relative;">
-							<button class="add-btn" type="button"
-								onclick="add_btnSchedule();">일정추가</button>
+					<div>
+						<h2 style="text-align: center;">손범규님의 캘린더</h2>
+						<button id="btn-modal1">일정추가</button>
 					</div>
-					<div class="modal">
-						<div class="modal-content">
-
-							<div id="date1"></div>
+				</div>
+				<div class="bigModalCss">
+					<div id="youtubeModal" class="modal-overlay">
+						<div class="modal-window ">
+							<div class="title">
+								<h2 class="exModalTitle"></h2>
+							</div>
+							<div class="close-area">X</div>
+							<div class="content col-xl-12">
+								<div class="col-xl-12">
+									<div class="exModalContent col-xl-12"></div>
+									<div class="close-area">닫기</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

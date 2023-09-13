@@ -19,7 +19,7 @@ import kh.project.dml.member.model.vo.FpMemberVo;
 import kh.project.dml.users.model.vo.FpUsersVo;
 
 @Controller
-@RequestMapping("/calender")
+@RequestMapping("/calendar")
 public class FpCalenderController {
 
 	@Autowired
@@ -33,20 +33,21 @@ public class FpCalenderController {
 		Object memberObj = session.getAttribute(SessionNames.LOGIN);
 	    System.out.println(memberObj);
 		
-	    if (memberObj instanceof FpUsersVo) {
-	        FpUsersVo userMember = (FpUsersVo) memberObj;
-	        System.out.println(userMember);
-	        model.addAttribute("member", fpMemberService.memberInfo(userMember.getUsername()));
-	    } else if (memberObj instanceof FpMemberVo) {
-	    	FpMemberVo member = (FpMemberVo) memberObj;
-	    	System.out.println(member);
-	    	model.addAttribute("member", fpMemberService.memberInfo(member.getMemberId()));
-	    }
+//	    if (memberObj instanceof FpUsersVo) {
+//	        FpUsersVo userMember = (FpUsersVo) memberObj;
+//	        System.out.println(userMember);
+//	        model.addAttribute("member", fpMemberService.memberInfo(userMember.getUsername()));
+//	    } else if (memberObj instanceof FpMemberVo) {
+//	    	FpMemberVo member = (FpMemberVo) memberObj;
+//	    	System.out.println(member);
+//	    	model.addAttribute("member", fpMemberService.memberInfo(member.getMemberId()));
+//	    }
 		return "/fullcalendar/calendar";
 	}
 
     @GetMapping("/event") //ajax 데이터 전송 URL
-    public @ResponseBody List<Map<String, Object>> getEvent(){
+    @ResponseBody 
+    public List<Map<String, Object>> getEvent(){
 		  return fpcalenderservice.getEventList();
     }
 
