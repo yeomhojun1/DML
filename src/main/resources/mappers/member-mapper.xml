@@ -28,6 +28,7 @@
 	<select id="checkId" parameterType="string" resultType="string">
         select member_id from member where member_id = #{memberId}
 	</select>
+	
     <select id="login" resultType="FpUsersVo">
         select * from users where username = #{username} and password = #{password}
     </select>
