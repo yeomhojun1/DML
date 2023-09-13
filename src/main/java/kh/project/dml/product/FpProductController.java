@@ -16,4 +16,9 @@ public class FpProductController {
 		return "product/product";
 	}
 	
+	@GetMapping("/fullcalendar/calendar")
+	public String calendar() {
+		return "/fullcalendar/calendar";
+	}
+	
 }
