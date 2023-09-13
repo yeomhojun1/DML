@@ -128,6 +128,12 @@ public class FpMemberService {
 	public void update(FpMemberVo vo) {
 		dao.update(vo);
 	}
+	
+	@Transactional
+	public void delete(String username) {
+		dao.deleteMember(username);
+		dao.deleteUser(username);
+	}
 
 	public void keepLogin(String memberId, String sessionId, Date expire) {
 		dao.keepLogin(memberId, sessionId, expire);

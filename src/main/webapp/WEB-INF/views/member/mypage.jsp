@@ -82,9 +82,11 @@
 								</div>
 								<button class="MyPage_basic_btn" onclick="sendData()">저장하기</button>
 
-								<button class="MyPage_basic_btn MyPage_basic_red MyPage_btn_right" onclick="sendPostRequest('${pageContext.request.contextPath}/member/withdrawal')">회원탈퇴</button>
+								<button class="MyPage_basic_btn MyPage_basic_red MyPage_btn_right" 
+									onclick="location.href='${pageContext.request.contextPath}/member/deleteCheck'">회원탈퇴</button>
 								
-								<button class="ant-btn css-1s3dcof ant-btn-default MyPage_basic_btn MyPage_basic_red MyPage_btn_right"><a href="${pageContext.request.contextPath}/member/logout">로그아웃</a></button>
+								<button class="MyPage_basic_btn MyPage_basic_red MyPage_btn_right">
+									<a href="${pageContext.request.contextPath}/member/logout">로그아웃</a></button>
 								
 							</div>
 						</div>
@@ -106,14 +108,6 @@
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
 	<script>
-		function sendPostRequest(url) {
-		    var form = document.createElement("form");
-		    form.action = url;
-		    form.method = "post";
-		
-		    document.body.appendChild(form);
-		    form.submit();
-		}
 		
 		function sendData() {
 	        var member = {
