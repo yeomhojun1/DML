@@ -1,37 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="" />
-<meta name="author" content="" />
-<title>Daily Muscle Life</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/styles.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/scss.css"
-	rel="stylesheet" />
-<script
-	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-	crossorigin="anonymous"></script>
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<!-- ck에디터적용코드  -->
-<script language="javascript"
-	src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
-	<script src='<c:url value="/js/fullcalendar.global.js" />'></script>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    
+  <script src='<c:url value="/js/fullcalendar.global.js" />'></script>
   <link href='<c:url value="/css/fullcalendar.css" />' rel='stylesheet' />
+  <script
+	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
+  <style>
+  	.modal{
+  	display:none;
+  	}
+  </style>
   <script>
   	document.addEventListener('DOMContentLoaded', function() {
   	
@@ -116,7 +100,12 @@
 							            url: 'https://www.owlmtcabin-official.com/home', // 클릭시 해당 url로 이동
 							            start: '2023-09-26'
 							       }
+
+					    
+						
   					 ],
+  					 
+  					  
   					 
   				      dateClick : (info)=>{ // 선택한 날짜 값 뽑아내기
   				    	  console.log(info);
@@ -131,25 +120,19 @@
   				    	  const title = info.event.title;
   				    	alert(title); //경고창
   				      }
+  				      
+				     
 				     
 				   });
 				   calendar.render();		
   	});
   </script>
-</head>
-<body class="sb-nav-fixed">
-	<jsp:include page="/WEB-INF/views/frame/nav.jsp"></jsp:include>
-	<div id="layoutSidenav">
-
-		<jsp:include page="/WEB-INF/views/frame/asidebar.jsp"></jsp:include>
-
-		<div id="layoutSidenav_content">
-			<main>
-				<div class="container-fluid px-4">
-					 <div id='calendar'></div>
-    	<h2 style="text-align:center;">손범규님의 캘린더</h2>
+  </head>
+  <body>
+    <div id='calendar'></div>
+    <h2 style="text-align:center;">손범규님의 캘린더</h2>
 		<h2 style="text-align:center;">${loginedMember.name}</h2>
-	  	<div id='calendar' style="position: relative;" >
+	  <div id='calendar' style="position: relative;" >
 	  	<c:if test="${loginedMember ne null}"><button class="login-btn" type="button" onclick="location.href='logout'">로그아웃</button></c:if>
 	  	<c:if test="${loginedMember ne null}"><button class="mypage-btn" type="button" onclick="location.href='mypage'">마이페이지</button></c:if>
 	  	<c:if test="${loginedMember ne null}"><button class="add-btn" type="button" onclick="add_btnSchedule();">일정추가</button></c:if>
@@ -162,10 +145,6 @@
 	  <span id="date"></span>
 	  </div>
 	  </div>
-				</div>
-			</main>
-			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
-		</div>
-	</div>
-</body>
+  </body>
+  
 </html>
