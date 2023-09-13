@@ -26,7 +26,7 @@ public class FpCalenderController {
 	FpCalenderService fpcalenderservice;
 	
 	@Autowired
-	public FpMemberService service; 
+	public FpMemberService fpMemberService; 
 	
 	@RequestMapping //기본 페이지 표시
 	public String viewCalendar(Model model, HttpSession session){
@@ -36,11 +36,11 @@ public class FpCalenderController {
 	    if (memberObj instanceof FpUsersVo) {
 	        FpUsersVo userMember = (FpUsersVo) memberObj;
 	        System.out.println(userMember);
-	        model.addAttribute("member", service.mypage(userMember.getUsername()));
+	        model.addAttribute("member", fpMemberService.memberInfo(userMember.getUsername()));
 	    } else if (memberObj instanceof FpMemberVo) {
 	    	FpMemberVo member = (FpMemberVo) memberObj;
 	    	System.out.println(member);
-	    	model.addAttribute("member", service.mypage(member.getMemberId()));
+	    	model.addAttribute("member", fpMemberService.memberInfo(member.getMemberId()));
 	    }
 		return "/fullcalendar/calendar";
 	}

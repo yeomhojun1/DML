@@ -26,7 +26,7 @@ public class FpMemberDao {
 	private static final String LOGIN = NS + ".login";
 	private static final String SELECT_LIST = NS + ".selectList";
 	private static final String NORMAL_LOGIN = NS + ".normallogin";
-	private static final String MYPAGE = NS + ".mypage";
+	private static final String INFO = NS + ".info";
 	private static final String UPDATE = NS + ".update";
 	private static final String DELETE_MEMBER = NS + ".deleteMember";
 	private static final String DELETE_USER = NS + ".deleteUser";
@@ -53,8 +53,8 @@ public class FpMemberDao {
 		return session.selectOne(NORMAL_LOGIN, username);
 	}
 	
-	public FpMemberVo mypage(String memberId) {
-		return session.selectOne(MYPAGE, memberId);
+	public FpMemberVo memberInfo(String memberId) {
+		return session.selectOne(INFO, memberId);
 	}
 	
 	public void update(FpMemberVo vo) {

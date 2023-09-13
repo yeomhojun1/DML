@@ -121,8 +121,8 @@ public class FpMemberService {
 	    return null;
 	}
 	
-	public FpMemberVo mypage(String memberId) {
-		return dao.mypage(memberId);
+	public FpMemberVo memberInfo(String memberId) {
+		return dao.memberInfo(memberId);
 	}
 	
 	public void update(FpMemberVo vo) {

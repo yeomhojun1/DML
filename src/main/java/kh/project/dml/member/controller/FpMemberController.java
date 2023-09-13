@@ -264,16 +264,15 @@ public class FpMemberController {
 	@GetMapping("/member/mypage")
 	public String mypage(Model model, HttpSession session) {
 		Object memberObj = session.getAttribute(SessionNames.LOGIN);
-	    System.out.println(memberObj);
 		
 	    if (memberObj instanceof FpUsersVo) {
 	        FpUsersVo userMember = (FpUsersVo) memberObj;
 	        System.out.println(userMember);
-	        model.addAttribute("member", service.mypage(userMember.getUsername()));
+	        model.addAttribute("member", service.memberInfo(userMember.getUsername()));
 	    } else if (memberObj instanceof FpMemberVo) {
 	    	FpMemberVo member = (FpMemberVo) memberObj;
 	    	System.out.println(member);
-	    	model.addAttribute("member", service.mypage(member.getMemberId()));
+	    	model.addAttribute("member", service.memberInfo(member.getMemberId()));
 	    }
 		return "/member/mypage";
 	}
@@ -282,7 +281,7 @@ public class FpMemberController {
 	@PostMapping("/member/update")
 	public String updateMember(@RequestBody FpMemberVo member, Model model, HttpSession session) {
 		service.update(member);
-	    member = service.mypage(member.getMemberId());
+	    member = service.memberInfo(member.getMemberId());
 	    model.addAttribute("member", member);
 		return "redirect:/member/mypage";
 	}

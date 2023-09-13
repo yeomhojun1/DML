@@ -6,7 +6,7 @@
 		select * from member
 	</select>
 	
-	<select id="mypage" parameterType="string" resultType="FpMemberVo">
+	<select id="info" parameterType="string" resultType="FpMemberVo">
 		select * from member
 		where member_id = #{memberId}
 	</select>
