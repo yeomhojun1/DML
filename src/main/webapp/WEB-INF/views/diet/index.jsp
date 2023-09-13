@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -171,9 +170,6 @@
 			<main>
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">Daily Muscle Life</h1>
-					<!--   <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol> -->
 					<div class="row">
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-primary text-white mb-4">
@@ -224,12 +220,12 @@
 							</div>
 						</div>
 					</div>
+					
 					<div class="DateBars_date_bar__QeCa3" >
 						<div class="DateBars_date__DyX0X">2023-09-04</div>
 						<div class="DateBars_day_of_week__ShQrM">월</div>
 						<div class="DateBars_date_selector__ajXTR">
-							<div style="margin-top: 2px; margin-right: 10px;">
-							
+
 							</div>
 							
 							
@@ -351,66 +347,13 @@
 			</div>
 		</div>
 	</footer>
-	</div>
-	</div>
 	
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
-	<script src="js/scripts.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-		crossorigin="anonymous"></script>
-	<script src="js/datatables-simple-demo.js"></script>
-	<!-- <script>
+	<script		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"		crossorigin="anonymous"></script>
+	<script src="${pageContext.request.contextPath }/js/scripts.js"></script>
+	<script		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"		crossorigin="anonymous"></script>
+<script>
 	$(function() {
-    // input을 datepicker로 선언
-    $("#datepicker").datepicker({
-        dateFormat: 'yy-mm-dd',
-        showOtherMonths: true,
-        showMonthAfterYear: true,
-        changeYear: true,
-        changeMonth: true,
-        showOn: "both",
-        buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif", // 버튼 이미지 경로
-        buttonImageOnly: true,
-        buttonText: "선택",
-        yearSuffix: "년",
-        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], // 달력의 월 부분 Tooltip
-        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], // 달력의 요일 텍스트
-        dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'], // 달력의 요일 Tooltip
-       onSelect: function(dateText, inst) {
-           $(".DateBars_date__DyX0X").text(dateText); // 맨 위의 날짜 변경
-           var date=new Date($("#datepicker").datepicker({dateFormat:"yy-mm-dd"}).val());
-           //일요일 0~
-           alert("date:"+date.getDay());
-           
-           week=new Array("일","월","화","수","목","금","토");
-           $(".DateBars_day_of_week__ShQrM").text(week[date.getDay()]);
-           
-           
-           
-           var container = $(".DateBars_date_selector__ajXTR"); // 스크롤할 컨테이너
-           var scrollTo = $(".ant-btn-circle span", container).filter(function() {
-               return $(this).text() === inst.selectedDay.toString();
-           }); // 선택한 날짜 버튼
-           
-
-           if (scrollTo.length) {
-               container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop()); // 스크롤 이동
-           }
-           
-       }
-    
-    });
-    $('#datepicker').datepicker('setDate' , new Date());
-});
-	
-	</script> -->
-	<script>
-	$(function() {
-  var container = $(".DateBars_date_selector__ajXTR"); // 스크롤할 컨테이너
+ 	var container = $(".DateBars_date_selector__ajXTR"); // 스크롤할 컨테이너
 
   // 스크롤 좌 우 버튼 클릭 시 이동
   $(".ant-image-img").click(function() {
@@ -438,6 +381,84 @@
         changeMonth: true,
         showOn: "both",
         buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif", // 버튼 이미지 경로
+        buttonImageOnly: true,
+        buttonText: "선택",
+        yearSuffix: "년",
+        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], // 달력의 월 부분 Tooltip
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], // 달력의 요일 텍스트
+        dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'], // 달력의 요일 Tooltip
+
+       onSelect: function(dateText, inst) {
+           $(".DateBars_date__DyX0X").text(dateText); // 맨 위의 날짜 변경
+           var date=new Date($("#datepicker").datepicker({dateFormat:"yy-mm-dd"}).val());
+           //일요일 0~
+           alert("date:"+date.getDay());
+           
+           week=new Array("일","월","화","수","목","금","토");
+           $(".DateBars_day_of_week__ShQrM").text(week[date.getDay()]);
+           
+     var scrollTo = $(".ant-btn-circle span", container).filter(function() {
+       return parseInt($(this).text()) === inst.selectedDay;
+     });
+
+     if (scrollTo.length) {
+       container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop());
+     }
+   },
+   
+   onChangeMonthYear:function(year, month, inst){
+     setTimeout(function(){
+       var selectedDay = parseInt($(".ui-datepicker-calendar .ui-state-active a", inst.dpDiv).text());
+      
+       if (!isNaN(selectedDay)) {
+         $(".DateBars_date__DyX0X").text(selectedDay);
+
+         var scrollTo = $(".ant-btn-circle span", container).filter(function() {
+           return parseInt($(this).text()) === selectedDay;
+         });
+
+         if (scrollTo.length) {
+           container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop());
+         }
+       }
+     }, 0);
+   }
+ });
+
+ $('#datepicker').datepicker('setDate', new Date());
+});
+	</script>
+<script>
+	$(function() {
+ 	var container = $(".DateBars_date_selector__ajXTR"); // 스크롤할 컨테이너
+
+  // 스크롤 좌 우 버튼 클릭 시 이동
+  $(".ant-image-img").click(function() {
+    var currentDay = parseInt($(".DateBars_date__DyX0X").text());
+    var nextDay = currentDay + 1;
+	
+
+    var scrollTo = $(".ant-btn-circle span", container).filter(function() {
+      return parseInt($(this).text()) === nextDay;
+    });
+   
+
+    if (scrollTo.length) {
+      container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop());
+      $(".DateBars_date__DyX0X").text(nextDay);
+    }
+  });
+  console.log(scrollTo);
+  // input을 datepicker로 선언
+  $("#datepicker").datepicker({
+	    dateFormat: 'yy-mm-dd',
+        showOtherMonths: true,
+        showMonthAfterYear: true,
+        changeYear: true,
+        changeMonth: true,
+        showOn: "both",
+        buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/Icon_calendar.gif'", // 버튼 이미지 경로
         buttonImageOnly: true,
         buttonText: "선택",
         yearSuffix: "년",

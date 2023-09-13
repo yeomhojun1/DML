@@ -56,7 +56,8 @@
 	flex-direction: row;
 	display: flex;
 	margin-left: 100px;
-	align-self: center
+	align-self: center;
+	justify-content: flex-end;
 }
 
 .DateBars_date_selector_each__bZWnQ {
@@ -104,7 +105,6 @@
 	text-align: center;
 	overflow: hidden;
 	width: 100px;
-	height: 60px;
 	border-radius: 30px;
 	padding-right: 10px
 }
