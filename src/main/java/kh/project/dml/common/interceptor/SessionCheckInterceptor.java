@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import kh.project.dml.member.model.service.FpMemberService;
+import kh.project.dml.member.model.service.FpMemberServiceImpl;
 import kh.project.dml.member.model.vo.FpMemberVo;
 import kh.project.dml.users.model.vo.FpUsersVo;
 
@@ -19,7 +19,7 @@ import kh.project.dml.users.model.vo.FpUsersVo;
 public class SessionCheckInterceptor implements HandlerInterceptor {
 	
 	@Autowired
-	private FpMemberService service;
+	private FpMemberServiceImpl service;
 	
 	// 로그 수집 기능
 	private static final Logger logger = LoggerFactory.getLogger(SessionCheckInterceptor.class);

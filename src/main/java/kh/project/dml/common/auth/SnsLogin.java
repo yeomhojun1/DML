@@ -23,7 +23,6 @@ public class SnsLogin {
 				.callback(sns.getRedirectUrl())
 				.build(sns.getApi20Instance());
 		this.sns = sns;
-		System.out.println("sns : "+this.sns);
 	}
 	
 	public String getAuthURL() {
@@ -31,9 +30,6 @@ public class SnsLogin {
 	}
 
 	public FpMemberVo getMemberProfile(String code) throws Exception {
-		System.out.println(code);
-		System.out.println(oauthService);
-		
 		OAuth2AccessToken accessToken = oauthService.getAccessToken(code);
 		System.out.println("accessToken : "+accessToken);
 		OAuthRequest request = new OAuthRequest(Verb.GET, this.sns.getProfileUrl());
@@ -44,7 +40,6 @@ public class SnsLogin {
 	}
 
 	private FpMemberVo parseJson(String body) throws Exception {
-		System.out.println("============================\n" + body + "\n==================");
 		FpMemberVo member = new FpMemberVo();
 		
 		ObjectMapper mapper = new ObjectMapper();
@@ -69,7 +64,6 @@ public class SnsLogin {
 			member.setMemberId(kakaoAccountNode.get("email").asText());
 			member.setMname(kakaoAccountNode.get("profile").get("nickname").asText());
 		}
-		System.out.println(member);
 		return member;
 	}
 	

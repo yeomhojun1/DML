@@ -46,6 +46,7 @@
 			<exclude-mapping path="/member/login" />
 			<exclude-mapping path="/member/signup" />
 			<exclude-mapping path="/member/agreement" />
+			<exclude-mapping path="/member/*Popup" />
 			<beans:ref bean="sessionCheckInterceptor" />
 		</interceptor>
 	</interceptors>

@@ -2,7 +2,6 @@ package kh.project.dml.member.controller;
 
 import java.util.Date;
 
-import javax.inject.Inject;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +12,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpRequest;
 import org.springframework.social.google.connect.GoogleConnectionFactory;
 import org.springframework.social.oauth2.GrantType;
 import org.springframework.social.oauth2.OAuth2Operations;
@@ -33,13 +31,15 @@ import org.springframework.web.util.WebUtils;
 import kh.project.dml.common.auth.SnsLogin;
 import kh.project.dml.common.auth.SnsValue;
 import kh.project.dml.common.interceptor.SessionNames;
-import kh.project.dml.member.model.service.FpMemberService;
+import kh.project.dml.member.model.service.FpMemberServiceImpl;
 import kh.project.dml.member.model.vo.FpMemberVo;
 import kh.project.dml.member.model.vo.SocialCreateForm;
 import kh.project.dml.member.model.vo.UserCreateForm;
 import kh.project.dml.users.model.vo.FpUsersVo;
 import kh.project.dml.users.model.vo.LoginVo;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Controller
 @RequestMapping("/")
 public class FpMemberController {
@@ -47,23 +47,12 @@ public class FpMemberController {
 	// 로그 수집 기능
 	private static final Logger logger = LoggerFactory.getLogger(FpMemberController.class);
 	
-	@Inject
-	private FpMemberService service;
-	
-	@Inject
-	private SnsValue naverSns;
-	
-	@Inject
-	private SnsValue googleSns;
-
-	@Inject
-	private SnsValue kakaoSns;
-	
-	@Inject
-	private GoogleConnectionFactory googleConnectionFactory;
-	
-	@Inject
-	private OAuth2Parameters googleOAuth2Parameters;
+	private final FpMemberServiceImpl service;
+	private final SnsValue naverSns;
+	private final SnsValue googleSns;
+	private final SnsValue kakaoSns;
+	private final GoogleConnectionFactory googleConnectionFactory;
+	private final OAuth2Parameters googleOAuth2Parameters;
 	
 	// 멤버 페이지(임시)
 	@GetMapping("/member/list")
@@ -146,29 +135,28 @@ public class FpMemberController {
 	@PostMapping("/member/login")
 	public String loginPost(LoginVo vo, Model model, HttpSession session, HttpServletResponse response) throws Exception {
 	    logger.info("loginPost...LoginVo={}", vo); 
-	    try {
-	        FpUsersVo member = service.login(vo);
-	        if (member.getAuthorities().equals("ROLE_MEMBER")) {
-	            Date expire = new Date(System.currentTimeMillis() + SessionNames.EXPIRE * 1000);
-	            service.keepLogin(member.getUsername(), session.getId(), expire);
-	            session.setAttribute(SessionNames.LOGIN, member); // 세션 설정
-	            
-	            // 쿠키에 세션 ID 저장
-	            Cookie loginCookie = new Cookie(SessionNames.LOGIN_COOKIE, session.getId());
-	            loginCookie.setPath("/");
-	            loginCookie.setMaxAge(SessionNames.EXPIRE); // 쿠키 유효기간 설정 (초 단위)
-	            response.addCookie(loginCookie);
-	            
-	            return "redirect:/index";
-	        } else {
-	            model.addAttribute("loginResult", "Login Fail!!");
-	        }
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        logger.error("사용자ID 또는 비밀번호를 확인해 주세요.", e);
-	        model.addAttribute("loginResult", "사용자ID 또는 비밀번호를 확인해 주세요.");
-	    }
-	    return "/member/login";
+        FpUsersVo member = service.login(vo);
+        if(member != null) {
+        	if (member.getAuthorities().equals("ROLE_MEMBER")) {
+        		Date expire = new Date(System.currentTimeMillis() + SessionNames.EXPIRE * 1000);
+        		service.keepLogin(member.getUsername(), session.getId(), expire);
+        		session.setAttribute(SessionNames.LOGIN, member); // 세션 설정
+        		
+        		// 쿠키에 세션 ID 저장
+        		Cookie loginCookie = new Cookie(SessionNames.LOGIN_COOKIE, session.getId());
+        		loginCookie.setPath("/");
+        		loginCookie.setMaxAge(SessionNames.EXPIRE); // 쿠키 유효기간 설정 (초 단위)
+        		response.addCookie(loginCookie);
+        		
+        		return "redirect:/index";
+        	} else {
+        		model.addAttribute("loginResult", "Login Fail!!");
+        	}
+        } else {	        	
+        	logger.error("사용자ID 또는 비밀번호를 확인해 주세요.");
+        	model.addAttribute("loginResult", "사용자ID 또는 비밀번호를 확인해 주세요.");
+        }
+        return "/member/login";
 	}
 	
 	// 로그아웃 버튼 클릭
