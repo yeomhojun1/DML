@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.project.dml.admin.model.service.FpAdminService;
+import kh.project.dml.admin.model.service.FpAdminServiceImpl;
 import kh.project.dml.admin.model.vo.FpAdminVo;
 
 
@@ -16,17 +17,17 @@ import kh.project.dml.admin.model.vo.FpAdminVo;
 @RequestMapping("/admin")
 public class FpAdminController {
 	@Autowired
-	private FpAdminService fpadminService;
+	private FpAdminServiceImpl fpAdminServiceImpl;
 	
 	@GetMapping("/list")
 	public ModelAndView selectListadmin(ModelAndView mv) {
-		mv.addObject("adminlist", fpadminService.selectList());
+		mv.addObject("adminlist", fpAdminServiceImpl.selectList());
 		mv.setViewName("admin/list");
 		return mv;
 	}
 	@GetMapping("/one")
 	public ModelAndView selectOneadmin(ModelAndView mv, String adminId) {
-		mv.addObject("adminone", fpadminService.selectOne(adminId));
+		mv.addObject("adminone", fpAdminServiceImpl.selectOne(adminId));
 		mv.setViewName("admin/one");
 		return mv;
 	}
@@ -38,7 +39,7 @@ public class FpAdminController {
 	@PostMapping("/insert")
 	public String insertDoMemeber(RedirectAttributes redirectAttr, FpAdminVo vo ) {
 		String viewPage = "redirect:/";
-		int result = fpadminService.insert(vo);
+		int result = fpAdminServiceImpl.insert(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 가입 실패했습니다 \n 다시 입력해주세요");
@@ -54,14 +55,14 @@ public class FpAdminController {
 	}
 	@GetMapping("/update")
 	public ModelAndView updateadmin(ModelAndView mv, String adminId ) {
-		mv.addObject("adminone", fpadminService.selectOne(adminId));
+		mv.addObject("adminone", fpAdminServiceImpl.selectOne(adminId));
 		mv.setViewName("admin/update");
 		return mv;
 	}
 	@PostMapping("/update")
 	public String updateDoMemeber(RedirectAttributes redirectAttr, FpAdminVo vo ) {
 		String viewPage = "redirect:/";
-		int result = fpadminService.update(vo);
+		int result = fpAdminServiceImpl.update(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 실패했습니다 \n 다시 입력해주세요");
@@ -78,7 +79,7 @@ public class FpAdminController {
 	@PostMapping("/delete")
 	public String deleteDoMemeber(RedirectAttributes redirectAttr,String adminId ) {
 		String viewPage = "redirect:/";
-		int result = fpadminService.delete(adminId);
+		int result = fpAdminServiceImpl.delete(adminId);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");

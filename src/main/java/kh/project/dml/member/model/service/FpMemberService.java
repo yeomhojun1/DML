@@ -121,12 +121,18 @@ public class FpMemberService {
 	    return null;
 	}
 	
-	public FpMemberVo mypage(String memberId) {
-		return dao.mypage(memberId);
+	public FpMemberVo memberInfo(String memberId) {
+		return dao.memberInfo(memberId);
 	}
 	
 	public void update(FpMemberVo vo) {
 		dao.update(vo);
+	}
+	
+	@Transactional
+	public void delete(String username) {
+		dao.deleteMember(username);
+		dao.deleteUser(username);
 	}
 
 	public void keepLogin(String memberId, String sessionId, Date expire) {

@@ -8,7 +8,6 @@ import lombok.ToString;
 @Data
 @Getter
 @Setter
-@ToString
 public class FpUsersVo {
 	private String username;
 	private String password;
@@ -28,4 +27,11 @@ public class FpUsersVo {
 		this.userEnabled = userEnabled;
 		this.authorities = authorities;
 	}
+
+	@Override
+	public String toString() {
+		return "FpUsersVo [username=" + username + ", password=****** , userEnabled=" + userEnabled
+				+ ", authorities=" + authorities + "]";
+	}
+	
 }

@@ -16,17 +16,17 @@ import kh.project.dml.daydiet.model.vo.FpDayDietVo;
 @RequestMapping("/daydiet")
 public class FpDayDietController {
 	@Autowired
-	private FpDayDietService fpdaydietService;
+	private FpDayDietService fpDayDietServiceImpl;
 	
 	@GetMapping("/list")
 	public ModelAndView selectListdaydiet(ModelAndView mv) {
-		mv.addObject("daydietlist", fpdaydietService.selectList());
+		mv.addObject("daydietlist", fpDayDietServiceImpl.selectList());
 		mv.setViewName("daydiet/list");
 		return mv;
 	}
 	@GetMapping("/one")
 	public ModelAndView selectOnedaydiet(ModelAndView mv, String commentNum) {
-		mv.addObject("daydietone", fpdaydietService.selectOne(commentNum));
+		mv.addObject("daydietone", fpDayDietServiceImpl.selectOne(commentNum));
 		mv.setViewName("daydiet/one");
 		return mv;
 	}
@@ -38,7 +38,7 @@ public class FpDayDietController {
 	@PostMapping("/insert")
 	public String insertDoMemeber(RedirectAttributes redirectAttr, FpDayDietVo vo) {
 		String viewPage = "redirect:/";
-		int result = fpdaydietService.insert(vo);
+		int result = fpDayDietServiceImpl.insert(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 가입 실패했습니다 \n 다시 입력해주세요");
@@ -54,14 +54,14 @@ public class FpDayDietController {
 	}
 	@GetMapping("/update")
 	public ModelAndView updatedaydiet(ModelAndView mv, String commentNum ) {
-		mv.addObject("daydietone", fpdaydietService.selectOne(commentNum));
+		mv.addObject("daydietone", fpDayDietServiceImpl.selectOne(commentNum));
 		mv.setViewName("daydiet/update");
 		return mv;
 	}
 	@PostMapping("/update")
 	public String updateDoMemeber(RedirectAttributes redirectAttr, FpDayDietVo vo ) {
 		String viewPage = "redirect:/";
-		int result = fpdaydietService.update(vo);
+		int result = fpDayDietServiceImpl.update(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 실패했습니다 \n 다시 입력해주세요");
@@ -78,7 +78,7 @@ public class FpDayDietController {
 	@PostMapping("/delete")
 	public String deleteDoMemeber(RedirectAttributes redirectAttr,String commentNum ) {
 		String viewPage = "redirect:/";
-		int result = fpdaydietService.delete(commentNum);
+		int result = fpDayDietServiceImpl.delete(commentNum);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");

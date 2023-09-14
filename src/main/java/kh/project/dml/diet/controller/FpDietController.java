@@ -16,11 +16,11 @@ import kh.project.dml.diet.model.vo.FpDietVo;
 public class FpDietController {
 
 	@Autowired
-	public FpDietService fpdietService;
+	public FpDietService fpDietServiceImpl;
 	
 	@GetMapping("/list")
 	public ModelAndView selectListdiet(ModelAndView mv) {
-		mv.addObject("dietList", fpdietService.selectList());
+		mv.addObject("dietList", fpDietServiceImpl.selectList());
 		mv.setViewName("diet/list");
 		return mv;
 	}
@@ -33,7 +33,7 @@ public class FpDietController {
 	
 	@GetMapping("/one")
 	public ModelAndView selectOnediet(ModelAndView mv, String mealCode) {
-		mv.addObject("dietone", fpdietService.selectOne(mealCode));
+		mv.addObject("dietone", fpDietServiceImpl.selectOne(mealCode));
 		mv.setViewName("diet/one");
 		return mv;
 	}
@@ -45,7 +45,7 @@ public class FpDietController {
 	@PostMapping("/insert")
 	public String insertDoMemeber(RedirectAttributes redirectAttr, FpDietVo vo ) {
 		String viewPage = "redirect:/";
-		int result = fpdietService.insert(vo);
+		int result = fpDietServiceImpl.insert(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 가입 실패했습니다 \n 다시 입력해주세요");
@@ -61,14 +61,14 @@ public class FpDietController {
 	}
 	@GetMapping("/update")
 	public ModelAndView updatediet(ModelAndView mv, String mealCode) {
-		mv.addObject("dietone", fpdietService.selectOne(mealCode));
+		mv.addObject("dietone", fpDietServiceImpl.selectOne(mealCode));
 		mv.setViewName("diet/update");
 		return mv;
 	}
 	@PostMapping("/update")
 	public String updateDoMemeber(RedirectAttributes redirectAttr, FpDietVo vo ) {
 		String viewPage = "redirect:/";
-		int result = fpdietService.update(vo);
+		int result = fpDietServiceImpl.update(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 실패했습니다 \n 다시 입력해주세요");
@@ -85,7 +85,7 @@ public class FpDietController {
 	@PostMapping("/delete")
 	public String deleteDoMemeber(RedirectAttributes redirectAttr, String mealCode ) {
 		String viewPage = "redirect:/";
-		int result = fpdietService.delete(mealCode);
+		int result = fpDietServiceImpl.delete(mealCode);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");

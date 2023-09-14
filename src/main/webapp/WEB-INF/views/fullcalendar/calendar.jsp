@@ -1,27 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html lang='en'>
-  <head>
-    <meta charset='utf-8' />
-    
-  <script src='<c:url value="/js/fullcalendar.global.js" />'></script>
-  <link href='<c:url value="/css/fullcalendar.css" />' rel='stylesheet' />
-  <script
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Daily Muscle Life</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
+	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/styles.css"
+	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/scss.css"
+	rel="stylesheet" />
+<script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
-  <style>
-  	.modal{
-  	display:none;
-  	}
-  </style>
-  <script>
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- ck에디터적용코드  -->
+<script language="javascript"
+	src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+
+<script src='<c:url value="/js/fullcalendar.global.js" />'></script>
+<link href='<c:url value="/css/fullcalendar.css" />' rel='stylesheet' />
+<script
+	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
+
+<script>
   	document.addEventListener('DOMContentLoaded', function() {
-  	
   	// div id 값 
     var calendarEl = document.getElementById('calendar');
-
     // FullCalendar API 호출
     var calendar = new FullCalendar.Calendar(calendarEl, {
 				     initialView: 'dayGridMonth',
@@ -61,18 +78,7 @@
 					      end: '2023-09-03', // a property! ** see important note below about 'end' **
 					     
 					    },
-					    { // this object will be "parsed" into an Event Object
-					      title: '곱창전골먹는날', // a property!
-					      start: '2023-09-04', // a property!
-					      end: '2023-09-07' // a property! ** see important note below about 'end' **
-					     
-						},
-						{ // this object will be "parsed" into an Event Object
-						      title: '삼겹살+술먹는날', // a property!
-						      start: '2023-09-10', // a property!
-						      end: '2023-09-17' // a property! ** see important note below about 'end' **
-						     
-							},
+					 
 							//같은날짜에 스케줄이 있으면 아래에 (+2)가 생김
 							 {
 					            title: '점심 술약속',
@@ -82,14 +88,7 @@
 						            title: '조퇴하는날',
 						            start: '2023-09-10T13:10:00'
 						      },
-						      {
-						            title: '결석하는날',
-						            start: '2023-09-10T09:05:00'
-						      },
-						      {
-						            title: '침대에누워있어야되는날',
-						            start: '2023-09-10T07:10:00'
-						      },	
+						   
 						      {
 						            title: 'KH 시험점수 확인하기',
 						            url: 'https://www.kh-academy.co.kr/', // 클릭시 해당 url로 이동
@@ -100,51 +99,174 @@
 							            url: 'https://www.owlmtcabin-official.com/home', // 클릭시 해당 url로 이동
 							            start: '2023-09-26'
 							       }
-
-					    
-						
   					 ],
-  					 
-  					  
-  					 
   				      dateClick : (info)=>{ // 선택한 날짜 값 뽑아내기
   				    	  console.log(info);
   				    	  const clickDate = info.dateStr;
   				    	  alert(clickDate); //경고창d
-  				    	  //
-  				    	  $(".modal #date").html(clickDate);
-  				    	  $(".modal").show();
+  				    	modalHandler
   				    	  
   				      },
   				      eventClick: function(info){ // 클릭한 일정 값 뽑아내기
   				    	  const title = info.event.title;
   				    	alert(title); //경고창
   				      }
-  				      
-				     
 				     
 				   });
 				   calendar.render();		
   	});
+  	
+
   </script>
-  </head>
-  <body>
-    <div id='calendar'></div>
-    <h2 style="text-align:center;">손범규님의 캘린더</h2>
-		<h2 style="text-align:center;">${loginedMember.name}</h2>
-	  <div id='calendar' style="position: relative;" >
-	  	<c:if test="${loginedMember ne null}"><button class="login-btn" type="button" onclick="location.href='logout'">로그아웃</button></c:if>
-	  	<c:if test="${loginedMember ne null}"><button class="mypage-btn" type="button" onclick="location.href='mypage'">마이페이지</button></c:if>
-	  	<c:if test="${loginedMember ne null}"><button class="add-btn" type="button" onclick="add_btnSchedule();">일정추가</button></c:if>
-	  	<c:if test="${loginedMember eq null}"><button class="login-btn" type="button" onclick="login_form();">로그인</button></c:if>
-	  	<c:if test="${loginedMember eq null}"><button class="add-btn" type="button" onclick="location.href='join'">회원가입</button></c:if>
-	  </div>
-	  <div class="modal" >
-	  <div class="modal-content">
-	  ahekfckd
-	  <span id="date"></span>
-	  </div>
-	  </div>
-  </body>
-  
+<style>
+#modal.modal-overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(1.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#modal .modal-window {
+	background: beige;
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	width: 35%;
+	height: 500px;
+	position: relative;
+	top: -200px;
+	padding: 10px;
+	display : inline;
+}
+
+#modal .title {
+	padding-left: 10px;
+	display: inline;
+	text-shadow: 1px 1px 2px gray;
+	color: black;
+}
+
+#modal .title h2 {
+	display: inline;
+}
+
+#modal .close-area {
+	display: inline;
+	float: right;
+	padding-right: 10px;
+	cursor: pointer;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
+
+#modal .content {
+	margin-top: 20px;
+	padding: 0px 10px;
+	text-shadow: 1px 1px 2px gray;
+	color: black;
+}
+</style>
+</head>
+<body class="sb-nav-fixed">
+	<jsp:include page="/WEB-INF/views/frame/nav.jsp"></jsp:include>
+	<div id="layoutSidenav">
+
+		<jsp:include page="/WEB-INF/views/frame/asidebar.jsp"></jsp:include>
+
+		<div id="layoutSidenav_content">
+			<main>
+				<div class="container-fluid px-4">
+
+					<div>
+						<h1 class="mt-4">Daily Muscle Life</h1>
+					</div>
+					<!--   <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol> -->
+					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
+					<div id='calendar'></div>
+					<div>
+						<h2 style="text-align: center;">손범규님의 캘린더</h2>
+						<button id="viewModal">일정추가</button>
+					</div>
+					<div id="modal" class="modal-overlay row ">
+						<div class="modal-window">
+							<div class="title">
+								<h2>응애</h2>
+							</div>
+							<div class="close-area">X</div>
+							<div class="content">
+								<h3>컨텐트임</h3>
+
+							</div>
+						</div>
+						<div class="modal-window">
+							<div class="title">
+								<h2>응애</h2>
+							</div>
+							<div class="close-area">X</div>
+							<div class="content">
+								<h3>컨텐트임</h3>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<script>
+			$("#viewModal").click(modalHandler);
+			function modalHandler(){
+				const modal = document.getElementById("modal")
+				modalOn();
+				function modalOn(){
+				modal.style.display="flex"
+			}
+				function isModalOn() {
+				    return modal.style.display === "flex"
+				}
+				function modalOff(){
+				modal.style.display = "none"
+			}
+				const viewModal = document.getElementById("viewModal")
+				viewModal.addEventListener("click", e => {
+			    modalOn()
+			})
+			const closeBtn = modal.querySelector(".close-area")
+			closeBtn.addEventListener("click", e => {
+		    	modalOff()
+			})
+			modal.addEventListener("click", e => {
+		   		const evTarget = e.target
+		    		if(evTarget.classList.contains("modal-overlay")) {
+		        		modalOff()
+		    }
+			})
+			}
+			
+			</script>
+			</main>
+			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
+		</div>
+	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+		crossorigin="anonymous"></script>
+</body>
 </html>

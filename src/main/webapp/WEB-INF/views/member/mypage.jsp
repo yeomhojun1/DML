@@ -28,6 +28,7 @@
 <!-- ck에디터적용코드  -->
 <script language="javascript"
 	src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+	
 </head>
 <body class="sb-nav-fixed">
 	<jsp:include page="/WEB-INF/views/frame/nav.jsp"></jsp:include>
@@ -64,12 +65,12 @@
 									<div class="MyPage_basic_input_title">키</div>
 									<div class="MyPage_basic_input_content">
 										<input class="MyPage_basic_input"
-											type="text" id="weight" value="${member.weight }">
+											type="text" id="height" value="${member.height }">
 									</div>
 									<div class="MyPage_basic_input_title">몸무게</div>
 									<div class="MyPage_basic_input_content">
 										<input class="MyPage_basic_input"
-											type="text" id="height" value="${member.height }">
+											type="text" id="weight" value="${member.weight }">
 									</div>
 								</div>
 								<div class="MyPage_basic_input_row">
@@ -82,10 +83,9 @@
 								</div>
 								<button class="MyPage_basic_btn" onclick="sendData()">저장하기</button>
 
-								<button class="MyPage_basic_btn MyPage_basic_red MyPage_btn_right" onclick="sendPostRequest('${pageContext.request.contextPath}/member/withdrawal')">회원탈퇴</button>
-								
-								<button class="ant-btn css-1s3dcof ant-btn-default MyPage_basic_btn MyPage_basic_red MyPage_btn_right"><a href="${pageContext.request.contextPath}/member/logout">로그아웃</a></button>
-								
+								<button class="MyPage_basic_btn MyPage_basic_red MyPage_btn_right" 
+									onclick="location.href='${pageContext.request.contextPath}/member/deleteCheck'">회원탈퇴</button>
+
 							</div>
 						</div>
 					</div>
@@ -106,14 +106,6 @@
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
 	<script>
-		function sendPostRequest(url) {
-		    var form = document.createElement("form");
-		    form.action = url;
-		    form.method = "post";
-		
-		    document.body.appendChild(form);
-		    form.submit();
-		}
 		
 		function sendData() {
 	        var member = {

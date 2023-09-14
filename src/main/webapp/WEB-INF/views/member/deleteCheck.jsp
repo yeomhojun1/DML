@@ -39,14 +39,12 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">Daily Muscle Life</h1>
-					<!--   <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol> -->
-					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
-					<!-- 우리가 만져야하는 부분임 
-				!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-					 여기까지 만지면 됨 -->
+					<h3>회원탈퇴를 위해 패스워드를 다시 입력해주세요.</h3>
+					<h5>소셜 로그인 사용자는 회원탈퇴 버튼을 바로 눌러주세요.</h5>
+					<form action="${pageContext.request.contextPath }/member/withdrawal" method="post">
+						<input type="password" name="password">
+						<button type="submit">회원탈퇴</button>
+					</form>
 				</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>

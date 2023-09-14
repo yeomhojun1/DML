@@ -16,17 +16,17 @@ import kh.project.dml.memberexset.model.vo.FpMemberExSetVo;
 @RequestMapping("/memberexset")
 public class FpMemberExSetController {
 	@Autowired
-	private FpMemberExSetService fpmemberexsetService;
+	private FpMemberExSetService fpMemberExSetServiceImpl;
 	
 	@GetMapping("/list")
 	public ModelAndView selectListmemberexset(ModelAndView mv) {
-		mv.addObject("memberexsetlist", fpmemberexsetService.selectList());
+		mv.addObject("memberexsetlist", fpMemberExSetServiceImpl.selectList());
 		mv.setViewName("memberexset/list");
 		return mv;
 	}
 	@GetMapping("/one")
 	public ModelAndView selectOnememberexset(ModelAndView mv, String memberId) {
-		mv.addObject("memberexsetone", fpmemberexsetService.selectOne(memberId));
+		mv.addObject("memberexsetone", fpMemberExSetServiceImpl.selectOne(memberId));
 		mv.setViewName("memberexset/one");
 		return mv;
 	}
@@ -38,7 +38,7 @@ public class FpMemberExSetController {
 	@PostMapping("/insert")
 	public String insertDomemberexset(RedirectAttributes redirectAttr, FpMemberExSetVo vo ) {
 		String viewPage = "redirect:/";
-		int result = fpmemberexsetService.insert(vo);
+		int result = fpMemberExSetServiceImpl.insert(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 가입 실패했습니다 \n 다시 입력해주세요");
@@ -54,14 +54,14 @@ public class FpMemberExSetController {
 	}
 	@GetMapping("/update")
 	public ModelAndView updatememberexset(ModelAndView mv, String memberId ) {
-		mv.addObject("memberexsetone", fpmemberexsetService.selectOne(memberId));
+		mv.addObject("memberexsetone", fpMemberExSetServiceImpl.selectOne(memberId));
 		mv.setViewName("memberexset/update");
 		return mv;
 	}
 	@PostMapping("/update")
 	public String updateDomemberexset(RedirectAttributes redirectAttr, FpMemberExSetVo vo ) {
 		String viewPage = "redirect:/";
-		int result = fpmemberexsetService.update(vo);
+		int result = fpMemberExSetServiceImpl.update(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 실패했습니다 \n 다시 입력해주세요");
@@ -78,7 +78,7 @@ public class FpMemberExSetController {
 	@PostMapping("/delete")
 	public String deleteDomemberexset(RedirectAttributes redirectAttr,String memberId) {
 		String viewPage = "redirect:/";
-		int result = fpmemberexsetService.delete(memberId);
+		int result = fpMemberExSetServiceImpl.delete(memberId);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");
