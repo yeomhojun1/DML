@@ -28,6 +28,7 @@
 <!-- ck에디터적용코드  -->
 <script language="javascript"
 	src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+	
 </head>
 <body class="sb-nav-fixed">
 	<jsp:include page="/WEB-INF/views/frame/nav.jsp"></jsp:include>
@@ -64,12 +65,12 @@
 									<div class="MyPage_basic_input_title">키</div>
 									<div class="MyPage_basic_input_content">
 										<input class="MyPage_basic_input"
-											type="text" id="weight" value="${member.weight }">
+											type="text" id="height" value="${member.height }">
 									</div>
 									<div class="MyPage_basic_input_title">몸무게</div>
 									<div class="MyPage_basic_input_content">
 										<input class="MyPage_basic_input"
-											type="text" id="height" value="${member.height }">
+											type="text" id="weight" value="${member.weight }">
 									</div>
 								</div>
 								<div class="MyPage_basic_input_row">
@@ -84,10 +85,7 @@
 
 								<button class="MyPage_basic_btn MyPage_basic_red MyPage_btn_right" 
 									onclick="location.href='${pageContext.request.contextPath}/member/deleteCheck'">회원탈퇴</button>
-								
-								<button class="MyPage_basic_btn MyPage_basic_red MyPage_btn_right">
-									<a href="${pageContext.request.contextPath}/member/logout">로그아웃</a></button>
-								
+
 							</div>
 						</div>
 					</div>

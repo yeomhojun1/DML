@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -30,14 +29,16 @@
 <!-- ck에디터적용코드  -->
 <script language="javascript"
 	src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
-	<script src='<c:url value="/js/fullcalendar.global.js" />'></script>
-  <link href='<c:url value="/css/fullcalendar.css" />' rel='stylesheet' />
-  <script>
+
+<script src='<c:url value="/js/fullcalendar.global.js" />'></script>
+<link href='<c:url value="/css/fullcalendar.css" />' rel='stylesheet' />
+<script
+	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
+
+<script>
   	document.addEventListener('DOMContentLoaded', function() {
-  	
   	// div id 값 
     var calendarEl = document.getElementById('calendar');
-
     // FullCalendar API 호출
     var calendar = new FullCalendar.Calendar(calendarEl, {
 				     initialView: 'dayGridMonth',
@@ -77,18 +78,7 @@
 					      end: '2023-09-03', // a property! ** see important note below about 'end' **
 					     
 					    },
-					    { // this object will be "parsed" into an Event Object
-					      title: '곱창전골먹는날', // a property!
-					      start: '2023-09-04', // a property!
-					      end: '2023-09-07' // a property! ** see important note below about 'end' **
-					     
-						},
-						{ // this object will be "parsed" into an Event Object
-						      title: '삼겹살+술먹는날', // a property!
-						      start: '2023-09-10', // a property!
-						      end: '2023-09-17' // a property! ** see important note below about 'end' **
-						     
-							},
+					 
 							//같은날짜에 스케줄이 있으면 아래에 (+2)가 생김
 							 {
 					            title: '점심 술약속',
@@ -98,14 +88,7 @@
 						            title: '조퇴하는날',
 						            start: '2023-09-10T13:10:00'
 						      },
-						      {
-						            title: '결석하는날',
-						            start: '2023-09-10T09:05:00'
-						      },
-						      {
-						            title: '침대에누워있어야되는날',
-						            start: '2023-09-10T07:10:00'
-						      },	
+						   
 						      {
 						            title: 'KH 시험점수 확인하기',
 						            url: 'https://www.kh-academy.co.kr/', // 클릭시 해당 url로 이동
@@ -117,14 +100,10 @@
 							            start: '2023-09-26'
 							       }
   					 ],
-  					 
   				      dateClick : (info)=>{ // 선택한 날짜 값 뽑아내기
   				    	  console.log(info);
   				    	  const clickDate = info.dateStr;
   				    	  alert(clickDate); //경고창d
-  				    	  //
-  				    	  $(".modal #date").html(clickDate);
-  				    	  $(".modal").show();
   				    	  
   				      },
   				      eventClick: function(info){ // 클릭한 일정 값 뽑아내기
@@ -135,7 +114,173 @@
 				   });
 				   calendar.render();		
   	});
+  	$("#btn-modal1").click(()=>youtubeModalHandler(testOjbect));
+  	function youtubeModalHandler(result){
+		console.log(result);
+		$("#youtubeModal").remove();
+		const bigModal=`
+			<div id="youtubeModal" class="modal-overlay">
+			<div class="modal-window ">
+				<div class="title">
+					<h2 class="exModalTitle"></h2>
+				</div>
+				<div class="close-area">X</div>
+				<div class="content col-xl-12">
+					<div class="col-xl-12">
+						<div class="exModalContent col-xl-12"></div>
+						<div class="close-area">닫기</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		`
+		$(".bigModalCss").append(bigModal);
+		const youtubeModal= document.getElementById("youtubeModal")
+	   	if(!isYoutubeModalOn()) {
+	   		youtubeModalOn();
+    	}
+		youtubeModal.addEventListener("click", e => {
+	    	const evTarget = e.target
+	  		  if(evTarget.classList.contains("modal-overlay")) {
+		    	if(isYoutubeModalOn) {
+		    		youtubeModalOff()
+		    	}
+		    }
+		})
+		function isYoutubeModalOn(){
+			return modal.style.display === "flex"
+		}
+		function youtubeModalOn() {
+			youtubeModal.style.display ="flex"
+		}
+		function youtubeModalOff() {
+			youtubeModal.style.display = "none"
+		}
+		const closeBtn1 = youtubeModal.querySelector(".close-area")
+			closeBtn1.addEventListener("click", e => {
+			youtubeModalOff()
+		})
+		const eposeLink1 = '<div class="eposeLinkCss">'+result.eposeLink+'</div>'
+		$(".exModalTitle").append(result.exName);
+		$(".exModalContent").append(eposeLink1);
+		$(".eposeLinkCss>iframe").prop("width", "100%");
+	}
   </script>
+<style>
+#modal.modal-overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(1.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#modal .modal-window {
+	background: beige;
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	width: 35%;
+	height: 500px;
+	position: relative;
+	top: -200px;
+	padding: 10px;
+}
+
+#modal .title {
+	padding-left: 10px;
+	display: inline;
+	text-shadow: 1px 1px 2px gray;
+	color: black;
+}
+
+#modal .title h2 {
+	display: inline;
+}
+
+#modal .close-area {
+	display: inline;
+	float: right;
+	padding-right: 10px;
+	cursor: pointer;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
+
+#modal .content {
+	margin-top: 20px;
+	padding: 0px 10px;
+	text-shadow: 1px 1px 2px gray;
+	color: black;
+}
+
+#youtubeModal.modal-overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(1.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#youtubeModal .modal-window {
+	background: beige;
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	width: 50%;
+	height: 80%;
+	position: fix;
+	right: 20%;
+	left: 30%;
+	top: 20%;
+	padding: 10px;
+}
+
+#youtubeModal .title {
+	padding-left: 10px;
+	display: inline;
+	text-shadow: 1px 1px 2px gray;
+	color: black;
+}
+
+#youtubeModal .title h2 {
+	display: inline;
+}
+
+#youtubeModal .close-area {
+	display: inline;
+	float: right;
+	padding-right: 10px;
+	cursor: pointer;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
+
+#youtubeModal .content {
+	margin-top: 20px;
+	padding: 0px 10px;
+	text-shadow: 1px 1px 2px gray;
+	color: black;
+}
+</style>
 </head>
 <body class="sb-nav-fixed">
 	<jsp:include page="/WEB-INF/views/frame/nav.jsp"></jsp:include>
@@ -146,26 +291,50 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					 <div id='calendar'></div>
-    	<h2 style="text-align:center;">손범규님의 캘린더</h2>
-		<h2 style="text-align:center;">${loginedMember.name}</h2>
-	  	<div id='calendar' style="position: relative;" >
-	  	<c:if test="${loginedMember ne null}"><button class="login-btn" type="button" onclick="location.href='logout'">로그아웃</button></c:if>
-	  	<c:if test="${loginedMember ne null}"><button class="mypage-btn" type="button" onclick="location.href='mypage'">마이페이지</button></c:if>
-	  	<c:if test="${loginedMember ne null}"><button class="add-btn" type="button" onclick="add_btnSchedule();">일정추가</button></c:if>
-	  	<c:if test="${loginedMember eq null}"><button class="login-btn" type="button" onclick="login_form();">로그인</button></c:if>
-	  	<c:if test="${loginedMember eq null}"><button class="add-btn" type="button" onclick="location.href='join'">회원가입</button></c:if>
-	  </div>
-	  <div class="modal" >
-	  <div class="modal-content">
-	  ahekfckd
-	  <span id="date"></span>
-	  </div>
-	  </div>
+
+					<div>
+						<h1 class="mt-4">Daily Muscle Life</h1>
+					</div>
+					<!--   <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol> -->
+					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
+					<div id='calendar'></div>
+					<div>
+						<h2 style="text-align: center;">손범규님의 캘린더</h2>
+						<button id="btn-modal1">일정추가</button>
+					</div>
+				</div>
+				<div class="bigModalCss">
+					<div id="youtubeModal" class="modal-overlay">
+						<div class="modal-window ">
+							<div class="title">
+								<h2 class="exModalTitle"></h2>
+							</div>
+							<div class="close-area">X</div>
+							<div class="content col-xl-12">
+								<div class="col-xl-12">
+									<div class="exModalContent col-xl-12"></div>
+									<div class="close-area">닫기</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
 	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+		crossorigin="anonymous"></script>
 </body>
 </html>
