@@ -100,7 +100,7 @@ Custom scripts for all pages
 					<!--   <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol> -->
-					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
+					<jsp:include page="/WEB-INF/views/temp/menu.jsp"></jsp:include>
 					<div class="row">
 
 						    <!-- Area Chart -->

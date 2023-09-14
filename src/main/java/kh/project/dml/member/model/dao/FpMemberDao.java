@@ -77,7 +77,7 @@ public class FpMemberDao {
 		session.update(KEEP_LOGIN, paramMap);
 	}
 	
-	public String checkSession(String sessionId) {
+	public FpMemberVo checkSession(String sessionId) {
 		return session.selectOne(CHECK_SESSION, sessionId);
 	}
 

@@ -1,8 +1,5 @@
 package kh.project.dml.common.auth;
 
-import java.util.Iterator;
-
-import org.apache.commons.lang3.StringUtils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,17 +18,10 @@ public class SnsLogin {
 	private SnsValue sns;
 	
 	public SnsLogin(SnsValue sns) {
-		if(sns.getService().equals("kakao")) {			
-			this.oauthService = new ServiceBuilder(sns.getClientId())
-					.apiSecret(sns.getClientSecret())
-					.callback(sns.getRedirectUrl())
-					.build(sns.getApi20Instance());
-		} else {
-			this.oauthService = new ServiceBuilder(sns.getClientId())
-					.apiSecret(sns.getClientSecret())
-					.callback(sns.getRedirectUrl())
-					.build(sns.getApi20Instance());
-		}
+		this.oauthService = new ServiceBuilder(sns.getClientId())
+				.apiSecret(sns.getClientSecret())
+				.callback(sns.getRedirectUrl())
+				.build(sns.getApi20Instance());
 		this.sns = sns;
 		System.out.println("sns : "+this.sns);
 	}

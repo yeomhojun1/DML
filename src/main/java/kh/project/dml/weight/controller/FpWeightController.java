@@ -1,4 +1,4 @@
-package kh.project.dml.temp;
+package kh.project.dml.weight.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,7 +11,7 @@ import kh.project.dml.common.interceptor.SessionNames;
 
 @Controller
 @SessionAttributes(SessionNames.LOGIN)
-public class FpTempController {
+public class FpWeightController {
 
 	@GetMapping("/temp2")
 	public String mainPageOpen2() {

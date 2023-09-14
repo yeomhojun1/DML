@@ -42,7 +42,7 @@
          where member_id = #{memberId}
     </update>
     
-    <select id="checkSession" parameterType="string" resultType="string">
+    <select id="checkSession" parameterType="string" resultType="FpMemberVo">
         SELECT * FROM member WHERE sessionkey = #{sessionId}
     </select>
     
