@@ -7,11 +7,14 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
 
 import kh.project.dml.member.model.service.FpMemberService;
 import kh.project.dml.member.model.vo.FpMemberVo;
+import kh.project.dml.users.model.vo.FpUsersVo;
 
 @Component
 public class SessionCheckInterceptor implements HandlerInterceptor {
@@ -36,4 +39,22 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
             return true; // 컨트롤러 메소드 실행 계속
         }
     }
+    
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+			ModelAndView mv) throws Exception {
+    	HttpSession session = request.getSession();
+		Object memberObj = session.getAttribute(SessionNames.LOGIN);
+	    System.out.println(memberObj);
+		
+	    if (memberObj instanceof FpUsersVo) {
+	        FpUsersVo userMember = (FpUsersVo) memberObj;
+	        System.out.println(userMember);
+	        mv.addObject("member", service.memberInfo(userMember.getUsername()));
+	        
+	    } else if (memberObj instanceof FpMemberVo) {
+	    	FpMemberVo member = (FpMemberVo) memberObj;
+	    	System.out.println(member);
+	    	mv.addObject("member", service.memberInfo(member.getMemberId()));
+	    }
+	}
 }

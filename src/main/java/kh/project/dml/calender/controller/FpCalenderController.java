@@ -31,18 +31,6 @@ public class FpCalenderController {
 	
 	@RequestMapping //기본 페이지 표시
 	public String viewCalendar(Model model, HttpSession session){
-		Object memberObj = session.getAttribute(SessionNames.LOGIN);
-	    System.out.println(memberObj);
-		
-//	    if (memberObj instanceof FpUsersVo) {
-//	        FpUsersVo userMember = (FpUsersVo) memberObj;
-//	        System.out.println(userMember);
-//	        model.addAttribute("member", fpMemberService.memberInfo(userMember.getUsername()));
-//	    } else if (memberObj instanceof FpMemberVo) {
-//	    	FpMemberVo member = (FpMemberVo) memberObj;
-//	    	System.out.println(member);
-//	    	model.addAttribute("member", fpMemberService.memberInfo(member.getMemberId()));
-//	    }
 		return "/fullcalendar/calendar";
 	}
 

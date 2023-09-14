@@ -196,7 +196,7 @@
 					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
 					<div id='calendar'></div>
 					<div>
-						<h2 style="text-align: center;">손범규님의 캘린더</h2>
+						<h2 style="text-align: center;">${member.mname }님의 캘린더</h2>
 						<button id="viewModal">일정추가</button>
 					</div>
 					<div id="modal" class="modal-overlay row ">
