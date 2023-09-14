@@ -42,6 +42,7 @@
 			<mapping path="/**" />
 			<exclude-mapping path="/index" />
 			<exclude-mapping path="/resources/**" />
+			<exclude-mapping path="/auth/**" />			
 			<exclude-mapping path="/member/login" />
 			<exclude-mapping path="/member/signup" />
 			<exclude-mapping path="/member/agreement" />
