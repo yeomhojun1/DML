@@ -40,19 +40,28 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/**" />
+			
+			<!-- 메인 페이지 -->
 			<exclude-mapping path="/index" />
+			
+			<!-- 리소스 -->
 			<exclude-mapping path="/resources/**" />
+			<exclude-mapping path="/resources1/**" />
 			<exclude-mapping path="/css/**" />
 			<exclude-mapping path="/js/**" />
+			<exclude-mapping path="/fonts/**" />
+			<exclude-mapping path="/images/**" />
 			<exclude-mapping path="/frame/**" />
-			<exclude-mapping path="/exercise/searchlist" />
-			<exclude-mapping path="/exercise/one" />
-			<exclude-mapping path="/exercise/insert" />
+			
+			<!-- 소셜 인증 콜백 -->
 			<exclude-mapping path="/auth/**" />
+			
+			<!-- 로그인/회원가입 -->
 			<exclude-mapping path="/member/login" />
 			<exclude-mapping path="/member/signup" />
 			<exclude-mapping path="/member/agreement" />
 			<exclude-mapping path="/member/*Popup" />
+			
 			<beans:ref bean="sessionCheckInterceptor" />
 		</interceptor>
 	</interceptors>
