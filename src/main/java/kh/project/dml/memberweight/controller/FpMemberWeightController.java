@@ -16,17 +16,17 @@ import kh.project.dml.memberweight.model.vo.FpMemberWeightVo;
 @RequestMapping("/memberweight")
 public class FpMemberWeightController {
 	@Autowired
-	private FpMemberWeightService fpmemberweightService;
+	private FpMemberWeightService fpMemberWeightServiceImpl;
 	
 	@GetMapping("/list")
 	public ModelAndView selectListmemberweight(ModelAndView mv) {
-		mv.addObject("memberweightlist", fpmemberweightService.selectList());
+		mv.addObject("memberweightlist", fpMemberWeightServiceImpl.selectList());
 		mv.setViewName("memberweight/list");
 		return mv;
 	}
 	@GetMapping("/one")
 	public ModelAndView selectOnememberweight(ModelAndView mv, String userId) {
-		mv.addObject("memberweightone", fpmemberweightService.selectOne(userId));
+		mv.addObject("memberweightone", fpMemberWeightServiceImpl.selectOne(userId));
 		mv.setViewName("memberweight/one");
 		return mv;
 	}
@@ -38,7 +38,7 @@ public class FpMemberWeightController {
 	@PostMapping("/insert")
 	public String insertDomemberweight(RedirectAttributes redirectAttr, FpMemberWeightVo vo ) {
 		String viewPage = "redirect:/";
-		int result = fpmemberweightService.insert(vo);
+		int result = fpMemberWeightServiceImpl.insert(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 가입 실패했습니다 \n 다시 입력해주세요");
@@ -54,14 +54,14 @@ public class FpMemberWeightController {
 	}
 	@GetMapping("/update")
 	public ModelAndView updatememberweight(ModelAndView mv, String userId ) {
-		mv.addObject("memberweightone", fpmemberweightService.selectOne(userId));
+		mv.addObject("memberweightone", fpMemberWeightServiceImpl.selectOne(userId));
 		mv.setViewName("memberweight/update");
 		return mv;
 	}
 	@PostMapping("/update")
 	public String updateDomemberweight(RedirectAttributes redirectAttr, FpMemberWeightVo vo ) {
 		String viewPage = "redirect:/";
-		int result = fpmemberweightService.update(vo);
+		int result = fpMemberWeightServiceImpl.update(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 실패했습니다 \n 다시 입력해주세요");
@@ -78,7 +78,7 @@ public class FpMemberWeightController {
 	@PostMapping("/delete")
 	public String deleteDomemberweight(RedirectAttributes redirectAttr,String userId ) {
 		String viewPage = "redirect:/";
-		int result = fpmemberweightService.delete(userId);
+		int result = fpMemberWeightServiceImpl.delete(userId);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");

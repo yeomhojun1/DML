@@ -16,17 +16,17 @@ import kh.project.dml.notice.model.vo.FpNoticeVo;
 @RequestMapping("/notice")
 public class FpNoticeController {
 	@Autowired
-	private FpNoticeService fpnoticeService;
+	private FpNoticeService fpNoticeServiceImpl;
 	
 	@GetMapping("/list")
 	public ModelAndView selectListnotice(ModelAndView mv) {
-		mv.addObject("noticelist", fpnoticeService.selectList());
+		mv.addObject("noticelist", fpNoticeServiceImpl.selectList());
 		mv.setViewName("notice/list");
 		return mv;
 	}
 	@GetMapping("/one")
 	public ModelAndView selectOnenotice(ModelAndView mv, int noticeNumber) {
-		mv.addObject("noticeone", fpnoticeService.selectOne(noticeNumber));
+		mv.addObject("noticeone", fpNoticeServiceImpl.selectOne(noticeNumber));
 		mv.setViewName("notice/one");
 		return mv;
 	}
@@ -38,7 +38,7 @@ public class FpNoticeController {
 	@PostMapping("/insert")
 	public String insertDonotice(RedirectAttributes redirectAttr, FpNoticeVo vo ) {
 		String viewPage = "redirect:/";
-		int result = fpnoticeService.insert(vo);
+		int result = fpNoticeServiceImpl.insert(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 가입 실패했습니다 \n 다시 입력해주세요");
@@ -54,14 +54,14 @@ public class FpNoticeController {
 	}
 	@GetMapping("/update")
 	public ModelAndView updatenotice(ModelAndView mv, int noticeNumber ) {
-		mv.addObject("noticeone", fpnoticeService.selectOne(noticeNumber));
+		mv.addObject("noticeone", fpNoticeServiceImpl.selectOne(noticeNumber));
 		mv.setViewName("notice/update");
 		return mv;
 	}
 	@PostMapping("/update")
 	public String updateDonotice(RedirectAttributes redirectAttr, FpNoticeVo vo ) {
 		String viewPage = "redirect:/";
-		int result = fpnoticeService.update(vo);
+		int result = fpNoticeServiceImpl.update(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 실패했습니다 \n 다시 입력해주세요");
@@ -78,7 +78,7 @@ public class FpNoticeController {
 	@PostMapping("/delete")
 	public String deleteDonotice(RedirectAttributes redirectAttr,int noticeNumber ) {
 		String viewPage = "redirect:/";
-		int result = fpnoticeService.delete(noticeNumber);
+		int result = fpNoticeServiceImpl.delete(noticeNumber);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");

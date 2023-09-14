@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import kh.project.dml.food.model.dao.FpFoodDao;
 import kh.project.dml.food.model.vo.FpFoodVo;
 
-@Service
+@Service("fpFoodServiceImpl")
 public class FpFoodServiceImpl implements FpFoodService  {
 	@Autowired
 	private FpFoodDao fpFoodDao;

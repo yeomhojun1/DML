@@ -10,7 +10,7 @@ import kh.project.dml.daydiet.model.vo.FpDayDietVo;
 
 
 
-@Service
+@Service("fpDayDietServiceImpl")
 public class FpDayDietServiceImpl implements FpDayDietService {
 	
 	@Autowired

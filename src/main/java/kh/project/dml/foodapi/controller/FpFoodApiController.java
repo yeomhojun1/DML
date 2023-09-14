@@ -16,17 +16,17 @@ import kh.project.dml.foodapi.model.vo.FpFoodApiVo;
 @RequestMapping("/foodapi")
 public class FpFoodApiController {
 	@Autowired
-	private FpFoodApiService fpfoodapiService;
+	private FpFoodApiService fpFoodApiServiceImpl;
 	
 	@GetMapping("/list")
 	public ModelAndView selectListfoodapi(ModelAndView mv) {
-		mv.addObject("foodapilist", fpfoodapiService.selectList());
+		mv.addObject("foodapilist", fpFoodApiServiceImpl.selectList());
 		mv.setViewName("foodapi/list");
 		return mv;
 	}
 	@GetMapping("/one")
 	public ModelAndView selectOnefoodapi(ModelAndView mv, String commentNum) {
-		mv.addObject("foodapione", fpfoodapiService.selectOne(commentNum));
+		mv.addObject("foodapione", fpFoodApiServiceImpl.selectOne(commentNum));
 		mv.setViewName("foodapi/one");
 		return mv;
 	}
@@ -38,7 +38,7 @@ public class FpFoodApiController {
 	@PostMapping("/insert")
 	public String insertDofoodapi(RedirectAttributes redirectAttr, FpFoodApiVo vo ) {
 		String viewPage = "redirect:/";
-		int result = fpfoodapiService.insert(vo);
+		int result = fpFoodApiServiceImpl.insert(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 가입 실패했습니다 \n 다시 입력해주세요");
@@ -54,14 +54,14 @@ public class FpFoodApiController {
 	}
 	@GetMapping("/update")
 	public ModelAndView updatefoodapi(ModelAndView mv, String commentNum ) {
-		mv.addObject("foodapione", fpfoodapiService.selectOne(commentNum));
+		mv.addObject("foodapione", fpFoodApiServiceImpl.selectOne(commentNum));
 		mv.setViewName("foodapi/update");
 		return mv;
 	}
 	@PostMapping("/update")
 	public String updateDofoodapi(RedirectAttributes redirectAttr, FpFoodApiVo vo ) {
 		String viewPage = "redirect:/";
-		int result = fpfoodapiService.update(vo);
+		int result = fpFoodApiServiceImpl.update(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 실패했습니다 \n 다시 입력해주세요");
@@ -78,7 +78,7 @@ public class FpFoodApiController {
 	@PostMapping("/delete")
 	public String deleteDofoodapi(RedirectAttributes redirectAttr,String commentNum ) {
 		String viewPage = "redirect:/";
-		int result = fpfoodapiService.delete(commentNum);
+		int result = fpFoodApiServiceImpl.delete(commentNum);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");

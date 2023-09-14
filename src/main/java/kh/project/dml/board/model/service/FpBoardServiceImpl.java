@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import kh.project.dml.board.model.dao.FpBoardDao;
 import kh.project.dml.board.model.vo.FpBoardVo;
 
-@Service
+@Service("fpBoardServiceImpl")
 public class FpBoardServiceImpl implements FpBoardService {
 
 	@Autowired

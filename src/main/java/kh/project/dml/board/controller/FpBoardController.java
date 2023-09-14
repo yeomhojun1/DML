@@ -9,23 +9,24 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.project.dml.board.model.service.FpBoardService;
+import kh.project.dml.board.model.service.FpBoardServiceImpl;
 import kh.project.dml.board.model.vo.FpBoardVo;
 
 @Controller
 @RequestMapping("/board")
 public class FpBoardController {
 	@Autowired
-	private FpBoardService fpboardService;
+	private FpBoardServiceImpl fpBoardServiceImpl;
 	
 	@GetMapping("/list")
 	public ModelAndView selectListboard(ModelAndView mv) {
-		mv.addObject("boardlist", fpboardService.selectList());
+		mv.addObject("boardlist", fpBoardServiceImpl.selectList());
 		mv.setViewName("board/list");
 		return mv;
 	}
 	@GetMapping("/one")
 	public ModelAndView selectOneboard(ModelAndView mv, int commentNum) {
-		mv.addObject("boardone", fpboardService.selectOne(commentNum));
+		mv.addObject("boardone", fpBoardServiceImpl.selectOne(commentNum));
 		mv.setViewName("board/one");
 		return mv;
 	}
@@ -37,7 +38,7 @@ public class FpBoardController {
 	@PostMapping("/insert")
 	public String insertDoBoard(RedirectAttributes redirectAttr, FpBoardVo vo ) {
 		String viewPage = "redirect:/";
-		int result = fpboardService.insert(vo);
+		int result = fpBoardServiceImpl.insert(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 가입 실패했습니다 \n 다시 입력해주세요");
@@ -53,14 +54,14 @@ public class FpBoardController {
 	}
 	@GetMapping("/update")
 	public ModelAndView updateboard(ModelAndView mv, int commentNum ) {
-		mv.addObject("boardone", fpboardService.selectOne(commentNum));
+		mv.addObject("boardone", fpBoardServiceImpl.selectOne(commentNum));
 		mv.setViewName("board/update");
 		return mv;
 	}
 	@PostMapping("/update")
 	public String updateDoBoard(RedirectAttributes redirectAttr, FpBoardVo vo ) {
 		String viewPage = "redirect:/";
-		int result = fpboardService.update(vo);
+		int result = fpBoardServiceImpl.update(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 실패했습니다 \n 다시 입력해주세요");
@@ -77,7 +78,7 @@ public class FpBoardController {
 	@PostMapping("/delete")
 	public String deleteDoBoard(RedirectAttributes redirectAttr,int commentNum ) {
 		String viewPage = "redirect:/";
-		int result = fpboardService.delete(commentNum);
+		int result = fpBoardServiceImpl.delete(commentNum);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");

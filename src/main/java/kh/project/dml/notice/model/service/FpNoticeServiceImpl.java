@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import kh.project.dml.notice.model.dao.FpNoticeDao;
 import kh.project.dml.notice.model.vo.FpNoticeVo;
 
-@Service
+@Service("fpNoticeServiceImpl")
 public class FpNoticeServiceImpl implements FpNoticeService  {
 	
 	@Autowired

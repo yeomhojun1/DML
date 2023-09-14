@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import kh.project.dml.admin.model.dao.FpAdminDao;
 import kh.project.dml.admin.model.vo.FpAdminVo;
 
-@Service
+@Service("fpAdminServiceImpl")
 public class FpAdminServiceImpl implements FpAdminService {
 	
 	@Autowired

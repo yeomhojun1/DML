@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.project.dml.calender.model.service.FpCalenderService;
+import kh.project.dml.calender.model.service.FpCalenderServiceImpl;
 import kh.project.dml.common.interceptor.SessionNames;
 import kh.project.dml.member.model.service.FpMemberService;
 import kh.project.dml.member.model.vo.FpMemberVo;
@@ -23,7 +24,7 @@ import kh.project.dml.users.model.vo.FpUsersVo;
 public class FpCalenderController {
 
 	@Autowired
-	FpCalenderService fpcalenderservice;
+	FpCalenderServiceImpl fpCalenderServiceImpl;
 	
 	@Autowired
 	public FpMemberService fpMemberService; 
@@ -45,17 +46,11 @@ public class FpCalenderController {
 		return "/fullcalendar/calendar";
 	}
 
-<<<<<<< HEAD
-   // @GetMapping("/event") //ajax 데이터 전송 URL
-   // public @ResponseBody List<Map<String, Object>> getEvent(){
-	//	  return fpcalenderservice.getEventList();
-    
-=======
+
     @GetMapping("/event") //ajax 데이터 전송 URL
     @ResponseBody 
     public List<Map<String, Object>> getEvent(){
-		  return fpcalenderservice.getEventList();
+		  return fpCalenderServiceImpl.getEventList();
     }
->>>>>>> c547761bdbc447d243f6be39ad4112c3580cfe67
 
 }

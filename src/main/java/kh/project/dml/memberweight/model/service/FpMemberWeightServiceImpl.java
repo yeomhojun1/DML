@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import kh.project.dml.memberweight.model.dao.FpMemberWeightDao;
 import kh.project.dml.memberweight.model.vo.FpMemberWeightVo;
 
-@Service
+@Service("fpMemberWeightServiceImpl")
 public class FpMemberWeightServiceImpl implements FpMemberWeightService {
 	
 	@Autowired

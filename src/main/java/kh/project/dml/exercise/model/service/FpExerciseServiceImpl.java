@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import kh.project.dml.exercise.model.dao.FpExerciseDao;
 import kh.project.dml.exercise.model.vo.FpExerciseVo;
 
-@Service
+@Service("fpExerciseServiceImpl")
 public class FpExerciseServiceImpl implements FpExerciseService  {
 	
 	@Autowired

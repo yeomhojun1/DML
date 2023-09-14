@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import kh.project.dml.memberexset.model.dao.FpMemberExSetDao;
 import kh.project.dml.memberexset.model.vo.FpMemberExSetVo;
 
-@Service
+@Service("fpMemberExSetServiceImpl")
 public class FpMemberExSetServiceImpl implements FpMemberExSetService  {
 
 	@Autowired

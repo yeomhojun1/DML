@@ -23,11 +23,11 @@ import kh.project.dml.exercise.model.vo.FpExerciseVo;
 @RequestMapping("/exercise")
 public class FpExerciseController {
 	@Autowired
-	private FpExerciseService fpexerciseService;
+	private FpExerciseService fpExerciseServiceImpl;
 	
 	@GetMapping("/list")
 	public ModelAndView selectListexercise(ModelAndView mv) {
-		mv.addObject("exerciselist", fpexerciseService.selectList());
+		mv.addObject("exerciselist", fpExerciseServiceImpl.selectList());
 		mv.setViewName("exercise/list");
 		return mv;
 	}
@@ -36,13 +36,13 @@ public class FpExerciseController {
 	@ResponseBody
 	public String selectSearchListexercise(String searchword) {
 		String result = null;
-		List<FpExerciseVo> volist = fpexerciseService.selectSearchList(searchword);
+		List<FpExerciseVo> volist = fpExerciseServiceImpl.selectSearchList(searchword);
 		return new Gson().toJson(volist);
 	}
 	@GetMapping("/one")
 	@ResponseBody
 	public String selectOneexercise( int ecode) {
-		FpExerciseVo vo= fpexerciseService.selectOne(ecode);
+		FpExerciseVo vo= fpExerciseServiceImpl.selectOne(ecode);
 		return new Gson().toJson(vo);
 	}
 	@GetMapping("/insert")
@@ -53,7 +53,7 @@ public class FpExerciseController {
 	@PostMapping("/insert")
 	public String insertDoExercise(RedirectAttributes redirectAttr, FpExerciseVo vo ) {
 		String viewPage = "redirect:/";
-		int result = fpexerciseService.insert(vo);
+		int result = fpExerciseServiceImpl.insert(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 가입 실패했습니다 \n 다시 입력해주세요");
@@ -69,14 +69,14 @@ public class FpExerciseController {
 	}
 	@GetMapping("/update")
 	public ModelAndView updateexercise(ModelAndView mv, int ecode ) {
-		mv.addObject("exerciseone", fpexerciseService.selectOne(ecode));
+		mv.addObject("exerciseone", fpExerciseServiceImpl.selectOne(ecode));
 		mv.setViewName("exercise/update");
 		return mv;
 	}
 	@PostMapping("/update")
 	public String updateDoMemeber(RedirectAttributes redirectAttr, FpExerciseVo vo ) {
 		String viewPage = "redirect:/";
-		int result = fpexerciseService.update(vo);
+		int result = fpExerciseServiceImpl.update(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 실패했습니다 \n 다시 입력해주세요");
@@ -93,7 +93,7 @@ public class FpExerciseController {
 	@PostMapping("/delete")
 	public String deleteDoMemeber(RedirectAttributes redirectAttr, int ecode ) {
 		String viewPage = "redirect:/";
-		int result = fpexerciseService.delete(ecode);
+		int result = fpExerciseServiceImpl.delete(ecode);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");

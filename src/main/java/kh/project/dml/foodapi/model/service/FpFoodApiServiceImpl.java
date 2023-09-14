@@ -10,7 +10,7 @@ import kh.project.dml.foodapi.model.vo.FpFoodApiVo;
 import kh.project.dml.memberexset.model.dao.FpMemberExSetDao;
 import kh.project.dml.memberexset.model.vo.FpMemberExSetVo;
 
-@Service
+@Service("fpFoodApiServiceImpl")
 public class FpFoodApiServiceImpl implements FpFoodApiService{
 
 

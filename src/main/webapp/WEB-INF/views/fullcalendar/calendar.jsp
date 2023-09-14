@@ -104,6 +104,7 @@
   				    	  console.log(info);
   				    	  const clickDate = info.dateStr;
   				    	  alert(clickDate); //경고창d
+  				    	modalHandler
   				    	  
   				      },
   				      eventClick: function(info){ // 클릭한 일정 값 뽑아내기
@@ -114,57 +115,8 @@
 				   });
 				   calendar.render();		
   	});
-  	$("#btn-modal1").click(()=>youtubeModalHandler(testOjbect));
-  	function youtubeModalHandler(result){
-		console.log(result);
-		$("#youtubeModal").remove();
-		const bigModal=`
-			<div id="youtubeModal" class="modal-overlay">
-			<div class="modal-window ">
-				<div class="title">
-					<h2 class="exModalTitle"></h2>
-				</div>
-				<div class="close-area">X</div>
-				<div class="content col-xl-12">
-					<div class="col-xl-12">
-						<div class="exModalContent col-xl-12"></div>
-						<div class="close-area">닫기</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		`
-		$(".bigModalCss").append(bigModal);
-		const youtubeModal= document.getElementById("youtubeModal")
-	   	if(!isYoutubeModalOn()) {
-	   		youtubeModalOn();
-    	}
-		youtubeModal.addEventListener("click", e => {
-	    	const evTarget = e.target
-	  		  if(evTarget.classList.contains("modal-overlay")) {
-		    	if(isYoutubeModalOn) {
-		    		youtubeModalOff()
-		    	}
-		    }
-		})
-		function isYoutubeModalOn(){
-			return modal.style.display === "flex"
-		}
-		function youtubeModalOn() {
-			youtubeModal.style.display ="flex"
-		}
-		function youtubeModalOff() {
-			youtubeModal.style.display = "none"
-		}
-		const closeBtn1 = youtubeModal.querySelector(".close-area")
-			closeBtn1.addEventListener("click", e => {
-			youtubeModalOff()
-		})
-		const eposeLink1 = '<div class="eposeLinkCss">'+result.eposeLink+'</div>'
-		$(".exModalTitle").append(result.exName);
-		$(".exModalContent").append(eposeLink1);
-		$(".eposeLinkCss>iframe").prop("width", "100%");
-	}
+  	
+
   </script>
 <style>
 #modal.modal-overlay {
@@ -194,6 +146,7 @@
 	position: relative;
 	top: -200px;
 	padding: 10px;
+	display : inline;
 }
 
 #modal .title {
@@ -222,64 +175,6 @@
 	text-shadow: 1px 1px 2px gray;
 	color: black;
 }
-
-#youtubeModal.modal-overlay {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	left: 0;
-	top: 0;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background: rgba(255, 255, 255, 0.25);
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-	backdrop-filter: blur(1.5px);
-	border-radius: 10px;
-	border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-#youtubeModal .modal-window {
-	background: beige;
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-	border-radius: 10px;
-	border: 1px solid rgba(255, 255, 255, 0.18);
-	width: 50%;
-	height: 80%;
-	position: fix;
-	right: 20%;
-	left: 30%;
-	top: 20%;
-	padding: 10px;
-}
-
-#youtubeModal .title {
-	padding-left: 10px;
-	display: inline;
-	text-shadow: 1px 1px 2px gray;
-	color: black;
-}
-
-#youtubeModal .title h2 {
-	display: inline;
-}
-
-#youtubeModal .close-area {
-	display: inline;
-	float: right;
-	padding-right: 10px;
-	cursor: pointer;
-	text-shadow: 1px 1px 2px gray;
-	color: white;
-}
-
-#youtubeModal .content {
-	margin-top: 20px;
-	padding: 0px 10px;
-	text-shadow: 1px 1px 2px gray;
-	color: black;
-}
 </style>
 </head>
 <body class="sb-nav-fixed">
@@ -302,25 +197,62 @@
 					<div id='calendar'></div>
 					<div>
 						<h2 style="text-align: center;">손범규님의 캘린더</h2>
-						<button id="btn-modal1">일정추가</button>
+						<button id="viewModal">일정추가</button>
 					</div>
-				</div>
-				<div class="bigModalCss">
-					<div id="youtubeModal" class="modal-overlay">
-						<div class="modal-window ">
+					<div id="modal" class="modal-overlay row ">
+						<div class="modal-window">
 							<div class="title">
-								<h2 class="exModalTitle"></h2>
+								<h2>응애</h2>
 							</div>
 							<div class="close-area">X</div>
-							<div class="content col-xl-12">
-								<div class="col-xl-12">
-									<div class="exModalContent col-xl-12"></div>
-									<div class="close-area">닫기</div>
-								</div>
+							<div class="content">
+								<h3>컨텐트임</h3>
+
+							</div>
+						</div>
+						<div class="modal-window">
+							<div class="title">
+								<h2>응애</h2>
+							</div>
+							<div class="close-area">X</div>
+							<div class="content">
+								<h3>컨텐트임</h3>
+
 							</div>
 						</div>
 					</div>
 				</div>
+				<script>
+			$("#viewModal").click(modalHandler);
+			function modalHandler(){
+				const modal = document.getElementById("modal")
+				modalOn();
+				function modalOn(){
+				modal.style.display="flex"
+			}
+				function isModalOn() {
+				    return modal.style.display === "flex"
+				}
+				function modalOff(){
+				modal.style.display = "none"
+			}
+				const viewModal = document.getElementById("viewModal")
+				viewModal.addEventListener("click", e => {
+			    modalOn()
+			})
+			const closeBtn = modal.querySelector(".close-area")
+			closeBtn.addEventListener("click", e => {
+		    	modalOff()
+			})
+			modal.addEventListener("click", e => {
+		   		const evTarget = e.target
+		    		if(evTarget.classList.contains("modal-overlay")) {
+		        		modalOff()
+		    }
+			})
+			}
+			
+			</script>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
