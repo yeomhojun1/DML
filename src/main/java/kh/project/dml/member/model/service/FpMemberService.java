@@ -139,7 +139,7 @@ public class FpMemberService {
 		dao.keepLogin(memberId, sessionId, expire);
 	}
 	
-	public String checkSession(String sessionId) {
+	public FpMemberVo checkSession(String sessionId) {
 		return dao.checkSession(sessionId);
 	}
 
@@ -150,6 +150,5 @@ public class FpMemberService {
 	public FpMemberVo getBySns(FpMemberVo snsMember) {
 		return dao.getBySns(snsMember);
 	}
-
 }
 

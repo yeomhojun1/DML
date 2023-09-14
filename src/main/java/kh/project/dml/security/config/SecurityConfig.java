@@ -89,9 +89,7 @@ public class SecurityConfig {
                 .formLogin()
                 .loginPage("/member/login")
                 .failureUrl("/member/login")
-                .successHandler(customLoginSuccess())
                 .defaultSuccessUrl("/index")
-                
                 .permitAll()
 
             // 로그아웃 관련 설정
