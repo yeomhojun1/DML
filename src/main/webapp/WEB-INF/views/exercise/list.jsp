@@ -49,6 +49,7 @@
 	backdrop-filter: blur(1.5px);
 	border-radius: 10px;
 	border: 1px solid rgba(255, 255, 255, 0.18);
+	z-index: 9999;
 }
 
 #modal .modal-window {
@@ -324,6 +325,9 @@
 		$("#btn-modal1").click(()=>youtubeModalHandler(testOjbect));
 	
 	}
+		function modalOff() {
+		    modal.style.display = "none"
+		}
 	function modalHandler(){
 		/** 모달부분*/
 		const modal = document.getElementById("modal")
@@ -333,9 +337,6 @@
 		}
 		function isModalOn() {
 		    return modal.style.display === "flex"
-		}
-		function modalOff() {
-		    modal.style.display = "none"
 		}
 		const btnModal = document.getElementById("btn-modal")
 		btnModal.addEventListener("click", e => {
@@ -435,21 +436,29 @@
 	
 		$(".addMemberExSet").click(onMemberExSetHandler);
 	function onMemberExSetHandler(){
-		console.log("123");
+	
+		var dateVal = $("#datepicker").val()
+		//replace([기존문자],[바꿀문자])
+		dateVal= dateVal.replaceAll("-", "");
+		dateVal =parseInt(dateVal);
+		
 		$.ajax({
-			url:"${pageContext.request.contextPath}/exercise/list",
-			type: "get",
+			url:"${pageContext.request.contextPath}/memberexset/insert",
+			type: "post",
 			data : {ecode : $(".ex_one").data("code")
-				,exName : $(".ex_one").data("name")
-			,memberId : ""
-			,calendarNo: $("#datepicker").val()
-			,exerciseSet : $(".addExerciseSet").val()
-			,exerciseNumber : $(".addExerciseNumber").val()
-			,exerciseWeight : $(".addExerciseWeight").val()}
-			,success : displayFrm123
+					,exName : $(".ex_one").data("name")
+					,memberId : "test1"
+					,calendarNo: dateVal
+					,exerciseSet : $(".addExerciseSet").val()
+					,exerciseNumber : $(".addExerciseNumber").val()
+					,exerciseWeight : $(".addExerciseWeight").val()
+					}
+			,success : modalOff
+				
+				// display - html append 
+				// href = 이동
 			,dataType : "json"
 		})
-		console.log(displayFrm123);
 	}
 
 	

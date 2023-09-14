@@ -40,15 +40,16 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
         }
     }
     
+    @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView mv) throws Exception {
     	HttpSession session = request.getSession();
 		Object memberObj = session.getAttribute(SessionNames.LOGIN);
-	    System.out.println(memberObj);
+//	    System.out.println(memberObj);
 		
 	    if (memberObj instanceof FpUsersVo) {
 	        FpUsersVo userMember = (FpUsersVo) memberObj;
-	        System.out.println(userMember);
+//	        System.out.println(userMember);
 	        mv.addObject("member", service.memberInfo(userMember.getUsername()));
 	        
 	    } else if (memberObj instanceof FpMemberVo) {

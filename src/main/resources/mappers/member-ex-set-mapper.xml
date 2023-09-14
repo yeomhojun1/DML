@@ -12,7 +12,7 @@
 	
 	<insert id="insert" parameterType="FpMemberExSetVo">
 		INSERT INTO MEMBER_EX_SET
-		VALUES ( #{calendarNo}||#{memberId}||#{ecode} , #{memberId},#{ecode}, #{exName}, #{exerciseSet}, #{exerciseNumber},#{calendarNo})
+		VALUES ( #{calendarNo}||#{memberId}||#{ecode} , #{memberId},#{ecode}, #{calendarNo},#{exName}, #{exerciseSet}, #{exerciseNumber},#{exerciseWeight})
 	</insert>
 	
 	<update id="update" parameterType="FpMemberExSetVo">
