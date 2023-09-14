@@ -437,11 +437,11 @@
 	function onMemberExSetHandler(){
 		console.log("123");
 		$.ajax({
-			url:"${pageContext.request.contextPath}/exercise/list",
-			type: "get",
+			url:"${pageContext.request.contextPath}/exercise/insert",
+			type: "post",
 			data : {ecode : $(".ex_one").data("code")
 				,exName : $(".ex_one").data("name")
-			,memberId : ""
+			,memberId : ${member.memberId}
 			,calendarNo: $("#datepicker").val()
 			,exerciseSet : $(".addExerciseSet").val()
 			,exerciseNumber : $(".addExerciseNumber").val()
