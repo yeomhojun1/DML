@@ -443,20 +443,17 @@
 		dateVal =parseInt(dateVal);
 		
 		$.ajax({
-			url:"${pageContext.request.contextPath}/memberexset/insert",
+			url:"${pageContext.request.contextPath}/exercise/insert",
 			type: "post",
 			data : {ecode : $(".ex_one").data("code")
-					,exName : $(".ex_one").data("name")
-					,memberId : "test1"
-					,calendarNo: dateVal
-					,exerciseSet : $(".addExerciseSet").val()
-					,exerciseNumber : $(".addExerciseNumber").val()
-					,exerciseWeight : $(".addExerciseWeight").val()
-					}
-			,success : modalOff
-				
-				// display - html append 
-				// href = 이동
+				,exName : $(".ex_one").data("name")
+			,memberId : ${member.memberId}
+			,calendarNo: $("#datepicker").val()
+			,exerciseSet : $(".addExerciseSet").val()
+			,exerciseNumber : $(".addExerciseNumber").val()
+			,exerciseWeight : $(".addExerciseWeight").val()}
+			,success : displayFrm123
+
 			,dataType : "json"
 		})
 	}

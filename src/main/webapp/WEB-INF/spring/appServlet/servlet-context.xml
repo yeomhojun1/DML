@@ -42,9 +42,17 @@
 			<mapping path="/**" />
 			<exclude-mapping path="/index" />
 			<exclude-mapping path="/resources/**" />
+			<exclude-mapping path="/css/**" />
+			<exclude-mapping path="/js/**" />
+			<exclude-mapping path="/frame/**" />
+			<exclude-mapping path="/exercise/searchlist" />
+			<exclude-mapping path="/exercise/one" />
+			<exclude-mapping path="/exercise/insert" />
+			<exclude-mapping path="/auth/**" />
 			<exclude-mapping path="/member/login" />
 			<exclude-mapping path="/member/signup" />
 			<exclude-mapping path="/member/agreement" />
+			<exclude-mapping path="/member/*Popup" />
 			<beans:ref bean="sessionCheckInterceptor" />
 		</interceptor>
 	</interceptors>
