@@ -8,24 +8,13 @@ import org.springframework.stereotype.Service;
 import kh.project.dml.food.model.dao.FpFoodDao;
 import kh.project.dml.food.model.vo.FpFoodVo;
 
-@Service
-public class FpFoodService {
-	@Autowired
-	private FpFoodDao fpFoodDao;
+
+public interface FpFoodService {
 	
-	public List<FpFoodVo> selectList()  {
-		return fpFoodDao.selectList();
-	}
-	public FpFoodVo selectOne(String foodCd)  {
-		return fpFoodDao.selectOne(foodCd);
-	}
-	public int insert(FpFoodVo vo)  {
-		return fpFoodDao.insert(vo);
-	}
-	public int update(FpFoodVo vo) {
-		return fpFoodDao.update(vo);
-	}
-	public int delete(String foodCd)  {
-		return fpFoodDao.delete(foodCd);
-	}
+	
+	public List<FpFoodVo> selectList();
+	public FpFoodVo selectOne(String foodCd);
+	public int insert(FpFoodVo vo);
+	public int update(FpFoodVo vo);
+	public int delete(String foodCd);
 }

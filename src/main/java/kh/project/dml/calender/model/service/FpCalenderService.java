@@ -12,41 +12,26 @@ import org.springframework.stereotype.Service;
 import kh.project.dml.calender.model.dao.FpCalenderDao;
 import kh.project.dml.calender.model.vo.FpCalenderVo;
 
-@Service
-public class FpCalenderService {
 
-	@Autowired
-	private FpCalenderDao fpcalenderDao;
+public interface FpCalenderService {
+
 	
-	public List<FpCalenderVo> selectList(){
-		return fpcalenderDao.selectList();
-	}
-	public FpCalenderVo seletOne(int calendarno) {
-		return fpcalenderDao.selectOne(calendarno);
-	}
-	public int insert(FpCalenderVo vo) {
-		return fpcalenderDao.insert(vo);
-	}
-	public int update(FpCalenderVo vo) {
-		return fpcalenderDao.update(vo);
-	}
-	public int delete(int calendarno) {
-		return fpcalenderDao.delete(calendarno);
-	}
+	
+	public List<FpCalenderVo> selectList();
+	public FpCalenderVo seletOne(int calendarno);
+	public int insert(FpCalenderVo vo);
+	public int update(FpCalenderVo vo);
+	public int delete(int calendarno);
 
-	    public List<Map<String, Object>> getEventList() {
-	        Map<String, Object> event = new HashMap<String, Object>();
-	        List<Map<String, Object>> eventList = new ArrayList<Map<String, Object>>();
-	        event.put("start", LocalDate.now());
-	        event.put("title", "test");
-	        event.put("end",LocalDate.now());
-	        eventList.add(event);
-	        event = new HashMap<String, Object>();
-	        event.put("start", LocalDate.now().plusDays(3));
-	        event.put("title", "test2");
-	        event.put("end",LocalDate.now().plusDays(4));
-	        eventList.add(event);
-	        return eventList;
-	    }
+	/*
+	 * public List<Map<String, Object>> getEventList() { Map<String, Object> event =
+	 * new HashMap<String, Object>(); List<Map<String, Object>> eventList = new
+	 * ArrayList<Map<String, Object>>(); event.put("start", LocalDate.now());
+	 * event.put("title", "test"); event.put("end",LocalDate.now());
+	 * eventList.add(event); event = new HashMap<String, Object>();
+	 * event.put("start", LocalDate.now().plusDays(3)); event.put("title", "test2");
+	 * event.put("end",LocalDate.now().plusDays(4)); eventList.add(event); return
+	 * eventList; }
+	 */
 }
 

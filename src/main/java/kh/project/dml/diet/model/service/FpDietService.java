@@ -10,26 +10,15 @@ import kh.project.dml.diet.model.vo.FpDietVo;
 
 
 
-@Service
-public class FpDietService {
 
-	@Autowired
-	private FpDietDao fdDietDao;
+public interface FpDietService {
+
 	
-	public List<FpDietVo> selectList()  {
-		return fdDietDao.selectList();
-	}
-	public FpDietVo selectOne(String mealCode)  {
-		return fdDietDao.selectOne(mealCode);
-	}
-	public int insert(FpDietVo vo)  {
-		return fdDietDao.insert(vo);
-	}
-	public int update(FpDietVo vo) {
-		return fdDietDao.update(vo);
-	}
-	public int delete(String mealCode)  {
-		return fdDietDao.delete(mealCode);
-	}
+	
+	public List<FpDietVo> selectList();
+	public FpDietVo selectOne(String mealCode);
+	public int insert(FpDietVo vo);
+	public int update(FpDietVo vo);
+	public int delete(String mealCode);
 	
 }

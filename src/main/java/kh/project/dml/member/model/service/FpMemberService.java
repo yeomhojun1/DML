@@ -23,7 +23,7 @@ import kh.project.dml.users.model.vo.FpUsersVo;
 import kh.project.dml.users.model.vo.LoginVo;
 
 
-@Service
+
 public class FpMemberService {
 	
 	@Inject

@@ -10,26 +10,15 @@ import kh.project.dml.foodapi.model.vo.FpFoodApiVo;
 import kh.project.dml.memberexset.model.dao.FpMemberExSetDao;
 import kh.project.dml.memberexset.model.vo.FpMemberExSetVo;
 
-@Service
-public class FpFoodApiService {
+
+public interface FpFoodApiService {
 
 
-	@Autowired
-	private FpFoodApiDao fdFoodApiDao;
 	
-	public List<FpFoodApiVo> selectList()  {
-		return fdFoodApiDao.selectList();
-	}
-	public FpFoodApiVo selectOne(String foodCd)  {
-		return fdFoodApiDao.selectOne(foodCd);
-	}
-	public int insert(FpFoodApiVo vo)  {
-		return fdFoodApiDao.insert(vo);
-	}
-	public int update(FpFoodApiVo vo) {
-		return fdFoodApiDao.update(vo);
-	}
-	public int delete(String foodCd)  {
-		return fdFoodApiDao.delete(foodCd);
-	}
+	
+	public List<FpFoodApiVo> selectList();
+	public FpFoodApiVo selectOne(String foodCd);
+	public int insert(FpFoodApiVo vo);
+	public int update(FpFoodApiVo vo);
+	public int delete(String foodCd);
 }
