@@ -198,7 +198,7 @@ public class FpMemberController {
 	// 회원가입 페이지에서 회원가입 버튼 클릭
 	@PostMapping("/member/signup")
     public String signup(@Valid UserCreateForm userCreateForm, BindingResult bindingResult, HttpSession session, LoginVo vo) {
-        if(bindingResult.hasErrors()) {
+		if(bindingResult.hasErrors()) {
             return "/member/signup";
         }
 
@@ -253,18 +253,7 @@ public class FpMemberController {
 	
 	// 마이페이지
 	@GetMapping("/member/mypage")
-	public String mypage(Model model, HttpSession session) {
-		Object memberObj = session.getAttribute(SessionNames.LOGIN);
-		
-	    if (memberObj instanceof FpUsersVo) { // 일반 계정인 경우
-	        FpUsersVo userMember = (FpUsersVo) memberObj;
-	        System.out.println(userMember);
-	        model.addAttribute("member", service.memberInfo(userMember.getUsername()));
-	    } else if (memberObj instanceof FpMemberVo) { // 소셜 계정인 경우
-	    	FpMemberVo member = (FpMemberVo) memberObj;
-	    	System.out.println(member);
-	    	model.addAttribute("member", service.memberInfo(member.getMemberId()));
-	    }
+	public String mypage() {
 		return "/member/mypage";
 	}
 	
@@ -280,14 +269,13 @@ public class FpMemberController {
 	// 회원탈퇴 전 패스워드 항목 입력
 	@GetMapping("/member/deleteCheck")
 	public String deleteCheck(HttpSession session) {
-		session.getAttribute(SessionNames.LOGIN);
 		return "/member/deleteCheck";
 	}
 	// /member/deleteCheck 페이지에서 회원탈퇴 버튼 클릭
 	@PostMapping("/member/withdrawal")
-	public String deleteCheck(@RequestParam String password, Model model, HttpSession session, LoginVo vo) {
+	public String deleteCheck(@RequestParam String password, Model model, HttpSession session, LoginVo vo, HttpServletRequest request, HttpServletResponse response) {
 		Object memberObj = session.getAttribute(SessionNames.LOGIN);
-	    try {	    	
+	    try {
 	    	if (memberObj instanceof FpUsersVo) { // 일반 계정인 경우
 	    		FpUsersVo userMember = (FpUsersVo) memberObj;
 	    		vo.setUsername(userMember.getUsername());
@@ -296,11 +284,35 @@ public class FpMemberController {
 	    		if(user == null) {
 	    			return "/member/errorPopup";
 	    		} else {
+    		        service.keepLogin(user.getUsername(), "", new Date());
+		        	session.removeAttribute(SessionNames.LOGIN);
+	    		    
+	    		    // 쿠키를 찾아서 삭제
+	    		    Cookie loginCookie = WebUtils.getCookie(request, SessionNames.LOGIN_COOKIE);
+	    		    if (loginCookie != null) {
+	    		        loginCookie.setPath("/");    
+	    		        loginCookie.setMaxAge(0);
+	    		        response.addCookie(loginCookie);
+	    		    }
+	    		    
+	    		    session.invalidate();
 	    			service.delete(user.getUsername());
 	    			return "/member/deletePopup";
 	    		}
 	    	} else if (memberObj instanceof FpMemberVo) { // 소셜 계정인 경우
 	    		FpMemberVo member = (FpMemberVo) memberObj;
+	    		service.keepLogin(member.getMemberId(), "", new Date());
+	    		session.removeAttribute(SessionNames.LOGIN);
+    		    
+    		    // 쿠키를 찾아서 삭제
+    		    Cookie loginCookie = WebUtils.getCookie(request, SessionNames.LOGIN_COOKIE);
+    		    if (loginCookie != null) {
+    		        loginCookie.setPath("/");    
+    		        loginCookie.setMaxAge(0);
+    		        response.addCookie(loginCookie);
+    		    }
+    		    
+    		    session.invalidate();
 	    		service.delete(member.getMemberId());
 	    		return "/member/deletePopup";
 	    	}
@@ -318,8 +330,7 @@ public class FpMemberController {
 	
 	// 회원탈퇴 완료 후 팝업창 화면
 	@GetMapping("/member/deletePopup")
-	public String deletePopup(HttpSession session) {
-		session.setAttribute(SessionNames.LOGIN, "");
+	public String deletePopup() {
 		return "/member/deletePopup";
 	}
 }

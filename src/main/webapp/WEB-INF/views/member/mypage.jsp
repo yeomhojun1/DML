@@ -49,16 +49,24 @@
 						<div>
 							<div>
 								<div class="MyPage_basic_input_row">
-									<div class="MyPage_basic_input_title">이름/별명</div>
-									<div class="MyPage_basic_input_content">
-										<input class="MyPage_basic_input"
-											type="text" id="mname" value="${member.mname }">
-									</div>
-									<div class="MyPage_basic_input_title">이메일</div>
+									<div class="MyPage_basic_input_title">아이디</div>
 									<div class="MyPage_basic_input_content">
 										<input disabled=""
 											class="MyPage_basic_input"
 											type="text" id="memberId" value="${member.memberId }">
+									</div>
+									<div class="MyPage_basic_input_title">성별</div>
+									<div class="MyPage_basic_input_content">
+										<input disabled=""
+											class="MyPage_basic_input"
+											type="text" value="${member.gender }">
+									</div>
+								</div>
+								<div class="MyPage_basic_input_row">
+									<div class="MyPage_basic_input_title">이름/별명</div>
+									<div class="MyPage_basic_input_content">
+										<input class="MyPage_basic_input"
+											type="text" id="mname" value="${member.mname }">
 									</div>
 								</div>
 								<div class="MyPage_basic_input_row">
@@ -73,14 +81,7 @@
 											type="text" id="weight" value="${member.weight }">
 									</div>
 								</div>
-								<div class="MyPage_basic_input_row">
-									<div class="MyPage_basic_input_title">성별</div>
-									<div class="MyPage_basic_input_content">
-										<input disabled=""
-											class="MyPage_basic_input"
-											type="text" value="${member.gender }">
-									</div>
-								</div>
+								
 								<button class="MyPage_basic_btn" onclick="sendData()">저장하기</button>
 
 								<button class="MyPage_basic_btn MyPage_basic_red MyPage_btn_right" 
