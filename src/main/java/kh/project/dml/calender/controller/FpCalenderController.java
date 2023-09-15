@@ -25,6 +25,7 @@ public class FpCalenderController {
 	public String viewCalendar(Model model, HttpSession session){
 		return "/fullcalendar/calendar";
 	}
+	
 
 
     @GetMapping("/event") //ajax 데이터 전송 URL
