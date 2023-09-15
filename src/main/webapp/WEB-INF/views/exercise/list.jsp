@@ -329,12 +329,11 @@
 		$("#btn-modal1").click(()=>youtubeModalHandler(testOjbect));
 	
 	}
-		function modalOff() {
-		    modal.style.display = "none"
-		}
+	function modalOff() {
+		modal.style.display = "none"
+	}
+	const modal = document.getElementById("modal")
 	function modalHandler(){
-		/** 모달부분*/
-		const modal = document.getElementById("modal")
 			modalOn();
 		function modalOn() {
 		    modal.style.display = "flex"
@@ -445,18 +444,20 @@
 		//replace([기존문자],[바꿀문자])
 		dateVal= dateVal.replaceAll("-", "");
 		dateVal =parseInt(dateVal);
-		
+		console.log(dateVal);
 		$.ajax({
-			url:"${pageContext.request.contextPath}/exercise/insert",
+			url:"${pageContext.request.contextPath}/memberexset/insert",
 			type: "post",
 			data : {ecode : $(".ex_one").data("code")
 				,exName : $(".ex_one").data("name")
-			,memberId : ${member.memberId}
-			,calendarNo: $("#datepicker").val()
+			,memberId : "${member.memberId}"
+			,calendarNo: dateVal
 			,exerciseSet : $(".addExerciseSet").val()
 			,exerciseNumber : $(".addExerciseNumber").val()
 			,exerciseWeight : $(".addExerciseWeight").val()}
-			,success : displayFrm123
+			,success : function(){
+				modal.style.display = "none"
+			}
 			,dataType : "json"
 		})
 	}

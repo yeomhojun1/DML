@@ -46,7 +46,7 @@ public class FpExerciseController {
 		return new Gson().toJson(vo);
 	}
 	@GetMapping("/insert")
-	public ModelAndView insertexercise(ModelAndView mv ) {
+	public ModelAndView insertexercise(ModelAndView mv) {
 		mv.setViewName("exercise/insert");
 		return mv;
 	}
