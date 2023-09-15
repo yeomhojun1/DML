@@ -18,10 +18,10 @@ public class AdviceLog {
 	//@Pointcut("execution(타겟메소드)")
 	// .. 매개변수 없거나 여러개 있거나..
 	// * 1개 이상일때 씀.
-	@Pointcut("execution(public * kh.project.dml..*DAO.*(..))")
+	@Pointcut("execution(public * kh.project.dml..*Dao.*(..))")
 	public void daoPointCut() {}
 	
-	@Pointcut("execution(public * kh.project.dml..*Service.*(..))")
+	@Pointcut("execution(public * kh.project.dml..*ServiceImpl.*(..))")
 	public void servicePointCut() {}
 	
 	@Pointcut("execution(public * kh.project.dml..*Controller.*(..))")

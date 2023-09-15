@@ -14,8 +14,8 @@ public class FpMemberExSetDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<FpMemberExSetVo> selectList()  {
-		return sqlSession.selectList("memberExSet.selectList");
+	public List<FpMemberExSetVo> selectList(String dayExSet)  {
+		return sqlSession.selectList("memberExSet.selectList",dayExSet);
 	}
 	public FpMemberExSetVo selectOne(String memberId) {
 		return sqlSession.selectOne("memberExSet.selectOne", memberId);

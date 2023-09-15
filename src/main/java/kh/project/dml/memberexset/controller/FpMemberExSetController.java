@@ -5,8 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.google.gson.Gson;
 
 import kh.project.dml.memberexset.model.service.FpMemberExSetService;
 import kh.project.dml.memberexset.model.vo.FpMemberExSetVo;
@@ -19,10 +22,14 @@ public class FpMemberExSetController {
 	private FpMemberExSetService fpMemberExSetServiceImpl;
 	
 	@GetMapping("/list")
-	public ModelAndView selectListmemberexset(ModelAndView mv) {
-		mv.addObject("memberexsetlist", fpMemberExSetServiceImpl.selectList());
+	public ModelAndView viewmemberexset(ModelAndView mv) {
 		mv.setViewName("memberexset/list");
 		return mv;
+	}
+	@GetMapping("/list.ajax")
+	@ResponseBody
+	public String selectListmemberexset(ModelAndView mv,String dayExSet) {
+		return new Gson().toJson(fpMemberExSetServiceImpl.selectList(dayExSet));
 	}
 	@GetMapping("/one")
 	public ModelAndView selectOnememberexset(ModelAndView mv, String memberId) {

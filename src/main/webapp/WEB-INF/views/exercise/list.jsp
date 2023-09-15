@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import = "java.util.Calendar" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +33,18 @@
 	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+		crossorigin="anonymous"></script>
+
 
 <style>
 #modal.modal-overlay {
@@ -199,6 +212,7 @@
 								<div class="ex_part btn col-xl-12" data-part="어깨">어깨</div>
 								<div class="ex_part btn col-xl-12" data-part="팔">팔</div>
 								<div class="ex_part btn col-xl-12" data-part="하체">하체</div>
+							
 							</div>
 							<!-- <div class="appendtest"></div>
 					 	<textarea name="bookIntro" id="bookIntro_textarea"></textarea>
@@ -257,17 +271,6 @@
 			</div>
 		</div>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
-
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-		crossorigin="anonymous"></script>
-
-	<script
-		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-		crossorigin="anonymous"></script>
 
 
 	<script src="${pageContext.request.contextPath}/js/test.js"></script>
@@ -276,6 +279,7 @@
 	<!-- 운동부위를 선택하면 관련운동 나오도록하거나 검색했을때 나오도록함-->
 	$(".ex_part").click(expartClickHandler);
 	function expartClickHandler(){
+	
 		$.ajax({
 		url:"${pageContext.request.contextPath}/exercise/searchlist",
 			type: "get"
@@ -325,12 +329,11 @@
 		$("#btn-modal1").click(()=>youtubeModalHandler(testOjbect));
 	
 	}
-		function modalOff() {
-		    modal.style.display = "none"
-		}
+	function modalOff() {
+		modal.style.display = "none"
+	}
+	const modal = document.getElementById("modal")
 	function modalHandler(){
-		/** 모달부분*/
-		const modal = document.getElementById("modal")
 			modalOn();
 		function modalOn() {
 		    modal.style.display = "flex"
@@ -441,19 +444,20 @@
 		//replace([기존문자],[바꿀문자])
 		dateVal= dateVal.replaceAll("-", "");
 		dateVal =parseInt(dateVal);
-		
+		console.log(dateVal);
 		$.ajax({
-			url:"${pageContext.request.contextPath}/exercise/insert",
+			url:"${pageContext.request.contextPath}/memberexset/insert",
 			type: "post",
 			data : {ecode : $(".ex_one").data("code")
 				,exName : $(".ex_one").data("name")
-			,memberId : ${member.memberId}
-			,calendarNo: $("#datepicker").val()
+			,memberId : "${member.memberId}"
+			,calendarNo: dateVal
 			,exerciseSet : $(".addExerciseSet").val()
 			,exerciseNumber : $(".addExerciseNumber").val()
 			,exerciseWeight : $(".addExerciseWeight").val()}
-			,success : displayFrm123
-
+			,success : function(){
+				modal.style.display = "none"
+			}
 			,dataType : "json"
 		})
 	}
