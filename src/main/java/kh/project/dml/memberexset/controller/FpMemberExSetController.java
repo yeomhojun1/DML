@@ -43,21 +43,22 @@ public class FpMemberExSetController {
 		return mv;
 	}
 	@PostMapping("/insert")
+	@ResponseBody
 	public String insertDomemberexset(RedirectAttributes redirectAttr, FpMemberExSetVo vo ) {
-		String viewPage = "redirect:/";
+		//String viewPage = "redirect:/";
 		int result = fpMemberExSetServiceImpl.insert(vo);
 		try {
 			if (result < 1) {
-				redirectAttr.addFlashAttribute("msg", "회원 가입 실패했습니다 \n 다시 입력해주세요");
-				viewPage = "redirect:/memberexset/insert";
+//				redirectAttr.addFlashAttribute("msg", "회원 가입 실패했습니다 \n 다시 입력해주세요");
+//				viewPage = "redirect:/memberexset/insert";
 			} else {
-				redirectAttr.addFlashAttribute("msg", "회원 가입 됐습니다");
-				viewPage = "redirect:/memberexset/list";
+//				redirectAttr.addFlashAttribute("msg", "회원 가입 됐습니다");
+//				viewPage = "redirect:/memberexset/list";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return viewPage;
+		return String.valueOf(result);
 	}
 	@GetMapping("/update")
 	public ModelAndView updatememberexset(ModelAndView mv, String memberId ) {

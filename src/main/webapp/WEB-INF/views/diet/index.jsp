@@ -73,6 +73,7 @@
 		</ul>
 	</nav>
 	<div id="layoutSidenav">
+
 		<div id="layoutSidenav_nav">
 			<nav class="sb-sidenav accordion sb-sidenav-dark"
 				id="sidenavAccordion">
@@ -118,6 +119,10 @@
 				</div>
 			</nav>
 		</div>
+
+		<jsp:include page="/WEB-INF/views/frame/asidebar.jsp"></jsp:include>
+
+
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
