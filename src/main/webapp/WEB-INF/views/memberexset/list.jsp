@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import = "java.util.Calendar" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,8 +43,13 @@
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol> -->
 					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
-					<button type="button" class="testdd" data-part="등"> test</button>
+					<div>${member.memberId}</div>
+					<div type="button" class="testdd" > test</button>
 					<div class="test11"></div>
+				<div><%
+  String Date = new java.text.SimpleDateFormat("yyyy. MM. dd").format(new java.util.Date());
+  String Today = new java.text.SimpleDateFormat("yyyyMMdd").format(new java.util.Date());
+%><h1><%=Date %></h1></div>
 				</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
@@ -61,20 +67,26 @@
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
 		<script>
-		$(".testdd").click(whattest);
-		function whattest(){
-			console.log("dfasd");
-			var url = "";
+		window.onload=function(){
+			const date = new Date();
+			const year = date.getFullYear();
+			const month = ('0' + (date.getMonth() + 1)).slice(-2);
+			const day = ('0' + (date.getDate())).slice(-2);
+			const today = `${year}-${month}-${day}`;
+			console.log(today);
+			
 				$.ajax({
-				url:"${pageContext.request.contextPath}/exercise/searchlist",
+				url:"${pageContext.request.contextPath}/memberexset/list.ajax",
 				type: "get"
-					,data : {searchword : $(this).data("part")}
-				, success : function(result){
+					,data : {dayExSet : "20230914${member.memberId}"	
+						
+					}
+				,success : function(result){
 					
 					console.log("1231");
 					htmlVal = '	<div class="mem_ex_set">';
 					for (var i = 0; i < result.length; i++) {
-						htmlVal += '<div class="mem_ex_set_one btn col-xl-12" data-part="'+result[i].dayExSet+'">'+result[i].exName+'</div>'
+						htmlVal += '<div class="mem_ex_set_one btn col-xl-12" data-part="'+result[i].ecode+'">'+result[i].exName+'</div>'
 					}
 					htmlVal +='</div>'
 					$(".test11").append(htmlVal);
@@ -82,33 +94,8 @@
 				, dataType: "json"
 				})
 			}
-		function displayMemberExSet(result){
-			console.log("1231");
-			htmlVal = '	<div class="mem_ex_set">';
-			for (var i = 0; i < result.length; i++) {
-				htmlVal += '<div class="mem_ex_set_one btn col-xl-12" data-part="'+result[i].dayExSet+'">'+result[i].exName+'</div>'
-			}
-			htmlVal +='</div>'
-			$(".test11").append(htmlVal);
-			};
-	
-	/* 	document.addEventListener('DOMContentLoaded', function() {
-				$.ajax({
-				url:"${pageContext.request.contextPath}/memberexset/list",
-					type: "get"
-					, success : function(result){displayMemberExSet(result)}		
-					, dataType: "json"
-				})
+		
 
-				function displayMemberExSet(){
-				htmlVal = '	<div class="mem_ex_set">';
-				for (var i = 0; i < result.length; i++) {
-					htmlVal += '<div class="ex_part_one btn col-xl-12" data-part="'+result[i].dayExSet+'">'+result[i].exName+'</div>'
-				}
-				htmlVal +='</div>'
-				$(".testdd").append(htmlVal);
-				}
-			}) */
 		
 		
 		

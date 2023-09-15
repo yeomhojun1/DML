@@ -15,7 +15,7 @@ public interface FpMemberExSetService {
 
 	
 	
-	public List<FpMemberExSetVo> selectList();
+	public List<FpMemberExSetVo> selectList(String dayExSet);
 	public FpMemberExSetVo selectOne(String memberId);
 	public int insert(FpMemberExSetVo vo);
 	public int update(FpMemberExSetVo vo);

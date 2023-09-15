@@ -17,8 +17,8 @@ public class FpMemberExSetServiceImpl implements FpMemberExSetService  {
 	private FpMemberExSetDao fpMemberExSetDao;
 	
 	@Override
-	public List<FpMemberExSetVo> selectList()  {
-		return fpMemberExSetDao.selectList();
+	public List<FpMemberExSetVo> selectList(String dayExSet)  {
+		return fpMemberExSetDao.selectList(dayExSet);
 	}
 	@Override
 	public FpMemberExSetVo selectOne(String memberId)  {
