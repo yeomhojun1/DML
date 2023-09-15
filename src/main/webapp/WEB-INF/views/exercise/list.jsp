@@ -329,7 +329,7 @@
 		$("#btn-modal1").click(()=>youtubeModalHandler(testOjbect));
 	
 	}
-	function modalOff() {
+	function modalOff(result) {
 		modal.style.display = "none"
 	}
 	const modal = document.getElementById("modal")
@@ -455,10 +455,11 @@
 			,exerciseSet : $(".addExerciseSet").val()
 			,exerciseNumber : $(".addExerciseNumber").val()
 			,exerciseWeight : $(".addExerciseWeight").val()}
-			,success : function(){
-				modal.style.display = "none"
+			,success : modalOff
+			,error : function(){
+				console.log("error");
 			}
-			,dataType : "json"
+		
 		})
 	}
 
