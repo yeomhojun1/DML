@@ -19,8 +19,11 @@
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<!-- jQuery UI CSS (스타일) -->
 		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link href="${pageContext.request.contextPath}/css/style1.css"	rel="stylesheet" />
+		<link href="${pageContext.request.contextPath}/css/style2.css"	rel="stylesheet" />
     </head>
 <body class="sb-nav-fixed">
+	<jsp:include page="/WEB-INF/views/diet/modal_insert.jsp"></jsp:include>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3" href="index.html">Daily Muscle Life</a>
@@ -88,66 +91,15 @@
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
 							</div> 체중관리
-							<div class="sb-sidenav-collapse-arrow">
-								<i class="fas fa-angle-down"></i>
-							</div>
 						</a>
-						<div class="collapse" id="collapseLayouts"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="layout-static.html">Static
-									Navigation</a> <a class="nav-link" href="layout-sidenav-light.html">Light
-									Sidenav</a>
-							</nav>
-						</div>
+					
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapsePages" aria-expanded="false"
 							aria-controls="collapsePages">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-book-open"></i>
-							</div> 식단관리
-							<div class="sb-sidenav-collapse-arrow">
-								<i class="fas fa-angle-down"></i>
-							</div>
+							</div> 식단관리	
 						</a>
-						<div class="collapse" id="collapsePages"
-							aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav accordion"
-								id="sidenavAccordionPages">
-								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-									data-bs-target="#pagesCollapseAuth" aria-expanded="false"
-									aria-controls="pagesCollapseAuth"> Authentication
-									<div class="sb-sidenav-collapse-arrow">
-										<i class="fas fa-angle-down"></i>
-									</div>
-								</a>
-								<div class="collapse" id="pagesCollapseAuth"
-									aria-labelledby="headingOne"
-									data-bs-parent="#sidenavAccordionPages">
-									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="login.html">Login</a> <a
-											class="nav-link" href="register.html">Register</a> <a
-											class="nav-link" href="password.html">Forgot Password</a>
-									</nav>
-								</div>
-								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-									data-bs-target="#pagesCollapseError" aria-expanded="false"
-									aria-controls="pagesCollapseError"> Error
-									<div class="sb-sidenav-collapse-arrow">
-										<i class="fas fa-angle-down"></i>
-									</div>
-								</a>
-								<div class="collapse" id="pagesCollapseError"
-									aria-labelledby="headingOne"
-									data-bs-parent="#sidenavAccordionPages">
-									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="401.html">401 Page</a> <a
-											class="nav-link" href="404.html">404 Page</a> <a
-											class="nav-link" href="500.html">500 Page</a>
-									</nav>
-								</div>
-							</nav>
-						</div>
 						<div class="sb-sidenav-menu-heading">운동/제품</div>
 						<a class="nav-link" href="charts.html">
 							<div class="sb-nav-link-icon">
@@ -204,7 +156,7 @@
 									<div class="small text-white">
 										<i class="fas fa-angle-right"></i>
 									</div>
-								</div>
+								</div>	
 							</div>
 						</div>
 						<div class="col-xl-3 col-md-6">
@@ -335,8 +287,35 @@
 				</div>
 		</div>
 	</div>
-	</main>
-	<footer class="py-4 bg-light mt-auto">
+	<div class="Plan_bottom1_food_list__gjfsu">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	<div class="Plan_bottom1_control_panel__rpO5n">
+		<div class="Plan_bottom1_control_panel_left__FH6wi">
+			<div class="Plan_bottom1_control_panel_left_one__J2gfw">
+			</div>
+		</div>
+		<div class="Plan_bottom1_control_panel_right___uu7s">
+			<div class="Plan_bottom1_control_panel_add__F5yxB">
+				<button type="button"
+					class="ant-btn css-1s3dcof ant-btn-default Plan_bottom1_save_btn__14v5t Global_button__iJeUH">
+					<span>끼니목록관리</span>
+				</button>
+			</div>
+			<div class="Plan_bottom1_control_panel_add__F5yxB" >
+				<!-- Button trigger modal -->
+				<button type="button" id="dietinsert"  data-bs-toggle="modal" data-bs-target="#dietInsertModal" class="ant-btn css-1s3dcof ant-btn-default Plan_bottom1_control_panel_btn__3jlBx Global_button__iJeUH" style="float: right;">
+					<span>식단 추가 +</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	</div>
+	</main> 
+<!-- 	<footer class="py-4 bg-light mt-auto">
 		<div class="container-fluid px-4">
 			<div class="d-flex align-items-center justify-content-between small">
 				<div class="text-muted">Copyright &copy; Your Website 2023</div>
@@ -346,7 +325,7 @@
 				</div>
 			</div>
 		</div>
-	</footer>
+	</footer> -->
 	
 	<script		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"		crossorigin="anonymous"></script>
 	<script src="${pageContext.request.contextPath }/js/scripts.js"></script>
@@ -506,6 +485,40 @@
 
  $('#datepicker').datepicker('setDate', new Date());
 });
+	</script>
+	<script>
+	$("#dietinsert").click(dietClickHandler);
+	function dietClickHandler() {		
+		console.log("dietClickHandler");
+		$.ajax({
+			url:"${pageContext.request.contextPath}/foodapi/list",
+			type: "get"
+			,dataType:"json"
+			, success : function(result){
+				console.log(result);
+				var htmlVal = '';
+				result.map((vo)=>{
+					htmlVal+=`
+					<div class="Plan_modal_food_bar__ikK6Q frm" data-foodcd="\${vo.foodCd}" >
+						<div
+							class="Plan_bottom1_second_bar_each__cBwag Plan_modal_food_bar_name__jMR4t">\${vo.foodName}</div>
+						<div class="Plan_bottom1_second_bar_each__cBwag ">\${vo.calorie}kcal</div>
+						<div class="Plan_bottom1_second_bar_each__cBwag ">탄(g)</div>
+						<div class="Plan_bottom1_second_bar_each__cBwag ">단(g)</div>
+						<div class="Plan_bottom1_second_bar_each__cBwag ">지(g)</div>
+					</div>
+					`;
+				});	
+				$(".Plan_modal_food_left__wihxs > .frm").remove();
+				$(".Plan_modal_food_left__wihxs").append(htmlVal);
+			}
+			,error: function(e){
+				console.log(e);	
+			}
+			
+		
+		})
+	}
 	</script>
 </body>
 </html>

@@ -93,7 +93,7 @@
 }
 
 .DateBars_date_picker__GCWt1 {
-	flex: 1 	1;
+	flex: 1 1;
 	display: flex;
 	justify-content: flex-end
 }
@@ -104,6 +104,7 @@
 	text-align: center;
 	overflow: hidden;
 	width: 100px;
+	height: 60px;
 	border-radius: 30px;
 	padding-right: 10px
 }
@@ -143,7 +144,7 @@
 }
 
 .Plan_top1__f4K0_ {
-	background-color: #0dcaf0 !important;
+	background-color: #e5f2fb !important;
 	border-radius: 20px;
 	padding: 10px 20px;
 	display: flex;
@@ -216,7 +217,7 @@
 	display: flex;
 	flex-direction: row;
 	margin-bottom: 20px;
-	margin-top: 10px 
+	margin-top: 10px
 }
 
 .Plan_meal_list__OB38F {
@@ -671,5 +672,545 @@
 	align-self: center;
 	justify-content: center;
 	-o-object-fit: contain;
-	object-fit: c…
+	object-fit: contain;
+	width: 120px;
+	height: 60px;
+	box-shadow: 0 5px 30px 0 rgba(17, 151, 201, .2)
+}
+
+.Plan_bottom1_control_panel__rpO5n, .Plan_etc_info_ctl_bar__LiVXu {
+	margin-top: 30px;
+	display: flex;
+	justify-content: space-between
+}
+
+.Plan_bottom1_control_panel__rpO5n {
+	flex-direction: row;
+	margin-bottom: 10px
+}
+
+.Plan_bottom1_control_panel_left__FH6wi {
+	justify-content: flex-start;
+	display: flex
+}
+
+.Plan_bottom1_control_panel_left_one__J2gfw {
+	align-self: center
+}
+
+.Plan_bottom1_control_panel_right___uu7s {
+	justify-content: flex-end;
+	display: flex
+}
+
+.Plan_bottom1_control_panel_add__F5yxB {
+	display: flex;
+	align-self: center
+}
+
+.Plan_bottom1_control_panel_btn__3jlBx {
+	border-radius: 40px;
+	border: 0;
+	margin-left: 20px;
+	font-weight: 900;
+	width: 180px;
+	height: 80px;
+	box-shadow: 0 5px 30px 0 rgba(17, 151, 201, .2)
+}
+
+.Plan_bottom1_control_panel_btn__3jlBx, .Plan_btn__dHLrt {
+	padding: 25px 20px;
+	font-size: 18px;
+	color: #fff;
+	background-color: #97d4e9;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center
+}
+
+.Plan_btn__dHLrt {
+	border-radius: 30px;
+	border: 0
+}
+
+.Plan_modal_food_tabs_bar__JHpPi {
+	height: 80px;
+	display: flex;
+	flex-direction: row
+}
+
+.Plan_modal_food_tab_each__3kNM_ {
+	width: 50%;
+	height: 80px;
+	line-height: 70px;
+	text-align: center;
+	background-color: #e6e6e6;
+	align-self: center
+}
+
+.Plan_modal_food_tab_each__3kNM_>button:hover {
+	font-size: 22px
+}
+
+.Plan_modal_food_tab_each__3kNM_>button:hover {
+	background-color: transparent !important;
+ 	border-color: transparent !important
+}
+
+.Plan_modal_food_tab_selected__q_wCV {
+	background-color: #fff
+}
+
+.Plan_modal_food_tab_selected__q_wCV>button {
+	font-weight: 700
+}
+
+.Plan_modal_food_container__cGtDo:has(>.Plan_ant-modal-content__5V4l2) {
+	padding: 0 !important
+}
+
+.Plan_modal_food__4_lTY {
+	overflow: hidden;
+	border-radius: 30px;
+	padding: 0 !important;
+	min-width: 600px !important
+}
+
+.Plan_modal_food__4_lTY>div {
+	padding: 0 !important
+}
+
+.Plan_modal_food_contents__bU3Ad {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	min-height: 300px;
+	border-radius: 30px;
+	padding: 20px 20px 0;
+	top: -20px;
+	background-color: #fff;
+	z-index: 10
+}
+
+.Plan_modal_food_bar_search__8h6t_ {
+	flex: 1 1;
+	border-radius: 25px !important;
+	overflow: hidden;
+	border: 1px solid #97d4e9;
+	margin-bottom: 20px;
+	height: 60px
+}
+
+.Plan_modal_food_bar_search__8h6t_ input {
+	height: 30px !important
+}
+
+.Plan_modal_food_bar_search__8h6t_ input::-moz-placeholder {
+	font-size: 18px;
+	font-weight: 900;
+	line-height: 1.67;
+	letter-spacing: normal
+}
+
+.Plan_modal_food_bar_search__8h6t_ input:-ms-input-placeholder {
+	font-size: 18px;
+	font-weight: 900;
+	line-height: 1.67;
+	letter-spacing: normal
+}
+
+.Plan_modal_food_bar_search__8h6t_ input::placeholder {
+	font-size: 18px;
+	font-weight: 900;
+	line-height: 1.67;
+	letter-spacing: normal
+}
+
+.Plan_modal_food_bar_search__8h6t_ input {
+	margin: 12px 0 12px 30px
+}
+
+.Plan_modal_food_bar_search_prefix__kwHEs {
+	width: 23px !important;
+	height: 23px !important;
+	margin-left: 10px;
+	margin-right: 30px;
+	margin-top: 3px
+}
+
+.Plan_modal_food_bar_search__8h6t_ button {
+	background-color: #f6f6f6 !important;
+	height: 60px !important;
+	width: 200px;
+	font-size: 18px !important;
+	font-weight: 900 !important
+}
+
+.Plan_modal_food_bar_search__8h6t_ button,
+	.Plan_modal_food_bar_search__8h6t_ button:hover {
+	color: #000 !important;
+	border: 1px solid #f6f6f6 !important
+}
+
+.Plan_bottom1_second_bar_each__cBwag {
+	flex: 1 1;
+	text-align: center;
+	align-self: center;
+	font-size: 18px;
+	font-weight: 900
+}
+
+.Plan_modal_food_bar__ikK6Q {
+	display: flex;
+	flex-direction: row;
+	background-color: #e6e6e6;
+	padding: 10px 30px 10px 10px;
+	border-radius: 30px;
+	margin-bottom: 20px;
+	height: 60px
+}
+
+.Plan_modal_food_bar__ikK6Q>div {
+	font-family: Noto Sans KR;
+	font-size: 16px;
+	color: #000
+}
+
+.Plan_modal_food_box__P895Z {
+	flex: 0 1;
+	width: 100%;
+	display: flex;
+	flex-direction: row
+}
+
+.Plan_modal_food_bar_ctl__CV6ad {
+	flex: 0 1;
+	margin-right: 5px;
+	min-width: 40px !important
+}
+
+.Plan_raw_food_bar__hNTTJ {
+	display: flex;
+	flex-direction: row;
+	padding: 5px;
+	border: 1px solid #97d4e9;
+	border-radius: 30px;
+	margin-bottom: 10px;
+	height: 60px;
+	margin-right: 10px
+}
+
+.Plan_raw_food_bar_each__VYL98 {
+	flex: 1 1;
+	text-align: center;
+	align-self: center;
+	font-size: 18px
+}
+
+.Plan_raw_food_box__8ygu_ {
+	height: 400px;
+	overflow-y: scroll
+}
+
+.Plan_modal_food_left__wihxs {
+	flex: 3 1
+}
+
+.Plan_modal_food_right__sg_CE {
+	flex: 2 1;
+	padding: 20px;
+	margin-top: 60px
+}
+
+.Plan_modal_food_contents_inside__qWooJ {
+	display: flex;
+	flex-direction: row
+}
+
+.Plan_modal_food_bar_name__jMR4t, .Plan_raw_food_bar_name__283e6 {
+	flex: 3 1
+}
+
+.Plan_raw_food_bar_ctl__bADrg {
+	flex: 0 1;
+	margin-right: 5px
+}
+
+.Plan_raw_food_bar_icon__GUMkf {
+	background-color: #98d3e9;
+	border: 0;
+	width: 40px !important;
+	height: 40px !important;
+	border-radius: 20px
+}
+
+.Plan_raw_food_bar_icon_plus__lIKKS {
+	color: #fff;
+	font-weight: 900;
+	font-size: 18px;
+	padding: 5px
+}
+
+.Plan_modal_food_desc2__LEW7J, .Plan_modal_food_desc__QsT8R {
+	border: 1px solid #99d3e9;
+	border-radius: 30px;
+	padding: 15px 20px
+}
+
+.Plan_modal_food_desc2__LEW7J {
+	margin-top: 20px;
+	height: 60px
+}
+
+.Plan_modal_food_desc3__2QOT2 {
+	margin-top: 20px
+}
+
+.Plan_modal_food_information_bar__67vQC {
+	margin-top: 30px
+}
+
+.Plan_modal_food_information_bar_title__X6moi {
+	font-size: 18px;
+	font-weight: 700
+}
+
+.Plan_modal_food_bottom_bar__r962X {
+	margin-top: 30px;
+	flex: 1 1;
+	align-self: center;
+	justify-content: center;
+	display: flex
+}
+
+.Plan_modal_food_add_and_save_btn__rKsIZ {
+	background-color: #99d3e9;
+	color: #fff;
+	border: 1px solid #99d3e9;
+	height: 45px !important;
+	font-size: 18px;
+	font-weight: 700;
+	width: 220px;
+	height: 60px;
+	margin-left: 20px;
+	border-radius: 25px
+}
+
+.Plan_modal_food_add_and_save_btn__rKsIZ:hover {
+	border: 1px solid #99d3e9 !important
+}
+
+.Plan_modal_food_close_btn__QsNOd {
+	background-color: #e6e6e6;
+	color: #000 !important;
+	border: 1px solid #e6e6e6 !important;
+	height: 45px !important;
+	font-size: 18px;
+	font-weight: 700;
+	width: 200px;
+	border-radius: 25px
+}
+
+.Plan_modal_food_close_btn__QsNOd:hover {
+	border: 1px solid #e6e6e6
+}
+
+.Plan_modal_food_manual_desc__axp9c {
+	border: 1px solid #99d3e9;
+	border-radius: 25px;
+	padding: 5px 10px;
+	flex: 1 1
+}
+
+.Plan_modal_food_manual_title__mRJtQ {
+	min-width: 100px;
+	align-self: center;
+	font-weight: 700;
+	font-size: 18px;
+	font-weight: 900
+}
+
+.Plan_modal_food_manual_line__8aqg4 {
+	font-weight: 700;
+	font-size: 18px;
+	display: flex;
+	flex-direction: row;
+	margin-top: 20px;
+	flex: 1 1
+}
+
+.Plan_modal_food_manual_input__BFsMV {
+	width: 100%
+}
+
+.Plan_modal_food_manual_input__BFsMV:focus {
+	outline: none !important
+}
+
+.Plan_modal_food_manual_radio_group__Ryz7x {
+	flex: 1 1;
+	border: 0;
+	display: flex
+}
+
+.Plan_modal_food_manual_radio__94nNy {
+	border: 0 !important;
+	flex: 1 1;
+	font-size: 18px;
+	text-align: center;
+	padding: 6px 20px 5px;
+	height: 42px
+}
+
+.Plan_modal_food_manual_radio__94nNy:before {
+	background-color: transparent !important
+}
+
+.Plan_modal_meal_container__fxRp_ {
+	padding: 0 !important
+}
+
+.Plan_etc_info_icon__OHFd9 {
+	width: 50px;
+	display: flex;
+	justify-content: center
+}
+
+.Plan_etc_info_icon__OHFd9>div {
+	align-self: center
+}
+
+.Plan_etc_info_desc__3D_ZB {
+	margin-left: 50px;
+	font-size: 12px;
+	line-height: 26px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start
+}
+
+.Plan_etc_info_desc_title__0xhrP {
+	flex: 0 1;
+	background-color: rgba(152, 211, 233, .4);
+	font-weight: 900
+}
+
+.Plan_pie_chart__MKQL4 {
+	height: 180px;
+	flex: 1 1;
+	display: flex
+}
+
+.Plan_pie_chart_each__wAH8V {
+	height: 180px;
+	flex: 1 1
+}
+
+.Plan_color_fat__R56L2 {
+	background-color: #b179de
+}
+
+.Plan_color_protein__CHPx5 {
+	background-color: #e6753d
+}
+
+.Plan_color_carb__HIfnR {
+	background-color: #98d3e9
+}
+
+.Plan_modal_food_desc_title__GwIXK {
+	font-size: 18px;
+	font-weight: 900;
+	display: flex;
+	height: 40px !important
+}
+
+.Plan_modal_food_desc3_title__sFhbK {
+	height: 50px !important
+}
+
+.Plan_modal_food_desc_subtitle__t8EOz {
+	font-size: 12px;
+	font-weight: 900;
+	display: flex;
+	height: 20px !important
+}
+
+.Plan_modal_food_meal_list__cNfE0 {
+	display: flex;
+	justify-content: space-between
+}
+
+.Plan_top1_value3__USxBx {
+	align-self: center;
+	margin-left: 18px;
+	font-size: 22px;
+	font-weight: 900;
+	color: #c6c6c6
+}
+
+.Plan_popover__k82ch {
+	cursor: pointer;
+	font-size: 18px;
+	padding: 5px
+}
+
+.Plan_popover__k82ch:hover {
+	cursor: pointer;
+	background-color: #f6f6f6
+}
+
+.Plan_bottom_list_each__rk6TB {
+	min-width: 80px;
+	padding: 10px 20px;
+	height: 50px;
+	border-radius: 40px;
+	background-color: #fff;
+	margin-right: 20px;
+	border: 0;
+	position: relative;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	cursor: pointer
+}
+
+.Plan_bottom_list_each__rk6TB:hover { .
+	Plan_bottom_list_each_del__UV9xt {opacity: 1;
+	transition: all .5s
+}
+
+}
+.Plan_bottom_list_each__rk6TB:out { .
+	Plan_bottom_list_each_del__UV9xt {opacity: 1;
+	transition: all .5s
+}
+
+}
+.Plan_bottom_list_each_del__UV9xt {
+	opacity: 0;
+	position: absolute;
+	right: -10px;
+	top: -10px;
+	font-size: 24px;
+	color: #b9391d;
+	cursor: pointer;
+	transition: all 1s
+}
+
+.Menu_container__AYim3 {
+	height: 50px;
+	margin-top: 50px
+}
+
+.Menu_list__XupHS {
+	display: flex;
+	list-style: none;
+	padding: 0;
+	margin: 0 0 0 20px
+}
+
+.Menu_list__XupHS>li {
+	margin-right: 15%;
+	font-size: 26px
 }

@@ -4,7 +4,7 @@
 
 
 <select id="selectList" resultType="FpFoodApiVo">
-		select * from foodapi
+		select * from food_api 
 </select> 
 	
 <select id="seletOne" resultType="FpFoodApiVo" parameterType="string">

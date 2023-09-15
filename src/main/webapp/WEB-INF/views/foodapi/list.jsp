@@ -1,27 +1,3 @@
-<link
-	href="${pageContext.request.contextPath }/resources/css/frame4.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath }/resources/css/style.css"
-	rel="stylesheet">
-
-<link
-	href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath }/resources/css/fontello.css"
-	rel="stylesheet">
-
-
-
-
-
-
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>

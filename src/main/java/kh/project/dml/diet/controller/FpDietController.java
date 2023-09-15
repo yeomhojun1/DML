@@ -31,6 +31,12 @@ public class FpDietController {
 			
 	}	
 	
+	@GetMapping("/dietlist")
+	public String selectList2() {
+		return "diet/dietlist"; 
+			
+	}	
+	
 	@GetMapping("/one")
 	public ModelAndView selectOnediet(ModelAndView mv, String mealCode) {
 		mv.addObject("dietone", fpDietServiceImpl.selectOne(mealCode));
