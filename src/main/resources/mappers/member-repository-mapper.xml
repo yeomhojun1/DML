@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kh.project.dml.member.model.dao.FpMemberRepository">
-
+	
+	<!-- 특정 계정 멤버테이블 정보 검색 -->
     <select id="findByMemberId" parameterType="string" resultType="FpMemberVo">
         SELECT * FROM Member WHERE member_id = #{memberId}
     </select>
     
+    <!-- 특정 계정 유저테이블 정보 검색 -->
     <select id="findByUsername" parameterType="string" resultType="FpUsersVo">
         SELECT * FROM users WHERE username = #{username}
     </select>
     
+    <!-- 회원가입 시 데이터 저장 -->
     <insert id="saveUser" parameterType="FpUsersVo">
     	INSERT INTO users (username, password, user_enabled, authorities) VALUES (#{username}, #{password}, #{userEnabled}, #{authorities})
     </insert>
     <insert id="saveMember" parameterType="FpMemberVo">
-    	INSERT INTO Member (member_id, mname, mbirthday, gender, height, weight, googleid, naverid, kakaoid) VALUES (#{memberId}, #{mname}, #{mbirthday}, #{gender}, #{height}, #{weight}, #{googleid}, #{naverid}, #{kakaoid})
+    	INSERT INTO member (member_id, mname, mbirthday, gender, height, weight, googleid, naverid, kakaoid) VALUES (#{memberId}, #{mname}, #{mbirthday}, #{gender}, #{height}, #{weight}, #{googleid}, #{naverid}, #{kakaoid})
     </insert>
-    <update id="update" parameterType="FpMemberVo">
-    	UPDATE Member SET NAME = #{name} WHERE EMAIL = #{email}
-    </update>
 </mapper>

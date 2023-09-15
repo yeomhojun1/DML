@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kh.project.dml.MemberMapper">
-
+	
+	<!-- 멤버 리스트 전체 검색(미사용) -->
 	<select id="selectList" resultType="FpMemberVo">
 		select * from member
 	</select>
 	
+	<!-- 특정 계정 멤버 정보 검색 -->
 	<select id="info" parameterType="string" resultType="FpMemberVo">
 		select * from member
 		where member_id = #{memberId}
 	</select>
 	
+	<!-- 마이페이지 업데이트 -->
 	<update id="update" parameterType="FpMemberVo">
 		update member set mname=#{mname}, height=#{height}, weight=#{weight}
 		where member_id = #{memberId}
 	</update>
 	
+	<!-- 회원탈퇴 -->
 	<delete id="deleteMember" parameterType="string">
 		delete from member
 		where member_id = #{username}
@@ -25,41 +29,50 @@
 		where username = #{username}
 	</delete>
 	
+	<!-- 계정 체크 -->
 	<select id="checkId" parameterType="string" resultType="string">
         select member_id from member where member_id = #{memberId}
 	</select>
 	
+	<!-- 로그인 -->
     <select id="login" resultType="FpUsersVo">
         select * from users where username = #{username} and password = #{password}
     </select>
     
+    <!-- 일반 로그인 -->
     <select id="normallogin" parameterType="string" resultType="FpUsersVo">
         SELECT * FROM users WHERE username = #{username}
     </select>
     
+    <!-- 세션값 저장 -->
     <update id="keepLogin" parameterType="map">
         update member set sessionkey = #{sessionkey}, sessionlimit = #{sessionlimit}
          where member_id = #{memberId}
     </update>
     
+    <!-- 기존 세션 비교 -->
     <select id="checkSession" parameterType="string" resultType="FpMemberVo">
         SELECT * FROM member WHERE sessionkey = #{sessionId}
     </select>
     
+    <!-- 쿠키에 저장된 세션키 비교(미사용) -->
     <select id="checkLoginBefore" resultType="FpMemberVo">
         select * from member
          where sessionkey = #{loginCookie}
            and sessionlimit > now()
     </select>
     
+    <!-- 네이버 계정 확인 -->
     <select id="getBySnsNaver" resultType="FpMemberVo">
         select * from member where naverid = #{naverid}
     </select>
     
+    <!-- 구글 계정 확인 -->
     <select id="getBySnsGoogle" resultType="FpMemberVo">
         select * from member where googleid = #{googleid}
     </select>
     
+    <!-- 카카오 계정 확인 -->
     <select id="getBySnsKakao" resultType="FpMemberVo">
         select * from member where kakaoid = #{kakaoid}
     </select>
