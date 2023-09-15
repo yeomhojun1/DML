@@ -43,7 +43,8 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView mv) throws Exception {
     	boolean isAjaxRequest = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
-        if (!isAjaxRequest) {
+    	// ajax 에서 페이지를 불러올 경우에는 미동작
+    	if (!isAjaxRequest) {
         	HttpSession session = request.getSession();
         	Object memberObj = session.getAttribute(SessionNames.LOGIN);
         	
