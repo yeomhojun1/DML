@@ -23,8 +23,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link href="${pageContext.request.contextPath}/css/styles.css"
 	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/scss.css"
-	rel="stylesheet" />
+
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
 <script language="javascript"
@@ -37,9 +36,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
 
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-		crossorigin="anonymous"></script>
+
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"

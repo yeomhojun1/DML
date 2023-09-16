@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import = "java.util.Calendar" %>
+<%@ page import="java.util.Calendar"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +30,10 @@
 <!-- ck에디터적용코드  -->
 <script language="javascript"
 	src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+	<!-- 부투스트랩 js코드 -->
+		<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
 	<jsp:include page="/WEB-INF/views/frame/nav.jsp"></jsp:include>
@@ -43,58 +47,86 @@
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol> -->
 					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
-					<div>${member.memberId}</div>
-					<div type="button" class="testdd" > test</button>
-					<div class="test11"></div>
-				<div><%
-  String Date = new java.text.SimpleDateFormat("yyyy. MM. dd").format(new java.util.Date());
-  String Today = new java.text.SimpleDateFormat("yyyyMMdd").format(new java.util.Date());
-%><h1><%=Date %></h1></div>
-				</div>
+					<div>
+						<div id="datepicker" name="calendarNo"
+							<%String Today = new java.text.SimpleDateFormat("yyyyMMdd").format(new java.util.Date());%>
+							placeholder="<%=Today%>">
+					</div>
+					<div>
+						<h2>${member.memberId}</h2>
+					</div>
+					<div type="button" class="testdd">
+						test
+						</button>
+						<div class="test11"></div>
+					</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
 
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-		crossorigin="anonymous"></script>
-
-	<script
-		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-		crossorigin="anonymous"></script>
-		<script>
-		window.onload=function(){
+	<script>
+		window.onload = function() {
 			const now = new Date();
-			var today = new Date().toISOString().substring(0,10).replace(/-/g,'');	
+			var today = new Date().toISOString().substring(0, 10).replace(/-/g,
+					'');
 			console.log(today);
-				$.ajax({
-				url:"${pageContext.request.contextPath}/memberexset/list.ajax",
-				type: "get"
-					,data : {dayExSet : today+"${member.memberId}"	
-						
-					}
-				,success : function(result){
-					
-					console.log("1231");
-					htmlVal = '	<div class="mem_ex_set">';
-					for (var i = 0; i < result.length; i++) {
-						htmlVal += '<div class="mem_ex_set_one btn col-xl-12" data-part="'+result[i].ecode+'">'+result[i].exName+'</div>'
-					}
-					htmlVal +='</div>'
-					$(".test11").append(htmlVal);
-				}
-				, dataType: "json"
-				})
-			}
-		
+			
+					$.ajax({
+						url : "${pageContext.request.contextPath}/memberexset/list.ajax",
+						type : "get",
+						data : {
+							dayExSet : today + "${member.memberId}"
 
+						},
+						success : function(result) {
+						
+							console.log("1231");
+							htmlVal = '	<div class="exSetForDay">';
+							for (var i = 0; i < result.length; i++) {
+								htmlVal += '<div class="exSetForDay_one btn col-xl-12" data-dayExSet="'+result[i].dayExSet+'" data-ecode="'+result[i].ecode
+								'"><div>'+ result[i].exName + '</div>'
+									/* 	+ result[i].exerciseSet+'</div><div>
+										+ result[i].exerciseNumber+'</div><div>
+										+ result[i].exerciseNumber+'</div> */
+							}
+							htmlVal += '</div>'
+							console.log(result);
+							$(".test11").append(htmlVal);
+						},
+						dataType : "json"
+					})
+					
+		}
+		 $(function() {
+		       //input을 datepicker로 선언
+		       $("#datepicker").datepicker({
+		          dateFormat: 'yy-mm-dd' //달력 날짜 형태
+		           ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+		           ,showMonthAfterYear:true // 월- 년 순서가아닌 년도 - 월 순서
+		           ,changeYear: true //option값 년 선택 가능
+		           ,changeMonth: true //option값  월 선택 가능                
+		           ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
+		           ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+		           ,buttonImageOnly: true //버튼 이미지만 깔끔하게 보이게함
+		           ,buttonText: "선택" //버튼 호버 텍스트              
+		           ,yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
+		           ,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
+		           ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
+		           ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
+		           ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
+		           ,minDate: "-5Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+		           ,maxDate: "+5Y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
+		     	 ,onSelect: function() { 
+		            var exerciseDate = $.datepicker.formatDate("yymmdd",$("#datepicker").datepicker("getDate")); 
+		            exerciseDate = $("#datepicker").val();
+		            alert(exerciseDate);
+		        	  
+		       }});                   
+		       //초기값을 오늘 날짜로 설정해줘야 합니다.
+		       $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
+		   });
 		
-		
-		
-		</script>
+	</script>
 </body>
 </html>
