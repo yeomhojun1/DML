@@ -46,7 +46,7 @@
 <link rel="stylesheet" type="text/css" href="css/animsition.min.css">
 <!-- Font Awesome CSS -->
 <link href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/fontello.css">
+<link rel="stylesheet" type="text/css" href="css/sfontello.css">
 <!-- font css -->
 <link
 	href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i%7cRoboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
