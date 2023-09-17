@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,11 +27,19 @@ public class FpFoodApiController {
 	public String selectListfoodapi() {
 		return new Gson().toJson(fpFoodApiServiceImpl.selectList());
 	}
+	
+	@PostMapping("/list")
+	   public String insertFood(@RequestBody FpFoodApiVo vo) 
+	  {
+		System.out.println(vo);
+	      return "성공";
+	  }
+	
 	@GetMapping("/one")
-	public ModelAndView selectOnefoodapi(ModelAndView mv, String commentNum) {
-		mv.addObject("foodapione", fpFoodApiServiceImpl.selectOne(commentNum));
-		mv.setViewName("foodapi/one");
-		return mv;
+	@ResponseBody
+	public String selectOnefoodapi(String foodCd ) {
+		FpFoodApiVo vo = fpFoodApiServiceImpl.selectOne(foodCd);
+		return new Gson().toJson(vo);
 	}
 	@GetMapping("/insert")
 	public ModelAndView insertfoodapi(ModelAndView mv ) {

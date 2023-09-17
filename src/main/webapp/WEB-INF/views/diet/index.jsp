@@ -22,6 +22,9 @@
 		<link href="${pageContext.request.contextPath}/css/style1.css"	rel="stylesheet" />
 		<link href="${pageContext.request.contextPath}/css/style2.css"	rel="stylesheet" />
     </head>
+
+
+    
 <body class="sb-nav-fixed">
 	<jsp:include page="/WEB-INF/views/diet/modal_insert.jsp"></jsp:include>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -199,7 +202,8 @@
 												style="width: 31px; height: 27px;">
 												
 												<input type="text" id="datepicker">
-												
+									
+
 												<!--  <img
 													class="ant-image-img DateBars_date_bar_calendar_icon__gPVOu"
 													src="resources/images/date_bar_calendar_icon.png"
@@ -303,13 +307,7 @@
 			<div class="Plan_bottom1_control_panel_left_one__J2gfw">
 			</div>
 		</div>
-		<div class="Plan_bottom1_control_panel_right___uu7s">
-			<div class="Plan_bottom1_control_panel_add__F5yxB">
-				<button type="button"
-					class="ant-btn css-1s3dcof ant-btn-default Plan_bottom1_save_btn__14v5t Global_button__iJeUH">
-					<span>끼니목록관리</span>
-				</button>
-			</div>
+	
 			<div class="Plan_bottom1_control_panel_add__F5yxB" >
 				<!-- Button trigger modal -->
 				<button type="button" id="dietinsert"  data-bs-toggle="modal" data-bs-target="#dietInsertModal" class="ant-btn css-1s3dcof ant-btn-default Plan_bottom1_control_panel_btn__3jlBx Global_button__iJeUH" style="float: right;">
@@ -491,6 +489,7 @@
  $('#datepicker').datepicker('setDate', new Date());
 });
 	</script>
+	
 	<script>
 	$("#dietinsert").click(dietClickHandler);
 	function dietClickHandler() {		
@@ -504,18 +503,36 @@
 				var htmlVal = '';
 				result.map((vo)=>{
 					htmlVal+=`
-					<div class="Plan_modal_food_bar__ikK6Q frm" data-foodcd="\${vo.foodCd}" >
-						<div
-							class="Plan_bottom1_second_bar_each__cBwag Plan_modal_food_bar_name__jMR4t">\${vo.foodName}</div>
+					<div class="Plan_modal_food_bar__ikK6Q frm" data-foodcd="\${vo.foodCd}">
+						<div class="Plan_bottom1_second_bar_each__cBwag Plan_modal_food_bar_name__jMR4t">\${vo.foodName}</div>
 						<div class="Plan_bottom1_second_bar_each__cBwag ">\${vo.calorie}kcal</div>
-						<div class="Plan_bottom1_second_bar_each__cBwag ">탄(g)</div>
-						<div class="Plan_bottom1_second_bar_each__cBwag ">단(g)</div>
-						<div class="Plan_bottom1_second_bar_each__cBwag ">지(g)</div>
+						<div class="Plan_bottom1_second_bar_each__cBwag ">\${vo.crabs}</div>
+						<div class="Plan_bottom1_second_bar_each__cBwag ">\${vo.protein}</div>
+						<div class="Plan_bottom1_second_bar_each__cBwag ">\${vo.fat}</div>
+					 	<div class="Plan_raw_food_bar_each__VYL98 Plan_raw_food_bar_ctl__bADrg">
+						<button type="button" 
+							class="ant-btn css-1s3dcof ant-btn-circle ant-btn-default ant-btn-icon-only Plan_raw_food_bar_icon__GUMkf"
+							ant-click-animating-without-extra-node="false" style="">
+							<span role="img" aria-label="plus"
+								class="anticon anticon-plus Plan_raw_food_bar_icon_plus__lIKKS"><svg
+									viewBox="64 64 896 896" focusable="false"
+									data-icon="plus" width="1em" height="1em"
+									fill="currentColor" aria-hidden="true">
+									<defs>
+									<style></style></defs>
+									<path
+										d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"></path>
+									<path
+										d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"></path></svg></span>
+						</button> 
+					</div>
 					</div>
 					`;
-				});	
+				});
+				  
 				$(".Plan_modal_food_left__wihxs > .frm").remove();
 				$(".Plan_modal_food_left__wihxs").append(htmlVal);
+				
 			}
 			,error: function(e){
 				console.log(e);	
@@ -524,6 +541,29 @@
 		
 		})
 	}
+
+/* 	$("#dietfood").click(dietFoodClickHandler);
+	  function dietFoodClickHandler(foodCd){
+	         
+	         let param = {foodCd : foodCd};
+
+	          $.ajax({
+	         url:"${pageContext.request.contextPath}/foodapi/list)}"
+	         ,type: "POST"
+	                    ,data: JSON.stringify(param) 
+	         ,dataType:"json"
+	         ,contentType: "application/json; charset=utf-8"
+	         , success : function(result){
+	            
+	            console.log(result);
+	         }
+	         ,error: function(e){
+	            console.log(e);   
+	         }
+	         
+	      
+	      }) */
 	</script>
+
 </body>
 </html>

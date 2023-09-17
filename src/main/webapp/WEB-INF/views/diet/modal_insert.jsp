@@ -58,6 +58,7 @@
 													<div class="Plan_bottom1_second_bar_each__cBwag ">탄(g)</div>
 													<div class="Plan_bottom1_second_bar_each__cBwag ">단(g)</div>
 													<div class="Plan_bottom1_second_bar_each__cBwag ">지(g)</div>
+													<div class="Plan_bottom1_second_bar_each__cBwag Plan_modal_food_bar_ctl__CV6ad"></div>
 												</div>
 											</div>
 											<div class="Plan_modal_food_right__sg_CE">
@@ -185,3 +186,5 @@
 		</div>
 	</div>
 	</div>
+	
+

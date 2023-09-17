@@ -345,6 +345,7 @@ label {
 	height: 38px;
 }
 
+<<<<<<< Updated upstream
 /* button {
  padding: 25px 20px;
 	border-radius: 40px;
@@ -365,24 +366,30 @@ label {
 	justify-content: center;
 	box-shadow: 0 5px 30px 0 rgba(17, 151, 201, .2)
 } */
+=======
+
+>>>>>>> Stashed changes
 
 button:focus:not(:focus-visible) {
   outline: 0;
 }
 
-button {
+input,
+button,
+optgroup,
+textarea {
   margin: 0;
   font-family: inherit;
   font-size: inherit;
   line-height: inherit; 
 }
 
-input,
+/* input,
 select,
 optgroup,
 textarea {
 	padding: 25px 20px;
-}
+} */
 
 button,
 select {
