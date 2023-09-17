@@ -236,14 +236,15 @@
 						name="calendarNo">
 				</div>
 				<div>
+					<span>무게 : </span><input type="number" class="addExerciseWeight">
+				</div>
+				<div>
 					<span>횟수 : </span><input type="number" class="addExerciseNumber">
 				</div>
 				<div>
 					<span>세트 : </span><input type="number" class="addExerciseSet">
 				</div>
-				<div>
-					<span>무게 : </span><input type="number" class="addExerciseWeight">
-				</div>
+				
 				<div>
 					<button class="addMemberExSet">등록</button>
 				</div>
@@ -270,7 +271,6 @@
 	</div>
 
 
-	<script src="${pageContext.request.contextPath}/js/test.js"></script>
 	<script>
 
 	<!-- 운동부위를 선택하면 관련운동 나오도록하거나 검색했을때 나오도록함-->

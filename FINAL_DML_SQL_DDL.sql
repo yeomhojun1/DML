@@ -392,7 +392,10 @@ insert into exercise   values(50010, '바벨 스쿼트' , '하체' , ' 1.발을 
 
 
 --member_ex_set
-insert into CALENDAR values (230904, 'test1', '캘린더1', '230913', '230913', '캘린더내용1');
+insert into CALENDAR values (20230904, 'test1', '캘린더1', '230913', '230913', '캘린더내용1');
 insert into member_ex_set values ('230904test110001', 'test1', 10001, 230904, '덤벨 리스트 컬', 5, 10, 35);
+insert into CALENDAR values (20230917, 'test1', '캘린더7', '20230917', '20230917', '캘린더내용7');
+insert into CALENDAR values (20230918, 'test1', '캘린더8', '20230918', '20230918', '캘린더내용8');
+select * from CALENDAR;
 
 commit;
