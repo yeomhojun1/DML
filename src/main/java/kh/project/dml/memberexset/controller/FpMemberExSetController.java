@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.google.gson.Gson;
 
 import kh.project.dml.memberexset.model.service.FpMemberExSetService;
+import kh.project.dml.memberexset.model.vo.FpMemberExSetParam;
 import kh.project.dml.memberexset.model.vo.FpMemberExSetVo;
 
 
@@ -31,6 +32,13 @@ public class FpMemberExSetController {
 	public String selectListmemberexset(ModelAndView mv,String dayExSet) {
 		return new Gson().toJson(fpMemberExSetServiceImpl.selectList(dayExSet));
 	}
+	@GetMapping("/list.part")
+	@ResponseBody
+	public String selectPartmemberexset(ModelAndView mv,FpMemberExSetParam vo) {
+		return new Gson().toJson(fpMemberExSetServiceImpl.selectPart(vo));
+	}
+
+
 	@GetMapping("/one")
 	public ModelAndView selectOnememberexset(ModelAndView mv, String memberId) {
 		mv.addObject("memberexsetone", fpMemberExSetServiceImpl.selectOne(memberId));
@@ -84,20 +92,18 @@ public class FpMemberExSetController {
 		return viewPage;
 	}
 	@PostMapping("/delete")
-	public String deleteDomemberexset(RedirectAttributes redirectAttr,String memberId) {
-		String viewPage = "redirect:/";
-		int result = fpMemberExSetServiceImpl.delete(memberId);
+	@ResponseBody
+	public String deleteDomemberexset(RedirectAttributes redirectAttr,String dayExSet) {
+		int result = fpMemberExSetServiceImpl.delete(dayExSet);
 		try {
 			if (result < 1) {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");
-				viewPage = "redirect:/memberexset/list";//delete는 보통 처음에 있던 화면으로 돌아감 그래서 ajax를 쓰는데 그건 추후
+				
 			} else {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 됐습니다");
-				viewPage = "redirect:/memberexset/list";
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return viewPage;
+		return String.valueOf(result);
 	}
 }

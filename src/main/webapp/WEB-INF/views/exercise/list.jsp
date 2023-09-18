@@ -405,6 +405,7 @@
 		$(".exModalContent").append(eposeLink1);
 		$(".eposeLinkCss>iframe").prop("width", "100%");
 	}
+	
 	 $(function() {
 	       //input을 datepicker로 선언
 	       $("#datepicker").datepicker({
