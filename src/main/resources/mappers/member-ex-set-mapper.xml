@@ -17,7 +17,7 @@
 	</select>
 	<insert id="insert" parameterType="FpMemberExSetVo">
 		INSERT INTO MEMBER_EX_SET
-		VALUES ( #{calendarNo}||#{memberId}||#{ecode} , #{memberId},#{ecode}, #{calendarNo},#{exName}, #{exerciseSet}, #{exerciseNumber},#{exerciseWeight})
+		VALUES ( #{dayNo}||#{memberId}||#{ecode} ,#{dayNo}, #{memberId},#{ecode}, #{exName}, #{exerciseSet}, #{exerciseNumber},#{exerciseWeight})
 	</insert>
 	<update id="update" parameterType="FpMemberExSetVo">
 		UPDATE MEMBER_EX_SET SET MEMBERID=#{memberId}, ECODE=#{ecode} EXNAME=#{exName}, EXERCISESET=#{exerciseSet}, EXERCISENUMBER=#{exerciseNumber}

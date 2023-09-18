@@ -186,7 +186,12 @@
 		const now = new Date();
 		var onloadToday = new Date().toISOString().substring(0, 10).replace(/-/g,'');
 		getMemberexset(onloadToday);
+		
 	}
+	 var selectDate = $.datepicker.formatDate("yymmdd",$("#datepicker").datepicker("getDate")); 
+     selectDate = $("#datepicker").val();
+     selectDate= selectDate.replaceAll("-", "");
+   
 	function addEventAfterDisplay(selectorStr, cbHandler){
 		$(selectorStr).click(cbHandler);	
 	}
@@ -204,22 +209,6 @@
 		htmlVal += '</div>'
 		console.log(result);
 		$("#home").append(htmlVal);
-	}
-	function displayPart(result){
-		$(".exSetForDay").remove();
-	
-		htmlVal = '	<div class="exSetForDay">';
-		for (var i = 0; i < result.length; i++) {
-			htmlVal += '<div class="exSetForDay_one card col-xl-3 text-center"  data-ecode="'+result[i].ecode+'"><div>'+result[i].exName+'</div><div>'+result[i].exerciseWeight+'kg</div><div>'+result[i].exerciseNumber+
-			'회</div><div>'+result[i].exerciseSet+
-			'세트</div><div ><button type="button" class="updateDayExSet">수정</button><button type="button" class="deleteDayExSet">삭제</button></div></div>'
-				/* 	+ result[i].exerciseSet+'</div><div>
-					+ result[i].exerciseNumber+'</div><div>
-					+ result[i].exerciseNumber+'</div> */
-		}
-		htmlVal += '</div>'
-		console.log("displayPart : "+result);
-		$("#profile2").html(htmlVal);
 	}
 	/* 범준님 코드 가져옴 */
 	$("#datepicker").datepicker({
@@ -244,24 +233,17 @@
 		       var selectDate = $.datepicker.formatDate("yymmdd",$("#datepicker").datepicker("getDate")); 
 		       selectDate = $("#datepicker").val();
 		       selectDate= selectDate.replaceAll("-", "");
-		       selectDate =parseInt(selectDate);
+		      
 				console.log(selectDate);
 				getMemberexset(selectDate);
 				displayDayExSetPartHandler(selectDate);
 	  		 },
 	   		onChangeMonthYear:function(year, month, inst){
 	     		setTimeout(function(){
-	      		var selectedDay = parseInt($(".ui-datepicker-calendar .ui-state-active a", inst.dpDiv).text());
+	      		var selectedDay = $(".ui-datepicker-calendar .ui-state-active a", inst.dpDiv).text();
 	      		console.log(selectedDay);
-	      			 if (!isNaN(selectedDay)) {
 	        			$(".DateBars_date__DyX0X").text(selectedDay);
-	         			var scrollTo = $(".ant-btn-circle span", container).filter(function() {
-	           			return parseInt($(this).text()) === selectedDay;
-	        		});
-	         		if (scrollTo.length) {
-	           			container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop());
-	         				}
-	       				}
+	       				
 	     			}, 0);
 	  		 	}
 			});
@@ -281,16 +263,14 @@
 				dataType : "json"
 			});
 	}
-	function displayDayExSetPartHandler(selectDate){
-		console.log(selectDate);
-		selectDate= parseInt(selectDate);
+	function displayDayExSetPartHandler(){
 		$.ajax({
 			url : "${pageContext.request.contextPath}/memberexset/list.part",
 			type : "get",
 			data : {dayExSet : selectDate+"${member.memberId}" ,part: $(this).data("part") },
 			success : function(result) {
 					console.log("displayDayExSetPartHandler : "+result);
-					displayPart(result);
+					
 					},
 			dataType : "json"
 		});	
