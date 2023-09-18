@@ -406,10 +406,10 @@
        }
      }, 0);
    }
+   $('#datepicker').datepicker('setDate', new Date());
  });
 
- $('#datepicker').datepicker('setDate', new Date());
-});
+
 	</script>
 <script>
 	$(function() {
