@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kh.project.dml.calender.model.vo.FpCalenderVo;
-import kh.project.dml.exercise.model.vo.FpExerciseVo;
+import kh.project.dml.member.model.vo.FpMemberVo;
 
 @Repository
 public class FpCalenderDao {
@@ -15,8 +15,8 @@ public class FpCalenderDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<FpCalenderVo> selectList() {
-		return sqlSession.selectList("calender.selectList");
+	public List<FpCalenderVo> selectList(FpMemberVo loginInfo) {
+		return sqlSession.selectList("calender.selectList", loginInfo);
 	}
 	public List<FpCalenderVo> selectSearchList(int calendarno) {
 		return sqlSession.selectList("calender.selectSearchList", calendarno);

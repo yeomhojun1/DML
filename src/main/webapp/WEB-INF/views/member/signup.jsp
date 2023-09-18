@@ -47,7 +47,9 @@
 	    text-align: left;
 	}
 	
-	input[type=text] {
+	input[type=text],
+	input[type=number],
+	input[type=password] {
 	    background-color: #1A2226;
 	    border: none;
 	    border-bottom: 2px solid #0DB8DE;
@@ -60,17 +62,11 @@
 	    color: #ECF0F5;
 	}
 	
-	input[type=password] {
-	    background-color: #1A2226;
-	    border: none;
-	    border-bottom: 2px solid #0DB8DE;
-	    border-top: 0px;
-	    border-radius: 0px;
-	    font-weight: bold;
-	    outline: 0;
-	    padding-left: 0px;
-	    margin-bottom: 20px;
-	    color: #ECF0F5;
+	input[type="number"]::-webkit-outer-spin-button,
+	input[type="number"]::-webkit-inner-spin-button {
+	    -webkit-appearance: none;
+	    -moz-appearance: none;
+	    appearance: none;
 	}
 	
 	.form-group {
@@ -177,7 +173,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">생년월일</label>
-                                <input type="text" name="birthday" class="form-control" placeholder="YYYYMMDD 형식으로 입력해주세요">
+                                <input type="number" name="birthday" class="form-control" placeholder="YYYYMMDD 형식으로 입력해주세요">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">성별</label>
@@ -187,11 +183,11 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">키</label>
-                                <input type="text" name="height" class="form-control">
+                                <input type="number" name="height" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">몸무게</label>
-                                <input type="text" name="weight" class="form-control">
+                                <input type="number" name="weight" class="form-control">
                             </div>
                             
                             <div class="col-lg-12 loginbttm">

@@ -1,8 +1,5 @@
 package kh.project.dml.common.auth;
 
-import java.util.Iterator;
-
-import org.apache.commons.lang3.StringUtils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,19 +18,11 @@ public class SnsLogin {
 	private SnsValue sns;
 	
 	public SnsLogin(SnsValue sns) {
-		if(sns.getService().equals("kakao")) {			
-			this.oauthService = new ServiceBuilder(sns.getClientId())
-					.apiSecret(sns.getClientSecret())
-					.callback(sns.getRedirectUrl())
-					.build(sns.getApi20Instance());
-		} else {
-			this.oauthService = new ServiceBuilder(sns.getClientId())
-					.apiSecret(sns.getClientSecret())
-					.callback(sns.getRedirectUrl())
-					.build(sns.getApi20Instance());
-		}
+		this.oauthService = new ServiceBuilder(sns.getClientId())
+				.apiSecret(sns.getClientSecret())
+				.callback(sns.getRedirectUrl())
+				.build(sns.getApi20Instance());
 		this.sns = sns;
-		System.out.println("sns : "+this.sns);
 	}
 	
 	public String getAuthURL() {
@@ -41,9 +30,6 @@ public class SnsLogin {
 	}
 
 	public FpMemberVo getMemberProfile(String code) throws Exception {
-		System.out.println(code);
-		System.out.println(oauthService);
-		
 		OAuth2AccessToken accessToken = oauthService.getAccessToken(code);
 		System.out.println("accessToken : "+accessToken);
 		OAuthRequest request = new OAuthRequest(Verb.GET, this.sns.getProfileUrl());
@@ -54,7 +40,6 @@ public class SnsLogin {
 	}
 
 	private FpMemberVo parseJson(String body) throws Exception {
-		System.out.println("============================\n" + body + "\n==================");
 		FpMemberVo member = new FpMemberVo();
 		
 		ObjectMapper mapper = new ObjectMapper();
@@ -79,7 +64,6 @@ public class SnsLogin {
 			member.setMemberId(kakaoAccountNode.get("email").asText());
 			member.setMname(kakaoAccountNode.get("profile").get("nickname").asText());
 		}
-		System.out.println(member);
 		return member;
 	}
 	

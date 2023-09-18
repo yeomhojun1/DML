@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="memberExSet">
-	<select id="selectList" resultType="FpMemberExSetVo">
-		select * from member_ex_set
+	<select id="selectList" resultType="FpMemberExSetVo" parameterType="string" >
+ 		<bind name="dayExSet" value="'%'+dayExSet+'%'"/>
+		select * from member_ex_set where day_Ex_Set like #{dayExSet}
 	</select>
 
 	<select id="selectOne" resultType="FpMemberExSetVo" parameterType="string">
@@ -12,7 +13,7 @@
 	
 	<insert id="insert" parameterType="FpMemberExSetVo">
 		INSERT INTO MEMBER_EX_SET
-		VALUES ( #{calendarNo}||#{memberId}||#{ecode} , #{memberId},#{ecode}, #{exName}, #{exerciseSet}, #{exerciseNumber},#{calendarNo})
+		VALUES ( #{calendarNo}||#{memberId}||#{ecode} , #{memberId},#{ecode}, #{calendarNo},#{exName}, #{exerciseSet}, #{exerciseNumber},#{exerciseWeight})
 	</insert>
 	
 	<update id="update" parameterType="FpMemberExSetVo">

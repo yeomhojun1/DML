@@ -13,12 +13,15 @@ import lombok.ToString;
 @Setter
 @ToString
 public class FpMemberExSetVo {
+	private String dayExSet;
 	private String memberId;
 	private int ecode;
+	private int calendarNo;
 	private String exName;
 	private int exerciseSet;
 	private int exerciseNumber;
-
+	private int exerciseWeight;
+	
 	
 
 }

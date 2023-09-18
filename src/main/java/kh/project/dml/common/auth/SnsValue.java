@@ -22,6 +22,10 @@ public class SnsValue implements SnsUrls {
 	private boolean isKakao;
 	
 	public SnsValue(String service, String clientId, String clientSecret, String redirectUrl) {
+		if (StringUtils.isBlank(service)) {
+            throw new IllegalArgumentException("Service name cannot be blank or null.");
+        }
+		
 		this.service = service;
 		this.clientId = clientId;
 		this.clientSecret = clientSecret;
@@ -40,7 +44,9 @@ public class SnsValue implements SnsUrls {
 		} else if (isKakao) {
 			this.api20Instance = KakaoApi.instance();
 			this.profileUrl = KAKAO_PROFILE_URL;
-		}
+		} else {
+            throw new IllegalArgumentException("Unsupported service: " + service);
+        }
 	}
 }
 

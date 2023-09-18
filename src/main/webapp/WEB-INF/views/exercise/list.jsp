@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import = "java.util.Calendar" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,8 +23,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link href="${pageContext.request.contextPath}/css/styles.css"
 	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/scss.css"
-	rel="stylesheet" />
+
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
 <script language="javascript"
@@ -32,6 +32,16 @@
 	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+		crossorigin="anonymous"></script>
+
 
 <style>
 #modal.modal-overlay {
@@ -49,6 +59,7 @@
 	backdrop-filter: blur(1.5px);
 	border-radius: 10px;
 	border: 1px solid rgba(255, 255, 255, 0.18);
+	z-index: 9999;
 }
 
 #modal .modal-window {
@@ -198,6 +209,7 @@
 								<div class="ex_part btn col-xl-12" data-part="어깨">어깨</div>
 								<div class="ex_part btn col-xl-12" data-part="팔">팔</div>
 								<div class="ex_part btn col-xl-12" data-part="하체">하체</div>
+							
 							</div>
 							<!-- <div class="appendtest"></div>
 					 	<textarea name="bookIntro" id="bookIntro_textarea"></textarea>
@@ -224,14 +236,15 @@
 						name="calendarNo">
 				</div>
 				<div>
+					<span>무게 : </span><input type="number" class="addExerciseWeight">
+				</div>
+				<div>
 					<span>횟수 : </span><input type="number" class="addExerciseNumber">
 				</div>
 				<div>
 					<span>세트 : </span><input type="number" class="addExerciseSet">
 				</div>
-				<div>
-					<span>무게 : </span><input type="number" class="addExerciseWeight">
-				</div>
+				
 				<div>
 					<button class="addMemberExSet">등록</button>
 				</div>
@@ -256,25 +269,14 @@
 			</div>
 		</div>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
-
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-		crossorigin="anonymous"></script>
-
-	<script
-		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-		crossorigin="anonymous"></script>
 
 
-	<script src="${pageContext.request.contextPath}/js/test.js"></script>
 	<script>
 
 	<!-- 운동부위를 선택하면 관련운동 나오도록하거나 검색했을때 나오도록함-->
 	$(".ex_part").click(expartClickHandler);
 	function expartClickHandler(){
+	
 		$.ajax({
 		url:"${pageContext.request.contextPath}/exercise/searchlist",
 			type: "get"
@@ -324,18 +326,17 @@
 		$("#btn-modal1").click(()=>youtubeModalHandler(testOjbect));
 	
 	}
+	function modalOff(result) {
+		modal.style.display = "none"
+	}
+	const modal = document.getElementById("modal")
 	function modalHandler(){
-		/** 모달부분*/
-		const modal = document.getElementById("modal")
 			modalOn();
 		function modalOn() {
 		    modal.style.display = "flex"
 		}
 		function isModalOn() {
 		    return modal.style.display === "flex"
-		}
-		function modalOff() {
-		    modal.style.display = "none"
 		}
 		const btnModal = document.getElementById("btn-modal")
 		btnModal.addEventListener("click", e => {
@@ -435,21 +436,28 @@
 	
 		$(".addMemberExSet").click(onMemberExSetHandler);
 	function onMemberExSetHandler(){
-		console.log("123");
+	
+		var dateVal = $("#datepicker").val()
+		//replace([기존문자],[바꿀문자])
+		dateVal= dateVal.replaceAll("-", "");
+		dateVal =parseInt(dateVal);
+		console.log(dateVal);
 		$.ajax({
-			url:"${pageContext.request.contextPath}/exercise/list",
-			type: "get",
+			url:"${pageContext.request.contextPath}/memberexset/insert",
+			type: "post",
 			data : {ecode : $(".ex_one").data("code")
 				,exName : $(".ex_one").data("name")
-			,memberId : ""
-			,calendarNo: $("#datepicker").val()
+			,memberId : "${member.memberId}"
+			,calendarNo: dateVal
 			,exerciseSet : $(".addExerciseSet").val()
 			,exerciseNumber : $(".addExerciseNumber").val()
 			,exerciseWeight : $(".addExerciseWeight").val()}
-			,success : displayFrm123
-			,dataType : "json"
+			,success : modalOff
+			,error : function(){
+				console.log("error");
+			}
+		
 		})
-		console.log(displayFrm123);
 	}
 
 	

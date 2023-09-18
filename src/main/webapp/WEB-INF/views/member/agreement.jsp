@@ -47,7 +47,9 @@
 	    text-align: left;
 	}
 	
-	input[type=text] {
+	input[type=text],
+	input[type=number],
+	input[type=password] {
 	    background-color: #1A2226;
 	    border: none;
 	    border-bottom: 2px solid #0DB8DE;
@@ -60,17 +62,11 @@
 	    color: #ECF0F5;
 	}
 	
-	input[type=password] {
-	    background-color: #1A2226;
-	    border: none;
-	    border-bottom: 2px solid #0DB8DE;
-	    border-top: 0px;
-	    border-radius: 0px;
-	    font-weight: bold;
-	    outline: 0;
-	    padding-left: 0px;
-	    margin-bottom: 20px;
-	    color: #ECF0F5;
+	input[type="number"]::-webkit-outer-spin-button,
+	input[type="number"]::-webkit-inner-spin-button {
+	    -webkit-appearance: none;
+	    -moz-appearance: none;
+	    appearance: none;
 	}
 	
 	.form-group {
@@ -161,7 +157,7 @@
                             <jsp:include page="form_errors.jsp"/>
                             <div class="form-group">
                                 <label class="form-control-label">생년월일</label>
-                                <input type="text" name="birthday" class="form-control" placeholder="YYYYMMDD 형식으로 입력해주세요">
+                                <input type="text" name="birthday" onkeypress="return isNumber(event)" class="form-control" placeholder="YYYYMMDD 형식으로 입력해주세요">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">성별</label>
@@ -171,11 +167,11 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">키</label>
-                                <input type="text" name="height" class="form-control">
+                                <input type="text" name="height" onkeypress="return isDouble(event)" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">몸무게</label>
-                                <input type="text" name="weight" class="form-control">
+                                <input type="text" name="weight" onkeypress="return isDouble(event)" class="form-control">
                             </div>
                             <input type="hidden" name="username" value="${member.memberId}">
                             <input type="hidden" name="password1" value="SOCIAL_USER">
@@ -198,5 +194,22 @@
                 <div class="col-lg-3 col-md-2"></div>
             </div>
         </div>
+        <script>
+			function isNumber(event) {
+			    const charCode = (event.which) ? event.which : event.keyCode;
+			    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+			        return false;
+			    }
+			    return true;
+			}
+			
+			function isDouble(event) {
+			    const charCode = (event.which) ? event.which : event.keyCode;
+			    if (charCode !== 46 && charCode > 31 && (charCode < 48 || charCode > 57)) {
+			        return false;
+			    }
+			    return true;
+			}
+		</script>
 </body>
 </html>

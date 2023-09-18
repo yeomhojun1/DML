@@ -46,4 +46,5 @@
 	    <property name="basePackage" value="kh.project.dml"/>
 	    <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 	</bean>
+	
 </beans>

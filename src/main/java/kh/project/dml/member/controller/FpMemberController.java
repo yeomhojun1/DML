@@ -2,7 +2,6 @@ package kh.project.dml.member.controller;
 
 import java.util.Date;
 
-import javax.inject.Inject;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,7 +11,6 @@ import javax.validation.Valid;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.social.google.connect.GoogleConnectionFactory;
 import org.springframework.social.oauth2.GrantType;
@@ -33,13 +31,15 @@ import org.springframework.web.util.WebUtils;
 import kh.project.dml.common.auth.SnsLogin;
 import kh.project.dml.common.auth.SnsValue;
 import kh.project.dml.common.interceptor.SessionNames;
-import kh.project.dml.member.model.service.FpMemberService;
+import kh.project.dml.member.model.service.FpMemberServiceImpl;
 import kh.project.dml.member.model.vo.FpMemberVo;
 import kh.project.dml.member.model.vo.SocialCreateForm;
 import kh.project.dml.member.model.vo.UserCreateForm;
 import kh.project.dml.users.model.vo.FpUsersVo;
 import kh.project.dml.users.model.vo.LoginVo;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Controller
 @RequestMapping("/")
 public class FpMemberController {
@@ -47,26 +47,12 @@ public class FpMemberController {
 	// 로그 수집 기능
 	private static final Logger logger = LoggerFactory.getLogger(FpMemberController.class);
 	
-	@Inject
-	private FpMemberService service;
-	
-	@Inject
-	private SnsValue naverSns;
-	
-	@Inject
-	private SnsValue googleSns;
-
-	@Inject
-	private SnsValue kakaoSns;
-	
-	@Inject
-	private GoogleConnectionFactory googleConnectionFactory;
-	
-	@Inject
-	private OAuth2Parameters googleOAuth2Parameters;
-	
-	@Autowired
-	private FpMemberService fpMemberService;
+	private final FpMemberServiceImpl service;
+	private final SnsValue naverSns;
+	private final SnsValue googleSns;
+	private final SnsValue kakaoSns;
+	private final GoogleConnectionFactory googleConnectionFactory;
+	private final OAuth2Parameters googleOAuth2Parameters;
 	
 	// 멤버 페이지(임시)
 	@GetMapping("/member/list")
@@ -79,7 +65,7 @@ public class FpMemberController {
 	@RequestMapping(value = "/auth/{snsService}/callback", 
 			method = { RequestMethod.GET, RequestMethod.POST})
 	public String SnsLoginCallback(@PathVariable String snsService,
-			Model model, @RequestParam String code, HttpSession session) throws Exception {
+			Model model, @RequestParam String code, HttpSession session, HttpServletResponse response) throws Exception {
 		
 		logger.info("SnsLoginCallback: service={}", snsService);
 		SnsValue sns = null;
@@ -99,7 +85,6 @@ public class FpMemberController {
 		// 3. DB 해당 유저가 존재하는 체크 (googleid, naverid, kakaoid 컬럼 필수)
 		FpMemberVo member = service.getBySns(snsMember);
 		if (member == null) {
-//			model.addAttribute("result", "존재하지 않는 사용자입니다. 가입해 주세요.");
 			String checkId = service.checkId(snsMember.getMemberId());
 			if(checkId == null) {				
 				model.addAttribute("member", snsMember);
@@ -107,17 +92,71 @@ public class FpMemberController {
 				//미존재시 가입페이지로!!
 				return "/member/agreement";
 			} else {
-				model.addAttribute("result", "동일한 Email로 가입되어 있습니다. 기존에 회원가입한 방식으로 로그인해주세요.");
-				return "redirect:/member/login";
+				// 아이디 중복 시
+				return "redirect:/member/duplicationId";
 			}
 		} else {
-//			model.addAttribute("result", member.getMname() + "님 반갑습니다.");
 			// 4. 존재시 강제로그인
 			Date expire = new Date(System.currentTimeMillis() + SessionNames.EXPIRE * 1000);
 			service.keepLogin(member.getMemberId(), session.getId(), expire);
 			session.setAttribute(SessionNames.LOGIN, member);
+			
+			// 쿠키에 세션 ID 저장
+            Cookie loginCookie = new Cookie(SessionNames.LOGIN_COOKIE, session.getId());
+            loginCookie.setPath("/");
+            loginCookie.setMaxAge(SessionNames.EXPIRE); // 쿠키 유효기간 설정 (초 단위)
+            response.addCookie(loginCookie);
 		}
 		return "redirect:/index";
+	}
+	
+	// 로그인 페이지
+	@GetMapping("/member/login")
+	public String login(Model model, HttpSession session) throws Exception {
+		logger.info("login GET .....");
+		
+		model.addAttribute("loginVo", new LoginVo());
+		SnsLogin snsLogin = new SnsLogin(naverSns);
+		model.addAttribute("naver_url", snsLogin.getAuthURL());
+		
+		/* 구글code 발행을 위한 URL 생성 */
+		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
+		String url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
+		model.addAttribute("google_url", url);
+		
+		SnsLogin kakaoLogin = new SnsLogin(kakaoSns);
+		model.addAttribute("kakao_url", kakaoLogin.getAuthURL());
+		model.addAttribute("loginResult", "");
+		
+		return "/member/login";
+	}
+	
+	// 로그인 페이지에서 로그인 버튼 클릭
+	@PostMapping("/member/login")
+	public String loginPost(LoginVo vo, Model model, HttpSession session, HttpServletResponse response) throws Exception {
+	    logger.info("loginPost...LoginVo={}", vo); 
+        FpUsersVo member = service.login(vo);
+        if(member != null) {
+        	if (member.getAuthorities().equals("ROLE_MEMBER")) {
+        		Date expire = new Date(System.currentTimeMillis() + SessionNames.EXPIRE * 1000);
+        		service.keepLogin(member.getUsername(), session.getId(), expire);
+        		session.setAttribute(SessionNames.LOGIN, member); // 세션 설정
+        		
+        		// 쿠키에 세션 ID 저장
+        		Cookie loginCookie = new Cookie(SessionNames.LOGIN_COOKIE, session.getId());
+        		loginCookie.setPath("/");
+        		loginCookie.setMaxAge(SessionNames.EXPIRE); // 쿠키 유효기간 설정 (초 단위)
+        		response.addCookie(loginCookie);
+        		
+        		return "redirect:/index";
+        	} else {
+        		model.addAttribute("loginResult", "Login Fail!!");
+        	}
+        } else {	        	
+        	logger.error("사용자ID 또는 비밀번호를 확인해 주세요.");
+        	model.addAttribute("loginResult", "사용자ID 또는 비밀번호를 확인해 주세요.");
+        }
+        return "/member/login";
 	}
 	
 	// 로그아웃 버튼 클릭
@@ -136,9 +175,10 @@ public class FpMemberController {
 	    
 	    session.removeAttribute(SessionNames.LOGIN);
 	    
+	    // 쿠키를 찾아서 삭제
 	    Cookie loginCookie = WebUtils.getCookie(request, SessionNames.LOGIN_COOKIE);
 	    if (loginCookie != null) {
-	        loginCookie.setPath("/");	
+	        loginCookie.setPath("/");    
 	        loginCookie.setMaxAge(0);
 	        response.addCookie(loginCookie);
 	    }
@@ -146,54 +186,6 @@ public class FpMemberController {
 	    session.invalidate();
 	    
 	    return "redirect:/index";
-	}
-	
-	// 로그인 페이지
-	@GetMapping("/member/login")
-	public String login(Model model, HttpSession session) throws Exception {
-		logger.info("login GET .....");
-		if(service.checkSession(session.getId()) == null) {
-			System.out.println("null");
-		} else {
-			return "redirect:/index";
-		}
-		model.addAttribute("loginVo", new LoginVo());
-		
-		SnsLogin snsLogin = new SnsLogin(naverSns);
-		model.addAttribute("naver_url", snsLogin.getAuthURL());
-		
-		/* 구글code 발행을 위한 URL 생성 */
-		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
-		String url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
-		model.addAttribute("google_url", url);
-		
-		SnsLogin kakaoLogin = new SnsLogin(kakaoSns);
-		model.addAttribute("kakao_url", kakaoLogin.getAuthURL());
-		model.addAttribute("loginResult", "");
-		
-		return "/member/login";
-	}
-	
-	// 로그인 페이지에서 로그인 버튼 클릭
-	@PostMapping("/member/login")
-	public String loginPost(LoginVo vo, Model model, HttpSession session) throws Exception {
-	    logger.info("loginPost...LoginVo={}", vo); 
-	    try {
-	        FpUsersVo member = service.login(vo);
-	        if (member.getAuthorities().equals("ROLE_MEMBER")) {
-	            Date expire = new Date(System.currentTimeMillis() + SessionNames.EXPIRE * 1000);
-	            service.keepLogin(member.getUsername(), session.getId(), expire);
-	            session.setAttribute(SessionNames.LOGIN, member); // 세션 설정
-	            return "redirect:/index";
-	        } else {
-	            model.addAttribute("loginResult", "Login Fail!!");
-	        }
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        logger.error("사용자ID 또는 비밀번호를 확인해 주세요.", e);
-	        model.addAttribute("loginResult", "사용자ID 또는 비밀번호를 확인해 주세요.");
-	    }
-	    return "/member/login";
 	}
 	
 	// 회원가입 페이지
@@ -206,7 +198,7 @@ public class FpMemberController {
 	// 회원가입 페이지에서 회원가입 버튼 클릭
 	@PostMapping("/member/signup")
     public String signup(@Valid UserCreateForm userCreateForm, BindingResult bindingResult, HttpSession session, LoginVo vo) {
-        if(bindingResult.hasErrors()) {
+		if(bindingResult.hasErrors()) {
             return "/member/signup";
         }
 
@@ -215,14 +207,13 @@ public class FpMemberController {
             return "/member/signup";
         }
         try {
-        	fpMemberService.create(userCreateForm);
-            // 회원가입 후 자동 로그인 처리(오류 발생으로 조치 필요)
+        	service.create(userCreateForm);
         	vo.setUsername(userCreateForm.getUsername());
         	vo.setPassword(userCreateForm.getPassword1()); 
             FpUsersVo member = service.login(vo);
             if (member != null) {
                 Date expire = new Date(System.currentTimeMillis() + SessionNames.EXPIRE * 1000);
-                fpMemberService.keepLogin(member.getUsername(), session.getId(), expire);
+                service.keepLogin(member.getUsername(), session.getId(), expire);
                 session.setAttribute(SessionNames.LOGIN, member); // 세션 설정
             }
         } catch(DataIntegrityViolationException e) {
@@ -246,7 +237,7 @@ public class FpMemberController {
         }
         
         try {
-        	fpMemberService.socialCreate(socialCreateForm);
+        	service.socialCreate(socialCreateForm);
         	FpMemberVo member = (FpMemberVo) session.getAttribute("snsMember");
 			Date expire = new Date(System.currentTimeMillis() + SessionNames.EXPIRE * 1000);
 			service.keepLogin(member.getMemberId(), session.getId(), expire);
@@ -262,18 +253,7 @@ public class FpMemberController {
 	
 	// 마이페이지
 	@GetMapping("/member/mypage")
-	public String mypage(Model model, HttpSession session) {
-		Object memberObj = session.getAttribute(SessionNames.LOGIN);
-		
-	    if (memberObj instanceof FpUsersVo) {
-	        FpUsersVo userMember = (FpUsersVo) memberObj;
-	        System.out.println(userMember);
-	        model.addAttribute("member", service.memberInfo(userMember.getUsername()));
-	    } else if (memberObj instanceof FpMemberVo) {
-	    	FpMemberVo member = (FpMemberVo) memberObj;
-	    	System.out.println(member);
-	    	model.addAttribute("member", service.memberInfo(member.getMemberId()));
-	    }
+	public String mypage() {
 		return "/member/mypage";
 	}
 	
@@ -289,15 +269,14 @@ public class FpMemberController {
 	// 회원탈퇴 전 패스워드 항목 입력
 	@GetMapping("/member/deleteCheck")
 	public String deleteCheck(HttpSession session) {
-		session.getAttribute(SessionNames.LOGIN);
 		return "/member/deleteCheck";
 	}
 	// /member/deleteCheck 페이지에서 회원탈퇴 버튼 클릭
 	@PostMapping("/member/withdrawal")
-	public String deleteCheck(@RequestParam String password, Model model, HttpSession session, LoginVo vo) {
+	public String deleteCheck(@RequestParam String password, Model model, HttpSession session, LoginVo vo, HttpServletRequest request, HttpServletResponse response) {
 		Object memberObj = session.getAttribute(SessionNames.LOGIN);
-	    try {	    	
-	    	if (memberObj instanceof FpUsersVo) {
+	    try {
+	    	if (memberObj instanceof FpUsersVo) { // 일반 계정인 경우
 	    		FpUsersVo userMember = (FpUsersVo) memberObj;
 	    		vo.setUsername(userMember.getUsername());
 	    		vo.setPassword(password);
@@ -305,11 +284,35 @@ public class FpMemberController {
 	    		if(user == null) {
 	    			return "/member/errorPopup";
 	    		} else {
+    		        service.keepLogin(user.getUsername(), "", new Date());
+		        	session.removeAttribute(SessionNames.LOGIN);
+	    		    
+	    		    // 쿠키를 찾아서 삭제
+	    		    Cookie loginCookie = WebUtils.getCookie(request, SessionNames.LOGIN_COOKIE);
+	    		    if (loginCookie != null) {
+	    		        loginCookie.setPath("/");    
+	    		        loginCookie.setMaxAge(0);
+	    		        response.addCookie(loginCookie);
+	    		    }
+	    		    
+	    		    session.invalidate();
 	    			service.delete(user.getUsername());
 	    			return "/member/deletePopup";
 	    		}
-	    	} else if (memberObj instanceof FpMemberVo) {
+	    	} else if (memberObj instanceof FpMemberVo) { // 소셜 계정인 경우
 	    		FpMemberVo member = (FpMemberVo) memberObj;
+	    		service.keepLogin(member.getMemberId(), "", new Date());
+	    		session.removeAttribute(SessionNames.LOGIN);
+    		    
+    		    // 쿠키를 찾아서 삭제
+    		    Cookie loginCookie = WebUtils.getCookie(request, SessionNames.LOGIN_COOKIE);
+    		    if (loginCookie != null) {
+    		        loginCookie.setPath("/");    
+    		        loginCookie.setMaxAge(0);
+    		        response.addCookie(loginCookie);
+    		    }
+    		    
+    		    session.invalidate();
 	    		service.delete(member.getMemberId());
 	    		return "/member/deletePopup";
 	    	}
@@ -327,8 +330,7 @@ public class FpMemberController {
 	
 	// 회원탈퇴 완료 후 팝업창 화면
 	@GetMapping("/member/deletePopup")
-	public String deletePopup(HttpSession session) {
-		session.setAttribute(SessionNames.LOGIN, "");
+	public String deletePopup() {
 		return "/member/deletePopup";
 	}
 }

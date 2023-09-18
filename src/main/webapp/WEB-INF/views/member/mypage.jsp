@@ -10,25 +10,12 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Daily Muscle Life</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
-	rel="stylesheet" />
+<title>Daily Muscle Life | 마이페이지</title>
 <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/scss.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/mypage.css" rel="stylesheet" />
-<script
-	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-	crossorigin="anonymous"></script>
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<!-- ck에디터적용코드  -->
-<script language="javascript"
-	src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
-	
+<script	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"	crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
 	<jsp:include page="/WEB-INF/views/frame/nav.jsp"></jsp:include>
@@ -39,7 +26,6 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-                    <!-- 마이페이지 내용 추가 필요 -->
 					<div class="ant-drawer-body">
 						<div class="Menu_container">
 							<ul class="Menu_list">
@@ -49,16 +35,24 @@
 						<div>
 							<div>
 								<div class="MyPage_basic_input_row">
-									<div class="MyPage_basic_input_title">이름/별명</div>
-									<div class="MyPage_basic_input_content">
-										<input class="MyPage_basic_input"
-											type="text" id="mname" value="${member.mname }">
-									</div>
-									<div class="MyPage_basic_input_title">이메일</div>
+									<div class="MyPage_basic_input_title">아이디</div>
 									<div class="MyPage_basic_input_content">
 										<input disabled=""
 											class="MyPage_basic_input"
 											type="text" id="memberId" value="${member.memberId }">
+									</div>
+									<div class="MyPage_basic_input_title">성별</div>
+									<div class="MyPage_basic_input_content">
+										<input disabled=""
+											class="MyPage_basic_input"
+											type="text" value="${member.gender }">
+									</div>
+								</div>
+								<div class="MyPage_basic_input_row">
+									<div class="MyPage_basic_input_title">이름/별명</div>
+									<div class="MyPage_basic_input_content">
+										<input class="MyPage_basic_input"
+											type="text" id="mname" value="${member.mname }">
 									</div>
 								</div>
 								<div class="MyPage_basic_input_row">
@@ -73,14 +67,7 @@
 											type="text" id="weight" value="${member.weight }">
 									</div>
 								</div>
-								<div class="MyPage_basic_input_row">
-									<div class="MyPage_basic_input_title">성별</div>
-									<div class="MyPage_basic_input_content">
-										<input disabled=""
-											class="MyPage_basic_input"
-											type="text" value="${member.gender }">
-									</div>
-								</div>
+								
 								<button class="MyPage_basic_btn" onclick="sendData()">저장하기</button>
 
 								<button class="MyPage_basic_btn MyPage_basic_red MyPage_btn_right" 
@@ -96,14 +83,6 @@
 	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
-
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-		crossorigin="anonymous"></script>
-
-	<script
-		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
 	<script>
 		
