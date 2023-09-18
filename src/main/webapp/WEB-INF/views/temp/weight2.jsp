@@ -171,7 +171,7 @@ Custom scripts for all pages
 													</div>
 													<span
 														class="ant-input-affix-wrapper Track_input_basic__yj5u2 css-1s3dcof">
-														<input class="ant-input css-1s3dcof" type="text" value="${member.height }"><span
+														<input class="ant-input css-1s3dcof" type="text" value="${member.weight }"><span
 														class="ant-input-suffix">kg</span>
 													</span>
 												</div>
