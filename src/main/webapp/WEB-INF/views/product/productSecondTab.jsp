@@ -10,8 +10,8 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<button class="h3 mb-0 text-gray-800 card h-100 py-2 btn1_title tabmenu " data-tabmenu="1">보충제22222</button>
-						<button class="h3 mb-0 text-gray-800 card h-100 py-2 btn2_title tabmenu active" data-tabmenu="2">닭가슴살22222</button>
+						<button class="h3 mb-0 text-gray-800 card h-100 py-2 btn1_title tabmenu " data-tabmenu="1">보충제</button>
+						<button class="h3 mb-0 text-gray-800 card h-100 py-2 btn2_title tabmenu active" data-tabmenu="2">닭가슴살</button>
 						
 						<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="${pageContext.request.contextPath }/fullcalendar/calendar"><i
 							class="fas fa-download fa-sm text-white-50"></i>calendar</a>
@@ -20,7 +20,7 @@
 					<!-- Content Row -->
 					<div class="row">
 
-						<!-- Earnings (Monthly) Card Example -->
+						<!--  Earnings (Monthly) Card Example
 						<div class="col-xl-3 col-md-6 mb-4">
 							<div class="card border-left-primary shadow h-100 py-2 difficulty">
 							
@@ -29,7 +29,7 @@
 							</div>
 						</div>
 
-						<!-- Earnings (Monthly) Card Example -->
+						Earnings (Monthly) Card Example
 						<div class="col-xl-3 col-md-6 mb-4">
 							<div class="card border-left-success shadow h-100 py-2 difficulty">
 							
@@ -38,7 +38,7 @@
 							</div>
 						</div>
 						
-						<!-- Earnings (Monthly) Card Example -->
+						Earnings (Monthly) Card Example
 						<div class="col-xl-3 col-md-6 mb-4">
 							<div class="card border-left-success shadow h-100 py-2 difficulty">
 							
@@ -47,7 +47,7 @@
 							</div>
 						</div>
 
-						<!-- Pending Requests Card Example -->
+						 Pending Requests Card Example 
 						<div class="col-xl-3 col-md-6 mb-4">
 							<div class="card border-left-warning shadow h-100 py-2 difficulty">
 								<div class="card-body">
@@ -55,48 +55,13 @@
 										<div class="col mr-2">
 											 <button class="h5 mb-0 font-weight-bold text-gray-800 card-body" onClick="location.href='https://www.myprotein.co.kr/'">단백질보충제 & 건강보조식품</button>
 										</div>
-										
+									
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
-					<div class="Chicken_supplement_link__DjbVY"><div class="Chicken_supplement_link_each__V5Ta_"><div class="Chicken_supplement_link_top__bj2GR"><div class="Chicken_supplement_link_each_img__OB5s9"><div class="ant-image css-1s3dcof"><img alt="" class="ant-image-img" src="/images/supplement_top_1.png"></div></div><div class="Chicken_supplement_link_each_frozen__anqSS">냉장</div><div class="Chicken_supplement_link_each_separate__WP9OM"></div><div class="Chicken_supplement_link_each_name__BY_9j">닭가슴살(냉장) 1kg 자연실록 무항생제 (하림)</div><div class="Chicken_supplement_link_each_link__y8aGG"><a href="https://coupa.ng/b53Fdk" target="_blank" rel="noreferrer" class="Chicken_supplement_link_each_view_a__mAmgV"><div class="Chicken_supplement_link_each_view__O3m39">상품보기</div><div class="Chicken_supplement_link_each_view_img__JtKuR"><div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;"><img alt="" class="ant-image-img" src="/images/supplement_product_link.png" width="10" height="14" style="height: 14px;"></div></div></a></div></div><div class="Chicken_supplement_link_bottom__LiVjx"><div class="Chicken_supplement_link_each_comment__B1owq">*가장 신선도가 높습니다!</div></div><div class="Chicken_supplement_link_bottom2__lIWRk"><div class="Chicken_supplement_link_each_shipment__X0vSC">(100g 당: 980) <span class="Chicken_shipment_bold__UlmA5">배송비</span> 3,500원</div><div class="Chicken_supplement_link_each_price__y_eJ2">9,800원</div></div></div><div class="Chicken_supplement_link_each__V5Ta_"><div class="Chicken_supplement_link_top__bj2GR"><div class="Chicken_supplement_link_each_img__OB5s9"><div class="ant-image css-1s3dcof"><img alt="" class="ant-image-img" src="/images/supplement_top_1.png"></div></div><div class="Chicken_supplement_link_each_frozen__anqSS">냉장</div><div class="Chicken_supplement_link_each_separate__WP9OM"></div><div class="Chicken_supplement_link_each_name__BY_9j">닭가슴살(냉장) 0.4kg (하림) 자연실록, 로켓프레시</div><div class="Chicken_supplement_link_each_link__y8aGG"><a href="https://coupa.ng/bE08DZ" target="_blank" rel="noreferrer" class="Chicken_supplement_link_each_view_a__mAmgV"><div class="Chicken_supplement_link_each_view__O3m39">상품보기</div><div class="Chicken_supplement_link_each_view_img__JtKuR"><div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;"><img alt="" class="ant-image-img" src="/images/supplement_product_link.png" width="10" height="14" style="height: 14px;"></div></div></a></div></div><div class="Chicken_supplement_link_bottom__LiVjx"><div class="Chicken_supplement_link_each_comment__B1owq">*하림 닭가슴살 제품은 품절인 경우가 종종 있습니다.</div></div><div class="Chicken_supplement_link_bottom2__lIWRk"><div class="Chicken_supplement_link_each_shipment__X0vSC">(100g 당: 1,520) <span class="Chicken_shipment_bold__UlmA5">배송비</span> 15,000원 구매시 무료. 당일배송</div><div class="Chicken_supplement_link_each_price__y_eJ2">6,080원</div></div></div><div class="Chicken_supplement_link_each__V5Ta_"><div class="Chicken_supplement_link_top__bj2GR"><div class="Chicken_supplement_link_each_img__OB5s9"><div class="ant-image css-1s3dcof"><img alt="" class="ant-image-img" src="/images/supplement_top_2.png"></div></div><div class="Chicken_supplement_link_each_frozen__anqSS">냉동</div><div class="Chicken_supplement_link_each_separate__WP9OM"></div><div class="Chicken_supplement_link_each_name__BY_9j">닭가슴살(냉동) 800g*5 자연실록 무항생제 (하림) </div><div class="Chicken_supplement_link_each_link__y8aGG"><a href="https://link.coupang.com/a/maI52" target="_blank" rel="noreferrer" class="Chicken_supplement_link_each_view_a__mAmgV"><div class="Chicken_supplement_link_each_view__O3m39">상품보기</div><div class="Chicken_supplement_link_each_view_img__JtKuR"><div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;"><img alt="" class="ant-image-img" src="/images/supplement_product_link.png" width="10" height="14" style="height: 14px;"></div></div></a></div></div><div class="Chicken_supplement_link_bottom__LiVjx"><div class="Chicken_supplement_link_each_comment__B1owq">*하림 닭가슴살 제품은 품절인 경우가 종종 있습니다.</div></div><div class="Chicken_supplement_link_bottom2__lIWRk"><div class="Chicken_supplement_link_each_shipment__X0vSC">(100g 당: 1,125) <span class="Chicken_shipment_bold__UlmA5">배송비</span> 무료배송</div><div class="Chicken_supplement_link_each_price__y_eJ2">45,000원</div></div></div><div class="Chicken_supplement_link_each__V5Ta_"><div class="Chicken_supplement_link_top__bj2GR"><div class="Chicken_supplement_link_each_img__OB5s9"><div class="ant-image css-1s3dcof"><img alt="" class="ant-image-img" src="/images/supplement_top_3.png"></div></div><div class="Chicken_supplement_link_each_frozen__anqSS">냉장</div><div class="Chicken_supplement_link_each_separate__WP9OM"></div><div class="Chicken_supplement_link_each_name__BY_9j">닭가슴살(냉장) 3kg (목우촌)</div><div class="Chicken_supplement_link_each_link__y8aGG"><a href="https://coupa.ng/bE1aV8" target="_blank" rel="noreferrer" class="Chicken_supplement_link_each_view_a__mAmgV"><div class="Chicken_supplement_link_each_view__O3m39">상품보기</div><div class="Chicken_supplement_link_each_view_img__JtKuR"><div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;"><img alt="" class="ant-image-img" src="/images/supplement_product_link.png" width="10" height="14" style="height: 14px;"></div></div></a></div></div><div class="Chicken_supplement_link_bottom__LiVjx"><div class="Chicken_supplement_link_each_comment__B1owq">목우촌은 중량, 냉동/냉장 확인 꼭하세요</div></div><div class="Chicken_supplement_link_bottom2__lIWRk"><div class="Chicken_supplement_link_each_shipment__X0vSC">(100g 당: 670) <span class="Chicken_shipment_bold__UlmA5">배송비</span> 3,500원</div><div class="Chicken_supplement_link_each_price__y_eJ2">20,100원</div></div></div><div class="Chicken_supplement_link_each__V5Ta_"><div class="Chicken_supplement_link_top__bj2GR"><div class="Chicken_supplement_link_each_img__OB5s9"><div class="ant-image css-1s3dcof"><img alt="" class="ant-image-img" src="/images/supplement_top_3.png"></div></div><div class="Chicken_supplement_link_each_frozen__anqSS">냉장</div><div class="Chicken_supplement_link_each_separate__WP9OM"></div><div class="Chicken_supplement_link_each_name__BY_9j">닭가슴살(냉장) 5kg (목우촌)</div><div class="Chicken_supplement_link_each_link__y8aGG"><a href="https://coupa.ng/bE1aI5" target="_blank" rel="noreferrer" class="Chicken_supplement_link_each_view_a__mAmgV"><div class="Chicken_supplement_link_each_view__O3m39">상품보기</div><div class="Chicken_supplement_link_each_view_img__JtKuR"><div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;"><img alt="" class="ant-image-img" src="/images/supplement_product_link.png" width="10" height="14" style="height: 14px;"></div></div></a></div></div><div class="Chicken_supplement_link_bottom__LiVjx"><div class="Chicken_supplement_link_each_comment__B1owq">목우촌은 중량, 냉동/냉장 확인 꼭하세요</div></div><div class="Chicken_supplement_link_bottom2__lIWRk"><div class="Chicken_supplement_link_each_shipment__X0vSC">(100g 당: 670) <span class="Chicken_shipment_bold__UlmA5">배송비</span> 3,500원</div><div class="Chicken_supplement_link_each_price__y_eJ2">33,500원</div></div></div><div class="Chicken_supplement_link_each__V5Ta_"><div class="Chicken_supplement_link_top__bj2GR"><div class="Chicken_supplement_link_each_img__OB5s9"><div class="ant-image css-1s3dcof"><img alt="" class="ant-image-img" src="/images/supplement_top_4.png"></div></div><div class="Chicken_supplement_link_each_frozen__anqSS">냉동</div><div class="Chicken_supplement_link_each_separate__WP9OM"></div><div class="Chicken_supplement_link_each_name__BY_9j">닭가슴살 슬라이스 (급속냉동) 10kg (올품)</div><div class="Chicken_supplement_link_each_link__y8aGG"><a href="https://coupa.ng/bE1ale" target="_blank" rel="noreferrer" class="Chicken_supplement_link_each_view_a__mAmgV"><div class="Chicken_supplement_link_each_view__O3m39">상품보기</div><div class="Chicken_supplement_link_each_view_img__JtKuR"><div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;"><img alt="" class="ant-image-img" src="/images/supplement_product_link.png" width="10" height="14" style="height: 14px;"></div></div></a></div></div><div class="Chicken_supplement_link_bottom__LiVjx"><div class="Chicken_supplement_link_each_comment__B1owq">슬라이스된 제품</div></div><div class="Chicken_supplement_link_bottom2__lIWRk"><div class="Chicken_supplement_link_each_shipment__X0vSC">(100g 당: 775) <span class="Chicken_shipment_bold__UlmA5">배송비</span> 무료배송</div><div class="Chicken_supplement_link_each_price__y_eJ2">77,500원</div></div></div><div class="Chicken_supplement_link_each__V5Ta_"><div class="Chicken_supplement_link_top__bj2GR"><div class="Chicken_supplement_link_each_img__OB5s9"><div class="ant-image css-1s3dcof"><img alt="" class="ant-image-img" src="/images/supplement_top_4.png"></div></div><div class="Chicken_supplement_link_each_frozen__anqSS">냉동</div><div class="Chicken_supplement_link_each_separate__WP9OM"></div><div class="Chicken_supplement_link_each_name__BY_9j">닭가슴살 슬라이스 (급속냉동) 1kg*2 (올품)</div><div class="Chicken_supplement_link_each_link__y8aGG"><a href="https://coupa.ng/bE1anz" target="_blank" rel="noreferrer" class="Chicken_supplement_link_each_view_a__mAmgV"><div class="Chicken_supplement_link_each_view__O3m39">상품보기</div><div class="Chicken_supplement_link_each_view_img__JtKuR"><div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;"><img alt="" class="ant-image-img" src="/images/supplement_product_link.png" width="10" height="14" style="height: 14px;"></div></div></a></div></div><div class="Chicken_supplement_link_bottom__LiVjx"><div class="Chicken_supplement_link_each_comment__B1owq">쿠팡 로켓프레쉬</div></div><div class="Chicken_supplement_link_bottom2__lIWRk"><div class="Chicken_supplement_link_each_shipment__X0vSC">(100g 당: 900) <span class="Chicken_shipment_bold__UlmA5">배송비</span> 무료배송</div><div class="Chicken_supplement_link_each_price__y_eJ2">18,000원</div></div></div><div class="Chicken_supplement_link_each__V5Ta_"><div class="Chicken_supplement_link_top__bj2GR"><div class="Chicken_supplement_link_each_img__OB5s9"><div class="ant-image css-1s3dcof"><img alt="" class="ant-image-img" src="/images/supplement_top_4.png"></div></div><div class="Chicken_supplement_link_each_frozen__anqSS">냉동</div><div class="Chicken_supplement_link_each_separate__WP9OM"></div><div class="Chicken_supplement_link_each_name__BY_9j">닭가슴살(급속냉동) 1kg*5 (올품)</div><div class="Chicken_supplement_link_each_link__y8aGG"><a href="https://coupa.ng/bE1bqS" target="_blank" rel="noreferrer" class="Chicken_supplement_link_each_view_a__mAmgV"><div class="Chicken_supplement_link_each_view__O3m39">상품보기</div><div class="Chicken_supplement_link_each_view_img__JtKuR"><div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;"><img alt="" class="ant-image-img" src="/images/supplement_product_link.png" width="10" height="14" style="height: 14px;"></div></div></a></div></div><div class="Chicken_supplement_link_bottom__LiVjx"><div class="Chicken_supplement_link_each_comment__B1owq"></div></div><div class="Chicken_supplement_link_bottom2__lIWRk"><div class="Chicken_supplement_link_each_shipment__X0vSC">(100g 당: 938) <span class="Chicken_shipment_bold__UlmA5">배송비</span> 무료배송</div><div class="Chicken_supplement_link_each_price__y_eJ2">46,900원</div></div></div><div class="Chicken_supplement_link_each__V5Ta_"><div class="Chicken_supplement_link_top__bj2GR"><div class="Chicken_supplement_link_each_img__OB5s9"><div class="ant-image css-1s3dcof"><img alt="" class="ant-image-img" src="/images/supplement_top_4.png"></div></div><div class="Chicken_supplement_link_each_frozen__anqSS">냉동</div><div class="Chicken_supplement_link_each_separate__WP9OM"></div><div class="Chicken_supplement_link_each_name__BY_9j">닭가슴살(급속냉동) 1kg*3 (올품)</div><div class="Chicken_supplement_link_each_link__y8aGG"><a href="https://coupa.ng/bE1btP" target="_blank" rel="noreferrer" class="Chicken_supplement_link_each_view_a__mAmgV"><div class="Chicken_supplement_link_each_view__O3m39">상품보기</div><div class="Chicken_supplement_link_each_view_img__JtKuR"><div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;"><img alt="" class="ant-image-img" src="/images/supplement_product_link.png" width="10" height="14" style="height: 14px;"></div></div></a></div></div><div class="Chicken_supplement_link_bottom__LiVjx"><div class="Chicken_supplement_link_each_comment__B1owq"></div></div><div class="Chicken_supplement_link_bottom2__lIWRk"><div class="Chicken_supplement_link_each_shipment__X0vSC">(100g 당: 948) <span class="Chicken_shipment_bold__UlmA5">배송비</span> 무료배송</div><div class="Chicken_supplement_link_each_price__y_eJ2">28,450원</div></div></div><div class="Chicken_supplement_link_each__V5Ta_"><div class="Chicken_supplement_link_top__bj2GR"><div class="Chicken_supplement_link_each_img__OB5s9"><div class="ant-image css-1s3dcof"><img alt="" class="ant-image-img" src="/images/supplement_top_4.png"></div></div><div class="Chicken_supplement_link_each_frozen__anqSS">냉동</div><div class="Chicken_supplement_link_each_separate__WP9OM"></div><div class="Chicken_supplement_link_each_name__BY_9j">닭가슴살(급속냉동) 5kg (하림)</div><div class="Chicken_supplement_link_each_link__y8aGG"><a href="https://coupa.ng/bE1bjX" target="_blank" rel="noreferrer" class="Chicken_supplement_link_each_view_a__mAmgV"><div class="Chicken_supplement_link_each_view__O3m39">상품보기</div><div class="Chicken_supplement_link_each_view_img__JtKuR"><div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;"><img alt="" class="ant-image-img" src="/images/supplement_product_link.png" width="10" height="14" style="height: 14px;"></div></div></a></div></div><div class="Chicken_supplement_link_bottom__LiVjx"><div class="Chicken_supplement_link_each_comment__B1owq"></div></div><div class="Chicken_supplement_link_bottom2__lIWRk"><div class="Chicken_supplement_link_each_shipment__X0vSC">(100g 당: 913) <span class="Chicken_shipment_bold__UlmA5">배송비</span> 무료배송</div><div class="Chicken_supplement_link_each_price__y_eJ2">45,680원</div></div></div><div class="Chicken_supplement_link_each__V5Ta_"><div class="Chicken_supplement_link_top__bj2GR"><div class="Chicken_supplement_link_each_img__OB5s9"><div class="ant-image css-1s3dcof"><img alt="" class="ant-image-img" src="/images/supplement_top_4.png"></div></div><div class="Chicken_supplement_link_each_frozen__anqSS">냉동</div><div class="Chicken_supplement_link_each_separate__WP9OM"></div><div class="Chicken_supplement_link_each_name__BY_9j">닭가슴살(급속냉동) 1kg 노브랜드</div><div class="Chicken_supplement_link_each_link__y8aGG"><a href="http://www.ssg.com/item/itemView.ssg?itemId=1000018651130&amp;siteNo=6001&amp;salestrNo=2034&amp;tildSrchwd=%EB%85%B8%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EB%8B%AD%EA%B0%80%EC%8A%B4%EC%82%B4&amp;srchPgNo=1&amp;src_area=ssglist" target="_blank" rel="noreferrer" class="Chicken_supplement_link_each_view_a__mAmgV"><div class="Chicken_supplement_link_each_view__O3m39">상품보기</div><div class="Chicken_supplement_link_each_view_img__JtKuR"><div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;"><img alt="" class="ant-image-img" src="/images/supplement_product_link.png" width="10" height="14" style="height: 14px;"></div></div></a></div></div><div class="Chicken_supplement_link_bottom__LiVjx"><div class="Chicken_supplement_link_each_comment__B1owq"></div></div><div class="Chicken_supplement_link_bottom2__lIWRk"><div class="Chicken_supplement_link_each_shipment__X0vSC">(100g 당: 658) <span class="Chicken_shipment_bold__UlmA5">배송비</span> 4만원 이상 무료배송</div><div class="Chicken_supplement_link_each_price__y_eJ2">6,580원</div></div></div><div class="Chicken_supplement_link_each__V5Ta_"><div class="Chicken_supplement_link_top__bj2GR"><div class="Chicken_supplement_link_each_img__OB5s9"><div class="ant-image css-1s3dcof"><img alt="" class="ant-image-img" src="/images/supplement_top_4.png"></div></div><div class="Chicken_supplement_link_each_frozen__anqSS">냉동</div><div class="Chicken_supplement_link_each_separate__WP9OM"></div><div class="Chicken_supplement_link_each_name__BY_9j">마니커 (급속냉동) 닭가슴살 3kg</div><div class="Chicken_supplement_link_each_link__y8aGG"><a href="https://link.coupang.com/a/KJ8rD" target="_blank" rel="noreferrer" class="Chicken_supplement_link_each_view_a__mAmgV"><div class="Chicken_supplement_link_each_view__O3m39">상품보기</div><div class="Chicken_supplement_link_each_view_img__JtKuR"><div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;"><img alt="" class="ant-image-img" src="/images/supplement_product_link.png" width="10" height="14" style="height: 14px;"></div></div></a></div></div><div class="Chicken_supplement_link_bottom__LiVjx"><div class="Chicken_supplement_link_each_comment__B1owq">로켓프레쉬</div></div><div class="Chicken_supplement_link_bottom2__lIWRk"><div class="Chicken_supplement_link_each_shipment__X0vSC">(100g 당: 866) <span class="Chicken_shipment_bold__UlmA5">배송비</span> 로켓프레쉬 </div><div class="Chicken_supplement_link_each_price__y_eJ2">25,990원</div></div></div><div class="Chicken_supplement_link_each__V5Ta_"><div class="Chicken_supplement_link_top__bj2GR"><div class="Chicken_supplement_link_each_img__OB5s9"><div class="ant-image css-1s3dcof"><img alt="" class="ant-image-img" src="/images/supplement_top_4.png"></div></div><div class="Chicken_supplement_link_each_frozen__anqSS">냉동</div><div class="Chicken_supplement_link_each_separate__WP9OM"></div><div class="Chicken_supplement_link_each_name__BY_9j">마니커 (급속냉동) 2kg</div><div class="Chicken_supplement_link_each_link__y8aGG"><a href="https://link.coupang.com/a/KJWLf" target="_blank" rel="noreferrer" class="Chicken_supplement_link_each_view_a__mAmgV"><div class="Chicken_supplement_link_each_view__O3m39">상품보기</div><div class="Chicken_supplement_link_each_view_img__JtKuR"><div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;"><img alt="" class="ant-image-img" src="/images/supplement_product_link.png" width="10" height="14" style="height: 14px;"></div></div></a></div></div><div class="Chicken_supplement_link_bottom__LiVjx"><div class="Chicken_supplement_link_each_comment__B1owq">로켓프레쉬</div></div><div class="Chicken_supplement_link_bottom2__lIWRk"><div class="Chicken_supplement_link_each_shipment__X0vSC">(100g 당: 880) <span class="Chicken_shipment_bold__UlmA5">배송비</span> 로켓프레쉬</div><div class="Chicken_supplement_link_each_price__y_eJ2">17,600원</div></div></div><div class="Chicken_supplement_link_each__V5Ta_"><div class="Chicken_supplement_link_top__bj2GR"><div class="Chicken_supplement_link_each_img__OB5s9"><div class="ant-image css-1s3dcof"><img alt="" class="ant-image-img" src="/images/supplement_top_5.png"></div></div><div class="Chicken_supplement_link_each_frozen__anqSS">냉동</div><div class="Chicken_supplement_link_each_separate__WP9OM"></div><div class="Chicken_supplement_link_each_name__BY_9j">닭가슴살(냉동) 5kg (목우촌)</div><div class="Chicken_supplement_link_each_link__y8aGG"><a href="https://coupa.ng/bE1aXg" target="_blank" rel="noreferrer" class="Chicken_supplement_link_each_view_a__mAmgV"><div class="Chicken_supplement_link_each_view__O3m39">상품보기</div><div class="Chicken_supplement_link_each_view_img__JtKuR"><div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;"><img alt="" class="ant-image-img" src="/images/supplement_product_link.png" width="10" height="14" style="height: 14px;"></div></div></a></div></div><div class="Chicken_supplement_link_bottom__LiVjx"><div class="Chicken_supplement_link_each_comment__B1owq">목우촌은 중량, 냉동/냉장 확인 꼭하세요</div></div><div class="Chicken_supplement_link_bottom2__lIWRk"><div class="Chicken_supplement_link_each_shipment__X0vSC">(100g 당: 670) <span class="Chicken_shipment_bold__UlmA5">배송비</span> 3,500원</div><div class="Chicken_supplement_link_each_price__y_eJ2">33,500원</div></div></div><div class="Chicken_supplement_link_each__V5Ta_"><div class="Chicken_supplement_link_top__bj2GR"><div class="Chicken_supplement_link_each_img__OB5s9"><div class="ant-image css-1s3dcof"><img alt="" class="ant-image-img" src="/images/supplement_top_5.png"></div></div><div class="Chicken_supplement_link_each_frozen__anqSS">냉동</div><div class="Chicken_supplement_link_each_separate__WP9OM"></div><div class="Chicken_supplement_link_each_name__BY_9j">닭가슴살(냉동) 3kg (목우촌)</div><div class="Chicken_supplement_link_each_link__y8aGG"><a href="https://coupa.ng/bE1aLi" target="_blank" rel="noreferrer" class="Chicken_supplement_link_each_view_a__mAmgV"><div class="Chicken_supplement_link_each_view__O3m39">상품보기</div><div class="Chicken_supplement_link_each_view_img__JtKuR"><div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;"><img alt="" class="ant-image-img" src="/images/supplement_product_link.png" width="10" height="14" style="height: 14px;"></div></div></a></div></div><div class="Chicken_supplement_link_bottom__LiVjx"><div class="Chicken_supplement_link_each_comment__B1owq">목우촌은 중량, 냉동/냉장 확인 꼭하세요</div></div><div class="Chicken_supplement_link_bottom2__lIWRk"><div class="Chicken_supplement_link_each_shipment__X0vSC">(100g 당: 670) <span class="Chicken_shipment_bold__UlmA5">배송비</span> 3,500원</div><div class="Chicken_supplement_link_each_price__y_eJ2">20,100원</div></div></div><div class="Chicken_supplement_link_each__V5Ta_"><div class="Chicken_supplement_link_top__bj2GR"><div class="Chicken_supplement_link_each_img__OB5s9"><div class="ant-image css-1s3dcof"><img alt="" class="ant-image-img" src="/images/supplement_top_6.png"></div></div><div class="Chicken_supplement_link_each_frozen__anqSS">냉동</div><div class="Chicken_supplement_link_each_separate__WP9OM"></div><div class="Chicken_supplement_link_each_name__BY_9j">닭가슴살(냉동) 10kg (하나푸드) 슬라이스</div><div class="Chicken_supplement_link_each_link__y8aGG"><a href="https://coupa.ng/bE1bxQ" target="_blank" rel="noreferrer" class="Chicken_supplement_link_each_view_a__mAmgV"><div class="Chicken_supplement_link_each_view__O3m39">상품보기</div><div class="Chicken_supplement_link_each_view_img__JtKuR"><div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;"><img alt="" class="ant-image-img" src="/images/supplement_product_link.png" width="10" height="14" style="height: 14px;"></div></div></a></div></div><div class="Chicken_supplement_link_bottom__LiVjx"><div class="Chicken_supplement_link_each_comment__B1owq"></div></div><div class="Chicken_supplement_link_bottom2__lIWRk"><div class="Chicken_supplement_link_each_shipment__X0vSC">(100g 당: 558) <span class="Chicken_shipment_bold__UlmA5">배송비</span> 무료배송</div><div class="Chicken_supplement_link_each_price__y_eJ2">55,800원</div></div></div><div class="Chicken_supplement_link_each__V5Ta_"><div class="Chicken_supplement_link_top__bj2GR"><div class="Chicken_supplement_link_each_img__OB5s9"><div class="ant-image css-1s3dcof"><img alt="" class="ant-image-img" src="/images/supplement_top_6.png"></div></div><div class="Chicken_supplement_link_each_frozen__anqSS">냉동</div><div class="Chicken_supplement_link_each_separate__WP9OM"></div><div class="Chicken_supplement_link_each_name__BY_9j">닭가슴살(냉동) 10kg (하나푸드) </div><div class="Chicken_supplement_link_each_link__y8aGG"><a href="https://coupa.ng/bE1bwt" target="_blank" rel="noreferrer" class="Chicken_supplement_link_each_view_a__mAmgV"><div class="Chicken_supplement_link_each_view__O3m39">상품보기</div><div class="Chicken_supplement_link_each_view_img__JtKuR"><div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;"><img alt="" class="ant-image-img" src="/images/supplement_product_link.png" width="10" height="14" style="height: 14px;"></div></div></a></div></div><div class="Chicken_supplement_link_bottom__LiVjx"><div class="Chicken_supplement_link_each_comment__B1owq"></div></div><div class="Chicken_supplement_link_bottom2__lIWRk"><div class="Chicken_supplement_link_each_shipment__X0vSC">(100g 당: 629) <span class="Chicken_shipment_bold__UlmA5">배송비</span> 무료배송</div><div class="Chicken_supplement_link_each_price__y_eJ2">62,900원</div></div></div></div>
-<div class="Chicken_supplement_link_each__V5Ta_">
-<div class="Chicken_supplement_link_top__bj2GR">
-<div class="Chicken_supplement_link_each_img__OB5s9">
-<div class="ant-image css-1s3dcof">
-<img alt="" class="ant-image-img" src="/images/supplement_top_1.png">
-</div>
-</div>
-<div class="Chicken_supplement_link_each_frozen__anqSS">냉장
-</div>
-<div class="Chicken_supplement_link_each_separate__WP9OM">
-</div>
-<div class="Chicken_supplement_link_each_name__BY_9j">닭가슴살(냉장) 1kg 자연실록 무항생제 (하림)
-</div>
-<div class="Chicken_supplement_link_each_link__y8aGG">
-<a href="https://coupa.ng/b53Fdk" target="_blank" rel="noreferrer" class="Chicken_supplement_link_each_view_a__mAmgV">
-<div class="Chicken_supplement_link_each_view__O3m39">상품보기
-</div>
-<div class="Chicken_supplement_link_each_view_img__JtKuR">
-<div class="ant-image css-1s3dcof" style="width: 10px; height: 14px;">
-<img alt="" class="ant-image-img" src="/images/supplement_product_link.png" width="10" height="14" style="height: 14px;">
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="Chicken_supplement_link_bottom__LiVjx"><div class="Chicken_supplement_link_each_comment__B1owq">*가장 신선도가 높습니다!
-</div>
-</div>
-<div class="Chicken_supplement_link_bottom2__lIWRk">
-<div class="Chicken_supplement_link_each_shipment__X0vSC">(100g 당: 980) 
-<span class="Chicken_shipment_bold__UlmA5">배송비</span> 3,500원
-</div>
-<div class="Chicken_supplement_link_each_price__y_eJ2">9,800원</div>
-</div>
-</div>
+	
 
 
 					<!-- Content Row -->
@@ -155,7 +120,8 @@
 								</div>
 
 							</div>
-							<div class="row col-lg-6 btn-menu menu-1 active">
+							
+						<!-- 	<div class="row col-lg-6 btn-menu menu-1 active">
 								<div class="col-lg-12 mb-2 btn-menu-sub">
 									<div class="card bg-primary text-white shadow">
 										<div class="card-body">
@@ -211,7 +177,7 @@
 									</div>
 
 								</div>
-								<!--  -->
+								
 									<div class="col-lg-12 mb-2">
 									<div class="card bg-secondary text-white shadow">
 										<div class="card-body">
@@ -438,14 +404,14 @@
 										</div>
 									</div>
 								</div>
-								</div>
+								</div> --> 
 								
-								</div>
+								</div>  
 
 								
 							<div class="row row-menu export">
 
-							<!-- 숙련자 메뉴들 -->
+							<!-- <!-- 숙련자 메뉴들 -->
 							<div class="row col-lg-6 export">
 								<div class="col-lg-12 mb-2">
 									<div class="card bg-primary text-white shadow">
@@ -684,10 +650,10 @@
 									</div>
 								</div>
 								
-							</div>
+							</div>-->
 							
 						</div>
-					</div>
+					</div> 
 
 						<div class="col-lg-6 mb-4">
 
@@ -696,13 +662,22 @@
 							<div class="card shadow mb-4 ">
 							
 								<div class="card-header py-2">
-									<h6 class="m-0 font-weight-bold text-primary">*A급 
-										*B급 번외 성분</h6>
+									<div class="Chicken_legend_each__iGyUd">
+									<div class="Chicken_kegend_each_img_wIDG_">
+									<div class="ant-image css-1s3dcof" style="width: 20%">
+									<img alt class="ant-image-img" src="https://beta.wintersleeping.com/images/supplement_top_1.png">
+									<div class="Chicken_legend_each_name__2Oo4Z">
+									A급 : 큰기업 도축장, HACCP, 냉장, 무항생제
+									</div>
+									</div>
+									</div>
+									
+									</div>
 								</div>
-								<div class="card-body menu-comment comment1">
+								<div class="card-body menu-comment comment">
 									<div class="text-center">
 										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
-											style="width: 50rem;">
+											style="width: 5px;">
 									</div>
 									<div>
 										<p>
@@ -723,7 +698,7 @@
 									</p>
 
 								</div>
-								<div class="card-body menu-comment comment2">
+								<div class="card-body menu-comment comment">
 									<div class="text-center">
 										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
 											style="width: 50rem;">
@@ -736,7 +711,7 @@
 									</p>
 
 								</div>
-								<div class="card-body menu-comment comment3">
+								<div class="card-body menu-comment comment">
 									<div class="text-center">
 										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
 											style="width: 50rem;">
@@ -752,7 +727,7 @@
 									</p>
 
 								</div>
-								<div class="card-body menu-comment comment4">
+								<div class="card-body menu-comment comment">
 									<div class="text-center">
 										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
 											style="width: 50rem;">
@@ -768,7 +743,7 @@
 									</p>
 
 								</div>
-								<div class="card-body menu-comment comment5">
+								<div class="card-body menu-comment comment">
 									<div class="text-center">
 										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
 											style="width: 50rem;">
@@ -784,7 +759,7 @@
 									</p>
 
 								</div>
-									<div class="card-body menu-comment comment6">
+									<div class="card-body menu-comment comment">
 									<div class="text-center">
 										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
 											style="width: 50rem;">
@@ -915,39 +890,39 @@
 							
 							<div class="card shadow mb-4">
 								<div class="card-header py-2 ">
-									<h6 class="m-0 font-weight-bold text-primary">섭취 방법</h6>
+									<h4 class="m-0 font-weight-bold text-primary">해당 링크를 통해 구매시 DML에게 도움이 됩니다.</h4>
 								</div>
-								<div class="card-body menu-comment comment1">
+								<div class="card-body menu-comment comment">
 									<p>운동후 섭취 혹은 단백질이 적은 식사 후, 운동후 식사가 바로 있다면 20g, 운동후 식사가 바로
 										없다면 40g타서 3/4을 바로 먹고 1/4은 30분후 섭취</p>
 
 								</div>
-								<div class="card-body menu-comment comment2">
+								<div class="card-body menu-comment comment">
 									<p>인스턴트 오트는 아침식사로 적합하며, 마이프로틴 쉐이커에 2 1/3 (100g) 큰 스쿱과 물 또는 선호하는 음료를 넣어서 섭취하세요. 
 									충분한 탄수화물을 섭취하면서 운동목표를 달성하는데 효과적입니다.
 									 해당 제품은 직사광선을 피하여 서늘하고 건조한 장소에 보관하세요.</p>
 
 								</div>
-								<div class="card-body menu-comment comment3">
+								<div class="card-body menu-comment comment">
 									<p>종합비타민에는 미네랄 성분과 지용성 비타민이 함께 들어있어 식사 후에 복용하는 것이 좋다.
 									 또, 신체 활력에 도움을 주기 때문에 아침 식후에 먹는 것이 좋다.
 									  아침 식사를 안 한다면, 점심 식사 후에 복용하는 것을 추천한다.
 									 공복에 아연을 먹으면 속이 쓰릴 수 있다.</p>
 
 								</div>
-								<div class="card-body menu-comment comment4">
+								<div class="card-body menu-comment comment">
 									<p>먼저 식후에 섭취하면 유산균이 먹이로 삼을 수 있는 것이 많아 균의 활동력이 좋아질 수 있다. 
 									또 식전이나 공복에 섭취하면 균의 대장 도달력이 높아질 수 있으나 위산의 영향을 많이 받을 수 있으므로 
 									물을 많이 마시면서 섭취하는 것이 권장됩니다.</p>
 
 								</div>
-								<div class="card-body menu-comment comment5">
+								<div class="card-body menu-comment comment">
 									<p>전문가들은 평소 잡곡밥(보리, 현미 등)과 채소(매 끼니 1~2접시), 
 									과일 1~2회(과일주스보다는 생과일) 정도의 식단이면 하루 식이섬유 섭취량을 충분히 보충할 수 있다고 조언합니다. 
 									특히 자녀의 변비가 걱정돼 식이섬유를 일부러 많이 먹게 하는 부모님들도 계시는데요.</p>
 
 								</div>
-								<div class="card-body menu-comment comment6">
+								<div class="card-body menu-comment comment">
 									<p>1일 1회, 1회 1포를 물에 타서 섭취하십시오.</p>
 
 								</div>

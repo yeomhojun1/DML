@@ -1,23 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="calender">
-  <select id="selectList" resultType="FpCalenderVo">
-  select * from calender
+
+<!-- 멤버 아이디값 가져오기  -->
+  <select id="selectList" parameterType="FpMemberVo" resultType="FpCalenderVo">
+	SELECT 
+	  	 CALENDARNO
+		,MEMBER_ID
+		,TITLE
+		,STARTDATE
+		,ENDDATE
+		,CONTENT 
+	FROM CALENDAR 
+		WHERE MEMBER_ID = #{memberId}
   </select>
   
   <select id="selectOne" resultType="FpCalenderVo">
-  select * from where calendarno=#{calendarno} 
+  select * from calendar where calendarno=#{calendarno} 
   </select>
   
   <insert id="insert" parameterType="FpCalenderVo">
   insert into calender values(#{calendarno},#{memberId},#{title},#{startdate},#{enddate},#{content})
   </insert>
   
+  <!--일정 수정  -->
   <update id="update" parameterType="FpCalenderVo">
   update calender set memberId = #{memberId}, title = #{title},
    startdate = #{startdate}, enddate = #{enddate}, content = #{content}
    where calendarno = #{calendarno}
   </update>
+  
+ 
   
   <delete id="delete" parameterType="int">
   delect from calender where calendarno = #{calendarno}

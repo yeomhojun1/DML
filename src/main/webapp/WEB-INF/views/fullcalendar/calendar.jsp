@@ -44,6 +44,7 @@
 				            center: 'title',
 				            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
 				          },
+				          
 				     //schedule(스케줄)이 생기면 아래 + 버튼을 누를면 스케줄이 표시되는코드
 				     dayMaxEventRows: true, // for all non-TimeGrid views
 				     views: {
@@ -60,43 +61,37 @@
 				                  , textColor : "#FFFFFF"
 				              }],
 				     // api 관련 기능 추가 하기
-				     events: 
-				     [
-					    { // this object will be "parsed" into an Event Object
-					      title: '술+치킨먹는날',// a property!
-					      start: '2023-09-01', // a property!
-					      end: '2023-09-03', // a property! ** see important note below about 'end' **
-					     
-					    },
-					 
-							//같은날짜에 스케줄이 있으면 아래에 (+2)가 생김
-							 {
-					            title: '점심 술약속',
-					            start: '2023-09-10T12:20:10'
-					          },	
-					          {
-						            title: '조퇴하는날',
-						            start: '2023-09-10T13:10:00'
-						      },
-						   
-						      {
-						            title: 'KH 시험점수 확인하기',
-						            url: 'https://www.kh-academy.co.kr/', // 클릭시 해당 url로 이동
-						            start: '2023-09-26'
-						          },
-						      {
-							            title: '곱창전골 꼭 먹어야되는날 (부엉이산장)',
-							            url: 'https://www.owlmtcabin-official.com/home', // 클릭시 해당 url로 이동
-							            start: '2023-09-26'
-							       }
-  					 ],
+		           // 달력 일정 목록 
+		              events: [
+		                 // 나의 일정 목록
+		                 <c:forEach var="showList" items="${getCalendarList}">
+		                 {
+		                    id    : '${showList.getCalendarno()}',
+		                    title : '${showList.getTitle()}',
+		                    start : '${showList.getStartdate()}',
+		                    end    : '${showList.getEnddate()}'
+		                 },
+		                 </c:forEach>
+		                 {
+		                    title : '',
+		                    start : ''
+		                 }
+		              ],
+				        
   				      dateClick : (info)=>{ // 선택한 날짜 값 뽑아내기
   				    	  console.log(info);
   				    	  var clickDate = info.dateStr;
-  				    	  clickDate = clickDate.replaceAll("-", "");
-  				    	clickDate = parseInt(clickDate);
-  				    	alert(clickDate); //경고창d
-  				    	 $(".btn-primary").click(expartClickHandler);
+//   				    	  function add_ClickSchedule(clickDate){ // 클릭된 날짜부터 일정 추가
+  				    	  var url = "${pageContext.request.contextPath}/calendar/calendarSelected?startDate="+clickDate+"&endDate="+clickDate;
+  				    	  var name = "일정 추가";
+  				    	  var option = "width = 600, height = 600 left = 100, top=50,location=no";
+  				    	  window.open(url,name,option)
+  				    		//alert(year+"년"+month+"월"+day+"일");
+//   				    	};
+//   				    	  clickDate = clickDate.replaceAll("-", "");
+//   				    	clickDate = parseInt(clickDate);
+//   				    	alert(clickDate); //경고창d
+//   				    	 $(".btn-primary").click(expartClickHandler);
   				    	  
   				      },
   				      eventClick: function(info){ // 클릭한 일정 값 뽑아내기
@@ -208,7 +203,7 @@
 					<div>
 
 						<h2 style="text-align: center;">${member.mname }님의캘린더</h2>
-						<h2 style="text-align: center;">손범규님의 캘린더</h2>
+						
 						<button type="button" class="btn btn-primary"
 							data-bs-toggle="modal" data-bs-target="#exampleModal">
 							Launch demo modal</button>

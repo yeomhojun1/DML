@@ -1,14 +1,15 @@
 package kh.project.dml.calender.model.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
-
 import kh.project.dml.calender.model.vo.FpCalenderVo;
+import kh.project.dml.member.model.vo.FpMemberVo;
 
 public interface FpCalenderService {
 
-	public List<FpCalenderVo> selectList();
+	public List<FpCalenderVo> selectList(FpMemberVo loginInfo);
 
 	public FpCalenderVo seletOne(int calendarno);
 
@@ -20,4 +21,5 @@ public interface FpCalenderService {
 
 	public List<Map<String, Object>> getEventList();
 
+	
 }

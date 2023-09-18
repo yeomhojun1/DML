@@ -35,12 +35,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#weight">체중관리</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#deit">식단관리</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#exercise">운동 도우미</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/product/product">제품추천</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#login">로그인</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#join">회원가입</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/weight2">체중관리</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/product">식단관리</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/exercise/list">운동 도우미</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/product">제품추천</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/member/login">로그인</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/member/signup">회원가입</a></li>
                     </ul>
                 </div>
             </div>

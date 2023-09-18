@@ -33,9 +33,10 @@ public class FpWeightController {
 		return "temp/weight";
 	}
 	
-	@GetMapping("/index")
-	public String index() {
-		return "diet/index";
+
+	@GetMapping("/composition")
+	public String mainPageOpen11() {
+		return "temp/composition";
 	}
 	
 }

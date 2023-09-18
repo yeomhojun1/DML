@@ -27,6 +27,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+
 <!-- ck에디터적용코드  -->
 <!-- <script language="javascript"
 	src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
@@ -48,6 +49,7 @@ Custom scripts for all pages
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
+
 <style>
 .btn {
 	cursor: pointer;
@@ -169,7 +171,7 @@ Custom scripts for all pages
 													</div>
 													<span
 														class="ant-input-affix-wrapper Track_input_basic__yj5u2 css-1s3dcof">
-														<input class="ant-input css-1s3dcof" type="text" value="0"><span
+														<input class="ant-input css-1s3dcof" type="text" value="${member.weight }"><span
 														class="ant-input-suffix">kg</span>
 													</span>
 												</div>
@@ -211,8 +213,16 @@ Custom scripts for all pages
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
 	</div>
-	
+<script>
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+
 <script src="resources/resources1/js/Chart.min.js"></script>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+		crossorigin="anonymous"></script>
+
 <script src="resources/resources1/js/chart-area-demo.js"></script>
 	<script>
 		$(function() {

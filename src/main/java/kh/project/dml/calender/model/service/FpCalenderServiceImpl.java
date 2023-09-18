@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import kh.project.dml.calender.model.dao.FpCalenderDao;
 import kh.project.dml.calender.model.vo.FpCalenderVo;
+import kh.project.dml.member.model.vo.FpMemberVo;
 
 @Service("fpCalenderServiceImpl")
 public class FpCalenderServiceImpl implements FpCalenderService  {
@@ -19,8 +20,8 @@ public class FpCalenderServiceImpl implements FpCalenderService  {
 	private FpCalenderDao fpcalenderDao;
 	
 	@Override
-	public List<FpCalenderVo> selectList(){
-		return fpcalenderDao.selectList();
+	public List<FpCalenderVo> selectList(FpMemberVo loginInfo){
+		return fpcalenderDao.selectList(loginInfo);
 	}
 	@Override
 	public FpCalenderVo seletOne(int calendarno) {
