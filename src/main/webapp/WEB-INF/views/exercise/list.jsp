@@ -23,8 +23,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link href="${pageContext.request.contextPath}/css/styles.css"
 	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/scss.css"
-	rel="stylesheet" />
+
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
 <script language="javascript"
@@ -37,9 +36,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
 
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-		crossorigin="anonymous"></script>
+
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
@@ -239,14 +236,15 @@
 						name="calendarNo">
 				</div>
 				<div>
+					<span>무게 : </span><input type="number" class="addExerciseWeight">
+				</div>
+				<div>
 					<span>횟수 : </span><input type="number" class="addExerciseNumber">
 				</div>
 				<div>
 					<span>세트 : </span><input type="number" class="addExerciseSet">
 				</div>
-				<div>
-					<span>무게 : </span><input type="number" class="addExerciseWeight">
-				</div>
+				
 				<div>
 					<button class="addMemberExSet">등록</button>
 				</div>
@@ -273,7 +271,6 @@
 	</div>
 
 
-	<script src="${pageContext.request.contextPath}/js/test.js"></script>
 	<script>
 
 	<!-- 운동부위를 선택하면 관련운동 나오도록하거나 검색했을때 나오도록함-->
@@ -329,7 +326,7 @@
 		$("#btn-modal1").click(()=>youtubeModalHandler(testOjbect));
 	
 	}
-	function modalOff() {
+	function modalOff(result) {
 		modal.style.display = "none"
 	}
 	const modal = document.getElementById("modal")
@@ -455,10 +452,11 @@
 			,exerciseSet : $(".addExerciseSet").val()
 			,exerciseNumber : $(".addExerciseNumber").val()
 			,exerciseWeight : $(".addExerciseWeight").val()}
-			,success : function(){
-				modal.style.display = "none"
+			,success : modalOff
+			,error : function(){
+				console.log("error");
 			}
-			,dataType : "json"
+		
 		})
 	}
 

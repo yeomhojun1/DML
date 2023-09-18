@@ -79,10 +79,10 @@
 							</nav>
 						</div>
 						<div class="sb-sidenav-menu-heading">운동/제품</div>
-						<a class="nav-link" href="charts.html">
+						<a class="nav-link" href="${pageContext.request.contextPath }/exercise/list">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> 운동 도우미
+							</div> 운동 도우미2
 						</a> <a class="nav-link" href="tables.html">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>

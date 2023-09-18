@@ -16,6 +16,8 @@
 		<typeAlias type="kh.project.dml.memberexset.model.vo.FpMemberExSetVo" alias="FpMemberExSetVo"/>
 		<typeAlias type="kh.project.dml.memberweight.model.vo.FpMemberWeightVo" alias="FpMemberWeightVo"/>
 		<typeAlias type="kh.project.dml.calender.model.vo.FpCalenderVo" alias="FpCalenderVo"/>
+		<typeAlias type="kh.project.dml.foodapi.model.vo.FpFoodApiVo" alias="FpFoodApiVo"/>
+		<typeAlias type="kh.project.dml.food.model.vo.FpFoodVo" alias="FpFoodVo"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
@@ -28,5 +30,7 @@
 		<mapper resource="mappers/member_weight-mapper.xml"/>
 		<mapper resource="mappers/member-repository-mapper.xml"/>
 		<mapper resource="mappers/calender-mapper.xml"/>
+		<mapper resource="mappers/foodapi-mapper.xml"/>
+		<mapper resource="mappers/food-mapper.xml"/>
 	</mappers>
 </configuration>

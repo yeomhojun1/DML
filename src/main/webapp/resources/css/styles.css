@@ -1,4 +1,4 @@
-@charset "UTF-8";
+	@charset "UTF-8";
 /*!
 * Start Bootstrap - SB Admin v7.0.7 (https://startbootstrap.com/template/sb-admin)
 * Copyright 2013-2023 Start Bootstrap
@@ -340,9 +340,35 @@ label {
   display: inline-block;
 }
 
-button {
-  border-radius: 0;
+#btnNavbarSearch {
+	width: 100px;
+	height: 38px;
 }
+
+<<<<<<< Updated upstream
+/* button {
+ padding: 25px 20px;
+	border-radius: 40px;
+	font-size: 18px;
+	font-weight: 900;
+	color: #fff;
+	background-color: #97d4e9;
+	border: 0;
+	margin-left: 20px;
+	display: inline-flex;
+	align-items: center;
+	align-self: center;
+	-o-object-fit: contain;
+	object-fit: contain;
+	width: 180px;
+	height: 80px;
+	text-align: center;
+	justify-content: center;
+	box-shadow: 0 5px 30px 0 rgba(17, 151, 201, .2)
+} */
+=======
+
+>>>>>>> Stashed changes
 
 button:focus:not(:focus-visible) {
   outline: 0;
@@ -350,14 +376,20 @@ button:focus:not(:focus-visible) {
 
 input,
 button,
-select,
 optgroup,
 textarea {
   margin: 0;
   font-family: inherit;
   font-size: inherit;
-  line-height: inherit;
+  line-height: inherit; 
 }
+
+/* input,
+select,
+optgroup,
+textarea {
+	padding: 25px 20px;
+} */
 
 button,
 select {
@@ -2503,6 +2535,7 @@ textarea.form-control-lg {
   flex-wrap: wrap;
   align-items: stretch;
   width: 100%;
+  align-items: center;
 }
 .input-group > .form-control, .input-group > .datatable-input,
 .input-group > .form-select,
