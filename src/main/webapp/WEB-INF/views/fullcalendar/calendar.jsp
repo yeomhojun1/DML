@@ -44,6 +44,7 @@
 				            center: 'title',
 				            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
 				          },
+				          
 				     //schedule(스케줄)이 생기면 아래 + 버튼을 누를면 스케줄이 표시되는코드
 				     dayMaxEventRows: true, // for all non-TimeGrid views
 				     views: {
@@ -202,7 +203,7 @@
 					<div>
 
 						<h2 style="text-align: center;">${member.mname }님의캘린더</h2>
-						<h2 style="text-align: center;">손범규님의 캘린더</h2>
+						
 						<button type="button" class="btn btn-primary"
 							data-bs-toggle="modal" data-bs-target="#exampleModal">
 							Launch demo modal</button>

@@ -56,6 +56,14 @@ public class FpCalenderController {
 		return "/fullcalendar/addcalendar"; 
 	}
 	 
+	// 일정 수정 페이지 - 선택된 값 가져오기
+		@GetMapping("/calendarUpdate")
+		public String calendarUpdate( @RequestParam("no")  int calendarNo, Model model) throws Exception
+		{
+			//model.addAttribute("getCalendarInfo" calendar);
+			//model.addAttribute("getCalendarInfo",fpCalenderServiceImpl.getCalendarInfoselectOne(calendarNo));
+	 		return "/fullcalendar/editCalendar";	
+		}
 	
 
 
