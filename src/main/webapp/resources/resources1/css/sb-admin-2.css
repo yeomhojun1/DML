@@ -11301,3 +11301,66 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+
+/*여기부터  */
+.btn {
+	cursor: pointer;
+}
+
+.setstartday {
+	background-color: #fff;
+	border-color: blue;
+	border-radius: 25px%;
+	height: 50px;
+}
+
+.setdayweight {
+	background-color: #fff;
+	border-color: blue;
+	border-radius: 25px%;
+	height: 300px;
+}
+
+.recordstart {
+	flex: 1 1;
+	background-color: #fff;
+	border-radius: 25px;
+	font-size: 18px;
+	padding: 20px;
+	margin-top: 20px;
+}
+
+.insertdate {
+	flex: 1 1;
+	border-color: red;
+	background-color: #fff;
+	border-radius: 25px;
+	font-size: 18px;
+	padding: 20px;
+	margin-top: 20px;
+}
+/*체조성그래프  */
+.Composition_title__xkoMw{
+	font-size :26px;
+	color : black;
+}
+
+
+:where(.css-1s3dcof).ant-btn.ant-btn-round.ant-btn-lg{
+    border-radius: 40px;
+    padding-inline-start: 20px;
+    padding-inline-end: 20px;
+    width: auto;
+}
+:where(.css-1s3dcof).ant-btn.ant-btn-lg{
+font-size:16px;
+}
+.Composition_btn_save2__9fpfG, .Composition_btn_save3__bVW2y {
+    height: 50px!important;
+}
+    .Composition_btn_save2__9fpfG, .Composition_btn_save__XRscY {
+    background-color: #97d4e9;
+    border: 1px solid #97d4e9;
+    font-weight: 700;
+}
+
