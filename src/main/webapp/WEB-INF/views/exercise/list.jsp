@@ -405,6 +405,7 @@
 		$(".exModalContent").append(eposeLink1);
 		$(".eposeLinkCss>iframe").prop("width", "100%");
 	}
+	
 	 $(function() {
 	       //input을 datepicker로 선언
 	       $("#datepicker").datepicker({
@@ -436,19 +437,20 @@
 	
 		$(".addMemberExSet").click(onMemberExSetHandler);
 	function onMemberExSetHandler(){
-	
+		console.log("코드 : "+$(".ex_one").data("code"));
+		console.log("이름 : "+$(".ex_one").data("name"));
 		var dateVal = $("#datepicker").val()
 		//replace([기존문자],[바꿀문자])
 		dateVal= dateVal.replaceAll("-", "");
 		dateVal =parseInt(dateVal);
-		console.log(dateVal);
+		console.log("dateVal : "+dateVal);
 		$.ajax({
 			url:"${pageContext.request.contextPath}/memberexset/insert",
 			type: "post",
 			data : {ecode : $(".ex_one").data("code")
 				,exName : $(".ex_one").data("name")
 			,memberId : "${member.memberId}"
-			,calendarNo: dateVal
+			,dayNo: dateVal
 			,exerciseSet : $(".addExerciseSet").val()
 			,exerciseNumber : $(".addExerciseNumber").val()
 			,exerciseWeight : $(".addExerciseWeight").val()}

@@ -1,16 +1,10 @@
 package kh.project.dml.weight.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
-
-import kh.project.dml.common.interceptor.SessionNames;
 
 
 @Controller
-@SessionAttributes(SessionNames.LOGIN)
 public class FpWeightController {
 
 	@GetMapping("/temp2")
@@ -18,10 +12,9 @@ public class FpWeightController {
 		return "temp/blog-single2";
 	}
 	
-	
-	@GetMapping("/main")
-	public String mainPageOpen8() {
-		return "main";
+	@GetMapping("/index")
+	public String index() {
+		return "index";
 	}
 	
 	@GetMapping("/weight2")

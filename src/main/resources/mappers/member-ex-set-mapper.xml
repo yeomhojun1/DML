@@ -5,22 +5,24 @@
  		<bind name="dayExSet" value="'%'+dayExSet+'%'"/>
 		select * from member_ex_set where day_Ex_Set like #{dayExSet}
 	</select>
+	<select id="selectPart" resultType="FpMemberExSetVo" parameterType="kh.project.dml.memberexset.model.vo.FpMemberExSetParam" >
+ 		<bind name="dayExSet" value="'%'+dayExSet+'%'"/>
+ 		<bind name="part" value="'%'+part+'%'"/>
+		select * from (select * from member_ex_set where day_Ex_Set like #{dayExSet} ) join exercise using (ecode) where part LIKE #{part}  
+	</select>
 
 	<select id="selectOne" resultType="FpMemberExSetVo" parameterType="string">
 		SELECT MEMBERID, ECODE, EXNAME, EXERCISESET, EXERCISENUMBER FROM MEMBER_EX_SET
 		WHERE MEMBERID=#{memberId}
 	</select>
-	
 	<insert id="insert" parameterType="FpMemberExSetVo">
 		INSERT INTO MEMBER_EX_SET
-		VALUES ( #{calendarNo}||#{memberId}||#{ecode} , #{memberId},#{ecode}, #{calendarNo},#{exName}, #{exerciseSet}, #{exerciseNumber},#{exerciseWeight})
+		VALUES ( #{dayNo}||#{memberId}||#{ecode} ,#{dayNo}, #{memberId},#{ecode}, #{exName}, #{exerciseSet}, #{exerciseNumber},#{exerciseWeight})
 	</insert>
-	
 	<update id="update" parameterType="FpMemberExSetVo">
 		UPDATE MEMBER_EX_SET SET MEMBERID=#{memberId}, ECODE=#{ecode} EXNAME=#{exName}, EXERCISESET=#{exerciseSet}, EXERCISENUMBER=#{exerciseNumber}
 	</update>
-	
 	<delete id="delete" parameterType="string">
-		DELETE FROM MEMBER_EX_SET WHERE MEMBERID=#{memberId}
+		DELETE FROM MEMBER_EX_SET WHERE day_ex_set=#{dayExSet}
 	</delete>
 </mapper>

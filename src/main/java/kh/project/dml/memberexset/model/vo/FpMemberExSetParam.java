@@ -12,16 +12,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class FpMemberExSetVo {
+public class FpMemberExSetParam {
 	private String dayExSet;
-	private String memberId;
-	private int ecode;
-	private String dayNo;
-	private String exName;
-	private int exerciseSet;
-	private int exerciseNumber;
-	private int exerciseWeight;
-	
-	
-
+	private String part;
 }

@@ -12,7 +12,7 @@ import lombok.Setter;
 public class UserCreateForm {
 	
 	@NotEmpty(message = "아이디는 필수항목입니다.")
-	@Email
+	@Email(message = "이메일 형식으로 입력해주세요.")
 	private String username;
 
     @NotEmpty(message = "비밀번호는 필수항목입니다.")
@@ -21,9 +21,9 @@ public class UserCreateForm {
     @NotEmpty(message = "비밀번호 확인은 필수항목입니다.")
     private String password2;
     
-    @Size(min = 8, max = 8)
+    @Size(min = 8, max = 8, message = "생년월일은 YYYYMMDD 형식으로 입력해주세요.")
     @NotEmpty(message = "생년월일은 YYYYMMDD 형식으로 입력해주세요.")
-    private int birthday;
+    private String birthday;
 
     private String gender;
     
@@ -31,9 +31,9 @@ public class UserCreateForm {
     private String name;
     
     @NotEmpty(message = "키는 필수항목입니다.")
-    private double height;
+    private String height;
     
     @NotEmpty(message = "몸무게는 필수항목입니다.")
-    private double weight;
+    private String weight;
     
 }
