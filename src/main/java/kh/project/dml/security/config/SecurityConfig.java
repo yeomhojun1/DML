@@ -60,12 +60,13 @@ public class SecurityConfig {
                 .and()
             .sessionFixation().migrateSession()
             .sessionAuthenticationErrorUrl("/member/logout")
+//            .and()
+//            .httpBasic()
             .and()
-//            .httpBasic().disable()
             // oauth2 경로 모든 사용자에게 허용
             .authorizeRequests()
-            	.antMatchers("/oauth2/*").permitAll()
-            .and()
+            	.antMatchers("/oauth2/**").permitAll()
+        	.and()
             // resources, error 경로는 모든 사용자에게 허용
             .authorizeRequests()
                 .antMatchers("/resources/**", "/error/**").permitAll()
@@ -78,7 +79,6 @@ public class SecurityConfig {
             .and()
                 .authorizeRequests()
                 .antMatchers("/member/**").authenticated()
-
             // admin 경로는 R_A 역할을 가진 사용자에게만 허용
 //            .and()
 //                .authorizeRequests()
