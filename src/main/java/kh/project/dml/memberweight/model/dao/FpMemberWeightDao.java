@@ -21,7 +21,7 @@ public class FpMemberWeightDao {
 		return sqlSession.selectOne("memberweight.selectOne", userId);
 	}
 	public int insert(FpMemberWeightVo vo) {
-		return sqlSession.insert("memberweight.insert", vo);
+		return sqlSession.insert("memberweight.insertWeight", vo);
 	}
 	public int update(FpMemberWeightVo vo) {
 		return sqlSession.update("memberweight.update", vo);
