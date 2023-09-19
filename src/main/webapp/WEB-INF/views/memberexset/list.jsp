@@ -138,26 +138,87 @@ float: left;
 	</div>
 
 	<script>
-		window.onload = function() {
-			const now = new Date();
-			var onloadToday = new Date().toISOString().substring(0, 10).replace(/-/g,'');
-			console.log(onloadToday);
-					$.ajax({
-						url : "${pageContext.request.contextPath}/memberexset/list.ajax",
-						type : "get",
-						data : {dayExSet : onloadToday + "${member.memberId}"},
-						success : function(result) {
-							htmlVal = '	<div class="exSetForDay">';
-							for (var i = 0; i < result.length; i++) {
-								htmlVal += '<div class="exSetForDay_one card col-xl-3 text-center" data-dayExSet="'+result[i].dayExSet+'"  data-ecode="'+result[i].ecode+'"><div>'+result[i].exName+'</div><div>'+result[i].exerciseWeight+'kg</div><div>'+result[i].exerciseNumber+'회</div><div>'+result[i].exerciseSet+'세트</div><button type="button" class="deleteDayExSet">삭제</button></div>'
-									/* 	+ result[i].exerciseSet+'</div><div>
-										+ result[i].exerciseNumber+'</div><div>
-										+ result[i].exerciseNumber+'</div> */
-							}
-							htmlVal += '</div>'
-							console.log(result);
-							$("#home").append(htmlVal);
-							
+
+	window.onload = function() {
+		const now = new Date();
+		var onloadToday = new Date().toISOString().substring(0, 10).replace(/-/g,'');
+		getMemberexset(onloadToday);
+		
+	}
+	 var selectDate = $.datepicker.formatDate("yymmdd",$("#datepicker").datepicker("getDate")); 
+     selectDate = $("#datepicker").val();
+     selectDate= selectDate.replaceAll("-", "");
+   
+	function addEventAfterDisplay(selectorStr, cbHandler){
+		$(selectorStr).click(cbHandler);	
+	}
+	function displayHome(result){
+		$(".exSetForDay").remove();
+		htmlVal = '	<div class="exSetForDay">';
+		for (var i = 0; i < result.length; i++) {
+			htmlVal += '<div class="exSetForDay_one card col-xl-3 text-center" data-dayexset="'+result[i].dayExSet+'"  data-ecode="'+result[i].ecode+'"><div>'+result[i].exName+'</div><div>'+result[i].exerciseWeight+'kg</div><div>'+result[i].exerciseNumber+
+			'회</div><div>'+result[i].exerciseSet+
+			'세트</div><div ><button type="button" class="updateDayExSet">수정</button><button type="button" class="deleteDayExSet">삭제</button></div></div>'
+				/* 	+ result[i].exerciseSet+'</div><div>
+					+ result[i].exerciseNumber+'</div><div>
+					+ result[i].exerciseNumber+'</div> */
+		}
+		htmlVal += '</div>'
+		console.log(result);
+		//addEventAfterDisplay(".deleteDayExSet", deleteDayExSetHandler);
+		$("#home").append(htmlVal);
+		$(".deleteDayExSet").click(deleteDayExSetHandler);
+	}
+	/* 범준님 코드 가져옴 */
+	$("#datepicker").datepicker({
+		    dateFormat: 'yy-mm-dd',
+	        showOtherMonths: true,
+	        showMonthAfterYear: true,
+	        changeYear: true,
+	        changeMonth: true,
+	        showOn: "both",
+	        buttonImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmaCcqC3LCvzNN97a72WZ_4nMqnS9RWarcWw&usqp=CAU",
+	        buttonImageOnly: true,
+	        buttonText: "선택",
+	        yearSuffix: "년",
+	        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], // 달력의 월 부분 Tooltip
+	        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], // 달력의 요일 텍스트
+	        dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'], // 달력의 요일 Tooltip
+
+	       onSelect: function(dateText, inst) {
+	           $(".DateBars_date__DyX0X").text(dateText); // 맨 위의 날짜 변경
+	           //일요일 0~
+		       var selectDate = $.datepicker.formatDate("yymmdd",$("#datepicker").datepicker("getDate")); 
+		       selectDate = $("#datepicker").val();
+		       selectDate= selectDate.replaceAll("-", "");
+		      
+				console.log(selectDate);
+				getMemberexset(selectDate);
+				displayDayExSetPartHandler(selectDate);
+	  		 },
+	   		onChangeMonthYear:function(year, month, inst){
+	     		setTimeout(function(){
+	      		var selectedDay = $(".ui-datepicker-calendar .ui-state-active a", inst.dpDiv).text();
+	      		console.log(selectedDay);
+	        			$(".DateBars_date__DyX0X").text(selectedDay);
+	       				
+	     			}, 0);
+	  		 	}
+			});
+	 $('#datepicker').datepicker('setDate', new Date());
+	function getMemberexset(dateStr){
+		console.log("dateStr "+dateStr);
+			$.ajax({
+				url : "${pageContext.request.contextPath}/memberexset/list.ajax",
+				type : "get",
+				data : {dayExSet : dateStr + "${member.memberId}"},
+				success : function(result) {
+					console.log("getMemberexset"+result);
+					displayHome(result);
+					addEventAfterDisplay(".dayExSetPart", displayDayExSetPartHandler);
+						
+
 						},
 						dataType : "json"
 					})
@@ -207,11 +268,29 @@ float: left;
 					console.log(forDate);
 		   		}
 		   };
-		   $("#datepicker").mouseout(deleteUiTrigger);  
-		 function deleteUiTrigger(){
-			 $(".ui-datepicker-trigger").remove;
-		 }
-		   ui-datepicker-trigger
+	
+		function deleteDayExSetHandler(result){
+			   
+			   console.log("deleteDayExSetHandler 돌아감?")
+			   var test123 = $(this).parents(".exSetForDay_one").data("dayexset");
+			   console.log(test123);
+				$.ajax({
+					url : "${pageContext.request.contextPath}/memberexset/delete",
+					type : "post",
+					data : {dayExSet : test123},
+					success :  function(){
+						console.log("success");
+						location.reload(true);},
+					error :  function(){
+						console.log("error");},
+					dataType : "json"
+				})
+			}
+			  
+		   
+		   
+		   
+
 	</script>
 </body>
 </html>

@@ -33,7 +33,7 @@ public class FpMemberExSetServiceImpl implements FpMemberExSetService  {
 		return fpMemberExSetDao.update(vo);
 	}
 	@Override
-	public int delete(String memberId)  {
-		return fpMemberExSetDao.delete(memberId);
+	public int delete(String dayExSet)  {
+		return fpMemberExSetDao.delete(dayExSet);
 	}
 }
