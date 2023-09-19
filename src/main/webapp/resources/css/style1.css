@@ -113,7 +113,7 @@
 		rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
 	pointer-events: auto;
 	padding: 20px 24px;
-	overflow-y: scroll;
+	/* overflow-y: scroll; */
 }
 
 :where(.css-1s3dcof).ant-modal .ant-modal-close {

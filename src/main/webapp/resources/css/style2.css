@@ -864,10 +864,14 @@
 	display: flex;
 	flex-direction: row;
 	background-color: #99d3e9;
-/* 	padding: 10px 30px 10px 10px; */
+	padding: 10px 30px 10px 10px;
 	border-radius: 30px;
 	margin-bottom: 20px;
-	height: 60px
+	height: 60px;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+
 }
 
 .Plan_modal_food_bar__ikK6Q>div {
@@ -907,13 +911,9 @@
 	font-size: 18px
 }
 
-.Plan_raw_food_box__8ygu_ {
-	height: 400px;
-	overflow-y: scroll
-}
-
 .Plan_modal_food_left__wihxs {
-	flex: 3 1
+	overflow-y: scroll;
+	max-height: 400px;
 }
 
 .Plan_modal_food_right__sg_CE {
