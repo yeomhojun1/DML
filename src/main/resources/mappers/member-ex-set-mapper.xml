@@ -18,7 +18,7 @@
 	</insert>
 	
 	<update id="update" parameterType="FpMemberExSetVo">
-		UPDATE MEMBER_EX_SET SET MEMBERID=#{memberId}, ECODE=#{ecode} EXNAME=#{exName}, EXERCISESET=#{exerciseSet}, EXERCISENUMBER=#{exerciseNumber}
+		UPDATE MEMBER_EX_SET SET EXERCISEWEIGHT=#{exerciseWeight}, EXERCISESET=#{exerciseSet}, EXERCISENUMBER=#{exerciseNumber} WHERE DAY_EX_SET=#{dayExSet}
 	</update>
 	
 	<delete id="delete" parameterType="string">

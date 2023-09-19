@@ -47,7 +47,8 @@
 .floatLeft {
 	float: left;
 }
-.floatRight{
+
+.floatRight {
 	float: right;
 }
 </style>
@@ -67,28 +68,25 @@
 					<div class="row">
 						<div class="col-xl-10 BigDateHead">
 							<div class="DateHead floatLeft h2">
-								
-									<%String Date = new java.text.SimpleDateFormat("yyyy.MM.dd").format(new java.util.Date());%>
-									<%=Date%>
+
+								<%String Date = new java.text.SimpleDateFormat("yyyy.MM.dd").format(new java.util.Date());%>
+								<%=Date%>
 							</div>
 							<div class="floatLeft h2">
 								<h2>&nbsp${member.mname}님의 운동 리스트</h2>
 							</div>
 							<div class="forChangeDate floatRight col-xl-2">
-							<img
-								src="https://w7.pngwing.com/pngs/294/951/png-transparent-computer-icons-calendar-others-miscellaneous-text-calendar.png"
-								width="30px" height="30px" id="changeDate">
-							<button class="saveChangDate">저장</button>
+								<img
+									src="https://w7.pngwing.com/pngs/294/951/png-transparent-computer-icons-calendar-others-miscellaneous-text-calendar.png"
+									width="30px" height="30px" id="changeDate">
+							</div>
 						</div>
-						</div>
-						
+
 					</div>
 
 					<div class="test11"></div>
 					<!-- 여기부터 모달창임 -->
-					<button type="button" class="btn btn-primary"
-						data-bs-toggle="modal" data-bs-target="#exampleModal">
-						Launch demo modal</button>
+				
 					<div class="modal fade" id="exampleModal" tabindex="-1"
 						aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog modal-sm">
@@ -100,9 +98,19 @@
 								</div>
 								<div class="modal-body">
 									<form>
-										<span>무게 : </span><input type="number" class="addExerciseWeight">								
-										<span>횟수 : </span><input type="number" class="addExerciseNumber">									
-										<span>세트 : </span><input type="number" class="addExerciseSet">							
+										<div>
+											<span>무게 : </span>
+											<input type="number" class="addExerciseWeight">
+										</div>
+										<div>
+											<span>횟수 : </span>
+											<input type="number" class="addExerciseNumber">
+										</div>
+										<div>
+											<span>세트 : </span>
+											<input type="number" class="addExerciseSet">
+										</div>
+										<button type="button" class="updateDayExSet">저장</button>
 									</form>
 								</div>
 
@@ -110,8 +118,8 @@
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
 									data-bs-dismiss="modal">Close</button>
-								<button type="button" class="btn btn-primary">Save
-									changes</button>
+								<button type="button" class="btn btn-primary">
+								Save changes</button>
 							</div>
 						</div>
 					</div>
@@ -188,7 +196,7 @@
 		for (var i = 0; i < result.length; i++) {
 			htmlVal += '<div class="exSetForDay_one card col-xl-3 text-center" data-dayexset="'+result[i].dayExSet+'" data-ecode="'+result[i].ecode+'"><div>'+result[i].exName+'</div><div>'+result[i].exerciseWeight+'kg</div><div>'+result[i].exerciseNumber+
 			'회</div><div>'+result[i].exerciseSet+
-			'세트</div><div ><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">수정</button><button type="button" class="deleteDayExSet">삭제</button></div></div>'
+			'세트</div><div ><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="updateDayExSet">수정</button><button type="button" class="deleteDayExSet">삭제</button></div></div>'
 				/* 	+ result[i].exerciseSet+'</div><div>
 					+ result[i].exerciseNumber+'</div><div>
 					+ result[i].exerciseNumber+'</div> */
@@ -198,6 +206,7 @@
 		//addEventAfterDisplay(".deleteDayExSet", deleteDayExSetHandler);
 		$("#home").append(htmlVal);
 		$(".deleteDayExSet").click(deleteDayExSetHandler);
+		$(".updateDayExSet").click(sendDayExSetHandler);
 	}
 	/* 범준님 코드 가져옴 */
 	function datepickerHandler(){
@@ -226,10 +235,12 @@
          		selectDate = $("#datepicker").val();
          		
          		selectDate1= selectDate.replaceAll("-", "");
+         		selectDate=selectDate.replaceAll("-", ".");
          		console.log("selectDate1 : "+selectDate1);
          		console.log("selectDate : "+selectDate);
          		getMemberexset(selectDate1);
            		$(".DateHead").html(selectDate);
+           		
 	   			},
    			onChangeMonthYear:function(year, month, inst){
     			setTimeout(function(){
@@ -242,7 +253,6 @@
  	});
 	$('#datepicker').datepicker('setDate', new Date());
 }
-
 	function getMemberexset(dateStr){
 		console.log("dateStr "+dateStr);
 			$.ajax({
@@ -269,10 +279,12 @@
 				$(".forChangeDate").append(htmlVal);
 				$("#datepicker").click(datepickerHandler);
 			}
-		
+ 		
 		function deleteDayExSetHandler(result){
 			   console.log("deleteDayExSetHandler 돌아감?")
 			   var test123 = $(this).parents(".exSetForDay_one").data("dayexset");
+			
+			   
 			   console.log(test123);
 				$.ajax({
 					url : "${pageContext.request.contextPath}/memberexset/delete",
@@ -280,12 +292,38 @@
 					data : {dayExSet : test123},
 					success :  function(){
 						console.log("success");
-						location.reload(true);},
+						location.reload(true);
+						},
 					error :  function(){
 						console.log("error");},
 					dataType : "json"
 				})
 		}
+		function sendDayExSetHandler(result){
+			var sendDayExSet=$(this).parents(".exSetForDay_one").data("dayexset")
+			console.log("sendDayExSet : "+sendDayExSet);
+			document.addEventListener("submit",updateDayExSetHandler(sendDayExSet));
+		}
+		function updateDayExSetHandler(result){
+			console.log("updateDayExSetHandler : "+ result);
+			 $.ajax({
+				url:"${pageContext.request.contextPath}/memberexset/update",
+				type: "post",
+				data : {dayExSet : result
+				,exerciseSet : $(".addExerciseSet").val()
+				,exerciseNumber : $(".addExerciseNumber").val()
+				,exerciseWeight : $(".addExerciseWeight").val()}
+				,success : function(result){
+					console.log("success");
+					console.log("result : "+result);
+					}
+				,error : function(){
+					console.log("error");
+					}
+				});
+			 event.preventDefault();
+			}
+		
 	</script>
 </body>
 </html>

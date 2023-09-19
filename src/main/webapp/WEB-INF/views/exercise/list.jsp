@@ -435,14 +435,11 @@
 	   });
 	
 		$(".addMemberExSet").click(onMemberExSetHandler);
-	function onMemberExSetHandler(){
-	
+		function onMemberExSetHandler(){
 		var dateVal = $("#datepicker").val()
 		//replace([기존문자],[바꿀문자])
 		dateVal= dateVal.replaceAll("-", "");
-		dateVal =parseInt(dateVal);
-		console.log(dateVal);
-		$.ajax({
+				$.ajax({
 			url:"${pageContext.request.contextPath}/memberexset/insert",
 			type: "post",
 			data : {ecode : $(".ex_one").data("code")
