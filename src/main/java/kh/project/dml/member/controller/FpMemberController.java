@@ -133,7 +133,7 @@ public class FpMemberController {
 	
 	// 로그인 페이지에서 로그인 버튼 클릭
 	@PostMapping("/member/login")
-	public String loginPost(LoginVo vo, Model model, HttpSession session, HttpServletResponse response) throws Exception {
+	public String loginPost(LoginVo vo, Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 	    logger.info("loginPost...LoginVo={}", vo); 
         FpUsersVo member = service.login(vo);
         if(member != null) {
@@ -156,7 +156,16 @@ public class FpMemberController {
         	logger.error("사용자ID 또는 비밀번호를 확인해 주세요.");
         	model.addAttribute("loginResult", "사용자ID 또는 비밀번호를 확인해 주세요.");
         }
-        return "/member/login";
+        session = request.getSession();
+        if (session != null) {
+            String redirectUrl = (String) session.getAttribute("prevPage");
+            if (redirectUrl != null) {
+                // 이전 페이지로 리다이렉트
+                session.removeAttribute("prevPage");
+                return redirectUrl;
+            }
+        }
+        return "/index";
 	}
 	
 	// 로그아웃 버튼 클릭

@@ -24,6 +24,6 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
                 return;
             }
         }
-        response.sendRedirect("/"); // 기본 리다이렉트 URL
+        response.sendRedirect("/index"); // 기본 리다이렉트 URL
     }
 }

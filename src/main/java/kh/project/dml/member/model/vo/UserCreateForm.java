@@ -23,7 +23,7 @@ public class UserCreateForm {
     
     @Size(min = 8, max = 8)
     @NotEmpty(message = "생년월일은 YYYYMMDD 형식으로 입력해주세요.")
-    private int birthday;
+    private String birthday;
 
     private String gender;
     
@@ -31,9 +31,9 @@ public class UserCreateForm {
     private String name;
     
     @NotEmpty(message = "키는 필수항목입니다.")
-    private double height;
+    private String height;
     
     @NotEmpty(message = "몸무게는 필수항목입니다.")
-    private double weight;
+    private String weight;
     
 }

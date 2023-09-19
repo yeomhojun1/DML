@@ -1,11 +1,7 @@
-<link
-	href="${pageContext.request.contextPath }/resources/resources1/css/styles.css"
-	rel="stylesheet">
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -14,6 +10,9 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Grayscale - Start Bootstrap Theme</title>
+        <link
+			href="${pageContext.request.contextPath }/resources/resources1/css/styles.css"
+			rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -39,20 +38,20 @@
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/exercise/list">운동 도우미</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/product/product">제품추천</a></li>
                         <%-- 사용자가 로그인되어 있지 않은 경우 --%>
-						<sec:authorize access="isAnonymous()">
+						<c:if test="${empty sessionScope.loginUser}">
 							<li class="nav-item"><a class="nav-link"
 								href="${pageContext.request.contextPath }/member/login">로그인</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="${pageContext.request.contextPath }/member/signup">회원가입</a></li>
-						</sec:authorize>
+						</c:if>
 	
 						<%-- 사용자가 로그인된 경우 --%>
-						<sec:authorize access="isAuthenticated()">
+						<c:if test="${not empty sessionScope.loginUser}">
 							<li class="nav-item"><a class="nav-link"
 								href="${pageContext.request.contextPath }/member/mypage">마이페이지</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="${pageContext.request.contextPath }/member/logout">로그아웃</a></li>
-						</sec:authorize>
+						</c:if>
                     </ul>
                 </div>
             </div>

@@ -67,8 +67,8 @@ public class FpMemberServiceImpl implements FpMemberService {
         member.setMname(userMember.getName());
         member.setMbirthday(userMember.getBirthday());
         member.setGender(userMember.getGender());
-        member.setHeight(userMember.getHeight());
-        member.setWeight(userMember.getWeight());
+        member.setHeight(Double.parseDouble(userMember.getHeight()));
+        member.setWeight(Double.parseDouble(userMember.getWeight()));
         this.fpMemberRepository.saveMember(member);
         
         return user;
@@ -89,8 +89,8 @@ public class FpMemberServiceImpl implements FpMemberService {
         member.setMname(userMember.getName());
         member.setMbirthday(userMember.getBirthday());
         member.setGender(userMember.getGender());
-        member.setHeight(userMember.getHeight());
-        member.setWeight(userMember.getWeight());
+        member.setHeight(Double.parseDouble(userMember.getHeight()));
+        member.setWeight(Double.parseDouble(userMember.getWeight()));
         member.setNaverid(userMember.getNaverid());
         member.setGoogleid(userMember.getGoogleid());
         member.setKakaoid(userMember.getKakaoid());
