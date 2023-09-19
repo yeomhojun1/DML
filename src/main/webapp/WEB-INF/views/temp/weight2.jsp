@@ -148,6 +148,7 @@ Custom scripts for all pages
 									<div>
 										<h2>개별 입력</h2>
 									</div>
+									<form action="${pageContext.request.contextPath }/memberweight/weight2" method="post">
 									<div class="col-xl-12 setdayweight">
 										<div>
 											<div>
@@ -159,7 +160,7 @@ Custom scripts for all pages
 													</div>
 													<div>
 														<div>
-															<input type="text" id="datepicker">
+															<input type="text" id="datepicker" name="date">
 														</div>
 													</div>
 												</div>
@@ -171,7 +172,7 @@ Custom scripts for all pages
 													</div>
 													<span
 														class="ant-input-affix-wrapper Track_input_basic__yj5u2 css-1s3dcof">
-														<input class="ant-input css-1s3dcof" type="text" value="${member.weight }"><span
+														<input class="ant-input css-1s3dcof" type="text" name="weight" value=${member.weight }><span
 														class="ant-input-suffix">kg</span>
 													</span>
 												</div>
@@ -179,16 +180,20 @@ Custom scripts for all pages
 											<div style="margin-top: 20px;">* 이미 값이 존재하는 경우, 새 값으로
 												갱신됩니다.</div>
 										</div>
-										<div >
-											<button type="button">
+										<input type="hidden" name="memberId" value="${member.memberId }">
+										<div>
+											<button type="submit">
 
 												<span>저장하기</span>
 											</button>
 											<button type="button" style="margin-top: 20px;">
 												<span>선택한 날짜의 데이터 삭제</span>
 											</button>
+											
 										</div>
+										
 									</div>
+									</form>
 								</div>
 								<div>
 									<div class="recordstart">

@@ -15,6 +15,11 @@
 		WHERE USERID=#{userId} 
 	</select>
 	
+	<insert id="insertWeight" parameterType="FpMemberWeightVo">
+		INSERT INTO MEMBER_WEIGHT (member_id, weight_date, weight)
+		VALUES (#{memberId}, #{date}, #{weight})
+	</insert>
+	
 	<insert id="insert" parameterType="FpMemberWeightVo">
 		INSERT INTO MEMBER_WEIGHT 
 		VALUES (#{userId}, #{date}, #{weight}, #{muscleMass}, #{bodyFatPet})

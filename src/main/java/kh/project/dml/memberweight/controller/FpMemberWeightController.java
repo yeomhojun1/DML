@@ -1,95 +1,48 @@
 package kh.project.dml.memberweight.controller;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import kh.project.dml.memberweight.model.service.FpMemberWeightService;
+import kh.project.dml.memberweight.model.service.FpMemberWeightServiceImpl;
 import kh.project.dml.memberweight.model.vo.FpMemberWeightVo;
 
 
 @Controller
 @RequestMapping("/memberweight")
 public class FpMemberWeightController {
-	@Autowired
-	private FpMemberWeightService fpMemberWeightServiceImpl;
 	
-	@GetMapping("/list")
-	public ModelAndView selectListmemberweight(ModelAndView mv) {
-		mv.addObject("memberweightlist", fpMemberWeightServiceImpl.selectList());
-		mv.setViewName("memberweight/list");
-		return mv;
+	@Autowired
+	private FpMemberWeightServiceImpl service;
+	
+	@GetMapping("/weight2")
+	public String mainPageOpen9(Model model) {
+		model.addAttribute("fpMemberWeightVo" , new FpMemberWeightVo());
+		return "temp/weight2";
 	}
-	@GetMapping("/one")
-	public ModelAndView selectOnememberweight(ModelAndView mv, String userId) {
-		mv.addObject("memberweightone", fpMemberWeightServiceImpl.selectOne(userId));
-		mv.setViewName("memberweight/one");
-		return mv;
+	
+	@PostMapping("/weight2")
+	public String mainPageOpen10(@RequestParam String memberId, @RequestParam Date date, @RequestParam double weight, Model model) {
+		FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(memberId, date, weight);
+		service.insert(fpMemberWeightVo);
+		return "temp/weight2";
 	}
-	@GetMapping("/insert")
-	public ModelAndView insertmemberweight(ModelAndView mv ) {
-		mv.setViewName("memberweight/insert");
-		return mv;
+
+	@GetMapping("/composition")
+	public String mainPageOpen11() {
+		return "temp/composition";
 	}
-	@PostMapping("/insert")
-	public String insertDomemberweight(RedirectAttributes redirectAttr, FpMemberWeightVo vo ) {
-		String viewPage = "redirect:/";
-		int result = fpMemberWeightServiceImpl.insert(vo);
-		try {
-			if (result < 1) {
-				redirectAttr.addFlashAttribute("msg", "회원 가입 실패했습니다 \n 다시 입력해주세요");
-				viewPage = "redirect:/memberweight/insert";
-			} else {
-				redirectAttr.addFlashAttribute("msg", "회원 가입 됐습니다");
-				viewPage = "redirect:/memberweight/list";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return viewPage;
+	
+	@GetMapping("/healthmap")
+	public String mainPageOpen12() {
+		return "temp/healthmap";
 	}
-	@GetMapping("/update")
-	public ModelAndView updatememberweight(ModelAndView mv, String userId ) {
-		mv.addObject("memberweightone", fpMemberWeightServiceImpl.selectOne(userId));
-		mv.setViewName("memberweight/update");
-		return mv;
-	}
-	@PostMapping("/update")
-	public String updateDomemberweight(RedirectAttributes redirectAttr, FpMemberWeightVo vo ) {
-		String viewPage = "redirect:/";
-		int result = fpMemberWeightServiceImpl.update(vo);
-		try {
-			if (result < 1) {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 실패했습니다 \n 다시 입력해주세요");
-				viewPage = "redirect:/memberweight/update";
-			} else {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 됐습니다");
-				viewPage = "redirect:/memberweight/list";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return viewPage;
-	}
-	@PostMapping("/delete")
-	public String deleteDomemberweight(RedirectAttributes redirectAttr,String userId ) {
-		String viewPage = "redirect:/";
-		int result = fpMemberWeightServiceImpl.delete(userId);
-		try {
-			if (result < 1) {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");
-				viewPage = "redirect:/memberweight/list";//delete는 보통 처음에 있던 화면으로 돌아감 그래서 ajax를 쓰는데 그건 추후
-			} else {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 됐습니다");
-				viewPage = "redirect:/memberweight/list";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return viewPage;
-	}
+	
 }
