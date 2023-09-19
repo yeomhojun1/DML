@@ -25,6 +25,7 @@
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
 
+
 <script>
   	document.addEventListener('DOMContentLoaded', function() {
   	// div id 값 
@@ -182,6 +183,7 @@
 }</style>
 </head>
 <body class="sb-nav-fixed">
+
 	<jsp:include page="/WEB-INF/views/frame/nav.jsp"></jsp:include>
 	<div id="layoutSidenav">
 
