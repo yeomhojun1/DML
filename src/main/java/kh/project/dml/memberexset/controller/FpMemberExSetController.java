@@ -14,7 +14,6 @@ import com.google.gson.Gson;
 
 import kh.project.dml.memberexset.model.service.FpMemberExSetService;
 
-import kh.project.dml.memberexset.model.service.FpMemberExSetServiceImpl;
 import kh.project.dml.memberexset.model.vo.FpMemberExSetParam;
 
 import kh.project.dml.memberexset.model.vo.FpMemberExSetVo;
@@ -90,20 +89,18 @@ public class FpMemberExSetController {
 	}
 	@PostMapping("/delete")
 	@ResponseBody
-	public String deleteDomemberexset(RedirectAttributes redirectAttr,@RequestParam String dayExSet) {
+	public String deleteDomemberexset(RedirectAttributes redirectAttr, String dayExSet) {
 		System.out.println(dayExSet);
 		int result = fpMemberExSetServiceImpl.delete(dayExSet);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");
-				viewPage = "redirect:/memberexset/list";//delete는 보통 처음에 있던 화면으로 돌아감 그래서 ajax를 쓰는데 그건 추후
 			} else {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 됐습니다");
-				viewPage = "redirect:/memberexset/list";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return viewPage;
+		return String.valueOf(result);
 	}
 }

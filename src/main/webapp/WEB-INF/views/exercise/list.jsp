@@ -448,7 +448,7 @@
 			data : {ecode : $(".ex_one").data("code")
 				,exName : $(".ex_one").data("name")
 			,memberId : "${member.memberId}"
-			,calendarNo: dateVal
+			,exerciseDate: dateVal
 			,exerciseSet : $(".addExerciseSet").val()
 			,exerciseNumber : $(".addExerciseNumber").val()
 			,exerciseWeight : $(".addExerciseWeight").val()}

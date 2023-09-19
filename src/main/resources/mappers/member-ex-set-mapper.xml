@@ -12,8 +12,9 @@
 	</select>
 	
 	<insert id="insert" parameterType="FpMemberExSetVo">
+		
 		INSERT INTO MEMBER_EX_SET
-		VALUES ( #{calendarNo}||#{memberId}||#{ecode} , #{memberId},#{ecode}, #{calendarNo},#{exName}, #{exerciseSet}, #{exerciseNumber},#{exerciseWeight})
+		VALUES ( #{exerciseDate}||#{memberId}||#{ecode} , #{exerciseDate},#{memberId},#{ecode}, #{exName}, #{exerciseSet}, #{exerciseNumber},#{exerciseWeight})
 	</insert>
 	
 	<update id="update" parameterType="FpMemberExSetVo">
@@ -21,6 +22,6 @@
 	</update>
 	
 	<delete id="delete" parameterType="string">
-		DELETE FROM MEMBER_EX_SET WHERE MEMBERID=#{memberId}
+		DELETE FROM MEMBER_EX_SET WHERE day_Ex_Set=#{dayExSet}
 	</delete>
 </mapper>

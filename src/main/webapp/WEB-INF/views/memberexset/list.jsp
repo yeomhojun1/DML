@@ -43,8 +43,12 @@
 	float: left;
 	padding: 30px;
 }
-.floatLeft{
-float: left;
+
+.floatLeft {
+	float: left;
+}
+.floatRight{
+	float: right;
 }
 </style>
 </head>
@@ -62,20 +66,55 @@ float: left;
 					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
 					<div class="row">
 						<div class="col-xl-10 BigDateHead">
-							<div class="DateHead floatLeft"><h2>
-								<%String Date = new java.text.SimpleDateFormat("yyyy.MM.dd").format(new java.util.Date());%>
-								<%=Date%></h2></div>
-								<div class="floatLeft"><h2>
-								 &nbsp${member.memberId}님의 운동 리스트
-							</h2>
+							<div class="DateHead floatLeft h2">
+								
+									<%String Date = new java.text.SimpleDateFormat("yyyy.MM.dd").format(new java.util.Date());%>
+									<%=Date%>
 							</div>
+							<div class="floatLeft h2">
+								<h2>&nbsp${member.mname}님의 운동 리스트</h2>
+							</div>
+							<div class="forChangeDate floatRight col-xl-2">
+							<img
+								src="https://w7.pngwing.com/pngs/294/951/png-transparent-computer-icons-calendar-others-miscellaneous-text-calendar.png"
+								width="30px" height="30px" id="changeDate">
+							<button class="saveChangDate">저장</button>
 						</div>
-						<div class="forChangeDate col-xl-2">
-							<div id="changeDate">날짜 변경</div><button class="saveChangDate">저장</button>
 						</div>
+						
 					</div>
 
 					<div class="test11"></div>
+					<!-- 여기부터 모달창임 -->
+					<button type="button" class="btn btn-primary"
+						data-bs-toggle="modal" data-bs-target="#exampleModal">
+						Launch demo modal</button>
+					<div class="modal fade" id="exampleModal" tabindex="-1"
+						aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-sm">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<form>
+										<span>무게 : </span><input type="number" class="addExerciseWeight">								
+										<span>횟수 : </span><input type="number" class="addExerciseNumber">									
+										<span>세트 : </span><input type="number" class="addExerciseSet">							
+									</form>
+								</div>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-bs-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-primary">Save
+									changes</button>
+							</div>
+						</div>
+					</div>
 					<div class="col-xl-12">
 						<div>
 							<ul class="nav nav-tabs col-xl-12" id="myTab" role="tablist">
@@ -129,26 +168,17 @@ float: left;
 								aria-labelledby="profile-tab">하체 운동 하나씩</div>
 						</div>
 					</div>
-
-
 				</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
 	</div>
-
 	<script>
-
 	window.onload = function() {
 		const now = new Date();
 		var onloadToday = new Date().toISOString().substring(0, 10).replace(/-/g,'');
 		getMemberexset(onloadToday);
-		
 	}
-	 var selectDate = $.datepicker.formatDate("yymmdd",$("#datepicker").datepicker("getDate")); 
-     selectDate = $("#datepicker").val();
-     selectDate= selectDate.replaceAll("-", "");
-   
 	function addEventAfterDisplay(selectorStr, cbHandler){
 		$(selectorStr).click(cbHandler);	
 	}
@@ -156,9 +186,9 @@ float: left;
 		$(".exSetForDay").remove();
 		htmlVal = '	<div class="exSetForDay">';
 		for (var i = 0; i < result.length; i++) {
-			htmlVal += '<div class="exSetForDay_one card col-xl-3 text-center" data-dayexset="'+result[i].dayExSet+'"  data-ecode="'+result[i].ecode+'"><div>'+result[i].exName+'</div><div>'+result[i].exerciseWeight+'kg</div><div>'+result[i].exerciseNumber+
+			htmlVal += '<div class="exSetForDay_one card col-xl-3 text-center" data-dayexset="'+result[i].dayExSet+'" data-ecode="'+result[i].ecode+'"><div>'+result[i].exName+'</div><div>'+result[i].exerciseWeight+'kg</div><div>'+result[i].exerciseNumber+
 			'회</div><div>'+result[i].exerciseSet+
-			'세트</div><div ><button type="button" class="updateDayExSet">수정</button><button type="button" class="deleteDayExSet">삭제</button></div></div>'
+			'세트</div><div ><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">수정</button><button type="button" class="deleteDayExSet">삭제</button></div></div>'
 				/* 	+ result[i].exerciseSet+'</div><div>
 					+ result[i].exerciseNumber+'</div><div>
 					+ result[i].exerciseNumber+'</div> */
@@ -170,43 +200,49 @@ float: left;
 		$(".deleteDayExSet").click(deleteDayExSetHandler);
 	}
 	/* 범준님 코드 가져옴 */
-	$("#datepicker").datepicker({
-		    dateFormat: 'yy-mm-dd',
-	        showOtherMonths: true,
-	        showMonthAfterYear: true,
-	        changeYear: true,
-	        changeMonth: true,
-	        showOn: "both",
-	        buttonImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmaCcqC3LCvzNN97a72WZ_4nMqnS9RWarcWw&usqp=CAU",
-	        buttonImageOnly: true,
-	        buttonText: "선택",
-	        yearSuffix: "년",
-	        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-	        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], // 달력의 월 부분 Tooltip
-	        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], // 달력의 요일 텍스트
-	        dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'], // 달력의 요일 Tooltip
+	function datepickerHandler(){
+	 	$("#datepicker").datepicker({
+	    	dateFormat: 'yy-mm-dd',
+        	showOtherMonths: true,
+        	showMonthAfterYear: true,
+        	changeYear: true,
+        	changeMonth: true,
+        	showOn: "both",
+        	buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif", // 버튼 이미지 경로
+        	buttonImageOnly: true,
+        	buttonText: "선택",
+        	yearSuffix: "년",
+        	monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        	monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], // 달력의 월 부분 Tooltip
+        	dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], // 달력의 요일 텍스트
+        	dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'], // 달력의 요일 Tooltip
+       		onSelect: function(dateText, inst) {
+           		/* var date=new Date($("#datepicker").datepicker({dateFormat:"yy-mm-dd"}).val());
+           		var date1= new Intl.DateTimeFormat('kr').format(date);
+           		date= date.getFullYear();
+           		date1= date1.replaceAll(".", "");
+           		console.log(date1); */
+       			var selectDate = $.datepicker.formatDate("yymmdd",$("#datepicker").datepicker("getDate")); 
+         		selectDate = $("#datepicker").val();
+         		
+         		selectDate1= selectDate.replaceAll("-", "");
+         		console.log("selectDate1 : "+selectDate1);
+         		console.log("selectDate : "+selectDate);
+         		getMemberexset(selectDate1);
+           		$(".DateHead").html(selectDate);
+	   			},
+   			onChangeMonthYear:function(year, month, inst){
+    			setTimeout(function(){
+        		var selectDate = $.datepicker.formatDate("yymmdd",$("#datepicker").datepicker("getDate")); 
+         		selectDate = $("#datepicker").val();
+         		selectDate= selectDate.replaceAll("-", "");
+         		console.log("onChangeMonthYear : "+selectDate)
+     			}, 0);
+   			}
+ 	});
+	$('#datepicker').datepicker('setDate', new Date());
+}
 
-	       onSelect: function(dateText, inst) {
-	           $(".DateBars_date__DyX0X").text(dateText); // 맨 위의 날짜 변경
-	           //일요일 0~
-		       var selectDate = $.datepicker.formatDate("yymmdd",$("#datepicker").datepicker("getDate")); 
-		       selectDate = $("#datepicker").val();
-		       selectDate= selectDate.replaceAll("-", "");
-		      
-				console.log(selectDate);
-				getMemberexset(selectDate);
-				displayDayExSetPartHandler(selectDate);
-	  		 },
-	   		onChangeMonthYear:function(year, month, inst){
-	     		setTimeout(function(){
-	      		var selectedDay = $(".ui-datepicker-calendar .ui-state-active a", inst.dpDiv).text();
-	      		console.log(selectedDay);
-	        			$(".DateBars_date__DyX0X").text(selectedDay);
-	       				
-	     			}, 0);
-	  		 	}
-			});
-	 $('#datepicker').datepicker('setDate', new Date());
 	function getMemberexset(dateStr){
 		console.log("dateStr "+dateStr);
 			$.ajax({
@@ -216,61 +252,25 @@ float: left;
 				success : function(result) {
 					console.log("getMemberexset"+result);
 					displayHome(result);
-					addEventAfterDisplay(".dayExSetPart", displayDayExSetPartHandler);
-						
-
+				//	addEventAfterDisplay(".dayExSetPart", displayDayExSetPartHandler);
 						},
 						dataType : "json"
 					})
 		}
+	
 		$("#changeDate").click(changeDateHandler);
 		function changeDateHandler(){
 			$("#datepicker").remove();
 			htmlVal=`
-				<input type="text" id="datepicker" name="calendarNo" 
+				<input type="text" id="datepicker" 
 				<%String datepickerToday = new java.text.SimpleDateFormat("yyyyMMdd").format(new java.util.Date());%>
 				placeholder="<%=datepickerToday%>">
 				`
 				$(".forChangeDate").append(htmlVal);
 				$("#datepicker").click(datepickerHandler);
-		}
-
-		function datepickerHandler(){
-		       //input을 datepicker로 선언
-		       $("#datepicker").datepicker({
-		          dateFormat: 'yy-mm-dd' //달력 날짜 형태
-		           ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-		           ,showMonthAfterYear:true // 월- 년 순서가아닌 년도 - 월 순서
-		           ,changeYear: true //option값 년 선택 가능
-		           ,changeMonth: true //option값  월 선택 가능                
-		           ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
-		           ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
-		           ,buttonImageOnly: true //버튼 이미지만 깔끔하게 보이게함
-		           ,buttonText: "선택" //버튼 호버 텍스트              
-		           ,yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
-		           ,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
-		           ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
-		           ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
-		           ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
-		           ,minDate: "-5Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-		           ,maxDate: "+5Y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
-		     	 ,onSelect: function() { 
-		            var forDate = $.datepicker.formatDate("yymmdd",$("#datepicker").datepicker("getDate")); 
-		            forDate = $("#datepicker").val();
-		            alert(forDate);
-		        	  
-		       }});                   
-		       //초기값을 오늘 날짜로 설정해줘야 합니다.
-		       $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
-				$(".saveChangDate").click(saveChangeDateHandler)
-				function saveChangeDateHandler(){
-					$(".DateHead").remove();
-					console.log(forDate);
-		   		}
-		   };
-	
+			}
+		
 		function deleteDayExSetHandler(result){
-			   
 			   console.log("deleteDayExSetHandler 돌아감?")
 			   var test123 = $(this).parents(".exSetForDay_one").data("dayexset");
 			   console.log(test123);
@@ -285,12 +285,7 @@ float: left;
 						console.log("error");},
 					dataType : "json"
 				})
-			}
-			  
-		   
-		   
-		   
-
+		}
 	</script>
 </body>
 </html>
