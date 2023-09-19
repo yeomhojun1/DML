@@ -240,7 +240,7 @@ public class FpMemberController {
 	
 	// 소셜 회원가입 페이지
 	@PostMapping("/member/agreement")
-    public String agreement(@Valid SocialCreateForm socialCreateForm, BindingResult bindingResult, HttpSession session, LoginVo vo) {
+    public String agreement(@Valid SocialCreateForm socialCreateForm, BindingResult bindingResult, HttpSession session) {
         if(bindingResult.hasErrors()) {
             return "/member/agreement";
         }

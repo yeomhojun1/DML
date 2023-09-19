@@ -157,21 +157,21 @@
                             <jsp:include page="form_errors.jsp"/>
                             <div class="form-group">
                                 <label class="form-control-label">생년월일</label>
-                                <input type="text" name="birthday" onkeypress="return isNumber(event)" class="form-control" placeholder="YYYYMMDD 형식으로 입력해주세요">
+                                <input type="text" name="birthday" class="form-control" maxlength=8 onkeypress="return isNumber(event)" placeholder="YYYYMMDD 형식으로 입력해주세요">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">성별</label>
                                 <br>
-                                <input type="radio" id="gender" name="gender" class="gender" checked="checked" value="남"><label name="gender" style="color:#fff;">남</label>
-                                <input type="radio" id="gender" name="gender" class="gender" value="여"><label name="gender" style="color:#fff;">여</label>
+                                <input type="radio" id="man" name="gender" class="gender" checked="checked" value="남"><label for="man" style="color:#fff;">남</label>
+                                <input type="radio" id="woman" name="gender" class="gender" value="여"><label for="woman" style="color:#fff;">여</label>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">키</label>
-                                <input type="text" name="height" onkeypress="return isDouble(event)" class="form-control">
+                                <input type="text" name="height" maxlength=5 onkeypress="return isDouble(event)" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">몸무게</label>
-                                <input type="text" name="weight" onkeypress="return isDouble(event)" class="form-control">
+                                <input type="text" name="weight" maxlength=5 onkeypress="return isDouble(event)" class="form-control">
                             </div>
                             <input type="hidden" name="username" value="${member.memberId}">
                             <input type="hidden" name="password1" value="SOCIAL_USER">

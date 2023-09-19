@@ -1,5 +1,7 @@
 package kh.project.dml.security.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,15 +13,21 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
 import javax.sql.DataSource;
 
 import kh.project.dml.common.CustomLoginSuccessHandler;
+import kh.project.dml.member.controller.FpMemberController;
 import kh.project.dml.security.service.CustomOAuth2UserService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
     
+	// 로그 수집 기능
+	private static final Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
+	
     private final CustomOAuth2UserService customOAuth2UserService;
     
     @Autowired
@@ -28,76 +36,126 @@ public class SecurityConfig {
     public SecurityConfig(CustomOAuth2UserService customOAuth2UserService) {
         this.customOAuth2UserService = customOAuth2UserService;
     }
-
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-    	auth
-	        .jdbcAuthentication()
-	        .dataSource(dataSource)
-	        .usersByUsernameQuery("SELECT username, password, userEnabled FROM usersㅁㄴㅇ WHERE username = ?")
-	        .authoritiesByUsernameQuery("SELECT username, authorities FROM usersㅁㄴㅇ WHERE username = ?")
-	        .passwordEncoder(encoder());
-    }
     
     @Bean
-    AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
+    public AuthenticationManager authManager(HttpSecurity http) throws Exception {
+        return http.getSharedObject(AuthenticationManagerBuilder.class)
+                .jdbcAuthentication()
+                .dataSource(dataSource)
+                .usersByUsernameQuery("SELECT username, password, userEnabled FROM users WHERE username = ?")
+                .authoritiesByUsernameQuery("SELECT username, authorities FROM users WHERE username = ?")
+                .passwordEncoder(encoder()).and().build();
     }
-
+    
     @Bean
     public BCryptPasswordEncoder encoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder();	
     }
     
+//    @Bean
+//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//        http
+//            .csrf().disable()
+//            .sessionManagement()
+//            	.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+//            	.invalidSessionUrl("/member/logout") // 세션 만료 후 리다이렉트 될 URL
+//                .maximumSessions(10) // 최대 동시 세션 수. 이 경우 한 번에 하나의 세션만 허용.
+//                	.expiredUrl("/member/logout") // 최대 세션 수를 초과할 경우 리다이렉트 될 URL
+//            .and()
+//            .sessionFixation().migrateSession()
+//            .sessionAuthenticationErrorUrl("/member/logout")
+//            .and()
+//            // 메인 페이지
+//            .authorizeRequests()
+//        		.antMatchers("/index").permitAll()
+//        	.and()
+//            // oauth2 경로 모든 사용자에게 허용
+//            .authorizeRequests()
+//            	.antMatchers("/oauth2/**").permitAll()
+//        	.and()
+//            // resources 관련 경로는 모든 사용자에게 허용
+//            .authorizeRequests()
+//                .antMatchers("/resources/**", "/resources1/**", "/css/**" ,
+//                		"/js/**", "/fonts/**", "/images/**", "/frame/**").permitAll()
+//            .and()
+//            .authorizeRequests()
+//                .antMatchers("/member/login", "/member/signup",
+//                		"/member/agreement", "/member/*Popup").permitAll()
+//            .and()
+//            .authorizeRequests()
+//                .anyRequest().authenticated()
+//            // admin 경로는 R_A 역할을 가진 사용자에게만 허용
+////            .and()
+////                .authorizeRequests()
+////                .antMatchers("/admin/**").hasRole("ROLE_ADMIN")
+//
+//            // 로그인 관련 설정
+//            .and()
+//                .formLogin()
+//                .loginPage("/member/login")
+//                .failureUrl("/member/login")
+//                .defaultSuccessUrl("/index")
+//                .successHandler(customLoginSuccess())
+//                .permitAll()
+//
+//            // 로그아웃 관련 설정
+//            .and()
+//                .logout()
+//                .logoutUrl("/member/logout")
+//                .logoutSuccessUrl("/index")
+//                .invalidateHttpSession(true)
+//                .deleteCookies("remember-me", "JSESSION_ID")
+//                .permitAll()
+//            .and()
+//            // OAuth2 기능 사용
+//            .oauth2Login().userInfoEndpoint().userService(customOAuth2UserService);
+//        return http.build();
+//    }
+    
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf().disable()
-            .sessionManagement()
-            	.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-            	.invalidSessionUrl("/member/logout") // 세션 만료 후 리다이렉트 될 URL
-                .maximumSessions(10) // 최대 동시 세션 수. 이 경우 한 번에 하나의 세션만 허용.
-                	.expiredUrl("/member/logout") // 최대 세션 수를 초과할 경우 리다이렉트 될 URL
-                .and()
-            .sessionFixation().migrateSession()
-            .sessionAuthenticationErrorUrl("/member/logout")
-//            .and()
-//            .httpBasic()
-            .and()
-            // oauth2 경로 모든 사용자에게 허용
-            .authorizeRequests()
-            	.antMatchers("/oauth2/**").permitAll()
-        	.and()
-            // resources, error 경로는 모든 사용자에게 허용
-            .authorizeRequests()
-                .antMatchers("/resources/**", "/error/**").permitAll()
-            .and()
-                .authorizeRequests()
-                .antMatchers("/member/**").authenticated()
-            // admin 경로는 R_A 역할을 가진 사용자에게만 허용
-//            .and()
-//                .authorizeRequests()
-//                .antMatchers("/admin/**").hasRole("ROLE_ADMIN")
-
-            // 로그인 관련 설정
-            .and()
-                .formLogin()
-                .loginPage("/member/login")
-                .failureUrl("/member/login")
-                .successHandler(customLoginSuccess())
-                .defaultSuccessUrl("/index")
-                .permitAll()
-
-            // 로그아웃 관련 설정
-            .and()
-                .logout()
-                .logoutUrl("/member/logout")
-                .logoutSuccessUrl("/index")
-                .invalidateHttpSession(true)
-                .deleteCookies("remember-me", "JSESSION_ID")
-                .permitAll()
-            .and()
-            // OAuth2 기능 사용
-            .oauth2Login().userInfoEndpoint().userService(customOAuth2UserService);
+        		.csrf((csrf) -> csrf
+        				.disable())
+        		.sessionManagement((session) -> session
+        			.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+    				.invalidSessionUrl("/member/logout") // 세션 만료 후 리다이렉트 될 URL
+    					.maximumSessions(10) // 최대 동시 세션 수. 이 경우 한 번에 하나의 세션만 허용.
+    					.expiredUrl("/member/logout") // 최대 세션 수를 초과할 경우 리다이렉트 될 URL
+//					.sessionFixation((sessionFixation) -> sessionFixation
+//    							.migrateSession()
+//    							.sessionAuthenticationErrorUrl("/member/logout"))
+					)
+                .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
+//                        .requestMatchers(new AntPathRequestMatcher("/**")).permitAll())
+            			.antMatchers("/index").permitAll()
+            			// oauth2 경로 모든 사용자에게 허용
+            			.antMatchers("/oauth2/**").permitAll()
+                    	// resources 관련 경로는 모든 사용자에게 허용
+                        .antMatchers("/resources/**", "/resources1/**", "/css/**",
+                        		"/js/**", "/fonts/**", "/images/**", "/frame/**").permitAll()
+                        .antMatchers("/member/login", "/member/signup",
+                        		"/member/agreement", "/member/*Popup").permitAll()
+                        .anyRequest().authenticated())
+                    // admin 경로는 R_A 역할을 가진 사용자에게만 허용
+//                    .and()
+//                        .authorizeRequests()
+//                        .antMatchers("/admin/**").hasRole("ROLE_ADMIN")
+                // 로그인 관련 설정
+                .formLogin((formLogin) -> formLogin
+                		.loginPage("/member/login")
+                		.failureUrl("/member/login")
+                		.defaultSuccessUrl("/index")
+                		.successHandler(customLoginSuccess()))
+                // 로그아웃 관련 설정
+                .logout((logout) -> logout
+                		.logoutUrl("/member/logout")
+                		.logoutSuccessUrl("/index")
+                		.invalidateHttpSession(true)
+                		.deleteCookies("remember-me", "JSESSION_ID"))
+        		.oauth2Login((oauth2Login) -> oauth2Login
+        				.userInfoEndpoint()
+        				.userService(customOAuth2UserService));
         return http.build();
     }
     
