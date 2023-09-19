@@ -2,13 +2,12 @@
 	href="${pageContext.request.contextPath }/resources/resources1/css/styles.css"
 	rel="stylesheet">
 
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -35,12 +34,25 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/weight2">체중관리</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/product">식단관리</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/memberweight/weight2">체중관리</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/diet/index">식단관리</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/exercise/list">운동 도우미</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/product">제품추천</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/member/login">로그인</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/member/signup">회원가입</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/product/product">제품추천</a></li>
+                        <%-- 사용자가 로그인되어 있지 않은 경우 --%>
+						<sec:authorize access="isAnonymous()">
+							<li class="nav-item"><a class="nav-link"
+								href="${pageContext.request.contextPath }/member/login">로그인</a></li>
+							<li class="nav-item"><a class="nav-link"
+								href="${pageContext.request.contextPath }/member/signup">회원가입</a></li>
+						</sec:authorize>
+	
+						<%-- 사용자가 로그인된 경우 --%>
+						<sec:authorize access="isAuthenticated()">
+							<li class="nav-item"><a class="nav-link"
+								href="${pageContext.request.contextPath }/member/mypage">마이페이지</a></li>
+							<li class="nav-item"><a class="nav-link"
+								href="${pageContext.request.contextPath }/member/logout">로그아웃</a></li>
+						</sec:authorize>
                     </ul>
                 </div>
             </div>

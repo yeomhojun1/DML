@@ -41,8 +41,6 @@
 					<c:if test="${not empty sessionScope.loginUser}">
 						<li><a class="dropdown-item"
 							href="${pageContext.request.contextPath }/member/mypage">마이페이지</a></li>
-						<li><a class="dropdown-item" href="#!">Activity Log</a></li>
-						<li><hr class="dropdown-divider" /></li>
 						<li><a class="dropdown-item"
 							href="${pageContext.request.contextPath }/member/logout">로그아웃</a></li>
 					</c:if>

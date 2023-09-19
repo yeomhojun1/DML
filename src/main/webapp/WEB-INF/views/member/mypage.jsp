@@ -11,6 +11,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Daily Muscle Life | 마이페이지</title>
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/scss.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/mypage.css" rel="stylesheet" />
@@ -32,6 +33,7 @@
 								<li style="font-weight: bold;"><a>마이페이지</a></li>
 							</ul>
 						</div>
+						<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
 						<div>
 							<div>
 								<div class="MyPage_basic_input_row">
