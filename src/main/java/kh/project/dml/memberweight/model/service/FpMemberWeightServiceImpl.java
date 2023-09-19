@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kh.project.dml.member.model.vo.FpMemberVo;
 import kh.project.dml.memberweight.model.dao.FpMemberWeightDao;
 import kh.project.dml.memberweight.model.vo.FpMemberWeightVo;
 
@@ -24,6 +25,7 @@ public class FpMemberWeightServiceImpl implements FpMemberWeightService {
 	}
 	@Override
 	public int insert(FpMemberWeightVo vo) {
+		System.out.println(vo);
 		return fpMemberWeightDao.insert(vo);
 	}
 	@Override

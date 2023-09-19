@@ -10,6 +10,17 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ 
+ .search-map {
+    width: 50%; 
+    background: rgb(245, 246, 248);
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid rgb(218, 221, 229);
+}
+ 
+ 
 :root {
   --blue: #4e73df;
   --indigo: #6610f2;
