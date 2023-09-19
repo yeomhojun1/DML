@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!-- Modal -->
 <div class="modal fade" id="dietInsertModal" tabindex="-1" aria-labelledby="dietInsertModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-xl">
+<div class="modal-dialog modal-sm ">
 		<div class="ant-modal-root css-1s3dcof">
 			<div class="ant-modal-mask"></div>
 			<div tabindex="-1" class="ant-modal-wrap ant-modal-centered">

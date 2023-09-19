@@ -16,7 +16,7 @@ public class FpMemberExSetVo {
 	private String dayExSet;
 	private String memberId;
 	private int ecode;
-	private String dayNo;
+	private int calendarNo;
 	private String exName;
 	private int exerciseSet;
 	private int exerciseNumber;

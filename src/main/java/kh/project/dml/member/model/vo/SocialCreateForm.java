@@ -18,17 +18,17 @@ public class SocialCreateForm {
     
     @Size(min = 8, max = 8)
     @NotEmpty(message = "생년월일은 YYYYMMDD 형식으로 입력해주세요.")
-    private String birthday;
+    private int birthday;
     
     private String gender;
     
     private String name;
     
     @NotEmpty(message = "키는 필수항목입니다.")
-    private String height;
+    private double height;
     
     @NotEmpty(message = "몸무게는 필수항목입니다.")
-    private String weight;
+    private double weight;
     
     private String naverid;
     

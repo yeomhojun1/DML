@@ -24,8 +24,6 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
 	// 로그 수집 기능
 	private static final Logger logger = LoggerFactory.getLogger(SessionCheckInterceptor.class);
 	
-	// TODO 1개의 세션만 사용 가능 - 다른 사이트에서 접근 시 기존 세션 삭제되면서 새로 로그인 해야함
-	// TODO 작업 중에는 임시로 설정 후 나중에 작업이 종료 되면 삭제 예정
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();

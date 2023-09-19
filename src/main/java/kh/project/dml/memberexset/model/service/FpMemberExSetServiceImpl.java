@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kh.project.dml.memberexset.model.dao.FpMemberExSetDao;
-import kh.project.dml.memberexset.model.vo.FpMemberExSetParam;
 import kh.project.dml.memberexset.model.vo.FpMemberExSetVo;
 
 @Service("fpMemberExSetServiceImpl")
@@ -20,10 +19,6 @@ public class FpMemberExSetServiceImpl implements FpMemberExSetService  {
 	@Override
 	public List<FpMemberExSetVo> selectList(String dayExSet)  {
 		return fpMemberExSetDao.selectList(dayExSet);
-	}
-	@Override
-	public List<FpMemberExSetVo> selectPart(FpMemberExSetParam vo)  {
-		return fpMemberExSetDao.selectPart(vo);
 	}
 	@Override
 	public FpMemberExSetVo selectOne(String memberId)  {

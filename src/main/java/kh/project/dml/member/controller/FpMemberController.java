@@ -1,10 +1,6 @@
 package kh.project.dml.member.controller;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +11,6 @@ import javax.validation.Valid;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.social.google.connect.GoogleConnectionFactory;
 import org.springframework.social.oauth2.GrantType;
@@ -24,9 +19,7 @@ import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -204,25 +197,9 @@ public class FpMemberController {
 	
 	// 회원가입 페이지에서 회원가입 버튼 클릭
 	@PostMapping("/member/signup")
-    public String signup(@Valid UserCreateForm userCreateForm, BindingResult bindingResult, Model model, HttpSession session, LoginVo vo) {
+    public String signup(@Valid UserCreateForm userCreateForm, BindingResult bindingResult, HttpSession session, LoginVo vo) {
 		if(bindingResult.hasErrors()) {
-			// 필드 에러를 가져와서 필드명을 기준으로 정렬
-	        List<FieldError> fieldErrors = bindingResult.getFieldErrors()
-	                .stream()
-	                .sorted(Comparator.comparing(FieldError::getField))
-	                .collect(Collectors.toList());
-
-	        List<String> errorMessages = new ArrayList<>();
-
-	        for (FieldError fieldError : fieldErrors) {
-	            errorMessages.add(fieldError.getDefaultMessage());
-	        }
-
-	        userCreateForm.setPassword1("");
-	        userCreateForm.setPassword2("");
-
-	        model.addAttribute("errorMessages", errorMessages);
-	        return "member/signup";
+            return "/member/signup";
         }
 
         if(!userCreateForm.getPassword1().equals(userCreateForm.getPassword2())) {
@@ -254,22 +231,9 @@ public class FpMemberController {
 	
 	// 소셜 회원가입 페이지
 	@PostMapping("/member/agreement")
-    public String agreement(@Valid SocialCreateForm socialCreateForm, BindingResult bindingResult, Model model, HttpSession session, LoginVo vo) {
-		if(bindingResult.hasErrors()) {
-			// 필드 에러를 가져와서 필드명을 기준으로 정렬
-	        List<FieldError> fieldErrors = bindingResult.getFieldErrors()
-	                .stream()
-	                .sorted(Comparator.comparing(FieldError::getField))
-	                .collect(Collectors.toList());
-
-	        List<String> errorMessages = new ArrayList<>();
-
-	        for (FieldError fieldError : fieldErrors) {
-	            errorMessages.add(fieldError.getDefaultMessage());
-	        }
-
-	        model.addAttribute("errorMessages", errorMessages);
-	        return "member/agreement";
+    public String agreement(@Valid SocialCreateForm socialCreateForm, BindingResult bindingResult, HttpSession session, LoginVo vo) {
+        if(bindingResult.hasErrors()) {
+            return "/member/agreement";
         }
         
         try {

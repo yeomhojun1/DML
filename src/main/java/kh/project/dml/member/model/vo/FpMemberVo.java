@@ -12,7 +12,7 @@ import lombok.Setter;
 public class FpMemberVo {
 	private String memberId;
 	private String mname;
-	private String mbirthday;
+	private int mbirthday;
 	private String gender;
 	private double height;
 	private double weight;

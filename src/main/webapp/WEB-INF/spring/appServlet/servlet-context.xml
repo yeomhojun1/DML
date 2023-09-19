@@ -32,7 +32,7 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
+
 	<context:component-scan base-package="kh.project.dml" />
 	<context:component-scan base-package="kh.project.dml.common.interceptor" />
 	
