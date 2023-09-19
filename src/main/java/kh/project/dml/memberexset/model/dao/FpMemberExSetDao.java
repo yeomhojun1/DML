@@ -26,7 +26,7 @@ public class FpMemberExSetDao {
 	public int update(FpMemberExSetVo vo)  {
 		return sqlSession.update("memberExSet.update", vo);
 	}
-	public int delete(String memberId) {
-		return sqlSession.delete("memberExSet.delete",  memberId);
+	public int delete(String dayExSet) {
+		return sqlSession.delete("memberExSet.delete",  dayExSet);
 	}
 }

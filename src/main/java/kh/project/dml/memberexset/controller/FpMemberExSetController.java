@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -12,6 +13,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.google.gson.Gson;
 
 import kh.project.dml.memberexset.model.service.FpMemberExSetService;
+
+import kh.project.dml.memberexset.model.service.FpMemberExSetServiceImpl;
+import kh.project.dml.memberexset.model.vo.FpMemberExSetParam;
+
 import kh.project.dml.memberexset.model.vo.FpMemberExSetVo;
 
 
@@ -84,9 +89,10 @@ public class FpMemberExSetController {
 		return viewPage;
 	}
 	@PostMapping("/delete")
-	public String deleteDomemberexset(RedirectAttributes redirectAttr,String memberId) {
-		String viewPage = "redirect:/";
-		int result = fpMemberExSetServiceImpl.delete(memberId);
+	@ResponseBody
+	public String deleteDomemberexset(RedirectAttributes redirectAttr,@RequestParam String dayExSet) {
+		System.out.println(dayExSet);
+		int result = fpMemberExSetServiceImpl.delete(dayExSet);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");

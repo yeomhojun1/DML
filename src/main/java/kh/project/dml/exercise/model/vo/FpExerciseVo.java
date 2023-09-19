@@ -14,7 +14,6 @@ import lombok.ToString;
 @Component
 @Getter
 @Setter
-
 public class FpExerciseVo {
 
 	private int ecode;
@@ -24,9 +23,9 @@ public class FpExerciseVo {
 	private String eposeLink;
 	@Override
 	public String toString() {
-		return "FpExerciseVo [ecode=" + ecode + ", exName=" + exName + ", part=" + part + "]";
+		return "FpExerciseVo [ecode=" + ecode + ", exName=" + exName + ", part=" + part + ", epose= 공백, eposeLink= 공백]";
 	}
-	
+
 //	private String mid2;
 //	private String studentName;
 //	private int examScore;

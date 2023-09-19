@@ -12,10 +12,6 @@ import kh.project.dml.memberexset.model.vo.FpMemberExSetVo;
 
 
 public interface FpFoodApiService {
-
-
-	
-	
 	public List<FpFoodApiVo> selectList();
 	public FpFoodApiVo selectOne(String foodCd);
 	public int insert(FpFoodApiVo vo);
