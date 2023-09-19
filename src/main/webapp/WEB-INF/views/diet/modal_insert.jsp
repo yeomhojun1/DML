@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!-- Modal -->
 <div class="modal fade" id="dietInsertModal" tabindex="-1" aria-labelledby="dietInsertModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-sm ">
+<div class="modal-dialog modal-xl ">
 		<div class="ant-modal-root css-1s3dcof">
 			<div class="ant-modal-mask"></div>
 			<div tabindex="-1" class="ant-modal-wrap ant-modal-centered">
@@ -52,6 +52,7 @@
 										<div class="Plan_modal_food_contents_inside__qWooJ">
 											<div class="Plan_modal_food_left__wihxs">
 												<div class="Plan_modal_food_bar__ikK6Q">
+												
 													<div
 														class="Plan_bottom1_second_bar_each__cBwag Plan_modal_food_bar_name__jMR4t">음식</div>
 													<div class="Plan_bottom1_second_bar_each__cBwag ">kcal</div>

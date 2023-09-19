@@ -364,85 +364,7 @@
         changeYear: true,
         changeMonth: true,
         showOn: "both",
-        buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif", // 버튼 이미지 경로
-        buttonImageOnly: true,
-        buttonText: "선택",
-        yearSuffix: "년",
-        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], // 달력의 월 부분 Tooltip
-        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], // 달력의 요일 텍스트
-        dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'], // 달력의 요일 Tooltip
-
-       onSelect: function(dateText, inst) {
-           $(".DateBars_date__DyX0X").text(dateText); // 맨 위의 날짜 변경
-           var date=new Date($("#datepicker").datepicker({dateFormat:"yy-mm-dd"}).val());
-           //일요일 0~
-           alert("date:"+date.getDay());
-           
-           week=new Array("일","월","화","수","목","금","토");
-           $(".DateBars_day_of_week__ShQrM").text(week[date.getDay()]);
-           
-     var scrollTo = $(".ant-btn-circle span", container).filter(function() {
-       return parseInt($(this).text()) === inst.selectedDay;
-     });
-
-     if (scrollTo.length) {
-       container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop());
-     }
-   },
-   
-   onChangeMonthYear:function(year, month, inst){
-     setTimeout(function(){
-       var selectedDay = parseInt($(".ui-datepicker-calendar .ui-state-active a", inst.dpDiv).text());
-      
-       if (!isNaN(selectedDay)) {
-         $(".DateBars_date__DyX0X").text(selectedDay);
-
-         var scrollTo = $(".ant-btn-circle span", container).filter(function() {
-           return parseInt($(this).text()) === selectedDay;
-         });
-
-         if (scrollTo.length) {
-           container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop());
-         }
-       }
-     }, 0);
-   }
- });
-
- $('#datepicker').datepicker('setDate', new Date());
-});
-	</script>
-<script>
-	$(function() {
- 	var container = $(".DateBars_date_selector__ajXTR"); // 스크롤할 컨테이너
-
-  // 스크롤 좌 우 버튼 클릭 시 이동
-  $(".ant-image-img").click(function() {
-    var currentDay = parseInt($(".DateBars_date__DyX0X").text());
-    var nextDay = currentDay + 1;
-	
-
-    var scrollTo = $(".ant-btn-circle span", container).filter(function() {
-      return parseInt($(this).text()) === nextDay;
-    });
-   
-
-    if (scrollTo.length) {
-      container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop());
-      $(".DateBars_date__DyX0X").text(nextDay);
-    }
-  });
-  console.log(scrollTo);
-  // input을 datepicker로 선언
-  $("#datepicker").datepicker({
-	    dateFormat: 'yy-mm-dd',
-        showOtherMonths: true,
-        showMonthAfterYear: true,
-        changeYear: true,
-        changeMonth: true,
-        showOn: "both",
-        buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/Icon_calendar.gif'", // 버튼 이미지 경로
+       	buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif", // 버튼 이미지 경로
         buttonImageOnly: true,
         buttonText: "선택",
         yearSuffix: "년",
@@ -544,19 +466,28 @@
 	}
 	function btnPlusClickHandler(thisElement){
 		console.log($(thisElement).data("foodcd"));
+		foodcd = $(thisElement).data("foodcd");
 		foodName = $(thisElement).parent().prevAll(".foodName").text();
 		calorie = $(thisElement).parent().prevAll(".calorie").text();
 		carbs = $(thisElement).parent().prevAll(".crabs").text();
 		protein = $(thisElement).parent().prevAll(".protein").text();
 		fat = $(thisElement).parent().prevAll(".fat").text();
-		// ajax x : why : food 정보는 거의 변화가 없으므로
-		
+		// 
+		// TODO :ajax : food table, diet table - insert
+	/* 	 $.ajax({
+			url:"${pageContext.request.contextPath}/food/insert",
+			type: "post",
+			data: {foodCd : $(thisElement).data("foodcd"), foodQuality : $(".form").val(), mealCode : dateStr + ${member.memberId}+ $(".foodDate").data("value")
+				,dataType:"json"
+					, success : function(result){
+						console.log(result); */
+			
 		htmlVal = '';
 		htmlVal += `
 			<div class="Plan_bottom1_second_bar___Z7S8">
 				<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH">식사구분</div>
-				<div class="Plan_bottom1_second_bar_food__Nea0w">\${foodName}</div>
-	
+				<div class="Plan_bottom1_second_bar_food__Nea0w">\${foodName}
+				</div>
 				<div class="Plan_bottom1_second_bar_kcal__2i7Y2">
 					칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${calorie}</span>
 				</div>
@@ -569,14 +500,24 @@
 				<div class="Plan_bottom1_second_bar_fat__8Tyy8">
 					지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${fat}</span>
 				</div>
-				<div class="Plan_bottom1_second_bar_ctl__2Pelr">&nbsp;</div>
+				<div class="Plan_bottom1_second_bar_ctl__2Pelr">
+				<button type="button" onclick="btnDeleteClickHandler(this)" data-foodcd="\${foodcd}" data-mealid="TODO">삭제</button>
+				</div>
 			</div>
 		`;
 		
 		$("#wrapSelectedPlan").append(htmlVal);
 		//modal ekdfdsfdsf
 	}
-			
+	function btnDeleteClickHandler(thisElement){
+		console.log(thisElement);
+		console.log($(thisElement).data("foodcd"));
+		// TODO :ajax : food table delete
+		
+
+		$(thisElement).closest(".Plan_bottom1_second_bar___Z7S8").remove();
+	}
+		
 	</script>
 
 </body>

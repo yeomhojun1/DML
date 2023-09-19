@@ -16,7 +16,7 @@ public class FpFoodVo {
 
 	private String foodCd;
 	private int foodQuality;
-	private String mealKey;
+	private String mealCode;
 
 
 	

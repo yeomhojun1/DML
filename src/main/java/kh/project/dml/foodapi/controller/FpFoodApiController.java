@@ -28,13 +28,7 @@ public class FpFoodApiController {
 		return new Gson().toJson(fpFoodApiServiceImpl.selectList());
 	}
 	
-	@PostMapping("/list")
-	   public String insertFood(@RequestBody FpFoodApiVo vo) 
-	  {
-		System.out.println(vo);
-	      return "성공";
-	  }
-	
+
 	@GetMapping("/one")
 	@ResponseBody
 	public String selectOnefoodapi(String foodCd ) {

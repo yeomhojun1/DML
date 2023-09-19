@@ -863,8 +863,8 @@
 .Plan_modal_food_bar__ikK6Q {
 	display: flex;
 	flex-direction: row;
-	background-color: #e6e6e6;
-	padding: 10px 30px 10px 10px;
+	background-color: #99d3e9;
+/* 	padding: 10px 30px 10px 10px; */
 	border-radius: 30px;
 	margin-bottom: 20px;
 	height: 60px
@@ -924,7 +924,7 @@
 
 .Plan_modal_food_contents_inside__qWooJ {
 	display: flex;
-	flex-direction: row
+	flex-direction: column;
 }
 
 .Plan_modal_food_bar_name__jMR4t, .Plan_raw_food_bar_name__283e6 {
