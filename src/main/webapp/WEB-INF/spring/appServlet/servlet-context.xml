@@ -37,12 +37,13 @@
 	<context:component-scan base-package="kh.project.dml.common.interceptor" />
 	
 	<!-- 계정 로그인 유무 확인 및 미로그인 시 로그인페이지 이동 -->
-
+	
  	<interceptors>
 		<interceptor>
 			<mapping path="/**" />
 			
 			<!-- 메인 페이지 -->
+			<exclude-mapping path="/" />
 			<exclude-mapping path="/index" />
 			
 			<!-- 리소스 -->
