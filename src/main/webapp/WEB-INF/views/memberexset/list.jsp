@@ -86,7 +86,7 @@
 
 					<div class="test11"></div>
 					<!-- 여기부터 모달창임 -->
-				
+
 					<div class="modal fade" id="exampleModal" tabindex="-1"
 						aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog modal-sm">
@@ -99,28 +99,25 @@
 								<div class="modal-body">
 									<form>
 										<div>
-											<span>무게 : </span>
-											<input type="number" class="addExerciseWeight">
+											<span>무게 : </span> <input type="number"
+												class="addExerciseWeight text-center">
 										</div>
 										<div>
-											<span>횟수 : </span>
-											<input type="number" class="addExerciseNumber">
+											<span>횟수 : </span> <input type="number"
+												class="addExerciseNumber text-center">
 										</div>
 										<div>
-											<span>세트 : </span>
-											<input type="number" class="addExerciseSet">
+											<span>세트 : </span> <input type="number"
+												class="addExerciseSet text-center">
 										</div>
-										<button type="button" class="updateDayExSet">저장</button>
+										<button type="button" class="btn btn-primary updateDayExSet floatRight mt-3">저장</button>
+										<button type="button" class="btn btn-secondary floatRight mt-3"
+											data-bs-dismiss="modal">닫기</button>
 									</form>
 								</div>
 
 							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary"
-									data-bs-dismiss="modal">Close</button>
-								<button type="button" class="btn btn-primary">
-								Save changes</button>
-							</div>
+
 						</div>
 					</div>
 					<div class="col-xl-12">
@@ -132,30 +129,30 @@
 										role="tab" aria-controls="home" aria-selected="true">전체
 										운동</button>
 								</li>
-								<li class="nav-item col-xl-2" role="presentation">
-									<button class="nav-link col-xl-12" id="profile-tab"
+								<li class="nav-item col-xl-2 dayExSetPart" role="presentation" data-part="등">
+									<button class="nav-link col-xl-12 " id="profile-tab"
 										data-bs-toggle="tab" data-bs-target="#profile1" type="button"
-										role="tab" aria-controls="profile" aria-selected="false">등</button>
+										role="tab" aria-controls="profile" aria-selected="false" >등</button>
 								</li>
-								<li class="nav-item col-xl-2" role="presentation">
-									<button class="nav-link col-xl-12" id="profile-tab"
+								<li class="nav-item col-xl-2 dayExSetPart" role="presentation" data-part="가슴">
+									<button class="nav-link col-xl-12 " id="profile-tab"
 										data-bs-toggle="tab" data-bs-target="#profile2" type="button"
-										role="tab" aria-controls="profile" aria-selected="false">가슴</button>
+										role="tab" aria-controls="profile" aria-selected="false" >가슴</button>
 								</li>
-								<li class="nav-item col-xl-2" role="presentation">
-									<button class="nav-link col-xl-12" id="profile-tab"
+								<li class="nav-item col-xl-2 dayExSetPart" role="presentation" data-part="어깨">
+									<button class="nav-link col-xl-12 " id="profile-tab"
 										data-bs-toggle="tab" data-bs-target="#profile3" type="button"
-										role="tab" aria-controls="profile" aria-selected="false">어깨</button>
+										role="tab" aria-controls="profile" aria-selected="false" data-part="어깨">어깨</button>
 								</li>
-								<li class="nav-item col-xl-2" role="presentation">
-									<button class="nav-link col-xl-12" id="profile-tab"
+								<li class="nav-item col-xl-2 dayExSetPart" role="presentation" data-part="팔">
+									<button class="nav-link col-xl-12 " id="profile-tab"
 										data-bs-toggle="tab" data-bs-target="#profile4" type="button"
-										role="tab" aria-controls="profile" aria-selected="false">팔</button>
+										role="tab" aria-controls="profile" aria-selected="false" data-part="팔">팔</button>
 								</li>
-								<li class="nav-item col-xl-2" role="presentation">
-									<button class="nav-link col-xl-12" id="profile-tab"
+								<li class="nav-item col-xl-2 dayExSetPart" role="presentation" data-part="하체">
+									<button class="nav-link col-xl-12 " id="profile-tab"
 										data-bs-toggle="tab" data-bs-target="#profile5" type="button"
-										role="tab" aria-controls="profile" aria-selected="false">하체</button>
+										role="tab" aria-controls="profile" aria-selected="false" data-part="하체">하체</button>
 								</li>
 							</ul>
 						</div>
@@ -196,7 +193,7 @@
 		for (var i = 0; i < result.length; i++) {
 			htmlVal += '<div class="exSetForDay_one card col-xl-3 text-center" data-dayexset="'+result[i].dayExSet+'" data-ecode="'+result[i].ecode+'"><div>'+result[i].exName+'</div><div>'+result[i].exerciseWeight+'kg</div><div>'+result[i].exerciseNumber+
 			'회</div><div>'+result[i].exerciseSet+
-			'세트</div><div ><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="updateDayExSet">수정</button><button type="button" class="deleteDayExSet">삭제</button></div></div>'
+			'세트</div><div ><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="sendDayExSet">수정</button><button type="button" class="deleteDayExSet">삭제</button></div></div>'
 				/* 	+ result[i].exerciseSet+'</div><div>
 					+ result[i].exerciseNumber+'</div><div>
 					+ result[i].exerciseNumber+'</div> */
@@ -206,7 +203,7 @@
 		//addEventAfterDisplay(".deleteDayExSet", deleteDayExSetHandler);
 		$("#home").append(htmlVal);
 		$(".deleteDayExSet").click(deleteDayExSetHandler);
-		$(".updateDayExSet").click(sendDayExSetHandler);
+		$(".sendDayExSet").click(sendDayExSetHandler);
 	}
 	/* 범준님 코드 가져옴 */
 	function datepickerHandler(){
@@ -240,6 +237,7 @@
          		console.log("selectDate : "+selectDate);
          		getMemberexset(selectDate1);
            		$(".DateHead").html(selectDate);
+           		
            		
 	   			},
    			onChangeMonthYear:function(year, month, inst){
@@ -282,14 +280,12 @@
  		
 		function deleteDayExSetHandler(result){
 			   console.log("deleteDayExSetHandler 돌아감?")
-			   var test123 = $(this).parents(".exSetForDay_one").data("dayexset");
-			
-			   
-			   console.log(test123);
+			   var deleteForDayExSet = $(this).parents(".exSetForDay_one").data("dayexset");
+			   console.log(deleteForDayExSet);
 				$.ajax({
 					url : "${pageContext.request.contextPath}/memberexset/delete",
 					type : "post",
-					data : {dayExSet : test123},
+					data : {dayExSet : deleteForDayExSet},
 					success :  function(){
 						console.log("success");
 						location.reload(true);
@@ -299,23 +295,26 @@
 					dataType : "json"
 				})
 		}
+		let sendDayExSet = "";
 		function sendDayExSetHandler(result){
-			var sendDayExSet=$(this).parents(".exSetForDay_one").data("dayexset")
+			sendDayExSet=$(this).parents(".exSetForDay_one").data("dayexset")
 			console.log("sendDayExSet : "+sendDayExSet);
-			document.addEventListener("submit",updateDayExSetHandler(sendDayExSet));
+			//document.addEventListener("submit",updateDayExSetHandler(sendDayExSet));
+			$(".updateDayExSet").click(updateDayExSetHandler)
 		}
 		function updateDayExSetHandler(result){
-			console.log("updateDayExSetHandler : "+ result);
+			console.log("updateDayExSetHandler : ");
+			console.log(sendDayExSet);
+			console.log(result);
 			 $.ajax({
 				url:"${pageContext.request.contextPath}/memberexset/update",
 				type: "post",
-				data : {dayExSet : result
+				data : {dayExSet : sendDayExSet
 				,exerciseSet : $(".addExerciseSet").val()
 				,exerciseNumber : $(".addExerciseNumber").val()
 				,exerciseWeight : $(".addExerciseWeight").val()}
 				,success : function(result){
-					console.log("success");
-					console.log("result : "+result);
+					location.reload(true);
 					}
 				,error : function(){
 					console.log("error");
@@ -323,7 +322,33 @@
 				});
 			 event.preventDefault();
 			}
-		
+		$(".dayExSetPart").click(dayExSetPartHandler);
+		function dayExSetPartHandler(){
+			
+			var selectPartDay=$(".DateHead").html();
+			selectPartDay = selectPartDay.trim();
+			selectPartDay= selectPartDay.replaceAll(".", "");
+			console.log(selectPartDay);
+			var dayExSet = selectPartDay+"${member.memberId}"
+			console.log(dayExSet);
+			console.log($(this).data("part"));
+			$.ajax({
+				url:"${pageContext.request.contextPath}/memberexset/part",
+				type: "get",
+				data : {dayExSet : dayExSet
+				,part : $(this).data("part")
+				}
+				,success : function(result){
+					console.log("success");
+					}
+				,error : function(){
+					console.log("error");
+					},	
+				dataType : "json"
+			}); 
+			
+			
+		}		
 	</script>
 </body>
 </html>

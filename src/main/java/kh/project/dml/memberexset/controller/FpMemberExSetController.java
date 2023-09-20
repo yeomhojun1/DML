@@ -36,10 +36,9 @@ public class FpMemberExSetController {
 		return new Gson().toJson(fpMemberExSetServiceImpl.selectList(dayExSet));
 	}
 	@GetMapping("/one")
-	public ModelAndView selectOnememberexset(ModelAndView mv, String memberId) {
-		mv.addObject("memberexsetone", fpMemberExSetServiceImpl.selectOne(memberId));
-		mv.setViewName("memberexset/one");
-		return mv;
+	@ResponseBody
+	public String selectOnememberexset(ModelAndView mv, String dayExSet) {
+		return new Gson().toJson(fpMemberExSetServiceImpl.selectOne(dayExSet));
 	}
 	@GetMapping("/insert")
 	public ModelAndView insertmemberexset(ModelAndView mv ) {
@@ -76,10 +75,8 @@ public class FpMemberExSetController {
 		int result = fpMemberExSetServiceImpl.update(vo);
 		try {
 			if (result < 1) {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 실패했습니다 \n 다시 입력해주세요");
 				viewPage = "redirect:/memberexset/update";
 			} else {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 됐습니다");
 				viewPage = "redirect:/memberexset/list";
 			}
 		} catch (Exception e) {

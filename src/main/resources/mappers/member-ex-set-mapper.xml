@@ -5,20 +5,17 @@
  		<bind name="dayExSet" value="'%'+dayExSet+'%'"/>
 		select * from member_ex_set where day_Ex_Set like #{dayExSet}
 	</select>
-
 	<select id="selectOne" resultType="FpMemberExSetVo" parameterType="string">
-		SELECT MEMBERID, ECODE, EXNAME, EXERCISESET, EXERCISENUMBER FROM MEMBER_EX_SET
-		WHERE MEMBERID=#{memberId}
+		SELECT * FROM MEMBER_EX_SET WHERE DAY_EX_SET=#{dayExSet}
 	</select>
 	
 	<insert id="insert" parameterType="FpMemberExSetVo">
-		
 		INSERT INTO MEMBER_EX_SET
 		VALUES ( #{exerciseDate}||#{memberId}||#{ecode} , #{exerciseDate},#{memberId},#{ecode}, #{exName}, #{exerciseSet}, #{exerciseNumber},#{exerciseWeight})
 	</insert>
 	
 	<update id="update" parameterType="FpMemberExSetVo">
-		UPDATE MEMBER_EX_SET SET EXERCISEWEIGHT=#{exerciseWeight}, EXERCISESET=#{exerciseSet}, EXERCISENUMBER=#{exerciseNumber} WHERE DAY_EX_SET=#{dayExSet}
+		UPDATE MEMBER_EX_SET SET EXERCISE_WEIGHT=#{exerciseWeight}, EXERCISE_SET=#{exerciseSet}, EXERCISE_NUMBER=#{exerciseNumber} WHERE DAY_EX_SET=#{dayExSet}
 	</update>
 	
 	<delete id="delete" parameterType="string">

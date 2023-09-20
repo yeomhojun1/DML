@@ -235,18 +235,18 @@
 					<span>날짜 : </span><input type="text" id="datepicker"
 						name="calendarNo">
 				</div>
-				<div>
-					<span>무게 : </span><input type="number" class="addExerciseWeight">
+				<div class="divAddExerciseWeight">
+					<span>무게 : </span><input type="text" class="addExerciseWeight" name="ExerciseWeight">
 				</div>
-				<div>
-					<span>횟수 : </span><input type="number" class="addExerciseNumber">
+				<div class="divAddExerciseNumber">
+					<span>횟수 : </span><input type="number" class="addExerciseNumber" name="ExerciseNumber">
 				</div>
-				<div>
-					<span>세트 : </span><input type="number" class="addExerciseSet">
+				<div class="divAddExerciseSet">
+					<span>세트 : </span><input type="number" class="addExerciseSet" name="ExerciseSet">
 				</div>
 				
-				<div>
-					<button class="addMemberExSet">등록</button>
+				<div class="divButtonMemberExSet">
+					
 				</div>
 
 			</div>
@@ -272,7 +272,11 @@
 
 
 	<script>
-
+	window.onload = function() {
+		$(".divAddExerciseWeight").hide();
+		$(".divAddExerciseNumber").hide();
+		$(".divAddExerciseSet").hide();
+	}
 	<!-- 운동부위를 선택하면 관련운동 나오도록하거나 검색했을때 나오도록함-->
 	$(".ex_part").click(expartClickHandler);
 	function expartClickHandler(){
@@ -320,6 +324,7 @@
 		$(".ex_one_group").remove();
 		htmlVal = "<div class='col-xl-4 ex_one_group'>"
 		htmlVal += '<div class="ex_one col-xl-12" data-code="'+result.ecode+'" data-name="'+result.exName+'">'+result.epose+'<div><button id="btn-modal1">자세 유튜브 보기</button></div><div><button id="btn-modal">운동 추가</button></div></div></div>'
+		
 		$(".exercisetest").append(htmlVal);
 		$("#btn-modal").click(modalHandler);
 		var testOjbect ={eposeLink: result.eposeLink,exName: result.exName };
@@ -427,15 +432,58 @@
 	     	 ,onSelect: function() { 
 	            var exerciseDate = $.datepicker.formatDate("yymmdd",$("#datepicker").datepicker("getDate")); 
 	            exerciseDate = $("#datepicker").val();
-	            alert(exerciseDate);
+	            exerciseDate=exerciseDate.replaceAll("-", "");
+	            var dayExSet = exerciseDate+"${member.memberId}"+ $(".ex_one").data("code")
+	             $.ajax({
+	    			url:"${pageContext.request.contextPath}/memberexset/one",
+	    			type: "get",
+	    			data : {dayExSet : dayExSet}
+	    			,success : function(result){
+	    				if(result){
+	    					$(".divAddExerciseWeight").show();
+	    					$(".divAddExerciseNumber").show();
+	    					$(".divAddExerciseSet").show();
+	    					//$(".addExerciseWeight").val(result.exerciseweight);
+							$("[name=ExerciseWeight]").val(result.exerciseWeight);
+							$("[name=ExerciseNumber]").val(result.exerciseNumber);
+							$("[name=ExerciseSet]").val(result.exerciseSet);
+							$(".addMemberExSet").remove();
+							var appendButton=`
+							<button class="updateMemberExSet">수정</button>
+							`
+							$(".divButtonMemberExSet").append(appendButton);
+							$(".updateMemberExSet").click(updateMemberExSetHandler);
+	    				}else{
+	    					console.log("result is null");
+	    					$(".divAddExerciseWeight").show();
+	    					$(".divAddExerciseNumber").show();
+	    					$(".divAddExerciseSet").show();
+	    					$("[name=ExerciseWeight]").val(0);
+							$("[name=ExerciseNumber]").val(0);
+							$("[name=ExerciseSet]").val(0);
+							$(".updateMemberExSet").remove();
+							var appendButton=`
+								<button class="addMemberExSet">등록</button>
+								`
+								$(".divButtonMemberExSet").append(appendButton);
+							$(".addMemberExSet").click(addMemberExSetHandler);
+	    				}
+	    				
+	    				},
+	    			error : function(){
+	    				console.log("error");
+	    			}, 
+	    			dataType: "json"
+	    		
+	    		}) 
 	        	  
 	       }});                   
 	       //초기값을 오늘 날짜로 설정해줘야 합니다.
 	       $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
 	   });
 	
-		$(".addMemberExSet").click(onMemberExSetHandler);
-		function onMemberExSetHandler(){
+		$(".addMemberExSet").click(addMemberExSetHandler);
+		function addMemberExSetHandler(){
 		var dateVal = $("#datepicker").val()
 		//replace([기존문자],[바꿀문자])
 		dateVal= dateVal.replaceAll("-", "");
@@ -449,14 +497,43 @@
 			,exerciseSet : $(".addExerciseSet").val()
 			,exerciseNumber : $(".addExerciseNumber").val()
 			,exerciseWeight : $(".addExerciseWeight").val()}
-			,success : modalOff
+			,success : function(){
+				
+				$(".divAddExerciseWeight").hide();
+				$(".divAddExerciseNumber").hide();
+				$(".divAddExerciseSet").hide();
+				location.reload(true);
+			}
 			,error : function(){
 				console.log("error");
+				}
+			})
+		}
+		$(".updateMemberExSet").click(updateMemberExSetHandler);
+		function updateMemberExSetHandler(){
+		var dateVal = $("#datepicker").val()
+		//replace([기존문자],[바꿀문자])
+		dateVal= dateVal.replaceAll("-", "");
+				$.ajax({
+			url:"${pageContext.request.contextPath}/memberexset/update",
+			type: "post",
+			data : {
+			dayExSet: dateVal+"${member.memberId}"+$(".ex_one").data("code")
+			,exerciseSet : $(".addExerciseSet").val()
+			,exerciseNumber : $(".addExerciseNumber").val()
+			,exerciseWeight : $(".addExerciseWeight").val()}
+			,success : function(){
+				
+				$(".divAddExerciseWeight").hide();
+				$(".divAddExerciseNumber").hide();
+				$(".divAddExerciseSet").hide();
+				location.reload(true);
 			}
-		
-		})
-	}
-
+			,error : function(){
+				console.log("error");
+				}
+			})
+		}
 	
 </script>
 </body>
