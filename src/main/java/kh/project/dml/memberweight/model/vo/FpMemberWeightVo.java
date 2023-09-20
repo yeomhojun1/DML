@@ -13,17 +13,18 @@ import lombok.Setter;
 @Setter
 public class FpMemberWeightVo {
 
+	private int weightNum;
 	private String memberId;
-	private Date date;
+	private String weightDate;
 	private double weight;
 	private int muscleMass;
 	private int bodyFatPet;
 	
 	public FpMemberWeightVo() {}
 	
-	public FpMemberWeightVo(String memberId, Date date, double weight) {
+	public FpMemberWeightVo(String memberId, String weightDate, double weight) {
 		this.memberId = memberId;
-		this.date = date;
+		this.weightDate = weightDate;
 		this.weight = weight;
 	}
 
