@@ -38,8 +38,12 @@ public class FpMemberWeightDao {
 	public int updateWeightMember(FpMemberWeightVo vo) {
 		return sqlSession.update("memberweight.updateWeightMember", vo);
 	}
-	
-	public int delete(String userId) {
-		return sqlSession.delete("memberweight.delete", userId);
+
+	//delete
+	public int deleteWeight(String memberId,String weightDate) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("memberId", memberId);
+		map.put("weightDate", weightDate);
+		return sqlSession.delete("memberweight.deleteWeight", map);
 	}
  }

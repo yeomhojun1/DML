@@ -42,13 +42,14 @@ public class FpMemberWeightController {
 		return "temp/weight2";
 	}
 	
-//	delete
-	/*
-	 * @PostMapping("/delete") public String mainPageOpen13(){ FpMemberWeightVo
-	 * fpMemberWeightVo = new FpMemberWeightVo(weight); service.delete(weight);
-	 * 
-	 * return "temp/weight2"; }
-	 */
+	//	delete
+	 @PostMapping("/deleteWeight")
+	 public String mainPageOpen13(@RequestParam String memberId, @RequestParam String weightDate){
+			/* FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(weight); */
+		 service.deleteWeight(memberId, weightDate);
+	 	 return "temp/weight2";
+	  }
+	 
 	@GetMapping("/composition")
 	public String mainPageOpen11() {
 		return "temp/composition";

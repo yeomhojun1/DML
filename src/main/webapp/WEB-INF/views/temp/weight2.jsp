@@ -161,13 +161,13 @@
 											<div style="margin-top: 20px;">* 이미 값이 존재하는 경우, 새 값으로
 												갱신됩니다.</div>
 										</div>
-										<input type="hidden" name="memberId" value="${member.memberId }">
+											<input type="hidden" name="memberId" value="${member.memberId }">
 										<div>
 											<button type="submit">
 
 												<span>저장하기</span>
 											</button>
-											<button type="button" style="margin-top: 20px;">
+											<button type="button" style="margin-top: 20px;" class="deleteWeight">
 												<span>선택한 날짜의 데이터 삭제</span>
 											</button>
 											
@@ -257,7 +257,7 @@
 											"yymmdd", $("#datepicker")
 													.datepicker("getDate"));
 									exerciseDate = $("#datepicker").val();
-									alert(exerciseDate);
+									/* alert(exerciseDate); */
 
 								}
 							});
@@ -265,6 +265,25 @@
 			//초기값을 오늘 날짜로 설정해줘야 합니다.
 			$('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
 		});
+		
+		
+		//delete
+		$(".deleteWeight").click(deleteWeight);
+		function deleteWeight(){
+			var dateVal = $("#datepicker").val()
+			//replace([기존문자],[바꿀문자])
+			dateVal= dateVal.replaceAll("-", "");
+			$.ajax({
+				url:"${pageContext.request.contextPath}/memberweight/deleteWeight",
+				type: "post",
+				data : {memberId : "${member.memberId}"
+				,weightDate: dateVal}
+				,success : location.href="${pageContext.request.contextPath}/memberweight/weight2"
+				,error : function(){
+					console.log("error");
+				}
+			})
+		}
 	</script>
 </body>
 </html>

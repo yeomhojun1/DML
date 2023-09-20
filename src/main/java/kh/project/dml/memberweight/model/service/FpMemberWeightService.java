@@ -14,5 +14,6 @@ public interface FpMemberWeightService {
 	public List<FpMemberWeightVo> selectList();
 	public FpMemberWeightVo selectOne(String userId);
 	public int dateWeight(FpMemberWeightVo vo, String now);
-	public int delete(String userId);
+	
+	public int deleteWeight(String memberId, String weightDate);
 }

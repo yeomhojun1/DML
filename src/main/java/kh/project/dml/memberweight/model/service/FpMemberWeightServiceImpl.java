@@ -38,8 +38,10 @@ public class FpMemberWeightServiceImpl implements FpMemberWeightService {
 		}
 	}
 
+	//delete
 	@Override
-	public int delete(String memberId) {
-		return fpMemberWeightDao.delete(memberId);
+	public int deleteWeight(String memberId, String weightDate) {
+		
+		return	fpMemberWeightDao.deleteWeight(memberId, weightDate);
 	}
 }

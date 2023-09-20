@@ -39,10 +39,12 @@
 		INSERT INTO MEMBER_WEIGHT 
 		VALUES (#{userId}, #{date}, #{weight}, #{muscleMass}, #{bodyFatPet})
 	</insert>
+
 	
-	
-	<delete id="delete" parameterType="string">
-		DELETE FROM MEMBER_WEIGHT WHERE USERID=#{userId}
-	</delete>
+	<!--delete  -->
+	<update id="deleteWeight" parameterType="map" >
+		UPDATE MEMBER_WEIGHT SET WEIGHT=''
+		WHERE member_id=#{memberId} AND weight_date=#{weightDate}
+	</update>
 	
 </mapper>
