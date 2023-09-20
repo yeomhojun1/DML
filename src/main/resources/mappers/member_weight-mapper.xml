@@ -15,19 +15,31 @@
 		WHERE USERID=#{userId} 
 	</select>
 	
+	<select id="checkDate" resultType="FpMemberWeightVo" parameterType="FpMemberWeightVo">
+		SELECT member_id, weight_date FROM MEMBER_WEIGHT
+		WHERE member_id=#{memberId} and weight_date=#{weightDate}
+	</select>
+	
 	<insert id="insertWeight" parameterType="FpMemberWeightVo">
-		INSERT INTO MEMBER_WEIGHT (member_id, weight_date, weight)
-		VALUES (#{memberId}, #{date}, #{weight})
+		INSERT INTO MEMBER_WEIGHT (weight_num, member_id, weight_date, weight)
+		VALUES (2, #{memberId}, #{weightDate}, #{weight})
 	</insert>
+	
+	<update id="updateWeight" parameterType="FpMemberWeightVo">
+		UPDATE MEMBER_WEIGHT SET WEIGHT=#{weight}
+		WHERE member_id=#{memberId} and weight_date=#{weightDate}
+	</update>
+	
+	<update id="updateWeightMember" parameterType="FpMemberWeightVo">
+		UPDATE MEMBER SET WEIGHT=#{weight}
+		WHERE member_id=#{memberId}
+	</update>
 	
 	<insert id="insert" parameterType="FpMemberWeightVo">
 		INSERT INTO MEMBER_WEIGHT 
 		VALUES (#{userId}, #{date}, #{weight}, #{muscleMass}, #{bodyFatPet})
 	</insert>
 	
-	<update id="update" parameterType="FpMemberWeightVo">
-		UPDATE MEMBER_WEIGHT SET USERID=#{userId}, DATE=#{date}, WEIGHT=#{weight}, MUSCLEMASS=#{muscleMass}, BODYFATPET=#{bodyFatPet}
-	</update>
 	
 	<delete id="delete" parameterType="string">
 		DELETE FROM MEMBER_WEIGHT WHERE USERID=#{userId}

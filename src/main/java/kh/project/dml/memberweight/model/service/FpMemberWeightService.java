@@ -11,11 +11,8 @@ import kh.project.dml.memberweight.model.vo.FpMemberWeightVo;
 
 public interface FpMemberWeightService {
 	
-	
-	
 	public List<FpMemberWeightVo> selectList();
 	public FpMemberWeightVo selectOne(String userId);
-	public int insert(FpMemberWeightVo vo);
-	public int update(FpMemberWeightVo vo);
+	public int dateWeight(FpMemberWeightVo vo, String now);
 	public int delete(String userId);
 }

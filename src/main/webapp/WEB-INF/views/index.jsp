@@ -36,7 +36,7 @@
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/memberweight/weight2">체중관리</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/diet/index">식단관리</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/exercise/list">운동 도우미</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/product/product">제품추천</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/product">제품추천</a></li>
                         <%-- 사용자가 로그인되어 있지 않은 경우 --%>
 						<c:if test="${empty sessionScope.loginUser}">
 							<li class="nav-item"><a class="nav-link"

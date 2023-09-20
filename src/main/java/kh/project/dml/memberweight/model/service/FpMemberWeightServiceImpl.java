@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kh.project.dml.member.model.vo.FpMemberVo;
 import kh.project.dml.memberweight.model.dao.FpMemberWeightDao;
@@ -20,20 +21,25 @@ public class FpMemberWeightServiceImpl implements FpMemberWeightService {
 		return fpMemberWeightDao.selectList();
 	}
 	@Override
-	public FpMemberWeightVo selectOne(String userId) {
-		return fpMemberWeightDao.selectOne(userId);
+	public FpMemberWeightVo selectOne(String memberId) {
+		return fpMemberWeightDao.selectOne(memberId);
 	}
+	
+	@Transactional
 	@Override
-	public int insert(FpMemberWeightVo vo) {
-		System.out.println(vo);
-		return fpMemberWeightDao.insert(vo);
+	public int dateWeight(FpMemberWeightVo vo, String now) {
+		if(vo.getWeightDate().equals(now)) {
+			fpMemberWeightDao.updateWeightMember(vo);
+		}
+		if(fpMemberWeightDao.checkDate(vo) == null) {			
+			return fpMemberWeightDao.insertWeight(vo);
+		} else {
+			return fpMemberWeightDao.updateWeight(vo);
+		}
 	}
+
 	@Override
-	public int update(FpMemberWeightVo vo) {
-		return fpMemberWeightDao.update(vo);
-	}
-	@Override
-	public int delete(String userId) {
-		return fpMemberWeightDao.delete(userId);
+	public int delete(String memberId) {
+		return fpMemberWeightDao.delete(memberId);
 	}
 }
