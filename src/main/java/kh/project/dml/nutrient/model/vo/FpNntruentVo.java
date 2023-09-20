@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import kh.project.dml.suplemenid.model.vo.FpSuplemenIdVo;
+import kh.project.dml.suplement.model.vo.FpSuplementVo;
 import lombok.Data;
 
 @Data
@@ -12,7 +12,7 @@ import lombok.Data;
 public class FpNntruentVo {
 	
 	//영양소vo에 보충제 vo값 불러오기
-	private List<FpSuplemenIdVo> FpSuplemenList;
+	private List<FpSuplementVo> FpSuplemenList;
 
 	private int nutrientId;
 	private String nutrient;

@@ -7,7 +7,7 @@
 	</select>
 	
 	<select id="selectOne" resultType="FpNntruentVo" parameterType="_int">
-	select * from  where nutrientId=#{nutrientId}
+	select * from nntruent where nutrientId=#{nutrientId}
 	</select>
 	
 	<insert id="insert" parameterType="FpNntruentVo">

@@ -1,4 +1,4 @@
-package kh.project.dml.suplemenid.model.vo;
+package kh.project.dml.suplement.model.vo;
 
 import org.springframework.stereotype.Component;
 
@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Component
-public class FpSuplemenIdVo {
+public class FpSuplementVo {
 
 
 	private int suplemenno;

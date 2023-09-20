@@ -7,7 +7,7 @@
 	</select>
 	
 	<select id="selectOne" resultType="FpProducttypeVo" parameterType="_int">
-	select * from  where chickenNo=#{chickenNo}
+	select * from chickenproduct  where chickenNo=#{chickenNo}
 	</select>
 	
 	<insert id="insert" parameterType="FpChickenproductVo">

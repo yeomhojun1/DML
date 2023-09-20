@@ -8,7 +8,7 @@
 	</select>
 	
 	<select id="selectOne" resultType="FpProducttypeVo" parameterType="String">
-	select * from  where type=#{type}
+	select * from producttype  where type=#{type}
 	</select>
 	
 	<insert id="insert" parameterType="FpProducttypeVo">
