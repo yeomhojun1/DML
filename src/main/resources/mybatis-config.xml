@@ -18,6 +18,10 @@
 		<typeAlias type="kh.project.dml.calender.model.vo.FpCalenderVo" alias="FpCalenderVo"/>
 		<typeAlias type="kh.project.dml.foodapi.model.vo.FpFoodApiVo" alias="FpFoodApiVo"/>
 		<typeAlias type="kh.project.dml.food.model.vo.FpFoodVo" alias="FpFoodVo"/>
+		<typeAlias type="kh.project.dml.nutrient.model.vo.FpNntruentVo" alias="FpNntruentVo"/>
+		<typeAlias type="kh.project.dml.suplemenid.model.vo.FpSuplemenIdVo" alias="FpSuplemenIdVo"/>
+		<typeAlias type="kh.project.dml.producttype.model.vo.FpProducttypeVo" alias="FpProducttypeVo"/>
+		<typeAlias type="kh.project.dml.chickenproduct.model.vo.FpChickenproductVo" alias="FpChickenproductVo"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
@@ -32,5 +36,8 @@
 		<mapper resource="mappers/calender-mapper.xml"/>
 		<mapper resource="mappers/foodapi-mapper.xml"/>
 		<mapper resource="mappers/food-mapper.xml"/>
+		<mapper resource="mappers/nntruent-mapper.xml"/>
+		<mapper resource="mappers/suplemenid-mapper.xml"/>
+		<mapper resource="mappers/producttype-mapper.xml"/>
 	</mappers>
 </configuration>

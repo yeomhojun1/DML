@@ -1,4 +1,4 @@
-package kh.project.dml.suplemen.controller;
+package kh.project.dml.suplemenid.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,46 +9,46 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.project.dml.daydiet.model.vo.FpDayDietVo;
-import kh.project.dml.suplemen.model.service.FpSuplemenService;
-import kh.project.dml.suplemen.model.vo.FpSuplemenVo;
+import kh.project.dml.suplemenid.model.service.FpSuplemenIdService;
+import kh.project.dml.suplemenid.model.vo.FpSuplemenIdVo;
 
 @Controller
-@RequestMapping("/suplemen")
-public class FpSuplemenController {
+@RequestMapping("/suplemenid")
+public class FpSuplemenIdController {
 	@Autowired
-	private FpSuplemenService fpSuplemenServiceImpl;
+	private FpSuplemenIdService fpSuplemenServiceImpl;
 	
 	@GetMapping("list")
 	public ModelAndView selectListsuplemen(ModelAndView mv) {
 		mv.addObject("suplemenlist", fpSuplemenServiceImpl.selectList());
-		mv.setViewName("suplemen/list");
+		mv.setViewName("suplemenid/list");
 		return mv;
 	}
 	
 	@GetMapping("/one")
 	public ModelAndView selectOnesuplemen(ModelAndView mv, int suplemenno) {
 		mv.addObject("suplemenone", fpSuplemenServiceImpl.selectOne(suplemenno));
-		mv.setViewName("suplemen/one");
+		mv.setViewName("suplemenid/one");
 		return mv;
 	}
 	
 	@GetMapping("/insert")
 	public ModelAndView insertsuplemen(ModelAndView mv) {
-		mv.setViewName("suplemen/insert");
+		mv.setViewName("suplemenid/insert");
 		return mv;
 		
 	}
 	@PostMapping("/insert")
-	public String insertsuplemen(RedirectAttributes redirectAttr, FpSuplemenVo vo) {
+	public String insertsuplemen(RedirectAttributes redirectAttr, FpSuplemenIdVo vo) {
 		String viewPage = "redirect:/";
 		int result = fpSuplemenServiceImpl.insert(vo);
 		try {
 			if(result < 1) {
 				redirectAttr.addFlashAttribute("msg","회원 가입 실패했습니다 \n 다시 입력해주세요");
-				viewPage = "redirect:/suplemen/insert";
+				viewPage = "redirect:/suplemenid/insert";
 			}else {
 				redirectAttr.addFlashAttribute("msg", "회원 가입 됐습니다");
-				viewPage = "redirect:/suplemen/list";
+				viewPage = "redirect:/suplemenid/list";
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -58,12 +58,12 @@ public class FpSuplemenController {
 	@GetMapping("/update")
 	public ModelAndView updatesuplemen(ModelAndView mv, int suplemenno ) {
 		mv.addObject("suplemenone", fpSuplemenServiceImpl.selectOne(suplemenno));
-		mv.setViewName("suplemen/update");
+		mv.setViewName("suplemenid/update");
 		return mv;
 	}
 	
 	@PostMapping("/update")
-	public String updateDoMemeber(RedirectAttributes redirectAttr, FpSuplemenVo vo ) {
+	public String updateDoMemeber(RedirectAttributes redirectAttr, FpSuplemenIdVo vo ) {
 		String viewPage = "redirect:/";
 		int result = fpSuplemenServiceImpl.update(vo);
 		try {

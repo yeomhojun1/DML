@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="nntruent">
+
+<select id="selectList" resultType="FpNntruentVo">
+		select * from nntruent
+	</select>
+	
+	<select id="selectOne" resultType="FpNntruentVo" parameterType="_int">
+	select * from  where nutrientId=#{nutrientId}
+	</select>
+	
+	<insert id="insert" parameterType="FpNntruentVo">
+	insert into nntruent values(#{nutrientId}, #{nutrient},#{comment},#{intake},#{workmanship})
+	</insert>
+	
+	<update id="update" parameterType="FpNntruentVo">
+	update nntruent set nutrient = #{nutrient},
+	comment = #{comment} , intake = #{intake}, workmanship = #{workmanship}
+	where nutrientId = #{nutrientId}
+	</update>
+	
+	<delete id="delete" parameterType="_int">
+	delete from nntruent where nutrientId = #{nutrientId}
+	</delete>
+  
+</mapper>

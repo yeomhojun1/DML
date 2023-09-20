@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="chickenproduct">
+  
+  <select id="selectList" resultType="FpChickenproductVo">
+		select * from chickenproduct
+	</select>
+	
+	<select id="selectOne" resultType="FpProducttypeVo" parameterType="_int">
+	select * from  where chickenNo=#{chickenNo}
+	</select>
+	
+	<insert id="insert" parameterType="FpChickenproductVo">
+	insert into chickenproduct values(#{chickenNo}, #{link}, #{productName}, #{price}, #{type})
+	</insert>
+	
+	<update id="update" parameterType="FpChickenproductVo">
+	update chickenproduct set link = #{link}, productName = #{productName}, price = #{price}, type = #{type}
+	where chickenNo = #{chickenNo}
+	</update>
+	
+	<delete id="delete" parameterType="_int">
+	delete from chickenproduct where chickenNo = #{chickenNo}
+	</delete>
+	
+</mapper>

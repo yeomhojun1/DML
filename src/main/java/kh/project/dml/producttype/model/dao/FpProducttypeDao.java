@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kh.project.dml.producttype.model.vo.FpProducttypeVo;
-import kh.project.dml.suplemen.model.vo.FpSuplemenVo;
+import kh.project.dml.suplemenid.model.vo.FpSuplemenIdVo;
 
 @Repository
 public class FpProducttypeDao {

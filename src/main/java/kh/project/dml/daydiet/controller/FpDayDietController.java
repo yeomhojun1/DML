@@ -19,7 +19,7 @@ public class FpDayDietController {
 	private FpDayDietService fpDayDietServiceImpl;
 	
 	@GetMapping("/list")
-	public ModelAndView selectListdaydiet(ModelAndView mv) {
+	public ModelAndView selectList(ModelAndView mv) {
 		mv.addObject("daydietlist", fpDayDietServiceImpl.selectList());
 		mv.setViewName("daydiet/list");
 		return mv;
@@ -45,7 +45,7 @@ public class FpDayDietController {
 				viewPage = "redirect:/daydiet/insert";
 			} else {
 				redirectAttr.addFlashAttribute("msg", "회원 가입 됐습니다");
-				viewPage = "redirect:/daydiet/list";
+			viewPage = "redirect:/daydiet/list";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

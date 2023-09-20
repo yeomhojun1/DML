@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="producttype">
+  
+  
+  <select id="selectList" resultType="FpProducttypeVo">
+		select * from producttype
+	</select>
+	
+	<select id="selectOne" resultType="FpProducttypeVo" parameterType="String">
+	select * from  where type=#{type}
+	</select>
+	
+	<insert id="insert" parameterType="FpProducttypeVo">
+	insert into producttype values(#{type}, #{storageMethod})
+	</insert>
+	
+	<update id="update" parameterType="FpProducttypeVo">
+	update producttype set storageMethod = #{storageMethod}
+	where type = #{type}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+	delete producttype board where type = #{type}
+	</delete>
+</mapper>
