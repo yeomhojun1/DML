@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -54,7 +54,7 @@
 					class="fas fa-user fa-fw"></i></a>
 				<ul class="dropdown-menu dropdown-menu-end"
 					aria-labelledby="navbarDropdown">
-					<%-- 사용자가 로그인되어 있지 않은 경우 --%>
+					사용자가 로그인되어 있지 않은 경우
 					<c:if test="${empty sessionScope.loginUser}">
 						<li><a class="dropdown-item"
 							href="${pageContext.request.contextPath }/member/login">로그인</a></li>
@@ -62,7 +62,7 @@
 							href="${pageContext.request.contextPath }/member/signup">회원가입</a></li>
 					</c:if>
 
-					<%-- 사용자가 로그인된 경우 --%>
+					사용자가 로그인된 경우
 					<c:if test="${not empty sessionScope.loginUser}">
 						<li><a class="dropdown-item"
 							href="${pageContext.request.contextPath }/member/mypage">마이페이지</a></li>
@@ -413,7 +413,7 @@
 });
 	</script>
 	
-	<script>
+<!-- 	<script>
 	$("#dietinsert").click(dietClickHandler);
 	function dietClickHandler() {		
 		console.log("dietClickHandler");
@@ -518,7 +518,7 @@
 		$(thisElement).closest(".Plan_bottom1_second_bar___Z7S8").remove();
 	}
 		
-	</script>
+	</script> -->
 
 </body>
 </html>

@@ -802,7 +802,7 @@
 }
 
 .Plan_modal_food_bar_search__8h6t_ input {
-	height: 30px !important
+	/* 	height: 30px !important */
 }
 
 .Plan_modal_food_bar_search__8h6t_ input::-moz-placeholder {
@@ -827,7 +827,12 @@
 }
 
 .Plan_modal_food_bar_search__8h6t_ input {
-	margin: 12px 0 12px 30px
+	margin: 12px 0 12px 30px;
+	height: 40px;
+	width: 700px;
+	
+	
+	
 }
 
 .Plan_modal_food_bar_search_prefix__kwHEs {
@@ -836,6 +841,7 @@
 	margin-left: 10px;
 	margin-right: 30px;
 	margin-top: 3px
+	
 }
 
 .Plan_modal_food_bar_search__8h6t_ button {
@@ -843,7 +849,8 @@
 	height: 60px !important;
 	width: 200px;
 	font-size: 18px !important;
-	font-weight: 900 !important
+	font-weight: 900 !important;
+	border-radius: inherit;
 }
 
 .Plan_modal_food_bar_search__8h6t_ button,
@@ -918,8 +925,7 @@
 
 .Plan_modal_food_right__sg_CE {
 	flex: 2 1;
-	padding: 20px;
-	margin-top: 60px
+	padding: 10px;
 }
 
 .Plan_modal_food_contents_inside__qWooJ {
@@ -954,7 +960,9 @@
 .Plan_modal_food_desc2__LEW7J, .Plan_modal_food_desc__QsT8R {
 	border: 1px solid #99d3e9;
 	border-radius: 30px;
-	padding: 15px 20px
+	padding: 10px 10px;
+	width: 50%;
+	
 }
 
 .Plan_modal_food_desc2__LEW7J {
@@ -963,7 +971,7 @@
 }
 
 .Plan_modal_food_desc3__2QOT2 {
-	margin-top: 20px
+	/* margin-top: 20px */
 }
 
 .Plan_modal_food_information_bar__67vQC {
@@ -976,11 +984,12 @@
 }
 
 .Plan_modal_food_bottom_bar__r962X {
-	margin-top: 30px;
 	flex: 1 1;
 	align-self: center;
 	justify-content: center;
-	display: flex
+	display: flex;
+	float: right;
+	
 }
 
 .Plan_modal_food_add_and_save_btn__rKsIZ {
@@ -1122,7 +1131,7 @@
 	font-size: 18px;
 	font-weight: 900;
 	display: flex;
-	height: 40px !important
+
 }
 
 .Plan_modal_food_desc3_title__sFhbK {

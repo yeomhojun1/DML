@@ -25,11 +25,6 @@ public class FpDietController {
 		return mv;
 	}
 	
-	@GetMapping("/index")
-	public String selectList() {
-		return "diet/index"; 
-			
-	}	
 	
 	@GetMapping("/dietlist")
 	public String selectList2() {
