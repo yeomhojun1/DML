@@ -1,5 +1,6 @@
 package kh.project.dml.common.interceptor;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.WebUtils;
 
 import kh.project.dml.member.model.service.FpMemberServiceImpl;
 import kh.project.dml.member.model.vo.FpMemberVo;
@@ -26,6 +28,7 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
 	
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    	logger.info("interceptor preHandle");
         HttpSession session = request.getSession();
         String url = (String)request.getRequestURI();
         url = url.replaceAll("/dml", "");
@@ -41,7 +44,15 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
     	
         if (session.getAttribute("member") == null) {
             // 세션 정보가 유효하지 않은 경우 처리
-        	session.setAttribute("prevPage", url);
+            Cookie loginCookie = WebUtils.getCookie(request, SessionNames.LOGIN_COOKIE);
+            if (loginCookie != null) {
+                FpMemberVo vo = service.checkLoginBefore(loginCookie.getValue());
+                if (vo != null)
+                    session.setAttribute(SessionNames.LOGIN, vo);
+                	return true;
+            }
+            session.setAttribute("prevPage", url);
+            
             response.sendRedirect(request.getContextPath() + "/member/loginPopup"); // 예시: 로그인 페이지로 리다이렉트
             return false; // 컨트롤러 메소드 실행 중지
         } else {
@@ -54,5 +65,5 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView mv) throws Exception {
-	}
+    }
 }
