@@ -24,6 +24,12 @@ public class FpFoodController {
 		mv.setViewName("food/list");
 		return mv;
 	}
+	
+	@GetMapping("/index")
+	public String selectList() {
+		return "food/index"; 
+			
+	}	
 	@GetMapping("/one")
 	public ModelAndView selectOnefood(ModelAndView mv, String commentNum) {
 		mv.addObject("foodone", fpFoodServiceImpl.selectOne(commentNum));

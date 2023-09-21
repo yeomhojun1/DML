@@ -31,7 +31,6 @@ public class FpMemberDao {
 	private static final String DELETE_MEMBER = NS + ".deleteMember";
 	private static final String DELETE_USER = NS + ".deleteUser";
 	private static final String KEEP_LOGIN = NS + ".keepLogin";
-	private static final String CHECK_SESSION = NS + ".checkSession";
 	private static final String CHECK_LOGIN_BEFORE = NS + ".checkLoginBefore";
 	private static final String GET_BY_SNS_NAVER = NS + ".getBySnsNaver";
 	private static final String GET_BY_SNS_GOOGLE = NS + ".getBySnsGoogle";
@@ -75,10 +74,6 @@ public class FpMemberDao {
 		paramMap.put("sessionkey", sessionId);
 		paramMap.put("sessionlimit", expire);
 		session.update(KEEP_LOGIN, paramMap);
-	}
-	
-	public FpMemberVo checkSession(String sessionId) {
-		return session.selectOne(CHECK_SESSION, sessionId);
 	}
 
 	public FpMemberVo checkLoginBefore(String loginCookie) {

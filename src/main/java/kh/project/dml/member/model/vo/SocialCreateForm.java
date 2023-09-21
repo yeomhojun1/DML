@@ -14,7 +14,7 @@ public class SocialCreateForm {
 	@Email
 	private String username;
 
-    private String password1;
+    private String password;
     
     @Size(min = 8, max = 8)
     @NotEmpty(message = "생년월일은 YYYYMMDD 형식으로 입력해주세요.")

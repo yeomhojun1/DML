@@ -174,7 +174,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">패스워드</label>
-                                <input type="password" name="password1" class="form-control">
+                                <input type="password" name="password" class="form-control">
                                 <!-- 비밀번호 에러 메시지 -->
 								<c:if test="${errorMessages.contains('비밀번호는 필수항목입니다.')}">
 								    <div class="alert alert-danger">

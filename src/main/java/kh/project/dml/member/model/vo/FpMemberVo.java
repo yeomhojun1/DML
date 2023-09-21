@@ -3,12 +3,8 @@ package kh.project.dml.member.model.vo;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
-@Getter
-@Setter
 public class FpMemberVo {
 	private String memberId;
 	private String mname;

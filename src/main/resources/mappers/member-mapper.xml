@@ -36,7 +36,8 @@
 	
 	<!-- 로그인 -->
     <select id="login" resultType="FpUsersVo">
-        select * from users where username = #{username} and password = #{password}
+        select * from users 
+        where username = #{username} and password = #{password}
     </select>
     
     <!-- 일반 로그인 -->
@@ -49,17 +50,12 @@
         update member set sessionkey = #{sessionkey}, sessionlimit = #{sessionlimit}
          where member_id = #{memberId}
     </update>
-    
-    <!-- 기존 세션 비교 -->
-    <select id="checkSession" parameterType="string" resultType="FpMemberVo">
-        SELECT * FROM member WHERE sessionkey = #{sessionId}
-    </select>
-    
-    <!-- 쿠키에 저장된 세션키 비교(미사용) -->
+
+    <!-- 쿠키에 저장된 세션키 비교 -->
     <select id="checkLoginBefore" resultType="FpMemberVo">
-        select * from member
-         where sessionkey = #{loginCookie}
-           and sessionlimit > now()
+		select * from member
+		where sessionkey = #{loginCookie}
+		AND TO_TIMESTAMP(sessionlimit, 'RR/MM/DD HH24:MI:SS.FF9') > SYSTIMESTAMP
     </select>
     
     <!-- 네이버 계정 확인 -->
