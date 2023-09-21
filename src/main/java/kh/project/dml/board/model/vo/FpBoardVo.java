@@ -9,11 +9,13 @@ import lombok.Data;
 @Data
 @Component
 public class FpBoardVo {
-	
-	private int commentNum;
+	private int boardNo;
 	private String memberId;
 	private String boardTitle;
 	private String boardContent;
+	private String boardDate;
 	private int boardCount;
-	private Date boardDate;
+	private String bref;
+	private int bstep;
+	private int blevel;
 }

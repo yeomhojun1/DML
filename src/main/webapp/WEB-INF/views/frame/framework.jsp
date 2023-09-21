@@ -74,12 +74,7 @@
 			<main>
 				<div class="container-fluid px-4">
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
-						<div class="Plan_bottom1_control_panel_add__F5yxB" >
-									<!-- Button trigger modal -->
-									<button type="button" id="dietinsert"  data-bs-toggle="modal" data-bs-target="#dietInsertModal" class="ant-btn css-1s3dcof ant-btn-default Plan_bottom1_control_panel_btn__3jlBx Global_button__iJeUH" style="float: right;">
-										<span>식단 추가 +</span>
-									</button>
-						</div>
+						<!-- 우리가 여기에 추가해야함 -->
 				</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>

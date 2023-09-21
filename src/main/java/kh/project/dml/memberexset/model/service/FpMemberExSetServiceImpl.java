@@ -2,12 +2,11 @@ package kh.project.dml.memberexset.model.service;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import kh.project.dml.memberexset.model.dao.FpMemberExSetDao;
+import kh.project.dml.memberexset.model.vo.FpMemberExSetParam;
 import kh.project.dml.memberexset.model.vo.FpMemberExSetVo;
 
 @Service("fpMemberExSetServiceImpl")
@@ -21,8 +20,8 @@ public class FpMemberExSetServiceImpl implements FpMemberExSetService  {
 		return fpMemberExSetDao.selectList(dayExSet);
 	}
 	@Override
-	public FpMemberExSetVo selectOne(String memberId)  {
-		return fpMemberExSetDao.selectOne(memberId);
+	public FpMemberExSetVo selectOne(String dayExSet)  {
+		return fpMemberExSetDao.selectOne(dayExSet);
 	}
 	@Override
 	public int insert(FpMemberExSetVo vo)  {
@@ -35,5 +34,9 @@ public class FpMemberExSetServiceImpl implements FpMemberExSetService  {
 	@Override
 	public int delete(String dayExSet)  {
 		return fpMemberExSetDao.delete(dayExSet);
+	}
+	@Override
+	public List<FpMemberExSetVo> selectPart(FpMemberExSetParam param) {
+		return fpMemberExSetDao.selectPart(param);
 	}
 }

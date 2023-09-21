@@ -17,8 +17,8 @@ public class FpBoardDao {
 	public List<FpBoardVo> selectList() {
 		return sqlSession.selectList("board.selectList");
 	}
-	public FpBoardVo selectOne(int commentNum) {
-		return sqlSession.selectOne("board.selectOne", commentNum);
+	public FpBoardVo selectOne(int boardNo) {
+		return sqlSession.selectOne("board.selectOne", boardNo);
 	}
 	public int insert(FpBoardVo vo) {
 		return sqlSession.insert("board.insert", vo);
@@ -26,7 +26,7 @@ public class FpBoardDao {
 	public int update(FpBoardVo vo) {
 		return sqlSession.update("board.update", vo);
 	}
-	public int delete(int commentNum) {
-		return sqlSession.delete("board.delete" ,commentNum);
+	public int delete(int boardNo) {
+		return sqlSession.delete("board.delete" ,boardNo);
 	}
 }

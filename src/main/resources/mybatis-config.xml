@@ -18,6 +18,7 @@
 		<typeAlias type="kh.project.dml.calender.model.vo.FpCalenderVo" alias="FpCalenderVo"/>
 		<typeAlias type="kh.project.dml.foodapi.model.vo.FpFoodApiVo" alias="FpFoodApiVo"/>
 		<typeAlias type="kh.project.dml.food.model.vo.FpFoodVo" alias="FpFoodVo"/>
+		<typeAlias type="kh.project.dml.board.model.vo.FpBoardVo" alias="FpBoardVo"/>
 		<typeAlias type="kh.project.dml.nutrient.model.vo.FpNutrientVo" alias="FpNutrientVo"/>
 		<typeAlias type="kh.project.dml.suplement.model.vo.FpSuplementVo" alias="FpSuplementVo"/>
 		<typeAlias type="kh.project.dml.producttype.model.vo.FpProducttypeVo" alias="FpProducttypeVo"/>
@@ -25,6 +26,7 @@
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
+		<mapper resource="mappers/board-mapper.xml"/>
 		<mapper resource="mappers/diet-mapper.xml"/>
 		<mapper resource="mappers/member-ex-set-mapper.xml"/>
 		<mapper resource="mappers/exercise-mapper.xml"/>

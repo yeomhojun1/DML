@@ -14,16 +14,27 @@ DROP TABLE "CHICKENPRODUCT";
 DROP TABLE "SUPLEMENID";
 DROP TABLE "NUTRIENT";
 DROP TABLE "PRODUCTTYPE";
-
+DROP SEQUENCE board_no_seq;
 
 CREATE TABLE "BOARD" (
-	"COMMENT_NUM"	NUMBER		NOT NULL,
+	"BOARD_NO"	NUMBER		NOT NULL,
 	"MEMBER_ID"	VARCHAR2(100)		NOT NULL,
 	"BOARD_TITLE"	VARCHAR(200)		NOT NULL,
 	"BOARD_CONTENT"	CLOB		NOT NULL,
-	"BOARD_COUNT"	NUMBER		NULL,
-	"BOARD_DATE"	TIMESTAMP		NOT NULL
+	"BOARD_DATE"	TIMESTAMP	default sysdate	NOT NULL,
+    "BOARD_COUNT" NUMBER NULL,
+    "BREF" VARCHAR2(2000) NULL,
+    "BSTEP" NUMBER NULL,
+    "BLEVEL" NUMBER NULL
 );
+CREATE SEQUENCE board_no_seq 
+       INCREMENT BY 1
+       START WITH 1
+       MINVALUE 1
+       MAXVALUE 9999
+       NOCYCLE
+       NOCACHE
+       NOORDER;
 
 CREATE TABLE "MEMBER" (
 	"MEMBER_ID"	VARCHAR2(100)		NOT NULL,
@@ -227,7 +238,7 @@ COMMENT ON COLUMN "SUPLEMENID"."SUPLEMENNO" IS '보충제번호';
 COMMENT ON COLUMN "SUPLEMENID"."LINK" IS '링크';
 
 ALTER TABLE "BOARD" ADD CONSTRAINT "PK_BOARD" PRIMARY KEY (
-	"COMMENT_NUM"
+	"BOARD_NO"
 );
 
 ALTER TABLE "MEMBER" ADD CONSTRAINT "PK_MEMBER" PRIMARY KEY (
@@ -450,10 +461,19 @@ insert into exercise   values(50008, '바벨 하이바 굿모닝' , '하체' , '
 insert into exercise   values(50009, '리베이트' , '하체' , '  1.네 발로 엎드려 어깨 아래에 손을, 엉덩이 아래에 무릎을 위치시킵니다. <br>2.한쪽 다리를 뒤로 젖히고 둔근을 조입니다. <br>3.무릎을 구부리고 다리를 낮추면서 천천히 시작 위치로 돌아갑니다. <br>4.다리를 전환하세요. 반복합니다.' ,'<iframe width="1280" height="720" src="https://www.youtube.com/embed/qUMeeIxJLwU" title="bodyweight male glutekickback front" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>');
 insert into exercise   values(50010, '바벨 스쿼트' , '하체' , ' 1.발을 어깨너비로 벌리고 서세요. 등의 자연스러운 아치를 유지하고 견갑골을 조이고 가슴을 들어 올리십시오.  <br>2. 바를 어깨 너머로 잡고 등 위쪽으로 받치세요. 다리를 곧게 펴서 바를 풀고 한 발 뒤로 물러서십시오.  <br>3. 엉덩이가 무릎 아래에 올 때까지 등의 형태를 바꾸지 않고 무게를 낮추면서 무릎을 구부립니다.  <br>4. 바를 다시 시작 위치로 올리고, 다리로 들어올린 후 숨을 내쉬세요.' , '<iframe width="470" height="835" src="https://www.youtube.com/embed/ziV66bpMDtg" title="바벨 스쿼트(Barbell Squat) 헬린이를 위한 20초 포인트 영상" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>');
 
-select * from member_ex_set;
 
 
 
+select * from member_ex_set order by day_ex_set desc;
+
+select board_No, BOARD_TITLE from board order by board_No desc;
+
+INSERT INTO BOARD VALUES (board_no_seq.NEXTVAL,'ghwnswkd123@naver.com', '연습용 게시판 제목', '연습용 게시판 내용@@','20230921', 0, '연습용 댓글', 1,0);
+INSERT INTO BOARD VALUES (board_no_seq.NEXTVAL,'ghwnswkd123@naver.com', '연습용 게시판 제목2', '연습용 게시판 내용@@','20230921', 0, '연습용 댓글', 1,0);
+select board_no , member_id,Board_title,board_content,TO_CHAR(board_date,'YYYY-MM-DD'),board_Count,bref,bstep,bleveL from board order by board_No desc;
+	
+  
+commit;
 
 
 

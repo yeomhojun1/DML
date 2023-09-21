@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -37,8 +36,13 @@ public class FpMemberExSetController {
 	}
 	@GetMapping("/one")
 	@ResponseBody
-	public String selectOnememberexset(ModelAndView mv, String dayExSet) {
+	public String selectOnememberexset(ModelAndView mv,String dayExSet) {
 		return new Gson().toJson(fpMemberExSetServiceImpl.selectOne(dayExSet));
+	}
+	@GetMapping("/part")
+	@ResponseBody
+	public String selectPartmemberexset(ModelAndView mv, FpMemberExSetParam param) {
+		return new Gson().toJson(fpMemberExSetServiceImpl.selectPart(param));
 	}
 	@GetMapping("/insert")
 	public ModelAndView insertmemberexset(ModelAndView mv ) {
