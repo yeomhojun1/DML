@@ -180,18 +180,100 @@
 						</div>
 					</div>
 					
-					
-					
+					<div class="DateBars_date_bar__QeCa3" >
+						<div class="DateBars_date__DyX0X">2023-09-04</div>
+						<div class="DateBars_day_of_week__ShQrM">월</div>
+						<div class="DateBars_date_selector__ajXTR">
+
+							</div>
+							
+							
+						<div class="DateBars_date_picker__GCWt1">
+							<div class="DateBars_date_picker_wrapper__8Axpy">
+								<div
+									class="ant-picker ant-picker-borderless css-1s3dcof DateBars_date_bar_calendar__XIcjP"
+									style="margin-right: 13px; margin-top: 4px;">
+									<div class="ant-picker-input">
+										<input readonly="" placeholder="Select date" title=""
+											size="12" autocomplete="off" value=""><span
+											class="ant-picker-suffix"><div
+												class="ant-image css-1s3dcof"
+												style="width: 31px; height: 27px;">
 												
+												<input type="text" id="datepicker">
+									
+
+												<!--  <img
+													class="ant-image-img DateBars_date_bar_calendar_icon__gPVOu"
+													src="resources/images/date_bar_calendar_icon.png"
+													width="31" height="27" style="height: 27px;"> -->
+												</div>
+											</div></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="Plan_top1__f4K0_">
+						<div class="Plan_top1_title__wZHYO">섭취할 칼로리</div>
+						<div class="Plan_top1_value1__JkpyX">
+							<div>
+								<div>
+									<div class="Plan_top1_value1__JkpyX"></div>
+								</div>
+							</div>
+						</div>
+						<div class="Plan_top1_kcal__wgGCD">Kcal</div>
+						<div class="Plan_top1_value3__USxBx"></div>
+						<div class="Plan_span__XoR2b"></div>
+						<div class="Plan_top1_value2__a0gQ9"></div>
+						<div class="Plan_top1_kcal__wgGCD">필요</div>
+					</div>
+					<div class="Plan_bottom1_title_bar__g02PR">
+						<div class="Plan_bottom1_item__L4ece">
+							<button type="button"
+								class="ant-btn css-1s3dcof ant-btn-text Plan_bottom1_btn__qLTZ7"
+								style="font-weight: normal; color: white; border-radius: 20px; background-color: rgb(161, 235, 203);">
+								<span>전체</span>
+							</button>
+						</div>
+						<div class="Plan_meal_list__OB38F">
+							<div class="Plan_bottom1_item__L4ece">
+								<button type="button"
+									class="ant-btn css-1s3dcof ant-btn-text Plan_bottom1_btn__qLTZ7"
+									style="border-radius: 20px; background-color: rgb(153, 212, 234); font-weight: bold; color: white;">
+									<span>아침</span>
+								</button>
+							</div>
+							<div class="Plan_bottom1_item__L4ece">
+								<button type="button"
+									class="ant-btn css-1s3dcof ant-btn-text Plan_bottom1_btn__qLTZ7"
+									style="border-radius: 20px; background-color: rgb(153, 185, 234); font-weight: normal; color: white;">
+									<span>점심</span>
+								</button>
+							</div>
+							<div class="Plan_bottom1_item__L4ece">
+								<button type="button"
+									class="ant-btn css-1s3dcof ant-btn-text Plan_bottom1_btn__qLTZ7"
+									style="border-radius: 20px; background-color: rgb(241, 139, 136); font-weight: normal; color: white;">
+									<span>저녁</span>
+								</button>
+							</div>
+							<div class="Plan_bottom1_item__L4ece">
+								<button type="button"
+									class="ant-btn css-1s3dcof ant-btn-text Plan_bottom1_btn__qLTZ7"
+									style="border-radius: 20px; background-color: rgb(255, 223, 122); font-weight: normal; color: white;">
+									<span>간식</span>
+								</button>
+							</div>
+						</div>
 						<div class="Plan_bottom1_save____Cw1">
 							<button type="button"
 								class="ant-btn css-1s3dcof ant-btn-default Plan_bottom1_save_btn__14v5t Global_button__iJeUH">
 								<span>저장하기</span>
 							</button>
-						</div>						
-			
-	
-			
+						</div>
+					</div>
 					
 					<div id="wrapSelectedPlan">
 					<div class="Plan_bottom1_second_bar___Z7S8">
@@ -238,18 +320,6 @@
 					</main>
 				</div>
 		</div>
-<!-- 	<footer class="py-4 bg-light mt-auto">
-		<div class="container-fluid px-4">
-			<div class="d-flex align-items-center justify-content-between small">
-				<div class="text-muted">Copyright &copy; Your Website 2023</div>
-				<div>
-					<a href="#">Privacy Policy</a> &middot; <a href="#">Terms &amp;
-						Conditions</a>
-				</div>
-			</div>
-		</div>
-	</footer> -->
-	
 	<script		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"		crossorigin="anonymous"></script>
 	<script src="${pageContext.request.contextPath }/js/scripts.js"></script>
 	<script		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"		crossorigin="anonymous"></script>
@@ -368,6 +438,7 @@
 							</button>
 						</div>
 					</div>
+					
 					`;
 				});
 				  
@@ -390,35 +461,58 @@
 		carbs = $(thisElement).parent().prevAll(".crabs").text();
 		protein = $(thisElement).parent().prevAll(".protein").text();
 		fat = $(thisElement).parent().prevAll(".fat").text();
+		
+		
+		Array.from(document.querySelectorAll(".Plan_bottom1_food_each__s9jUi")).map(function(eachElement){
+			console.log(eachElement);
+			console.log($(eachElement));
+			console.log($(eachElement).children(".foodQuality").children("span").text());
+			console.log($(eachElement).children(".foodcd").children("button").data("foodcd"));
+			//obj2.push(foodCd, );
+			//obj2.push(foodQuality, );	
+		
+		});
+		
+		
 		// 
 		// TODO :ajax : food table, diet table - insert
-/* 	  	 $.ajax({
+		/*
+ 	  	 $.ajax({
 			url:"${pageContext.request.contextPath}/food/insert",
 			type: "post",
-			contentType:"json",
-			data: {foodCd : $(thisElement).data("foodcd"), foodQuality : $(".form").val(), mealCode : dateStr + ${member.memberId}+ $(".foodDate").data("value")
+			dataType: "json",
+			contentType:"application/json",
+			data: {foodCd : $(thisElement).data("foodcd"), 
+					foodQuality : $(".").val(),
+					mealCode : dateStr + ${member.memberId}+ $(".foodDate").data("value")
+			}
 				,dataType:"json"
-					, success : function(result){ */
-		
+					, success : function(result){ 
+		*/
+						
 		htmlVal = '';
 		htmlVal += `
-			<div class="Plan_bottom1_second_bar___Z7S8">
+			<div class="Plan_bottom1_food_each__s9jUi">
 				<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH">식사구분</div>
-				<div class="Plan_bottom1_second_bar_food__Nea0w">\${foodName}
+				<div class="Plan_bottom1_second_bar_food__Nea0w">
+					\${foodName}
 				</div>
-				<div class="Plan_bottom1_second_bar_kcal__2i7Y2">
+				<div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
+				수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">20</span>
+				</div>
+				<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
 					칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${calorie}</span>
 				</div>
-				<div class="Plan_bottom1_second_bar_carb__0dt0o">
+				<div class="Plan_bottom1_second_bar_carb__0dt0o carbs">
 					탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${carbs}</span>
 				</div>
-				<div class="Plan_bottom1_second_bar_protein__BHBRu">
+				<div class="Plan_bottom1_second_bar_protein__BHBRu protein">
 					단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${protein}</span>
 				</div>
-				<div class="Plan_bottom1_second_bar_fat__8Tyy8">
+				<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
 					지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${fat}</span>
 				</div>
-				<div class="Plan_bottom1_second_bar_ctl__2Pelr">
+				<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
 				<button type="button" onclick="btnDeleteClickHandler(this)" data-foodcd="\${foodcd}" data-mealid="TODO">삭제</button>
 				</div>
 			</div>

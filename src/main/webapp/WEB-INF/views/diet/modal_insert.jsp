@@ -97,28 +97,27 @@
 														<div class="Plan_modal_food_meal_list__cNfE0">
 															<div
 																class="ant-radio-group ant-radio-group-outline css-1s3dcof">
-																<label
-																	class="ant-radio-button-wrapper Plan_modal_food_manual_radio__94nNy css-1s3dcof"
-																	style="border-radius: 20px; background-color: rgb(230, 230, 230); color: black; margin-right: 10px; margin-bottom: 10px;"><span
-																	class="ant-radio-button"><input type="radio"
+																<label class="ant-radio-button-wrapper Plan_modal_food_manual_radio__94nNy css-1s3dcof"
+																	style="border-radius: 20px; background-color: orange; color: black; margin-right: 10px; margin-bottom: 10px;"><span
+																	class="ant-radio-button"><input type="radio"  name="meal" value="breakfast"
 																		class="ant-radio-button-input"
 																		value="64f153a05b87822374c5eb44"><span
 																		class="ant-radio-button-inner"></span></span><span>아침</span></label><label
 																	class="ant-radio-button-wrapper Plan_modal_food_manual_radio__94nNy css-1s3dcof"
-																	style="border-radius: 20px; background-color: rgb(230, 230, 230); color: black; margin-right: 10px; margin-bottom: 10px;"><span
-																	class="ant-radio-button"><input type="radio"
+																	style="border-radius: 20px; background-color: blue; color: black; margin-right: 10px; margin-bottom: 10px;"><span
+																	class="ant-radio-button"><input type="radio" name="meal" value="lunch"
 																		class="ant-radio-button-input"
 																		value="64f153a05b87822374c5eb43"><span
 																		class="ant-radio-button-inner"></span></span><span>점심</span></label><label
 																	class="ant-radio-button-wrapper Plan_modal_food_manual_radio__94nNy css-1s3dcof"
-																	style="border-radius: 20px; background-color: rgb(230, 230, 230); color: black; margin-right: 10px; margin-bottom: 10px;"><span
-																	class="ant-radio-button"><input type="radio"
+																	style="border-radius: 20px; background-color: green; color: black; margin-right: 10px; margin-bottom: 10px;"><span
+																	class="ant-radio-button"><input type="radio" name="meal" value="dinner"
 																		class="ant-radio-button-input"
 																		value="64f153a05b87822374c5eb42"><span
 																		class="ant-radio-button-inner"></span></span><span>저녁</span></label><label
 																	class="ant-radio-button-wrapper Plan_modal_food_manual_radio__94nNy css-1s3dcof"
-																	style="border-radius: 20px; background-color: rgb(230, 230, 230); color: black; margin-right: 10px; margin-bottom: 10px;"><span
-																	class="ant-radio-button"><input type="radio"
+																	style="border-radius: 20px; background-color: red; color: black; margin-right: 10px; margin-bottom: 10px;"><span
+																	class="ant-radio-button"><input type="radio" name="meal" value="snack"
 																		class="ant-radio-button-input"
 																		value="64f153a05b87822374c5eb41"><span
 																		class="ant-radio-button-inner"></span></span><span>간식</span></label>
@@ -129,10 +128,7 @@
 													class="ant-btn css-1s3dcof ant-btn-default Plan_modal_food_close_btn__QsNOd Global_button__iJeUH">
 													<span>닫기</span>
 												</button>
-												<button type="button"
-													class="ant-btn css-1s3dcof ant-btn-default Plan_modal_food_add_and_save_btn__rKsIZ Global_button__iJeUH">
-													<span>저장 후 추가</span>
-												</button>
+											
 											</div>
 													</div>
 												</div>
