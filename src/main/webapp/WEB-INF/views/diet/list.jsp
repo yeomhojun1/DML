@@ -331,6 +331,7 @@
 });
 	</script>
 	
+	
 	<script>
 	$("#dietinsert").click(dietClickHandler);
 	function dietClickHandler() {		
@@ -390,36 +391,33 @@
 		carbs = $(thisElement).parent().prevAll(".crabs").text();
 		protein = $(thisElement).parent().prevAll(".protein").text();
 		fat = $(thisElement).parent().prevAll(".fat").text();
-		// 
-		// TODO :ajax : food table, diet table - insert
-/* 	  	 $.ajax({
-			url:"${pageContext.request.contextPath}/food/insert",
-			type: "post",
-			contentType:"json",
-			data: {foodCd : $(thisElement).data("foodcd"), foodQuality : $(".form").val(), mealCode : dateStr + ${member.memberId}+ $(".foodDate").data("value")
-				,dataType:"json"
-					, success : function(result){ */
+		
 		
 		htmlVal = '';
 		htmlVal += `
-			<div class="Plan_bottom1_second_bar___Z7S8">
-				<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH">식사구분</div>
+			<div class="Plan_bottom1_food_each__s9jUi">
+				<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH foodTime">
+				구분<span class="Plan_bottom1_second_bar_sub___m2EJ ">아침</span>
+				</div>
 				<div class="Plan_bottom1_second_bar_food__Nea0w">\${foodName}
 				</div>
-				<div class="Plan_bottom1_second_bar_kcal__2i7Y2">
-					칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${calorie}</span>
+				<div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
+				수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">20</span>
 				</div>
-				<div class="Plan_bottom1_second_bar_carb__0dt0o">
+				<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
+					칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${calorie}</span>
+				</div>
+				<div class="Plan_bottom1_second_bar_carb__0dt0o carbs">
 					탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${carbs}</span>
 				</div>
-				<div class="Plan_bottom1_second_bar_protein__BHBRu">
+				<div class="Plan_bottom1_second_bar_protein__BHBRu protein">
 					단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${protein}</span>
 				</div>
-				<div class="Plan_bottom1_second_bar_fat__8Tyy8">
+				<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
 					지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${fat}</span>
 				</div>
-				<div class="Plan_bottom1_second_bar_ctl__2Pelr">
-				<button type="button" onclick="btnDeleteClickHandler(this)" data-foodcd="\${foodcd}" data-mealid="TODO">삭제</button>
+				<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
+					<button type="button" onclick="btnDeleteClickHandler(this)" data-foodcd="\${foodcd}" data-mealid="TODO">삭제</button>
 				</div>
 			</div>
 		`;
@@ -435,7 +433,63 @@
 
 		$(thisElement).closest(".Plan_bottom1_second_bar___Z7S8").remove();
 	}
+	
+	$("button.save").click(bntSaveHandler);
+	function bntSaveHandler(){
+		var food_length = $("#wrapSelectedPlan .Plan_bottom1_food_each__s9jUi").length;
+		console.log(food_length);
+		if(food_length < 1){
+			alert("추가된 식단이 없습니다. 식단 추가 후 저장해주세요.");
+			return;
+		}
+		let objfinal= {};
+		let arr1= [];
+		let selectedDate = '2023-09-21';  // TODO
+		let memberId = '77@77.77';  // TODO
 		
+		Array.from(document.querySelectorAll(".Plan_bottom1_food_each__s9jUi")).map(function(eachElement){
+			console.log(eachElement);
+			console.log($(eachElement));
+			console.log($(eachElement).children(".foodQuality").children("span").text());
+			console.log($(eachElement).children(".foodcd").children("button").data("foodcd"));
+			var quality = $(eachElement).children(".foodQuality").children("span").text();
+			var cd =$(eachElement).children(".foodcd").children("button").data("foodcd");
+			var foodTime =$(eachElement).children(".foodTime").children("span").text();
+
+			var obj2= {};
+			obj2.foodCd = cd;
+			obj2.foodQuality =quality;	
+			obj2.foodTime = foodTime;  // Service에서 조합할 예정 mealCode
+			arr1.push(obj2);
+		});
+
+		objfinal.mealCode = "";  // Service에서 조합할 예정 TODO
+		objfinal.foodlist = arr1;
+		objfinal.foodDate = selectedDate;
+		objfinal.memberId = memberId;
+		
+		//private String foodCd;
+		//private int foodQuality;
+		//private String mealCode;
+		
+		
+		// 
+		// TODO :ajax : food table, diet table - insert
+ 	  	 $.ajax({
+			url:"${pageContext.request.contextPath}/food/insert",
+			type: "post"
+			,contentType: "application/json"
+			, data: JSON.stringify(objfinal)
+				
+			, dataType:"json"
+			, success : function(result){
+				console.log(result);
+			}
+			, error : function(e){
+				console.log(e);	
+			}
+		});  // ajax
+	}
 	</script>
 
 </body>
