@@ -15,7 +15,7 @@ public interface FpNutrientService {
 	
 	
 	
-	public List<FpNutrientVo> selectList();
+	public List<FpNutrientVo> selectList(int workmanship);
 	
 	public FpNutrientVo selectOne(int nutrientId);
 	

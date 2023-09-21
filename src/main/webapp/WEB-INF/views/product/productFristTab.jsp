@@ -76,7 +76,7 @@
 							<!-- foreach로 목록들 불러오게 하는거 private List<FpSuplementVo> fpSuplemenList;  -->
 							<div class="row col-lg-6 beginner">
 							<!--  varStatus 숫자 자동으로 1,2,3~ 하게 하는것 -->
-								<c:forEach items="${nutruentlist }" var="nutruent" varStatus="vs">
+								<c:forEach items="${nutruentBeginerlist }" var="nutruent" varStatus="vs">
 									<div class="col-lg-12 mb-2">
 										<div class="card bg-primary text-white shadow">
 											<button class="btn-menu card-body beginner-btn btn-sub${vs.count }" data-toggle="menu-${vs.count }"><h5>${nutruent.nutrient }</h5></button>

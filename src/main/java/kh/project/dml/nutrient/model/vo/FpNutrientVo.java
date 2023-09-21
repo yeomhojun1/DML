@@ -14,7 +14,7 @@ import lombok.Data;
 public class FpNutrientVo {
 	
 	//영양소vo에 보충제 vo값 불러오기
-	private List<FpSuplementVo> fpSuplemenList;
+	private List<FpSuplementVo> fpSuplementList;
 
 	private int nutrientId;
 	private String nutrient;

@@ -21,7 +21,8 @@ public class FpProductController {
 	@GetMapping("/product")
 	public ModelAndView mainPageOpen1(ModelAndView mv) {
 		mv.addObject("tab", "1"); //컨트롤러에 값 써야함 product.jsp 맨밑에가보면있음.
-		mv.addObject("nutruentlist", fpNutrientServiceImpl.selectList());
+		mv.addObject("nutruentBeginerlist", fpNutrientServiceImpl.selectList(1));
+		mv.addObject("nutruentExpertlist", fpNutrientServiceImpl.selectList(2));
 		mv.setViewName("product/product");
 		return mv;
 	}

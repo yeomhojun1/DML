@@ -20,9 +20,9 @@ public class FpNutrientController {
 	@Autowired
 	private FpNutrientService fpNutrientServiceImpl;
 	
-	@GetMapping("/list")
 	public ModelAndView selectList(ModelAndView mv) {
-		mv.addObject("nutruentlist", fpNutrientServiceImpl.selectList());
+		mv.addObject("nutruentBeginerlist", fpNutrientServiceImpl.selectList(1));
+		mv.addObject("nutruentExpertlist", fpNutrientServiceImpl.selectList(2));
 		mv.setViewName("nutrient/list");
 		return mv;
 	}
