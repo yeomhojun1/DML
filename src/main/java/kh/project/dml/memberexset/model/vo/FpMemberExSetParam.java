@@ -14,5 +14,5 @@ import lombok.ToString;
 @ToString
 public class FpMemberExSetParam {
 	private String dayExSet;
-	private int ecode;
+	private String part;
 }

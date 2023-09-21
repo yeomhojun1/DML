@@ -35,7 +35,6 @@ public class FpExerciseController {
 	@GetMapping("/searchlist")
 	@ResponseBody
 	public String selectSearchListexercise(String searchword) {
-		String result = null;
 		List<FpExerciseVo> volist = fpExerciseServiceImpl.selectSearchList(searchword);
 		return new Gson().toJson(volist);
 	}

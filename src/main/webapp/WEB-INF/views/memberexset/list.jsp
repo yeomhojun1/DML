@@ -110,8 +110,10 @@
 											<span>세트 : </span> <input type="number"
 												class="addExerciseSet text-center">
 										</div>
-										<button type="button" class="btn btn-primary updateDayExSet floatRight mt-3">저장</button>
-										<button type="button" class="btn btn-secondary floatRight mt-3"
+										<button type="button"
+											class="btn btn-primary updateDayExSet floatRight mt-3">저장</button>
+										<button type="button"
+											class="btn btn-secondary floatRight mt-3"
 											data-bs-dismiss="modal">닫기</button>
 									</form>
 								</div>
@@ -129,30 +131,38 @@
 										role="tab" aria-controls="home" aria-selected="true">전체
 										운동</button>
 								</li>
-								<li class="nav-item col-xl-2 dayExSetPart" role="presentation" data-part="등">
+								<li class="nav-item col-xl-2 dayExSetPart" role="presentation"
+									data-part="등">
 									<button class="nav-link col-xl-12 " id="profile-tab"
 										data-bs-toggle="tab" data-bs-target="#profile1" type="button"
-										role="tab" aria-controls="profile" aria-selected="false" >등</button>
+										role="tab" aria-controls="profile" aria-selected="false">등</button>
 								</li>
-								<li class="nav-item col-xl-2 dayExSetPart" role="presentation" data-part="가슴">
+								<li class="nav-item col-xl-2 dayExSetPart" role="presentation"
+									data-part="가슴">
 									<button class="nav-link col-xl-12 " id="profile-tab"
 										data-bs-toggle="tab" data-bs-target="#profile2" type="button"
-										role="tab" aria-controls="profile" aria-selected="false" >가슴</button>
+										role="tab" aria-controls="profile" aria-selected="false">가슴</button>
 								</li>
-								<li class="nav-item col-xl-2 dayExSetPart" role="presentation" data-part="어깨">
+								<li class="nav-item col-xl-2 dayExSetPart" role="presentation"
+									data-part="어깨">
 									<button class="nav-link col-xl-12 " id="profile-tab"
 										data-bs-toggle="tab" data-bs-target="#profile3" type="button"
-										role="tab" aria-controls="profile" aria-selected="false" data-part="어깨">어깨</button>
+										role="tab" aria-controls="profile" aria-selected="false"
+										data-part="어깨">어깨</button>
 								</li>
-								<li class="nav-item col-xl-2 dayExSetPart" role="presentation" data-part="팔">
+								<li class="nav-item col-xl-2 dayExSetPart" role="presentation"
+									data-part="팔">
 									<button class="nav-link col-xl-12 " id="profile-tab"
 										data-bs-toggle="tab" data-bs-target="#profile4" type="button"
-										role="tab" aria-controls="profile" aria-selected="false" data-part="팔">팔</button>
+										role="tab" aria-controls="profile" aria-selected="false"
+										data-part="팔">팔</button>
 								</li>
-								<li class="nav-item col-xl-2 dayExSetPart" role="presentation" data-part="하체">
+								<li class="nav-item col-xl-2 dayExSetPart" role="presentation"
+									data-part="하체">
 									<button class="nav-link col-xl-12 " id="profile-tab"
 										data-bs-toggle="tab" data-bs-target="#profile5" type="button"
-										role="tab" aria-controls="profile" aria-selected="false" data-part="하체">하체</button>
+										role="tab" aria-controls="profile" aria-selected="false"
+										data-part="하체">하체</button>
 								</li>
 							</ul>
 						</div>
@@ -161,16 +171,16 @@
 							<div class="tab-pane active" id="home" role="tabpanel"
 								aria-labelledby="home-tab"></div>
 
-							<div class="tab-pane" id="profile1" role="tabpanel"
-								aria-labelledby="profile-tab">등 운동 하나씩</div>
-							<div class="tab-pane" id="profile2" role="tabpanel"
-								aria-labelledby="profile-tab">가슴 운동 하나씩</div>
-							<div class="tab-pane" id="profile3" role="tabpanel"
-								aria-labelledby="profile-tab">어깨 운동 하나씩</div>
-							<div class="tab-pane" id="profile4" role="tabpanel"
-								aria-labelledby="profile-tab">팔 운동 하나씩</div>
-							<div class="tab-pane" id="profile5" role="tabpanel"
-								aria-labelledby="profile-tab">하체 운동 하나씩</div>
+							<div class="tab-pane partclass" id="profile1" role="tabpanel"
+								aria-labelledby="profile-tab"></div>
+							<div class="tab-pane partclass" id="profile2" role="tabpanel"
+								aria-labelledby="profile-tab"></div>
+							<div class="tab-pane partclass" id="profile3" role="tabpanel"
+								aria-labelledby="profile-tab"></div>
+							<div class="tab-pane partclass" id="profile4" role="tabpanel"
+								aria-labelledby="profile-tab"></div>
+							<div class="tab-pane partclass" id="profile5" role="tabpanel"
+								aria-labelledby="profile-tab"></div>
 						</div>
 					</div>
 				</div>
@@ -188,7 +198,6 @@
 		$(selectorStr).click(cbHandler);	
 	}
 	function displayHome(result){
-		$(".exSetForDay").remove();
 		htmlVal = '	<div class="exSetForDay">';
 		for (var i = 0; i < result.length; i++) {
 			htmlVal += '<div class="exSetForDay_one card col-xl-3 text-center" data-dayexset="'+result[i].dayExSet+'" data-ecode="'+result[i].ecode+'"><div>'+result[i].exName+'</div><div>'+result[i].exerciseWeight+'kg</div><div>'+result[i].exerciseNumber+
@@ -201,7 +210,7 @@
 		htmlVal += '</div>'
 		console.log(result);
 		//addEventAfterDisplay(".deleteDayExSet", deleteDayExSetHandler);
-		$("#home").append(htmlVal);
+		$("#home").html(htmlVal);
 		$(".deleteDayExSet").click(deleteDayExSetHandler);
 		$(".sendDayExSet").click(sendDayExSetHandler);
 	}
@@ -237,20 +246,18 @@
          		console.log("selectDate : "+selectDate);
          		getMemberexset(selectDate1);
            		$(".DateHead").html(selectDate);
-           		
-           		
-	   			},
+		   			},
    			onChangeMonthYear:function(year, month, inst){
     			setTimeout(function(){
         		var selectDate = $.datepicker.formatDate("yymmdd",$("#datepicker").datepicker("getDate")); 
          		selectDate = $("#datepicker").val();
          		selectDate= selectDate.replaceAll("-", "");
          		console.log("onChangeMonthYear : "+selectDate)
-     			}, 0);
-   			}
- 	});
-	$('#datepicker').datepicker('setDate', new Date());
-}
+     					}, 0);
+   					}
+ 				});
+		$('#datepicker').datepicker('setDate', new Date());
+	}
 	function getMemberexset(dateStr){
 		console.log("dateStr "+dateStr);
 			$.ajax({
@@ -265,90 +272,105 @@
 						dataType : "json"
 					})
 		}
-	
-		$("#changeDate").click(changeDateHandler);
-		function changeDateHandler(){
-			$("#datepicker").remove();
-			htmlVal=`
-				<input type="text" id="datepicker" 
-				<%String datepickerToday = new java.text.SimpleDateFormat("yyyyMMdd").format(new java.util.Date());%>
-				placeholder="<%=datepickerToday%>">
-				`
-				$(".forChangeDate").append(htmlVal);
-				$("#datepicker").click(datepickerHandler);
-			}
- 		
-		function deleteDayExSetHandler(result){
-			   console.log("deleteDayExSetHandler 돌아감?")
-			   var deleteForDayExSet = $(this).parents(".exSetForDay_one").data("dayexset");
-			   console.log(deleteForDayExSet);
-				$.ajax({
-					url : "${pageContext.request.contextPath}/memberexset/delete",
-					type : "post",
-					data : {dayExSet : deleteForDayExSet},
-					success :  function(){
-						console.log("success");
-						location.reload(true);
-						},
-					error :  function(){
-						console.log("error");},
-					dataType : "json"
-				})
+	$("#changeDate").click(changeDateHandler);
+	function changeDateHandler(){
+		$("#datepicker").remove();
+		htmlVal=`
+			<input type="text" id="datepicker" 
+			<%String datepickerToday = new java.text.SimpleDateFormat("yyyyMMdd").format(new java.util.Date());%>
+			placeholder="<%=datepickerToday%>">
+			`
+			$(".forChangeDate").append(htmlVal);
+			$("#datepicker").click(datepickerHandler);
 		}
-		let sendDayExSet = "";
-		function sendDayExSetHandler(result){
-			sendDayExSet=$(this).parents(".exSetForDay_one").data("dayexset")
-			console.log("sendDayExSet : "+sendDayExSet);
-			//document.addEventListener("submit",updateDayExSetHandler(sendDayExSet));
-			$(".updateDayExSet").click(updateDayExSetHandler)
-		}
-		function updateDayExSetHandler(result){
-			console.log("updateDayExSetHandler : ");
-			console.log(sendDayExSet);
-			console.log(result);
-			 $.ajax({
-				url:"${pageContext.request.contextPath}/memberexset/update",
-				type: "post",
-				data : {dayExSet : sendDayExSet
-				,exerciseSet : $(".addExerciseSet").val()
-				,exerciseNumber : $(".addExerciseNumber").val()
-				,exerciseWeight : $(".addExerciseWeight").val()}
-				,success : function(result){
-					location.reload(true);
-					}
-				,error : function(){
-					console.log("error");
-					}
-				});
-			 event.preventDefault();
-			}
-		$(".dayExSetPart").click(dayExSetPartHandler);
-		function dayExSetPartHandler(){
-			
-			var selectPartDay=$(".DateHead").html();
-			selectPartDay = selectPartDay.trim();
-			selectPartDay= selectPartDay.replaceAll(".", "");
-			console.log(selectPartDay);
-			var dayExSet = selectPartDay+"${member.memberId}"
-			console.log(dayExSet);
-			console.log($(this).data("part"));
+	function deleteDayExSetHandler(result){
+		   console.log("deleteDayExSetHandler 돌아감?")
+		   var deleteForDayExSet = $(this).parents(".exSetForDay_one").data("dayexset");
+		   console.log(deleteForDayExSet);
 			$.ajax({
-				url:"${pageContext.request.contextPath}/memberexset/part",
-				type: "get",
-				data : {dayExSet : dayExSet
-				,part : $(this).data("part")
-				}
-				,success : function(result){
+				url : "${pageContext.request.contextPath}/memberexset/delete",
+				type : "post",
+				data : {dayExSet : deleteForDayExSet},
+				success :  function(){
 					console.log("success");
-					}
-				,error : function(){
-					console.log("error");
-					},	
+					location.reload(true);
+					},
+				error :  function(){
+					console.log("error");},
 				dataType : "json"
-			}); 
-			
-			
-		}		
+			})
+	}
+	let sendDayExSet = "";
+	function sendDayExSetHandler(result){
+		sendDayExSet=$(this).parents(".exSetForDay_one").data("dayexset")
+		console.log("sendDayExSet : "+sendDayExSet);
+		//document.addEventListener("submit",updateDayExSetHandler(sendDayExSet));
+		$(".updateDayExSet").click(updateDayExSetHandler)
+	}
+	function updateDayExSetHandler(result){
+		console.log("updateDayExSetHandler : ");
+		console.log(sendDayExSet);
+		console.log(result);
+		 $.ajax({
+			url:"${pageContext.request.contextPath}/memberexset/update",
+			type: "post",
+			data : {dayExSet : sendDayExSet
+			,exerciseSet : $(".addExerciseSet").val()
+			,exerciseNumber : $(".addExerciseNumber").val()
+			,exerciseWeight : $(".addExerciseWeight").val()}
+			,success : function(result){
+				location.reload(true);
+				}
+			,error : function(){
+				console.log("error");
+				}
+			});
+		 event.preventDefault();
+		}
+	$(".dayExSetPart").click(dayExSetPartHandler);
+	function dayExSetPartHandler(){
+		
+		var selectPartDay=$(".DateHead").html();
+		selectPartDay = selectPartDay.trim();
+		selectPartDay= selectPartDay.replaceAll(".", "");
+		console.log(selectPartDay);
+		var dayExSet = selectPartDay+"${member.memberId}"
+		console.log(dayExSet);
+		console.log($(this).data("part"));
+		$.ajax({
+			url:"${pageContext.request.contextPath}/memberexset/part",
+			type: "get",
+			data : {dayExSet : dayExSet
+			,part : $(this).data("part")
+			}
+			,success : function(result){
+				htmlVal = '	<div class="exSetForDay">';
+				for (var i = 0; i < result.length; i++) {
+					htmlVal += '<div class="exSetForDay_one card col-xl-3 text-center" data-dayexset="'+result[i].dayExSet+'" data-ecode="'+result[i].ecode+'"><div>'+result[i].exName+'</div><div>'+result[i].exerciseWeight+'kg</div><div>'+result[i].exerciseNumber+
+					'회</div><div>'+result[i].exerciseSet+
+					'세트</div><div ><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="sendDayExSet">수정</button><button type="button" class="deleteDayExSet">삭제</button></div></div>'
+						/* 	+ result[i].exerciseSet+'</div><div>
+							+ result[i].exerciseNumber+'</div><div>
+							+ result[i].exerciseNumber+'</div> */
+				}
+				htmlVal += '</div>'
+				console.log(result);
+				//addEventAfterDisplay(".deleteDayExSet", deleteDayExSetHandler);
+				$(".tab-content .partclass.active").html(htmlVal);
+				$(".deleteDayExSet").click(deleteDayExSetHandler);
+				$(".sendDayExSet").click(sendDayExSetHandler);
+			/* 	var partDate=$(".DateHead").html();
+				partDate = partDate.trim();
+				partDate= partDate.replaceAll(".", "");
+				console.log(partDate);
+				$("#home-tap").click(displayHome(partDate)); */
+				}
+			,error : function(){
+				console.log("error");
+				},	
+			dataType : "json"
+		}); 
+	}		
 	</script>
 </body>
 </html>

@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import kh.project.dml.board.model.dao.FpBoardDao;
 import kh.project.dml.board.model.vo.FpBoardVo;
 
-
+@Service
 public interface FpBoardService {
 
 	
 	public List<FpBoardVo> selectList();
-	public FpBoardVo selectOne(int commentNum);
+	public FpBoardVo selectOne(int boardNo);
 	public int insert(FpBoardVo vo);
 	public int update(FpBoardVo vo);
-	public int delete(int commentNum);
+	public int delete(int boardNo);
 }

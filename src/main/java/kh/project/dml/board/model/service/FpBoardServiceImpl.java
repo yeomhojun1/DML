@@ -19,8 +19,8 @@ public class FpBoardServiceImpl implements FpBoardService {
 		return fpBoardDao.selectList();
 	}
 	@Override
-	public FpBoardVo selectOne(int commentNum) {
-		return fpBoardDao.selectOne(commentNum);
+	public FpBoardVo selectOne(int boardNo) {
+		return fpBoardDao.selectOne(boardNo);
 	}
 	@Override
 	public int insert(FpBoardVo vo) {
@@ -31,7 +31,7 @@ public class FpBoardServiceImpl implements FpBoardService {
 		return fpBoardDao.update(vo);
 	}
 	@Override
-	public int delete(int commentNum) {
-		return fpBoardDao.delete(commentNum);
+	public int delete(int boardNo) {
+		return fpBoardDao.delete(boardNo);
 	}
 }

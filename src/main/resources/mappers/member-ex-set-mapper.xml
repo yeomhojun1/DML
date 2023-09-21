@@ -8,6 +8,10 @@
 	<select id="selectOne" resultType="FpMemberExSetVo" parameterType="string">
 		SELECT * FROM MEMBER_EX_SET WHERE DAY_EX_SET=#{dayExSet}
 	</select>
+	<select id="selectPart" resultType="FpMemberExSetVo" parameterType="string">
+	<bind name="dayExSet" value="'%'+dayExSet+'%'"/>
+		SELECT * FROM MEMBER_EX_SET M JOIN EXERCISE E USING (ECODE) WHERE M.DAY_EX_SET LIKE #{dayExSet} AND E.PART=#{part}
+	</select>
 	
 	<insert id="insert" parameterType="FpMemberExSetVo">
 		INSERT INTO MEMBER_EX_SET
