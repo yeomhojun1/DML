@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<main id="tab1">
 				<div class="container-fluid px-4">
 					<!-- Begin Page Content -->
@@ -71,54 +72,23 @@
 							<div class="row row-menu beginner active">
 
 							<!-- Color System 1 -->
+							
+							<!-- foreach로 목록들 불러오게 하는거 private List<FpSuplementVo> fpSuplemenList;  -->
 							<div class="row col-lg-6 beginner">
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-primary text-white shadow">
-										
-										<button class="btn-menu card-body beginner-btn btn-sub1 active" data-toggle="menu-1"><h5>단백질</h5></button>
-											
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-success text-white shadow">
-									
-											<button class="btn-menu card-body beginner-btn btn-sub2" data-toggle="menu-2"><h5>탄수화물</h5></button>
-									
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-info text-white shadow">
-										<button class="btn-menu card-body beginner-btn btn-sub3" data-toggle="menu-3"><h5>종합비타민</h5></button>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-warning text-white shadow">
-										
-											<button class="btn-menu card-body beginner-btn btn-sub4" data-toggle="menu-4"><h5>유산균</h5></button>
-											
+							<!--  varStatus 숫자 자동으로 1,2,3~ 하게 하는것 -->
+								<c:forEach items="${nutruentlist }" var="nutruent" varStatus="vs">
+									<div class="col-lg-12 mb-2">
+										<div class="card bg-primary text-white shadow">
+											<button class="btn-menu card-body beginner-btn btn-sub${vs.count }" data-toggle="menu-${vs.count }"><h5>${nutruent.nutrient }</h5></button>
 										</div>
 									</div>
-								
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-danger text-white shadow">
-										
-											<button class="btn-menu card-body beginner-btn btn-sub5" data-toggle="menu-5"><h5>섬유질</h5></button>
-											
-										</div>
-									</div>
-								
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-secondary text-white shadow">
-										
-											<button class="btn-menu card-body beginner-btn btn-sub6" data-toggle="menu-6"><h5>글루타민</h5></button>
-											
-										</div>
-									
-
-								</div>
-
+								</c:forEach>
 							</div>
+
+							
+							
 							<div class="row col-lg-6 btn-menu menu-1 active">
+
 								<div class="col-lg-12 mb-2 btn-menu-sub">
 									<div class="card bg-primary text-white shadow">
 										<div class="card-body">

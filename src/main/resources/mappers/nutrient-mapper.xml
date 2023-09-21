@@ -2,8 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="nutrient">
 
-<select id="selectList" resultType="FpNutrientVo">
-		select * from nutrient
+		<!-- nuruient vo 와 suplement vo 합쳐지는 resultmap  -->
+	<resultMap type="FpNutrientVo" id="selectNutrientAndSuplementMap">
+		<id column="nutrientId" property="nutrientId"/>
+		<result column="nutrient" property="nutrient"/>
+		<result column="comment" property="comment"/>
+		<result column="intake" property="intake"/>
+		<result column="workmanship" property="workmanship"/>
+		<collection property="fpSuplemenList" ofType="FpSuplementVo">
+			<id column="suplementno" property="suplementno"/>
+			<result column="link" property="link"/>
+			<result column="suplementname" property="suplementname"/>
+			<result column="nutrientId" property="nutrientId"/>
+		</collection>
+	</resultMap>
+	
+	<!-- resultMap id 값을 위에 있는 코드에 복붙해야함 그래야 resultMap 으로 list를 불러올수있음  -->
+	<select id="selectList" resultMap="selectNutrientAndSuplementMap">
+		select * from nutrient left outer join suplement using (NUTRIENTID)
 	</select>
 	
 	<select id="selectOne" resultType="FpNutrientVo" parameterType="_int">
