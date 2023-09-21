@@ -44,7 +44,7 @@ public class SecurityConfig {
         return http.getSharedObject(AuthenticationManagerBuilder.class)
                 .jdbcAuthentication()
                 .dataSource(dataSource)
-                .usersByUsernameQuery("SELECT username, password, userEnabled FROM users WHERE username = ?")
+                .usersByUsernameQuery("SELECT username, password, user_enabled FROM users WHERE username = ?")
                 .authoritiesByUsernameQuery("SELECT username, authorities FROM users WHERE username = ?")
                 .passwordEncoder(encoder()).and().build();
     }

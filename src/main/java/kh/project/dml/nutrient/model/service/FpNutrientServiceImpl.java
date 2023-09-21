@@ -16,8 +16,8 @@ public class FpNutrientServiceImpl implements FpNutrientService {
 	private FpNutrientDao fpNutrientDao;
 	
 	@Override
-	public List<FpNutrientVo> selectList()  {
-		return fpNutrientDao.selectList();
+	public List<FpNutrientVo> selectList(int workmanship)  {
+		return fpNutrientDao.selectList(workmanship);
 	}
 	@Override
 	public FpNutrientVo selectOne(int nutrientId)  {

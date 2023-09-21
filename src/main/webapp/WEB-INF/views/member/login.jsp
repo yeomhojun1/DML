@@ -182,6 +182,11 @@ label {
 						<label class="form-control-label">PASSWORD</label>
 						<input type="password" name="password" id="password" class="form-control">
                     </div>
+					<div class="form-group">
+						<label>
+							<input type="checkbox" name="useCookie">&nbsp<label class="form-control-label">로그인유지</label>
+						</label>
+					</div>
                     <div class="form-group social-form">
 						<a href="${ naver_url }"><img class="socialbtn" src="${pageContext.request.contextPath }/resources/images/social/navericon.png"></a>
 						<a href="${ google_url }"><img class="socialbtn" src="${pageContext.request.contextPath }/resources/images/social/googleicon.png"></a>

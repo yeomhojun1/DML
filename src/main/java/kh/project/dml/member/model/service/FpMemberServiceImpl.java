@@ -57,7 +57,7 @@ public class FpMemberServiceImpl implements FpMemberService {
     public FpUsersVo create(UserCreateForm userMember) {
     	FpUsersVo user = new FpUsersVo();
         user.setUsername(userMember.getUsername());
-        user.setPassword(passwordEncoder.encode(userMember.getPassword1()));
+        user.setPassword(passwordEncoder.encode(userMember.getPassword()));
         user.setUserEnabled(1);
         user.setAuthorities("ROLE_MEMBER");
         this.fpMemberRepository.saveUser(user);
@@ -79,7 +79,7 @@ public class FpMemberServiceImpl implements FpMemberService {
     public FpUsersVo socialCreate(SocialCreateForm userMember) {
     	FpUsersVo user = new FpUsersVo();
         user.setUsername(userMember.getUsername());
-        user.setPassword(passwordEncoder.encode(userMember.getPassword1()));
+        user.setPassword(passwordEncoder.encode(userMember.getPassword()));
         user.setUserEnabled(1);
         user.setAuthorities("ROLE_SOCIAL");
         this.fpMemberRepository.saveUser(user);
@@ -113,7 +113,12 @@ public class FpMemberServiceImpl implements FpMemberService {
 	    if(user == null) {
 	        return null;
 	    }
-
+	    
+	    // 사용자가 정지 상태면 null 반환
+	    if(user.getUserEnabled() == 0) {
+	    	return null;
+	    }
+	    System.out.println(vo.getPassword());
 	    // 2. 사용자의 암호화된 비밀번호와 사용자가 입력한 평문 비밀번호를 암호화한 것을 비교합니다.
 	    if(passwordEncoder.matches(vo.getPassword(), user.getPassword())) {
 	        // 비밀번호가 일치하면, 사용자 정보 반환
@@ -144,11 +149,6 @@ public class FpMemberServiceImpl implements FpMemberService {
 	@Override
 	public void keepLogin(String memberId, String sessionId, Date expire) {
 		dao.keepLogin(memberId, sessionId, expire);
-	}
-	
-	@Override
-	public FpMemberVo checkSession(String sessionId) {
-		return dao.checkSession(sessionId);
 	}
 	
 	@Override

@@ -174,7 +174,7 @@
                                 <input type="text" name="weight" maxlength=5 onkeypress="return isDouble(event)" class="form-control">
                             </div>
                             <input type="hidden" name="username" value="${member.memberId}">
-                            <input type="hidden" name="password1" value="SOCIAL_USER">
+                            <input type="hidden" name="password" value="SOCIAL_USER">
                             <input type="hidden" name="name" value="${member.mname}">
                             <input type="hidden" name="googleid" value="${member.googleid}">
 						    <input type="hidden" name="naverid" value="${member.naverid}">

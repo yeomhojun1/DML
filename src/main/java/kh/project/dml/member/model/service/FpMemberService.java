@@ -29,8 +29,6 @@ public interface FpMemberService {
 	void delete(String username);
 
 	void keepLogin(String memberId, String sessionId, Date expire);
-	
-	FpMemberVo checkSession(String sessionId);
 
 	FpMemberVo checkLoginBefore(String loginCookie);
 
