@@ -8,8 +8,8 @@ import lombok.Data;
 @Component
 public class FpSuplementVo {
 
-
-	private int suplemenno;
+	private int suplementno;
 	private String link;
+	private String suplementname;
 	private int nutrientId;
 }

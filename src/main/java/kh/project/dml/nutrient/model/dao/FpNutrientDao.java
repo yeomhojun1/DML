@@ -15,8 +15,8 @@ public class FpNutrientDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<FpNutrientVo> selectList()  {
-		return sqlSession.selectList("nutrient.selectList");
+	public List<FpNutrientVo> selectList(int workmanship)  {
+		return sqlSession.selectList("nutrient.selectList",workmanship);
 	}
 	public FpNutrientVo selectOne(int nutrientId) {
 		return sqlSession.selectOne("nutrient.selectOne", nutrientId);

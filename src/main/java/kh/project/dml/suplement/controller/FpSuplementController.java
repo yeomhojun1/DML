@@ -19,27 +19,27 @@ public class FpSuplementController {
 	private FpSuplementService fpSuplementServiceImpl;
 	
 	@GetMapping("list")
-	public ModelAndView selectListsuplemen(ModelAndView mv) {
+	public ModelAndView selectListsuplement(ModelAndView mv) {
 		mv.addObject("suplementlist", fpSuplementServiceImpl.selectList());
 		mv.setViewName("suplement/list");
 		return mv;
 	}
 	
 	@GetMapping("/one")
-	public ModelAndView selectOnesuplemen(ModelAndView mv, int suplemenno) {
+	public ModelAndView selectOnesuplement(ModelAndView mv, int suplemenno) {
 		mv.addObject("suplementone", fpSuplementServiceImpl.selectOne(suplemenno));
 		mv.setViewName("suplement/one");
 		return mv;
 	}
 	
 	@GetMapping("/insert")
-	public ModelAndView insertsuplemen(ModelAndView mv) {
+	public ModelAndView insertsuplement(ModelAndView mv) {
 		mv.setViewName("suplement/insert");
 		return mv;
 		
 	}
 	@PostMapping("/insert")
-	public String insertsuplemen(RedirectAttributes redirectAttr, FpSuplementVo vo) {
+	public String insertsuplement(RedirectAttributes redirectAttr, FpSuplementVo vo) {
 		String viewPage = "redirect:/";
 		int result = fpSuplementServiceImpl.insert(vo);
 		try {
@@ -56,8 +56,8 @@ public class FpSuplementController {
 		return viewPage;
 	}
 	@GetMapping("/update")
-	public ModelAndView updatesuplemen(ModelAndView mv, int suplemenno ) {
-		mv.addObject("suplementone", fpSuplementServiceImpl.selectOne(suplemenno));
+	public ModelAndView updatesuplement(ModelAndView mv, int suplemenno ) {
+		mv.addObject("suplementupdate", fpSuplementServiceImpl.selectOne(suplemenno));
 		mv.setViewName("suplement/update");
 		return mv;
 	}

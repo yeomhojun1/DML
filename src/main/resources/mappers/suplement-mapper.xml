@@ -7,21 +7,21 @@
 	</select>
 	
 	<select id="selectOne" resultType="FpSuplementVo" parameterType="_int">
-	select * from suplement  where suplemenno=#{suplemenno}
+	select * from suplement  where suplementno=#{suplementno}
 	</select>
 	
 	<insert id="insert" parameterType="FpSuplementVo">
-	insert into suplement values(#{suplemenno}, #{link},#{nutrientId})
+	insert into suplement values(#{suplementno}, #{link},#{suplementname},#{nutrientId})
 	</insert>
 	
 	<update id="update" parameterType="FpSuplementVo">
-	update suplement set suplemenno = #{suplemenno},
-	link = #{link} , nutrientId = #{nutrientId}
-	where suplemenno = #{suplemenno}
+	update suplement set suplementno = #{suplementno},
+	link = #{link} , nutrientId = #{nutrientId},suplementname = #{suplementname}
+	where suplementno = #{suplementno}
 	</update>
 	
 	<delete id="delete" parameterType="_int">
-	delete from suplement where suplemenno = #{suplemenno}
+	delete from suplement where suplementno = #{suplementno}
 	</delete>
   
 </mapper>
