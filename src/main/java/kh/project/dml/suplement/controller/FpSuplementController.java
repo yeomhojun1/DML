@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kh.project.dml.daydiet.model.vo.FpDayDietVo;
+
 import kh.project.dml.suplement.model.service.FpSuplementService;
 import kh.project.dml.suplement.model.vo.FpSuplementVo;
 

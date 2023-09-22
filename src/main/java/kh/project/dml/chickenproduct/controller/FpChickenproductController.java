@@ -10,7 +10,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.project.dml.chickenproduct.model.service.FpChickenproductServiceImpl;
 import kh.project.dml.chickenproduct.model.vo.FpChickenproductVo;
-import kh.project.dml.daydiet.model.vo.FpDayDietVo;
+
 
 @Controller
 @RequestMapping("/chickenproduct")
