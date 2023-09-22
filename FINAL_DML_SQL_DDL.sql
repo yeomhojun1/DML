@@ -11,7 +11,7 @@ DROP TABLE "ADMIN";
 DROP TABLE "MEMBER";
 DROP TABLE "USERS";
 DROP TABLE "CHICKENPRODUCT";
-DROP TABLE "SUPLEMENID";
+DROP TABLE "SUPLEMENT";
 DROP TABLE "NUTRIENT";
 DROP TABLE "PRODUCTTYPE";
 DROP SEQUENCE board_no_seq;
@@ -227,15 +227,17 @@ COMMENT ON COLUMN "CHICKENPRODUCT"."PRICE" IS '가격';
 
 COMMENT ON COLUMN "CHICKENPRODUCT"."TYPE" IS '상품등급';
 
-CREATE TABLE "SUPLEMENID" (
-	"SUPLEMENNO"	NUMBER(10)		NOT NULL,
-	"LINK"	VARCHAR2(512)		NULL,
+CREATE TABLE "SUPLEMENT" (
+	"SUPLEMENTNO"	NUMBER(10)		NOT NULL,
+	"SUPLEMENTNAME"	VARCHAR2(90)		NOT NULL,
+	"LINK"	VARCHAR2(1000)		NULL,
 	"NUTRIENTID"	NUMBER(2)		NOT NULL
 );
 
-COMMENT ON COLUMN "SUPLEMENID"."SUPLEMENNO" IS '보충제번호';
+COMMENT ON COLUMN "SUPLEMENT"."SUPLEMENTNO" IS '보충제번호';
 
-COMMENT ON COLUMN "SUPLEMENID"."LINK" IS '링크';
+COMMENT ON COLUMN "SUPLEMENT"."LINK" IS '링크';
+
 
 ALTER TABLE "BOARD" ADD CONSTRAINT "PK_BOARD" PRIMARY KEY (
 	"BOARD_NO"
@@ -301,7 +303,7 @@ ALTER TABLE "CHICKENPRODUCT" ADD CONSTRAINT "PK_CHICKENPRODUCT" PRIMARY KEY (
 	"CHICKENNO"
 );
 
-ALTER TABLE "SUPLEMENID" ADD CONSTRAINT "PK_SUPLEMENID" PRIMARY KEY (
+ALTER TABLE "SUPLEMENT" ADD CONSTRAINT "PK_SUPLEMENT" PRIMARY KEY (
 	"SUPLEMENNO"
 );
 
@@ -392,7 +394,7 @@ REFERENCES "PRODUCTTYPE" (
 	"TYPE"
 );
 
-ALTER TABLE "SUPLEMENID" ADD CONSTRAINT "FK_NUTRIENT_TO_SUPLEMENID_1" FOREIGN KEY (
+ALTER TABLE "SUPLEMENT" ADD CONSTRAINT "FK_NUTRIENT_TO_SUPLEMENT_1" FOREIGN KEY (
 	"NUTRIENTID"
 )
 REFERENCES "NUTRIENT" (
@@ -400,6 +402,8 @@ REFERENCES "NUTRIENT" (
 );
 
 ----------insert 문
+--$ 떄문에 입력창 뜰떄 
+set define off;
 --팔운동
 insert into exercise   values(10001,'덤벨 리스트 컬','팔',' 1.팔뚝을 벤치에 기대고 손바닥이 위쪽을 향하도록 덤벨을 잡습니다. <br>2.손목을 반원 모양으로 천천히 위쪽으로 구부립니다. <br>3.시작 위치로 돌아가서 반복하세요.' ,'<iframe width="480" height="480" src="https://www.youtube.com/embed/S-ynXc4M-mY" title="Simplified: Wrist Curl Quick #Howto" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>');
 insert into exercise   values(10002, '바벨 리스트 컬','팔',' 1.뒤집힌(언더핸드) 그립으로 직선 바를 잡습니다.  <br>2.플랫 벤치 옆에 무릎을 꿇고 손목을 벤치 바로 옆에 두고 팔뚝을 벤치 위에 놓습니다.  <br>3.바벨을 손목이 펴질 때까지 아래로 당기십시오. <br>4.손목이 완전히 구부러질 때까지 바벨을 컬링합니다. <br>5.통제된 방식으로 낮추고 반복하십시오.','<iframe width="853" height="480" src="https://www.youtube.com/embed/si9MtuEcCc4" title="barbell wristcurl male front" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>');
@@ -472,10 +476,95 @@ INSERT INTO BOARD VALUES (board_no_seq.NEXTVAL,'ghwnswkd123@naver.com', '연습�
 INSERT INTO BOARD VALUES (board_no_seq.NEXTVAL,'ghwnswkd123@naver.com', '연습용 게시판 제목2', '연습용 게시판 내용@@','20230921', 0, '연습용 댓글', 1,0);
 select board_no , member_id,Board_title,board_content,TO_CHAR(board_date,'YYYY-MM-DD'),board_Count,bref,bstep,bleveL from board order by board_No desc;
 	
+ --영양소(초보자)
+insert into nutrient VALUES (1,'단백질','','','1');
+insert into nutrient VALUES (2,'탄수화물','','','1');
+insert into nutrient VALUES (3,'종합비타민','','','1');
+insert into nutrient VALUES (4,'유산균(프로바이오틱스)','','','1');
+insert into nutrient VALUES (5,'섬유질','','','1');
+insert into nutrient VALUES (6,'글루타민','','','1');
+--영양소(숙련자)
+insert into nutrient VALUES (7,'카페인(집중력, 유산소 능력 증가)','','','2');
+insert into nutrient VALUES (8,'크레아틴(웨이트 능력 증가)','','','2');
+insert into nutrient VALUES (9,'베타알라닌(웨이트 능력 증가)','','','2');
+insert into nutrient VALUES (10,'Nitrate(중강도 운동능력 증가)','','','2');
+insert into nutrient VALUES (11,'Sodium Bicarbonate(웨이트 능력 증가)','','','2');
+insert into nutrient VALUES (12,'스포츠 드링크(에너지, 수분공급)','','','2');
+--보충제
+ --단백질1
+INSERT INTO suplement VALUES (1,'옵티멈 골드 스탠다드 웨이(WPI+WPC)','https://kr.iherb.com/pr/optimum-nutrition-gold-standard-100-whey-double-rich-chocolate-5-lbs-2-27-kg/27509',1 );
+INSERT INTO suplement VALUES (2,'Allmax 웨이프로틴 (WPC+WPI)','https://kr.iherb.com/pr/allmax-classic-allwhey-100-whey-protein-chocolate-5-lbs-2-27-kg/69100',1);
+INSERT INTO suplement VALUES (3,'옵티멈 골드스탠다드 웨이(WPI+WPC)','https://www.coupang.com/vp/products/6424463926?itemId=13837679944&vendorItemId=3180840444&src=1139000&spec=10799999&addtag=400&ctag=6424463926&lptag=AF7910856&itime=20230922123020&pageType=PRODUCT&pageValue=6424463926&wPcid=11963655808335908086931&wRef=&wTime=20230922123020&redirect=landing&traceid=V0-181-0204c0f24c9440c6&mcid=098574f67ca042f6852c2b3f4e3ba6cf&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',1);
+INSERT INTO suplement VALUES (4,'컴뱃 100%(WPI+WPC)','https://www.coupang.com/vp/products/6731349444?itemId=3071491018&vendorItemId=4041827021&src=1139000&spec=10799999&addtag=400&ctag=6731349444&lptag=AF7910856&itime=20230922123035&pageType=PRODUCT&pageValue=6731349444&wPcid=11963655808335908086931&wRef=&wTime=20230922123035&redirect=landing&traceid=V0-181-c7a4d267bbb9b282&mcid=d09a38ad8feb4baa8fe3d0da00302706&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',1);
+INSERT INTO suplement VALUES (5,'임팩트 웨이프로틴(WPC)','https://www.myprotein.co.kr/sports-nutrition/impact-whey-protein/10530943.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=22450_1695353900_98159a33c55eef4aeec877afc66890cd',1);
+INSERT INTO suplement VALUES (6,'임팩트 웨이 아이솔레이트(WPI)','https://www.myprotein.co.kr/sports-nutrition/impact-whey-isolate/10530911.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=22450_1695353957_b63ea060631ee056b946229878262519',1);
+INSERT INTO suplement VALUES (7,'신타6(WPC+WPI), 맛 위주 제품)','https://www.coupang.com/vp/products/6573830453?itemId=99053681&vendorItemId=3180840758&src=1139000&spec=10799999&addtag=400&ctag=6573830453&lptag=AF7910856&itime=20230922123939&pageType=PRODUCT&pageValue=6573830453&wPcid=11963655808335908086931&wRef=&wTime=20230922123939&redirect=landing&traceid=V0-181-b7758b3c4e64c943&mcid=5f991a1c8a0145e0aa4e9dacf222dd9e&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',1);
+INSERT INTO suplement VALUES (8,'EVL Stacked','https://www.coupang.com/vp/products/6422282284?itemId=18367904981&vendorItemId=85511488783&src=1139000&spec=10799999&addtag=400&ctag=6422282284&lptag=AF7910856&itime=20230922124014&pageType=PRODUCT&pageValue=6422282284&wPcid=11963655808335908086931&wRef=&wTime=20230922124014&redirect=landing&traceid=V0-181-1b841015494d2887&mcid=ed430fbf3c7e4454b66cbc1d5c891fb1&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',1);
+INSERT INTO suplement VALUES (9,'EVL 100% Whey','https://www.coupang.com/vp/products/6422282333?itemId=13823103047&vendorItemId=81073326157&src=1139000&spec=10799999&addtag=400&ctag=6422282333&lptag=AF7910856&itime=20230922124139&pageType=PRODUCT&pageValue=6422282333&wPcid=11963655808335908086931&wRef=&wTime=20230922124139&redirect=landing&traceid=V0-181-64380bec0ffd71ad&mcid=d9e8c01ad82b497289131ac9d8aa892b&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',1);
+----탄수화물2
+INSERT INTO suplement VALUES(10,'청년곡물 귀리가루 3kg 17,300원','https://www.coupang.com/vp/products/171730878?vendorItemId=4242511760&src=1139000&spec=10799999&addtag=400&ctag=171730878&lptag=AF7910856&itime=20230922124604&pageType=PRODUCT&pageValue=171730878&wPcid=11963655808335908086931&wRef=&wTime=20230922124604&redirect=landing&traceid=V0-181-d9af9bf788a73fe3&mcid=118420b281fa4567ac1560e9ce4aa8cf&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',2);
+INSERT INTO suplement VALUES(11,'인스턴트 오트 ','https://www.myprotein.co.kr/sports-nutrition/100-instant-oats/10529296.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=10751_1695359474_3cd5329c2471289f7585f789db8cbdee',2);
+--종합비타민3
+INSERT INTO suplement VALUES(12,'투퍼데이 캡슐','https://kr.iherb.com/pr/life-extension-two-per-day-multivitamin-60-capsules/86456',3);
+INSERT INTO suplement VALUES(13,'투퍼데이 태블릿','https://kr.iherb.com/pr/life-extension-two-per-day-multivitamin-120-tablets/86454',3);
+INSERT INTO suplement VALUES(14,'알파맨','https://www.myprotein.co.kr/sports-nutrition/alpha-men-multivitamin-tablets/10530421.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=10751_1695359652_f9ecb193c996d168a2ec8ee8e994feca',3);
+INSERT INTO suplement VALUES(15,'Thorne Research 종합비타민','https://kr.iherb.com/pr/thorne-basic-nutrients-2-day-60-capsules/85476',3);
+INSERT INTO suplement VALUES(16,'쏜리서치 종합비타민','https://www.coupang.com/vp/products/433053?itemId=1180358&vendorItemId=3191206506&src=1139000&spec=10799999&addtag=400&ctag=433053&lptag=AF7910856&itime=20230922141638&pageType=PRODUCT&pageValue=433053&wPcid=11963655808335908086931&wRef=&wTime=20230922141638&redirect=landing&traceid=V0-181-51da413cc001c268&mcid=700d3ed719374b249426162963d1b779&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=',3);
+INSERT INTO suplement VALUES(17,'얼라이브','https://www.coupang.com/vp/products/1152619585?itemId=2127383548&vendorItemId=70125946615&src=1139000&spec=10799999&addtag=400&ctag=1152619585&lptag=AF7910856&itime=20230922141715&pageType=PRODUCT&pageValue=1152619585&wPcid=11963655808335908086931&wRef=&wTime=20230922141715&redirect=landing&traceid=V0-181-b565f5bf26622b78&mcid=e09f8d203e7943c9bd837437b1140173&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',3);
+--유산균(프로바이오틱스)4
+INSERT INTO suplement VALUES(18,'캘리포니아골드 50억','https://kr.iherb.com/pr/california-gold-nutrition-lactobif-5-probiotics-5-billion-cfu-60-veggie-capsules/64006',4);
+INSERT INTO suplement VALUES(19,'자로우 50억','https://kr.iherb.com/pr/jarrow-formulas-jarro-dophilus-eps-5-billion-120-veggie-caps/7006',4);
+INSERT INTO suplement VALUES(20,'자로우 50억','https://www.coupang.com/vp/products/416189?itemId=277809413&vendorItemId=3179568952&src=1139000&spec=10799999&addtag=400&ctag=416189&lptag=AF7910856&itime=20230922142014&pageType=PRODUCT&pageValue=416189&wPcid=11963655808335908086931&wRef=&wTime=20230922142014&redirect=landing&traceid=V0-181-0a308c213d5fd665&mcid=289de57f9ab345fcb4bf114197b17372&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',4);
+INSERT INTO suplement VALUES(21,'프로바이오틱스 150억','https://www.myprotein.co.kr/sports-nutrition/daily-probiotic/11897338.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=10751_1695360053_e4969aad974503a8e1acff0a8d73ef89',4);
+INSERT INTO suplement VALUES(22,'자로우 도필러스 (쿠팡, 국내 로켓배송)','https://www.coupang.com/vp/products/1528879?itemId=6662522&vendorItemId=3464692298&src=1139000&spec=10799999&addtag=400&ctag=1528879&lptag=AF7910856&itime=20230922142132&pageType=PRODUCT&pageValue=1528879&wPcid=11963655808335908086931&wRef=&wTime=20230922142132&redirect=landing&traceid=V0-181-8f3e5441fa09d7bc&mcid=f22c4b2f2f1b43c18b26fd311ea8817e&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',4);
+--섬유질 5
+INSERT INTO suplement VALUES(23,'이눌린','https://www.coupang.com/vp/products/30606?itemId=73304&vendorItemId=3086191674&src=1139000&spec=10799999&addtag=400&ctag=30606&lptag=AF7910856&itime=20230922142249&pageType=PRODUCT&pageValue=30606&wPcid=11963655808335908086931&wRef=&wTime=20230922142249&redirect=landing&traceid=V0-181-399055c646def9eb&mcid=02d5fc9fee5a4f4397ebe54fbf32e085&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',5);
+INSERT INTO suplement VALUES(24,'복함섬유질','https://www.coupang.com/vp/products/420194?itemId=1103903&vendorItemId=3181031489&src=1139000&spec=10799999&addtag=400&ctag=420194&lptag=AF7910856&itime=20230922142409&pageType=PRODUCT&pageValue=420194&wPcid=11963655808335908086931&wRef=&wTime=20230922142409&redirect=landing&traceid=V0-181-bf07ab4af31ca34a&mcid=beb8b05e8f1945cb87fba040bbd706f8&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',5);
+INSERT INTO suplement VALUES(25,'이눌린 순수분말','https://kr.iherb.com/pr/now-foods-certified-organic-inulin-prebiotic-pure-powder-8-oz-227-g/1100',5);
+INSERT INTO suplement VALUES(26,'복함섬유질','https://kr.iherb.com/pr/jarrow-formulas-gentle-fibers-soluble-insoluble-fibers-powder-16-5-oz-468-g-discontinued-item/201',5);
+INSERT INTO suplement VALUES(27,'이눌린 올리고당','https://www.myprotein.co.kr/sports-nutrition/100-inulin-powder/10530732.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=10751_1695360364_6dc2c45eb9bac17640c4e92dd4bf2539',5);
+--글루타민 6
+INSERT INTO suplement VALUES(28,'글루타민 분말','https://kr.iherb.com/pr/california-gold-nutrition-l-glutamine-powder-ajipure-gluten-free-16-oz-454-g/71027',6);
+INSERT INTO suplement VALUES(29,'글루타민 파우더 비건','https://www.coupang.com/vp/products/209304?itemId=2075029&vendorItemId=3088278048&src=1139000&spec=10799999&addtag=400&ctag=209304&lptag=AF7910856&itime=20230922142857&pageType=PRODUCT&pageValue=209304&wPcid=11963655808335908086931&wRef=&wTime=20230922142857&redirect=landing&traceid=V0-181-ad2bddec3da0a155&mcid=1c7398b7713542eeaa1c724c3a51682b&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',6);
+INSERT INTO suplement VALUES(30,'글루타민 아미노산','https://www.myprotein.co.kr/sports-nutrition/l-glutamine-powder/10636931.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=10751_1695360582_c13184395cf72b973883c4d46be9750a',6);
+--카페인 7
+INSERT INTO suplement VALUES(31,'GAT 카페인','https://kr.iherb.com/pr/gat-caffeine-metabolism-and-performance-100-tablets/71057',7);
+INSERT INTO suplement VALUES(32,'Teacrine(느린 카페인)','https://www.coupang.com/vp/products/1221155033?itemId=2212003672&vendorItemId=70209793289&src=1139000&spec=10799999&addtag=400&ctag=1221155033&lptag=AF7910856&itime=20230922164111&pageType=PRODUCT&pageValue=1221155033&wPcid=11963655808335908086931&wRef=&wTime=20230922164111&redirect=landing&traceid=V0-181-1161d76a4f328d36&mcid=508b0122b9554dafae80c57f543cd481&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',7);
+INSERT INTO suplement VALUES(33,'퓨어 카페인 200mg','https://www.myprotein.co.kr/sports-nutrition/pure-caffeine-tablets/10529801.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=10751_1695368519_67d73fd2ec4c6053881c65ccfd7e2164',7);
+--Sodium Bicarbonate(웨이트 능력 증가) 8
+INSERT INTO suplement VALUES(34,'식소다','https://www.coupang.com/vp/products/101204658?itemId=308663781&vendorItemId=3760493721&src=1139000&spec=10799999&addtag=400&ctag=101204658&lptag=AF7910856&itime=20230922163331&pageType=PRODUCT&pageValue=101204658&wPcid=11963655808335908086931&wRef=&wTime=20230922163331&redirect=landing&traceid=V0-181-e359d2cc6ce43267&mcid=dbce41bceb094fe3b25b4340da5b0519&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',8);
+--크레아틴(웨이트 능력 증가) 9
+INSERT INTO suplement VALUES(35,'크레아틴(크레아퓨어)(추천제품)','https://www.myprotein.co.kr/sports-nutrition/creapure-creatine-powder/10529740.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=10751_1695368605_f2f8c8c6d7095d04f51b00b4985db269',9);
+INSERT INTO suplement VALUES(36,'크레아틴 Now food','https://www.coupang.com/vp/products/65092914?itemId=219966955&vendorItemId=3531348859&src=1139000&spec=10799999&addtag=400&ctag=65092914&lptag=AF7910856&itime=20230922164418&pageType=PRODUCT&pageValue=65092914&wPcid=11963655808335908086931&wRef=&wTime=20230922164418&redirect=landing&traceid=V0-181-d98d37a352dc2b27&mcid=58f1ab482e604cdfa00d80d95e92a434&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',9);
+INSERT INTO suplement VALUES(37,'크레아틴 (AllMAX)','https://www.coupang.com/vp/products/211526931?vendorItemId=4503588269&src=1139000&spec=10799999&addtag=400&ctag=211526931&lptag=AF7910856&itime=20230922164445&pageType=PRODUCT&pageValue=211526931&wPcid=11963655808335908086931&wRef=&wTime=20230922164445&redirect=landing&traceid=V0-181-4b91612774083229&mcid=e6ac8e4a8f8948ed8490b4558e89391d&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',9);
+--스포츠 드링크(에너지, 수분공급) 10
+INSERT INTO suplement VALUES(38,'게토레이 1.5L 12개','https://www.coupang.com/vp/products/1650278?itemId=10099465&vendorItemId=3017121689&src=1139000&spec=10799999&addtag=400&ctag=1650278&lptag=AF7910856&itime=20230922164618&pageType=PRODUCT&pageValue=1650278&wPcid=11963655808335908086931&wRef=&wTime=20230922164618&redirect=landing&traceid=V0-181-146e6bf32c3f5ab0&mcid=362a702418044e5a934650616863aa91&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',10);
+INSERT INTO suplement VALUES(39,'파워에이드 1.5L 12개','https://www.coupang.com/vp/products/1650248?itemId=5795123&vendorItemId=4043017735&src=1139000&spec=10799999&addtag=400&ctag=1650248&lptag=AF7910856&itime=20230922164653&pageType=PRODUCT&pageValue=1650248&wPcid=11963655808335908086931&wRef=&wTime=20230922164653&redirect=landing&traceid=V0-181-bce033d202011ec7&mcid=e2be9225ae9b4780982e4f01253525e8&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',10);
+INSERT INTO suplement VALUES(40,'포카리스웨트 1.5L 12개','https://www.coupang.com/vp/products/1650776?itemId=999007&vendorItemId=3058671369&src=1139000&spec=10799999&addtag=400&ctag=1650776&lptag=AF7910856&itime=20230922164731&pageType=PRODUCT&pageValue=1650776&wPcid=11963655808335908086931&wRef=&wTime=20230922164731&redirect=landing&traceid=V0-181-2aac9d07526c5b55&mcid=07ffdbf271114518a8d60d213c79634c&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',10);
+INSERT INTO suplement VALUES(41,'게토레이 파우더','https://www.coupang.com/vp/products/8043221?itemId=35188995&vendorItemId=4041819023&src=1139000&spec=10799999&addtag=400&ctag=8043221&lptag=AF7910856&itime=20230922164808&pageType=PRODUCT&pageValue=8043221&wPcid=11963655808335908086931&wRef=&wTime=20230922164808&redirect=landing&traceid=V0-181-8b23744133557f7e&mcid=1fee1761d309435aa5953550fb796c77&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',10);
+INSERT INTO suplement VALUES(42,'게토레이 파우더 (대용량)','https://www.coupang.com/vp/products/1130600938?itemId=2098414197&vendorItemId=70097293127&src=1139000&spec=10799999&addtag=400&ctag=1130600938&lptag=AF7910856&itime=20230922164841&pageType=PRODUCT&pageValue=1130600938&wPcid=11963655808335908086931&wRef=&wTime=20230922164841&redirect=landing&traceid=V0-181-e5882885e665f0af&mcid=70e3c226bc66458ab40dd5dcd750d75e&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=',10);
+--Nitrate(중강도 운동능력 증가) 11
+INSERT INTO suplement VALUES(43,'Pump Mode 무맛','https://kr.iherb.com/pr/evlution-nutrition-pumpmode-non-stimulant-pump-accelerator-unflavored-4-44-oz-126-g/77320',11);
+INSERT INTO suplement VALUES(44,'Pump Mode 포도맛','https://kr.iherb.com/pr/evlution-nutrition-pumpmode-non-stimulant-pump-accelerator-unflavored-4-44-oz-126-g/77320',11);
+INSERT INTO suplement VALUES(45,'Pump Mode 무맛','https://www.coupang.com/vp/products/205187039?itemId=604042936&vendorItemId=4583172659&src=1139000&spec=10799999&addtag=400&ctag=205187039&lptag=AF7910856&itime=20230922170731&pageType=PRODUCT&pageValue=205187039&wPcid=11963655808335908086931&wRef=&wTime=20230922170731&redirect=landing&traceid=V0-181-4f399f8277677306&mcid=2c1f807261214a67a6e1ba2023be6394&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',11);
+INSERT INTO suplement VALUES(46,'Pump Mode 블루라츠','https://www.coupang.com/vp/products/205187038?itemId=604042923&vendorItemId=4583172612&src=1139000&spec=10799999&addtag=400&ctag=205187038&lptag=AF7910856&itime=20230922170816&pageType=PRODUCT&pageValue=205187038&wPcid=11963655808335908086931&wRef=&wTime=20230922170816&redirect=landing&traceid=V0-181-a335862c21f87e50&mcid=80033af9087b43c5a237ec310766ea7b&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',11);
+--베타알라닌(웨이트 능력 증가) 12
+INSERT INTO suplement VALUES(47,'Now Foods 베타알라닌','https://kr.iherb.com/pr/now-foods-sports-beta-alanine-pure-powder-17-6-oz-500-g/10940',12);
+INSERT INTO suplement VALUES(48,'프리마포스 베타알라닌','https://www.coupang.com/vp/products/1346776?itemId=5812375&vendorItemId=3259563401&src=1139000&spec=10799999&addtag=400&ctag=1346776&lptag=AF7910856&itime=20230922171706&pageType=PRODUCT&pageValue=1346776&wPcid=11963655808335908086931&wRef=&wTime=20230922171706&redirect=landing&traceid=V0-181-3345fb09a110b97f&mcid=247e1e222924407b86a2fb4b9eadcc60&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',12);
+INSERT INTO suplement VALUES(49,'베타알라닌','https://www.myprotein.co.kr/sports-nutrition/beta-alanine-powder/10529809.html?autocomplete=productsuggestion&affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=10751_1695370664_9a16509ff2d755cd942f8278d480f92b',12);
+INSERT INTO suplement VALUES(50,'Now 베타알라닌','https://www.coupang.com/vp/products/25110?itemId=63565&vendorItemId=3085691672&src=1139000&spec=10799999&addtag=400&ctag=25110&lptag=AF7910856&itime=20230922171831&pageType=PRODUCT&pageValue=25110&wPcid=11963655808335908086931&wRef=&wTime=20230922171831&redirect=landing&traceid=V0-181-4241ba6182004d6e&mcid=a99286919d7943989ab71a07936242dc&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=',12);
+
+SELECT * FROM NUTRIENT;
+COMMIT;
+ 
+ 
   
 commit;
 
 
+
+--insert 끝
+set define on;
 
 
 
