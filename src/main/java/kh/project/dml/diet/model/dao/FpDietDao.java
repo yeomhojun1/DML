@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kh.project.dml.diet.model.vo.FpDietVo;
-
-
-
+import kh.project.dml.diet.model.vo.FpDietVo;
 
 @Repository
 public class FpDietDao {

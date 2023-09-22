@@ -202,3 +202,14 @@ INSERT INTO FOOD_API (FOOD_CD, FOOD_NAME, CALORIE, CRABS, PROTEIN, FAT) VALUES (
 select * from food_api;
 
 commit;
+
+insert into diet values('', '77@77.77','2023-09-21',NULL, NULL) ;
+desc diet;
+select * from diet;
+select * from food;
+select * from member;
+
+alter table diet modify meal_code varchar2(200);
+alter table food modify meal_code varchar2(200);
+
+commit;

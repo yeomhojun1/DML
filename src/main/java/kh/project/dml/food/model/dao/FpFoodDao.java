@@ -20,6 +20,11 @@ public class FpFoodDao {
 	public FpFoodVo selectOne(String foodCd) {
 		return sqlSession.selectOne("food.selectOne", foodCd);
 	}
+	
+	public String mealCodeCheck(String mealCode) {
+		return sqlSession.selectOne("food.mealCodeCheck", mealCode);
+	}
+	
 	public int insert(FpFoodVo vo)  {
 		return sqlSession.insert("food.insert", vo);
 	}
