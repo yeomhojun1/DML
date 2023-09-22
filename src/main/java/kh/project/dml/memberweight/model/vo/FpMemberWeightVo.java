@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 public class FpMemberWeightVo {
 
-	private int weightNum;
+	
 	private String memberId;
 	private String weightDate;
 	private double weight;

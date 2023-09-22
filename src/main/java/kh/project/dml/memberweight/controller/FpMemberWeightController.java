@@ -20,17 +20,17 @@ import kh.project.dml.memberweight.model.vo.FpMemberWeightVo;
 public class FpMemberWeightController {
 	
 	@Autowired
-	private FpMemberWeightServiceImpl service;
+	private FpMemberWeightServiceImpl fpMemberWeightServiceImpl;
 	
-	@GetMapping("/weight2")
+	@GetMapping("/weight")
 	public String mainPageOpen9(Model model) {
 		model.addAttribute("fpMemberWeightVo" , new FpMemberWeightVo());
-		return "temp/weight2";
+		return "memberweight/weight2";
 	}
 	
 	
-//	update
-	@PostMapping("/weight2")
+//	update 체중관리
+	@PostMapping("/weight")
 	public String mainPageOpen10(@RequestParam String memberId, @RequestParam Date date, @RequestParam double weight, Model model) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		String weightDate = format.format(date);
@@ -38,26 +38,32 @@ public class FpMemberWeightController {
 		String nowDate = format.format(now);
 		
 		FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(memberId, weightDate, weight);
-		service.dateWeight(fpMemberWeightVo, nowDate);
-		return "temp/weight2";
+		fpMemberWeightServiceImpl.dateWeight(fpMemberWeightVo, nowDate);
+		return "memberweight/weight2";
 	}
 	
-	//	delete
+	//	delete 선택한 날짜의 데이터 삭제
 	 @PostMapping("/deleteWeight")
 	 public String mainPageOpen13(@RequestParam String memberId, @RequestParam String weightDate){
 			/* FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(weight); */
-		 service.deleteWeight(memberId, weightDate);
-	 	 return "temp/weight2";
+		 fpMemberWeightServiceImpl.deleteWeight(memberId, weightDate);
+	 	 return "memberweight/weight2";
 	  }
 	 
 	@GetMapping("/composition")
 	public String mainPageOpen11() {
-		return "temp/composition";
+		return "memberweight/composition";
 	}
 	
+	//근육량 체지방 insert
+	@PostMapping("/composition/delete")
+	public String mainPageOpen14(FpMemberWeightVo param) {
+		fpMemberWeightServiceImpl.insertUpdate(param);
+		return "memberweight/composition";
+	}
 	@GetMapping("/healthmap")
 	public String mainPageOpen12() {
-		return "temp/healthmap";
+		return "memberweight/healthmap";
 	}
 	
 }

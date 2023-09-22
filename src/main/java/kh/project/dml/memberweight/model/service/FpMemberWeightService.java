@@ -16,4 +16,8 @@ public interface FpMemberWeightService {
 	public int dateWeight(FpMemberWeightVo vo, String now);
 	
 	public int deleteWeight(String memberId, String weightDate);
+	
+	public int insertUpdateWeight(FpMemberWeightVo vo);
+	public int insertUpdate(FpMemberWeightVo vo) ;
+	
 }

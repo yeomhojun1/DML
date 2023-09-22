@@ -29,7 +29,7 @@ public class FpMemberWeightServiceImpl implements FpMemberWeightService {
 	@Override
 	public int dateWeight(FpMemberWeightVo vo, String now) {
 		if(vo.getWeightDate().equals(now)) {
-			fpMemberWeightDao.updateWeightMember(vo);
+			fpMemberWeightDao.updateWeight(vo);
 		}
 		if(fpMemberWeightDao.checkDate(vo) == null) {			
 			return fpMemberWeightDao.insertWeight(vo);
@@ -44,4 +44,29 @@ public class FpMemberWeightServiceImpl implements FpMemberWeightService {
 		
 		return	fpMemberWeightDao.deleteWeight(memberId, weightDate);
 	}
+	// insert 몸무게 
+	@Override
+	public int insertUpdateWeight(FpMemberWeightVo vo) {
+		int result = 0;
+		try { 
+			result = fpMemberWeightDao.insertWeight(vo);
+		} catch (Exception e) {
+			result = fpMemberWeightDao.updateWeight(vo);	
+		}
+		return result;
+	}
+	//근육량, 체지방량 insert
+	@Override
+	public int insertUpdate(FpMemberWeightVo vo) {
+		int result = 0;
+		try { 
+			result = fpMemberWeightDao.insert(vo);
+		} catch (Exception e) {
+			result = fpMemberWeightDao.update(vo);	
+		}
+		return result;
+	}
+
+
+	
 }

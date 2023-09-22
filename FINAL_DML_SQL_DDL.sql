@@ -140,16 +140,17 @@ CREATE TABLE "USERS" (
 
 COMMENT ON COLUMN "USERS"."USER_ENABLED" IS '기본값: 1, 나머지: 0';
 
+-- 20230922 유청하 수정
 CREATE TABLE "MEMBER_WEIGHT" (
-	"WEIGHT_NUM"	NUMBER		NOT NULL,
+	"WEIGHT_DATE"	VARCHAR2(8)		NOT NULL,
 	"MEMBER_ID"	VARCHAR2(100)		NOT NULL,
-	"WEIGHT_DATE"	VARCHAR2(10)		NOT NULL,
 	"WEIGHT"	NUMBER		NULL,
 	"MUSCLE_MASS"	NUMBER		NULL,
 	"BODY_FAT_PET"	NUMBER		NULL
 );
 
 COMMENT ON COLUMN "MEMBER_WEIGHT"."WEIGHT_DATE" IS 'YYYYMMDD';
+
 
 CREATE TABLE "DIET" (
 	"MEAL_CODE"	VARCHAR(20)		NOT NULL,
@@ -278,8 +279,9 @@ ALTER TABLE "USERS" ADD CONSTRAINT "PK_USERS" PRIMARY KEY (
 	"USERNAME"
 );
 
+
 ALTER TABLE "MEMBER_WEIGHT" ADD CONSTRAINT "PK_MEMBER_WEIGHT" PRIMARY KEY (
-	"WEIGHT_NUM",
+	"WEIGHT_DATE",
 	"MEMBER_ID"
 );
 
@@ -365,6 +367,7 @@ ALTER TABLE "NOTICE" ADD CONSTRAINT "FK_ADMIN_TO_NOTICE_1" FOREIGN KEY (
 REFERENCES "ADMIN" (
 	"ADMIN_ID"
 );
+
 
 ALTER TABLE "MEMBER_WEIGHT" ADD CONSTRAINT "FK_MEMBER_TO_MEMBER_WEIGHT_1" FOREIGN KEY (
 	"MEMBER_ID"
@@ -468,13 +471,12 @@ insert into exercise   values(50010, '바벨 스쿼트' , '하체' , ' 1.발을 
 
 
 
-select * from member_ex_set order by day_ex_set desc;
-
-select board_No, BOARD_TITLE from board order by board_No desc;
+--select * from member_ex_set order by day_ex_set desc;
+--select board_No, BOARD_TITLE from board order by board_No desc;
 
 INSERT INTO BOARD VALUES (board_no_seq.NEXTVAL,'ghwnswkd123@naver.com', '연습용 게시판 제목', '연습용 게시판 내용@@','20230921', 0, '연습용 댓글', 1,0);
 INSERT INTO BOARD VALUES (board_no_seq.NEXTVAL,'ghwnswkd123@naver.com', '연습용 게시판 제목2', '연습용 게시판 내용@@','20230921', 0, '연습용 댓글', 1,0);
-select board_no , member_id,Board_title,board_content,TO_CHAR(board_date,'YYYY-MM-DD'),board_Count,bref,bstep,bleveL from board order by board_No desc;
+--select board_no , member_id,Board_title,board_content,TO_CHAR(board_date,'YYYY-MM-DD'),board_Count,bref,bstep,bleveL from board order by board_No desc;
 	
  --영양소(초보자)
 insert into nutrient VALUES (1,'단백질','','','1');
@@ -561,7 +563,31 @@ COMMIT;
   
 commit;
 
+---
+-- MEMBER_WEIGHT INSERT 시작
+insert into MEMBER_WEIGHT (WEIGHT_DATE, MEMBER_ID, WEIGHT, MUSCLE_MASS, BODY_FAT_PET) values ('230904', 'ch@dml.com', 77, 36, 25);
+insert into MEMBER_WEIGHT (WEIGHT_DATE, MEMBER_ID, WEIGHT, MUSCLE_MASS, BODY_FAT_PET) values ('230904', 'ch@dml.com', '230905', 77, 37, 27);
+insert into MEMBER_WEIGHT (WEIGHT_DATE, MEMBER_ID, WEIGHT_DATE, WEIGHT, MUSCLE_MASS, BODY_FAT_PET) values ('230904', 'ch@dml.com', '230906', 77, 38, 29);
+insert into member_weight (WEIGHT_DATE, MEMBER_ID, WEIGHT_DATE, WEIGHT, MUSCLE_MASS, BODY_FAT_PET) values ('230904', 'ch@dml.com', '230907', 77, 40, 30);
+-- 체중입력
+insert into MEMBER_WEIGHT (WEIGHT_DATE, MEMBER_ID, WEIGHT) values 
+    ( '230908', 'ch@dml.com', 77);
+-- 오류 발생시
+update MEMBER_WEIGHT SET WEIGHT = 77
+    where WEIGHT_DATE='230908' and  MEMBER_ID =  'ch@dml.com';
+-- 근골격입력
+insert into MEMBER_WEIGHT (WEIGHT_DATE, MEMBER_ID, MUSCLE_MASS, BODY_FAT_PET) values 
+    ('230908', 'ch@dml.com', 42, 29);
+-- 오류발생시
+update MEMBER_WEIGHT set MUSCLE_MASS =42, BODY_FAT_PET = 29
+    where WEIGHT_DATE = '230908' and MEMBER_ID = 'ch@dml.com';
+commit;
+desc MEMBER_WEIGHT;
+--select * from MEMBER_WEIGHT;
+-- 날짜클릭시 selectOne
+select * from MEMBER_WEIGHT where MEMBER_ID = 'ch@dml.com' and WEIGHT_DATE = '230908';
 
+-- member_weight 끝
 
 --insert 끝
 set define on;
