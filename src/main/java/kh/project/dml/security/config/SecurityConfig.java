@@ -61,9 +61,9 @@ public class SecurityConfig {
         				.disable())
         		.sessionManagement((session) -> session
         			.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-    				.invalidSessionUrl("/member/logout") // 세션 만료 후 리다이렉트 될 URL
+    				.invalidSessionUrl("/index") // 세션 만료 후 리다이렉트 될 URL
     					.maximumSessions(10) // 최대 동시 세션 수. 이 경우 한 번에 하나의 세션만 허용.
-    					.expiredUrl("/member/logout") // 최대 세션 수를 초과할 경우 리다이렉트 될 URL
+    					.expiredUrl("/index") // 최대 세션 수를 초과할 경우 리다이렉트 될 URL
 //					.sessionFixation((sessionFixation) -> sessionFixation
 //    							.migrateSession()
 //    							.sessionAuthenticationErrorUrl("/member/logout"))

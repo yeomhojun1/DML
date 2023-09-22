@@ -32,6 +32,7 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
         String url = (String)request.getRequestURI();
         url = url.replaceAll("/dml", "");
+        url = url.replaceAll("/member/logout", "/index");
         Object memberObj = session.getAttribute(SessionNames.LOGIN);
     	if (memberObj instanceof FpUsersVo) {
     		FpUsersVo userMember = (FpUsersVo) memberObj;
