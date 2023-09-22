@@ -14,7 +14,7 @@
 	<insert id="insert" parameterType="FpBoardVo">
 		insert into board (board_no, member_id,
 		Board_title,board_content,board_date)values(board_no_seq.NEXTVAL,
-		#{memberId},#{boardTitle},#{boardContent},#{boardDate})
+		#{memberId},#{boardTitle},#{boardContent},to_date(sysdate, 'yyyy-mm-dd')
 	</insert>
 	<!-- insert into board (board_no, member_id, Board_title,board_content,board_date) 
 		values(board_no_seq.NEXTVAL, #{memberId},#{boardTitle},#{boardContent},#{boardDate},0 

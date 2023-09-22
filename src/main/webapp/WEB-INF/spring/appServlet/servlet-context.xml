@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans:beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop"
@@ -24,7 +25,8 @@
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/css/**" location="/resources/css/" />
 	<resources mapping="/js/**" location="/resources/js/" />
-	<resources mapping="/ckeditor/**" location="/resources/ckeditor/" />
+	<resources mapping="/ckeditor/**"
+		location="/resources/ckeditor/" />
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<beans:bean
@@ -34,19 +36,21 @@
 	</beans:bean>
 
 
-	<context:component-scan base-package="kh.project.dml" />
-	<context:component-scan base-package="kh.project.dml.common.interceptor" />
-	
+	<context:component-scan
+		base-package="kh.project.dml" />
+	<context:component-scan
+		base-package="kh.project.dml.common.interceptor" />
+
 	<!-- 계정 로그인 유무 확인 및 미로그인 시 로그인페이지 이동 -->
-	
- 	<interceptors>
+
+	<interceptors>
 		<interceptor>
 			<mapping path="/**" />
-			
+
 			<!-- 메인 페이지 -->
 			<exclude-mapping path="/" />
 			<exclude-mapping path="/index" />
-			
+
 			<!-- 리소스 -->
 			<exclude-mapping path="/resources/**" />
 			<exclude-mapping path="/resources1/**" />
@@ -55,90 +59,105 @@
 			<exclude-mapping path="/fonts/**" />
 			<exclude-mapping path="/images/**" />
 			<exclude-mapping path="/frame/**" />
-			
+
 			<!-- 소셜 인증 콜백 -->
 			<exclude-mapping path="/auth/**" />
-			
+
 			<!-- 로그인/회원가입 -->
 			<exclude-mapping path="/member/login" />
 			<exclude-mapping path="/member/signup" />
 			<exclude-mapping path="/member/agreement" />
 			<exclude-mapping path="/member/*Popup" />
-			
+
 			<beans:ref bean="sessionCheckInterceptor" />
 		</interceptor>
 	</interceptors>
- 
+
 	<!-- @Aspect AOP annotation -->
 	<aop:aspectj-autoproxy />
-	
+
 	<!-- oauth2 login -->
 	<beans:bean id="naverClientID" class="java.lang.String">
-	   <beans:constructor-arg value="JHbNEHYVKq6eXz1I2Iz_" />
-    </beans:bean>
+		<beans:constructor-arg
+			value="JHbNEHYVKq6eXz1I2Iz_" />
+	</beans:bean>
 	<beans:bean id="naverClientSecret" class="java.lang.String">
 		<beans:constructor-arg value="1in_ghcie5" />
 	</beans:bean>
 	<beans:bean id="naverRedirectUrl" class="java.lang.String">
-		<beans:constructor-arg value="http://localhost:8080/dml/auth/naver/callback" />
+		<beans:constructor-arg
+			value="http://localhost:8080/dml/auth/naver/callback" />
 	</beans:bean>
 
-	<beans:bean id="naverSns" class="kh.project.dml.common.auth.SnsValue">
+	<beans:bean id="naverSns"
+		class="kh.project.dml.common.auth.SnsValue">
 		<beans:constructor-arg value="naver" />
 		<beans:constructor-arg ref="naverClientID" />
 		<beans:constructor-arg ref="naverClientSecret" />
 		<beans:constructor-arg ref="naverRedirectUrl" />
 	</beans:bean>
-	
+
 	<beans:bean id="googleClientID" class="java.lang.String">
-	   <beans:constructor-arg value="289846789589-h7q4c15lija4ml3fi9frtdmk7qlbv98c.apps.googleusercontent.com" />
-    </beans:bean>
+		<beans:constructor-arg
+			value="289846789589-h7q4c15lija4ml3fi9frtdmk7qlbv98c.apps.googleusercontent.com" />
+	</beans:bean>
 	<beans:bean id="googleClientSecret" class="java.lang.String">
-		<beans:constructor-arg value="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" />
+		<beans:constructor-arg
+			value="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" />
 	</beans:bean>
 	<beans:bean id="googleRedirectUrl" class="java.lang.String">
-		<beans:constructor-arg value="http://localhost:8080/dml/auth/google/callback" />
+		<beans:constructor-arg
+			value="http://localhost:8080/dml/auth/google/callback" />
 	</beans:bean>
 
-	<beans:bean id="googleSns" class="kh.project.dml.common.auth.SnsValue">
+	<beans:bean id="googleSns"
+		class="kh.project.dml.common.auth.SnsValue">
 		<beans:constructor-arg value="google" />
 		<beans:constructor-arg ref="googleClientID" />
 		<beans:constructor-arg ref="googleClientSecret" />
 		<beans:constructor-arg ref="googleRedirectUrl" />
 	</beans:bean>
-	
+
 	<beans:bean id="kakaoClientID" class="java.lang.String">
-	   <beans:constructor-arg value="9cecd5f6fa92b7e1a53b39b8690ee12f" />
-    </beans:bean>
+		<beans:constructor-arg
+			value="9cecd5f6fa92b7e1a53b39b8690ee12f" />
+	</beans:bean>
 	<beans:bean id="kakaoClientSecret" class="java.lang.String">
-		<beans:constructor-arg value="ARhYvIgTWirLJcUIXzhkvy91IXGYQqiQ" />
+		<beans:constructor-arg
+			value="ARhYvIgTWirLJcUIXzhkvy91IXGYQqiQ" />
 	</beans:bean>
 	<beans:bean id="kakaoRedirectUrl" class="java.lang.String">
-		<beans:constructor-arg value="http://localhost:8080/dml/auth/kakao/callback" />
+		<beans:constructor-arg
+			value="http://localhost:8080/dml/auth/kakao/callback" />
 	</beans:bean>
 
-	<beans:bean id="kakaoSns" class="kh.project.dml.common.auth.SnsValue">
+	<beans:bean id="kakaoSns"
+		class="kh.project.dml.common.auth.SnsValue">
 		<beans:constructor-arg value="kakao" />
 		<beans:constructor-arg ref="kakaoClientID" />
 		<beans:constructor-arg ref="kakaoClientSecret" />
 		<beans:constructor-arg ref="kakaoRedirectUrl" />
 	</beans:bean>
-	
+
 	<beans:bean id="googleConnectionFactory"
-	           class="org.springframework.social.google.connect.GoogleConnectionFactory">
-	   <beans:constructor-arg ref="googleClientID" />
-	   <beans:constructor-arg ref="googleClientSecret" />
-    </beans:bean>
+		class="org.springframework.social.google.connect.GoogleConnectionFactory">
+		<beans:constructor-arg ref="googleClientID" />
+		<beans:constructor-arg ref="googleClientSecret" />
+	</beans:bean>
 
 	<beans:bean id="googleOAuth2Parameters"
 		class="org.springframework.social.oauth2.OAuth2Parameters">
-		<beans:property name="scope" value="https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email" />
-		<beans:property name="redirectUri" ref="googleRedirectUrl" />
-	</beans:bean>	
-	<!-- 파일첨부를 위한 빈스 -->
-	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<beans:property name="defaultEncoding" value="UTF-8"/>
-		<beans:property name="maxUploadSize" value="10485760"/>
+		<beans:property name="scope"
+			value="https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email" />
+		<beans:property name="redirectUri"
+			ref="googleRedirectUrl" />
 	</beans:bean>
-	
+	<!-- 파일첨부를 위한 빈스 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="defaultEncoding" value="UTF-8" />
+		<beans:property name="maxUploadSize" value="52428800" />
+		<beans:property name="maxInMemorySize" value="1000000" />
+	</beans:bean>
+
 </beans:beans>
