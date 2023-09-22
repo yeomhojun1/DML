@@ -147,50 +147,29 @@ public class FpMemberController {
 	
 	// 로그인 페이지에서 로그인 버튼 클릭
 	@PostMapping("/member/login")
-	public String loginPost(LoginVo vo, @RequestParam(value = "useCookie", required = false) String useCookie,  Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String loginPost(LoginVo vo, @RequestParam(value = "useCookie", required = false) String useCookie, Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 	    logger.info("loginPost...LoginVo={}", vo);
         FpUsersVo memberLogin = service.login(vo);
         if(memberLogin != null) {
         	if (memberLogin.getAuthorities().equals("ROLE_MEMBER")) {
-        		System.out.println(useCookie);
-        		session = request.getSession();
-        		
-            	Object memberObj = session.getAttribute(SessionNames.LOGIN);
-            	if (memberObj instanceof FpUsersVo) {
-            		FpUsersVo userMember = (FpUsersVo) memberObj;
-            		model.addAttribute("member", service.memberInfo(userMember.getUsername()));
-            		if(useCookie != null && useCookie.equals("on")) {
-            			logger.debug("remember me...");
-            			Date expire = new Date(System.currentTimeMillis() + SessionNames.EXPIRE * 1000);
-            			service.keepLogin(userMember.getUsername(), session.getId(), expire);
-            			session.setAttribute(SessionNames.LOGIN, memberLogin); // 세션 설정
+           		model.addAttribute("member", service.memberInfo(memberLogin.getUsername()));
+           		if(useCookie != null && useCookie.equals("on")) {
+           			logger.info("remember me...");
+           			Date expire = new Date(System.currentTimeMillis() + SessionNames.EXPIRE * 1000);
+          			service.keepLogin(memberLogin.getUsername(), session.getId(), expire);
+           			session.setAttribute(SessionNames.LOGIN, memberLogin); // 세션 설정
             			
-            			// 쿠키에 세션 ID 저장
-            			Cookie loginCookie = new Cookie(SessionNames.LOGIN_COOKIE, session.getId());
-            			loginCookie.setPath("/");
-            			loginCookie.setMaxAge(SessionNames.EXPIRE); // 쿠키 유효기간 설정 (초 단위)
-            			response.addCookie(loginCookie);
-            		}
-            	} else if (memberObj instanceof FpMemberVo) {
-            		FpMemberVo member = (FpMemberVo) memberObj;
-            		model.addAttribute("member", service.memberInfo(member.getMemberId()));
-            		if(useCookie != null && useCookie.equals("on")) {
-            			logger.debug("remember me...");
-            			Date expire = new Date(System.currentTimeMillis() + SessionNames.EXPIRE * 1000);
-            			service.keepLogin(member.getMemberId(), session.getId(), expire);
-            			session.setAttribute(SessionNames.LOGIN, memberLogin); // 세션 설정
-            			
-            			// 쿠키에 세션 ID 저장
-            			Cookie loginCookie = new Cookie(SessionNames.LOGIN_COOKIE, session.getId());
-            			loginCookie.setPath("/");
-            			loginCookie.setMaxAge(SessionNames.EXPIRE); // 쿠키 유효기간 설정 (초 단위)
-            			response.addCookie(loginCookie);
-            		}
+           			// 쿠키에 세션 ID 저장
+           			Cookie loginCookie = new Cookie(SessionNames.LOGIN_COOKIE, session.getId());
+           			loginCookie.setPath("/");
+           			loginCookie.setMaxAge(SessionNames.EXPIRE); // 쿠키 유효기간 설정 (초 단위)
+           			response.addCookie(loginCookie);
             	} else {
             		session.setAttribute(SessionNames.LOGIN, memberLogin); // 세션 설정
             	}
         		
                 String redirectUrl = (String) session.getAttribute("prevPage");
+                System.out.println(redirectUrl);
                 if (redirectUrl != null) {
                     // 이전 페이지로 리다이렉트
                     session.removeAttribute("prevPage");
@@ -287,9 +266,11 @@ public class FpMemberController {
         if(bindingResult.hasErrors()) {
             return "/member/agreement";
         }
+        
         try {
         	service.socialCreate(socialCreateForm);
         	FpMemberVo member = (FpMemberVo) session.getAttribute("snsMember");
+        	System.out.println(member);
 			Date expire = new Date(System.currentTimeMillis() + SessionNames.EXPIRE * 1000);
 			service.keepLogin(member.getMemberId(), session.getId(), expire);
 			session.setAttribute(SessionNames.LOGIN, member);
