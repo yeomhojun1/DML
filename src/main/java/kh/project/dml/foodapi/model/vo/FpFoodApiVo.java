@@ -20,5 +20,10 @@ public class FpFoodApiVo {
 	private int protein;
 	private int fat;
 	
+	@Override
+	public String toString() {
+		return "FpFoodApiVo []";
+	}
+	
 	
 }

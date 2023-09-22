@@ -1,19 +1,19 @@
 package kh.project.dml.diet.model.vo;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import kh.project.dml.food.model.vo.FpFoodVo;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 @Data
-@Component
 public class FpDietVo {
-	private String mealCode;
-	private String dayDietCode;
-	private String foodTime;
+	private String mealCode;   // Service에서 조합할 예정 TODO
+	private String memberId;
+	private String foodDate;
+	private String foodTime;   // Service에서 조합할 예정 TODO
+	private String feedback;
 	
-
+	private List<FpFoodVo> foodlist;
 }

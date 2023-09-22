@@ -12,31 +12,31 @@ import kh.project.dml.diet.model.vo.FpDietVo;
 public class FpDietServiceImpl implements FpDietService {
 
 	@Autowired
-	private FpDietDao fdDietDao;
+	private FpDietDao fpDietDao;
 
 	@Override
 	public List<FpDietVo> selectList() {
-		return fdDietDao.selectList();
+		return fpDietDao.selectList();
 	}
 
 	@Override
 	public FpDietVo selectOne(String mealCode) {
-		return fdDietDao.selectOne(mealCode);
+		return fpDietDao.selectOne(mealCode);
 	}
 
 	@Override
-	public int insert(FpDietVo vo) {
-		return fdDietDao.insert(vo);
+	public int insert(FpDietVo vo)  {
+		return fpDietDao.insert(vo);
 	}
 
 	@Override
 	public int update(FpDietVo vo) {
-		return fdDietDao.update(vo);
+		return fpDietDao.update(vo);
 	}
 
 	@Override
 	public int delete(String mealCode) {
-		return fdDietDao.delete(mealCode);
+		return fpDietDao.delete(mealCode);
 	}
 
 }

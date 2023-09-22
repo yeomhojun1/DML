@@ -11,12 +11,12 @@
 	</select>
 	
 	<insert id="insert" parameterType="FpDietVo">
-	insert into diet values(#{mealCode}, #{dayDietCode},#{foodTime})
+	insert into diet values(#{mealCode}, #{memberId},#{foodDate},#{foodTime}, #{feedback})
 	</insert>
 	
 	<update id="update" parameterType="FpDietVo">
-	update diet set dayDietCode = #{dayDietCode},foodTime = #{foodTime}
-	where mealCode = #{mealCode}
+		update diet set foodback = #{feedback}
+		where meal_code = #{mealCode}
 	</update>
 	
 	<delete id="delete" parameterType="string">

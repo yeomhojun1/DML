@@ -7,19 +7,23 @@
 	</select>
 	
 	<select id="selectOne" resultType="FpFoodVo" parameterType="string">
-	select * from  where foodCd=#{foodCd}
+	select * from food where foodCd=#{foodCd}
+	</select>
+	
+	<select id="mealCodeCheck" resultType="string" parameterType="string">
+		select * from food where meal_code=#{mealCode}
 	</select>
 	
 	<insert id="insert" parameterType="FpFoodVo">
-	insert into food values(#{foodCd}, #{foodQuality},#{mealCode})
+		insert into food values(#{foodCd}, #{mealCode}, 1)
 	</insert>
 	
 	<update id="update" parameterType="FpFoodVo">
-	update diet set foodQuality = #{foodQuality}, mealCode = #{mealCode}
-	where foodCd = #{foodCd}
+		update food set food_cd=#{foodCd}
+		where meal_code = #{mealCode}
 	</update>
 	
 	<delete id="delete" parameterType="string">
-	delete from food where mealCode = #{foodCd}
+	delete from food where foodCd = #{foodCd}
 	</delete>
 </mapper>
