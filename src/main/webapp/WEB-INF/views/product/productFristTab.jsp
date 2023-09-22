@@ -69,558 +69,84 @@
 						<!-- Content Column -->
 						<div class="col-lg-6 mb-2" >
 
-							<div class="row row-menu beginner active">
+					<div class="row row-menu beginner active">
 
-							<!-- Color System 1 -->
-							
-							<!-- foreach로 목록들 불러오게 하는거 private List<FpSuplementVo> fpSuplemenList;  -->
-							<div class="row col-lg-6 beginner">
+						<!-- Color System 1 -->
+
+						<!-- foreach로 목록들 불러오게 하는거 private List<FpSuplementVo> fpSuplemenList;  -->
+						<div class="row col-lg-6 beginner">
 							<!--  varStatus 숫자 자동으로 1,2,3~ 하게 하는것 -->
-								<c:forEach items="${nutruentBeginerlist }" var="nutruent" varStatus="vs">
-									<div class="col-lg-12 mb-2">
-										<div class="card bg-primary text-white shadow">
-											<button class="btn-menu card-body beginner-btn btn-sub${vs.count }" data-toggle="menu-${vs.count }"><h5>${nutruent.nutrient }</h5></button>
+							<c:forEach items="${nutruentBeginerlist }" var="nutruent" varStatus="vs">
+								<div class="col-lg-12 mb-2">
+									<div class="card bg-primary text-white shadow">
+										<button
+											class="btn-menu card-body beginner-btn btn-sub${vs.count }"
+											data-toggle="menu-${vs.count }">
+											<h5>${nutruent.nutrient }</h5>
+										</button>
+									</div>
+
+								</div>
+							</c:forEach>
+						</div>
+
+
+						<c:forEach items="${nutruentBeginerlist }" var="a" varStatus="vs">
+							<div class="row col-lg-6 btn-menu menu-${vs.count }">
+								<c:forEach items="${a.fpSuplementList}" var="b" varStatus="ss"> 
+									<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="${b.link }">${b.suplementname }</a>
 										</div>
+									</div>
 									</div>
 								</c:forEach>
 							</div>
-
-							
-							
-							<div class="row col-lg-6 btn-menu menu-1 active">
-
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://kr.iherb.com/pr/optimum-nutrition-gold-standard-100-whey-double-rich-chocolate-5-lbs-2-27-kg/27509">
-											옵티멈 골드 스탠다드 웨이(WPI+WPC)  </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-success text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://kr.iherb.com/pr/allmax-classic-allwhey-100-whey-protein-chocolate-5-lbs-2-27-kg/69100">
-											Allmax 웨이프로틴 (WPC+WPI)</a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-info text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/6424463926?itemId=13837679944&vendorItemId=3180840444&src=1139000&spec=10799999&addtag=400&ctag=6424463926&lptag=AF7910856&itime=20230912103354&pageType=PRODUCT&pageValue=6424463926&wPcid=11963655808335908086931&wRef=&wTime=20230912103354&redirect=landing&traceid=V0-181-0204c0f24c9440c6&mcid=91aaf995ffd744bc8c37fab610d907a4&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											옵티멈 골드스탠다드웨이(WPI+WPC)</a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-warning text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/6731349444?itemId=3071491018&vendorItemId=4041827021&src=1139000&spec=10799999&addtag=400&ctag=6731349444&lptag=AF7910856&itime=20230912103507&pageType=PRODUCT&pageValue=6731349444&wPcid=11963655808335908086931&wRef=&wTime=20230912103507&redirect=landing&traceid=V0-181-c7a4d267bbb9b282&mcid=1d0e234049574e3bae6b2a351a168973&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											컴뱃 100%(WPI+WPC)</a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-danger text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.myprotein.co.kr/sports-nutrition/impact-whey-protein/10530943.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=22450_1694482536_0d2c1e703e13a2c1d11128c5939d9dbb">
-											임팩트 웨이프로틴(WPC)</a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-secondary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.myprotein.co.kr/sports-nutrition/impact-whey-isolate/10530911.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=22450_1694482609_08b0936e66a21fdc3f774b990c4f2535">
-											임팩트 웨이 아이솔레이트(WPI)</a>
-											
-										</div>
-									</div>
-
-								</div>
-								<!--  -->
-									<div class="col-lg-12 mb-2">
-									<div class="card bg-secondary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/6573830453?itemId=99053681&vendorItemId=3180840758&src=1139000&spec=10799999&addtag=400&ctag=6573830453&lptag=AF7910856&itime=20230912103733&pageType=PRODUCT&pageValue=6573830453&wPcid=11963655808335908086931&wRef=&wTime=20230912103733&redirect=landing&traceid=V0-181-b7758b3c4e64c943&mcid=d75014564b72438ea2db7b926b8ebdf0&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											신타6(WPC+WPI,맛 위주 제품)</a>
-											
-										</div>
-									</div>
-
-								</div>
-									<div class="col-lg-12 mb-2">
-									<div class="card bg-secondary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/6422282284?itemId=18367904981&vendorItemId=85511488783&src=1139000&spec=10799999&addtag=400&ctag=6422282284&lptag=AF7910856&itime=20230912103808&pageType=PRODUCT&pageValue=6422282284&wPcid=11963655808335908086931&wRef=&wTime=20230912103808&redirect=landing&traceid=V0-181-1b841015494d2887&mcid=cb4e14a5308546f1a15b89adf658b7dc&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											EVL Stacked</a>
-											
-										</div>	
-									</div>
-
-								</div>
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-secondary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/6422282333?itemId=13823103047&vendorItemId=81073326157&src=1139000&spec=10799999&addtag=400&ctag=6422282333&lptag=AF7910856&itime=20230912103900&pageType=PRODUCT&pageValue=6422282333&wPcid=11963655808335908086931&wRef=&wTime=20230912103900&redirect=landing&traceid=V0-181-64380bec0ffd71ad&mcid=34ffc08d7fcd49a896e78f52063220fc&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											EVL 100% Whey</a>
-											
-										</div>
-									</div>
-
-								</div>
-
-							</div>
-							<div class="row col-lg-6 btn-menu menu-2">
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/171730878?vendorItemId=4242511760&src=1139000&spec=10799999&addtag=400&ctag=171730878&lptag=AF7910856&itime=20230912143530&pageType=PRODUCT&pageValue=171730878&wPcid=11963655808335908086931&wRef=&wTime=20230912143530&redirect=landing&traceid=V0-181-d9af9bf788a73fe3&mcid=eb92a671da544bf0864236b6208f0f17&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											청년곡물 귀리가루 3kg 17,300원  </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://kr.iherb.com/pr/optimum-nutrition-gold-standard-100-whey-double-rich-chocolate-5-lbs-2-27-kg/27509">
-											인스턴트오트  </a>
-											
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<div class="row col-lg-6 btn-menu menu-3">
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://kr.iherb.com/pr/life-extension-two-per-day-multivitamin-60-capsules/86456">
-											투퍼데이 캡슐  </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://kr.iherb.com/pr/life-extension-two-per-day-multivitamin-120-tablets/86454">
-											투퍼데이 태블릿 </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.myprotein.co.kr/sports-nutrition/alpha-men-multivitamin-tablets/10530421.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=10751_1694498609_8e301a8cd3a40ceb430c6570ef43ff4c">
-											알파맨 </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://kr.iherb.com/pr/thorne-basic-nutrients-2-day-60-capsules/85476">
-											Thorne Research 종합비타민 </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://kr.iherb.com/pr/life-extension-two-per-day-multivitamin-120-tablets/86454">
-											쏜리서치 종합비타민 </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/1152619585?itemId=2127383548&vendorItemId=70125946615&src=1139000&spec=10799999&addtag=400&ctag=1152619585&lptag=AF7910856&itime=20230912150443&pageType=PRODUCT&pageValue=1152619585&wPcid=11963655808335908086931&wRef=&wTime=20230912150443&redirect=landing&traceid=V0-181-b565f5bf26622b78&mcid=4bfe00782dbb4840a951eeae314632b9&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											얼라이브 </a>
-											
-										</div>
-									</div>
-								</div>
-								
-							</div>
-							<div class="row col-lg-6 btn-menu menu-4 ">
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://kr.iherb.com/pr/california-gold-nutrition-lactobif-5-probiotics-5-billion-cfu-60-veggie-capsules/64006">
-											캘리포니아골드 50억  </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://kr.iherb.com/pr/jarrow-formulas-jarro-dophilus-eps-10-billion-120-veggie-caps/7006">
-											자로우 50억  </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/416189?itemId=277809413&vendorItemId=3179568952&src=1139000&spec=10799999&addtag=400&ctag=416189&lptag=AF7910856&itime=20230912161238&pageType=PRODUCT&pageValue=416189&wPcid=11963655808335908086931&wRef=&wTime=20230912161238&redirect=landing&traceid=V0-181-0a308c213d5fd665&mcid=39eb48a99a954aeab0e410ba92009191&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											자로우 50억  </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.myprotein.co.kr/sports-nutrition/daily-probiotic/11897338.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=10751_1694502785_824d28b0d6f9072c2c6479c0e4b2b8d5">
-											프로바이오틱스 150억 </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/1528879?itemId=6662522&vendorItemId=3464692298&src=1139000&spec=10799999&addtag=400&ctag=1528879&lptag=AF7910856&itime=20230912161324&pageType=PRODUCT&pageValue=1528879&wPcid=11963655808335908086931&wRef=&wTime=20230912161324&redirect=landing&traceid=V0-181-8f3e5441fa09d7bc&mcid=26b12158329f4e1fb5dfde05bd5d610e&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											자로우 도필러스(쿠팡, 국내 로켓배송)  </a>
-											
-										</div>
-									</div>
-								</div>
-								
-								
-								</div>
-								
-							<div class="row col-lg-6 btn-menu menu-5 ">
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/30606?itemId=73304&vendorItemId=3086191674&src=1139000&spec=10799999&addtag=400&ctag=30606&lptag=AF7910856&itime=20230912163414&pageType=PRODUCT&pageValue=30606&wPcid=11963655808335908086931&wRef=&wTime=20230912163414&redirect=landing&traceid=V0-181-399055c646def9eb&mcid=147b097a5941400b90234b970e9370a8&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											이눌린  </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/420194?itemId=1103903&vendorItemId=3181031489&src=1139000&spec=10799999&addtag=400&ctag=420194&lptag=AF7910856&itime=20230912163433&pageType=PRODUCT&pageValue=420194&wPcid=11963655808335908086931&wRef=&wTime=20230912163433&redirect=landing&traceid=V0-181-bf07ab4af31ca34a&mcid=f14a379efdd745c3a6aa4fa90afc6a40&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											복함섬유질 </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://kr.iherb.com/pr/now-foods-certified-organic-inulin-prebiotic-pure-powder-8-oz-227-g/1100">
-											이눌린  </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://kr.iherb.com/pr/jarrow-formulas-gentle-fibers-soluble-insoluble-fibers-powder-16-5-oz-468-g-discontinued-item/201">
-											복함섬유질 </a>
-											
-										</div>
-									</div>
-								</div>
-								</div>
-								<div class="row col-lg-6 btn-menu menu-6 ">
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://kr.iherb.com/pr/california-gold-nutrition-l-glutamine-powder-ajipure-gluten-free-16-oz-454-g/71027">
-											글루타민(글루텐 미함유) </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/209304?itemId=2075029&vendorItemId=3088278048&src=1139000&spec=10799999&addtag=400&ctag=209304&lptag=AF7910856&itime=20230912164259&pageType=PRODUCT&pageValue=209304&wPcid=11963655808335908086931&wRef=&wTime=20230912164259&redirect=landing&traceid=V0-181-ad2bddec3da0a155&mcid=9ea200b61c1f428887005dd54d75b596&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											글루타민 파우더 비건 </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.myprotein.co.kr/sports-nutrition/l-glutamine-powder/10636931.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=10751_1694504606_8962bf6e3b1a6581fc9ffbdb94433a2d">
-											글루타민 아미노산 </a>
-											
-										</div>
-									</div>
-								</div>
-								</div>
-								
-								</div>
-
-								
-							<div class="row row-menu export">
-
-							<!-- 숙련자 메뉴들 -->
-							<div class="row col-lg-6 export">
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-primary text-white shadow">
-										
-										<button class="btn-menu card-body export-btn btn-sub7 active" data-toggle="menu-7"><h5>카페인(집중력, 유산소 능력 증가)</h5></button>
-											
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-success text-white shadow">
-									
-											<button class="btn-menu card-body export-btn btn-sub8" data-toggle="menu-8"><h5>크레아틴(웨이트 능력 증가)</h5></button>
-									
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-info text-white shadow">
-										<button class="btn-menu card-body beginner-btn btn-sub9" data-toggle="menu-9"><h5>베타알라닌(웨이트 능력 증가)</h5></button>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-warning text-white shadow">
-										
-											<button class="btn-menu card-body beginner-btn btn-sub10" data-toggle="menu-10"><h5>Nitrate(중강도 운동능력 증가)</h5></button>
-											
-										</div>
-									</div>
-									<div class="col-lg-12 mb-2">
-									<div class="card bg-danger text-white shadow">
-										
-											<button class="btn-menu card-body beginner-btn btn-sub11" data-toggle="menu-11"><h5>Sodium Bicarbonate(웨이트 능력 증가)</h5></button>
-											
-										</div>
-									</div>
-									<div class="col-lg-12 mb-2">
-									<div class="card bg-secondary text-white shadow">
-										
-											<button class="btn-menu card-body beginner-btn btn-sub12" data-toggle="menu-12"><h5>스포츠 드링크(에너지,수분공급)</h5></button>
-											
-										</div>
-								</div>
-							</div>
-							<div class="row col-lg-6 btn-menu menu-7 active">
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://kr.iherb.com/pr/gat-caffeine-metabolism-and-performance-100-tablets/71057">
-											GAT 카페인 </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/1221155033?itemId=2212003672&vendorItemId=70209793289&src=1139000&spec=10799999&addtag=400&ctag=1221155033&lptag=AF7910856&itime=20230913120207&pageType=PRODUCT&pageValue=1221155033&wPcid=11963655808335908086931&wRef=&wTime=20230913120207&redirect=landing&traceid=V0-181-1161d76a4f328d36&mcid=7acc0fbfbb1045bd885fa67661357937&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											Teacrine(느린카페인) </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.myprotein.co.kr/sports-nutrition/pure-caffeine-tablets/10529801.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=10751_1694574146_376a68d16af8002e3237434938b4075a">
-											퓨어 카페인 200mg </a>
-											
-										</div>
-									</div>
-								</div>
-								
-						</div>
-							<div class="row col-lg-6 btn-menu menu-8">
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.myprotein.co.kr/sports-nutrition/creapure-creatine-powder/10529740.html?affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=10751_1694574168_babf27e1075db67f54b1787c4fc18d28">
-											크레아틴(크레아퓨어)(추천제품) </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/65092914?itemId=219966955&vendorItemId=3531348859&src=1139000&spec=10799999&addtag=400&ctag=65092914&lptag=AF7910856&itime=20230913120305&pageType=PRODUCT&pageValue=65092914&wPcid=11963655808335908086931&wRef=&wTime=20230913120305&redirect=landing&traceid=V0-181-d98d37a352dc2b27&mcid=010436b9b5ae4921a22c427225c4751e&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											크레아틴 Now food </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/211526931?vendorItemId=4503588269&src=1139000&spec=10799999&addtag=400&ctag=211526931&lptag=AF7910856&itime=20230913120325&pageType=PRODUCT&pageValue=211526931&wPcid=11963655808335908086931&wRef=&wTime=20230913120325&redirect=landing&traceid=V0-181-4b91612774083229&mcid=f443177f10464267a7ba0a5d7aeee270&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											크레아틴(AllMax) </a>
-											
-										</div>
-									</div>
-								</div>
-								
-							</div>
-							<div class="row col-lg-6 btn-menu menu-9">
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://kr.iherb.com/pr/now-foods-sports-beta-alanine-pure-powder-17-6-oz-500-g/10940">
-											Now Foods 베타알라닌 </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/1346776?itemId=5812375&vendorItemId=3259563401&src=1139000&spec=10799999&addtag=400&ctag=1346776&lptag=AF7910856&itime=20230913120409&pageType=PRODUCT&pageValue=1346776&wPcid=11963655808335908086931&wRef=&wTime=20230913120409&redirect=landing&traceid=V0-181-3345fb09a110b97f&mcid=8fcc649f11af45969d2262ee157b6623&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											프리마포스 베타알라닌 </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.myprotein.co.kr/sports-nutrition/beta-alanine-powder/10529809.html?autocomplete=productsuggestion&affil=awin&utm_content=https%3A%2F%2Fblog.naver.com%2Fhyun_do&utm_term=Direct+Traffic&utm_source=AWin-504921&utm_medium=affiliate&utm_campaign=AffiliateWin&awc=10751_1694574267_faabf84fcfe44c1f6e3d8ded185a3cab">
-											베타알라닌 </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/25110?itemId=63565&vendorItemId=3085691672&src=1139000&spec=10799999&addtag=400&ctag=25110&lptag=AF7910856&itime=20230913120446&pageType=PRODUCT&pageValue=25110&wPcid=11963655808335908086931&wRef=&wTime=20230913120446&redirect=landing&traceid=V0-181-4241ba6182004d6e&mcid=4de89844087e4cdd803002bbf6451bbe&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											Now 베타알라닌 </a>
-											
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row col-lg-6 btn-menu menu-10">
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://kr.iherb.com/pr/evlution-nutrition-pumpmode-non-stimulant-pump-accelerator-unflavored-4-44-oz-126-g/77320">
-											Pump Mode 무맛 </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://kr.iherb.com/pr/evlution-nutrition-pumpmode-non-stimulant-pump-accelerator-unflavored-4-44-oz-126-g/77320">
-											Pump Mode 포도맛 </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/205187039?itemId=604042936&vendorItemId=4583172659&src=1139000&spec=10799999&addtag=400&ctag=205187039&lptag=AF7910856&itime=20230913120558&pageType=PRODUCT&pageValue=205187039&wPcid=11963655808335908086931&wRef=&wTime=20230913120558&redirect=landing&traceid=V0-181-4f399f8277677306&mcid=2c17546cbf36476a8992fc36464b0b47&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											Pump Mode 무맛 </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/205187038?itemId=604042923&vendorItemId=4583172612&src=1139000&spec=10799999&addtag=400&ctag=205187038&lptag=AF7910856&itime=20230913120616&pageType=PRODUCT&pageValue=205187038&wPcid=11963655808335908086931&wRef=&wTime=20230913120616&redirect=landing&traceid=V0-181-a335862c21f87e50&mcid=dd2d507bc9f04394ba7eed8346abf952&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											Pump Mode 블루라츠 </a>
-											
-										</div>
-									</div>
-								</div>
-							
-							</div>
-							<div class="row col-lg-6 btn-menu menu-11">
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/101204658?itemId=308663781&vendorItemId=3760493721&src=1139000&spec=10799999&addtag=400&ctag=101204658&lptag=AF7910856&itime=20230913120637&pageType=PRODUCT&pageValue=101204658&wPcid=11963655808335908086931&wRef=&wTime=20230913120637&redirect=landing&traceid=V0-181-e359d2cc6ce43267&mcid=44e776cecd5c4780a52ca32da4359b46&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											식소다 </a>
-											
-										</div>
-									</div>
-								</div>
-								
-							</div>
-							<div class="row col-lg-6 btn-menu menu-12">
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/1650278?itemId=10099465&vendorItemId=3017121689&src=1139000&spec=10799999&addtag=400&ctag=1650278&lptag=AF7910856&itime=20230913120703&pageType=PRODUCT&pageValue=1650278&wPcid=11963655808335908086931&wRef=&wTime=20230913120703&redirect=landing&traceid=V0-181-146e6bf32c3f5ab0&mcid=3e4e81b09d41438ebba2bf7260b20fb0&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											게토레이 1.5L 12개 </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/1650248?itemId=5795123&vendorItemId=4043017735&src=1139000&spec=10799999&addtag=400&ctag=1650248&lptag=AF7910856&itime=20230913120724&pageType=PRODUCT&pageValue=1650248&wPcid=11963655808335908086931&wRef=&wTime=20230913120724&redirect=landing&traceid=V0-181-bce033d202011ec7&mcid=49b6cc93092540128bac310ac69a4f03&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											파워에이드 1.5L 12개 </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/1650776?itemId=999007&vendorItemId=3058671369&src=1139000&spec=10799999&addtag=400&ctag=1650776&lptag=AF7910856&itime=20230913120744&pageType=PRODUCT&pageValue=1650776&wPcid=11963655808335908086931&wRef=&wTime=20230913120744&redirect=landing&traceid=V0-181-2aac9d07526c5b55&mcid=4806603afb9e435b817ac05ae316af9d&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											포카리스웨트 1.5L 12개 </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/8043221?itemId=35188995&vendorItemId=4041819023&src=1139000&spec=10799999&addtag=400&ctag=8043221&lptag=AF7910856&itime=20230913120800&pageType=PRODUCT&pageValue=8043221&wPcid=11963655808335908086931&wRef=&wTime=20230913120800&redirect=landing&traceid=V0-181-8b23744133557f7e&mcid=d353bd190bf14b819cf7c858e3c92715&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=&isAddedCart=">
-											게토레이 파우더 </a>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											<a style="color: white;" href="https://www.coupang.com/vp/products/1130600938?itemId=2098414197&vendorItemId=70097293127&src=1139000&spec=10799999&addtag=400&ctag=1130600938&lptag=AF7910856&itime=20230913120821&pageType=PRODUCT&pageValue=1130600938&wPcid=11963655808335908086931&wRef=&wTime=20230913120821&redirect=landing&traceid=V0-181-e5882885e665f0af&mcid=0345b50319ca4b99beab180d8d88a1ee&placementid=&clickBeacon=&campaignid=&contentcategory=&imgsize=&tsource=&pageid=&deviceid=&token=&contenttype=&subid=&impressionid=&campaigntype=&requestid=&contentkeyword=&subparam=">
-											게토레이 파우더(대용량) </a>
-											
-										</div>
-									</div>
-								</div>
-								
-							</div>
-							
-						</div>
+						</c:forEach>
 					</div>
+
+
+
+
+					<div class="row row-menu export">
+						<!-- 숙련자 메뉴들 -->
+						<div class="row col-lg-6 export">
+							<c:forEach items="${nutruentExpertlist}" var="q" varStatus="vv">
+								<div class="col-lg-12 mb-2">
+									<div class="card bg-primary text-white shadow">
+
+										<button
+											class="btn-menu card-body export-btn btn-sub${vv.count } active"
+											data-toggle="menu-${vv.count }">
+											<h5>${q.nutrient }</h5>
+										</button>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+						
+						
+						
+						<c:forEach items="${nutruentExpertlist }" var="q" varStatus="vv">
+						<div class="row col-lg-6 btn-menu menu-${vv.count }">
+							<c:forEach items="${q.fpSuplementList}" var="b" varStatus="ss">
+								<div class="col-lg-12 mb-2 btn-menu-sub">
+									<div class="card bg-primary text-white shadow">
+										<div class="card-body">
+											<a style="color: white;" href="${b.link}">
+											${b.suplementname} </a>
+											
+										</div>
+									</div>
+								</div>
+							</c:forEach>								
+						</div>
+						</c:forEach>
+						
+					</div>
+				</div>
+
 
 						<div class="col-lg-6 mb-4">
 

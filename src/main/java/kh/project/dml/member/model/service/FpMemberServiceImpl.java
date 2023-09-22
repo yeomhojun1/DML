@@ -103,7 +103,7 @@ public class FpMemberServiceImpl implements FpMemberService {
     public String checkId(String memberId) {
     	return dao.checkId(memberId);
     }
-
+    
     @Override
 	public FpUsersVo login(LoginVo vo) throws Exception {
 		// 1. 사용자의 username을 사용하여 DB에서 사용자 정보를 가져옵니다.

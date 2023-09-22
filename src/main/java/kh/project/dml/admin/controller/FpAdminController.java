@@ -19,6 +19,12 @@ public class FpAdminController {
 	@Autowired
 	private FpAdminServiceImpl fpAdminServiceImpl;
 	
+	@GetMapping("/index")
+	public ModelAndView adminIndex(ModelAndView mv) {
+		mv.setViewName("/admin/index");
+		return mv;
+	}
+	
 	@GetMapping("/list")
 	public ModelAndView selectListadmin(ModelAndView mv) {
 		mv.addObject("adminlist", fpAdminServiceImpl.selectList());
