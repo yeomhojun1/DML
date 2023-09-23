@@ -70,28 +70,28 @@
 				<form>
 					<div class="mb-3 mt-3">
 						<label for="bno" class="form-label">boardNo</label> <input type="text"
-							class="form-control" id="boardNo" name="boardNo" <%-- value="${boardone.boardNo}" --%>
+							class="form-control" id="boardNo" name="boardNo"  value="${boardone.boardNo}" 
 							disabled>
 					</div>
 					<div class="mb-3">
 						<label for="title" class="form-label">title</label> <input
 							type="text" class="form-control" id="title" name="title"
-							<%-- value="${boardone.boardTitle}" --%> disabled>
+							 value="${boardone.boardTitle}"  disabled>
 					</div>
 					<div class="mb-3">
 						<label for="content" class="form-label">content</label>
 						<textarea class="form-control" id="content" name="content"
-							disabled<%-- >${boardone.boardContent} --%>></textarea>
+							disabled>${boardone.boardContent}</textarea>
 					</div>
 					<div class="mb-3">
 						<label for="regDate" class="form-label">regDate</label> <input
 							type="text" class="form-control" id="regDate" name="regDate"
-							<%-- value="${boardone.boardDate}"  --%>disabled>
+							value="${boardone.boardDate}" disabled>
 					</div>
 					<div class="mb-3">
 						<label for="writer" class="form-label">writer</label> <input
 							type="text" class="form-control" id="writer" name="writer"
-							<%-- value="${boardone.writer}"  --%>disabled>
+							 value="${boardone.memberId}"  disabled>
 					</div>
 					<%-- <a href="list" class="btn btn-outline-secondary">list</a> <a
 						href="modify?bno=${boardone.boardNo}" class="btn btn-outline-warning">modify</a>

@@ -56,7 +56,7 @@ public class FpBoardController {
 	}
 
 	@GetMapping("/one")
-	public ModelAndView selectOneboard(ModelAndView mv, int boardNo) {
+	public ModelAndView selectOneboard(ModelAndView mv, Integer boardNo) {
 		mv.addObject("boardone", fpBoardServiceImpl.selectOne(boardNo));
 		mv.setViewName("board/one");
 		return mv;

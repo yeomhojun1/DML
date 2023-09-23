@@ -19,7 +19,7 @@ public class FpBoardServiceImpl implements FpBoardService {
 		return fpBoardDao.selectList();
 	}
 	@Override
-	public FpBoardVo selectOne(int boardNo) {
+	public FpBoardVo selectOne(Integer boardNo) {
 		return fpBoardDao.selectOne(boardNo);
 	}
 	@Override

@@ -13,7 +13,7 @@ public interface FpBoardService {
 
 	
 	public List<FpBoardVo> selectList();
-	public FpBoardVo selectOne(int boardNo);
+	public FpBoardVo selectOne(Integer boardNo);
 	public int insert(FpBoardVo vo);
 	public int update(FpBoardVo vo);
 	public int delete(int boardNo);

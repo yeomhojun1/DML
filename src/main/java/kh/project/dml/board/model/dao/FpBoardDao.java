@@ -17,7 +17,7 @@ public class FpBoardDao {
 	public List<FpBoardVo> selectList() {
 		return sqlSession.selectList("board.selectList");
 	}
-	public FpBoardVo selectOne(int boardNo) {
+	public FpBoardVo selectOne(Integer boardNo) {
 		return sqlSession.selectOne("board.selectOne", boardNo);
 	}
 	public int insert(FpBoardVo vo) {
