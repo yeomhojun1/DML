@@ -593,8 +593,21 @@ select * from MEMBER_WEIGHT where MEMBER_ID = 'ch@dml.com' and WEIGHT_DATE = '23
 set define on;
 
 
+select board_no_seq.nextval from dual;
 
+CREATE SEQUENCE board_no_seq 
+       INCREMENT BY 1
+       START WITH 1
+       MINVALUE 1
+       MAXVALUE 9999
+       NOCYCLE
+       NOCACHE
+       NOORDER;
 
+select to_date(board_date,'YYYY-MM-DD') board_date from board;
+select * from board;
 
+insert into board (board_no, member_id,Board_title,board_content,board_date) values (board_no_seq.NEXTVAL,'ghwnswkd123@naver.com','테스트용 제목123','테스트용 12512내용',to_date(sysdate,'YYYY-MM-DD'));
+commit;
 
 

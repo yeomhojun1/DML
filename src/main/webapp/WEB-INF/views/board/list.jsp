@@ -76,32 +76,45 @@
 					<h1 class="mt-4">Daily Muscle Life</h1>
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
 					<div>
-						<table class="table table-hover table-sm text-center align-middle caption-top">
+						<table
+							class="table table-hover table-sm text-center align-middle caption-top table-striped">
 							<thead class="table-light">
 							<caption>서로 물어봐요!</caption>
-								<tr>
-									<th scope="col ">번호</th>
-									<th scope="col ">제목</th>
-									<th scope="col ">작성자</th>
-									<th scope="col ">등록일</th>
-									<th scope="col ">조회수</th>
-								</tr>
+							<tr>
+								<th scope="col ">번호</th>
+								<th scope="col ">제목</th>
+								<th scope="col ">작성자</th>
+								<th scope="col ">등록일</th>
+								<th scope="col ">조회수</th>
+							</tr>
 							</thead>
 							<tbody>
-							<c:forEach items="${boardList}" var="vo">
-								<tr>
-									<th>${vo.boardNo}</th>
-									<td>${vo.boardTitle} </td>
-									<td>${vo.memberId} </td>
-									<td>${vo.boardDate} </td>
-									<td>${vo.boardCount} </td>
-								</tr>
-						</c:forEach>
+								<c:forEach items="${boardList}" var="vo">
+									<tr>
+										<th>${vo.boardNo}</th>
+										<td><a href="${pageContext.request.contextPath }/board/one"> ${vo.boardTitle}</a></td>
+										<td>${vo.memberId}</td>
+										<td>${vo.boardDate}</td>
+										<td>${vo.boardCount}</td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
-						<a href="${pageContext.request.contextPath }/board/insert"><button type="button" class="addBoard">질문 등록</button></a>
-					</div>
 
+						<a href="${pageContext.request.contextPath }/board/insert"><button
+								type="btn btn-default" class="addBoard">질문 등록</button></a>
+					</div>
+					<div class="text-align">
+						<ul class="pagination justify-center-center">
+							<li><a href="#" style="margin-right:5px">1</a></li>
+							<li><a href="#" style="margin-right:5px">2</a></li>
+							<li><a href="#" style="margin-right:5px">3</a></li>
+							<li><a href="#" style="margin-right:5px">4</a></li>
+							<li><a href="#" style="margin-right:5px">5</a></li>
+
+						</ul>
+					</div>
+					
 				</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
