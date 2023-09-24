@@ -64,19 +64,19 @@
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">Daily Muscle Life</h1>
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
+					<h1>${boardOne.boardTitle}</h1>
 					<form method="post"
 						action=${pageContext.request.contextPath}/board/insert
-						enctype="multipart/form-data">
-						<input type="hidden" value="${member.memberId}" name="memberId">
-
+						enctype="multipart/form-data" id="updateForm">
+						<input type="hidden" value="${boardone.boardNo}" name="boardNo">
 						<span>제목 : </span>
-						<textarea rows="1" cols="20" name="boardTitle"></textarea>
+						<textarea class="updateBoardTitle" rows="1" cols="50" name="boardTitle" placeholder="${boardone.boardTitle}"></textarea>
 				</div>
 				<div>
 					<span>내용 : </span>
-					<textarea rows="10" cols="20" name="boardContent" id="editor"></textarea>
+					<textarea class="updateBoardContent" rows="10" cols="20" name="boardContent" id="editor" placeholder="${boardone.boardContent}"></textarea>
 				</div>
-					<input class="updateDoBoard"type="submit" value="저장">
+					<button type="button" class="saveUpdate">저장</button>
 				<!--게시글 추가한 뒤에 이미지추가도 시작할예정 -->
 				<!-- <input type="button" value="파일 추가" onClick="fn_addFile()"><br>
 				<div id="d_file"></div>
@@ -87,16 +87,53 @@
 		<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 	</div>
 	</div>
-	< <script>
+	 <script>
 		ClassicEditor.create(document.querySelector('#editor'));
-		var cnt = 1;
+		/* var cnt = 1;
 		function fn_addFile() {
 			$("#d_file").append(
 					"<br>" + "<input type='file' name='file" + cnt + "' />");
 			cnt++;
-		}
+		} */
 	</script> 
-
+	<script>
+	$(".saveUpdate").click(updateDoBoardHandler);
+	function updateDoBoardHandler(){
+		var title1= $(".updateBoardTitle").val();
+		var Content1= $(".updateBoardContent").val();
+	console.log(title1);
+	console.log(Content1);
+	/*  $.ajax({
+	            type: "post",
+	            url: "${pageContext.request.contextPath}/board/update",
+	           data: {memberId:${member.memberId} ,boardTitle : title1,boardContent: Content1,boardNo :	${boardone.boardNo}},
+	         //   data: $("#updateForm").serialize(),
+	            //dataType: "json",
+	            success: function(response){
+	            	console.log(response);
+	                    location.href = "${pageContext.request.contextPath}/board/list";
+	              
+	                },error: function(){
+	                	console.log("error");
+	                }
+	            });  */
+	        } 
+	
+	/* 	 $.ajax({
+				url:"${pageContext.request.contextPath}/memberexset/update",
+				type: "post",
+				data : 
+				,success : function(result){
+					location.reload(true);
+					}
+				,error : function(){
+					console.log("error");
+					}
+				});
+			 event.preventDefault();
+			} */
+	
+	</script>
 	<!--  <script>
     CKEDITOR.replace('editor', {
       filebrowserUploadUrl: '/upload_image.php',  // 이미지 업로드 처리 URL

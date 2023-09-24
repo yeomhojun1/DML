@@ -18,13 +18,13 @@
 		values(board_no_seq.NEXTVAL, #{memberId},#{boardTitle},#{boardContent},#{boardDate},0 
 		, , , ) -->
 	<update id="update" parameterType="FpBoardVo">
-		update board set memberId = #{memberId},boardTitle =
-		#{boardTitle},boardContent = #{boardContent},
-		boardCount = #{boardCount},boardDate = #{boardDate}
-		where commentNum = #{commentNum}
+		update board set member_Id = #{memberId},board_Title =
+		#{boardTitle},board_Content = #{boardContent},
+		board_Date = sysdate
+		where board_no = #{boardNo}
 	</update>
 
 	<delete id="delete" parameterType="_int">
-		delete from board where commentNum = #{boardNo}
+		delete from board where board_No = #{boardNo}
 	</delete>
 </mapper>

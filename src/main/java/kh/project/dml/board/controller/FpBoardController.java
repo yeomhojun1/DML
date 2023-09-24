@@ -70,6 +70,7 @@ public class FpBoardController {
 	@PostMapping("/insert")
 	public String insertDoBoard(RedirectAttributes redirectAttr, FpBoardVo vo) {
 		String viewPage = "redirect:/";
+
 		int result = fpBoardServiceImpl.insert(vo);
 		try {
 			if (result < 1) {
@@ -141,6 +142,7 @@ public class FpBoardController {
 	public String updateDoBoard(RedirectAttributes redirectAttr, FpBoardVo vo) {
 		String viewPage = "redirect:/";
 		int result = fpBoardServiceImpl.update(vo);
+	//	((ModelAndView) redirectAttr).addObject("boardone", fpBoardServiceImpl.selectOne(vo.getBoardNo()));
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 실패했습니다 \n 다시 입력해주세요");
