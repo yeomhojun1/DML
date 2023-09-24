@@ -91,15 +91,13 @@
 													</div>
 												</div>
 											
-														<div
-															class="Plan_modal_food_desc3_title__sFhbK Plan_modal_food_desc_title__GwIXK">식사
-															구분</div>
+											<div class="Plan_modal_food_desc3_title__sFhbK Plan_modal_food_desc_title__GwIXK">식사구분</div>
 														<div class="Plan_modal_food_meal_list__cNfE0">
-															<div
-																class="ant-radio-group ant-radio-group-outline css-1s3dcof">
+															<div class="ant-radio-group ant-radio-group-outline css-1s3dcof">
 																<label class="ant-radio-button-wrapper Plan_modal_food_manual_radio__94nNy css-1s3dcof"
 																	style="border-radius: 20px; background-color: orange; color: black; margin-right: 10px; margin-bottom: 10px;"><span
-																	class="ant-radio-button"><input type="radio"  name="meal" value="breakfast"
+																	class="ant-radio-button">
+																	<input type="radio"  name="meal" value="breakfast"
 																		class="ant-radio-button-input"
 																		value="64f153a05b87822374c5eb44"><span
 																		class="ant-radio-button-inner"></span></span><span>아침</span></label><label
@@ -123,6 +121,8 @@
 																		class="ant-radio-button-inner"></span></span><span>간식</span></label>
 															</div>
 														</div>
+														
+														
 																<div class="Plan_modal_food_bottom_bar__r962X">
 												<button type="button"
 													class="ant-btn css-1s3dcof ant-btn-default Plan_modal_food_close_btn__QsNOd Global_button__iJeUH">
@@ -152,9 +152,17 @@
 							style="width: 0px; height: 0px; overflow: hidden; outline: none;"></div>
 					</div>
 				</div>
-			</div>
 		</div>
-	</div>
-	</div>
+		<script>
+			$("#foodPlan").click(foodClickHandler);
+			function foodC
+			console.log("foodClickHandler");
+			$.ajax({
+				url:
+			})
+		</script>
+	
+	
+	
 	
 

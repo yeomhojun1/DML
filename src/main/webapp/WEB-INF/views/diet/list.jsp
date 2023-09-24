@@ -235,7 +235,7 @@
 						<div class="Plan_bottom1_item__L4ece">
 							<button type="button"
 								class="ant-btn css-1s3dcof ant-btn-text Plan_bottom1_btn__qLTZ7"
-								style="font-weight: normal; color: white; border-radius: 20px; background-color: rgb(161, 235, 203);">
+								style="font-weight: normal; color: white; border-radius: 20px; background-color: yellow;">
 								<span>전체</span>
 							</button>
 						</div>
@@ -243,28 +243,28 @@
 							<div class="Plan_bottom1_item__L4ece">
 								<button type="button"
 									class="ant-btn css-1s3dcof ant-btn-text Plan_bottom1_btn__qLTZ7"
-									style="border-radius: 20px; background-color: rgb(153, 212, 234); font-weight: bold; color: white;">
+									style="border-radius: 20px; background-color: orange; font-weight: bold; color: white;">
 									<span>아침</span>
 								</button>
 							</div>
 							<div class="Plan_bottom1_item__L4ece">
 								<button type="button"
 									class="ant-btn css-1s3dcof ant-btn-text Plan_bottom1_btn__qLTZ7"
-									style="border-radius: 20px; background-color: rgb(153, 185, 234); font-weight: normal; color: white;">
+									style="border-radius: 20px; background-color: blue; font-weight: normal; color: white;">
 									<span>점심</span>
 								</button>
 							</div>
 							<div class="Plan_bottom1_item__L4ece">
 								<button type="button"
 									class="ant-btn css-1s3dcof ant-btn-text Plan_bottom1_btn__qLTZ7"
-									style="border-radius: 20px; background-color: rgb(241, 139, 136); font-weight: normal; color: white;">
+									style="border-radius: 20px; background-color: green; font-weight: normal; color: white;">
 									<span>저녁</span>
 								</button>
 							</div>
 							<div class="Plan_bottom1_item__L4ece">
 								<button type="button"
 									class="ant-btn css-1s3dcof ant-btn-text Plan_bottom1_btn__qLTZ7"
-									style="border-radius: 20px; background-color: rgb(255, 223, 122); font-weight: normal; color: white;">
+									style="border-radius: 20px; background-color: red; font-weight: normal; color: white;">
 									<span>간식</span>
 								</button>
 							</div>
@@ -281,7 +281,7 @@
 					<div class="Plan_bottom1_second_bar___Z7S8">
 						<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH">식사구분</div>
 						<div class="Plan_bottom1_second_bar_food__Nea0w">음식</div>
-
+						<div class="Plan_bottom1_second_bar_kcal__2i7Y2">수량</div>
 						<div class="Plan_bottom1_second_bar_kcal__2i7Y2">
 							칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ"></span>
 						</div>
