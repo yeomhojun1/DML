@@ -79,21 +79,19 @@ public class FpDietController {
 		}
 		return viewPage;
 	}
+	@ResponseBody
 	@PostMapping("/delete")
 	public String deleteDoMemeber(RedirectAttributes redirectAttr, String mealCode ) {
-		String viewPage = "redirect:/";
 		int result = fpDietServiceImpl.delete(mealCode);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");
-				viewPage = "redirect:/diet/list";//delete는 보통 처음에 있던 화면으로 돌아감 그래서 ajax를 쓰는데 그건 추후
 			} else {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 됐습니다");
-				viewPage = "redirect:/diet/list";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return viewPage;
+		return String.valueOf(result);
 	}
 }

@@ -90,7 +90,6 @@
 														</div>
 													</div>
 												</div>
-											
 											<div class="Plan_modal_food_desc3_title__sFhbK Plan_modal_food_desc_title__GwIXK">식사구분</div>
 														<div class="Plan_modal_food_meal_list__cNfE0">
 															<div class="ant-radio-group ant-radio-group-outline css-1s3dcof">
@@ -121,7 +120,7 @@
 																		class="ant-radio-button-inner"></span></span><span>간식</span></label>
 															</div>
 														</div>
-														
+											
 														
 																<div class="Plan_modal_food_bottom_bar__r962X">
 												<button type="button"
@@ -133,16 +132,7 @@
 													</div>
 												</div>
 											</div>
-									<!-- 		<div class="Plan_modal_food_bottom_bar__r962X">
-												<button type="button"
-													class="ant-btn css-1s3dcof ant-btn-default Plan_modal_food_close_btn__QsNOd Global_button__iJeUH">
-													<span>닫기</span>
-												</button>
-												<button type="button"
-													class="ant-btn css-1s3dcof ant-btn-default Plan_modal_food_add_and_save_btn__rKsIZ Global_button__iJeUH">
-													<span>저장 후 추가</span>
-												</button>
-											</div> -->
+		
 										</div>
 									</div>
 								</div>
@@ -153,15 +143,9 @@
 					</div>
 				</div>
 		</div>
-		<script>
-			$("#foodPlan").click(foodClickHandler);
-			function foodC
-			console.log("foodClickHandler");
-			$.ajax({
-				url:
-			})
-		</script>
-	
+<script>
+
+</script>
 	
 	
 	

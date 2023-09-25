@@ -115,20 +115,19 @@ memberId=77@77.77
 		return viewPage;
 	}
 	@PostMapping("/delete")
-	public String deleteDofood(RedirectAttributes redirectAttr,String commentNum ) {
-		String viewPage = "redirect:/";
-		int result = fpFoodServiceImpl.delete(commentNum);
+	@ResponseBody
+	public String deleteDofood(RedirectAttributes redirectAttr,String foodCd ) {
+		System.out.println(foodCd);
+		int result = fpFoodServiceImpl.delete(foodCd);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");
-				viewPage = "redirect:/food/list";//delete는 보통 처음에 있던 화면으로 돌아감 그래서 ajax를 쓰는데 그건 추후
 			} else {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 됐습니다");
-				viewPage = "redirect:/food/list";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return viewPage;
+		return String.valueOf(result);
 	}
 }

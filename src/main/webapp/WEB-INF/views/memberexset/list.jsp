@@ -215,6 +215,7 @@
 		$(".sendDayExSet").click(sendDayExSetHandler);
 	}
 	/* 범준님 코드 가져옴 */
+	
 	function datepickerHandler(){
 	 	$("#datepicker").datepicker({
 	    	dateFormat: 'yy-mm-dd',

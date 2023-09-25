@@ -15,7 +15,7 @@
 	</insert>
 	
 	<update id="update" parameterType="FpDietVo">
-		update diet set foodback = #{feedback}
+		update diet set feedback = #{feedback}
 		where meal_code = #{mealCode}
 	</update>
 	

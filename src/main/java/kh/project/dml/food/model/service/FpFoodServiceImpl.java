@@ -52,7 +52,7 @@ public class FpFoodServiceImpl implements FpFoodService  {
 				foodtime = "E";
 				break;
 			}
-			vo.setMealCode(food.getFoodCd()+vo.getFoodDate()+vo.getMemberId()+foodtime);
+			vo.setMealCode(vo.getFoodDate()+vo.getMemberId()+food.getFoodCd()+foodtime);
 			food.setMealCode(vo.getMealCode());
 			vo.setFoodTime(foodtime);
 			if(fpFoodDao.mealCodeCheck(vo.getMealCode()) == null) {				

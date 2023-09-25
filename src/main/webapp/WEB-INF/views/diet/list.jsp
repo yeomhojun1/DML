@@ -347,6 +347,7 @@
   });
   console.log(scrollTo);
   // input을 datepicker로 선언
+      let savedFoodInfo = {};
   $("#datepicker").datepicker({
 	    dateFormat: 'yy-mm-dd',
         showOtherMonths: true,
@@ -362,24 +363,27 @@
         monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], // 달력의 월 부분 Tooltip
         dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], // 달력의 요일 텍스트
         dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'], // 달력의 요일 Tooltip
-
-       onSelect: function(dateText, inst) {
-           $(".DateBars_date__DyX0X").text(dateText); // 맨 위의 날짜 변경
-           var date=new Date($("#datepicker").datepicker({dateFormat:"yy-mm-dd"}).val());
-           //일요일 0~
-           alert("date:"+date.getDay());
-           
-           week=new Array("일","월","화","수","목","금","토");
-           $(".DateBars_day_of_week__ShQrM").text(week[date.getDay()]);
-           
-     var scrollTo = $(".ant-btn-circle span", container).filter(function() {
-       return parseInt($(this).text()) === inst.selectedDay;
-     });
-
-     if (scrollTo.length) {
-       container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop());
-     }
-   },
+   
+     
+		 
+	       onSelect: function(dateText, inst) {
+	           $(".DateBars_date__DyX0X").text(dateText); // 맨 위의 날짜 변경
+	           var date=new Date($("#datepicker").datepicker({dateFormat:"yy-mm-dd"}).val());
+	           //일요일 0~
+	           alert("date:"+date.getDay());
+	 
+	           week=new Array("일","월","화","수","목","금","토");
+	           $(".DateBars_day_of_week__ShQrM").text(week[date.getDay()]);
+	           
+	           
+		     var scrollTo = $(".ant-btn-circle span", container).filter(function() {
+		       return parseInt($(this).text()) === inst.selectedDay;
+		     });
+		
+		     if (scrollTo.length) {
+		       container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop());
+		     }
+		   },  // onSelect
    
    onChangeMonthYear:function(year, month, inst){
      setTimeout(function(){
@@ -464,60 +468,102 @@
 		carbs = $(thisElement).parent().prevAll(".crabs").text();
 		protein = $(thisElement).parent().prevAll(".protein").text();
 		fat = $(thisElement).parent().prevAll(".fat").text();
+
 		
+		htmlVal = '';
+		htmlVal += `
+			<div class="Plan_bottom1_food_each__s9jUi">
+			 	<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH foodTime">
+				<span class="Plan_bottom1_second_bar_sub___m2EJ ">아침</span>
+				</div> 
+				<div class="Plan_bottom1_second_bar_food__Nea0w">\${foodName}
+				</div>
+				 <div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
+				수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">20</span>
+				</div> 
+				<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
+					칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${calorie}</span>
+				</div>
+				<div class="Plan_bottom1_second_bar_carb__0dt0o carbs">
+					탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${carbs}</span>
+				</div>
+				<div class="Plan_bottom1_second_bar_protein__BHBRu protein">
+					단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${protein}</span>
+				</div>
+				<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
+					지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${fat}</span>
+				</div>
+				<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
+					<button type="button" onclick="btnDeleteClickHandler(this)" data-foodcd="\${foodcd}" data-meal="0">삭제</button>
+				</div>
+			</div>
+		`;
 		
-						htmlVal = '';
-					htmlVal += `
-						<div class="Plan_bottom1_food_each__s9jUi">
-							<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH foodTime">
-							<span class="Plan_bottom1_second_bar_sub___m2EJ ">아침</span>
-							</div>
-							<div class="Plan_bottom1_second_bar_food__Nea0w">\${foodName}
-							</div>
-							<div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
-							수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">20</span>
-							</div>
-							<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
-								칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${calorie}</span>
-							</div>
-							<div class="Plan_bottom1_second_bar_carb__0dt0o carbs">
-								탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${carbs}</span>
-							</div>
-							<div class="Plan_bottom1_second_bar_protein__BHBRu protein">
-								단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${protein}</span>
-							</div>
-							<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
-								지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${fat}</span>
-							</div>
-							<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
-								<button type="button" onclick="btnDeleteClickHandler(this)" data-foodcd="\${foodcd}" data-mealid="TODO">삭제</button>
-							</div>
-						</div>
-					`;
-					
-					$("#wrapSelectedPlan").append(htmlVal);
-					//modal ekdfdsfdsf
-				}
-				function btnDeleteClickHandler(thisElement){
+		$("#wrapSelectedPlan").append(htmlVal);
+		//modal ekdfdsfdsf
+	}  // btnPlusClickHandler
+	
+	function btnDeleteClickHandler(thisElement) {
+	    	var foodCdToDelete = $(thisElement).data("meal");
+			console.log(foodCdToDelete);
+			if(foodCdToDelete == 0){
+			 // display remove...	
+			}  else {
+		   		// TODO: AJAX를 사용하여 서버로 삭제 요청 보내기
+		    	$.ajax({
+		        url: "${pageContext.request.contextPath}/diet/delete", 
+		        type: "post",
+		        data: { mealCode: foodCdToDelete }, // 삭제할 데이터의 고유 식별자 전달
+		        dataType: "json",
+		        success: function (result) {
+		            console.log(result); 
+		            console.log("result"); 
+	
+		            $(thisElement).closest(".Plan_bottom1_food_each__s9jUi").remove();
+		        },
+		        error: function (error) {
+		            console.log("error"); 
+		        },
+		    });
+		}  // else
+	}// btnDeleteClickHandler
+			/* 	function btnDeleteClickHandler(thisElement){
 					console.log(thisElement);
 					console.log($(thisElement).data("foodcd"));
 					// TODO :ajax : food table delete
+					var deleteForDiet = $()
 					
 
-					$(thisElement).closest(".Plan_bottom1_second_bar___Z7S8").remove();
+					$(thisElement).closest(".Plan_bottom1_food_each__s9jUi").remove();
 				}
-		
-	$("button.save").click(bntSaveHandler);
-	function bntSaveHandler(){
-		var food_length = $("#wrapSelectedPlan .Plan_bottom1_food_each__s9jUi").length;
+		 */
+	$("button.save").click(btnSaveHandler);
+	function btnSaveHandler(){
+		var food_length = $(".Plan_bottom1_food_each__s9jUi").length;
 		console.log(food_length);
 		if(food_length < 1){
 			alert("추가된 식단이 없습니다. 식단 추가 후 저장해주세요.");
 			return;
 		}
+		selectedDate = dateText.replace("-",'');
 		let objfinal= {};
 		let arr1= [];
-		let selectedDate = '2023-09-21';  // TODO
+		let selectedDate;
+		$("#datepicker").datepicker({
+		    dateFormat: 'yy-mm-dd',
+		    // ... 다른 옵션들 ...
+		    onSelect: function(dateText, inst) {
+		        // 선택한 날짜를 selectedDate 변수에 할당
+		        selectedDate = dateText;
+		        
+		        // 날짜와 요일을 업데이트하는 부분
+		        $(".DateBars_date__DyX0X").text(dateText);
+		        var date = new Date(dateText);
+		        alert("date: " + date.getDay());
+		        week = new Array("일", "월", "화", "수", "목", "금", "토");
+		        $(".DateBars_day_of_week__ShQrM").text(week[date.getDay()]);
+		    }
+		});
 		let memberId = '77@77.77';  // TODO
 		
 		
@@ -536,10 +582,11 @@
 			obj2.foodTime = foodTime;  // Service에서 조합할 예정 mealCode
 			arr1.push(obj2);
 		});
+		
 
 		objfinal.mealCode = "";  // Service에서 조합할 예정 TODO
 		objfinal.foodlist = arr1;
-		objfinal.foodDate = selectedDate;
+		objfinal.foodDate = $("#datepicker").val();
 		objfinal.memberId = memberId;
 		
 		//private String foodCd;
@@ -567,6 +614,7 @@
 			}
 		});  // ajax
 	}
+	
 	</script>
 
 </body>
