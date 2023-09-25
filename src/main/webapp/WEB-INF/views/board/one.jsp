@@ -63,49 +63,44 @@
 			<main>
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">Daily Muscle Life</h1>
-					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
+					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
 					<h1 class="mt-4"></h1>
 					<div class="card mb-4">
 						<div class="card-body">
 							<form>
 								<div class="mb-3 mt-3">
-								
+
 									<input type="hidden" class="form-control" id="boardNo"
 										name="boardNo" value="${boardone.boardNo}" disabled>
 								</div>
 								<div class="mb-3">
-									<label for="title" class="form-label">제목</label> <input
-										type="text" class="form-control" id="title" name="title"
-										value="${boardone.boardTitle}" disabled>
+									<label for="title" class="form-label">제목</label>
+									<div class="form-control" id="title" name="title">${boardone.boardTitle}</div>
 								</div>
 								<div class="mb-3">
 									<label for="content" class="form-label">내용</label>
-									<textarea class="form-control" id="content" name="content"
-										disabled>${boardone.boardContent}</textarea>
+									<div class="form-control" id="content" name="content" disabled>${boardone.boardContent}</div>
 								</div>
 								<div class="mb-3">
-									<label for="writer" class="form-label">작성자</label> <input
-										type="text" class="form-control" id="writer" name="writer"
-										value="${boardone.memberId}" disabled>
+									<label for="writer" class="form-label">작성자</label>
+									<div class="form-control" id="writer" name="writer">${boardone.memberId}
+									</div>
 								</div>
 								<div class="mb-3">
-									<label for="regDate" class="form-label">작성일</label> <input
-										type="text" class="form-control" id="regDate" name="regDate"
-										value="${boardone.boardDate}" disabled>
+									<label for="regDate" class="form-label">작성일</label>
+									<div class="form-control" id="regDate" name="regDate">${boardone.boardDate}</div>
 								</div>
 								<%-- <a href="list" class="btn btn-outline-secondary">list</a> <a
 						href="modify?bno=${boardone.boardNo}" class="btn btn-outline-warning">modify</a>
 					<a href="remove?bno=${boardone.boardNo}" class="btn btn-outline-danger"
 						onclick="return confirm('삭제하시겠습니까?')">remove</a> --%>
-								<div class="updateBoard" >
-									<button type="button" >수정</button>
-								</div>
-								<div class="deleteBoard">
-									<button type="button">삭제</button>
-								</div>
+								<button type="button" class="updateBoard">수정</button>
+								<button type="button" class="deleteBoard">삭제</button>
+								<button type="button" class="replyBoard">댓글 달기</button>
 							</form>
 						</div>
 					</div>
+						<div class="card-body addreply"></div>
 				</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
@@ -113,9 +108,24 @@
 	</div>
 	<script>
 		window.onload = function() {
-			const withOuthtmlCode = extractTextFromHTML($("#content").val());
+		/* 	const withOuthtmlCode = extractTextFromHTML($("#content").val());
 			$("#content").html(withOuthtmlCode);
+			console.log(${boardone.boardNo});
+			console.log(${boardone.boardCount}); */
+			$.ajax({
+		           type: "get",
+		           url: "${pageContext.request.contextPath}/board/plusCount",
+		           data: {  boardCount :${boardone.boardCount},boardNo:${boardone.boardNo}  },
+		           success: function (result) {
+		        	   console.log("success");
+					},error : function(result){
+						console.log("error");
+					}
+					//,dataType : "json"
+				});
 		}
+		
+		
 		function extractTextFromHTML(html) {
 			const tempDiv = document.createElement('div');
 			tempDiv.innerHTML = html;
@@ -150,6 +160,40 @@
 			}else{
 				alert("작성자가 아닙니다.");
 			}
+		}
+		$(".replyBoard").click(replyBoardHandler);
+		function replyBoardHandler(){
+			var addreplyVal = `<div class="card">
+
+				<form method="post" action="${pageContext.request.contextPath}/replyboard/insert">
+				<div class="card-body addaddreply">
+						<label>댓글 작성자 : ${member.memberId}</label>
+						<textarea rows="3" class="col-xl-12" name="replyContent" class="replyContent"></textarea>
+						<button class="submitreply" type="submit">댓글 작성</button>
+				</form>
+				
+			</div>`
+//			var addreplyVal = `<div class="card">↳작성자 : ${member.memberId}<div class="addaddreply card-body"><textarea class="col-xl-12 replyContent" name="boardTitle"></textarea><button class="submitreply">댓글 저장</button></div></div>`
+			$(".addreply").html(addreplyVal);
+			$(".submitreply").click(submitreplyHandler);
+		}
+		function submitreplyHandler(){
+			var replyContent=$("[name=replyContent]").val();
+			console.log(${boardone.blevel});
+	  $.ajax({
+		           type: "post",
+		           url: "${pageContext.request.contextPath}/replyboard/insert",
+		           data: {memberId: "${member.memberId}" ,replyContent: replyContent, boardNo: $("#boardNo").val(),rstep : ${boardone.bstep}+1 ,rlevel : ${boardone.blevel}+1},
+		           success: function (result) {
+		        	   console.log("success");
+		        	   alert("댓글등록됐습니다.");
+		        	   location.href="${pageContext.request.contextPath}/board/one?boardNo=${boardone.boardNo}"
+					},error : function (){
+						 console.log("error");
+					}
+				}) 
+		
+			
 		}
 	</script>
 </body>

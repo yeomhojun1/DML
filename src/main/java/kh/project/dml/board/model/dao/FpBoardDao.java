@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kh.project.dml.board.model.vo.FpBoardParam;
 import kh.project.dml.board.model.vo.FpBoardVo;
 
 @Repository
@@ -25,6 +26,9 @@ public class FpBoardDao {
 	}
 	public int update(FpBoardVo vo) {
 		return sqlSession.update("board.update", vo);
+	}
+	public int updateCount(FpBoardParam param) {
+		return sqlSession.update("board.plusCount", param);
 	}
 	public int delete(int boardNo) {
 		return sqlSession.delete("board.delete" ,boardNo);

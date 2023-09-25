@@ -29,11 +29,13 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.nimbusds.oauth2.sdk.util.StringUtils;
 
 import io.jsonwebtoken.io.IOException;
 import kh.project.dml.board.model.service.FpBoardService;
+import kh.project.dml.board.model.vo.FpBoardParam;
 import kh.project.dml.board.model.vo.FpBoardVo;
 import kh.project.dml.common.FileUpload;
 
@@ -85,7 +87,11 @@ public class FpBoardController {
 		}
 		return viewPage;
 	}
-
+	@GetMapping("/plusCount")
+	@ResponseBody
+	public Integer updatememberexset(ModelAndView mv, FpBoardParam param ) {
+		return fpBoardServiceImpl.plusCount(param);
+	}
 	@PostMapping("/upload")
 	public ModelAndView upload(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
 			throws Exception {

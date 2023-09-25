@@ -90,12 +90,13 @@
 							</thead>
 							<tbody>
 								<c:forEach items="${boardList}" var="vo">
-									<tr>
+									<tr class="foreachValue">
 										<th>${vo.boardNo}</th>
-										<td><a href="${pageContext.request.contextPath }/board/one?boardNo=${vo.boardNo}"> ${vo.boardTitle}</a></td>
-										<td>${vo.memberId}</td>
-										<td>${vo.boardDate}</td>
-										<td>${vo.boardCount}</td>
+										<%-- <td class="plusCount boardTitleVal">${vo.boardTitle}</td> --%>
+										 <td><a href="${pageContext.request.contextPath }/board/one?boardNo=${vo.boardNo}" class="plusCount"> ${vo.boardTitle}</a></td>
+										<td><div class="memberIdVal">${vo.memberId}</div></td>
+										<td><div class="boardDateVal">${vo.boardDate}</div></td>
+										<td><div class="boardCountVal">${vo.boardCount}</div></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -111,15 +112,13 @@
 							<li><a href="#" style="margin-right:5px">3</a></li>
 							<li><a href="#" style="margin-right:5px">4</a></li>
 							<li><a href="#" style="margin-right:5px">5</a></li>
-
 						</ul>
 					</div>
-					
 				</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
 	</div>
-	
+
 </body>
 </html>

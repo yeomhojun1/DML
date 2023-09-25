@@ -23,6 +23,7 @@
 		<typeAlias type="kh.project.dml.suplement.model.vo.FpSuplementVo" alias="FpSuplementVo"/>
 		<typeAlias type="kh.project.dml.producttype.model.vo.FpProducttypeVo" alias="FpProducttypeVo"/>
 		<typeAlias type="kh.project.dml.chickenproduct.model.vo.FpChickenproductVo" alias="FpChickenproductVo"/>
+		<typeAlias type="kh.project.dml.replyboard.model.vo.FpReplyBoardVo" alias="FpReplyBoardVo"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
@@ -42,5 +43,6 @@
 		<mapper resource="mappers/suplement-mapper.xml"/>
 		<mapper resource="mappers/producttype-mapper.xml"/>
 		<mapper resource="mappers/chickenproduct-mapper.xml"/>
+		<mapper resource="mappers/reply-board-mapper.xml"/>
 	</mappers>
 </configuration>

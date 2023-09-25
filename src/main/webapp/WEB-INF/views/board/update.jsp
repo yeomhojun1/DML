@@ -70,11 +70,11 @@
 						enctype="multipart/form-data" id="updateForm">
 						<input type="hidden" value="${boardone.boardNo}" name="boardNo">
 						<span>제목 : </span>
-						<textarea class="updateBoardTitle" rows="1" cols="50" name="boardTitle" placeholder="${boardone.boardTitle}"></textarea>
+						<input type="textarea" value="${boardone.boardTitle}" class="updateBoardTitle" rows="1" cols="50" name="boardTitle"></textarea>
 				</div>
 				<div>
 					<span>내용 : </span>
-					<textarea class="updateBoardContent" rows="10" cols="20" name="boardContent" id="editor" placeholder="${boardone.boardContent}"></textarea>
+					<textarea class="updateBoardContent" rows="10" cols="20" name="boardContent" id="editor"></textarea>
 				</div>
 					<button type="button" class="saveUpdate">저장</button>
 				<!--게시글 추가한 뒤에 이미지추가도 시작할예정 -->
@@ -87,36 +87,41 @@
 		<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 	</div>
 	</div>
-	 <script>
+	<!--  <script>
 		ClassicEditor.create(document.querySelector('#editor'));
-		/* var cnt = 1;
+		 var cnt = 1;
 		function fn_addFile() {
 			$("#d_file").append(
 					"<br>" + "<input type='file' name='file" + cnt + "' />");
 			cnt++;
-		} */
-	</script> 
+		} 
+	</script>  -->
 	<script>
+	/* window.onload = function() {
+	$(".updateBoardTitle").html(${boardone.boardTitle});
+	//$(".updateBoardContent").html(${boardone.boardContent});
+	}
+	 */
+	
+	
 	$(".saveUpdate").click(updateDoBoardHandler);
 	function updateDoBoardHandler(){
 		var title1= $(".updateBoardTitle").val();
 		var Content1= $(".updateBoardContent").val();
-	console.log(title1);
-	console.log(Content1);
-	/*  $.ajax({
-	            type: "post",
-	            url: "${pageContext.request.contextPath}/board/update",
-	           data: {memberId:${member.memberId} ,boardTitle : title1,boardContent: Content1,boardNo :	${boardone.boardNo}},
+		console.log(title1);
+		console.log(Content1);
+ 		$.ajax({ type: "post",
+	      url: "${pageContext.request.contextPath}/board/update",
+	      data: {memberId:${member.memberId} ,boardTitle : title1,boardContent: Content1,boardNo :	${boardone.boardNo}},
 	         //   data: $("#updateForm").serialize(),
 	            //dataType: "json",
-	            success: function(response){
-	            	console.log(response);
-	                    location.href = "${pageContext.request.contextPath}/board/list";
-	              
-	                },error: function(){
-	                	console.log("error");
-	                }
-	            });  */
+	      success: function(response){
+	       	console.log(response);
+	        location.href = "${pageContext.request.contextPath}/board/list";
+	        },error: function(){
+	          	console.log("error");
+               }
+	         }); 
 	        } 
 	
 	/* 	 $.ajax({

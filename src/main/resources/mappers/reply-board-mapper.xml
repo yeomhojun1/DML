@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="replyboard">
+
+
+<select id="selectList" resultType="FpreplyboardVo">
+		select * from replyboard 
+</select> 
+	
+<select id="seletOne" resultType="FpreplyboardVo" parameterType="string">
+select * from where reply_No=#{replyNo}
+</select>
+
+<insert id="insert">
+insert into replyboard values(REPLY_no_seq.nextval,#{memberId},#{replyContent},default,#{boardNo},#{rstep},#{rlevel})
+</insert>
+
+<update id="update" parameterType="FpreplyboardVo">
+update replyboard set reply_Content = #{replyContent}
+where reply_No =#{replyNo}
+</update>
+
+<delete id="delete" parameterType="string">
+delete from replyboard where reply_No =#{replyNo}
+</delete>
+</mapper>
+
