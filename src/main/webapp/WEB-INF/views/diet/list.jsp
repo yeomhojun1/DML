@@ -503,6 +503,68 @@
 		//modal ekdfdsfdsf
 	}  // btnPlusClickHandler
 	
+	/* function saveDietAndAddToScreen() {
+	    var foodCd = $("#foodCd").val(); // 선택한 식품의 고유 코드
+	    var foodName = $("#foodName").val(); // 선택한 식품의 이름
+	    var calorie = $("#calorie").val(); // 선택한 식품의 칼로리
+	    var carbs = $("#carbs").val(); // 선택한 식품의 탄수화물
+	    var protein = $("#protein").val(); // 선택한 식품의 단백질
+	    var fat = $("#fat").val(); // 선택한 식품의 지방
+	    var selectedDate = $("#datepicker").val(); // 선택한 날짜
+
+	    // TODO: AJAX를 사용하여 서버에 데이터 저장 요청 보내기
+	    $.ajax({
+	        url: "${pageContext.request.contextPath}/foodapi/insert", // 저장용 API 엔드포인트에 맞게 수정
+	        type: "post",
+	        data: {
+	            foodCd: foodCd,
+	            foodName: foodName,
+	            calorie: calorie,
+	            carbs: carbs,
+	            protein: protein,
+	            fat: fat,
+	            date: selectedDate
+	        },
+	        dataType: "json",
+	        success: function(result) {
+	            console.log("Data saved successfully.");
+	            // 저장 성공 메시지 또는 다른 동작 수행
+
+	            // 화면에 데이터 추가
+	            var htmlVal = `
+	                <div class="Plan_bottom1_food_each__s9jUi">
+	                    <div class="Plan_bottom1_second_bar_foodcategory__Ew3pH">식사구분</div>
+	                    <div class="Plan_bottom1_second_bar_food__Nea0w">${foodName}</div>
+	                    <div class="Plan_bottom1_second_bar_kcal__2i7Y2">수량</div>
+	                    <div class="Plan_bottom1_second_bar_kcal__2i7Y2">
+	                        칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${calorie}</span>
+	                    </div>
+	                    <div class="Plan_bottom1_second_bar_carb__0dt0o">
+	                        탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${carbs}</span>
+	                    </div>
+	                    <div class="Plan_bottom1_second_bar_protein__BHBRu">
+	                        단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${protein}</span>
+	                    </div>
+	                    <div class="Plan_bottom1_second_bar_fat__8Tyy8">
+	                        지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${fat}</span>
+	                    </div>
+	                    <div class="Plan_bottom1_second_bar_ctl__2Pelr">&nbsp;</div>
+	                </div>
+	            `;
+	            $("#wrapSelectedPlan").append(htmlVal);
+	        },
+	        error: function(error) {
+	            console.log("Error:", error);
+	            // 에러 처리 또는 에러 메시지 표시
+	        },
+	    });
+	}
+
+	// 저장 버튼 클릭 이벤트 핸들러
+	$("button.save").click(function() {
+	    saveDietAndAddToScreen();
+	});
+	 */
 	function btnDeleteClickHandler(thisElement) {
 	    	var foodCdToDelete = $(thisElement).data("meal");
 			console.log(foodCdToDelete);
@@ -545,7 +607,7 @@
 			alert("추가된 식단이 없습니다. 식단 추가 후 저장해주세요.");
 			return;
 		}
-		selectedDate = dateText.replace("-",'');
+		
 		let objfinal= {};
 		let arr1= [];
 		let selectedDate;
