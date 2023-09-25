@@ -23,8 +23,27 @@ public class FpAdminDao {
 		return sqlSession.selectList("admin.suspendedList", cri);
 	}
 	
+	public void suspendedActive(String memberId) {
+		sqlSession.update("admin.suspendedActive", memberId);
+	}
+	
+	public void suspendedClear(String memberId) {
+		sqlSession.update("admin.suspendedClear", memberId);
+	}
+	
+	// 전체 멤버 리스트
 	public int getTotal(Criteria cri) {
 		return sqlSession.selectOne("admin.getTotal", cri);
+	}
+	
+	// 활성화된 멤버 리스트
+	public int getTotalActive(Criteria cri) {
+		return sqlSession.selectOne("admin.getTotalActive", cri);
+	}
+	
+	// 정지된 멤버 리스트
+	public int getTotalSuspended(Criteria cri) {
+		return sqlSession.selectOne("admin.getTotalSuspended", cri);
 	}
 	
 	public FpAdminVo selectOne(String adminId) {

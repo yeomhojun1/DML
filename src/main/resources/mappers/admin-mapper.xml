@@ -14,6 +14,9 @@
 						<when test="type == 'N'.toString()">
 							mname like '%'||#{keyword}||'%' 
 						</when>
+						<when test="type == 'A'.toString()">
+							user_enabled like '%'||#{keyword}||'%' 
+						</when>
 					</choose>
 				</trim>
 			</foreach>
@@ -52,10 +55,36 @@
 		]]>
 	</select>
 	
+	<update id="suspendedActive" parameterType="string">
+		update users set user_enabled = 0
+		where username = #{memberId}
+	</update>
+	
+	<update id="suspendedClear" parameterType="string">
+		update users set user_enabled = 1
+		where username = #{memberId}
+	</update>
+	
 	<select id="getTotal" resultType="_int">
-		select count(*) from member
+		select count(*) from member m join users u on m.member_id = u.username 
 		<if test="keyword != null">
 			where rownum > 0 <include refid="criteria"></include>
+		</if>
+	</select>
+
+	<select id="getTotalActive" resultType="_int">
+		select count(*) from member m join users u on m.member_id = u.username
+		where user_enabled = 1 
+		<if test="keyword != null">
+			and rownum > 0 <include refid="criteria"></include>
+		</if>
+	</select>
+
+	<select id="getTotalSuspended" resultType="_int">
+		select count(*) from member m join users u on m.member_id = u.username
+		where user_enabled = 0
+		<if test="keyword != null">
+			and rownum > 0 <include refid="criteria"></include>
 		</if>
 	</select>
 	

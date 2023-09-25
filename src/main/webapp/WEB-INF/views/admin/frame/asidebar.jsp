@@ -26,9 +26,9 @@
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="${pageContext.request.contextPath }/admin/memberlist">
-								회원 목록</a> 
+								멤버 리스트</a> 
 								<a class="nav-link" href="${pageContext.request.contextPath }/admin/suspended">
-								회원 정지 목록</a>
+								정지 멤버 리스트</a>
 							</nav>
 						</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"

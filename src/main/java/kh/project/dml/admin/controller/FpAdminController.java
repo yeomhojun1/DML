@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -37,7 +38,7 @@ public class FpAdminController {
 		logger.info("cri : " + cri);
 		
 		mv.addObject("memberlist", service.memberList(cri));
-		int total = service.getTotal(cri);
+		int total = service.getTotalActive(cri);
 		FpPageMakerVo pageMake = new FpPageMakerVo(cri, total);
 		
 		mv.addObject("pageMaker", pageMake);
@@ -51,7 +52,7 @@ public class FpAdminController {
 		logger.info("cri : " + cri);
 		
 		mv.addObject("memberlist", service.suspendedList(cri));
-		int total = service.getTotal(cri);
+		int total = service.getTotalSuspended(cri);
 		FpPageMakerVo pageMake = new FpPageMakerVo(cri, total);
 		
 		mv.addObject("pageMaker", pageMake);
@@ -59,17 +60,17 @@ public class FpAdminController {
 		return mv;
 	}
 	
-	@GetMapping("/suspended/active")
-	public ModelAndView suspendedActive(ModelAndView mv, String memberId) {
+	@PostMapping("/suspended/active")
+	public ModelAndView suspendedActive(ModelAndView mv, @RequestParam("memberId") String memberId) {
 		service.suspendedActive(memberId);
-		mv.setViewName("admin/memberList");
+		mv.setViewName("admin/memberlist");
 		return mv;
 	}
 	
-	@GetMapping("/suspended/clear")
-	public ModelAndView suspendedActive(ModelAndView mv) {
+	@PostMapping("/suspended/clear")
+	public ModelAndView suspendedClear(ModelAndView mv, @RequestParam String memberId) {
 		service.suspendedClear(memberId);
-		mv.setViewName("admin/memberList");
+		mv.setViewName("admin/suspended");
 		return mv;
 	}
 	
