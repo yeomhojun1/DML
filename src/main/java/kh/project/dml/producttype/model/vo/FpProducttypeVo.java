@@ -12,7 +12,7 @@ import lombok.Data;
 public class FpProducttypeVo {
 
 	//상품분류vo --> 닭가슴살vo 불러오기
-	private List<FpChickenproductVo> FpChickenproductList;
+	//private List<FpChickenproductVo> FpChickenproductList;
 	
 	
 	private String type;

@@ -14,14 +14,12 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
 	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/styles.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/scss.css"
-	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/styles.css"	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/scss.css"	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/resources/css/product.css" rel="stylesheet" />
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-	crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>

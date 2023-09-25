@@ -21,6 +21,6 @@
 	</update>
 	
 	<delete id="delete" parameterType="String">
-	delete producttype board where type = #{type}
+	delete from producttype  where type = #{type}
 	</delete>
 </mapper>

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="nutrient">
 
-		<!-- nuruient vo 와 suplement vo 합쳐지는 resultmap  -->
+		<!-- nuruient vo 와 suplement vo 합쳐지는 resultmap (SelectList)목록이 여러개일떄  -->
 	<resultMap type="FpNutrientVo" id="selectNutrientAndSuplementMap">
 		<id column="nutrientId" property="nutrientId"/>
 		<result column="nutrient" property="nutrient"/>

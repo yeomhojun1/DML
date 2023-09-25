@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import kh.project.dml.chickenproduct.model.service.FpChickenproductService;
 import kh.project.dml.common.interceptor.SessionNames;
 import kh.project.dml.nutrient.model.service.FpNutrientService;
 
@@ -17,12 +18,15 @@ import kh.project.dml.nutrient.model.service.FpNutrientService;
 public class FpProductController {
 	@Autowired
 	private FpNutrientService fpNutrientServiceImpl;
+	@Autowired
+	private FpChickenproductService fpChickenproductServiceImpl;
 
 	@GetMapping("/product")
 	public ModelAndView mainPageOpen1(ModelAndView mv) {
 		mv.addObject("tab", "1"); //컨트롤러에 값 써야함 product.jsp 맨밑에가보면있음.
 		mv.addObject("nutruentBeginerlist", fpNutrientServiceImpl.selectList(1));
 		mv.addObject("nutruentExpertlist", fpNutrientServiceImpl.selectList(2));
+		mv.addObject("chickenproductlist", fpChickenproductServiceImpl.selectList());
 		mv.setViewName("product/product");
 		return mv;
 	}
