@@ -1,15 +1,18 @@
 package kh.project.dml.admin.model.vo;
 
-import org.springframework.stereotype.Component;
-
 import lombok.Data;
 
 @Data
-@Component
 public class FpAdminVo {
-		
-	private String adminId;
-	private int adminPwd;
-	private String adminName;
-	private String adminEmail;
+	
+	private int rownum;
+	private String memberId;
+	private String mname;
+	private String mbirthday;
+	private String gender;
+	private double height;
+	private double weight;
+	
+	private int userEnabled;
+	private String authorities;
 }

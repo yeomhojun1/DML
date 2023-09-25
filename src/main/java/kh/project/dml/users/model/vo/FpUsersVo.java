@@ -6,8 +6,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Data
-@Getter
-@Setter
 public class FpUsersVo {
 	private String username;
 	private String password;

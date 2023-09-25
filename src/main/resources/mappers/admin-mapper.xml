@@ -1,9 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="admin">
-
-	<select id="selectList" resultType="FpAdminVo">
-	SELECT * FROM ADMIN
+	
+	<!-- 검색 조건문 -->
+	<sql id="criteria">
+		<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'I'.toString()">
+							member_id like '%'||#{keyword}||'%' 
+						</when>
+						<when test="type == 'N'.toString()">
+							mname like '%'||#{keyword}||'%' 
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+	
+	<select id="memberList" resultType="FpAdminVo">
+		<![CDATA[
+			select rownum, member_id, mname, mbirthday, gender, height, weight, authorities, user_enabled from 
+			(select rownum as rn, m.member_id, mname, mbirthday, gender, height, weight, u.authorities, u.user_enabled
+			from member m join users u on m.member_id = u.username
+			where rownum <= #{pageNum} * #{amount} and user_enabled = 1
+		]]>
+			<if test="keyword != null">
+				<include refid="criteria"></include> 
+			</if>
+		<![CDATA[        
+			    )
+		where rn > (#{pageNum} -1) * #{amount}
+		]]>
+	</select>
+	
+	<select id="suspendedList" resultType="FpAdminVo">
+		<![CDATA[
+			select rownum, member_id, mname, mbirthday, gender, height, weight, authorities, user_enabled from 
+			(select rownum as rn, m.member_id, mname, mbirthday, gender, height, weight, u.authorities, u.user_enabled
+			from member m join users u on m.member_id = u.username
+			where rownum <= #{pageNum} * #{amount} and user_enabled = 0
+		]]>
+			<if test="keyword != null">
+				<include refid="criteria"></include> 
+			</if>
+		<![CDATA[        
+			    )
+		where rn > (#{pageNum} -1) * #{amount}
+		]]>
+	</select>
+	
+	<select id="getTotal" resultType="_int">
+		select count(*) from member
+		<if test="keyword != null">
+			where rownum > 0 <include refid="criteria"></include>
+		</if>
 	</select>
 	
 	<select id="selectOne" resultType="FpAdminVo" parameterType="string">
