@@ -23,6 +23,8 @@
 	rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/mypage.css" rel="stylesheet" />
 
+<link href="${pageContext.request.contextPath}/css/adminTable.css" rel="stylesheet" />
+
 <!-- JQuery 사용 -->
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
@@ -64,114 +66,6 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
-<style>
-	a {
-		text-decoration: none;
-	}
-	
-	table {
-		border-collapse: collapse;
-		width: 1000px;
-		margin-top: 20px;
-		text-align: center;
-	}
-	
-	td, th {
-		border: 1px solid black;
-		height: 50px;
-	}
-	
-	th {
-		font-size: 17px;
-		background-color: #ccc;
-	}
-	
-	thead {
-		font-weight: 700;
-	}
-	
-	.table_wrap {
-		margin: 50px 0 0 50px;
-	}
-	
-	.bno_width {
-		width: 12%;
-	}
-	
-	.writer_width {
-		width: 20%;
-	}
-	
-	.regdate_width {
-		width: 15%;
-	}
-	
-	.updatedate_width {
-		width: 15%;
-	}
-	
-	.top_btn {
-		font-size: 20px;
-		padding: 6px 12px;
-		background-color: #fff;
-		border: 1px solid #ddd;
-		font-weight: 600;
-	}
-	
-	.pageInfo {
-		list-style: none;
-		display: inline-block;
-		margin: 50px 0 0 100px;
-	}
-	
-	.pageInfo li {
-		float: left;
-		font-size: 20px;
-		margin-left: 18px;
-		padding: 7px;
-		font-weight: 500;
-	}
-	
-	a:link {
-		color: black;
-		text-decoration: none;
-	}
-	
-	a:visited {
-		color: black;
-		text-decoration: none;
-	}
-	
-	a:hover {
-		color: black;
-		text-decoration: underline;
-	}
-	
-	.active {
-		background-color: #cdd5ec;
-	}
-	
-	.search_area {
-		display: inline-block;
-		margin-top: 30px;
-		margin-left: 260px;
-	}
-	
-	.search_area input {
-		height: 30px;
-		width: 250px;
-	}
-	
-	.search_area button {
-		width: 100px;
-		height: 36px;
-	}
-	
-	.search_area select {
-		height: 35px;
-	}
-	
-</style>
 
 </head>
 <body class="sb-nav-fixed">
@@ -189,9 +83,9 @@
 							</ul>
 						</div>
 					<jsp:include page="./frame/adminmenu.jsp"></jsp:include>
-					<table border=1>
+					<table>
 						<tr>
-							<th>리스트번호</th>
+							<th>번호</th>
 							<th>아이디</th>
 							<th>이름</th>
 							<th>생년월일</th>
@@ -204,17 +98,25 @@
 						</tr>
 						<c:forEach items="${memberlist }" var="member">
 						<tr>
-							<td><c:out value="${member.rownum}"/></td>
+							<td><c:out value="${member.rownum + ((pageMaker.cri.pageNum-1) * 10)}"/></td>
 							<td><c:out value="${member.memberId}"/></td>
 							<td><c:out value="${member.mname}"/></td>
 							<td><c:out value="${member.mbirthday}"/></td>
 							<td><c:out value="${member.gender}"/></td>
 							<td><c:out value="${member.height}"/></td>
 							<td><c:out value="${member.weight}"/></td>
-							<td><c:out value="${member.userEnabled}"/></td>
+							<td>
+								<c:choose>
+									<c:when test="${member.userEnabled == 1}">
+										활성화
+									</c:when>
+									<c:when test="${member.userEnabled == 0}">
+										정지
+									</c:when>
+								</c:choose>
+							</td>
 							<td><c:out value="${member.authorities}"/></td>
-							<td><button class="suspended_btn"
-								onClick="location.href='${pageContext.request.contextPath}/admin/suspended/active'">
+							<td><button class="suspended_btn" value="${member.memberId}">
 									정지</button></td>
 						</tr>
 						</c:forEach>
@@ -226,6 +128,8 @@
 									<c:out value="${pageMaker.cri.type eq 'I'?'selected':'' }"/>>아이디</option>
 								<option value="N"
 									<c:out value="${pageMaker.cri.type eq 'N'?'selected':'' }"/>>이름</option>
+								<option value="A"
+									<c:out value="${pageMaker.cri.type eq 'A'?'selected':'' }"/>>권한</option>
 							</select> 
 							<input type="text" name="keyword" class="searchInput" value="${pageMaker.cri.keyword }">
 							<button>Search</button>
@@ -256,8 +160,8 @@
 					<form id="moveForm" method="get">
 						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
 						<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
-						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">	
-						<input type="hidden" name="type" value="${pageMaker.cri.type }">	
+						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
+						<input type="hidden" name="type" value="${pageMaker.cri.type }">
 				    </form>
 				</div>
 			</main>
@@ -312,6 +216,25 @@
 			moveForm.find("input[name='pageNum']").val(1);
 			moveForm.submit();
 		}
+		
+		$(".suspended_btn").on("click", function() {
+	        var memberId = $(this).val();
+	        console.log(memberId);
+	        $.ajax({
+	            type: "POST", // 또는 GET 등 HTTP 메소드 선택
+	            url: "${pageContext.request.contextPath}/admin/suspended/active",
+	            data: { memberId: memberId },
+	            success: function(response) {
+	                // 성공 시 수행할 로직
+	                location.href="${pageContext.request.contextPath}/admin/memberlist";
+	                console.log(response);
+	            },
+	            error: function(error) {
+	                // 에러 시 수행할 로직
+	                console.error(error);
+	            }
+	        });
+	    });
 	</script>
 </body>
 </html>

@@ -1,0 +1,91 @@
+table {
+	border-collapse: collapse;
+	width: 1000px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+td, th {
+	border: 1px solid black;
+	height: 50px;
+}
+
+th {
+	font-size: 17px;
+	background-color: #ccc;
+}
+
+thead {
+	font-weight: 700;
+}
+
+.table_wrap {
+	margin: 50px 0 0 50px;
+}
+
+.bno_width {
+	width: 12%;
+}
+
+.writer_width {
+	width: 20%;
+}
+
+.regdate_width {
+	width: 15%;
+}
+
+.updatedate_width {
+	width: 15%;
+}
+
+.top_btn {
+	font-size: 20px;
+	padding: 6px 12px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	font-weight: 600;
+}
+
+.pageInfo_area {
+	width: 1000px;
+	text-align: center;
+}
+
+.pageInfo {
+	list-style: none;
+	display: inline-block;
+	margin: 50px 0 0 0;
+}
+
+.pageInfo li {
+	float: left;
+	font-size: 20px;
+	margin-left: 18px;
+	padding: 7px;
+	font-weight: 500;
+}
+
+.active {
+	background-color: #cdd5ec;
+}
+
+.search_area {
+	display: inline-block;
+	margin-top: 30px;
+	margin-left: 260px;
+}
+
+.search_area input {
+	height: 30px;
+	width: 250px;
+}
+
+.search_area button {
+	width: 100px;
+	height: 36px;
+}
+
+.search_area select {
+	height: 35px;
+}
