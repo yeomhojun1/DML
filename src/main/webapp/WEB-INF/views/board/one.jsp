@@ -126,11 +126,11 @@
 		}
 		
 		
-		function extractTextFromHTML(html) {
+		/* function extractTextFromHTML(html) {
 			const tempDiv = document.createElement('div');
 			tempDiv.innerHTML = html;
 			return tempDiv.textContent || tempDiv.innerText || '';
-		}
+		} */
 		$(".updateBoard").click(updateBoardHandler);
 		function updateBoardHandler() {
 			console.log($("#writer").val());
@@ -161,8 +161,8 @@
 				alert("작성자가 아닙니다.");
 			}
 		}
-		$(".replyBoard").click(replyBoardHandler);
-		function replyBoardHandler(){
+		$(".replyBoard").click(replyBoardInsertHandler);
+		function replyBoardInsertHandler(){
 			var addreplyVal = `<div class="card">
 
 				<form method="post" action="${pageContext.request.contextPath}/replyboard/insert">
@@ -178,22 +178,23 @@
 			$(".submitreply").click(submitreplyHandler);
 		}
 		function submitreplyHandler(){
+		
 			var replyContent=$("[name=replyContent]").val();
 			console.log(${boardone.blevel});
-	  $.ajax({
-		           type: "post",
-		           url: "${pageContext.request.contextPath}/replyboard/insert",
-		           data: {memberId: "${member.memberId}" ,replyContent: replyContent, boardNo: $("#boardNo").val(),rstep : ${boardone.bstep}+1 ,rlevel : ${boardone.blevel}+1},
-		           success: function (result) {
-		        	   console.log("success");
-		        	   alert("댓글등록됐습니다.");
-		        	   location.href="${pageContext.request.contextPath}/board/one?boardNo=${boardone.boardNo}"
-					},error : function (){
-						 console.log("error");
+			  $("[name=replyContent]").contents().unwrap().wrap('<div></div>' );
+			/* $.ajax({
+		       type: "post",
+		       url: "${pageContext.request.contextPath}/replyboard/insert",
+		       data: {memberId: "${member.memberId}" ,replyContent: replyContent, boardNo: $("#boardNo").val(),rstep : ${boardone.bstep}+1 ,rlevel : ${boardone.blevel}+1},
+		       success: function (result) {
+		       	  console.log("success");
+		        	  $("[name=replyContent]").contents().unwrap().wrap('<div></div>' );
+		          alert("댓글등록됐습니다.");
+		          location.href="${pageContext.request.contextPath}/board/one?boardNo=${boardone.boardNo}"
+		       },error : function (){
+					 console.log("error");
 					}
-				}) 
-		
-			
+				})  */
 		}
 	</script>
 </body>
