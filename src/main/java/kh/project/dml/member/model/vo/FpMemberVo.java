@@ -1,6 +1,5 @@
 package kh.project.dml.member.model.vo;
 
-
 import lombok.Builder;
 import lombok.Data;
 
@@ -20,6 +19,8 @@ public class FpMemberVo {
 	// 세션 추가
 	private String sessionkey;
 	private String sessionlimit;
+	
+	private String authorities;
 	
 	public FpMemberVo() {}
 	

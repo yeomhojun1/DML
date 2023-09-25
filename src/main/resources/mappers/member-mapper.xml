@@ -9,7 +9,8 @@
 	
 	<!-- 특정 계정 멤버 정보 검색 -->
 	<select id="info" parameterType="string" resultType="FpMemberVo">
-		select * from member
+		select m.*, authorities from member m
+		join users u on m.member_id = u.username
 		where member_id = #{memberId}
 	</select>
 	
@@ -48,28 +49,35 @@
     <!-- 세션값 저장 -->
     <update id="keepLogin" parameterType="map">
         update member set sessionkey = #{sessionkey}, sessionlimit = #{sessionlimit}
-         where member_id = #{memberId}
+		where member_id = #{memberId}
     </update>
 
     <!-- 쿠키에 저장된 세션키 비교 -->
     <select id="checkLoginBefore" resultType="FpMemberVo">
-		select * from member
+		select m.*, authorities from member m
+		join users u on m.member_id = u.username
 		where sessionkey = #{loginCookie}
 		AND TO_TIMESTAMP(sessionlimit, 'RR/MM/DD HH24:MI:SS.FF9') > SYSTIMESTAMP
     </select>
     
     <!-- 네이버 계정 확인 -->
     <select id="getBySnsNaver" resultType="FpMemberVo">
-        select * from member where naverid = #{naverid}
+        select m.*, authorities from member m
+		join users u on m.member_id = u.username
+		where naverid = #{naverid}
     </select>
     
     <!-- 구글 계정 확인 -->
     <select id="getBySnsGoogle" resultType="FpMemberVo">
-        select * from member where googleid = #{googleid}
+        select m.*, authorities from member m
+		join users u on m.member_id = u.username
+		where googleid = #{googleid}
     </select>
     
     <!-- 카카오 계정 확인 -->
     <select id="getBySnsKakao" resultType="FpMemberVo">
-        select * from member where kakaoid = #{kakaoid}
+        select m.*, authorities from member m
+		join users u on m.member_id = u.username
+		where kakaoid = #{kakaoid}
     </select>
 </mapper>

@@ -71,6 +71,10 @@
 
 			<beans:ref bean="sessionCheckInterceptor" />
 		</interceptor>
+		<interceptor>
+			<mapping path="/admin/**"/>
+			<beans:ref bean="adminCheckInterceptor"/>
+		</interceptor>
 	</interceptors>
 
 	<!-- @Aspect AOP annotation -->

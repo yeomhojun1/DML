@@ -1,9 +1,6 @@
 package kh.project.dml.users.model.vo;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 @Data
 public class FpUsersVo {

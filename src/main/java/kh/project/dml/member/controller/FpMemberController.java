@@ -151,7 +151,7 @@ public class FpMemberController {
 	    logger.info("loginPost...LoginVo={}", vo);
         FpUsersVo memberLogin = service.login(vo);
         if(memberLogin != null) {
-        	if (memberLogin.getAuthorities().equals("ROLE_MEMBER")) {
+        	if (!memberLogin.getAuthorities().equals("ROLE_SOCIAL")) {
            		model.addAttribute("member", service.memberInfo(memberLogin.getUsername()));
            		if(useCookie != null && useCookie.equals("on")) {
            			logger.info("remember me...");
