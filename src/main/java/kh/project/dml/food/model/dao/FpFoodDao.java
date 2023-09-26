@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kh.project.dml.food.model.vo.FpFoodVo;
+import kh.project.dml.diet.model.vo.FpFoodVo;
 
 @Repository("FpFoodVo")
 public class FpFoodDao {

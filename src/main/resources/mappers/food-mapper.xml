@@ -15,11 +15,11 @@
 	</select>
 	
 	<insert id="insert" parameterType="FpFoodVo">
-		insert into food values(#{foodCd}, #{mealCode}, 1)
+		insert into food values(#{foodCd}, #{mealCode}, #{foodQuality})
 	</insert>
 	
 	<update id="update" parameterType="FpFoodVo">
-		update food set food_cd=#{foodCd}
+		update food set food_cd=#{foodCd}, food_quality=#{foodQuality}
 		where meal_code = #{mealCode}
 	</update>
 	

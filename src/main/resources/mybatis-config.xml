@@ -17,7 +17,7 @@
 		<typeAlias type="kh.project.dml.memberweight.model.vo.FpMemberWeightVo" alias="FpMemberWeightVo"/>
 		<typeAlias type="kh.project.dml.calender.model.vo.FpCalenderVo" alias="FpCalenderVo"/>
 		<typeAlias type="kh.project.dml.foodapi.model.vo.FpFoodApiVo" alias="FpFoodApiVo"/>
-		<typeAlias type="kh.project.dml.food.model.vo.FpFoodVo" alias="FpFoodVo"/>
+		<typeAlias type="kh.project.dml.diet.model.vo.FpFoodVo" alias="FpFoodVo"/>
 		<typeAlias type="kh.project.dml.board.model.vo.FpBoardVo" alias="FpBoardVo"/>
 		<typeAlias type="kh.project.dml.nutrient.model.vo.FpNutrientVo" alias="FpNutrientVo"/>
 		<typeAlias type="kh.project.dml.suplement.model.vo.FpSuplementVo" alias="FpSuplementVo"/>

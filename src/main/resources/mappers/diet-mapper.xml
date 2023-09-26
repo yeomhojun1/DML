@@ -6,8 +6,13 @@
 		select * from diet
 	</select>
 	
+	<select id="selectDayList" resultType="FpDietVo" parameterType="string">
+		<bind name="mealCode" value="'%'+mealCode+'%'"/>
+		select * from diet where meal_Code like #{mealCode}
+	</select>
+	
 	<select id="selectOne" resultType="FpDietVo" parameterType="string">
-	select * from  where mealCode=#{mealCode}
+	select * from  where MEAL_CODE=#{mealCode}
 	</select>
 	
 	<insert id="insert" parameterType="FpDietVo">
@@ -16,10 +21,10 @@
 	
 	<update id="update" parameterType="FpDietVo">
 		update diet set feedback = #{feedback}
-		where meal_code = #{mealCode}
+		where MEAL_CODE = #{mealCode}
 	</update>
 	
 	<delete id="delete" parameterType="string">
-	delete from diet where mealCode = #{mealCode}
+	delete from diet where MEAL_CODE = #{mealCode}
 	</delete>
 </mapper>

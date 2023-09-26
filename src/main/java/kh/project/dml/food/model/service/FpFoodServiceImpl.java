@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kh.project.dml.diet.model.dao.FpDietDao;
 import kh.project.dml.diet.model.vo.FpDietVo;
+import kh.project.dml.diet.model.vo.FpFoodVo;
 import kh.project.dml.food.model.dao.FpFoodDao;
-import kh.project.dml.food.model.vo.FpFoodVo;
 
 @Service("fpFoodServiceImpl")
 public class FpFoodServiceImpl implements FpFoodService  {
@@ -29,7 +29,7 @@ public class FpFoodServiceImpl implements FpFoodService  {
 	@Override
 	@Transactional
 	public int insert(FpDietVo vo)  {
-		
+		System.out.println(vo.getFoodlist().size());
 		for(int i=0; i<vo.getFoodlist().size(); i++) {
 			FpFoodVo food = vo.getFoodlist().get(i);
 			
@@ -55,7 +55,8 @@ public class FpFoodServiceImpl implements FpFoodService  {
 			vo.setMealCode(vo.getFoodDate()+vo.getMemberId()+food.getFoodCd()+foodtime);
 			food.setMealCode(vo.getMealCode());
 			vo.setFoodTime(foodtime);
-			if(fpFoodDao.mealCodeCheck(vo.getMealCode()) == null) {				
+			System.out.println(fpFoodDao.mealCodeCheck(vo.getMealCode()));
+			if(fpFoodDao.mealCodeCheck(vo.getMealCode()) == null) {
 				fpDietDao.insert(vo);
 				fpFoodDao.insert(food);
 			} else {				
@@ -65,6 +66,7 @@ public class FpFoodServiceImpl implements FpFoodService  {
 		}
 		return 1;
 	}
+	
 	@Override
 	public int update(FpFoodVo vo) {
 		return fpFoodDao.update(vo);
