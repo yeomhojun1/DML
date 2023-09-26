@@ -20,6 +20,12 @@ public class FpDietServiceImpl implements FpDietService {
 	}
 
 	@Override
+	public List<FpDietVo> selectDayList(String mealCode) {
+		return fpDietDao.selectDayList(mealCode);
+	}
+
+
+	@Override
 	public FpDietVo selectOne(String mealCode) {
 		return fpDietDao.selectOne(mealCode);
 	}
@@ -35,8 +41,11 @@ public class FpDietServiceImpl implements FpDietService {
 	}
 
 	@Override
-	public int delete(String mealCode) {
-		return fpDietDao.delete(mealCode);
+	public int delete(String foodCd) {
+		return fpDietDao.delete(foodCd);
 	}
 
+
+
+	
 }

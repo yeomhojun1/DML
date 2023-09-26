@@ -183,8 +183,8 @@
 					
 					
 					<div class="DateBars_date_bar__QeCa3" >
-						<div class="DateBars_date__DyX0X">2023-09-04</div>
-						<div class="DateBars_day_of_week__ShQrM">월</div>
+						<div class="DateBars_date__DyX0X"><%String Date = new java.text.SimpleDateFormat("yyyy-MM-dd (E)").format(new java.util.Date());%>
+								<%=Date%></div>
 						<div class="DateBars_date_selector__ajXTR">
 
 							</div>
@@ -328,6 +328,7 @@
 <script>
 	$(function() {
  	var container = $(".DateBars_date_selector__ajXTR"); // 스크롤할 컨테이너
+ 	var today = new Date();
 
   // 스크롤 좌 우 버튼 클릭 시 이동
   $(".ant-image-img").click(function() {
@@ -347,7 +348,6 @@
   });
   console.log(scrollTo);
   // input을 datepicker로 선언
-      let savedFoodInfo = {};
   $("#datepicker").datepicker({
 	    dateFormat: 'yy-mm-dd',
         showOtherMonths: true,
@@ -363,15 +363,18 @@
         monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], // 달력의 월 부분 Tooltip
         dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], // 달력의 요일 텍스트
         dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'], // 달력의 요일 Tooltip
-   
-     
+        defaultDate: today,
+
 		 
 	       onSelect: function(dateText, inst) {
 	           $(".DateBars_date__DyX0X").text(dateText); // 맨 위의 날짜 변경
 	           var date=new Date($("#datepicker").datepicker({dateFormat:"yy-mm-dd"}).val());
 	           //일요일 0~
-	           alert("date:"+date.getDay());
-	 
+	          var selectDate = $.datepicker.formatDate("yymmdd",$("#datepicker").datepicker("getDate")); 
+         		selectDate = $("#datepicker").val();
+         		
+         		var selectDate1= selectDate.replaceAll("-", "");
+	           alert(selectDate1);
 	           week=new Array("일","월","화","수","목","금","토");
 	           $(".DateBars_day_of_week__ShQrM").text(week[date.getDay()]);
 	           
@@ -383,8 +386,25 @@
 		     if (scrollTo.length) {
 		       container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop());
 		     }
-		   },  // onSelect
-   
+		 	/* 	replace([기존문자],[바꿀문자])
+				dateVal= dateVal.replaceAll("-", ""); */
+		 	  $.ajax({
+					url:"${pageContext.request.contextPath}/diet/search",
+					type: "get"
+					,contentType: "application/json"
+					, data: {mealCode: selectDate1 + "${member.memberId}" }
+					, success : function(result){
+						console.log("success");
+						
+						}
+					
+					, error : function(){
+						console.log("error")
+					}
+					});
+					
+		     // onSelect 
+		 	},
    onChangeMonthYear:function(year, month, inst){
      setTimeout(function(){
        var selectedDay = parseInt($(".ui-datepicker-calendar .ui-state-active a", inst.dpDiv).text());
@@ -403,7 +423,8 @@
      }, 0);
    }
  });
- $('#datepicker').datepicker('setDate', new Date());
+/*  $('#datepicker').datepicker('setDate', new Date()); */
+ $('#datepicker').datepicker('setDate', today);
 });
 	</script>
 	
@@ -420,15 +441,15 @@
 				var htmlVal = '';
 				result.map((vo)=>{
 					htmlVal+=`
-					<div class="Plan_raw_food_bar__hNTTJ frm"  data-foodcd="\${vo.foodCd}">
+						<div class="Plan_raw_food_bar__hNTTJ frm div_foodcd" data-foodcd="\${vo.foodCd}">
 						<div class="Plan_raw_food_bar_each__VYL98  Plan_modal_food_bar_name__jMR4t foodName">\${vo.foodName}</div>
 						<div class="Plan_raw_food_bar_each__VYL98  calorie">\${vo.calorie}kcal</div>
 						<div class="Plan_raw_food_bar_each__VYL98  crabs">\${vo.crabs}g</div>
 						<div class="Plan_raw_food_bar_each__VYL98  protein">\${vo.protein}g</div>
 						<div class="Plan_raw_food_bar_each__VYL98  fat">\${vo.fat}g</div>
-					 	<div class="Plan_raw_food_bar_each__VYL98  Plan_raw_food_bar_ctl__bADrg">
+					 	<div class="Plan_raw_food_bar_each__VYL98  foodcd Plan_raw_food_bar_ctl__bADrg">
 							<button type="button"  data-foodcd="\${vo.foodCd}" onclick="btnPlusClickHandler(this);"
-								class="ant-btn css-1s3dcof ant-btn-circle ant-btn-default ant-btn-icon-only Plan_raw_food_bar_icon__GUMkf"
+								class="ant-btn css-1s3dcof ant-btn-circle ant-btn-default ant-btn-icon-only Plan_raw_food_bar_icon__GUMkf foodcdval" value="\${vo.foodCd}"
 								ant-click-animating-without-extra-node="false">
 								<span role="img" aria-label="plus"
 									class="anticon anticon-plus Plan_raw_food_bar_icon_plus__lIKKS"><svg
@@ -462,7 +483,7 @@
 	
 	function btnPlusClickHandler(thisElement){
 		console.log($(thisElement).data("foodcd"));
-		foodcd = $(thisElement).data("foodcd");
+		var foodcd = $(thisElement).data("foodcd");
 		foodName = $(thisElement).parent().prevAll(".foodName").text();
 		calorie = $(thisElement).parent().prevAll(".calorie").text();
 		carbs = $(thisElement).parent().prevAll(".crabs").text();
@@ -472,10 +493,10 @@
 		
 		htmlVal = '';
 		htmlVal += `
-			<div class="Plan_bottom1_food_each__s9jUi">
+			<div class="Plan_bottom1_food_each__s9jUi">	
 			 	<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH foodTime">
 				<span class="Plan_bottom1_second_bar_sub___m2EJ ">아침</span>
-				</div> 
+				</div>				
 				<div class="Plan_bottom1_second_bar_food__Nea0w">\${foodName}
 				</div>
 				 <div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
@@ -494,99 +515,35 @@
 					지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${fat}</span>
 				</div>
 				<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
-					<button type="button" onclick="btnDeleteClickHandler(this)" data-foodcd="\${foodcd}" data-meal="0">삭제</button>
+					<button type="button" onclick="btnDeleteClickHandler(this)" value=\${foodcd}>삭제</button>
 				</div>
 			</div>
 		`;
 		
 		$("#wrapSelectedPlan").append(htmlVal);
-		//modal ekdfdsfdsf
+		//modal 
+		
 	}  // btnPlusClickHandler
 	
-	/* function saveDietAndAddToScreen() {
-	    var foodCd = $("#foodCd").val(); // 선택한 식품의 고유 코드
-	    var foodName = $("#foodName").val(); // 선택한 식품의 이름
-	    var calorie = $("#calorie").val(); // 선택한 식품의 칼로리
-	    var carbs = $("#carbs").val(); // 선택한 식품의 탄수화물
-	    var protein = $("#protein").val(); // 선택한 식품의 단백질
-	    var fat = $("#fat").val(); // 선택한 식품의 지방
-	    var selectedDate = $("#datepicker").val(); // 선택한 날짜
-
-	    // TODO: AJAX를 사용하여 서버에 데이터 저장 요청 보내기
-	    $.ajax({
-	        url: "${pageContext.request.contextPath}/foodapi/insert", // 저장용 API 엔드포인트에 맞게 수정
-	        type: "post",
-	        data: {
-	            foodCd: foodCd,
-	            foodName: foodName,
-	            calorie: calorie,
-	            carbs: carbs,
-	            protein: protein,
-	            fat: fat,
-	            date: selectedDate
-	        },
-	        dataType: "json",
-	        success: function(result) {
-	            console.log("Data saved successfully.");
-	            // 저장 성공 메시지 또는 다른 동작 수행
-
-	            // 화면에 데이터 추가
-	            var htmlVal = `
-	                <div class="Plan_bottom1_food_each__s9jUi">
-	                    <div class="Plan_bottom1_second_bar_foodcategory__Ew3pH">식사구분</div>
-	                    <div class="Plan_bottom1_second_bar_food__Nea0w">${foodName}</div>
-	                    <div class="Plan_bottom1_second_bar_kcal__2i7Y2">수량</div>
-	                    <div class="Plan_bottom1_second_bar_kcal__2i7Y2">
-	                        칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${calorie}</span>
-	                    </div>
-	                    <div class="Plan_bottom1_second_bar_carb__0dt0o">
-	                        탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${carbs}</span>
-	                    </div>
-	                    <div class="Plan_bottom1_second_bar_protein__BHBRu">
-	                        단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${protein}</span>
-	                    </div>
-	                    <div class="Plan_bottom1_second_bar_fat__8Tyy8">
-	                        지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${fat}</span>
-	                    </div>
-	                    <div class="Plan_bottom1_second_bar_ctl__2Pelr">&nbsp;</div>
-	                </div>
-	            `;
-	            $("#wrapSelectedPlan").append(htmlVal);
-	        },
-	        error: function(error) {
-	            console.log("Error:", error);
-	            // 에러 처리 또는 에러 메시지 표시
-	        },
-	    });
-	}
-
-	// 저장 버튼 클릭 이벤트 핸들러
-	$("button.save").click(function() {
-	    saveDietAndAddToScreen();
-	});
-	 */
 	function btnDeleteClickHandler(thisElement) {
-	    	var foodCdToDelete = $(thisElement).data("meal");
+	    	var foodCdToDelete = $(thisElement).val();
 			console.log(foodCdToDelete);
-			if(foodCdToDelete == 0){
-			 // display remove...	
+			if(foodCdToDelete == null){
 			}  else {
+				$(thisElement).closest(".Plan_bottom1_food_each__s9jUi").remove();
 		   		// TODO: AJAX를 사용하여 서버로 삭제 요청 보내기
-		    	$.ajax({
+		    	/* $.ajax({
 		        url: "${pageContext.request.contextPath}/diet/delete", 
 		        type: "post",
-		        data: { mealCode: foodCdToDelete }, // 삭제할 데이터의 고유 식별자 전달
+		        data: { foodCd: foodCdToDelete }, // 삭제할 데이터의 고유 식별자 전달
 		        dataType: "json",
 		        success: function (result) {
 		            console.log(result); 
 		            console.log("result"); 
-	
-		            $(thisElement).closest(".Plan_bottom1_food_each__s9jUi").remove();
-		        },
+			        },
 		        error: function (error) {
 		            console.log("error"); 
-		        },
-		    });
+		        }, */
 		}  // else
 	}// btnDeleteClickHandler
 			/* 	function btnDeleteClickHandler(thisElement){
@@ -610,14 +567,16 @@
 		
 		let objfinal= {};
 		let arr1= [];
-		let selectedDate;
+		
 		$("#datepicker").datepicker({
 		    dateFormat: 'yy-mm-dd',
 		    // ... 다른 옵션들 ...
 		    onSelect: function(dateText, inst) {
 		        // 선택한 날짜를 selectedDate 변수에 할당
 		        selectedDate = dateText;
-		        
+		        selectedDate = selectedDate.replaceAll("-", ""); 
+		    	/* replace([기존문자],[바꿀문자])
+				dateVal= dateVal.replaceAll("-", "");  */
 		        // 날짜와 요일을 업데이트하는 부분
 		        $(".DateBars_date__DyX0X").text(dateText);
 		        var date = new Date(dateText);
@@ -626,31 +585,29 @@
 		        $(".DateBars_day_of_week__ShQrM").text(week[date.getDay()]);
 		    }
 		});
-		let memberId = '77@77.77';  // TODO
-		
+		let memberId = "${member.memberId}";  // TODO
 		
 		Array.from(document.querySelectorAll(".Plan_bottom1_food_each__s9jUi")).map(function(eachElement){
 			console.log(eachElement);
 			console.log($(eachElement));
 			console.log($(eachElement).children(".foodQuality").children("span").text());
-			console.log($(eachElement).children(".foodcd").children("button").data("foodcd"));
+			console.log($(eachElement).children(".foodcd").children("button").val());
 			var quality = $(eachElement).children(".foodQuality").children("span").text();
-			var cd =$(eachElement).children(".foodcd").children("button").data("foodcd");
+			var cd =$(eachElement).children(".foodcd").children("button").val();
 			var foodTime =$(eachElement).children(".foodTime").children("span").text();
-
+			
 			var obj2= {};
 			obj2.foodCd = cd;
 			obj2.foodQuality =quality;	
 			obj2.foodTime = foodTime;  // Service에서 조합할 예정 mealCode
 			arr1.push(obj2);
 		});
-		
-
-		objfinal.mealCode = "";  // Service에서 조합할 예정 TODO
+		let selectedDate = $(".DateBars_date__DyX0X").text();
+		selectedDate = selectedDate.replaceAll("-","");
 		objfinal.foodlist = arr1;
-		objfinal.foodDate = $("#datepicker").val();
+		objfinal.foodDate = selectedDate;
 		objfinal.memberId = memberId;
-		
+		objfinal.foodCd = $(".foodcdval").val();
 		//private String foodCd;
 		//private int foodQuality;
 		//private String mealCode;
@@ -665,14 +622,16 @@
 			type: "post"
 			,contentType: "application/json"
 			, data: JSON.stringify(objfinal)
-//			, data: {food_cd : ${D00007}, meal_code : dateVal+${member.memberId}}
-				
-			, dataType:"json"
-			, success : function(result){
+		/* 	, data: {foodDate: selectDate1, memberId : "${member.memberId}",foodCd : $(eachElement).children(".foodcd").children("button").val(),  mealCode : selectDate1+"${member.memberId}"+ }
+				 */
+			//, dataType:"json"
+			, success : function(result) {
 				console.log(result);
+				console.log("success");
 			}
 			, error : function(e){
 				console.log(e);	
+				console.log("error");
 			}
 		});  // ajax
 	}

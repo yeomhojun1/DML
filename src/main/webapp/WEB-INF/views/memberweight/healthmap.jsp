@@ -18,8 +18,9 @@
 	rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/scss.css"
 	rel="stylesheet" />
-	<link href="${pageContext.request.contextPath}/resources/resources1/css/sb-admin-2.css"
-	rel="stylesheet" /> 
+<link
+	href="${pageContext.request.contextPath}/resources/resources1/css/sb-admin-2.css"
+	rel="stylesheet" />
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
@@ -116,10 +117,9 @@ font-size:16px;
 </style> -->
 <style>
 
- element.style {
+/* element.style {
     width: 400px;
 }
-
 .Composition_datepicker2__OmJH_ {
     border-radius: 25px!important;
     border-color: #97d4e9;
@@ -128,7 +128,7 @@ font-size:16px;
     :where(.css-1s3dcof).ant-picker .ant-picker-input >input {
     position: relative;
     display: inline-block;
-    /* width: 100%; */
+    width: 100%;
     min-width: 1px;
     padding: 0;
     color: rgba(0, 0, 0, 0.88);
@@ -152,10 +152,6 @@ font-size:16px;
     background-color: #97d4e9;
     color: #fff!important;
 } */
-
-
-
-
 </style>
 </head>
 <body class="sb-nav-fixed">
@@ -171,13 +167,34 @@ font-size:16px;
 					<!--   <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol> -->
-					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
-					<div class="row">
+					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
+					<div class="row"></div>
+				</div>
 
-						
+				<div class="find-bar">
+				
+					<div class="search-map">
+						<div class="reading glasses"
+							style="font-size: 15px; line-height: 115%; font-weight: 400; text-align: left; letter-spacing: -0.2px; color: rgb(153, 159, 169); overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+							어떤 헬스장을 찾고 계신가요?</div>
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+							xmlns="http://www.w3.org/2000/svg">							
+							<path fill-rule="evenodd" clip-rule="evenodd"
+								d="M11.2814 4.60672C9.49875 4.60672 7.82226 5.30121 6.56103 6.56139C5.30082 7.82259 4.60632 9.49905 4.60632 11.2816C4.60632 13.0642 5.30082 14.7407 6.56103 16.0009C9.16386 18.6026 13.3989 18.6026 16.0007 16.0009C18.6025 13.3981 18.6025 9.16417 16.0007 6.56139C14.7394 5.30121 13.064 4.60672 11.2814 4.60672ZM11.2815 19.5588C9.16087 19.5588 7.04027 18.752 5.4256 17.1373C3.86143 15.5732 3 13.4939 3 11.2816C3 9.06934 3.86143 6.98999 5.4256 5.42585C6.98978 3.86068 9.06916 2.99927 11.2815 2.99927C13.4938 2.99927 15.5732 3.86068 17.1373 5.42585C20.3656 8.65512 20.3656 13.9081 17.1373 17.1373C15.5227 18.752 13.4021 19.5588 11.2815 19.5588Z"
+								fill="#58595B"></path>
+							<path fill-rule="evenodd" clip-rule="evenodd"
+								d="M20.1966 21.0004C19.9916 21.0004 19.7855 20.9221 19.6289 20.7644L16.5046 17.6402C16.1904 17.327 16.1904 16.818 16.5046 16.5047C16.8179 16.1905 17.3269 16.1905 17.6412 16.5047L20.7644 19.6279C21.0787 19.9421 21.0787 20.4512 20.7644 20.7644C20.6078 20.9221 20.4027 21.0004 20.1966 21.0004Z"
+								fill="#58595B"></path></svg>
 					</div>
 				</div>
-				<div class="Composition_graph2__fM1o6">
+
+
+
+
+
+
+
+				<%-- <div class="Composition_graph2__fM1o6">
 					<div
 						style="display: flex; flex: 1 1 0%; position: relative; flex-direction: column; margin: 20px;">
 						<div style="display: flex; flex-direction: row;">
@@ -207,7 +224,7 @@ font-size:16px;
 									style="width: 400px;">
 									<div class="ant-picker-input ant-picker-input-active">
 									
-										<input text="" placeholder="시작" size="12"
+										<input readonly="" placeholder="시작" size="12"
 											autocomplete="off" value="">
 											
 											
@@ -481,14 +498,14 @@ font-size:16px;
 					<div class="Composition_input_by_date_bar__A_IXv">
 						<div class="ant-picker css-1s3dcof Composition_datepicker2__OmJH_">
 							<div class="ant-picker-input">
-								<input type="text" id="datepicker"
-						name="calendarNo"><span
+								<input readonly="" placeholder="Select date" title="2023-09-14"
+									size="12" autocomplete="off" value="2023-09-14"><span
 									class="ant-picker-suffix"><span role="img"
 									aria-label="calendar" class="anticon anticon-calendar"
-									style="font-size: 18px; color: white;"><!-- <svg
+									style="font-size: 18px; color: white;"><svg
 											viewBox="64 64 896 896" focusable="false"
 											data-icon="calendar" width="1em" height="1em"
-											fill="currentColor" aria-hidden="true"> -->
+											fill="currentColor" aria-hidden="true">
 											<path
 												d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span><span
 									class="ant-picker-clear" role="button"><span role="img"
@@ -536,12 +553,12 @@ font-size:16px;
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
-	</div>
+	</div> --%>
 
 
 
 
-	<script>
+				<!-- 	<script>
 		$(function() {
 			//input을 datepicker로 선언
 			$("#datepicker")
@@ -590,7 +607,6 @@ font-size:16px;
 											"yymmdd", $("#datepicker")
 													.datepicker("getDate"));
 									exerciseDate = $("#datepicker").val();
-									exerciseDate=exerciseDate.replaceAll("-", "");
 									alert(exerciseDate);
 
 								}
@@ -599,6 +615,6 @@ font-size:16px;
 			//초기값을 오늘 날짜로 설정해줘야 합니다.
 			$('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
 		});
-	</script>
+	</script> -->
 </body>
 </html>

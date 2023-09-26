@@ -83,7 +83,7 @@
 					<!--   <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol> -->
-					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
+					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
 					<div class="row">
 
 						    <!-- Area Chart -->
@@ -129,7 +129,7 @@
 									<div>
 										<h2>개별 입력</h2>
 									</div>
-									<form action="${pageContext.request.contextPath }/memberweight/weight2" method="post">
+									<form action="${pageContext.request.contextPath }/memberweight/weight" method="post">
 									<div class="col-xl-12 setdayweight">
 										<div>
 											<div>
@@ -278,7 +278,7 @@
 				type: "post",
 				data : {memberId : "${member.memberId}"
 					,weightDate: dateVal}
-				,success : function(){location.href="${pageContext.request.contextPath}/memberweight/weight2";}
+				,success : function(){location.href="${pageContext.request.contextPath}/memberweight/weight";}
 				,error : function(){
 					console.log("error");
 				}

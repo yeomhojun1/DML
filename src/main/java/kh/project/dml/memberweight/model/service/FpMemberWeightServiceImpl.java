@@ -29,9 +29,9 @@ public class FpMemberWeightServiceImpl implements FpMemberWeightService {
 	@Override
 	public int dateWeight(FpMemberWeightVo vo, String now) {
 		if(vo.getWeightDate().equals(now)) {
-			fpMemberWeightDao.updateWeight(vo);
+			fpMemberWeightDao.updateWeightMember(vo);
 		}
-		if(fpMemberWeightDao.checkDate(vo) == null) {			
+		if(fpMemberWeightDao.checkDate(vo) == null) {
 			return fpMemberWeightDao.insertWeight(vo);
 		} else {
 			return fpMemberWeightDao.updateWeight(vo);

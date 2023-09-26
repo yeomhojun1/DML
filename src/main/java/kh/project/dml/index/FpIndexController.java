@@ -25,10 +25,8 @@ public class FpIndexController {
 		if (session.getAttribute("member") == null) {
             // 세션 정보가 유효하지 않은 경우 처리
             Cookie loginCookie = WebUtils.getCookie(request, SessionNames.LOGIN_COOKIE);
-            System.out.println(loginCookie);
             if (loginCookie != null) {
                 FpMemberVo vo = service.checkLoginBefore(loginCookie.getValue());
-                System.out.println(vo);
                 if (vo != null)
                     session.setAttribute(SessionNames.LOGIN, vo);
             }
