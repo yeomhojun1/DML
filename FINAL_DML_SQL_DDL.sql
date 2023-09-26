@@ -16,6 +16,7 @@ DROP TABLE "SUPLEMENT";
 DROP TABLE "NUTRIENT";
 DROP TABLE "PRODUCTTYPE";
 DROP SEQUENCE board_no_seq;
+DROP SEQUENCE REPLY_no_seq;
 
 CREATE TABLE "BOARD" (
 	"BOARD_NO"	NUMBER		NOT NULL,
@@ -632,6 +633,8 @@ CREATE SEQUENCE board_no_seq
 
 select to_date(board_date,'YYYY-MM-DD') board_date from board;
 select * from REPLYBOARD;
+select * from replyboard where board_no=22 order by RSTEP desc,reply_Date desc ;
+	select * from replyboard where board_no=#{boardNo} order by RSTEP desc,reply_Date desc 
 update board set board_Count = 0+1
 		where board_no = 19;
 insert into board (board_no, member_id,Board_title,board_content,board_date) values (board_no_seq.NEXTVAL,'ghwnswkd123@naver.com','테스트용 제목123','테스트용 12512내용',to_date(sysdate,'YYYY-MM-DD'));

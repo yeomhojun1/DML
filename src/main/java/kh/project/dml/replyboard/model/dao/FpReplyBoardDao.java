@@ -14,8 +14,8 @@ public class FpReplyBoardDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<FpReplyBoardVo> selectList() {
-		return sqlSession.selectList("replyboard.selectList");
+	public List<FpReplyBoardVo> selectList(int boardNo) {
+		return sqlSession.selectList("replyboard.selectList", boardNo);
 	}
 	public FpReplyBoardVo selectOne(Integer replyNo) {
 		return sqlSession.selectOne("replyboard.selectOne", replyNo);

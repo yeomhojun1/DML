@@ -21,6 +21,7 @@
         <br><br>
     </c:forEach>
 </div>
+
 <a href="${pageContext.request.contextPath}/board/form">다시 업로드 하기</a>
 </body>
 </html>

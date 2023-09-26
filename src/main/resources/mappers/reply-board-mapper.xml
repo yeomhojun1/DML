@@ -4,11 +4,10 @@
 
 
 <select id="selectList" resultType="FpreplyboardVo">
-		select * from replyboard 
+		select * from replyboard where board_no=#{boardNo} order by RSTEP desc,reply_Date desc 
 </select> 
-	
-<select id="seletOne" resultType="FpreplyboardVo" parameterType="string">
-select * from where reply_No=#{replyNo}
+<select id="selectOne" resultType="FpreplyboardVo" parameterType="_int">
+select * from replyboard where reply_No=#{replyNo}
 </select>
 
 <insert id="insert">
@@ -20,7 +19,7 @@ update replyboard set reply_Content = #{replyContent}
 where reply_No =#{replyNo}
 </update>
 
-<delete id="delete" parameterType="string">
+<delete id="delete" parameterType="_int">
 delete from replyboard where reply_No =#{replyNo}
 </delete>
 </mapper>

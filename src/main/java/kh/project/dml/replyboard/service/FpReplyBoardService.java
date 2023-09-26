@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import kh.project.dml.replyboard.model.vo.FpReplyBoardVo;
 
 public interface FpReplyBoardService {
-public List<FpReplyBoardVo> selectList();
 	public FpReplyBoardVo selectOne(int chickenNo);
-	public int insert(FpReplyBoardVo vo);
+	public List<FpReplyBoardVo> insert(FpReplyBoardVo vo);
 	public int update(FpReplyBoardVo vo);
-	public int delete(int chickenNo);
+	public List<FpReplyBoardVo> delete(int chickenNo);
+	public List<FpReplyBoardVo> selectList(int boardNo);
 }

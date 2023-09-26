@@ -169,10 +169,8 @@ public class FpBoardController {
 		int result = fpBoardServiceImpl.delete(boardNo);
 		try {
 			if (result < 1) {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");
 				viewPage = "redirect:/board/list";// delete는 보통 처음에 있던 화면으로 돌아감 그래서 ajax를 쓰는데 그건 추후
 			} else {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 됐습니다");
 				viewPage = "redirect:/board/list";
 			}
 		} catch (Exception e) {
