@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.util.WebUtils;
 
 import kh.project.dml.common.interceptor.SessionNames;
@@ -33,5 +34,10 @@ public class FpIndexController {
             }
 		}
 		return "/index";
+	}
+	
+	@GetMapping("/error/{statusCode}")
+	public String getErrorPage(@PathVariable String statusCode) {
+	    return "error/"+statusCode;
 	}
 }
