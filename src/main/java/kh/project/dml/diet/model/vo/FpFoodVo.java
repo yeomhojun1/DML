@@ -1,4 +1,4 @@
-package kh.project.dml.food.model.vo;
+package kh.project.dml.diet.model.vo;
 
 import lombok.Data;
 

@@ -15,8 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.project.dml.diet.model.vo.FpDietVo;
+import kh.project.dml.diet.model.vo.FpFoodVo;
 import kh.project.dml.food.model.service.FpFoodService;
-import kh.project.dml.food.model.vo.FpFoodVo;
 
 
 @Controller

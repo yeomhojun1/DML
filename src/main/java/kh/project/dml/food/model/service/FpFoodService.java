@@ -6,12 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kh.project.dml.diet.model.vo.FpDietVo;
+import kh.project.dml.diet.model.vo.FpFoodVo;
 import kh.project.dml.food.model.dao.FpFoodDao;
-import kh.project.dml.food.model.vo.FpFoodVo;
 
 
 public interface FpFoodService {
-	
 	
 	public List<FpFoodVo> selectList();
 	public FpFoodVo selectOne(String foodCd);
