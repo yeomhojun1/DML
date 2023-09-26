@@ -22,6 +22,10 @@
 <link href="${pageContext.request.contextPath}/css/scss.css"
 	rel="stylesheet" />
 	
+<!-- Mypage css (일부 다른 항목에 추가 적용 -->
+<link href="${pageContext.request.contextPath}/css/mypage.css"
+	rel="stylesheet" />
+	
 <!-- JQuery 사용 -->
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
