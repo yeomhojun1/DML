@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ public class FpReplyBoardController {
 	
 	@GetMapping("/list")
 	@ResponseBody
-	public String selectListreplyboard(RedirectAttributes redirectAttr,int boardNo) {
+	public String selectListreplyboard(int boardNo) {
 		List<FpReplyBoardVo> result = fpReplyBoardServiceImpl.selectList(boardNo);
 		return new Gson().toJson(result);
 	}
@@ -42,32 +43,15 @@ public class FpReplyBoardController {
 	@ResponseBody
 	public String insertDoReply(FpReplyBoardVo vo) {
 		List<FpReplyBoardVo> result = fpReplyBoardServiceImpl.insert(vo);
-//		
 		return new Gson().toJson(result);
 	}
 	
-	@GetMapping("/update")
-	public ModelAndView updatedaydiet(ModelAndView mv, int replyNo  ) {
-		mv.addObject("daydietone", fpReplyBoardServiceImpl.selectOne(replyNo));
-		mv.setViewName("daydiet/update");
-		return mv;
-	}
+
 	@PostMapping("/update")
-	public String updateDoMemeber(RedirectAttributes redirectAttr, FpReplyBoardVo vo ) {
-		String viewPage = "redirect:/";
-		int result = fpReplyBoardServiceImpl.update(vo);
-		try {
-			if (result < 1) {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 실패했습니다 \n 다시 입력해주세요");
-				viewPage = "redirect:/replyboard/update";
-			} else {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 됐습니다");
-				viewPage = "redirect:/replyboard/list";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return viewPage;
+	@ResponseBody
+	public String updateDoMemeber(FpReplyBoardVo vo ) {
+		FpReplyBoardVo result = fpReplyBoardServiceImpl.update(vo);
+		return new Gson().toJson(result);
 	}
 	
 	@PostMapping("/delete")

@@ -15,7 +15,7 @@ insert into replyboard values(REPLY_no_seq.nextval,#{memberId},#{replyContent},d
 </insert>
 
 <update id="update" parameterType="FpreplyboardVo">
-update replyboard set reply_Content = #{replyContent}
+update replyboard set reply_Content = #{replyContent}, reply_date = sysdate
 where reply_No =#{replyNo}
 </update>
 

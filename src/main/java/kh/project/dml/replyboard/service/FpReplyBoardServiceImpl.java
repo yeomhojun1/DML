@@ -34,8 +34,11 @@ public class FpReplyBoardServiceImpl implements FpReplyBoardService {
 	}
 
 	@Override
-	public int update(FpReplyBoardVo vo) {
-		return fpReplyBoardDao.update(vo);
+	@Transactional
+	public FpReplyBoardVo update(FpReplyBoardVo vo) {
+		int resultinsert = fpReplyBoardDao.update(vo);
+		FpReplyBoardVo replyList = fpReplyBoardDao.selectOne(vo.getBoardNo());
+		return replyList;
 	}
 
 	@Override

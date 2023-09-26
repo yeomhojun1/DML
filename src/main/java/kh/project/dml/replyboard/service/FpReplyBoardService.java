@@ -9,7 +9,7 @@ import kh.project.dml.replyboard.model.vo.FpReplyBoardVo;
 public interface FpReplyBoardService {
 	public FpReplyBoardVo selectOne(int chickenNo);
 	public List<FpReplyBoardVo> insert(FpReplyBoardVo vo);
-	public int update(FpReplyBoardVo vo);
+	public FpReplyBoardVo update(FpReplyBoardVo vo);
 	public List<FpReplyBoardVo> delete(int chickenNo);
 	public List<FpReplyBoardVo> selectList(int boardNo);
 }
