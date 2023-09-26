@@ -3,6 +3,7 @@ package kh.project.dml.admin.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -71,6 +72,27 @@ public class FpAdminController {
 	public ModelAndView suspendedClear(ModelAndView mv, @RequestParam String memberId) {
 		service.suspendedClear(memberId);
 		mv.setViewName("admin/suspended");
+		return mv;
+	}
+	
+	@GetMapping("/adminlist")
+	public ModelAndView adminList(ModelAndView mv, Criteria cri) {
+		logger.info("boardListGET");
+		logger.info("cri : " + cri);
+		
+		mv.addObject("memberlist", service.adminList(cri));
+		int total = service.getTotalAdmin(cri);
+		FpPageMakerVo pageMake = new FpPageMakerVo(cri, total);
+		
+		mv.addObject("pageMaker", pageMake);
+		mv.setViewName("admin/adminlist");
+		return mv;
+	}
+	
+	// Admin 용 마이페이지
+	@GetMapping("/mypage")
+	public ModelAndView adminMypage(ModelAndView mv) {
+		mv.setViewName("admin/mypage");
 		return mv;
 	}
 	

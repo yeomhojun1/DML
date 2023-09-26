@@ -24,6 +24,11 @@ public class FpAdminServiceImpl implements FpAdminService {
 	public List<FpAdminVo> suspendedList(Criteria cri) {
 		return fpAdminDao.suspendedList(cri);
 	}
+	
+	@Override
+	public List<FpAdminVo> adminList(Criteria cri) {
+		return fpAdminDao.adminList(cri);
+	}
 
 	@Override
 	public void suspendedActive(String memberId) {
@@ -48,6 +53,11 @@ public class FpAdminServiceImpl implements FpAdminService {
 	@Override
 	public int getTotalSuspended(Criteria cri) {
 		return fpAdminDao.getTotalSuspended(cri);
+	}
+	
+	@Override
+	public int getTotalAdmin(Criteria cri) {
+		return fpAdminDao.getTotalAdmin(cri);
 	}
 	
 	@Override

@@ -6,7 +6,7 @@
 				<div class="sb-sidenav-menu">
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading">메인</div>
-						<a class="nav-link" href="index.html">
+						<a class="nav-link" href="${pageContext.request.contextPath }/admin/index"">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 홈
@@ -29,6 +29,8 @@
 								멤버 리스트</a> 
 								<a class="nav-link" href="${pageContext.request.contextPath }/admin/suspended">
 								정지 멤버 리스트</a>
+								<a class="nav-link" href="${pageContext.request.contextPath }/admin/adminlist">
+								관리자 리스트</a>
 							</nav>
 						</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"

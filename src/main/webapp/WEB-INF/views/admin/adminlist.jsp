@@ -79,7 +79,7 @@
 				<div class="container-fluid px-4">
 					<div class="Menu_container">
 						<ul class="Menu_list">
-							<li style="font-weight: bold;"><a>멤버 리스트</a></li>
+							<li style="font-weight: bold;"><a>관리자 리스트</a></li>
 						</ul>
 					</div>
 					<jsp:include page="./frame/adminmenu.jsp"></jsp:include>
@@ -94,7 +94,6 @@
 							<th>몸무게</th>
 							<th>활성화유무</th>
 							<th>권한</th>
-							<th>정지</th>
 						</tr>
 						<c:forEach items="${memberlist }" var="member">
 						<tr>
@@ -116,8 +115,6 @@
 								</c:choose>
 							</td>
 							<td><c:out value="${member.authorities}"/></td>
-							<td><button class="suspended_btn" value="${member.memberId}">
-									정지</button></td>
 						</tr>
 						</c:forEach>
 					</table>

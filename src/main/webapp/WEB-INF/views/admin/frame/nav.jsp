@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="index.html">Daily Muscle Life</a>
+		<a class="navbar-brand ps-3" href="${pageContext.request.contextPath }/admin/index">D.M.L. Admin</a>
 
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
@@ -40,7 +40,7 @@
 					<%-- 사용자가 로그인된 경우 --%>
 					<c:if test="${not empty sessionScope.loginUser}">
 						<li><a class="dropdown-item"
-							href="${pageContext.request.contextPath }/member/mypage">마이페이지</a></li>
+							href="${pageContext.request.contextPath }/admin/mypage">마이페이지</a></li>
 						<li><a class="dropdown-item"
 							href="${pageContext.request.contextPath }/member/logout">로그아웃</a></li>
 					</c:if>

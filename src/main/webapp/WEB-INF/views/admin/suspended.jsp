@@ -83,7 +83,7 @@
 							</ul>
 						</div>
 					<jsp:include page="./frame/adminmenu.jsp"></jsp:include>
-					<table border=1>
+					<table>
 						<tr>
 							<th>리스트번호</th>
 							<th>아이디</th>

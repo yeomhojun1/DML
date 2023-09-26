@@ -14,11 +14,13 @@ public interface FpAdminService {
 	
 	List<FpAdminVo> memberList(Criteria cri);
 	List<FpAdminVo> suspendedList(Criteria cri);
+	List<FpAdminVo> adminList(Criteria cri);
 	void suspendedActive(String memberId);
 	void suspendedClear(String memberId);
 	int getTotal(Criteria cri);
 	int getTotalActive(Criteria cri);
 	int getTotalSuspended(Criteria cri);
+	int getTotalAdmin(Criteria cri);
 	FpAdminVo selectOne(String adminId);
 	int insert(FpAdminVo vo);
 	int update(FpAdminVo vo);

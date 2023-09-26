@@ -20,18 +20,15 @@ import kh.project.dml.member.model.vo.SocialCreateForm;
 import kh.project.dml.member.model.vo.UserCreateForm;
 import kh.project.dml.users.model.vo.FpUsersVo;
 import kh.project.dml.users.model.vo.LoginVo;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Service
 public class FpMemberServiceImpl implements FpMemberService {
 	
-	@Inject
-	private FpMemberDao dao;
-	
-	@Autowired
-	private FpMemberRepository fpMemberRepository;
-	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+	private final FpMemberDao dao;
+	private final FpMemberRepository fpMemberRepository;
+	private final PasswordEncoder passwordEncoder;
 	
 	public List<FpMemberVo> selectList() {
 		return dao.selectList();

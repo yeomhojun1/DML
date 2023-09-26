@@ -1,5 +1,6 @@
 package kh.project.dml.users.model.vo;
 
+import kh.project.dml.member.model.vo.FpMemberVo;
 import lombok.Data;
 
 @Data
@@ -8,6 +9,8 @@ public class FpUsersVo {
 	private String password;
 	private int userEnabled;
 	private String authorities;
+	
+	private FpMemberVo member;
 	
 	public FpUsersVo() {}
 	

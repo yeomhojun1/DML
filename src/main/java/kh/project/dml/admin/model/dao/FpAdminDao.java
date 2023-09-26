@@ -23,6 +23,10 @@ public class FpAdminDao {
 		return sqlSession.selectList("admin.suspendedList", cri);
 	}
 	
+	public List<FpAdminVo> adminList(Criteria cri) {
+		return sqlSession.selectList("admin.adminList", cri);
+	}
+	
 	public void suspendedActive(String memberId) {
 		sqlSession.update("admin.suspendedActive", memberId);
 	}
@@ -44,6 +48,11 @@ public class FpAdminDao {
 	// 정지된 멤버 리스트
 	public int getTotalSuspended(Criteria cri) {
 		return sqlSession.selectOne("admin.getTotalSuspended", cri);
+	}
+	
+	// 관리자 리스트
+	public int getTotalAdmin(Criteria cri) {
+		return sqlSession.selectOne("admin.getTotalAdmin", cri);
 	}
 	
 	public FpAdminVo selectOne(String adminId) {

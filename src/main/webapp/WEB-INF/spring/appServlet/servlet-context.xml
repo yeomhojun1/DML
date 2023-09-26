@@ -156,6 +156,7 @@
 		<beans:property name="redirectUri"
 			ref="googleRedirectUrl" />
 	</beans:bean>
+	
 	<!-- 파일첨부를 위한 빈스 -->
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

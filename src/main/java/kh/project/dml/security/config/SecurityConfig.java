@@ -7,20 +7,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
 
 import kh.project.dml.common.CustomLoginSuccessHandler;
-import kh.project.dml.member.controller.FpMemberController;
 import kh.project.dml.security.service.CustomOAuth2UserService;
+import kh.project.dml.security.service.UserSecurityService;
 
 @Configuration
 @EnableWebSecurity
@@ -31,14 +29,16 @@ public class SecurityConfig {
 	private static final Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
 	
     private final CustomOAuth2UserService customOAuth2UserService;
+    private final UserSecurityService userSecurityService;
     
     @Autowired
     private DataSource dataSource; // 데이터소스 주입
 
-    public SecurityConfig(CustomOAuth2UserService customOAuth2UserService) {
+    public SecurityConfig(CustomOAuth2UserService customOAuth2UserService, UserSecurityService userSecurityService) {
         this.customOAuth2UserService = customOAuth2UserService;
+        this.userSecurityService = userSecurityService;
     }
-    
+
     @Bean
     public AuthenticationManager authManager(HttpSecurity http) throws Exception {
         return http.getSharedObject(AuthenticationManagerBuilder.class)
@@ -48,12 +48,12 @@ public class SecurityConfig {
                 .authoritiesByUsernameQuery("SELECT username, authorities FROM users WHERE username = ?")
                 .passwordEncoder(encoder()).and().build();
     }
-    
+
     @Bean
     public BCryptPasswordEncoder encoder() {
         return new BCryptPasswordEncoder();	
     }
-
+    
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -70,25 +70,24 @@ public class SecurityConfig {
 					)
                 .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
 //                        .requestMatchers(new AntPathRequestMatcher("/**")).permitAll())
-            			.antMatchers("/", "/index").permitAll()
-            			// oauth2 경로 모든 사용자에게 허용
-            			.antMatchers("/oauth2/**").permitAll()
-                    	// resources 관련 경로는 모든 사용자에게 허용
-                        .antMatchers("/resources/**", "/resources1/**", "/css/**",
-                        		"/js/**", "/fonts/**", "/images/**", "/frame/**").permitAll()
-                        .antMatchers("/member/login", "/member/signup",
-                        		"/member/agreement", "/member/*Popup").permitAll()
-                        .anyRequest().authenticated())
-                    // admin 경로는 R_A 역할을 가진 사용자에게만 허용
-//                    .and()
-//                        .authorizeRequests()
+//            			.antMatchers("/", "/index").permitAll()
+//            			// oauth2 경로 모든 사용자에게 허용
+//            			.antMatchers("/oauth2/**").permitAll()
+//                    	// resources 관련 경로는 모든 사용자에게 허용
+//                        .antMatchers("/resources/**", "/resources1/**", "/css/**",
+//                        		"/js/**", "/fonts/**", "/images/**", "/frame/**").permitAll()
+//                        .antMatchers("/member/login", "/member/signup",
+//                        		"/member/agreement", "/member/*Popup").permitAll()
+//                        // admin 경로는 ROLE_ADMIN 역할을 가진 사용자에게만 허용
 //                        .antMatchers("/admin/**").hasRole("ROLE_ADMIN")
+                        .anyRequest().authenticated())
                 // 로그인 관련 설정
                 .formLogin((formLogin) -> formLogin
                 		.loginPage("/member/login")
                 		.failureUrl("/member/login")
                 		.defaultSuccessUrl("/index")
-                		.successHandler(customLoginSuccess()))
+                		.successHandler(customLoginSuccess())
+                		.permitAll())
                 // 로그아웃 관련 설정
                 .logout((logout) -> logout
                 		.logoutUrl("/member/logout")
@@ -101,9 +100,8 @@ public class SecurityConfig {
         return http.build();
     }
     
-     @Bean
-     public CustomLoginSuccessHandler customLoginSuccess() {
-         return new CustomLoginSuccessHandler();
-     }
-     
+	@Bean
+	public CustomLoginSuccessHandler customLoginSuccess() {
+		return new CustomLoginSuccessHandler();
+	}
 }

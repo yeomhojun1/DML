@@ -22,6 +22,8 @@
 <link href="${pageContext.request.contextPath}/css/scss.css"
 	rel="stylesheet" />
 	
+<link href="${pageContext.request.contextPath}/css/mypage.css" rel="stylesheet" />
+	
 <!-- JQuery 사용 -->
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
@@ -73,10 +75,12 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
+					<div class="Menu_container">
+						<ul class="Menu_list">
+							<li style="font-weight: bold;"><a>Admin 페이지</a></li>
+						</ul>
+					</div>
 					<jsp:include page="./frame/adminmenu.jsp"></jsp:include>
-					<!-- 우리가 만져야하는 부분임 
-					!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-					 여기까지 만지면 됨 -->
 				</div>
 			</main>
 			<jsp:include page="./frame/footer.jsp"></jsp:include>
