@@ -1,5 +1,7 @@
+<%@page import="java.net.URL"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
 	<main id="tab2">
 		<div class="container-fluid px-4">
@@ -25,55 +27,22 @@
 						<div class="row row-menu beginner active">
 
 							<!-- Color System 1 -->
-							<div class="row col-lg-12 beginner">
+							<div class="col-lg-12 beginner">
+							<c:forEach items="${chickenproductlist }" var="chickenproduct" varStatus="vs">
 								<div class="col-lg-12 mb-2">
-									<div class="card bg-primary text-white shadow">
-										
-										<button class="btn-menu card-body beginner-btn btn-sub1 active" data-toggle="menu-1"><h5>단백질</h5></button>
-											
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-success text-white shadow">
-									
-											<button class="btn-menu card-body beginner-btn btn-sub2" data-toggle="menu-2"><h5>탄수화물</h5></button>
-									
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-info text-white shadow">
-										<button class="btn-menu card-body beginner-btn btn-sub3" data-toggle="menu-3"><h5>종합비타민</h5></button>
-									</div>
-								</div>
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-warning text-white shadow">
-										
-											<button class="btn-menu card-body beginner-btn btn-sub4" data-toggle="menu-4"><h5>유산균</h5></button>
-											
-										</div>
-									</div>
 								
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-danger text-white shadow">
-										
-											<button class="btn-menu card-body beginner-btn btn-sub5" data-toggle="menu-5"><h5>섬유질</h5></button>
-											
+									<div class="row bg-primary text-white shadow">
+										<div  class="col-lg-10">
+											<h5>${chickenproduct.type},  ${chickenproduct.productName}</h5>
+											<h5>${chickenproduct.productName},  ${chickenproduct.price}</h5>
+										</div>
+										<div  class="col-lg-2">
+											<a style="color: white;" href="${chickenproduct.link }">상품보기</a>
 										</div>
 									</div>
-								
-								<div class="col-lg-12 mb-2">
-									<div class="card bg-secondary text-white shadow">
-										
-											<button class="btn-menu card-body beginner-btn btn-sub6" data-toggle="menu-6"><h5>글루타민</h5></button>
-											
-										</div>
-									
-
 								</div>
-
-						</div>
-							
-						
+							</c:forEach>
+							</div>
 								
 						</div>  
 
@@ -96,6 +65,48 @@
 									</div>
 									</div>
 									
+									<div class="Chicken_legend_each__iGyUd1">
+									<div class="Chicken_kegend_each_img_wIDG_1">
+									<div class="ant-image css-1s3dcof1" style="width: 20%">
+									<img alt class="ant-image-img1" src="https://beta.wintersleeping.com/images/supplement_top_3.png">
+									<div class="Chicken_legend_each_name__2Oo4Z11">
+									B급 : 큰기업 도축장, HACCP, 냉장
+									</div>
+									</div>
+									</div>
+									</div>
+									
+									<div class="Chicken_legend_each__iGyUd2">
+									<div class="Chicken_kegend_each_img_wIDG_2">
+									<div class="ant-image css-1s3dcof2" style="width: 20%">
+									<img alt class="ant-image-img2" src="https://beta.wintersleeping.com/images/supplement_top_5.png">
+									<div class="Chicken_legend_each_name__2Oo4Z12">
+									C급 : 도축장 미표기, HACCP, 냉동
+									</div>
+									</div>
+									</div>
+									</div>
+									
+									<div class="Chicken_legend_each__iGyUd3">
+									<div class="Chicken_kegend_each_img_wIDG_3">
+									<div class="ant-image css-1s3dcof3" style="width: 20%">
+									<img alt class="ant-image-img3" src="https://beta.wintersleeping.com/images/supplement_top_6.png">
+									<div class="Chicken_legend_each_name__2Oo4Z13">
+									D급 : 도축장 미표기, HACCP
+									</div>
+									</div>
+									</div>
+									</div>
+									
+									<div class="Chicken_legend_each__iGyUd4">
+									<div class="Chicken_kegend_each_img_wIDG_4">
+									<div class="ant-image css-1s3dcof4" style="width: 20%">
+									<img alt class="ant-image-img3" src="https://beta.wintersleeping.com/images/supplement_top_7.png">
+									<div class="Chicken_legend_each_name__2Oo4Z14">
+									E급 : 도축장 미표기
+									</div>
+									</div>
+									</div>
 									</div>
 								</div>
 								<div class="card-body menu-comment comment">
@@ -316,78 +327,7 @@
 								<div class="card-header py-2 ">
 									<h4 class="m-0 font-weight-bold text-primary">해당 링크를 통해 구매시 DML에게 도움이 됩니다.</h4>
 								</div>
-								<div class="card-body menu-comment comment">
-									<p>운동후 섭취 혹은 단백질이 적은 식사 후, 운동후 식사가 바로 있다면 20g, 운동후 식사가 바로
-										없다면 40g타서 3/4을 바로 먹고 1/4은 30분후 섭취</p>
-
-								</div>
-								<div class="card-body menu-comment comment">
-									<p>인스턴트 오트는 아침식사로 적합하며, 마이프로틴 쉐이커에 2 1/3 (100g) 큰 스쿱과 물 또는 선호하는 음료를 넣어서 섭취하세요. 
-									충분한 탄수화물을 섭취하면서 운동목표를 달성하는데 효과적입니다.
-									 해당 제품은 직사광선을 피하여 서늘하고 건조한 장소에 보관하세요.</p>
-
-								</div>
-								<div class="card-body menu-comment comment">
-									<p>종합비타민에는 미네랄 성분과 지용성 비타민이 함께 들어있어 식사 후에 복용하는 것이 좋다.
-									 또, 신체 활력에 도움을 주기 때문에 아침 식후에 먹는 것이 좋다.
-									  아침 식사를 안 한다면, 점심 식사 후에 복용하는 것을 추천한다.
-									 공복에 아연을 먹으면 속이 쓰릴 수 있다.</p>
-
-								</div>
-								<div class="card-body menu-comment comment">
-									<p>먼저 식후에 섭취하면 유산균이 먹이로 삼을 수 있는 것이 많아 균의 활동력이 좋아질 수 있다. 
-									또 식전이나 공복에 섭취하면 균의 대장 도달력이 높아질 수 있으나 위산의 영향을 많이 받을 수 있으므로 
-									물을 많이 마시면서 섭취하는 것이 권장됩니다.</p>
-
-								</div>
-								<div class="card-body menu-comment comment">
-									<p>전문가들은 평소 잡곡밥(보리, 현미 등)과 채소(매 끼니 1~2접시), 
-									과일 1~2회(과일주스보다는 생과일) 정도의 식단이면 하루 식이섬유 섭취량을 충분히 보충할 수 있다고 조언합니다. 
-									특히 자녀의 변비가 걱정돼 식이섬유를 일부러 많이 먹게 하는 부모님들도 계시는데요.</p>
-
-								</div>
-								<div class="card-body menu-comment comment">
-									<p>1일 1회, 1회 1포를 물에 타서 섭취하십시오.</p>
-
-								</div>
-								<div class="card-body menu-comment comment7">
-										<p>카페인 섭취시간은 5시 이전으로. 5시 이우에 카페인 식품과 음료를 피하는것이 좋습니다.
-											카페인은 우리몸에 들어오면 30분이후부터 효과가 나타나며 효과는 4시간~5시간 지속되는데 잠들기 5시간
-											이전까지는 카페인 섭취를 하지 않아야 숙면에 방해가 되지 않습니다.</p>
-
-									</div>
-									<div class="card-body menu-comment comment8">
-													<p>1.빠른 로딩: 하루 약 20g의 크레아틴을 6일간 섭취(5g씩 4번)<br> 2.느린 로딩: 하루 약
-														3g의 크레아틴을 섭취</p>
-
-									</div>
-									<div class="card-body menu-comment comment9">
-													<p>스포츠 경기와 운동을 즐기는 모든 분께 효과적인 베타알라닌은 널리 알려진 제품이며 단백질 합성에 필요한 20종의 아미노산 중 하나입니다. 
-													무향 제품이기 때문에 즐겨 마시는 쉐이크에 첨가하기 좋습니다.
-													 ⅓ 작은 스쿱 (1.5g)을 선호하는 양의 물이나 주스에 섞어 섭취하십시오.</p>
-
-									</div>
-									<div class="card-body menu-comment comment10">
-													<p>x</p>
-
-									</div>
-									<div class="card-body menu-comment comment11">
-													<p>성인 : 탄산수소나트륨으로서 1회 1 ~ 5g (12 ~ 60mEq)씩 정맥주사한다. 
-													산증(아시도시스)에 통상용량은 일반적으로 다음 식에 의하여 산출하고 정맥주사한다. 
-													연령 및 증상에 따라 적절히 증감한다.</p>
-
-									</div>
-									<div class="card-body menu-comment comment12">
-													<p>운동 2-3시간 전에 체중당 5~7ml의 음료를 섭취한다. 
-													· 소변이 잘 나오지 않거나 색이 어두운 경우, 운동 2시간 전에 추가로 체중당 3~5ml를 섭취한다. 
-													· 나트륨이 포함된 음료 또는 소금기가 있는 과자가 체액을 유지하는데 도움을 준다.</p>
-
-									</div>
-									
-							</div>
-
-						</div>
-					</div>
+								
 
 				</div>
 			</div> <!-- End of Page Content -->
