@@ -130,7 +130,7 @@
 		           data: { boardNo:${boardone.boardNo}},
 		           success: function (result) {
 		        	  for (var i = 0; i < result.length; i++) {
-			    		   var  htmlVal = '<div class="card replyCard" data-replyno="'+result[i].replyNo+'" ><div>작성자 : '+ result[i].memberId+'</div><div>내용 : '+result[i].replyContent+'</div><div>입력날짜 : '+result[i].replyDate+'</div><span><button class="deletereply">삭제</button><button class="updatereply">수정</button><button class="insertreplyreply">댓글 삽입</button></span></div>'
+			    		   var  htmlVal = '<div class="card replyCard" data-replyno="'+result[i].replyNo+'" ><div>작성자 : '+ result[i].memberId+'</div><div class="updatereplyContent">내용 : '+result[i].replyContent+'</div><div class="updatereplyDate">입력날짜 : '+result[i].replyDate+'</div><span><button class="deletereply">삭제</button><button class="updatereply">수정</button><button class="insertreplyreply">댓글 삽입</button></span></div>'
 							$(".testappend").append(htmlVal);
 		        	   };
 		        	   $(".deletereply").click(deletereplyHandler);
@@ -205,7 +205,7 @@
 		       success: function (result) {
 		    		   $(".testappend").html("");
 						for (var i = 0; i < result.length; i++) {
-		    		   		var  htmlVal =  '<div class="card replyCard" data-replyno="'+result[i].replyNo+'" ><div>작성자 : '+ result[i].memberId+'</div><div>내용 : '+result[i].replyContent+'</div><div>입력날짜 : '+result[i].replyDate+'</div><span><button class="deletereply">삭제</button><button class="updatereply">수정</button><button class="insertreplyreply">댓글 삽입</button></span></div>'
+		    		   		var  htmlVal =  '<div class="card replyCard" data-replyno="'+result[i].replyNo+'" ><div>작성자 : '+ result[i].memberId+'</div><div class="updatereplyContent">내용 : '+result[i].replyContent+'</div><div class="updatereplyDate">입력날짜 : '+result[i].replyDate+'</div><span><button class="deletereply">삭제</button><button class="updatereply">수정</button><button class="insertreplyreply">댓글 삽입</button></span></div>'
 		    				$(".testappend").append(htmlVal);   
 		    	   		};
 		    	   		$(".addreply").html("");
