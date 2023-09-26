@@ -42,15 +42,15 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
     		FpMemberVo member = (FpMemberVo) memberObj;
     		session.setAttribute("member", service.memberInfo(member.getMemberId()));
     	}
-    	
         if (session.getAttribute("member") == null) {
             // 세션 정보가 유효하지 않은 경우 처리
             Cookie loginCookie = WebUtils.getCookie(request, SessionNames.LOGIN_COOKIE);
             if (loginCookie != null) {
                 FpMemberVo vo = service.checkLoginBefore(loginCookie.getValue());
-                if (vo != null)
-                    session.setAttribute(SessionNames.LOGIN, vo);
+                if (vo != null) {                	
+                	session.setAttribute(SessionNames.LOGIN, vo);
                 	return true;
+                }
             }
             session.setAttribute("prevPage", url);
             
