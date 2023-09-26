@@ -56,11 +56,12 @@ public class FpMemberWeightController {
 	}
 	
 	//근육량 체지방 insert
-	@PostMapping("/composition/delete")
+	@PostMapping("/composition/insert")
 	public String mainPageOpen14(FpMemberWeightVo param) {
 		fpMemberWeightServiceImpl.insertUpdate(param);
 		return "memberweight/composition";
 	}
+	
 	@GetMapping("/healthmap")
 	public String mainPageOpen12() {
 		return "memberweight/healthmap";

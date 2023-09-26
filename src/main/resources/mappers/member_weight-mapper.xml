@@ -45,6 +45,11 @@
 		WHERE member_id=#{memberId} and weight_date=#{weightDate}
 	</update>
 	
+	<update id="updateWeightMember" parameterType="FpMemberWeightVo">
+		UPDATE MEMBER SET WEIGHT=#{weight}
+		WHERE member_id=#{memberId}
+	</update>
+	
 	<update id="update" parameterType="FpMemberWeightVo">
 		UPDATE MEMBER_WEIGHT
 	    SET MUSCLE_MASS=#{muscleMass}, BODY_FAT_PET=#{bodyFatPet}
