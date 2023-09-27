@@ -333,19 +333,31 @@ public class FpMemberController {
 		return "/member/pwdChange";
 	}
 	
+	@GetMapping("/member/mypage/pwdChangePopup")
+	public String pwdChangePopup() {
+		return "/member/pwdChangePopup";
+	}
+	
 	@PostMapping("/member/mypage/pwdChange")
-	public String pwdChangeDo(@Valid PwdChangeForm pwdChangeForm, BindingResult bindingResult) {
+	public String pwdChangeDo(@Valid PwdChangeForm pwdChangeForm, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
-            return "/member/mypage/pwdChange";
+			model.addAttribute("msg", "모든 항목에 내용이 입력되어야 합니다.");
+            return "/member/pwdChangePopup";
         }
 		
 		if(!pwdChangeForm.getPassword2().equals(pwdChangeForm.getPassword3())) {
-            bindingResult.rejectValue("password3", "passwordInCorrect", "변경할 2개의 패스워드가 일치하지 않습니다.");
-            return "/member/mypage/pwdChange";
+            bindingResult.rejectValue("password2", "passwordInCorrect", "변경할 2개의 패스워드가 일치하지 않습니다.");
+            model.addAttribute("msg", "변경할 2개의 패스워드가 일치하지 않습니다.");
+			return "/member/pwdChangePopup";
         }
 		
-		service.pwdChange(pwdChangeForm);
-		return "redirect:/member/mypage";
+		if(service.pwdChange(pwdChangeForm) == 1) {			
+			model.addAttribute("msg", "패스워드 변경이 완료되었습니다.");
+			return "/member/pwdChangePopup";
+		} else {
+			model.addAttribute("msg", "현재 패스워드가 일치하지 않습니다.");
+			return "/member/pwdChangePopup";
+		}
 	}
 		
 	// 회원탈퇴 전 패스워드 항목 입력

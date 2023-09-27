@@ -39,23 +39,39 @@
 					</div>
 					<jsp:include page="/WEB-INF/views/frame/mypagemenu.jsp"></jsp:include>
 					<form action="${pageContext.request.contextPath }/member/mypage/pwdChange" method="post">
+						<jsp:include page="form_errors.jsp"/>
 						<input type="hidden" name="username" value="${member.memberId }">
 						<div class="col-lg-8 login-form">
 							<div class="col-lg-8 login-form">
 								<div class="form-group">
-									<label class="form-control-label">현재 패스워드</label> <input
-										type="password" name="password" id="password"
-										class="form-control">
+									<label class="form-control-label">현재 패스워드</label> 
+									<input type="password" name="password" id="password" class="form-control">
+									<!-- 비밀번호 에러 메시지 -->
+									<c:if test="${errorMessages.contains('현재 비밀번호는 필수항목입니다.')}">
+									    <div class="alert alert-danger">
+									        <c:out value="현재 비밀번호는 필수항목입니다."/><br/>
+									    </div>
+									</c:if>
 								</div>
 								<div class="form-group">
-									<label class="form-control-label">변경할 패스워드</label> <input
-										type="password" name="password2" id="password2"
-										class="form-control">
+									<label class="form-control-label">변경할 패스워드</label>
+									<input type="password" name="password2" id="password2" class="form-control">
+									<!-- 비밀번호 에러 메시지 -->
+									<c:if test="${errorMessages.contains('변경할 비밀번호는 필수항목입니다.')}">
+									    <div class="alert alert-danger">
+									        <c:out value="변경할 비밀번호는 필수항목입니다."/><br/>
+									    </div>
+									</c:if>
 								</div>
 								<div class="form-group">
-									<label class="form-control-label">변경할 패스워드 확인</label> <input
-										type="password" name="password3" id="password3"
-										class="form-control">
+									<label class="form-control-label">변경할 패스워드 확인</label>
+									<input type="password" name="password3" id="password3" class="form-control">
+									<!-- 비밀번호 에러 메시지 -->
+									<c:if test="${errorMessages.contains('변경할 비밀번호 확인은 필수항목입니다.')}">
+									    <div class="alert alert-danger">
+									        <c:out value="변경할 비밀번호 확인은 필수항목입니다."/><br/>
+									    </div>
+									</c:if>
 								</div>
 								<div class="col-lg-6 login-btm login-button">
 									<button type="submit" class="btn btn-outline-primary">패스워드 변경</button>
@@ -69,6 +85,8 @@
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
 	</div>
-	
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
 </body>
 </html>

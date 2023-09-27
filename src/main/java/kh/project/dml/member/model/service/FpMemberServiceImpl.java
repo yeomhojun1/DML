@@ -113,7 +113,6 @@ public class FpMemberServiceImpl implements FpMemberService {
 	    if(user.getUserEnabled() == 0) {
 	    	return null;
 	    }
-	    System.out.println(vo.getPassword());
 	    // 2. 사용자의 암호화된 비밀번호와 사용자가 입력한 평문 비밀번호를 암호화한 것을 비교합니다.
 	    if(passwordEncoder.matches(vo.getPassword(), user.getPassword())) {
 	        // 비밀번호가 일치하면, 사용자 정보 반환
@@ -131,15 +130,22 @@ public class FpMemberServiceImpl implements FpMemberService {
     
     @Override
     @Transactional
-    public void pwdChange(PwdChangeForm pwdChange) {
+    public int pwdChange(PwdChangeForm pwdChange) {
+    	int result = 0;
 		try {
 			FpUsersVo user = dao.normallogin(pwdChange.getUsername());
+			System.out.println(passwordEncoder.matches(pwdChange.getPassword(), user.getPassword()));
 			if(passwordEncoder.matches(pwdChange.getPassword(), user.getPassword())) {
 				dao.pwdChange(pwdChange.getUsername(), passwordEncoder.encode(pwdChange.getPassword2()));
+				result = 1;
+			} else {
+				return result;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("result :"+result);
+		return result;
     }
 	
     @Override

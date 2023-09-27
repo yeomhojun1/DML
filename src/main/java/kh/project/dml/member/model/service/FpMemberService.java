@@ -18,7 +18,7 @@ public interface FpMemberService {
     String checkId(String memberId);
     FpUsersVo login(LoginVo vo) throws Exception;
 	FpMemberVo memberInfo(String memberId);
-	void pwdChange(PwdChangeForm pwdChange);
+	int pwdChange(PwdChangeForm pwdChange);
 	void update(FpMemberVo vo);
 	void delete(String username);
 	void keepLogin(String memberId, String sessionId, Date expire);
