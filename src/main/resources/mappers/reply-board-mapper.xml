@@ -11,11 +11,11 @@ select * from replyboard where reply_No=#{replyNo}
 </select>
 
 <insert id="insert" parameterType="FpreplyboardVo">
-insert into replyboard values(REPLY_no_seq.nextval,#{memberId},#{replyContent},default,#{boardNo},#{rstep},#{rlevel})
+insert into replyboard values(REPLY_no_seq.nextval,#{memberId},#{replyContent},default,#{boardNo},#{rref},#{rstep},#{rlevel})
 </insert>
 
 <insert id="insertreplyreply">
-insert into replyboard values(REPLY_no_seq.nextval,#{memberId},#{replyContent},default,#{boardNo},#{rstep},#{rlevel})
+insert into replyboard values(REPLY_no_seq.nextval,#{memberId},#{replyContent},default,#{boardNo},#{rref},#{rstep},#{rlevel})
 </insert>
 
 <update id="update" parameterType="FpreplyboardVo">
