@@ -31,16 +31,16 @@ public class FpMemberWeightDao {
 	public int insertWeight(FpMemberWeightVo vo) {
 		return sqlSession.insert("memberweight.insertWeight", vo);
 	}
-	//근육량, 체지방 
-	public int insert(FpMemberWeightVo vo) {
-		return sqlSession.insert("memberweight.insert", vo);
-	}
 	public int updateWeight(FpMemberWeightVo vo) {
 		return sqlSession.update("memberweight.updateWeight", vo);
 	}
 	
 	public int updateWeightMember(FpMemberWeightVo vo) {
 		return sqlSession.update("memberweight.updateWeightMember", vo);
+	}
+	//근육량, 체지방 
+	public int insert(FpMemberWeightVo vo) {
+		return sqlSession.insert("memberweight.insert", vo);
 	}
 	
 	public int update(FpMemberWeightVo vo) {

@@ -29,8 +29,9 @@ public class FpMemberWeightVo {
 	}
 
 
-	public FpMemberWeightVo(String memberId, int muscleMass, int bodyFatPet) {
+	public FpMemberWeightVo(String memberId, String weightDate, int muscleMass, int bodyFatPet) {
 		this.memberId = memberId;
+		this.weightDate = weightDate;
 		this.muscleMass = muscleMass;
 		this.bodyFatPet = bodyFatPet;
 	}

@@ -477,12 +477,14 @@ font-size:16px;
 						</div>
 					</div>
 				</div>
+				
+				<form action="${pageContext.request.contextPath }/memberweight/composition" method="post">
 				<div class="Composition_input_by_date___OJGT">
 					<div class="Composition_input_by_date_bar__A_IXv">
 						<div class="ant-picker css-1s3dcof Composition_datepicker2__OmJH_">
+							<input type="hidden" name="memberId" value="${member.memberId }">
 							<div class="ant-picker-input">
-								<input type="text" id="datepicker"
-						name="calendarNo"><span
+								<input type="text" id="datepicker" name="date"><span
 									class="ant-picker-suffix"><span role="img"
 									aria-label="calendar" class="anticon anticon-calendar"
 									style="font-size: 18px; color: white;"><!-- <svg
@@ -501,7 +503,7 @@ font-size:16px;
 							</div>
 						</div>
 						<div style="justify-content: flex-end; display: flex;">
-							<button type="button"
+							<button type="submit"
 								class="ant-btn css-1s3dcof ant-btn-round ant-btn-default ant-btn-lg Composition_btn_save3__bVW2y Global_button__iJeUH">
 								<span>저장하기</span>
 							</button>
@@ -509,14 +511,17 @@ font-size:16px;
 								class="ant-btn css-1s3dcof ant-btn-round ant-btn-default ant-btn-lg Composition_btn_save3__bVW2y Global_button__iJeUH">
 								<span>삭제하기</span>
 							</button>
+							
+							</button>
+							
+						
 						</div>
-					</div>
-					<div class="Composition_input_by_date_input_box__Ykpf3">
+						<div class="Composition_input_by_date_input_box__Ykpf3">
 						<div
 							style="flex: 1 1 0%; margin-left: 20px; display: flex; flex-direction: row; justify-content: space-between;">
 							<div class="Composition_input_by_date_input_box_label__qZP2t">근육량</div>
 							<input
-								class="ant-input css-1s3dcof Composition_input_basic2__HoLj8"
+								class="ant-input css-1s3dcof Composition_input_basic2__HoLj8" name="muscleMass"
 								type="text" value="20">
 							<div
 								style="font-size: 18px; align-self: center; margin-left: 10px; padding-right: 30px;">kg</div>
@@ -526,12 +531,16 @@ font-size:16px;
 							style="flex: 1 1 0%; margin-left: 20px; display: flex; flex-direction: row; justify-content: space-between;">
 							<div class="Composition_input_by_date_input_box_label__qZP2t">체지방량</div>
 							<input
-								class="ant-input css-1s3dcof Composition_input_basic2__HoLj8"
+								class="ant-input css-1s3dcof Composition_input_basic2__HoLj8" name="bodyFatPet"
 								type="text" value="15">
 							<div
 								style="font-size: 18px; align-self: center; margin-left: 10px; padding-right: 30px;">%</div>
 						</div>
 					</div>
+						</form>
+					</div>
+						
+					
 				</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>

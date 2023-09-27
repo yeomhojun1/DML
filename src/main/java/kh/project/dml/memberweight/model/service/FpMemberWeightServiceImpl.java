@@ -44,29 +44,19 @@ public class FpMemberWeightServiceImpl implements FpMemberWeightService {
 		
 		return	fpMemberWeightDao.deleteWeight(memberId, weightDate);
 	}
-	// insert 몸무게 
-	@Override
-	public int insertUpdateWeight(FpMemberWeightVo vo) {
-		int result = 0;
-		try { 
-			result = fpMemberWeightDao.insertWeight(vo);
-		} catch (Exception e) {
-			result = fpMemberWeightDao.updateWeight(vo);	
-		}
-		return result;
-	}
-	//근육량, 체지방량 insert
+
+	//근육량, 체지방량  update/insert
 	@Override
 	public int insertUpdate(FpMemberWeightVo vo) {
-		int result = 0;
-		try { 
-			result = fpMemberWeightDao.insert(vo);
-		} catch (Exception e) {
-			result = fpMemberWeightDao.update(vo);	
+		System.out.println("service:"+vo.getWeight());
+		if(fpMemberWeightDao.checkDate(vo) == null) {
+			return fpMemberWeightDao.insert(vo);
+		} else {
+			return fpMemberWeightDao.update(vo);
 		}
-		return result;
 	}
 
-
+	////근육량, 체지방량 update
+	
 	
 }
