@@ -33,7 +33,7 @@
 								<li style="font-weight: bold;"><a>마이페이지</a></li>
 							</ul>
 						</div>
-						<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
+						<jsp:include page="/WEB-INF/views/frame/mypagemenu.jsp"></jsp:include>
 						<div>
 							<div>
 								<div class="MyPage_basic_input_row">

@@ -8,12 +8,13 @@ import org.springframework.stereotype.Repository;
 
 import kh.project.dml.admin.model.vo.FpAdminVo;
 import kh.project.dml.common.vo.Criteria;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Repository
 public class FpAdminDao {
 	
-	@Autowired
-	private SqlSession sqlSession;
+	private final SqlSession sqlSession;
 	
 	public List<FpAdminVo> memberList(Criteria cri) {
 		return sqlSession.selectList("admin.memberList", cri);

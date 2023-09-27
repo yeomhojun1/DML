@@ -13,12 +13,13 @@ import org.springframework.web.util.WebUtils;
 import kh.project.dml.common.interceptor.SessionNames;
 import kh.project.dml.member.model.service.FpMemberServiceImpl;
 import kh.project.dml.member.model.vo.FpMemberVo;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Controller
 public class FpIndexController {
 	
-	@Autowired
-	private FpMemberServiceImpl service;
+	private final FpMemberServiceImpl service;
 	
 	@GetMapping("/index")
 	public String index(HttpSession session, HttpServletRequest request) {

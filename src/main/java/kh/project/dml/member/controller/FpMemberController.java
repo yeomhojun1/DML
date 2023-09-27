@@ -37,6 +37,7 @@ import kh.project.dml.common.auth.SnsValue;
 import kh.project.dml.common.interceptor.SessionNames;
 import kh.project.dml.member.model.service.FpMemberServiceImpl;
 import kh.project.dml.member.model.vo.FpMemberVo;
+import kh.project.dml.member.model.vo.PwdChangeForm;
 import kh.project.dml.member.model.vo.SocialCreateForm;
 import kh.project.dml.member.model.vo.UserCreateForm;
 import kh.project.dml.users.model.vo.FpUsersVo;
@@ -57,7 +58,6 @@ public class FpMemberController {
 	private final SnsValue kakaoSns;
 	private final GoogleConnectionFactory googleConnectionFactory;
 	private final OAuth2Parameters googleOAuth2Parameters;
-	private final AuthenticationManager authenticationManager;
 	
 	// 멤버 페이지(임시)
 	@GetMapping("/member/list")
@@ -302,7 +302,20 @@ public class FpMemberController {
 	
 	// 마이페이지
 	@GetMapping("/member/mypage")
-	public String mypage() {
+	public String mypage(HttpSession session) {
+		Object memberObj = session.getAttribute(SessionNames.LOGIN);
+    	if (memberObj instanceof FpUsersVo) {
+    		FpUsersVo userMember = (FpUsersVo) memberObj;
+    		if(userMember.getAuthorities().equals("ROLE_ADMIN")) {
+    			return "redirect:/admin/mypage";
+    		}
+    		
+    	} else if (memberObj instanceof FpMemberVo) {
+    		FpMemberVo member = (FpMemberVo) memberObj;
+    		if(member.getAuthorities().equals("ROLE_ADMIN")) {
+    			return "redirect:/admin/mypage";
+    		}
+    	}
 		return "/member/mypage";
 	}
 	
@@ -315,6 +328,26 @@ public class FpMemberController {
 		return "redirect:/member/mypage";
 	}
 	
+	@GetMapping("/member/mypage/pwdChange")
+	public String pwdChange() {
+		return "/member/pwdChange";
+	}
+	
+	@PostMapping("/member/mypage/pwdChange")
+	public String pwdChangeDo(@Valid PwdChangeForm pwdChangeForm, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+            return "/member/mypage/pwdChange";
+        }
+		
+		if(!pwdChangeForm.getPassword2().equals(pwdChangeForm.getPassword3())) {
+            bindingResult.rejectValue("password3", "passwordInCorrect", "변경할 2개의 패스워드가 일치하지 않습니다.");
+            return "/member/mypage/pwdChange";
+        }
+		
+		service.pwdChange(pwdChangeForm);
+		return "redirect:/member/mypage";
+	}
+		
 	// 회원탈퇴 전 패스워드 항목 입력
 	@GetMapping("/member/deleteCheck")
 	public String deleteCheck(HttpSession session) {

@@ -1,10 +1,13 @@
 package kh.project.dml.admin.controller;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +19,11 @@ import kh.project.dml.admin.model.service.FpAdminServiceImpl;
 import kh.project.dml.admin.model.vo.FpAdminVo;
 import kh.project.dml.common.vo.Criteria;
 import kh.project.dml.common.vo.FpPageMakerVo;
+import kh.project.dml.member.model.service.FpMemberServiceImpl;
+import kh.project.dml.member.model.vo.PwdChangeForm;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Controller
 @RequestMapping("/admin")
 public class FpAdminController {
@@ -24,8 +31,8 @@ public class FpAdminController {
 	// 로그 수집 기능
 	private static final Logger logger = LoggerFactory.getLogger(FpAdminController.class);
 	
-	@Autowired
-	private FpAdminServiceImpl service;
+	private final FpAdminServiceImpl service;
+	private final FpMemberServiceImpl memberService;
 	
 	@GetMapping("/index")
 	public ModelAndView adminIndex(ModelAndView mv) {
@@ -96,66 +103,27 @@ public class FpAdminController {
 		return mv;
 	}
 	
-	@GetMapping("/insert")
-	public ModelAndView insertadmin(ModelAndView mv ) {
-		mv.setViewName("admin/insert");
+	@GetMapping("/mypage/pwdChange")
+	public ModelAndView pwdChange(ModelAndView mv) {
+		mv.setViewName("admin/pwdChange");
 		return mv;
 	}
-	@PostMapping("/insert")
-	public String insertDoMemeber(RedirectAttributes redirectAttr, FpAdminVo vo ) {
-		String viewPage = "redirect:/";
-		int result = service.insert(vo);
-		try {
-			if (result < 1) {
-				redirectAttr.addFlashAttribute("msg", "회원 가입 실패했습니다 \n 다시 입력해주세요");
-				viewPage = "redirect:/admin/insert";
-			} else {
-				redirectAttr.addFlashAttribute("msg", "회원 가입 됐습니다");
-				viewPage = "redirect:/admin/list";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return viewPage;
-	}
-	@GetMapping("/update")
-	public ModelAndView updateadmin(ModelAndView mv, String adminId ) {
-		mv.addObject("adminone", service.selectOne(adminId));
-		mv.setViewName("admin/update");
+	
+	@PostMapping("/mypage/pwdChange")
+	public ModelAndView pwdChangeDo(@Valid PwdChangeForm pwdChangeForm, BindingResult bindingResult, ModelAndView mv) {
+		if(bindingResult.hasErrors()) {
+			mv.setViewName("admin/pwdChange");
+			return mv;
+        }
+		
+		if(!pwdChangeForm.getPassword2().equals(pwdChangeForm.getPassword3())) {
+            bindingResult.rejectValue("password3", "passwordInCorrect", "변경할 2개의 패스워드가 일치하지 않습니다.");
+            mv.setViewName("admin/pwdChange");
+    		return mv;
+        }
+		
+		memberService.pwdChange(pwdChangeForm);
+		mv.setViewName("admin/mypage");
 		return mv;
-	}
-	@PostMapping("/update")
-	public String updateDoMemeber(RedirectAttributes redirectAttr, FpAdminVo vo ) {
-		String viewPage = "redirect:/";
-		int result = service.update(vo);
-		try {
-			if (result < 1) {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 실패했습니다 \n 다시 입력해주세요");
-				viewPage = "redirect:/admin/update";
-			} else {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 됐습니다");
-				viewPage = "redirect:/admin/list";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return viewPage;
-	}
-	@PostMapping("/delete")
-	public String deleteDoMemeber(RedirectAttributes redirectAttr,String adminId ) {
-		String viewPage = "redirect:/";
-		int result = service.delete(adminId);
-		try {
-			if (result < 1) {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");
-				viewPage = "redirect:/admin/list";//delete는 보통 처음에 있던 화면으로 돌아감 그래서 ajax를 쓰는데 그건 추후
-			} else {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 됐습니다");
-				viewPage = "redirect:/admin/list";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return viewPage;
 	}
 }

@@ -14,6 +14,12 @@
 		where member_id = #{memberId}
 	</select>
 	
+	<!-- 패스워드 변경 -->
+	<update id="pwdChange" parameterType="map">
+		update users set password=#{password}
+		where username = #{username}
+	</update>
+	
 	<!-- 마이페이지 업데이트 -->
 	<update id="update" parameterType="FpMemberVo">
 		update member set mname=#{mname}, height=#{height}, weight=#{weight}

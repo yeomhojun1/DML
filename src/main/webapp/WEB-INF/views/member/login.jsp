@@ -205,7 +205,8 @@ label {
                 <div class="col-lg-3 col-md-2"></div>
             </div>
         </div>
+        </div>
+        </div>
     </form>
-    </div>
 </body>
 </html>

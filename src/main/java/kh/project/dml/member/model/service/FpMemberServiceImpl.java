@@ -4,9 +4,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-import javax.inject.Inject;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import kh.project.dml.member.model.dao.FpMemberDao;
 import kh.project.dml.member.model.dao.FpMemberRepository;
 import kh.project.dml.member.model.vo.FpMemberVo;
+import kh.project.dml.member.model.vo.PwdChangeForm;
 import kh.project.dml.member.model.vo.SocialCreateForm;
 import kh.project.dml.member.model.vo.UserCreateForm;
 import kh.project.dml.users.model.vo.FpUsersVo;
@@ -130,6 +128,19 @@ public class FpMemberServiceImpl implements FpMemberService {
 	public FpMemberVo memberInfo(String memberId) {
 		return dao.memberInfo(memberId);
 	}
+    
+    @Override
+    @Transactional
+    public void pwdChange(PwdChangeForm pwdChange) {
+		try {
+			FpUsersVo user = dao.normallogin(pwdChange.getUsername());
+			if(passwordEncoder.matches(pwdChange.getPassword(), user.getPassword())) {
+				dao.pwdChange(pwdChange.getUsername(), passwordEncoder.encode(pwdChange.getPassword2()));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
 	
     @Override
 	public void update(FpMemberVo vo) {

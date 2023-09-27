@@ -8,7 +8,7 @@
 </head>
 <body>
 <script>
-	alert("로그인 진행 중 사용가능 합니다..");
+	alert("로그인을 해야 사용가능 합니다..");
 	location.href="${pageContext.request.contextPath}/member/login";
 </script>
 </body>

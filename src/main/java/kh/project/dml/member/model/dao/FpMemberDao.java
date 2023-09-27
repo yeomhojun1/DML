@@ -12,14 +12,16 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kh.project.dml.member.model.vo.FpMemberVo;
+import kh.project.dml.member.model.vo.PwdChangeForm;
 import kh.project.dml.users.model.vo.FpUsersVo;
 import kh.project.dml.users.model.vo.LoginVo;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Repository
 public class FpMemberDao {
 
-	@Inject
-	private SqlSession session;
+	private final SqlSession session;
 
 	private static final String NS = "kh.project.dml.MemberMapper";
 	private static final String CHECK_ID = NS + ".checkId";
@@ -27,6 +29,7 @@ public class FpMemberDao {
 	private static final String SELECT_LIST = NS + ".selectList";
 	private static final String NORMAL_LOGIN = NS + ".normallogin";
 	private static final String INFO = NS + ".info";
+	private static final String PWD_CHANGE = NS + ".pwdChange";
 	private static final String UPDATE = NS + ".update";
 	private static final String DELETE_MEMBER = NS + ".deleteMember";
 	private static final String DELETE_USER = NS + ".deleteUser";
@@ -54,6 +57,13 @@ public class FpMemberDao {
 	
 	public FpMemberVo memberInfo(String memberId) {
 		return session.selectOne(INFO, memberId);
+	}
+	
+	public void pwdChange(String username, String password) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("username", username);
+		map.put("password", password);
+		session.update(PWD_CHANGE, map);
 	}
 	
 	public void update(FpMemberVo vo) {
