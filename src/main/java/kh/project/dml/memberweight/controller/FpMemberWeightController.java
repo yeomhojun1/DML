@@ -39,7 +39,7 @@ public class FpMemberWeightController {
 		
 		FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(memberId, weightDate, weight);
 		fpMemberWeightServiceImpl.dateWeight(fpMemberWeightVo, nowDate);
-		return "memberweight/weight2";
+		return "redirect:/memberweight/weight2";
 	}
 	
 	//	delete 선택한 날짜의 데이터 삭제
@@ -54,13 +54,26 @@ public class FpMemberWeightController {
 	public String mainPageOpen11() {
 		return "memberweight/composition";
 	}
-	
-	//근육량 체지방 insert
-	@PostMapping("/composition/insert")
-	public String mainPageOpen14(FpMemberWeightVo param) {
-		fpMemberWeightServiceImpl.insertUpdate(param);
-		return "memberweight/composition";
+
+	//근육량 체지방량 update
+	@PostMapping("/composition")
+	public String mainPageOpen15(@RequestParam String memberId, @RequestParam Date date, @RequestParam int muscleMass, @RequestParam int bodyFatPet, Model model) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		String weightDate = format.format(date);
+		
+		FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(memberId, weightDate, muscleMass, bodyFatPet);
+		fpMemberWeightServiceImpl.insertUpdate(fpMemberWeightVo);
+		return "redirect:/memberweight/composition";
 	}
+	
+//	//근육량 체지방량 delete
+//	 @PostMapping("/composition")
+//	 public String mainPageOpen17(@RequestParam String memberId, @RequestParam String weightDate){
+//			/* FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(weight); */
+//		 fpMemberWeightServiceImpl.deleteWeight(memberId, weightDate);
+//	 	 return "memberweight/composition";
+//	  }
+//	
 	
 	@GetMapping("/healthmap")
 	public String mainPageOpen12() {

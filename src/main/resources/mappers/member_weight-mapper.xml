@@ -33,11 +33,6 @@
     	( #{weightDate} , #{memberId}, #{weight})
 	</insert>
 	
-	<!-- 근육량/ 체지방량 입력 -->
-	<insert id="insert" parameterType="FpMemberWeightVo">
-		insert into member_weight (WEIGHT_DATE,MEMBER_ID, MUSCLE_MASS, BODY_FAT_PET) 
-		values ( #{weightDate}, #{memberId}, #{muscleMass}, #{bodyFatPet})
-	</insert>	
 	
 	<update id="updateWeight" parameterType="FpMemberWeightVo">
 		UPDATE MEMBER_WEIGHT 
@@ -49,6 +44,12 @@
 		UPDATE MEMBER SET WEIGHT=#{weight}
 		WHERE member_id=#{memberId}
 	</update>
+	
+	<!-- 근육량/ 체지방량 입력 -->
+	<insert id="insert" parameterType="FpMemberWeightVo">
+		insert into member_weight (WEIGHT_DATE,MEMBER_ID, MUSCLE_MASS, BODY_FAT_PET) 
+		values ( #{weightDate}, #{memberId}, #{muscleMass}, #{bodyFatPet})
+	</insert>	
 	
 	<update id="update" parameterType="FpMemberWeightVo">
 		UPDATE MEMBER_WEIGHT
