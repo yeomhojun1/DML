@@ -56,22 +56,10 @@
 								<div class="form-group">
 									<label class="form-control-label">변경할 패스워드</label>
 									<input type="password" name="password2" id="password2" class="form-control">
-									<!-- 비밀번호 에러 메시지 -->
-									<c:if test="${errorMessages.contains('변경할 비밀번호는 필수항목입니다.')}">
-									    <div class="alert alert-danger">
-									        <c:out value="변경할 비밀번호는 필수항목입니다."/><br/>
-									    </div>
-									</c:if>
 								</div>
 								<div class="form-group">
 									<label class="form-control-label">변경할 패스워드 확인</label>
 									<input type="password" name="password3" id="password3" class="form-control">
-									<!-- 비밀번호 에러 메시지 -->
-									<c:if test="${errorMessages.contains('변경할 비밀번호 확인은 필수항목입니다.')}">
-									    <div class="alert alert-danger">
-									        <c:out value="변경할 비밀번호 확인은 필수항목입니다."/><br/>
-									    </div>
-									</c:if>
 								</div>
 								<div class="col-lg-6 login-btm login-button">
 									<button type="submit" class="btn btn-outline-primary">패스워드 변경</button>
