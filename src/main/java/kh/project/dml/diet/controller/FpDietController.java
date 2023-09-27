@@ -90,7 +90,7 @@ public class FpDietController {
 	}
 	@ResponseBody
 	@PostMapping("/delete")
-	public String deleteDoMemeber(RedirectAttributes redirectAttr, @RequestParam String foodCd) {
+	public String deleteDoMemeber(RedirectAttributes redirectAttr, String foodCd) {
 		int result = fpDietServiceImpl.delete(foodCd);
 		try {
 			if (result < 1) {
