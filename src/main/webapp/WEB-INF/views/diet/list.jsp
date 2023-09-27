@@ -26,164 +26,22 @@
     
 <body class="sb-nav-fixed">
 	<jsp:include page="/WEB-INF/views/diet/modal_insert.jsp"></jsp:include>
-	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="index.html">Daily Muscle Life</a>
-		<!-- Sidebar Toggle-->
-		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
-			id="sidebarToggle" href="#!">
-			<i class="fas fa-bars"></i>
-		</button>
-    </script>
-		<!-- Navbar Search-->
-		<form
-			class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-			<div class="input-group">
-				<input class="form-control" type="text" placeholder="Search for..."
-					aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-				<button class="btn btn-primary" id="btnNavbarSearch" type="button">
-					<i class="fas fa-search"></i>
-				</button>
-			</div>
-		</form>
-		<!-- Navbar-->
-		<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
-				role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
-					class="fas fa-user fa-fw"></i></a>
-				<ul class="dropdown-menu dropdown-menu-end"
-					aria-labelledby="navbarDropdown">
-					사용자가 로그인되어 있지 않은 경우
-					<c:if test="${empty sessionScope.loginUser}">
-						<li><a class="dropdown-item"
-							href="${pageContext.request.contextPath }/member/login">로그인</a></li>
-						<li><a class="dropdown-item"
-							href="${pageContext.request.contextPath }/member/signup">회원가입</a></li>
-					</c:if>
-
-					사용자가 로그인된 경우
-					<c:if test="${not empty sessionScope.loginUser}">
-						<li><a class="dropdown-item"
-							href="${pageContext.request.contextPath }/member/mypage">마이페이지</a></li>
-						<li><a class="dropdown-item" href="#!">Activity Log</a></li>
-						<li><hr class="dropdown-divider" /></li>
-						<li><a class="dropdown-item"
-							href="${pageContext.request.contextPath }/member/logout">로그아웃</a></li>
-					</c:if>
-				</ul></li>
-		</ul>
-	</nav>
+	<jsp:include page="/WEB-INF/views/frame/nav.jsp"></jsp:include>
+	
 	<div id="layoutSidenav">
-
-		<div id="layoutSidenav_nav">
-			<nav class="sb-sidenav accordion sb-sidenav-dark"
-				id="sidenavAccordion">
-				<div class="sb-sidenav-menu">
-					<div class="nav">
-						<div class="sb-sidenav-menu-heading">메인</div>
-						<a class="nav-link" href="index.html">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-tachometer-alt"></i>
-							</div> 홈
-						</a>
-						<div class="sb-sidenav-menu-heading">체중/식단</div>
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-							data-bs-target="#collapseLayouts" aria-expanded="false"
-							aria-controls="collapseLayouts">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-columns"></i>
-							</div> 체중관리
-						</a>
-					
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-							data-bs-target="#collapsePages" aria-expanded="false"
-							aria-controls="collapsePages">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-book-open"></i>
-							</div> 식단관리	
-						</a>
-						<div class="sb-sidenav-menu-heading">운동/제품</div>
-						<a class="nav-link" href="charts.html">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-chart-area"></i>
-							</div> 운동 도우미
-						</a> <a class="nav-link" href="tables.html">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-table"></i>
-							</div> 제품 추천
-						</a>
-					</div>
-				</div>
-				<div class="sb-sidenav-footer">
-					<div class="small">Logged in as:</div>
-					Start Bootstrap
-				</div>
-			</nav>
-		</div>
-
 		<jsp:include page="/WEB-INF/views/frame/asidebar.jsp"></jsp:include>
-
+		
 
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">Daily Muscle Life</h1>
-					<div class="row">
-						<div class="col-xl-3 col-md-6">
-							<div class="card bg-primary text-white mb-4">
-								<div class="card-body">식단짜기</div>
-								<div
-									class="card-footer d-flex align-items-center justify-content-between">
-									<!--          <a class="small text-white stretched-link" href="#">View Details</a> -->
-									<div class="small text-white">
-										<i class="fas fa-angle-right"></i>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-md-6">
-							<div class="card bg-warning text-white mb-4">
-								<div class="card-body">밀프렙 도우미</div>
-								<div
-									class="card-footer d-flex align-items-center justify-content-between">
-									<!--         <a class="small text-white stretched-link" href="#">View Details</a> -->
-									<div class="small text-white">
-										<i class="fas fa-angle-right"></i>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-md-6">
-							<div class="card bg-success text-white mb-4">
-								<div class="card-body">보충제 활용</div>
-								<div
-									class="card-footer d-flex align-items-center justify-content-between">
-									<!--    <a class="small text-white stretched-link" href="#">View Details</a> -->
-									<div class="small text-white">
-										<i class="fas fa-angle-right"></i>
-									</div>
-								</div>	
-							</div>
-						</div>
-						<div class="col-xl-3 col-md-6">
-							<div class="card bg-danger text-white mb-4">
-								<div class="card-body">마이페이지</div>
-								<div
-									class="card-footer d-flex align-items-center justify-content-between">
-									<!--       <a class="small text-white stretched-link" href="#">View Details</a> -->
-									<div class="small text-white">
-										<i class="fas fa-angle-right"></i>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
 					
 					
 					
 					<div class="DateBars_date_bar__QeCa3" >
-						<div class="DateBars_date__DyX0X"><%String Date = new java.text.SimpleDateFormat("yyyy-MM-dd (E)").format(new java.util.Date());%>
+						<div class="DateBars_date__DyX0X"><%String Date = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());%>
 								<%=Date%></div>
 						<div class="DateBars_date_selector__ajXTR">
 
@@ -532,10 +390,10 @@
 			}  else {
 				$(thisElement).closest(".Plan_bottom1_food_each__s9jUi").remove();
 		   		// TODO: AJAX를 사용하여 서버로 삭제 요청 보내기
-		    	/* $.ajax({
+		    	 $.ajax({
 		        url: "${pageContext.request.contextPath}/diet/delete", 
 		        type: "post",
-		        data: { foodCd: foodCdToDelete }, // 삭제할 데이터의 고유 식별자 전달
+		        data: {foodCd : foodCdToDelete }, // 삭제할 데이터의 고유 식별자 전달
 		        dataType: "json",
 		        success: function (result) {
 		            console.log(result); 
@@ -543,8 +401,13 @@
 			        },
 		        error: function (error) {
 		            console.log("error"); 
-		        }, */
+		        }, 
+		    	 });
 		}  // else
+			
+			
+			
+			
 	}// btnDeleteClickHandler
 			/* 	function btnDeleteClickHandler(thisElement){
 					console.log(thisElement);
@@ -605,7 +468,8 @@
 		let selectedDate = $(".DateBars_date__DyX0X").text();
 		selectedDate = selectedDate.replaceAll("-","");
 		objfinal.foodlist = arr1;
-		objfinal.foodDate = selectedDate;
+		objfinal.foodDate = selectedDate.trim();
+		console.log("selectedDate.trim()"+selectedDate.trim());
 		objfinal.memberId = memberId;
 		objfinal.foodCd = $(".foodcdval").val();
 		//private String foodCd;

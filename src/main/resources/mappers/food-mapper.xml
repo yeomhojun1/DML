@@ -10,7 +10,7 @@
 	select * from food where foodCd=#{foodCd}
 	</select>
 	
-	<select id="mealCodeCheck" resultType="string" parameterType="string">
+	<select id="mealCodeCheck" resultType="FpFoodVo" parameterType="string">
 		select * from food where meal_code=#{mealCode}
 	</select>
 	
