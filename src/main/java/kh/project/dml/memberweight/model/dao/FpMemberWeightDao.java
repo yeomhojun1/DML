@@ -54,4 +54,16 @@ public class FpMemberWeightDao {
 		map.put("weightDate", weightDate);
 		return sqlSession.delete("memberweight.deleteWeight", map);
 	}
+	
+	//delete 근육량 체지방량 삭제
+	
+	public int delete(String weightDate , String memberId) {
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("weightDate", weightDate);
+		map.put("memberId", memberId);
+		
+		return sqlSession.delete("memberweight.delete" , map);
+	}
+	
  }

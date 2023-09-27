@@ -508,7 +508,7 @@ font-size:16px;
 								<span>저장하기</span>
 							</button>
 							<button type="button"
-								class="ant-btn css-1s3dcof ant-btn-round ant-btn-default ant-btn-lg Composition_btn_save3__bVW2y Global_button__iJeUH">
+								class="ant-btn css-1s3dcof ant-btn-round ant-btn-default ant-btn-lg Composition_btn_save3__bVW2y Global_button__iJeUH delete_btn " >
 								<span>삭제하기</span>
 							</button>
 							
@@ -609,7 +609,30 @@ font-size:16px;
 			$('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
 		});
 		
-		//달력클릭시 날짜 선택
+		
+		
+
+		//delete
+		$(".delete_btn").click(deleteWeight);
+		function deleteWeight(){
+			var dateVal = $("#datepicker").val()
+			//replace([기존문자],[바꿀문자])
+			dateVal= dateVal.replaceAll("-", "");
+			$.ajax({
+				url:"${pageContext.request.contextPath}/memberweight/delete",
+				type: "post",
+				data : {memberId : "${member.memberId}"
+					,weightDate: dateVal}
+				,success : function(){
+					console.log("success");
+					location.href="${pageContext.request.contextPath}/memberweight/composition";}
+				,error : function(){
+					console.log("error");
+				}
+			})
+		}
+		
+		
 		
 		
 				

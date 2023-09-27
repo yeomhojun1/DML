@@ -17,7 +17,9 @@ public interface FpMemberWeightService {
 	public int dateWeight(FpMemberWeightVo vo, String now);
 	//몸무게 삭제
 	public int deleteWeight(String memberId, String weightDate);
-	// 체지방량, 근골격량 입력
+	// 체지방량, 근육량 입력
 	public int insertUpdate(FpMemberWeightVo vo) ;
+	//체지방량, 근육량 삭제
+	public int delete(String weightDate , String memberId) ;
 	
 }

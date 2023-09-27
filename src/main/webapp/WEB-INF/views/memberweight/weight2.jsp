@@ -86,7 +86,7 @@
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
 					<div class="row">
 
-						    <!-- Area Chart -->
+					    <!-- Area Chart -->
                         <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
@@ -117,7 +117,7 @@
                             </div>
                         </div>
 
-						<!-- Pie Chart -->
+						<!-- Chart - Right -->
 						<div class="col-xl-4 col-lg-5">
 							<div class="col-xl-12">
 
@@ -129,7 +129,7 @@
 									<div>
 										<h2>개별 입력</h2>
 									</div>
-									<form action="${pageContext.request.contextPath }/memberweight/weight" method="post">
+									<form >
 									<div class="col-xl-12 setdayweight">
 										<div>
 											<div>
@@ -161,9 +161,9 @@
 											<div style="margin-top: 20px;">* 이미 값이 존재하는 경우, 새 값으로
 												갱신됩니다.</div>
 										</div>
-											<input type="hidden" name="memberId" value="${member.memberId }">
+											<input type="hidden" name="memberId" value="${member.memberId }" >
 										<div>
-											<button type="submit">
+											<button type="button" class="weightDate">
 
 												<span>저장하기</span>
 											</button>
@@ -207,7 +207,31 @@
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
 
-<script src="${pageContext.request.contextPath }/resources/resources1/js/chart-area-demo.js"></script>
+<%-- <script src="${pageContext.request.contextPath }/resources/resources1/js/chart-area-demo.js"></script> --%>
+<script>
+  const ctx = document.getElementById('myAreaChart');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['${member.weight}', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: ['${member.weight}', 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+
 	<script>
 		$(function() {
 			//input을 datepicker로 선언
@@ -253,11 +277,13 @@
 								maxDate : "+5Y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
 								,
 								onSelect : function() {
-									var exerciseDate = $.datepicker.formatDate(
+									var selectDate = $.datepicker.formatDate(
 											"yymmdd", $("#datepicker")
 													.datepicker("getDate"));
-									exerciseDate = $("#datepicker").val();
+									selectDate = $("#datepicker").val();
 									/* alert(exerciseDate); */
+									selectDate= selectDate.replaceAll("-", "");
+									console.log(selectDate);
 
 								}
 							});
@@ -284,6 +310,37 @@
 				}
 			})
 		}
+		 //날짜
+		$(".weightDate").click(weightDate);
+		function weightDate(){
+			var dateVal = $("#datepicker").val()
+			//replace([기존문자],[바꿀문자])
+			dateVal= dateVal.replaceAll("-", "");
+			console.log(dateVal);
+			$.ajax({
+				url:"${pageContext.request.contextPath}/memberweight/weight",
+				type: "post",
+				data : {memberId : "${member.memberId}"
+					,weightDate: dateVal
+					,weight :  $("[name=weight]").val()
+				}
+				,success : function(result){
+					console.log("success");
+					if(result == 0 ){
+						alert("sjflksdjflksjdfl");	
+					} else {
+					  location.href="${pageContext.request.contextPath}/memberweight/weight";
+					}
+				}				
+				,error : function(){
+					console.log("error");
+				}
+			})
+		} 
+		
+		
+		
+		
 	</script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 package kh.project.dml.memberweight.controller;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.project.dml.memberweight.model.service.FpMemberWeightServiceImpl;
 import kh.project.dml.memberweight.model.vo.FpMemberWeightVo;
@@ -31,15 +32,15 @@ public class FpMemberWeightController {
 	
 //	update 체중관리
 	@PostMapping("/weight")
-	public String mainPageOpen10(@RequestParam String memberId, @RequestParam Date date, @RequestParam double weight, Model model) {
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-		String weightDate = format.format(date);
-		Date now = new Date(System.currentTimeMillis());
-		String nowDate = format.format(now);
+	@ResponseBody
+	public Integer mainPageOpen10( String memberId, String weightDate, String weight) {
+		Date now = new Date();	// 오늘 날짜
+		SimpleDateFormat dFormat = new SimpleDateFormat("yyyyMMdd");
+		String nowDate = dFormat.format(now);
 		
-		FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(memberId, weightDate, weight);
-		fpMemberWeightServiceImpl.dateWeight(fpMemberWeightVo, nowDate);
-		return "redirect:/memberweight/weight2";
+		FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(memberId, weightDate, Double.parseDouble(weight));
+		int result = fpMemberWeightServiceImpl.dateWeight(fpMemberWeightVo, nowDate);
+		return result;
 	}
 	
 	//	delete 선택한 날짜의 데이터 삭제
@@ -65,15 +66,14 @@ public class FpMemberWeightController {
 		fpMemberWeightServiceImpl.insertUpdate(fpMemberWeightVo);
 		return "redirect:/memberweight/composition";
 	}
+		//근육량 체지방량 delete/	
+			@PostMapping("/delete")
+	 		public String mainPageOpen17( @RequestParam String weightDate, @RequestParam String memberId, Model model){
+			/* FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(weight); */
+		 fpMemberWeightServiceImpl.delete( weightDate ,memberId );
+	 	 return "memberweight/composition";
+	  }
 	
-//	//근육량 체지방량 delete
-//	 @PostMapping("/composition")
-//	 public String mainPageOpen17(@RequestParam String memberId, @RequestParam String weightDate){
-//			/* FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(weight); */
-//		 fpMemberWeightServiceImpl.deleteWeight(memberId, weightDate);
-//	 	 return "memberweight/composition";
-//	  }
-//	
 	
 	@GetMapping("/healthmap")
 	public String mainPageOpen12() {

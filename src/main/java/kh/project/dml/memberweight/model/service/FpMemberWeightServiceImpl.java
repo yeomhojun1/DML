@@ -56,7 +56,11 @@ public class FpMemberWeightServiceImpl implements FpMemberWeightService {
 		}
 	}
 
-	////근육량, 체지방량 update
+	////근육량, 체지방량 delete
 	
+	public int delete( String weightDate , String memberId) {
+		
+		return	fpMemberWeightDao.delete( weightDate , memberId);
+	}
 	
 }
