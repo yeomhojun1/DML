@@ -90,7 +90,7 @@
 														</div>
 													</div>
 												</div>
-											<div class="Plan_modal_food_desc3_title__sFhbK Plan_modal_food_desc_title__GwIXK">식사구분</div>
+											<!-- <div class="Plan_modal_food_desc3_title__sFhbK Plan_modal_food_desc_title__GwIXK">식사구분</div>
 														<div class="Plan_modal_food_meal_list__cNfE0">
 															<div class="ant-radio-group ant-radio-group-outline css-1s3dcof">
 																<label class="ant-radio-button-wrapper Plan_modal_food_manual_radio__94nNy css-1s3dcof"
@@ -119,7 +119,7 @@
 																		value="64f153a05b87822374c5eb41"><span
 																		class="ant-radio-button-inner"></span></span><span>간식</span></label>
 															</div>
-														</div>
+														</div> -->
 											
 														
 																<div class="Plan_modal_food_bottom_bar__r962X">

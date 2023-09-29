@@ -53,15 +53,34 @@ public class FpFoodServiceImpl implements FpFoodService  {
 				break;
 			}
 			vo.setMealCode(vo.getFoodDate()+vo.getMemberId()+food.getFoodCd()+foodtime);
+			
+			
+		    System.out.println("======================================================");
+			System.out.println("meal_code 확인 : " + vo.getMealCode());
+			System.out.println("======================================================");
+			
 			food.setMealCode(vo.getMealCode());
 			vo.setFoodTime(foodtime);
 			System.out.println(fpFoodDao.mealCodeCheck(vo.getMealCode()));
 			if(fpFoodDao.mealCodeCheck(vo.getMealCode()) == null) {
-				fpDietDao.insert(vo);
-				fpFoodDao.insert(food);
+				int check =fpDietDao.insert(vo);
+				
+				if(check > 0) 
+				{
+					fpFoodDao.insert(food);	
+				}
+				
 			} else {				
-				fpDietDao.update(vo);
-				fpFoodDao.update(food);
+				
+				int check =	fpDietDao.update(vo);
+				
+			
+				
+				if(check > 0) 
+				{
+					fpFoodDao.update(food);
+				}
+			
 			}
 		}
 		return 1;

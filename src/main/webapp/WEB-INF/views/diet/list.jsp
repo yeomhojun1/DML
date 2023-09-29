@@ -41,7 +41,7 @@
 					
 					
 					<div class="DateBars_date_bar__QeCa3" >
-						<div class="DateBars_date__DyX0X"><%String Date = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());%>
+						<div id = "myDiv" class="DateBars_date__DyX0X"><%String Date = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());%>
 								<%=Date%></div>
 						<div class="DateBars_date_selector__ajXTR">
 
@@ -89,7 +89,17 @@
 						<div class="Plan_top1_value2__a0gQ9"></div>
 						<div class="Plan_top1_kcal__wgGCD">필요</div>
 					</div>
-					<div class="Plan_bottom1_title_bar__g02PR">
+					
+					<form>
+					  <select name="language" id="selectbox"" name="selectbox" onchange="chageLangSelect()">
+					    <option value="ALL">전체</option>
+					    <option value="A">아침</option>
+					    <option value="B">점심</option>
+					    <option value="C">저녁</option>
+					    <option value="Z">간식</option> 
+					  </select>
+					</form>
+					<!-- <div class="Plan_bottom1_title_bar__g02PR">
 						<div class="Plan_bottom1_item__L4ece">
 							<button type="button"
 								class="ant-btn css-1s3dcof ant-btn-text Plan_bottom1_btn__qLTZ7"
@@ -133,7 +143,14 @@
 								<span>저장하기</span>
 							</button>						
 						</div>
-					</div>
+					</div> -->
+					
+					<div class="Plan_bottom1_save____Cw1">
+							<button type="button"
+								class="ant-btn css-1s3dcof ant-btn-default Plan_bottom1_save_btn__14v5t Global_button__iJeUH save">
+								<span>저장하기</span>
+							</button>						
+						</div>
 					
 					<div id="wrapSelectedPlan">
 					<div class="Plan_bottom1_second_bar___Z7S8">
@@ -156,7 +173,7 @@
 					</div>
 					</div>
 
-
+					<c:forEach items="${myfoodList}" var="board" varStatus="vs"></c:forEach>
 					<div class="Plan_bottom1_food_list__gjfsu">
 						<div></div>
 						<div></div>
@@ -171,8 +188,9 @@
 						
 								<div class="Plan_bottom1_control_panel_add__F5yxB" >
 									<!-- Button trigger modal -->
-									<button type="button" id="dietinsert"  data-bs-toggle="modal" data-bs-target="#dietInsertModal" class="ant-btn css-1s3dcof ant-btn-default Plan_bottom1_control_panel_btn__3jlBx Global_button__iJeUH" style="float: right;">
+									<button type="button" id="dietinsert"  onclick="doAction()" class="ant-btn css-1s3dcof ant-btn-default Plan_bottom1_control_panel_btn__3jlBx Global_button__iJeUH" style="float: right;">
 										<span>식단 추가 +</span>
+										<!-- data-bs-toggle="modal" data-bs-target="#dietInsertModal"  -->
 									</button>
 								</div>
 						</div>
@@ -187,6 +205,9 @@
 	$(function() {
  	var container = $(".DateBars_date_selector__ajXTR"); // 스크롤할 컨테이너
  	var today = new Date();
+ 	
+ 	
+ 	
 
   // 스크롤 좌 우 버튼 클릭 시 이동
   $(".ant-image-img").click(function() {
@@ -339,7 +360,33 @@
 		})
 	}
 	
+	function doAction()
+ 	{
+		var foodTime = document.getElementById("selectbox");
+		
+		var foodTimeValue = foodTime.options[foodTime.selectedIndex].value;
+		
+		if("ALL" == foodTimeValue)
+		{
+			alert("식사 구분으로 전체를 선택 할 수 없습니다.");
+			
+		
+		}
+		else{
+			 $('#dietInsertModal').modal('show');
+		}
+ 	}
+	
 	function btnPlusClickHandler(thisElement){
+		
+		var foodTime = document.getElementById("selectbox");
+		
+		var foodTimeValue = foodTime.options[foodTime.selectedIndex].value;
+		
+		var foodTimeValueConvert = "";
+		
+		
+		
 		console.log($(thisElement).data("foodcd"));
 		var foodcd = $(thisElement).data("foodcd");
 		foodName = $(thisElement).parent().prevAll(".foodName").text();
@@ -347,13 +394,33 @@
 		carbs = $(thisElement).parent().prevAll(".crabs").text();
 		protein = $(thisElement).parent().prevAll(".protein").text();
 		fat = $(thisElement).parent().prevAll(".fat").text();
-
+        
+	
+		
+		
+		
+		switch (foodTimeValue) {
+		  case 'A':
+			  foodTimeValueConvert = "아침"
+		    break;
+		  case 'B':
+			  foodTimeValueConvert = "점심"
+			break;
+		  case 'C':
+			  foodTimeValueConvert = "저녁"
+		    break;
+		  case 'Z':
+			  foodTimeValueConvert = "간식"
+		    break;	  
+		  default:
+			  foodTimeValueConvert = "전체"
+		}
 		
 		htmlVal = '';
 		htmlVal += `
 			<div class="Plan_bottom1_food_each__s9jUi">	
 			 	<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH foodTime">
-				<span class="Plan_bottom1_second_bar_sub___m2EJ ">아침</span>
+				<span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodTimeValueConvert}</span>
 				</div>				
 				<div class="Plan_bottom1_second_bar_food__Nea0w">\${foodName}
 				</div>
@@ -500,7 +567,117 @@
 		});  // ajax
 	}
 	
+	
+	function chageLangSelect(){
+	    var langSelect = document.getElementById("selectbox");
+	     
+	    // select element에서 선택된 option의 value가 저장된다.
+	    var selectValue = langSelect.options[langSelect.selectedIndex].value;
+	 
+	    // select element에서 선택된 option의 text가 저장된다.
+	    var selectText = langSelect.options[langSelect.selectedIndex].text;
+	    
+	    // div의 id를 사용하여 해당 div 요소를 선택합니다.
+	    var divElement = document.getElementById('myDiv');
+	    
+	    // div의 내용을 가져와서 JavaScript 변수에 저장합니다.
+	    var divContent =  divElement.innerText;
+	    var foodDate = divContent.replaceAll("-", "").toString();
+	    
+	
+		
+	    
+	    var objfinal= {foodTime : selectValue, foodDate : foodDate};
+	    
+	    console.log(selectValue);
+	    
+	    $.ajax({
+			url:"${pageContext.request.contextPath}/diet/list",
+			type: "post"
+			,contentType: "application/json"
+			, data: JSON.stringify(objfinal)
+			, success : function(result) {
+				console.log(result.dietList);
+				console.log("success");
+				
+				renderData(result.dietList);
+				
+				
+			}
+			, error : function(e){
+				console.log(e);	
+				console.log("error");
+			}
+		});  // ajax
+	    
+	}
+	
+	function renderData(data)
+	{
+		var planBarDiv = document.querySelector('.Plan_bottom1_second_bar___Z7S8');
+		var foodTimeValueConvert = '';
+		htmlVal = "";
+		
+	
+	
+	    // 데이터를 해당 요소에 동적으로 추가
+	    data.forEach(function(item) {
+	    	
+	    	switch (item.foodTime) {
+			  case 'A':
+				  foodTimeValueConvert = "아침"
+			    break;
+			  case 'B':
+				  foodTimeValueConvert = "점심"
+				break;
+			  case 'C':
+				  foodTimeValueConvert = "저녁"
+			    break;
+			  case 'Z':
+				  foodTimeValueConvert = "간식"
+			    break;	  
+			  default:
+				  foodTimeValueConvert = "전체"
+			}
+	    	
+			htmlVal += `
+				<div class="Plan_bottom1_food_each__s9jUi">	
+				 	<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH foodTime">
+					<span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodTimeValueConvert}</span>
+					</div>				
+					<div class="Plan_bottom1_second_bar_food__Nea0w">\${item.foodName}
+					</div>
+					 <div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
+					수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">20</span>
+					</div> 
+					<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
+						칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${item.calorie}</span>
+					</div>
+					<div class="Plan_bottom1_second_bar_carb__0dt0o carbs">
+						탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.crabs}</span>
+					</div>
+					<div class="Plan_bottom1_second_bar_protein__BHBRu protein">
+						단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.protein}</span>
+					</div>
+					<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
+						지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.fat}</span>
+					</div>
+					<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
+						<button type="button" onclick="btnDeleteClickHandler(this)" value=\${item.foodcd}>삭제</button>
+					</div>
+				</div>
+			`;
+			
+			
+	    });
+	    $(".Plan_bottom1_food_each__s9jUi").remove();
+	    $("#wrapSelectedPlan").append(htmlVal);
+	  
+		
+	}
+	
+
+	
 	</script>
 
-</body>
-</html>
+

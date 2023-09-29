@@ -10,12 +10,25 @@
 	select * from food where foodCd=#{foodCd}
 	</select>
 	
-	<select id="mealCodeCheck" resultType="FpFoodVo" parameterType="string">
-		select * from food where meal_code=#{mealCode}
+	<select id="mealCodeCheck" resultType="string" parameterType="string">
+		select meal_code from food where meal_code=#{mealCode}
 	</select>
 	
 	<insert id="insert" parameterType="FpFoodVo">
-		insert into food values(#{foodCd}, #{mealCode}, #{foodQuality})
+		insert into food
+		(
+		  food_cd
+		, meal_code
+		, food_quality
+		, food_gp
+		) 
+		values
+		(
+		  #{foodCd}
+		, #{mealCode}
+		, ${foodQuality}
+		, (SELECT NVL(max(food_gp),0)+1 as food_gp FROM food)
+		)
 	</insert>
 	
 	<update id="update" parameterType="FpFoodVo">

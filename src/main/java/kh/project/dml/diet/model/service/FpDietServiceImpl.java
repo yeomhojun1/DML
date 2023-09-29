@@ -15,8 +15,8 @@ public class FpDietServiceImpl implements FpDietService {
 	private FpDietDao fpDietDao;
 
 	@Override
-	public List<FpDietVo> selectList() {
-		return fpDietDao.selectList();
+	public List<FpDietVo> selectList(FpDietVo dietVo) {
+		return fpDietDao.selectList(dietVo);
 	}
 
 	@Override
