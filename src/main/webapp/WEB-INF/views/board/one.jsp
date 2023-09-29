@@ -274,26 +274,27 @@
 		}
 		function insertreplyreplyHandler(){
 			var replyreplywriter=$(this).parents(".replyCard").data("writer");
-			var addreplyreply ='<div class="contenttextarea card replyreplycard" style="padding-left :'+replyreplyleftpadding+'px" data-writer="${member.memberId}"><div>↳작성자 : ${member.memberId}</div><div><textarea rows="3" class="col-xl-12 replyContent1" name="replyContent">@'+replyreplywriter+'</textarea></div><div><button class="submitreplyreply">답글 저장</button></div></div>'
+			var addreplyreply ='<div class="contenttextarea card replyreplycard" style="padding-left :'+replyreplyleftpadding+'px" data-writer="${member.memberId}"><div>↳작성자 : ${member.memberId}</div><div><textarea rows="3" class="col-xl-12 replyContent" name="replyreplyContent">@'+replyreplywriter+'</textarea></div><div><button class="submitreplyreply">답글 저장</button></div></div>'
 			$(".contenttextarea").remove();
 			$(this).parents(".replyCard ").append(addreplyreply);
 			$(".submitreplyreply").click(submitreplyreplyHandler);
 		}
-		function submitreplyreplyHandler(){
+	function submitreplyreplyHandler(){
 			console.log("submitreplyreplyHandler");
-			//여기 다시 해야함
-			/*  $.ajax({
+			var replyreplyContent= $("[name=replyreplyContent]").val();
+			console.log(replyreplyContent);
+			
+		  $.ajax({
 			       type: "post",
 			       url: "${pageContext.request.contextPath}/replyboard/replyinsert",
-			       data: {replyNo : $(this).parents(".replyCard").data("replyno"), replyContent : replyContent1},
+			       data: {memberId:"${member.memberId}",  replyContent : replyreplyContent, boardNo:${boardone.boardNo},rref : $(this).parents(".replyCard").data("replyno") },
 			       success: function (result) {
 			    	   console.log("success");
-			    	   location.reload(true);
 			    	   },
 					error : function (){
 						 console.log("error");
 						},dataType:"json"
-				}); */
+				});
 			
 			
 			

@@ -13,6 +13,7 @@ public class FpReplyBoardVo {
 	private String replyContent ;
 	private String replyDate;
 	private int boardNo;
+	private int rref;
 	private int rstep;
 	private int rlevel;
 	

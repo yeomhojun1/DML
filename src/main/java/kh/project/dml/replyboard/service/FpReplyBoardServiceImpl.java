@@ -32,6 +32,13 @@ public class FpReplyBoardServiceImpl implements FpReplyBoardService {
 		List<FpReplyBoardVo> replyList = fpReplyBoardDao.selectList(vo.getBoardNo());
 		return replyList;
 	}
+	@Override
+	@Transactional
+	public List<FpReplyBoardVo> insertreplyreply(FpReplyBoardVo vo) {
+		int resultinsert = fpReplyBoardDao.insertreplyreply(vo);
+		List<FpReplyBoardVo> replyList = fpReplyBoardDao.selectList(vo.getBoardNo());
+		return replyList;
+	}
 
 	@Override
 	@Transactional

@@ -45,7 +45,12 @@ public class FpReplyBoardController {
 		List<FpReplyBoardVo> result = fpReplyBoardServiceImpl.insert(vo);
 		return new Gson().toJson(result);
 	}
-	
+	@PostMapping("/replyinsert")
+	@ResponseBody
+	public String insertreplyreply(FpReplyBoardVo vo) {
+		List<FpReplyBoardVo> result = fpReplyBoardServiceImpl.insertreplyreply(vo);
+		return new Gson().toJson(result);
+	}	
 
 	@PostMapping("/update")
 	@ResponseBody

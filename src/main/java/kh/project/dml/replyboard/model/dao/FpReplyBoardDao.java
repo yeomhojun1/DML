@@ -23,6 +23,9 @@ public class FpReplyBoardDao {
 	public int insert(FpReplyBoardVo vo) {
 		return sqlSession.insert("replyboard.insert", vo);
 	}
+	public int insertreplyreply(FpReplyBoardVo vo) {
+		return sqlSession.insert("replyboard.insertreplyreply", vo);
+	}
 	public int update(FpReplyBoardVo vo) {
 		return sqlSession.update("replyboard.update", vo);
 	}

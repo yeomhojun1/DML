@@ -15,7 +15,8 @@ insert into replyboard values(REPLY_no_seq.nextval,#{memberId},#{replyContent},d
 </insert>
 
 <insert id="insertreplyreply">
-insert into replyboard values(REPLY_no_seq.nextval,#{memberId},#{replyContent},default,#{boardNo},#{rref},#{rstep},#{rlevel})
+insert into replyboard values(REPLY_no_seq.nextval,#{memberId},#{replyContent},default,#{boardNo},
+#{rref},(select rstep from (select * from replyboard where board_no=#{boardNo} order by rstep desc) where rownum =1)+1,2
 </insert>
 
 <update id="update" parameterType="FpreplyboardVo">
