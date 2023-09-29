@@ -6,8 +6,8 @@ import kh.project.dml.diet.model.vo.FpDietVo;
 
 public interface FpDietService {
 
-	public List<FpDietVo> selectList();
-	
+	public List<FpDietVo> selectList(FpDietVo dietVo);
+
 	public List<FpDietVo> selectDayList(String mealCode);
 
 	public FpDietVo selectOne(String mealCode);

@@ -14,8 +14,8 @@ public class FpDietDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<FpDietVo> selectList()  {
-		return sqlSession.selectList("diet.selectList");
+	public List<FpDietVo> selectList(FpDietVo dietVo)  {
+		return sqlSession.selectList("diet.selectList", dietVo);
 	}
 	public List<FpDietVo> selectDayList(String mealCode)  {
 		return sqlSession.selectList("diet.selectDayList", mealCode);
