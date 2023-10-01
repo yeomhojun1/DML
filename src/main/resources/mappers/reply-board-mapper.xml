@@ -4,7 +4,10 @@
 
 
 <select id="selectList" resultType="FpreplyboardVo">
-		select * from replyboard where board_no=#{boardNo} order by RSTEP desc,reply_Date desc 
+		select * from replyboard where board_no=#{boardNo} order by Reply_no desc,reply_Date desc 
+</select> 
+<select id="selectReply" resultType="FpreplyboardVo">
+		select * from replyboard where rref=#{rref} and rstep !=1 order by RSTEP asc,reply_Date  
 </select> 
 <select id="selectOne" resultType="FpreplyboardVo" parameterType="_int">
 select * from replyboard where reply_No=#{replyNo}
@@ -16,7 +19,7 @@ insert into replyboard values(REPLY_no_seq.nextval,#{memberId},#{replyContent},d
 
 <insert id="insertreplyreply">
 insert into replyboard values(REPLY_no_seq.nextval,#{memberId},#{replyContent},default,#{boardNo},
-#{rref},(select rstep from (select * from replyboard where board_no=#{boardNo} order by rstep desc) where rownum =1)+1,2
+#{rref},(select rstep from (select * from replyboard where board_no=#{boardNo} order by rstep ) where rownum =1)+1,2)
 </insert>
 
 <update id="update" parameterType="FpreplyboardVo">

@@ -634,21 +634,6 @@ CREATE SEQUENCE board_no_seq
        NOCACHE
        NOORDER;
 
-select to_date(board_date,'YYYY-MM-DD') board_date from board;
-select * from REPLYBOARD;
-select * from replyboard where board_no=22 order by RSTEP desc,reply_Date desc ;
-	select * from replyboard where board_no=#{boardNo} order by RSTEP desc,reply_Date desc 
-update board set board_Count = 0+1
-		where board_no = 19;
-insert into board (board_no, member_id,Board_title,board_content,board_date) values (board_no_seq.NEXTVAL,'ghwnswkd123@naver.com','테스트용 제목123','테스트용 12512내용',to_date(sysdate,'YYYY-MM-DD'));
 commit;
-select * from replyboard order by reply_no limit 1;
-SELECT 
-    * 
-FROM  (SELECT 
-        * 
-    FROM replyboard
-    ORDER BY reply_no DESC)
-WHERE ROWNUM = 1;
-select rstep from (select * from replyboard where board_no=1 order by rstep desc) where rownum =1;
-
+select * from replyboard;
+	select * from replyboard where board_no=1 and rref=4 order by reply_no desc;

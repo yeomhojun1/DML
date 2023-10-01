@@ -131,15 +131,23 @@
 					}
 					//,dataType : "json"
 				});
+			 var moreReply ="";
 			$.ajax({
 		           type: "get",
 		           url: "${pageContext.request.contextPath}/replyboard/list",
 		           data: { boardNo:${boardone.boardNo}},
 		           success: function (result) {
 		        	  for (var i = 0; i < result.length; i++) {
+		        		if(result[i].rref==0){
 		        			var  htmlVal =  '<div class="card replyCard" data-replyno="'+result[i].replyNo+'" data-writer="'+ result[i].memberId+'"><div class="firstReply card"><div class="updatewriter">작성자 : '+ result[i].memberId+'</div><div class="updatereplyContent">내용 : '+result[i].replyContent+'</div><div class="updatereplyDate">입력날짜 : '+result[i].replyDate+'</div>'
-		    		   		+'<div class="groupbtn"><button class="updatereply">수정</button><button class="deletereply">삭제</button><button class="insertreplyreply">댓글 삽입</button></div></div>'
-		    				$(".testappend").append(htmlVal);
+		    		   		+'<div class="groupbtn"><button class="updatereply">수정</button><button class="deletereply">삭제</button><button class="insertreplyreply">댓글 삽입</button></div></div>';
+		    		   		$(".testappend").append(htmlVal);
+		        		  }else{
+		        				   moreReply= `<button class="moreReply">댓글 더보기</button>`;
+		        					  $(".replyCard").append(moreReply); 
+		        					  console.log("더보기");
+		        			  
+		        		  } 
 		        	   };
 		        	   $(".deletereply").click(deletereplyHandler);
 		        	   $(".updatereply").click(updatereplyHandler);
@@ -217,7 +225,7 @@
 		    		   $(".testappend").html("");
 						for (var i = 0; i < result.length; i++) {
 		    		   		var  htmlVal =  '<div class="card replyCard" data-replyno="'+result[i].replyNo+'" data-writer="'+ result[i].memberId+'"><div class="firstReply card"><div class="updatewriter">작성자 : '+ result[i].memberId+'</div><div class="updatereplyContent">내용 : '+result[i].replyContent+'</div><div class="updatereplyDate">입력날짜 : '+result[i].replyDate+'</div>'
-		    		   		+'<div class="groupbtn"><button class="updatereply">수정</button><button class="deletereply">삭제</button><button class="insertreplyreply">댓글 삽입</button></div></div>'
+		    		   		+'<div class="groupbtn"><button class="updatereply">수정</button><button class="deletereply">삭제</button><button class="insertreplyreply">댓글 삽입</button></div></div>';
 		    				$(".testappend").append(htmlVal);   
 		    	   		};
 		    	   		$(".addreply").html("");
