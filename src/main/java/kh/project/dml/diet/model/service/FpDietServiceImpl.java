@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kh.project.dml.diet.model.dao.FpDietDao;
 import kh.project.dml.diet.model.vo.FpDietVo;
+import kh.project.dml.diet.model.vo.TotalFoodListDTO;
 
 @Service("fpDietServiceImpl")
 public class FpDietServiceImpl implements FpDietService {
@@ -41,8 +42,14 @@ public class FpDietServiceImpl implements FpDietService {
 	}
 
 	@Override
-	public int delete(String foodCd) {
-		return fpDietDao.delete(foodCd);
+	public int delete(FpDietVo FpDietVo) {
+		return fpDietDao.delete(FpDietVo);
+	}
+
+	@Override
+	public TotalFoodListDTO TotalSelectList(FpDietVo dietVo) {
+	
+		return fpDietDao.totalSelectList(dietVo);
 	}
 
 

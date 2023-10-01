@@ -35,6 +35,11 @@ public class FpFoodServiceImpl implements FpFoodService  {
 			
 			//
 			String foodtime = "";
+			
+			System.out.println("=====================================================");
+			System.out.println(food.getFoodTime());
+			System.out.println("=====================================================");
+			
 			switch(food.getFoodTime()) {
 			case "아침":
 				foodtime = "A";
@@ -46,10 +51,10 @@ public class FpFoodServiceImpl implements FpFoodService  {
 				foodtime = "C";
 				break;
 			case "간식":
-				foodtime = "D";
+				foodtime = "Z";
 				break;
 			default:
-				foodtime = "E";
+				foodtime = "ALL";
 				break;
 			}
 			vo.setMealCode(vo.getFoodDate()+vo.getMemberId()+food.getFoodCd()+foodtime);

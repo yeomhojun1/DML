@@ -5,11 +5,12 @@ import java.sql.Date;
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
+
 @Data
 @Component
 public class FpNoticeVo {
-	
-	private int noticeNumber;
+
+	private int noticeNo;
 	private String adminId;
 	private String noticeTitle;
 	private String noticeContent;

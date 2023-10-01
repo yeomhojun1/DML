@@ -39,27 +39,16 @@
 <script language="javascript"
 	src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 <script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-	crossorigin="anonymous"></script>
-
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-	crossorigin="anonymous"></script>
-
-<script
 	src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 	crossorigin="anonymous"></script>
 <!-- 템플릿에서 메뉴 클릭 시 서브메뉴 출력 -->
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 	crossorigin="anonymous"></script>
-
 <!-- 차트 기능 사용 -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
 	crossorigin="anonymous"></script>
-
-
 <script
 	src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 	crossorigin="anonymous"></script>
@@ -75,46 +64,32 @@
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">Daily Muscle Life</h1>
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
-					<div>
-						<table
-							class="table table-hover table-sm text-center align-middle caption-top table-striped">
-							<thead class="table-light">
-							<caption>서로 물어봐요!</caption>
-							<tr>
-								<th scope="col ">번호</th>
-								<th scope="col ">제목</th>
-								<th scope="col ">작성자</th>
-								<th scope="col ">등록일</th>
-								<th scope="col ">조회수</th>
-							</tr>
-							</thead>
-							<tbody>
-								<c:forEach items="${boardList}" var="vo">
-									<tr class="foreachValue">
-										<th>${vo.boardNo}</th>
-										<%-- <td class="plusCount boardTitleVal">${vo.boardTitle}</td> --%>
-										 <td><a href="${pageContext.request.contextPath }/board/one?boardNo=${vo.boardNo}" class="plusCount"> ${vo.boardTitle}</a></td>
-										<td><div class="	">${vo.memberId}</div></td>
-										<td><div class="boardDateVal">${vo.boardDate}</div></td>
-										<td><div class="boardCountVal">${vo.boardCount}</div></td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-
-						<a href="${pageContext.request.contextPath }/board/insert"><button
-								type="btn btn-default" class="addBoard">질문 등록</button></a>
-					</div>
-					<div class="text-align">
-						<ul class="pagination justify-center-center">
-							<li><a href="#" style="margin-right:5px">1</a></li>
-							<li><a href="#" style="margin-right:5px">2</a></li>
-							<li><a href="#" style="margin-right:5px">3</a></li>
-							<li><a href="#" style="margin-right:5px">4</a></li>
-							<li><a href="#" style="margin-right:5px">5</a></li>
-						</ul>
-					</div>
 				</div>
+				<table class="board-table">
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>제목</th>
+							<th>본문</th>
+							<th>작성일</th>
+							<th>조회수</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${noticeList}" var="vo">
+							<tr class="foreachValue">
+								<th>${vo.noticeNo}</th>
+								<td><a
+									href="${pageContext.request.contextPath }/notice/one?noticeNo=${vo.noticeNo}"
+									class="plusCount"> ${vo.noticeTitle}</a></td>
+								<td><div class="adminIdVal">${vo.adminId}</div></td>
+								<td><div class="noticeDateVal">${vo.noticeDate}</div></td>
+								<td><div class="noticeCountVal">${vo.noticeCount}</div></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>

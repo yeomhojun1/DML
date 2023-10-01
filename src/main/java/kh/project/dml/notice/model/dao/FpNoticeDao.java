@@ -17,8 +17,8 @@ public class FpNoticeDao {
 	public List<FpNoticeVo> selectList() {
 		return sqlSession.selectList("notice.selectList");
 	}
-	public FpNoticeVo selectOne(int noticeNumber) {
-		return sqlSession.selectOne("notice.selecOne", noticeNumber);
+	public FpNoticeVo selectOne(int noticeNo) {
+		return sqlSession.selectOne("notice.selecOne", noticeNo);
 	}
 	public int insert(FpNoticeVo vo) {
 		return sqlSession.insert("notice.insert", vo);
@@ -26,7 +26,7 @@ public class FpNoticeDao {
 	public int update(FpNoticeVo vo) {
 		return sqlSession.update("notice.update", vo);
 	}
-	public int delete(int noticeNumber) {
-		return sqlSession.delete("notice.delete", noticeNumber);
+	public int delete(int noticeNo) {
+		return sqlSession.delete("notice.delete", noticeNo);
 	}
 }

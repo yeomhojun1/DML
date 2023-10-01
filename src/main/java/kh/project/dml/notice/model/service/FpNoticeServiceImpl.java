@@ -19,8 +19,8 @@ public class FpNoticeServiceImpl implements FpNoticeService  {
 		return fpNoticeDao.selectList();
 	}
 	@Override
-	public FpNoticeVo selectOne(int noticeNumber) {
-		return fpNoticeDao.selectOne(noticeNumber);
+	public FpNoticeVo selectOne(int noticeNo) {
+		return fpNoticeDao.selectOne(noticeNo);
 	}
 	@Override
 	public int insert(FpNoticeVo vo) {
@@ -31,7 +31,7 @@ public class FpNoticeServiceImpl implements FpNoticeService  {
 		return fpNoticeDao.update(vo);
 	}
 	@Override
-	public int delete(int noticeNumber) {
-		return fpNoticeDao.delete(noticeNumber);
+	public int delete(int noticeNo) {
+		return fpNoticeDao.delete(noticeNo);
 	}
 }

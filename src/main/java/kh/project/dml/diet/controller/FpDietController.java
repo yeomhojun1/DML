@@ -1,6 +1,9 @@
 package kh.project.dml.diet.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -22,6 +25,7 @@ import com.google.gson.Gson;
 import kh.project.dml.common.interceptor.SessionNames;
 import kh.project.dml.diet.model.service.FpDietService;
 import kh.project.dml.diet.model.vo.FpDietVo;
+import kh.project.dml.diet.model.vo.TotalFoodListDTO;
 import kh.project.dml.food.model.service.FpFoodService;
 import kh.project.dml.food.model.service.FpFoodServiceImpl;
 import kh.project.dml.users.model.vo.FpUsersVo;
@@ -76,8 +80,43 @@ public class FpDietController {
 		
 		Map<String, Object> map = new HashMap<>();
 		
+		TotalFoodListDTO totalDto = null;
+		
+		totalDto =fpDietServiceImpl.TotalSelectList(dietVo);
+		
+		if(totalDto != null) 
+		{
+			if(totalDto.getFoodTime() ==null)
+				totalDto.setFoodTime("");
+			
+			if(totalDto.getTotalCal() ==null)
+				totalDto.setTotalCal("");
+			
+			if(totalDto.getTotalCrabs() ==null)
+				totalDto.setTotalCrabs("");
+			
+			if(totalDto.getTotalFat() ==null)
+				totalDto.setTotalFat("");
+			
+			if(totalDto.getTotalProtein() ==null)
+				totalDto.setTotalProtein("");
+		
+		}
+		else 
+		{
+			totalDto = new TotalFoodListDTO();
+			totalDto.setFoodTime("");
+			totalDto.setTotalCal("");
+			totalDto.setTotalCrabs("");
+			totalDto.setTotalFat("");
+			totalDto.setTotalProtein("");
+		}
+		
+	
+		
+		
 		map.put("dietList", fpDietServiceImpl.selectList(dietVo));
-		 
+		map.put("totalDietList", totalDto); 
 		
 		return map;
 	};
@@ -104,10 +143,81 @@ public class FpDietController {
 			dietVo.setMemberId("");
 		}
 		
+		LocalDate now = LocalDate.now();
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+
+		String formaterNow = now.format(formatter);
+		
+		dietVo.setFoodDate(formaterNow);
+		
 		
 
+		List<FpDietVo> dietList = fpDietServiceImpl.selectList(dietVo);
 		
-		mv.addObject("dietList", fpDietServiceImpl.selectList(dietVo));
+	    dietList.stream().forEach((row)->{
+	    	
+	    		
+	    	switch (row.getFoodTime()) {
+			  case "A":
+				  row.setFoodTime("아침");
+			    break;
+			  case "B":
+				  row.setFoodTime("점심");
+				break;
+			  case "C":
+				  row.setFoodTime("저녁");
+			    break;
+			  case "Z":
+				  row.setFoodTime("간식");
+			    break;	  
+			  default:
+				  row.setFoodTime("전체");
+			}
+	    	
+	    });
+		
+		
+		mv.addObject("dietList", dietList);
+		
+		TotalFoodListDTO totalDto = null;
+		
+		totalDto =fpDietServiceImpl.TotalSelectList(dietVo);
+		
+		if(totalDto != null) 
+		{
+			if(totalDto.getFoodTime() ==null)
+				totalDto.setFoodTime("");
+			
+			if(totalDto.getTotalCal() ==null)
+				totalDto.setTotalCal("");
+			
+			if(totalDto.getTotalCrabs() ==null)
+				totalDto.setTotalCrabs("");
+			
+			if(totalDto.getTotalFat() ==null)
+				totalDto.setTotalFat("");
+			
+			if(totalDto.getTotalProtein() ==null)
+				totalDto.setTotalProtein("");
+		
+		}
+		else 
+		{
+			totalDto = new TotalFoodListDTO();
+			totalDto.setFoodTime("");
+			totalDto.setTotalCal("");
+			totalDto.setTotalCrabs("");
+			totalDto.setTotalFat("");
+			totalDto.setTotalProtein("");
+		}
+		
+	
+		
+		mv.addObject("totalDietList", totalDto);
+		
+		
+
 		 
 		mv.setViewName("diet/list");
 		
@@ -195,8 +305,16 @@ public class FpDietController {
 	}
 	@ResponseBody
 	@PostMapping("/delete")
-	public String deleteDoMemeber(RedirectAttributes redirectAttr, String foodCd) {
-		int result = fpDietServiceImpl.delete(foodCd);
+	public String deleteDoMemeber(RedirectAttributes redirectAttr, @RequestBody FpDietVo FpDietVo) {
+		
+		
+		
+		int result = fpDietServiceImpl.delete(FpDietVo);
+		
+		System.out.println("======================================");
+		System.out.println("delete 컨트롤러 호출 : " + result + "foodGp : " + FpDietVo);
+		System.out.println("======================================");
+		
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");

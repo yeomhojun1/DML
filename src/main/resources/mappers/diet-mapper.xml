@@ -30,10 +30,40 @@
 		  
 		   ]]>
 		   
-		   <if test="foodTime != null and foodTime != ''">
+		   <if test="foodTime != null and foodTime != '' and foodTime != 'ALL'">
    			 AND a.food_time = #{foodTime}
 			</if>
 		   
+		   ORDER BY a.food_time 
+		   
+	</select>
+	
+	<select id = "totalSelectList" parameterType="FpDietVo" resultType="TotalFoodListDTO">
+	   SELECT 
+         
+	        sum(c.calorie) as total_cal
+	      , sum(c.crabs) as total_crabs
+	      , sum(c.protein) as total_protein
+	      , sum(fat) as total_fat
+       FROM 
+	        diet a
+	      , FOOD b
+	      , FOOD_APi c
+	  WHERE a.meal_code = b.meal_code
+	    AND b.food_cd = c.food_cd
+	    AND a.member_id = #{memberId}
+	    AND a.food_Date = #{foodDate}
+	   
+	
+      
+       <if test="foodTime != null and foodTime != '' and foodTime != 'ALL'">
+   	   AND a.food_time = #{foodTime}
+   	   
+   	   GROUP BY a.food_time
+	   </if>
+	   
+        
+
 	</select>
 	
 	<select id="selectDayList" resultType="FpDietVo" parameterType="string">
@@ -47,7 +77,29 @@
 	
 	<insert id="insert" parameterType="FpDietVo">
 	
+	
 	insert into diet
+	(
+	  meal_code
+	, member_id
+	, food_date
+	, food_time
+	, feedback
+	)
+	SELECT 
+	
+	   #{mealCode, jdbcType=VARCHAR}
+    	, #{memberId, jdbcType=VARCHAR}
+     	, #{foodDate, jdbcType=VARCHAR}
+     	, #{foodTime, jdbcType=VARCHAR}
+     	, #{feedback, jdbcType=VARCHAR}
+	 FROM DUAL
+     WHERE NOT EXISTS (
+    SELECT 1 FROM diet WHERE meal_code = #{mealCode, jdbcType=VARCHAR}
+    )
+	
+	
+	<!-- insert into diet
 	(
 	  meal_code
 	, member_id
@@ -62,7 +114,7 @@
      	, #{foodDate, jdbcType=VARCHAR}
      	, #{foodTime, jdbcType=VARCHAR}
      	, #{feedback, jdbcType=VARCHAR}
-	)
+	) -->
 	
 
   
@@ -73,7 +125,7 @@
 		where MEAL_CODE = #{mealCode}
 	</update>
 	
-	<delete id="delete" parameterType="string">
-	delete from diet where MEAL_CODE = #{mealCode}
+	<delete id="delete" parameterType="FpDietVo">
+	delete from food where food_gp = #{foodGp}
 	</delete>
 </mapper>

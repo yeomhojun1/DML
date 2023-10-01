@@ -2,26 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="notice">
  	<select id="selectList" resultType="FpNoticeVo">
- 		select * from notice
+ 		select notice_no, admin_id, notice_title, notice_content, notice_view, notice_date from notice order by notice_no desc
  	</select>
  	
  	<select id="selectOne" resultType="FpNoticeVo" parameterType="_int">
- 		SELECT NOTICENUMBER, ADMINID, NOTICETITLE, NOTICECONTENT, NOTICEVIEW, NOTICEDATE FROM NOTICE
- 		WHERE NOTICENUMBER=#{noticeNumber}
+ 		SELECT notice_no, admin_id, notice_title, notice_content, notice_view, notice_date from notice
+ 		WHERE notice_no=#{noticeNo}
  	</select>
  	
  	<insert id="insert" parameterType="FpNoticeVo">
  		INSERT INTO NOTICE
- 		VALUES (#{noticeNumber}, #{adminId}, #{noticeTitle}, #{noticeContent}, #{noticeView}, #{noticeDate})
+ 		VALUES (#{noticeNo}, #{adminId}, #{noticeTitle}, #{noticeContent}, #{noticeView}, #{noticeDate})
  	</insert>
  	
  	<update id="update" parameterType="FpNoticeVo">
- 		UPDATE NOTICE SET NOTICENUMBER=#{noticeNumber}, ADMINID=#{adminId}, 
+ 		UPDATE NOTICE SET notice_no=#{noticeNo}, ADMINID=#{adminId}, 
  		NOTICETITLE=#{noticeTitle}, NOTICECONTENT=#{noticeContent}, NOTICEVIEW=#{noticeView}, NOTICEDATE=#{noticeDate}
  	</update>
  	
  	<delete id="delete" parameterType="_int">
- 		DELETE FROM NOTICE WHERE NOTICENUMBER=#{noticeNumber}
+ 		DELETE FROM NOTICE WHERE notice_no=#{noticeNo}
  	</delete>
  
 </mapper>

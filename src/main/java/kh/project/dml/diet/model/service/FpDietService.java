@@ -3,6 +3,7 @@ package kh.project.dml.diet.model.service;
 import java.util.List;
 
 import kh.project.dml.diet.model.vo.FpDietVo;
+import kh.project.dml.diet.model.vo.TotalFoodListDTO;
 
 public interface FpDietService {
 
@@ -16,6 +17,8 @@ public interface FpDietService {
 
 	public int update(FpDietVo vo);
 
-	public int delete(String foodCd);
+	public int delete(FpDietVo FpDietVo);
+	
+	public TotalFoodListDTO TotalSelectList(FpDietVo dietVo);
 
 }

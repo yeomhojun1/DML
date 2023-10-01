@@ -24,6 +24,7 @@
 		<typeAlias type="kh.project.dml.producttype.model.vo.FpProducttypeVo" alias="FpProducttypeVo"/>
 		<typeAlias type="kh.project.dml.chickenproduct.model.vo.FpChickenproductVo" alias="FpChickenproductVo"/>
 		<typeAlias type="kh.project.dml.replyboard.model.vo.FpReplyBoardVo" alias="FpReplyBoardVo"/>
+		<typeAlias type="kh.project.dml.diet.model.vo.TotalFoodListDTO" alias="TotalFoodListDTO"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>

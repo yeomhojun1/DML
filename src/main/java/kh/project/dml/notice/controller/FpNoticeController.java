@@ -25,8 +25,8 @@ public class FpNoticeController {
 		return mv;
 	}
 	@GetMapping("/one")
-	public ModelAndView selectOnenotice(ModelAndView mv, int noticeNumber) {
-		mv.addObject("noticeone", fpNoticeServiceImpl.selectOne(noticeNumber));
+	public ModelAndView selectOnenotice(ModelAndView mv, int noticeNo) {
+		mv.addObject("noticeone", fpNoticeServiceImpl.selectOne(noticeNo));
 		mv.setViewName("notice/one");
 		return mv;
 	}
@@ -53,8 +53,8 @@ public class FpNoticeController {
 		return viewPage;
 	}
 	@GetMapping("/update")
-	public ModelAndView updatenotice(ModelAndView mv, int noticeNumber ) {
-		mv.addObject("noticeone", fpNoticeServiceImpl.selectOne(noticeNumber));
+	public ModelAndView updatenotice(ModelAndView mv, int noticeNo ) {
+		mv.addObject("noticeone", fpNoticeServiceImpl.selectOne(noticeNo));
 		mv.setViewName("notice/update");
 		return mv;
 	}
@@ -76,9 +76,9 @@ public class FpNoticeController {
 		return viewPage;
 	}
 	@PostMapping("/delete")
-	public String deleteDonotice(RedirectAttributes redirectAttr,int noticeNumber ) {
+	public String deleteDonotice(RedirectAttributes redirectAttr,int noticeNo ) {
 		String viewPage = "redirect:/";
-		int result = fpNoticeServiceImpl.delete(noticeNumber);
+		int result = fpNoticeServiceImpl.delete(noticeNo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");

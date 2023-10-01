@@ -14,8 +14,8 @@ public interface FpNoticeService {
 	
 	
 	public List<FpNoticeVo> selectList();
-	public FpNoticeVo selectOne(int noticeNumber);
+	public FpNoticeVo selectOne(int noticeNo);
 	public int insert(FpNoticeVo vo);
 	public int update(FpNoticeVo vo);
-	public int delete(int noticeNumber);
+	public int delete(int noticeNo);
 }
