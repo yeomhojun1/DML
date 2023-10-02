@@ -81,6 +81,14 @@
 				<!-- <input type="button" value="파일 추가" onClick="fn_addFile()"><br>
 				<div id="d_file"></div>
 				<input type="submit" value="업로드"> -->
+				
+				
+				<!--추후에 해야함
+				 <input type="button" value="파일 추가" onClick="fn_addFile()"><br>
+            
+           		 <div id="d_file">
+           		  -->
+           		 
 				</form>
 		</div>
 		</main>
