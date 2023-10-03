@@ -9,10 +9,12 @@
 </head>
 <body>
 <h1>업로드가 완료되었습니다.</h1>
-<label>아이디 : </label>
-<input type="text" name="id" value="${map.id}" readonly><br>
-<label>이름 : </label>
-<input type="text" name="name" value="${map.name}" readonly><br>
+<label>작성자 : </label>
+<input type="text" name="memberId" value="${map.memberId}" readonly><br>
+<label>제목 : </label>
+<input type="text" name="boardTitle" value="${map.boardTitle}" readonly><br>
+<label>내용 : </label>
+<input type="text" name="boardContent" value="${map.boardContent}" readonly><br>
  
 <div class="result-images">
     <c:forEach var="imageFileName" items="${map.fileList}">

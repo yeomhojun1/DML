@@ -110,7 +110,7 @@ public class FpBoardController {
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("map", map);
-		mav.setViewName("board/result");
+		mav.setViewName("board/one");
 		return mav;
 	}
 

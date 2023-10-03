@@ -76,7 +76,10 @@
 					<span>내용 : </span>
 					<textarea rows="10" cols="20" name="boardContent" id="editor"></textarea>
 				</div>
-					<input class="updateDoBoard"type="submit" value="저장">
+				  <input type="button" value="파일 추가" onClick="fn_addFile()"><br>
+            
+            <div id="d_file">
+					<input class="updateDoBoard" type="submit" value="저장">
 				<!--게시글 추가한 뒤에 이미지추가도 시작할예정 -->
 				<!-- <input type="button" value="파일 추가" onClick="fn_addFile()"><br>
 				<div id="d_file"></div>
@@ -95,7 +98,8 @@
 		<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 	</div>
 	</div>
-	< <script>
+	
+	<script>
 		ClassicEditor.create(document.querySelector('#editor'));
 		var cnt = 1;
 		function fn_addFile() {
