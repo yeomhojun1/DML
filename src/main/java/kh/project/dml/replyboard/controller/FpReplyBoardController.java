@@ -32,6 +32,12 @@ public class FpReplyBoardController {
 		List<FpReplyBoardVo> result = fpReplyBoardServiceImpl.selectList(boardNo);
 		return new Gson().toJson(result);
 	}
+	@GetMapping("/moreReplylist")
+	@ResponseBody
+	public String selectmoreReplylistboard(int rref) {
+		List<FpReplyBoardVo> result = fpReplyBoardServiceImpl.selectMoreList(rref);
+		return new Gson().toJson(result);
+	}
 	
 	@GetMapping("/one")
 	public ModelAndView selectOnereplyboard(ModelAndView mv, int replyNo) {

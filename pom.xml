@@ -185,12 +185,7 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- 파일첨부를 위한 디펜던시 -->
-		<dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-			<version>1.3.3</version>
-		</dependency>
+
 
 		<!-- 다중파일 업로드 -->
 		<dependency>

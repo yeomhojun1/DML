@@ -35,9 +35,6 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<!-- ck에디터적용코드  -->
-<script language="javascript"
-	src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 	crossorigin="anonymous"></script>
@@ -64,56 +61,38 @@
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">Daily Muscle Life</h1>
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
-					<form method="post"
-						action=${pageContext.request.contextPath}/board/insert
-						enctype="multipart/form-data">
-						<input type="hidden" value="${member.memberId}" name="memberId">
-
-						<span>제목 : </span>
-						<textarea rows="1" cols="20" name="boardTitle"></textarea>
+					<div class="card">
+						<form method="post"
+							action=${pageContext.request.contextPath}/board/update
+							enctype="multipart/form-data" class="">
+							<input type="hidden" value="${member.memberId}" name="memberId">
+							<input type="hidden" value="${boardone.boardNo}" name="boardNo">
+							<div>
+								제목 :
+								<textarea rows="1" class="col-xl-12" name="boardTitle">${boardone.boardTitle}</textarea>
+							</div>
+							<div>
+								내용 :
+								<textarea rows="10" cols="20" name="boardContent" id="editor1">${boardone.boardContent}</textarea>
+							</div>
+							<input type="submit" value="저장">
+					</div>
 				</div>
-				<div>
-					<span>내용 : </span>
-					<textarea rows="10" cols="20" name="boardContent" id="editor"></textarea>
-				</div>
-				  <input type="button" value="파일 추가" onClick="fn_addFile()"><br>
-            
-            <div id="d_file">
-					<input class="updateDoBoard" type="submit" value="저장">
-				<!--게시글 추가한 뒤에 이미지추가도 시작할예정 -->
-				<!-- <input type="button" value="파일 추가" onClick="fn_addFile()"><br>
-				<div id="d_file"></div>
-				<input type="submit" value="업로드"> -->
-				
-				
-				<!--추후에 해야함
-				 <input type="button" value="파일 추가" onClick="fn_addFile()"><br>
-            
-           		 <div id="d_file">
-           		  -->
-           		 
-				</form>
+			</main>
+			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
-		</main>
-		<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 	</div>
-	</div>
-	
+	<script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
 	<script>
-		ClassicEditor.create(document.querySelector('#editor'));
-		var cnt = 1;
-		function fn_addFile() {
-			$("#d_file").append(
-					"<br>" + "<input type='file' name='file" + cnt + "' />");
-			cnt++;
-		}
-	</script> 
-
-	<!--  <script>
-    CKEDITOR.replace('editor', {
-      filebrowserUploadUrl: '/upload_image.php',  // 이미지 업로드 처리 URL
-    });
-  </script> -->
+		$(function() {
+			CKEDITOR
+					.replace(
+							'editor1',
+							{
+								filebrowserUploadUrl : '${pageContext.request.contextPath}/board/upload'
+							});
+		});
+	</script>
 </body>
 </html>
 

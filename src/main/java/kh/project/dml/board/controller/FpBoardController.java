@@ -45,10 +45,8 @@ public class FpBoardController {
 
 	@Autowired
 	private FpBoardService fpBoardServiceImpl;
-	
-	private static final String CURR_IMAGE_REPO_PATH = 
-			"C:\\workspace\\github\\DML\\src\\main\\webapp\\WEB-INF\\views\\board\\upload";
 
+	private static final String CURR_IMAGE_REPO_PATH = "C:\\workspace\\github\\DML\\src\\main\\webapp\\WEB-INF\\views\\board\\upload";
 
 	@GetMapping("/list")
 	public ModelAndView selectListboard(ModelAndView mv) {
@@ -87,54 +85,83 @@ public class FpBoardController {
 		}
 		return viewPage;
 	}
+
 	@GetMapping("/plusCount")
 	@ResponseBody
-	public Integer updatememberexset(ModelAndView mv, FpBoardParam param ) {
+	public Integer updatememberexset(ModelAndView mv, FpBoardParam param) {
 		return fpBoardServiceImpl.plusCount(param);
 	}
+
 	@PostMapping("/upload")
-	public ModelAndView upload(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
-			throws Exception {
-		multipartRequest.setCharacterEncoding("utf-8");
-		Map<String, Object> map = new HashMap<String, Object>();
-		Enumeration enu = multipartRequest.getParameterNames();
+	@ResponseBody
+	public String fileUpload(HttpServletRequest request, HttpServletResponse response,
+			MultipartHttpServletRequest multiFile) throws Exception {
 
-		while (enu.hasMoreElements()) {
-			String name = (String) enu.nextElement();
-			String value = multipartRequest.getParameter(name);
-			map.put(name, value);
-		}
+		// Json 객체 생성
+		JsonObject json = new JsonObject();
+		// Json 객체를 출력하기 위해 PrintWriter 생성
+		PrintWriter printWriter = null;
+		OutputStream out = null;
+		// 파일을 가져오기 위해 MultipartHttpServletRequest 의 getFile 메서드 사용
+		MultipartFile file = multiFile.getFile("upload");
+		// 파일이 비어있지 않고(비어 있다면 null 반환)
+		if (file != null) {
+			// 파일 사이즈가 0보다 크고, 파일이름이 공백이 아닐때
+			if (file.getSize() > 0 && StringUtils.isNotBlank(file.getName())) {
+				if (file.getContentType().toLowerCase().startsWith("image/")) {
 
-		List fileList = fileProcess(multipartRequest);
-		map.put("fileList", fileList);
+					try {
+						// 파일 이름 설정
+						String fileName = file.getName();
+						// 바이트 타입설정
+						byte[] bytes = null;
+						// 파일을 바이트 타입으로 변경
+						try {
+							bytes = file.getBytes();
+						} catch (java.io.IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						// 파일이 실제로 저장되는 경로
+						String uploadPath = request.getServletContext().getRealPath("/resources/ckimage/");
+						// 저장되는 파일에 경로 설정
+						File uploadFile = new File(uploadPath);
+						if (!uploadFile.exists()) {
+							uploadFile.mkdirs();
+						}
+						// 파일이름을 랜덤하게 생성
+						fileName = UUID.randomUUID().toString();
+						// 업로드 경로 + 파일이름을 줘서 데이터를 서버에 전송
+						uploadPath = uploadPath + "/" + fileName;
+						out = new FileOutputStream(new File(uploadPath));
+						out.write(bytes);
 
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("map", map);
-		mav.setViewName("board/one");
-		return mav;
-	}
+						// 클라이언트에 이벤트 추가
+						printWriter = response.getWriter();
+						response.setContentType("text/html");
 
+						// 파일이 연결되는 Url 주소 설정
+						String fileUrl = request.getContextPath() + "/resources/ckimage/" + fileName;
 
-	private List<String> fileProcess(MultipartHttpServletRequest multipartRequest) throws Exception {
-		List<String> fileList = new ArrayList<String>();
-		Iterator<String> fileNames = multipartRequest.getFileNames();
-
-		while (fileNames.hasNext()) {
-			String fileName = fileNames.next();
-			MultipartFile mFile = multipartRequest.getFile(fileName);
-			String originalFileName = mFile.getOriginalFilename();
-			fileList.add(originalFileName);
-			File file = new File(CURR_IMAGE_REPO_PATH + "\\" + fileName);
-			if (mFile.getSize() != 0) {
-				if (!file.exists()) {
-					if (file.getParentFile().mkdir()) {
-						file.createNewFile();
+						// 생성된 jason 객체를 이용해 파일 업로드 + 이름 + 주소를 CkEditor에 전송
+						json.addProperty("uploaded", 1);
+						json.addProperty("fileName", fileName);
+						json.addProperty("url", fileUrl);
+						printWriter.println(json);
+					} catch (IOException e) {
+						e.printStackTrace();
+					} finally {
+						if (out != null) {
+							out.close();
+						}
+						if (printWriter != null) {
+							printWriter.close();
+						}
 					}
 				}
-				mFile.transferTo(new File(CURR_IMAGE_REPO_PATH + "\\" + originalFileName));
 			}
 		}
-		return fileList;
+		return null;
 	}
 
 	@GetMapping("/update")
@@ -148,7 +175,8 @@ public class FpBoardController {
 	public String updateDoBoard(RedirectAttributes redirectAttr, FpBoardVo vo) {
 		String viewPage = "redirect:/";
 		int result = fpBoardServiceImpl.update(vo);
-	//	((ModelAndView) redirectAttr).addObject("boardone", fpBoardServiceImpl.selectOne(vo.getBoardNo()));
+		// ((ModelAndView) redirectAttr).addObject("boardone",
+		// fpBoardServiceImpl.selectOne(vo.getBoardNo()));
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 실패했습니다 \n 다시 입력해주세요");
@@ -179,4 +207,4 @@ public class FpBoardController {
 		return viewPage;
 	}
 
-	}
+}

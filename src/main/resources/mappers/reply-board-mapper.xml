@@ -4,10 +4,10 @@
 
 
 <select id="selectList" resultType="FpreplyboardVo">
-		select * from replyboard where board_no=#{boardNo} order by Reply_no desc,reply_Date desc 
+		select * from replyboard where board_no=#{boardNo}  order by Reply_no desc,reply_Date desc 
 </select> 
 <select id="selectReply" resultType="FpreplyboardVo">
-		select * from replyboard where rref=#{rref} and rstep !=1 order by RSTEP asc,reply_Date  
+		select * from replyboard where rref=#{rref}  order by RSTEP asc,reply_Date  
 </select> 
 <select id="selectOne" resultType="FpreplyboardVo" parameterType="_int">
 select * from replyboard where reply_No=#{replyNo}
@@ -28,7 +28,7 @@ where reply_No =#{replyNo}
 </update>
 
 <delete id="delete" parameterType="_int">
-delete from replyboard where reply_No =#{replyNo}
+delete from replyboard where reply_No =#{replyNo} or rref=${replyNo}
 </delete>
 </mapper>
 

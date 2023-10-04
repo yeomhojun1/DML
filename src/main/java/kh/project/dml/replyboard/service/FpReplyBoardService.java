@@ -12,5 +12,6 @@ public interface FpReplyBoardService {
 	public FpReplyBoardVo update(FpReplyBoardVo vo);
 	public List<FpReplyBoardVo> delete(int chickenNo);
 	public List<FpReplyBoardVo> selectList(int boardNo);
+	public List<FpReplyBoardVo> selectMoreList(int rref);
 	public List<FpReplyBoardVo> insertreplyreply(FpReplyBoardVo vo);
 }

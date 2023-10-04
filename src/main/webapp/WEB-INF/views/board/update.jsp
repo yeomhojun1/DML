@@ -35,9 +35,6 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<!-- ck에디터적용코드  -->
-<script language="javascript"
-	src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 	crossorigin="anonymous"></script>
@@ -64,86 +61,39 @@
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">Daily Muscle Life</h1>
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
-					<h1>${boardOne.boardTitle}</h1>
-					<form method="post"
-						action=${pageContext.request.contextPath}/board/insert
-						enctype="multipart/form-data" id="updateForm">
-						<input type="hidden" value="${boardone.boardNo}" name="boardNo">
-						<span>제목 : </span>
-						<input type="textarea" value="${boardone.boardTitle}" class="updateBoardTitle" rows="1" cols="50" name="boardTitle"></textarea>
+					<div class="card">
+						<form method="post"
+							action=${pageContext.request.contextPath}/board/update
+							enctype="multipart/form-data" class="">
+							<input type="hidden" value="${member.memberId}" name="memberId">
+							<input type="hidden" value="${boardone.boardNo}" name="boardNo">
+							<div>
+							제목 :
+							<textarea rows="1" class="col-xl-12" name="boardTitle">${boardone.boardTitle}</textarea>
+							</div>
+							<div>
+						내용 : 
+							<textarea rows="10" cols="20" name="boardContent" id="editor1">${boardone.boardContent}</textarea>
+							</div>
+
+							<input type="submit" value="저장">
+					</div>
 				</div>
-				<div>
-					<span>내용 : </span>
-					<textarea class="updateBoardContent" rows="10" cols="20" name="boardContent" id="editor"></textarea>
-				</div>
-					<button type="button" class="saveUpdate">저장</button>
-				<!--게시글 추가한 뒤에 이미지추가도 시작할예정 -->
-				<!-- <input type="button" value="파일 추가" onClick="fn_addFile()"><br>
-				<div id="d_file"></div>
-				<input type="submit" value="업로드"> -->
-				</form>
+			</main>
+			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
-		</main>
-		<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 	</div>
-	</div>
-	<!--  <script>
-		ClassicEditor.create(document.querySelector('#editor'));
-		 var cnt = 1;
-		function fn_addFile() {
-			$("#d_file").append(
-					"<br>" + "<input type='file' name='file" + cnt + "' />");
-			cnt++;
-		} 
-	</script>  -->
+	<script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
 	<script>
-	/* window.onload = function() {
-	$(".updateBoardTitle").html(${boardone.boardTitle});
-	//$(".updateBoardContent").html(${boardone.boardContent});
-	}
-	 */
-	
-	
-	$(".saveUpdate").click(updateDoBoardHandler);
-	function updateDoBoardHandler(){
-		var title1= $(".updateBoardTitle").val();
-		var Content1= $(".updateBoardContent").val();
-		console.log(title1);
-		console.log(Content1);
- 		$.ajax({ type: "post",
-	      url: "${pageContext.request.contextPath}/board/update",
-	      data: {memberId:${member.memberId} ,boardTitle : title1,boardContent: Content1,boardNo :	${boardone.boardNo}},
-	         //   data: $("#updateForm").serialize(),
-	            //dataType: "json",
-	      success: function(response){
-	       	console.log(response);
-	        location.href = "${pageContext.request.contextPath}/board/list";
-	        },error: function(){
-	          	console.log("error");
-               }
-	         }); 
-	        } 
-	
-	/* 	 $.ajax({
-				url:"${pageContext.request.contextPath}/memberexset/update",
-				type: "post",
-				data : 
-				,success : function(result){
-					location.reload(true);
-					}
-				,error : function(){
-					console.log("error");
-					}
-				});
-			 event.preventDefault();
-			} */
-	
+		$(function() {
+			CKEDITOR
+					.replace(
+							'editor1',
+							{
+								filebrowserUploadUrl : '${pageContext.request.contextPath}/board/upload'
+							});
+		});
 	</script>
-	<!--  <script>
-    CKEDITOR.replace('editor', {
-      filebrowserUploadUrl: '/upload_image.php',  // 이미지 업로드 처리 URL
-    });
-  </script> -->
 </body>
 </html>
 

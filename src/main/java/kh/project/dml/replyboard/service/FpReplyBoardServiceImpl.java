@@ -19,11 +19,15 @@ public class FpReplyBoardServiceImpl implements FpReplyBoardService {
 	public List<FpReplyBoardVo> selectList(int boardNo) {
 		return fpReplyBoardDao.selectList(boardNo);
 	}
-
+	@Override
+	public List<FpReplyBoardVo> selectMoreList(int rref) {
+		return fpReplyBoardDao.selectMoreList(rref);
+	}
 	@Override
 	public FpReplyBoardVo selectOne(int replyNo) {
 		return fpReplyBoardDao.selectOne(replyNo);
 	}
+	
 
 	@Override
 	@Transactional
