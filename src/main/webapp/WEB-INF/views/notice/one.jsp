@@ -89,8 +89,10 @@
 									<label for="regDate" class="form-label">작성일</label>
 									<div class="form-control" id="regDate" name="regDate">${noticeone.noticeDate}</div>
 								</div>
+								<c:if test="${member.authorities.equals('ROLE_ADMIN')}">
 								<button type="button" class="updateBoard">수정</button>
 								<button type="button" class="deleteBoard">삭제</button>
+								</c:if>
 							</form>
 						</div>
 					</div>
@@ -101,11 +103,7 @@
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
 	</div>
-				</div>
-			</main>
-			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
-		</div>
-	</div>
+
 	
 </body>
 </html>
