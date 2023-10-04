@@ -16,19 +16,18 @@
 	<h1>일정 추가</h1>
 </div>
 <div>
-	<from id="calendarData">
+	<form id="calendarData">
 	<div>
 		제목 : <input type="text" name="title" id="title" placeholder="제목 입력">
 	</div>
 	<br>
 	<div>
-		시작 날짜 : <input type="text" name="startdate" id="startdate" size="12" value="${startDate}"/>
-				 <input type="button" value="달력" onclick="${'#startdate'}.datepicker('show');"/>
+		시작 날짜 : <input type="date" name="startdate" id="startdate" size="12" value="${startDate}"/>
 	</div>
 	<br>
 	<div>
-		종료 날짜 : <input type="text" name="enddate" id="enddate" size="12" value="${endDate}"/>
-				  <input type="button" value="달력" onclick="${'#enddate'}.datepicker('show');"/>
+		종료 날짜 : <input type="date" name="enddate" id="enddate" size="12" value="${endDate}"/>
+				 
 	</div>
 	<br>
 		설명
@@ -36,9 +35,11 @@
 			<textarea name="content" id="content" rows="10" cols="30"></textarea>
 	</div>
 	<br>
-	</from>
-			<input type = "button" value="저장" onclick="send_save()"/>
+	</form>
+			<input type = "button" value="저장" class="send_save()">
 </div>
 
 </body>
+
+
 </html>

@@ -66,10 +66,10 @@
 		                 // 나의 일정 목록
 		                 <c:forEach var="showList" items="${getCalendarList}">
 		                 {
-		                    id    : '${showList.getCalendarno()}',
-		                    title : '${showList.getTitle()}',
-		                    start : '${showList.getStartdate()}',
-		                    end    : '${showList.getEnddate()}'
+		                    id    : '${showList.calendarno}',
+		                    title : '${showList.title}',
+		                    start : '${showList.startdate}',
+		                    end    : '${showList.enddate}'
 		                 },
 		                 </c:forEach>
 		                 {
@@ -100,6 +100,7 @@
   				      }
 				     
 				   }); // calendar
+				   
 		   calendar.render();		
 		   $(".ex_part").click(expartClickHandler);
 			function expartClickHandler(){
@@ -154,8 +155,7 @@
 			}
 			
   	});
-  	
-
+  
   </script>
 <style>
 .btn {
@@ -256,7 +256,35 @@
 		crossorigin="anonymous"></script>
 		
 	<script>
-	
+	<script>
+	 function send_save() {
+	    var title = $("#title").val();
+	    var startdate = $("#startdate").val();
+	    var enddate = $("#enddate").val();
+	    var content = $("#content").val();
+
+	    // AJAX 요청 설정
+	    $.ajax({
+	        type: "POST", // 또는 "GET"에 따라서 서버 요청 방식을 선택하세요.
+	        url: "/calendar/save", // 
+	        data: {
+	            title: title,
+	            startdate: startdate,
+	            enddate: enddate,
+	            content: content
+	        },
+	        success: function(response) {
+	            // 서버로부터의 응답 처리
+	            alert("일정이 저장되었습니다."); // 예시: 서버에서 성공 응답을 받았을 때 알림창 표시
+	        },
+	        error: function(error) {
+	            // 에러 처리
+	            console.log(error);
+	            alert("일정 저장 중 오류가 발생하였습니다."); // 오류 발생 시 알림창 표시
+	        }
+	    });
+	} 
+	</script>
 	
 	</script>
 		

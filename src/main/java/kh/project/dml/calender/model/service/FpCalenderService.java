@@ -8,6 +8,7 @@ import kh.project.dml.calender.model.vo.FpCalenderVo;
 import kh.project.dml.member.model.vo.FpMemberVo;
 
 public interface FpCalenderService {
+	
 
 	public List<FpCalenderVo> selectList(FpMemberVo loginInfo);
 

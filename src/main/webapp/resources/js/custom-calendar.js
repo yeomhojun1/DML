@@ -62,7 +62,7 @@ function send_save(){ // ajax 비동기 처리 - 일정 추가
 		
 		$.ajax({
 			data : data,	//JSON.stringify(data)
-			url : "/calendar/addCalendar",
+			url : "/calendar/save",
 			type : "POST",
 			dataType : "json",
 			contentType : "application/json; charset=UTF-8",

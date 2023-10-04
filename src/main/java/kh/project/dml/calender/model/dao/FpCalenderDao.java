@@ -33,4 +33,5 @@ public class FpCalenderDao {
 	public int delete(int calendarno) {
 		return sqlSession.delete("calender.delete", calendarno);
 	}
+	
 }

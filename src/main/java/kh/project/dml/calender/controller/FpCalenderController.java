@@ -2,6 +2,7 @@ package kh.project.dml.calender.controller;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,14 +10,19 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.project.dml.calender.model.service.FpCalenderService;
+import kh.project.dml.calender.model.service.FpCalenderServiceImpl;
 import kh.project.dml.calender.model.vo.FpCalenderVo;
 import kh.project.dml.common.interceptor.SessionNames;
 import kh.project.dml.member.model.vo.FpMemberVo;
@@ -56,13 +62,22 @@ public class FpCalenderController {
 		return "/fullcalendar/addcalendar"; 
 	}
 	 
+	// 버튼에 대한 일정 추가 팝업
+	//@RequestMapping(value="/btnSelected", method=RequestMethod.GET)
+	@GetMapping("/btnSelected")
+	public String btnSelected() {
+		return "/fullcalendar/addcalendar";
+	}
+	
+	 @PostMapping("/save")
+	    public ResponseEntity<String> saveCalendarEvent(@RequestParam String title, @RequestParam String startdate, @RequestParam String enddate, @RequestParam String content) {
+	        String responseMessage = "일정이 성공적으로 저장되었습니다.";
+	        return ResponseEntity.ok("{\"message\":\"" + responseMessage + "\"}");
+	    }
+	}
 	
 
 
-    @GetMapping("/event") //ajax 데이터 전송 URL
-    @ResponseBody 
-    public List<Map<String, Object>> getEvent(){
-		  return fpCalenderServiceImpl.getEventList();
-    }
+	
 
-}
+
