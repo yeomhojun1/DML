@@ -66,6 +66,7 @@
 			<!-- 로그인/회원가입 -->
 			<exclude-mapping path="/member/login" />
 			<exclude-mapping path="/member/signup" />
+			<exclude-mapping path="/member/*Search" />
 			<exclude-mapping path="/member/agreement" />
 			<exclude-mapping path="/member/*Popup" />
 

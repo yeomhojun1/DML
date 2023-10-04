@@ -26,7 +26,9 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top">DML</a>
+                <a class="navbar-brand" href="#page-top">
+                    <img src="${pageContext.request.contextPath }/resources/images/dmlLogo.png" style="width:120px; height:50px;">
+                </a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -61,9 +63,9 @@
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
                 <div class="d-flex justify-content-center">
                     <div class="text-center">
-                        <h1 class="mx-auto my-0 text-uppercase">DML</h1>
+                        <img src="${pageContext.request.contextPath }/resources/images/dmlLogo.png" style="width:609px; height:255px;">
                         <h2 class="text-white-50 mx-auto mt-2 mb-5"></h2>
-                        <a class="btn btn-primary" href="#about">Get Started</a>
+                        <a class="btn btn-primary" href="${pageContext.request.contextPath }/memberweight/weight">Get Started</a>
                     </div>
                 </div>
             </div>

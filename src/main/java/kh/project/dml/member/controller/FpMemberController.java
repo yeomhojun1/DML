@@ -300,6 +300,19 @@ public class FpMemberController {
         return "redirect:/index";
     }
 	
+	// 아이디 찾기
+	@GetMapping("/member/idSearch")
+	public String idSearch() {
+		return "/member/idSearch";
+	}
+	
+	// 비밀번호 찾기
+	@GetMapping("/member/pwdSearch")
+	public String pwdSearch() {
+		return "/member/pwdSearch";
+	}
+	
+	
 	// 마이페이지
 	@GetMapping("/member/mypage")
 	public String mypage(HttpSession session) {

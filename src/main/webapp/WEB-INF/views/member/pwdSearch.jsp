@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
-    <title>회원가입</title>
+    <title>비밀번호 찾기</title>
 <style>
     body {
 	    background: #222D32;
@@ -150,11 +150,11 @@
                     <img src="${pageContext.request.contextPath }/resources/images/dmlLogo.png" style="width:239px; height:100px;">
                 </div>
                 <div class="col-lg-12 login-title">
-                	회원가입
+                	비밀번호 찾기
                 </div>
                 <div class="col-lg-12 login-form">
                     <div class="col-lg-12 login-form">
-                        <form action="${pageContext.request.contextPath }/member/signup" method="post">
+                        <form action="${pageContext.request.contextPath }/member/pwdSearch" method="post">
                             <jsp:include page="form_errors.jsp"/>
                             <div class="form-group">
                                 <label class="form-control-label">아이디(E-Mail)</label>
@@ -169,26 +169,6 @@
 								                <c:out value="이메일 형식으로 입력해주세요."/><br/>
 								            </c:when>
 								        </c:choose>
-								    </div>
-								</c:if>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">패스워드</label>
-                                <input type="password" name="password" class="form-control">
-                                <!-- 비밀번호 에러 메시지 -->
-								<c:if test="${errorMessages.contains('비밀번호는 필수항목입니다.')}">
-								    <div class="alert alert-danger">
-								        <c:out value="비밀번호는 필수항목입니다."/><br/>
-								    </div>
-								</c:if>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">패스워드 확인</label>
-                                <input type="password" name="password2" class="form-control">
-                                <!-- 비밀번호 확인 에러 메시지 -->
-								<c:if test="${errorMessages.contains('비밀번호 확인은 필수항목입니다.')}">
-								    <div class="alert alert-danger">
-								        <c:out value="비밀번호 확인은 필수항목입니다."/><br/>
 								    </div>
 								</c:if>
                             </div>
@@ -212,39 +192,9 @@
 								    </div>
 								</c:if>
                             </div>
-                            <div class="form-group">
-                                <label class="form-control-label">성별</label>
-                                <br>
-                                <input type="radio" id="man" name="gender" class="gender" checked="checked" value="남"><label for="man" style="color:#fff;">남</label>
-                                <input type="radio" id="woman" name="gender" class="gender" value="여"><label for="woman" style="color:#fff;">여</label>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">키</label>
-                                <input type="text" name="height" maxlength=5 onkeypress="return isDouble(event)" class="form-control">
-                                <!-- 키 에러 메시지 -->
-									<c:if test="${errorMessages.contains('키는 필수항목입니다.')}">
-									    <div class="alert alert-danger">
-									        <c:out value="키는 필수항목입니다."/><br/>
-									    </div>
-									</c:if>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">몸무게</label>
-                                <input type="text" name="weight" maxlength=5 onkeypress="return isDouble(event)" class="form-control">
-                                <!-- 몸무게 에러 메시지 -->
-								<c:if test="${errorMessages.contains('몸무게는 필수항목입니다.')}">
-								    <div class="alert alert-danger">
-								        <c:out value="몸무게는 필수항목입니다."/><br/>
-								    </div>
-								</c:if>
-                            </div>
-                            
                             <div class="col-lg-12 loginbttm">
-                                <div class="col-lg-6 login-btm login-text">
-                                    <!-- Error Message -->
-                                </div>
                                 <div class="col-lg-6 login-btm login-button">
-                                    <button type="submit" class="btn btn-outline-primary">회원가입</button>
+                                    <button type="submit" class="btn btn-outline-primary">비밀번호 찾기</button>
                                 </div>
                             </div>
                         </form>
@@ -262,17 +212,6 @@
 		    }
 		    return true;
 		}
-		
-		function isDouble(event) {
-		    const value = event.target.value;
-		    if (value === "") return true;
-		    
-		    const charCode = (event.which) ? event.which : event.keyCode;
-		    if (charCode !== 46 && charCode > 31 && (charCode < 48 || charCode > 57)) {
-		        return false;
-		    }
-		    return true;
-		}	
 	</script>
 </body>
 </html>

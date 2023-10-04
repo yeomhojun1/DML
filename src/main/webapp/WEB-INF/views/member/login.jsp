@@ -166,7 +166,7 @@ label {
             <div class="col-lg-3 col-md-2"></div>
             <div class="col-lg-6 col-md-8 login-box">
                 <div class="col-lg-12 login-key">
-                    <i class="fa fa-key" aria-hidden="true"></i>
+                    <img src="${pageContext.request.contextPath }/resources/images/dmlLogo.png" style="width:239px; height:100px;">
                 </div>
                 <div class="col-lg-12 login-title">
                     로그인 페이지
@@ -192,11 +192,14 @@ label {
 						<a href="${ google_url }"><img class="socialbtn" src="${pageContext.request.contextPath }/resources/images/social/googleicon.png"></a>
 						<a href="${ kakao_url }"><img class="socialbtn" src="${pageContext.request.contextPath }/resources/images/social/kakaoicon.png"></a>
 					</div>
-                     <div class="col-lg-12 loginbttm">
-						<div class="col-lg-6 login-btm login-text">
-							<!-- Error Message -->
+                    <div class="col-lg-12 loginbttm">
+						<div class="col-lg-12 login-btm login-button">
+						    <button type="button" onclick="location.href='${pageContext.request.contextPath}/member/idSearch'" class="btn btn-outline-primary">아이디찾기</button>
+						    <button type="button" onclick="location.href='${pageContext.request.contextPath}/member/pwdSearch'" class="btn btn-outline-primary">패스워드찾기</button>
 						</div>
-						<div class="col-lg-6 login-btm login-button">
+                    </div>
+                    <div class="col-lg-12 loginbttm">
+						<div class="col-lg-12 login-btm login-button">
 						    <button type="submit" class="btn btn-outline-primary">LOGIN</button>
 						    <button type="button" onclick="location.href='${pageContext.request.contextPath}/member/signup'" class="btn btn-outline-primary">회원가입</button>
 						</div>

@@ -92,7 +92,7 @@ public class AdviceLog {
 		return robj; // 타겟메소드를 호출한 메소드에 return함
 	}
 	
-	@Around("sessionPointCut()")
+//	@Around("sessionPointCut()")
 	public Object aroundsesLog(ProceedingJoinPoint pjp) throws Throwable {
 		Object robj = null; // 타겟메소드로부터 return 값을 받아 저장할 공간
 		
@@ -114,7 +114,7 @@ public class AdviceLog {
 	}
 	
 
-	@Around("securityPointCut()")
+//	@Around("securityPointCut()")
 	public Object aroundsecuLog(ProceedingJoinPoint pjp) throws Throwable {
 		Object robj = null; // 타겟메소드로부터 return 값을 받아 저장할 공간
 		
