@@ -17,6 +17,7 @@ DROP TABLE "NUTRIENT";
 DROP TABLE "PRODUCTTYPE";
 DROP SEQUENCE board_no_seq;
 DROP SEQUENCE REPLY_no_seq;
+DROP SEQUENCE notice_no_seq;
 
 CREATE TABLE "BOARD" (
 	"BOARD_NO"	NUMBER		NOT NULL,
@@ -142,14 +143,23 @@ CREATE TABLE "FOOD_API" (
 );
 
 CREATE TABLE "NOTICE" (
-	"NOTICE_NUMBER"	NUMBER		NOT NULL,
+	"NOTICE_NO"	NUMBER		NOT NULL,
+    "CATEGORY" VARCHAR(50) NOT NULL,
 	"ADMIN_ID"	VARCHAR2(100)		NOT NULL,
 	"NOTICE_TITLE"	VARCHAR2(100)		NOT NULL,
 	"NOTICE_CONTENT"	CLOB		NOT NULL,
 	"NOTICE_VIEW"	NUMBER		NOT NULL,
-	"NOTICE_DATE"	VARCHAR2(10)		NOT NULL
+	"NOTICE_DATE"	TIMESTAMP default sysdate NOT NULL
 );
-
+CREATE SEQUENCE notice_No_seq
+      INCREMENT BY 1
+       START WITH 1
+       MINVALUE 1
+       MAXVALUE 9999
+       NOCYCLE
+       NOCACHE
+       NOORDER;
+       
 CREATE TABLE "USERS" (
 	"USERNAME"	VARCHAR2(100)		NOT NULL,
 	"PASSWORD"	VARCHAR2(80)		NOT NULL,
@@ -507,7 +517,10 @@ insert into exercise   values(50010, '바벨 스쿼트' , '하체' , ' 1.발을 
 INSERT INTO BOARD VALUES (board_no_seq.NEXTVAL,'ghwnswkd123@naver.com', '연습용 게시판 제목', '연습용 게시판 내용@@','20230921', 0, '연습용 댓글', 1,0);
 INSERT INTO BOARD VALUES (board_no_seq.NEXTVAL,'ghwnswkd123@naver.com', '연습용 게시판 제목2', '연습용 게시판 내용@@','20230921', 0, '연습용 댓글', 1,0);
 --select board_no , member_id,Board_title,board_content,TO_CHAR(board_date,'YYYY-MM-DD'),board_Count,bref,bstep,bleveL from board order by board_No desc;
-	
+
+INSERT INTO NOTICE VALUES (notice_no_seq.NEXTVAL, '운동', '공지사항 제목','공지사항 내용물', '77@77.77','20231004',0);
+
+
  --영양소(초보자)
 insert into nutrient VALUES (1,'단백질','','','1');
 insert into nutrient VALUES (2,'탄수화물','','','1');

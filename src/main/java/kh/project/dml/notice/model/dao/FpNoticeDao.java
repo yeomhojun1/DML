@@ -10,22 +10,26 @@ import kh.project.dml.notice.model.vo.FpNoticeVo;
 
 @Repository
 public class FpNoticeDao {
-	
+
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	public List<FpNoticeVo> selectList() {
 		return sqlSession.selectList("notice.selectList");
 	}
+
 	public FpNoticeVo selectOne(int noticeNo) {
-		return sqlSession.selectOne("notice.selecOne", noticeNo);
+		return sqlSession.selectOne("notice.selectOne", noticeNo);
 	}
+
 	public int insert(FpNoticeVo vo) {
 		return sqlSession.insert("notice.insert", vo);
 	}
+
 	public int update(FpNoticeVo vo) {
 		return sqlSession.update("notice.update", vo);
 	}
+
 	public int delete(int noticeNo) {
 		return sqlSession.delete("notice.delete", noticeNo);
 	}

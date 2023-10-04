@@ -65,30 +65,34 @@
 					<h1 class="mt-4">Daily Muscle Life</h1>
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
 				</div>
-				<table class="board-table">
-					<thead>
+				<div>
+				<table class="table table-hover" width="100%" >
+						<thead class="table-blue" style="background-color: lavender;">
 						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>본문</th>
-							<th>작성일</th>
-							<th>조회수</th>
+							<th scope="col">번호</th>
+							<th scope="col">작성자</th>	
+							<th scope="col" width="300">제목</th>
+							<th scope="col">등록일</th>
+							<th scope="col">조회수</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${noticeList}" var="vo">
+						<c:forEach items="${noticelist}" var="vo">
 							<tr class="foreachValue">
-								<th>${vo.noticeNo}</th>
-								<td><a
-									href="${pageContext.request.contextPath }/notice/one?noticeNo=${vo.noticeNo}"
-									class="plusCount"> ${vo.noticeTitle}</a></td>
+								<td>${vo.noticeNo}</td>
 								<td><div class="adminIdVal">${vo.adminId}</div></td>
+									<td><a href="${pageContext.request.contextPath}/notice/one?noticeNo=${vo.noticeNo}" class="multCount">${vo.noticeTitle}</a></td>
 								<td><div class="noticeDateVal">${vo.noticeDate}</div></td>
-								<td><div class="noticeCountVal">${vo.noticeCount}</div></td>
+								<td><div class="noticeviewVal">${vo.noticeView}</div></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
+				<c:if test="${member.authorities.equals('ROLE_ADMIN')}">
+					<a href="${pageContext.request.contextPath }/notice/insert"><button
+					type="btn btn-default" class="addBoard">공지사항등록</button></a>
+				</c:if>
+				</div>
 
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>

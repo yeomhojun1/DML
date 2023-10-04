@@ -1,15 +1,22 @@
 package kh.project.dml.notice.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kh.project.dml.board.model.vo.FpBoardParam;
+import kh.project.dml.common.interceptor.SessionNames;
+import kh.project.dml.member.model.vo.FpMemberVo;
 import kh.project.dml.notice.model.service.FpNoticeService;
 import kh.project.dml.notice.model.vo.FpNoticeVo;
+import kh.project.dml.users.model.vo.FpUsersVo;
 
 
 @Controller
@@ -31,14 +38,27 @@ public class FpNoticeController {
 		return mv;
 	}
 	@GetMapping("/insert")
-	public ModelAndView insertnotice(ModelAndView mv ) {
-		mv.setViewName("notice/insert");
-		return mv;
+	public String form(HttpSession session) {
+		Object memberObj = session.getAttribute(SessionNames.LOGIN);
+    	if (memberObj instanceof FpUsersVo) {
+    		FpUsersVo userMember = (FpUsersVo) memberObj;
+    		if(userMember.getAuthorities().equals("ROLE_ADMIN")) {
+    			return "/notice/insert";
+    		}
+    		
+    	} else if (memberObj instanceof FpMemberVo) {
+    		FpMemberVo member = (FpMemberVo) memberObj;
+    		if(member.getAuthorities().equals("ROLE_ADMIN")) {
+    			return "/notice/insert";
+    		}
+    	}
+		return "redirect:/notice/list";
 	}
+	
 	@PostMapping("/insert")
 	public String insertDonotice(RedirectAttributes redirectAttr, FpNoticeVo vo ) {
 		String viewPage = "redirect:/";
-		int result = fpNoticeServiceImpl.insert(vo);
+    	int result = fpNoticeServiceImpl.insert(vo);
 		try {
 			if (result < 1) {
 				redirectAttr.addFlashAttribute("msg", "회원 가입 실패했습니다 \n 다시 입력해주세요");
@@ -52,6 +72,13 @@ public class FpNoticeController {
 		}
 		return viewPage;
 	}
+	/*
+	 * @GetMapping("/multCount")
+	 * 
+	 * @ResponseBody public Integer updatememberexset(ModelAndView mv, FpBoardParam
+	 * param ) { return fpBoardServiceImpl.plusCount(param); }
+	 */
+	
 	@GetMapping("/update")
 	public ModelAndView updatenotice(ModelAndView mv, int noticeNo ) {
 		mv.addObject("noticeone", fpNoticeServiceImpl.selectOne(noticeNo));

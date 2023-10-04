@@ -64,48 +64,39 @@
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">Daily Muscle Life</h1>
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
-					<h1 class="mt-4"></h1>
-					<div class="card cardwidth mb-4">
-						<div class="card-body">
-							<form>
-								<div class="mb-3 mt-3">
-									<input type="hidden" class="form-control" id="noticeNo"
-										name="noticeNo" value="${noticeone.noticeNo}" disabled>
-								</div>
-								<div class="mb-3">
-									<label for="title" class="form-label">제목</label>
-									<div class="form-control" id="title" name="title">${noticeone.noticeTitle}</div>
-								</div>
-								<div class="mb-3">
-									<label for="content" class="form-label">내용</label>
-									<div class="form-control" id="content" name="content" disabled>${noticeone.noticeContent}</div>
-								</div>
-								<div class="mb-3">
-									<label for="writer" class="form-label">작성자</label>
-									<div class="form-control" id="writer" name="writer">${noticeone.adminId}
-									</div>
-								</div>
-								<div class="mb-3">
-									<label for="regDate" class="form-label">작성일</label>
-									<div class="form-control" id="regDate" name="regDate">${noticeone.noticeDate}</div>
-								</div>
-								<button type="button" class="updateBoard">수정</button>
-								<button type="button" class="deleteBoard">삭제</button>
-							</form>
+					<form method="post"
+						action=${pageContext.request.contextPath}/notice/insert
+					enctype="multipart/form-data">
+					<input type="hidden" value="${member.memberId}" name="adminId">
+					<span>제목 : </span>
+					<textarea rows="1" cols="50" name="noticeTitle"></textarea>
+				</div>
+
+				<div>
+					<span>내용 : </span>
+					<textarea rows="10" cols="20" name="noticeContent" id="editor"></textarea>
 						</div>
-					</div>
-						<div class="card-body addreply"></div>
-						<div class="testappend"></div>
-				</div>
+            	<div id="d_file">
+					<input class="updateDoNotice" type="submit" value="등록">
+           		 </form>
+			</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
 	</div>
-				</div>
-			</main>
-			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
-		</div>
-	</div>
-	
+	<script>
+		ClassicEditor.create(document.querySelector('#editor'));
+	/* 	.then(editor => {
+		      // CKEditor의 높이 설정
+		      editor.ui.view.editable.style.height = '200px'; // 높이를 원하는 값으로 조정
+		    }); */
+		
+		var cnt = 1;
+		function fn_addFile() {
+			$("#d_file").append(
+					"<br>" + "<input type='file' name='file" + cnt + "' />");
+			cnt++;
+		}
+	</script> 
 </body>
 </html>

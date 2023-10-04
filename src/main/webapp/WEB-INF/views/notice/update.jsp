@@ -64,43 +64,7 @@
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">Daily Muscle Life</h1>
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
-					<h1 class="mt-4"></h1>
-					<div class="card cardwidth mb-4">
-						<div class="card-body">
-							<form>
-								<div class="mb-3 mt-3">
-									<input type="hidden" class="form-control" id="noticeNo"
-										name="noticeNo" value="${noticeone.noticeNo}" disabled>
-								</div>
-								<div class="mb-3">
-									<label for="title" class="form-label">제목</label>
-									<div class="form-control" id="title" name="title">${noticeone.noticeTitle}</div>
-								</div>
-								<div class="mb-3">
-									<label for="content" class="form-label">내용</label>
-									<div class="form-control" id="content" name="content" disabled>${noticeone.noticeContent}</div>
-								</div>
-								<div class="mb-3">
-									<label for="writer" class="form-label">작성자</label>
-									<div class="form-control" id="writer" name="writer">${noticeone.adminId}
-									</div>
-								</div>
-								<div class="mb-3">
-									<label for="regDate" class="form-label">작성일</label>
-									<div class="form-control" id="regDate" name="regDate">${noticeone.noticeDate}</div>
-								</div>
-								<button type="button" class="updateBoard">수정</button>
-								<button type="button" class="deleteBoard">삭제</button>
-							</form>
-						</div>
-					</div>
-						<div class="card-body addreply"></div>
-						<div class="testappend"></div>
-				</div>
-			</main>
-			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
-		</div>
-	</div>
+						<!-- 우리가 여기에 추가해야함 -->
 				</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
