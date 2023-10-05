@@ -93,6 +93,7 @@
 									<button type="button" class="updateNotice">수정</button>
 									<button type="button" class="deleteNotice">삭제</button>
 								</c:if>
+									<button type="button" class="ListNotice">목록으로</button>
 							</form>
 						</div>
 					</div>
@@ -102,6 +103,10 @@
 		</div>
 	</div>
 	<script>
+	$(".ListNotice").on("click", function(){
+		location.href="${pageContext.request.contextPath}/notice/list";
+	});
+	
 	$(".deleteNotice").on("click",function(){
 		/* var formData = $(".deleteNotice").serialize();
 		alert(formData); */

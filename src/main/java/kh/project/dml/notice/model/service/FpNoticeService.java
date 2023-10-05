@@ -11,11 +11,10 @@ import kh.project.dml.notice.model.vo.FpNoticeVo;
 
 public interface FpNoticeService {
 	
-	
-	
 	public List<FpNoticeVo> selectList();
 	public FpNoticeVo selectOne(int noticeNo);
 	public int insert(FpNoticeVo vo);
 	public int update(FpNoticeVo vo);
 	public int delete(int noticeNo);
+//	public int 
 }

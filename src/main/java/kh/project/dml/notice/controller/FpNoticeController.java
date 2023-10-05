@@ -63,12 +63,6 @@ public class FpNoticeController {
 		}
 		return viewPage;
 	}
-	/*
-	 * @GetMapping("/multCount")
-	 * 
-	 * @ResponseBody public Integer updatememberexset(ModelAndView mv, FpBoardParam
-	 * param ) { return fpBoardServiceImpl.plusCount(param); }
-	 */
 	
 	@GetMapping("/update")
 	public ModelAndView updatenotice(ModelAndView mv, int noticeNo ) {
