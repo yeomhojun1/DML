@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,8 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 import kh.project.dml.member.model.dao.FpMemberDao;
 import kh.project.dml.member.model.dao.FpMemberRepository;
 import kh.project.dml.member.model.vo.FpMemberVo;
+import kh.project.dml.member.model.vo.MailUtils;
 import kh.project.dml.member.model.vo.PwdChangeForm;
 import kh.project.dml.member.model.vo.SocialCreateForm;
+import kh.project.dml.member.model.vo.TempKey;
 import kh.project.dml.member.model.vo.UserCreateForm;
 import kh.project.dml.users.model.vo.FpUsersVo;
 import kh.project.dml.users.model.vo.LoginVo;
@@ -27,6 +30,7 @@ public class FpMemberServiceImpl implements FpMemberService {
 	private final FpMemberDao dao;
 	private final FpMemberRepository fpMemberRepository;
 	private final PasswordEncoder passwordEncoder;
+	private final JavaMailSender mailSender;
 	
 	public List<FpMemberVo> selectList() {
 		return dao.selectList();
@@ -49,7 +53,7 @@ public class FpMemberServiceImpl implements FpMemberService {
     // 회원가입 시 users 테이블과 member 테이블에 정보 저장
     @Transactional
     @Override
-    public FpUsersVo create(UserCreateForm userMember) {
+    public FpUsersVo create(UserCreateForm userMember) throws Exception {
     	FpUsersVo user = new FpUsersVo();
         user.setUsername(userMember.getUsername());
         user.setPassword(passwordEncoder.encode(userMember.getPassword()));
@@ -65,7 +69,22 @@ public class FpMemberServiceImpl implements FpMemberService {
         member.setHeight(Double.parseDouble(userMember.getHeight()));
         member.setWeight(Double.parseDouble(userMember.getWeight()));
         this.fpMemberRepository.saveMember(member);
-        
+
+        String key = new TempKey().getKey(50,false);
+		dao.createAuthKey(member.getMemberId(), key);
+		MailUtils sendMail = new MailUtils(mailSender);
+		sendMail.setSubject("[Daily Muscle Life 이메일 인증메일 입니다.]"); //메일제목
+		sendMail.setText(
+				"<h1>메일인증</h1>" +
+						"<br/>"+member.getMemberId()+"님 "+
+						"<br/>Daily Muscle Life에 회원가입해주셔서 감사합니다."+
+						"<br/>아래 [이메일 인증 확인]을 눌러주세요."+
+						"<a href='http://localhost:8080/dml/member/signupEmail?memberId=" + member.getMemberId() +
+						"&key=" + key +
+						"' target='_blenk'>이메일 인증 확인</a>");
+		sendMail.setFrom("dmlfinalproject@gmail.com", "DML");
+		sendMail.setTo(member.getMemberId());
+		sendMail.send();
         return user;
     }
     
@@ -77,6 +96,7 @@ public class FpMemberServiceImpl implements FpMemberService {
         user.setPassword(passwordEncoder.encode(userMember.getPassword()));
         user.setUserEnabled(1);
         user.setAuthorities("ROLE_SOCIAL");
+        user.setMemberAuth(1);
         this.fpMemberRepository.saveUser(user);
         
         FpMemberVo member = new FpMemberVo();
@@ -90,7 +110,6 @@ public class FpMemberServiceImpl implements FpMemberService {
         member.setGoogleid(userMember.getGoogleid());
         member.setKakaoid(userMember.getKakaoid());
         this.fpMemberRepository.saveMember(member);
-        
         return user;
     }
     
@@ -162,6 +181,16 @@ public class FpMemberServiceImpl implements FpMemberService {
     	int result = 1;
 		dao.pwdChange(vo.getMemberId(), passwordEncoder.encode(password));
 		return result;
+    }
+    
+    @Override
+	public void memberAuth(String memberId, String key) throws Exception {
+		dao.memberAuth(memberId, key);
+	}
+    
+    @Override
+    public void memberAuthDelete(String memberId) throws Exception {
+    	dao.memberAuthDelete(memberId);
     }
 	
     @Override

@@ -10,6 +10,8 @@ public class FpUsersVo {
 	private int userEnabled;
 	private String authorities;
 	
+	private int memberAuth;
+	
 	private FpMemberVo member;
 	
 	public FpUsersVo() {}

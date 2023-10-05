@@ -32,6 +32,9 @@ public class FpMemberDao {
 	private static final String ID_SEARCH = NS + ".idSearch";
 	private static final String PWD_SEARCH = NS + ".pwdSearch";
 	private static final String PWD_CHANGE = NS + ".pwdChange";
+	private static final String CREATE_AUTH_KEY = NS + ".createAuthKey";
+	private static final String MEMBER_AUTH = NS + ".memberAuth";
+	private static final String MEMBER_AUTH_DELETE = NS + ".memberAuthDelete";
 	private static final String UPDATE = NS + ".update";
 	private static final String DELETE_MEMBER = NS + ".deleteMember";
 	private static final String DELETE_USER = NS + ".deleteUser";
@@ -75,6 +78,26 @@ public class FpMemberDao {
 		map.put("name", name);
 		map.put("birthday", birthday);
 		return session.selectOne(PWD_SEARCH, map);
+	}
+	
+	public void createAuthKey(String memberId, String authKey) throws Exception{
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("memberId", memberId);
+		map.put("authKey", authKey);
+		
+		session.selectOne(CREATE_AUTH_KEY, map);
+		
+	}
+	
+	public void memberAuth(String memberId, String key) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("memberId", memberId);
+		map.put("key", key);
+		session.update(MEMBER_AUTH, map);
+	}
+	
+	public void memberAuthDelete(String memberId) throws Exception {
+		session.update(MEMBER_AUTH, memberId);
 	}
 	
 	public void pwdChange(String username, String password) {

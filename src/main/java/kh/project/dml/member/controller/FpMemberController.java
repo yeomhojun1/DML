@@ -158,6 +158,11 @@ public class FpMemberController {
         FpUsersVo memberLogin = service.login(vo);
         if(memberLogin != null) {
         	if (!memberLogin.getAuthorities().equals("ROLE_SOCIAL")) {
+        		if(memberLogin.getMemberAuth() == 0) {
+        			model.addAttribute("Auth", memberLogin.getMemberAuth());
+        			return "/member/signupReady";
+        		}
+        		
            		model.addAttribute("member", service.memberInfo(memberLogin.getUsername()));
            		if(useCookie != null && useCookie.equals("on")) {
            			logger.info("remember me...");
@@ -263,8 +268,17 @@ public class FpMemberController {
             return "/member/signup";
         }
         
-        return "redirect:/index";
+        return "/member/signupReady";
     }
+	
+	@GetMapping("/member/signupEmail")
+	public String emailConfirm(String memberId, String key, Model model)throws Exception {
+		service.memberAuth(memberId, key);
+		model.addAttribute("memberId", memberId);
+		service.memberAuthDelete(memberId);
+		
+		return "/member/signupEmail";
+	}
 	
 	// 소셜 회원가입 페이지
 	@PostMapping("/member/agreement")

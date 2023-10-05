@@ -20,6 +20,8 @@ public class FpMemberVo {
 	private String sessionkey;
 	private String sessionlimit;
 	
+	private int memberAuth;
+	
 	private String authorities;
 	//평판 추가
 	private int reputation;

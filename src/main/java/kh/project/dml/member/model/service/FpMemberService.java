@@ -13,7 +13,9 @@ public interface FpMemberService {
 	
 	List<FpMemberVo> selectList();
 	FpUsersVo getCurrentUser();
-    FpUsersVo create(UserCreateForm userMember);
+    FpUsersVo create(UserCreateForm userMember) throws Exception;
+    void memberAuth(String memberId, String key) throws Exception;
+    void memberAuthDelete(String memberId) throws Exception;
     FpUsersVo socialCreate(SocialCreateForm userMember);
     String checkId(String memberId);
     FpUsersVo login(LoginVo vo) throws Exception;
