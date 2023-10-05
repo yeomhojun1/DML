@@ -216,7 +216,7 @@
     data: {
       labels: ['${member.weight}', 'Yellow', 'Green', 'Purple', 'Orange'],
       datasets: [{
-        label: '# of Votes',
+        label: '# 날짜별 몸무게',
         data: ['${member.weight}', 19, 3, 5, 2, 3],
         borderWidth: 1
       }]

@@ -631,8 +631,9 @@ desc MEMBER_WEIGHT;
 select * from MEMBER_WEIGHT where MEMBER_ID = 'ch@dml.com' and WEIGHT_DATE = '230908';
 
 -- member_weight 끝
-
 --insert 끝
+
+
 set define on;
 
 

@@ -58,17 +58,26 @@ public class FpMemberWeightController {
 
 	//근육량 체지방량 update
 	@PostMapping("/composition")
-	public String mainPageOpen15(@RequestParam String memberId, @RequestParam Date date, @RequestParam int muscleMass, @RequestParam int bodyFatPet, Model model) {
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-		String weightDate = format.format(date);
+	public String mainPageOpen15(
+//			@RequestParam String memberId, @RequestParam String weightDate, @RequestParam int muscleMass, @RequestParam int bodyFatPet
+			FpMemberWeightVo fpMemberWeightVo
+			, Model model) {
+//		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+//		String weightDate2 = format.format(weightDate);
 		
-		FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(memberId, weightDate, muscleMass, bodyFatPet);
+//		FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(memberId, weightDate2, muscleMass, bodyFatPet);
 		fpMemberWeightServiceImpl.insertUpdate(fpMemberWeightVo);
 		return "redirect:/memberweight/composition";
-	}
+
+}
+	
+	
+	
+	
+	
 		//근육량 체지방량 delete/	
-			@PostMapping("/delete")
-	 		public String mainPageOpen17( @RequestParam String weightDate, @RequestParam String memberId, Model model){
+		@PostMapping("/delete")
+ 		public String mainPageOpen17( @RequestParam String weightDate, @RequestParam String memberId, Model model){
 			/* FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(weight); */
 		 fpMemberWeightServiceImpl.delete( weightDate ,memberId );
 	 	 return "memberweight/composition";

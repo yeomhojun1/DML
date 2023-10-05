@@ -235,8 +235,45 @@ font-size:16px;
 								</div>
 							</div>
 						</div>
+						 <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="myAreaChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+						
+						
+						
+						
+						
+						
+						
 						<div style="height: 400px;">
-							<div class="recharts-responsive-container" width="874.390625"
+							<%-- <div class="recharts-responsive-container" width="874.390625"
 								height="400" style="width: 99%; height: 100%;">
 								<div class="recharts-wrapper"
 									style="position: relative; cursor: default; width: 874px; height: 400px;">
@@ -474,7 +511,7 @@ font-size:16px;
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> --%>
 					</div>
 				</div>
 				
@@ -484,7 +521,7 @@ font-size:16px;
 						<div class="ant-picker css-1s3dcof Composition_datepicker2__OmJH_">
 							<input type="hidden" name="memberId" value="${member.memberId }">
 							<div class="ant-picker-input">
-								<input type="text" id="datepicker" name="date"><span
+								<input type="text" id="datepicker" name="weightDate"><span
 									class="ant-picker-suffix"><span role="img"
 									aria-label="calendar" class="anticon anticon-calendar"
 									style="font-size: 18px; color: white;"><!-- <svg
@@ -503,7 +540,7 @@ font-size:16px;
 							</div>
 						</div>
 						<div style="justify-content: flex-end; display: flex;">
-							<button type="submit"
+									<button type="submit"
 								class="ant-btn css-1s3dcof ant-btn-round ant-btn-default ant-btn-lg Composition_btn_save3__bVW2y Global_button__iJeUH">
 								<span>저장하기</span>
 							</button>
@@ -600,6 +637,7 @@ font-size:16px;
 													.datepicker("getDate"));
 									exerciseDate = $("#datepicker").val();
 									exerciseDate=exerciseDate.replaceAll("-", "");
+									console.log(exerciseDate);
 									
 
 								}
@@ -631,6 +669,9 @@ font-size:16px;
 				}
 			})
 		}
+		
+	
+		
 		
 		
 		

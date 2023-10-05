@@ -48,7 +48,7 @@
 	<!-- 근육량/ 체지방량 입력 -->
 	<insert id="insert" parameterType="FpMemberWeightVo">
 		insert into member_weight (WEIGHT_DATE,MEMBER_ID, MUSCLE_MASS, BODY_FAT_PET) 
-		values ( #{weightDate}, #{memberId}, #{muscleMass}, #{bodyFatPet})
+		values ( replace(#{weightDate}, '-', ''), #{memberId}, #{muscleMass}, #{bodyFatPet})
 	</insert>	
 	
 	<update id="update" parameterType="FpMemberWeightVo">
