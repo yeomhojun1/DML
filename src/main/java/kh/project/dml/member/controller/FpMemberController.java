@@ -1,6 +1,7 @@
 package kh.project.dml.member.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -234,7 +235,7 @@ public class FpMemberController {
         }
 
         if(!userCreateForm.getPassword().equals(userCreateForm.getPassword2())) {
-            bindingResult.rejectValue("password2", "passwordInCorrect", "2개의 패스워드가 일치하지 않습니다.");
+            bindingResult.rejectValue("password2", "passwordInCorrect", "2개의 비밀번호가 일치하지 않습니다.");
             return "/member/signup";
         }
         try {
@@ -306,10 +307,55 @@ public class FpMemberController {
 		return "/member/idSearch";
 	}
 	
+	@PostMapping("/member/idSearch")
+	public String idSearchResult(@RequestParam String name, @RequestParam String birthday, Model model) {
+		List<FpMemberVo> vo = service.idSearch(name, birthday);
+		System.out.println(vo);
+		if(vo.isEmpty()) {
+			model.addAttribute("msg", "일치하는 정보를 확인할 수 없습니다. 다시 입력해주세요.");
+			model.addAttribute("prevUrlLink", "/member/idSearch");
+			return "/member/searchError";
+		} else {
+			model.addAttribute("memberlist", vo);
+			return "/member/idSearchResult";
+		}
+	}
+	
+	
 	// 비밀번호 찾기
 	@GetMapping("/member/pwdSearch")
 	public String pwdSearch() {
 		return "/member/pwdSearch";
+	}
+	
+	@PostMapping("/member/pwdSearch")
+	public String pwdSearchResult(@RequestParam String username, @RequestParam String name, @RequestParam String birthday, Model model, HttpSession session) {
+		FpMemberVo vo = service.pwdSearch(username, name, birthday);
+		System.out.println(vo);
+		if(vo == null) {
+			model.addAttribute("msg", "일치하는 정보를 확인할 수 없습니다. 다시 입력해주세요.");
+			model.addAttribute("prevUrlLink", "/member/pwdSearch");
+			return "/member/searchError";
+		} else {
+			session.setAttribute("pwdMember", vo);
+			return "/member/pwdSearchResult";
+		}
+	}
+	
+	// 비밀번호 찾기를 통한 재설정
+	@PostMapping("/member/pwdSearchResult")
+	public String pwdChangeResult(@RequestParam String password, @RequestParam String password2, Model model, HttpSession session) {
+		FpMemberVo vo = (FpMemberVo) session.getAttribute("pwdMember");
+		if(!password.equals(password2)) {
+			model.addAttribute("msg", "비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
+			model.addAttribute("prevUrlLink", "/member/pwdChangeResult");
+            return "/member/searchError";
+        } else {
+        	service.pwdChangeResult(vo, password);
+        	model.addAttribute("msg", "비밀번호 재설정이 완료되었습니다.");
+        	return "/member/pwdChangeSuccess";        	
+        }
+		
 	}
 	
 	
@@ -359,21 +405,21 @@ public class FpMemberController {
         }
 		
 		if(!pwdChangeForm.getPassword2().equals(pwdChangeForm.getPassword3())) {
-            bindingResult.rejectValue("password2", "passwordInCorrect", "변경할 2개의 패스워드가 일치하지 않습니다.");
-            model.addAttribute("msg", "변경할 2개의 패스워드가 일치하지 않습니다.");
+            bindingResult.rejectValue("password2", "passwordInCorrect", "변경할 2개의 비밀번호가 일치하지 않습니다.");
+            model.addAttribute("msg", "변경할 2개의 비밀번호가 일치하지 않습니다.");
 			return "/member/pwdChangePopup";
         }
 		
 		if(service.pwdChange(pwdChangeForm) == 1) {			
-			model.addAttribute("msg", "패스워드 변경이 완료되었습니다.");
+			model.addAttribute("msg", "비밀번호 변경이 완료되었습니다.");
 			return "/member/pwdChangePopup";
 		} else {
-			model.addAttribute("msg", "현재 패스워드가 일치하지 않습니다.");
+			model.addAttribute("msg", "현재 비밀번호가 일치하지 않습니다.");
 			return "/member/pwdChangePopup";
 		}
 	}
 		
-	// 회원탈퇴 전 패스워드 항목 입력
+	// 회원탈퇴 전 비밀번호 항목 입력
 	@GetMapping("/member/deleteCheck")
 	public String deleteCheck(HttpSession session) {
 		return "/member/deleteCheck";
@@ -429,7 +475,7 @@ public class FpMemberController {
 	    return "/member/mypage";
 	}
 	
-	// 회원탈퇴 시 아이디/패스워드가 맞지 않는 경우 에러 발생
+	// 회원탈퇴 시 아이디/비밀번호가 맞지 않는 경우 에러 발생
 	@GetMapping("/member/errorPopup")
 	public String errorPopup() {
 		return "redirect:/member/errorPopup";

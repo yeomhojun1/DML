@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>에러</title>
+<title>정보 없음</title>
 </head>
 <body>
 <script>
-	alert("비밀번호가 맞지 않습니다. 다시 입력해주세요.");
-	location.href="${pageContext.request.contextPath}/member/mypage";
+	alert("${msg}");
+	location.href="${pageContext.request.contextPath}/member/login";
 </script>
 </body>
 </html>

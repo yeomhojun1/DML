@@ -14,7 +14,21 @@
 		where member_id = #{memberId}
 	</select>
 	
-	<!-- 패스워드 변경 -->
+	<!-- 아이디 찾기 -->
+	<select id="idSearch" parameterType="map" resultType="FpMemberVo">
+		select m.*, authorities from member m
+		join users u on m.member_id = u.username
+		where mname=#{name} and mbirthday=#{birthday} and authorities='ROLE_MEMBER'
+	</select>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="pwdSearch" parameterType="map" resultType="FpMemberVo">
+		select m.*, authorities from member m
+		join users u on m.member_id = u.username
+		where member_id = #{username} and mname=#{name} and mbirthday=#{birthday}
+	</select>
+	
+	<!-- 비밀번호 변경 -->
 	<update id="pwdChange" parameterType="map">
 		update users set password=#{password}
 		where username = #{username}

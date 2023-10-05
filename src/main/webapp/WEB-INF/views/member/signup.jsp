@@ -173,7 +173,7 @@
 								</c:if>
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label">패스워드</label>
+                                <label class="form-control-label">비밀번호</label>
                                 <input type="password" name="password" class="form-control">
                                 <!-- 비밀번호 에러 메시지 -->
 								<c:if test="${errorMessages.contains('비밀번호는 필수항목입니다.')}">
@@ -183,7 +183,7 @@
 								</c:if>
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label">패스워드 확인</label>
+                                <label class="form-control-label">비밀번호 확인</label>
                                 <input type="password" name="password2" class="form-control">
                                 <!-- 비밀번호 확인 에러 메시지 -->
 								<c:if test="${errorMessages.contains('비밀번호 확인은 필수항목입니다.')}">

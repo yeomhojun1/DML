@@ -68,6 +68,8 @@
 			<exclude-mapping path="/member/signup" />
 			<exclude-mapping path="/member/*Search" />
 			<exclude-mapping path="/member/agreement" />
+			<exclude-mapping path="/member/searchError" />
+			<exclude-mapping path="/member/*SearchResult" />
 			<exclude-mapping path="/member/*Popup" />
 
 			<beans:ref bean="sessionCheckInterceptor" />

@@ -29,6 +29,8 @@ public class FpMemberDao {
 	private static final String SELECT_LIST = NS + ".selectList";
 	private static final String NORMAL_LOGIN = NS + ".normallogin";
 	private static final String INFO = NS + ".info";
+	private static final String ID_SEARCH = NS + ".idSearch";
+	private static final String PWD_SEARCH = NS + ".pwdSearch";
 	private static final String PWD_CHANGE = NS + ".pwdChange";
 	private static final String UPDATE = NS + ".update";
 	private static final String DELETE_MEMBER = NS + ".deleteMember";
@@ -57,6 +59,21 @@ public class FpMemberDao {
 	
 	public FpMemberVo memberInfo(String memberId) {
 		return session.selectOne(INFO, memberId);
+	}
+	
+	public List<FpMemberVo> idSearch(String name, String birthday) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("name", name);
+		map.put("birthday", birthday);
+		return session.selectList(ID_SEARCH, map);
+	}
+	
+	public FpMemberVo pwdSearch(String username, String name, String birthday) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("username", username);
+		map.put("name", name);
+		map.put("birthday", birthday);
+		return session.selectOne(PWD_SEARCH, map);
 	}
 	
 	public void pwdChange(String username, String password) {

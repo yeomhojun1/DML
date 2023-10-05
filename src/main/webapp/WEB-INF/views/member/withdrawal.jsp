@@ -41,7 +41,7 @@
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">회원탈퇴</h1>
 					<form action="${pageContext.request.contextPath }/member/withdrawal" method="post">
-						<div class="MyPage_basic_input_title">패스워드</div>
+						<div class="MyPage_basic_input_title">비밀번호</div>
 						<input type="password" id="password">
 					</form>
 				</div>

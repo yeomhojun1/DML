@@ -195,7 +195,7 @@ label {
                     <div class="col-lg-12 loginbttm">
 						<div class="col-lg-12 login-btm login-button">
 						    <button type="button" onclick="location.href='${pageContext.request.contextPath}/member/idSearch'" class="btn btn-outline-primary">아이디찾기</button>
-						    <button type="button" onclick="location.href='${pageContext.request.contextPath}/member/pwdSearch'" class="btn btn-outline-primary">패스워드찾기</button>
+						    <button type="button" onclick="location.href='${pageContext.request.contextPath}/member/pwdSearch'" class="btn btn-outline-primary">비밀번호찾기</button>
 						</div>
                     </div>
                     <div class="col-lg-12 loginbttm">

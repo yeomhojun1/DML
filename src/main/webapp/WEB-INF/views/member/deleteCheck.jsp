@@ -39,7 +39,7 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					<h3>회원탈퇴를 위해 패스워드를 다시 입력해주세요.</h3>
+					<h3>회원탈퇴를 위해 비밀번호를 다시 입력해주세요.</h3>
 					<h5>소셜 로그인 사용자는 회원탈퇴 버튼을 바로 눌러주세요.</h5>
 					<form action="${pageContext.request.contextPath }/member/withdrawal" method="post">
 						<input type="password" name="password">

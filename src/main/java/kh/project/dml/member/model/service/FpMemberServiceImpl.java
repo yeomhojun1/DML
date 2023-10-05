@@ -129,6 +129,16 @@ public class FpMemberServiceImpl implements FpMemberService {
 	}
     
     @Override
+    public List<FpMemberVo> idSearch(String name, String birthday) {
+    	return dao.idSearch(name, birthday);
+    }
+    
+    @Override
+	public FpMemberVo pwdSearch(String username, String name, String birthday) {
+    	return dao.pwdSearch(username, name, birthday);
+    }
+    
+    @Override
     @Transactional
     public int pwdChange(PwdChangeForm pwdChange) {
     	int result = 0;
@@ -144,7 +154,13 @@ public class FpMemberServiceImpl implements FpMemberService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("result :"+result);
+		return result;
+    }
+    
+    @Override
+    public int pwdChangeResult(FpMemberVo vo, String password) {
+    	int result = 1;
+		dao.pwdChange(vo.getMemberId(), passwordEncoder.encode(password));
 		return result;
     }
 	

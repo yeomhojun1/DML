@@ -117,7 +117,7 @@ public class FpAdminController {
         }
 		
 		if(!pwdChangeForm.getPassword2().equals(pwdChangeForm.getPassword3())) {
-            bindingResult.rejectValue("password3", "passwordInCorrect", "변경할 2개의 패스워드가 일치하지 않습니다.");
+            bindingResult.rejectValue("password3", "passwordInCorrect", "변경할 2개의 비밀번호가 일치하지 않습니다.");
             mv.setViewName("admin/pwdChange");
     		return mv;
         }

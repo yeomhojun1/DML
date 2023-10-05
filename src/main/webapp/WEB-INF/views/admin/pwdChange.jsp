@@ -34,7 +34,7 @@
 				<div class="container-fluid px-4">
 					<div class="Menu_container">
 						<ul class="Menu_list">
-							<li style="font-weight: bold;"><a>Admin 패스워드 변경</a></li>
+							<li style="font-weight: bold;"><a>Admin 비밀번호 변경</a></li>
 						</ul>
 					</div>
 					<jsp:include page="./frame/adminmenu.jsp"></jsp:include>
@@ -43,22 +43,22 @@
 						<div class="col-lg-8 login-form">
 							<div class="col-lg-8 login-form">
 								<div class="form-group">
-									<label class="form-control-label">현재 패스워드</label> <input
+									<label class="form-control-label">현재 비밀번호</label> <input
 										type="password" name="password" id="password"
 										class="form-control">
 								</div>
 								<div class="form-group">
-									<label class="form-control-label">변경할 패스워드</label> <input
+									<label class="form-control-label">변경할 비밀번호</label> <input
 										type="password" name="password2" id="password2"
 										class="form-control">
 								</div>
 								<div class="form-group">
-									<label class="form-control-label">변경할 패스워드 확인</label> <input
+									<label class="form-control-label">변경할 비밀번호 확인</label> <input
 										type="password" name="password3" id="password3"
 										class="form-control">
 								</div>
 								<div class="col-lg-6 login-btm login-button">
-									<button type="submit" class="btn btn-outline-primary">패스워드 변경</button>
+									<button type="submit" class="btn btn-outline-primary">비밀번호 변경</button>
 								</div>
 							</div>
 						</div>
