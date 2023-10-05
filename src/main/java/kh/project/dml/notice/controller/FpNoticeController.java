@@ -39,19 +39,10 @@ public class FpNoticeController {
 	}
 	@GetMapping("/insert")
 	public String form(HttpSession session) {
-		Object memberObj = session.getAttribute(SessionNames.LOGIN);
-    	if (memberObj instanceof FpUsersVo) {
-    		FpUsersVo userMember = (FpUsersVo) memberObj;
-    		if(userMember.getAuthorities().equals("ROLE_ADMIN")) {
-    			return "/notice/insert";
-    		}
-    		
-    	} else if (memberObj instanceof FpMemberVo) {
-    		FpMemberVo member = (FpMemberVo) memberObj;
-    		if(member.getAuthorities().equals("ROLE_ADMIN")) {
-    			return "/notice/insert";
-    		}
-    	}
+		FpMemberVo member = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
+		if(member.getAuthorities().equals("ROLE_ADMIN")) {
+			return "/notice/insert";
+		}
 		return "redirect:/notice/list";
 	}
 	

@@ -35,8 +35,14 @@
 	<!-- 회원가입 메일 인증 -->
 	<update id="memberAuth" parameterType="map">
 		<![CDATA[
+		update member set MEMBER_AUTH = 1 
+		where member_id=#{memberId} and ((select count(*) from MEMBER_AUTH where MEMBER_ID = #{memberId} and AUTHKEY = #{key}) > 0)
+		]]>
+	</update>
+	<update id="usersAuth" parameterType="map">
+		<![CDATA[
 		update USERS set MEMBER_AUTH = 1 
-		where username=#{memberId} and ((select count(*) from MEMBER_AUTH where MEMBER_ID = #{memberId} and AUTHKEY = #{key}) > 0)
+		where username=#{username} and ((select count(*) from MEMBER_AUTH where MEMBER_ID = #{memberId} and AUTHKEY = #{key}) > 0)
 		]]>
 	</update>
 	

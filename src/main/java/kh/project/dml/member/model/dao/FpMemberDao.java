@@ -82,6 +82,7 @@ public class FpMemberDao {
 		return session.selectOne(PWD_SEARCH, map);
 	}
 	
+	// 회원가입 시 인증 정보 생성
 	public void createAuthKey(String memberId, String authKey) throws Exception{
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("memberId", memberId);
@@ -91,17 +92,26 @@ public class FpMemberDao {
 		
 	}
 	
+	// 회원가입 인증 메일 클릭 시
 	public void memberAuth(String memberId, String key) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("memberId", memberId);
 		map.put("key", key);
 		session.update(MEMBER_AUTH, map);
 	}
+	public void usersAuth(String username, String key) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("username", username);
+		map.put("key", key);
+		session.update(MEMBER_AUTH, map);
+	}
 	
+	// 회원가입 인증 후 인증 필요 정보 삭제
 	public void memberAuthDelete(String memberId) throws Exception {
 		session.update(MEMBER_AUTH, memberId);
 	}
 	
+	// 패스워드 재설정 페이지 접근 시
 	public String pwdAuth(String memberId, String key) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("memberId", memberId);
@@ -109,6 +119,7 @@ public class FpMemberDao {
 		return session.selectOne(PWD_AUTH, map);
 	}
 	
+	// 패스워드 재설정 후 인증 정보 삭제
 	public void pwdAuthDelete(String memberId) throws Exception {
 		session.update(PWD_AUTH, memberId);
 	}

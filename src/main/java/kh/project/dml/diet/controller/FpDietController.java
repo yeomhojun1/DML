@@ -28,6 +28,7 @@ import kh.project.dml.diet.model.vo.FpDietVo;
 import kh.project.dml.diet.model.vo.TotalFoodListDTO;
 import kh.project.dml.food.model.service.FpFoodService;
 import kh.project.dml.food.model.service.FpFoodServiceImpl;
+import kh.project.dml.member.model.vo.FpMemberVo;
 import kh.project.dml.users.model.vo.FpUsersVo;
 
 @Controller
@@ -44,27 +45,18 @@ public class FpDietController {
 	@PostMapping("/list")
 	public Map<String, Object> selectListDiet(@RequestBody FpDietVo vo, HttpSession session) 
 	{
-		
-		
-       Object memberObj = session.getAttribute(SessionNames.LOGIN);
-		
+		FpMemberVo member = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
 		FpDietVo dietVo = new FpDietVo();
-				
-		if (memberObj instanceof FpUsersVo) { // 일반 계정인 경우
-    		FpUsersVo userMember = (FpUsersVo) memberObj;
-    		
-    		System.out.println("===========================================================");
-    		System.out.println("userMember : " + userMember);
-    		System.out.println("===========================================================");
-    	
-    		dietVo.setMemberId(userMember.getUsername());
-
-		}
-		
-		else if(memberObj == null) {
+		if (member == null) { // 일반 계정인 경우
 			dietVo.setMemberId("");
+
+		} else {
+			System.out.println("===========================================================");
+			System.out.println("userMember : " + userMember);
+			System.out.println("===========================================================");
+			
+			dietVo.setMemberId(member.getMemberId());
 		}
-		
 		
 		if(!"ALL".equals(vo.getFoodTime()))
 		{
@@ -124,23 +116,17 @@ public class FpDietController {
 	@GetMapping("/list")
 	public ModelAndView selectListdiet(ModelAndView mv,HttpSession session) {
 		
-		Object memberObj = session.getAttribute(SessionNames.LOGIN);
+		FpMemberVo member = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
 		
 		FpDietVo dietVo = new FpDietVo();
 				
-		if (memberObj instanceof FpUsersVo) { // 일반 계정인 경우
-    		FpUsersVo userMember = (FpUsersVo) memberObj;
-    		
-    		System.out.println("===========================================================");
-    		System.out.println(userMember);
-    		System.out.println("===========================================================");
-    
-    		dietVo.setMemberId(userMember.getUsername());
-    	
-		}
-		
-		else if(memberObj == null) {
+		if (member == null) {
 			dietVo.setMemberId("");
+		} else {
+			System.out.println("===========================================================");
+			System.out.println(member);
+			System.out.println("===========================================================");
+			dietVo.setMemberId(member.getMemberId());
 		}
 		
 		LocalDate now = LocalDate.now();
@@ -212,12 +198,7 @@ public class FpDietController {
 			totalDto.setTotalProtein("");
 		}
 		
-	
-		
 		mv.addObject("totalDietList", totalDto);
-		
-		
-
 		 
 		mv.setViewName("diet/list");
 		
@@ -253,30 +234,17 @@ public class FpDietController {
 	@PostMapping("/insert")
 	@ResponseBody
 	public String insertDofood(@RequestBody FpDietVo voParam, HttpSession session) {
-		
 		System.out.println(" INSERT 컨틀로러 호출 ===========================================================");
 		System.out.println(voParam);
 		System.out.println("INSERT 컨틀로러 호출 ===========================================================");
 		
-		Object memberObj = session.getAttribute(SessionNames.LOGIN);
-				
-		if (memberObj instanceof FpUsersVo) { // 일반 계정인 경우
-    		FpUsersVo userMember = (FpUsersVo) memberObj;
-    		
-    		System.out.println("INSERT 컨틀로러 호출 ===========================================================");
-    		System.out.println(userMember);
-    		System.out.println("INSERT 컨틀로러 호출 ===========================================================");
-    
-    		voParam.setMemberId(userMember.getUsername());
-    	
-		}
-		
-		
-		
+		FpMemberVo member = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
+		System.out.println("INSERT 컨틀로러 호출 ===========================================================");
+		System.out.println(member);
+		System.out.println("INSERT 컨틀로러 호출 ===========================================================");
+		voParam.setMemberId(member.getMemberId());
 		fpFoodServiceImpl.insert(voParam);
-		
 		return "success";
-	
 	}
 	
 	

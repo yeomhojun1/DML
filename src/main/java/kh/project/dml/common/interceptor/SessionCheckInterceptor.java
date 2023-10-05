@@ -33,15 +33,9 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
         String url = (String)request.getRequestURI();
         url = url.replaceAll("/dml", "");
         url = url.replaceAll("/member/logout", "/index");
-        Object memberObj = session.getAttribute(SessionNames.LOGIN);
-    	if (memberObj instanceof FpUsersVo) {
-    		FpUsersVo userMember = (FpUsersVo) memberObj;
-    		session.setAttribute("member", service.memberInfo(userMember.getUsername()));
-    		
-    	} else if (memberObj instanceof FpMemberVo) {
-    		FpMemberVo member = (FpMemberVo) memberObj;
-    		session.setAttribute("member", service.memberInfo(member.getMemberId()));
-    	}
+        FpMemberVo member = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
+        session.setAttribute("member", service.memberInfo(member.getMemberId()));
+    	
         if (session.getAttribute("member") == null) {
             // 세션 정보가 유효하지 않은 경우 처리
             Cookie loginCookie = WebUtils.getCookie(request, SessionNames.LOGIN_COOKIE);
@@ -58,7 +52,7 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
             return false; // 컨트롤러 메소드 실행 중지
         } else {
             // 세션 정보가 유효한 경우
-            session.setAttribute(SessionNames.LOGIN, memberObj);
+            session.setAttribute(SessionNames.LOGIN, member);
             return true; // 컨트롤러 메소드 실행 계속
         }
     }

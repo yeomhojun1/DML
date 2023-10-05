@@ -118,8 +118,9 @@ public class FpMemberServiceImpl implements FpMemberService {
     	return dao.checkId(memberId);
     }
     
+    @Transactional
     @Override
-	public FpUsersVo login(LoginVo vo) throws Exception {
+	public FpMemberVo login(LoginVo vo) throws Exception {
 		// 1. 사용자의 username을 사용하여 DB에서 사용자 정보를 가져옵니다.
 	    FpUsersVo user = dao.normallogin(vo.getUsername());
 	    
@@ -135,7 +136,8 @@ public class FpMemberServiceImpl implements FpMemberService {
 	    // 2. 사용자의 암호화된 비밀번호와 사용자가 입력한 평문 비밀번호를 암호화한 것을 비교합니다.
 	    if(passwordEncoder.matches(vo.getPassword(), user.getPassword())) {
 	        // 비밀번호가 일치하면, 사용자 정보 반환
-	        return user;
+	    	FpMemberVo member = dao.memberInfo(vo.getUsername());
+	        return member;
 	    }
 
 	    // 비밀번호가 일치하지 않으면 null 반환
@@ -161,11 +163,11 @@ public class FpMemberServiceImpl implements FpMemberService {
     		MailUtils sendMail = new MailUtils(mailSender);
     		sendMail.setSubject("[Daily Muscle Life 패스워드 재설정]"); //메일제목
     		sendMail.setText(
-    				"<h1>메일인증</h1>" +
+    				"<h1>패스워드 재설정</h1>" +
     						"<br/>"+vo.getMname()+"님 "+
     						"<br/>패스워드 재설정 요청으로 메일을 전달드립니다."+
     						"<br/>아래 [패스워드 재설정]을 눌러주세요."+
-    						"<a href='http://localhost:8080/dml/member/pwdSearcgResult?memberId=" + vo.getMemberId() +
+    						"<a href='http://localhost:8080/dml/member/pwdSearchResult?memberId=" + vo.getMemberId() +
     						"&key=" + key +
     				"' target='_blenk'>패스워드 재설정</a>");
     		sendMail.setFrom("dmlfinalproject@gmail.com", "DML");
@@ -196,16 +198,20 @@ public class FpMemberServiceImpl implements FpMemberService {
 		return result;
     }
     
+    @Transactional
     @Override
-    public int pwdChangeResult(String username, String password) {
+    public int pwdChangeResult(String username, String password) throws Exception {
     	int result = 1;
 		dao.pwdChange(username, passwordEncoder.encode(password));
+		dao.pwdAuthDelete(username);
 		return result;
     }
     
+    @Transactional
     @Override
 	public void memberAuth(String memberId, String key) throws Exception {
 		dao.memberAuth(memberId, key);
+		dao.usersAuth(memberId, key);
 	}
     
     @Override
@@ -216,11 +222,6 @@ public class FpMemberServiceImpl implements FpMemberService {
     @Override
     public String pwdAuth(String memberId, String key) throws Exception {
     	return dao.pwdAuth(memberId, key);
-    }
-    
-    @Override
-    public void pwdAuthDelete(String memberId) throws Exception {
-    	dao.pwdAuthDelete(memberId);
     }
 	
     @Override

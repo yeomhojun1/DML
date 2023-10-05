@@ -17,15 +17,14 @@ public interface FpMemberService {
     void memberAuth(String memberId, String key) throws Exception;
     void memberAuthDelete(String memberId) throws Exception;
     String pwdAuth(String memberId, String key) throws Exception;
-    void pwdAuthDelete(String memberId) throws Exception;
     FpUsersVo socialCreate(SocialCreateForm userMember);
     String checkId(String memberId);
-    FpUsersVo login(LoginVo vo) throws Exception;
+    FpMemberVo login(LoginVo vo) throws Exception;
 	FpMemberVo memberInfo(String memberId);
 	List<FpMemberVo> idSearch(String name, String birthday);
 	FpMemberVo pwdSearch(String username, String name, String birthday) throws Exception;
 	int pwdChange(PwdChangeForm pwdChange);
-	int pwdChangeResult(String username, String password);
+	int pwdChangeResult(String username, String password) throws Exception;
 	void update(FpMemberVo vo);
 	void delete(String username);
 	void keepLogin(String memberId, String sessionId, Date expire);

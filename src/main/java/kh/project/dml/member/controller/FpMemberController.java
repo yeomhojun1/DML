@@ -155,7 +155,7 @@ public class FpMemberController {
 	@PostMapping("/member/login")
 	public String loginPost(LoginVo vo, @RequestParam(value = "useCookie", required = false) String useCookie, Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 	    logger.info("loginPost...LoginVo={}", vo);
-        FpUsersVo memberLogin = service.login(vo);
+        FpMemberVo memberLogin = service.login(vo);
         if(memberLogin != null) {
         	if (!memberLogin.getAuthorities().equals("ROLE_SOCIAL")) {
         		if(memberLogin.getMemberAuth() == 0) {
@@ -163,11 +163,11 @@ public class FpMemberController {
         			return "/member/signupReady";
         		}
         		
-           		model.addAttribute("member", service.memberInfo(memberLogin.getUsername()));
+           		model.addAttribute("member", service.memberInfo(memberLogin.getMemberId()));
            		if(useCookie != null && useCookie.equals("on")) {
            			logger.info("remember me...");
            			Date expire = new Date(System.currentTimeMillis() + SessionNames.EXPIRE * 1000);
-          			service.keepLogin(memberLogin.getUsername(), session.getId(), expire);
+          			service.keepLogin(memberLogin.getMemberId(), session.getId(), expire);
            			session.setAttribute(SessionNames.LOGIN, memberLogin); // 세션 설정
             			
            			// 쿠키에 세션 ID 저장
@@ -200,17 +200,9 @@ public class FpMemberController {
 	// 로그아웃 버튼 클릭
 	@GetMapping("/member/logout")
 	public String logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-	    
-		Object memberObj = session.getAttribute(SessionNames.LOGIN);
-	    
-	    if (memberObj instanceof FpUsersVo) {
-	        FpUsersVo userMember = (FpUsersVo) memberObj;
-	        service.keepLogin(userMember.getUsername(), "", new Date()); // 로그아웃 상태를 DB에 기록
-	    } else if (memberObj instanceof FpMemberVo) {
-	    	FpMemberVo member = (FpMemberVo) memberObj;
-	    	service.keepLogin(member.getMemberId(), "", new Date()); // SNS 로그아웃 상태를 DB에 기록
-	    }
-	    
+
+		FpMemberVo member = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
+		service.keepLogin(member.getMemberId(), "", new Date()); // 로그아웃 상태를 DB에 기록
 	    session.removeAttribute(SessionNames.LOGIN);
 	    
 	    // 쿠키를 찾아서 삭제
@@ -248,7 +240,7 @@ public class FpMemberController {
         	service.create(userCreateForm);
         	System.out.println("LoginVo:"+vo);
         	// 회원가입 후 자동 로그인 처리
-            FpUsersVo member = service.login(vo);
+            FpMemberVo member = service.login(vo);
             if (member != null) {
                 session.setAttribute(SessionNames.LOGIN, member); // 세션 설정
             }
@@ -380,30 +372,19 @@ public class FpMemberController {
             return "/member/searchError";
         } else {
         	service.pwdChangeResult(username, password);
-			service.pwdAuthDelete(username);
         	model.addAttribute("msg", "비밀번호 재설정이 완료되었습니다.");
         	return "/member/pwdChangeSuccess";        	
         }
 		
 	}
 	
-	
 	// 마이페이지
 	@GetMapping("/member/mypage")
 	public String mypage(HttpSession session) {
-		Object memberObj = session.getAttribute(SessionNames.LOGIN);
-    	if (memberObj instanceof FpUsersVo) {
-    		FpUsersVo userMember = (FpUsersVo) memberObj;
-    		if(userMember.getAuthorities().equals("ROLE_ADMIN")) {
-    			return "redirect:/admin/mypage";
-    		}
-    		
-    	} else if (memberObj instanceof FpMemberVo) {
-    		FpMemberVo member = (FpMemberVo) memberObj;
-    		if(member.getAuthorities().equals("ROLE_ADMIN")) {
-    			return "redirect:/admin/mypage";
-    		}
-    	}
+		FpMemberVo member = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
+		if(member.getAuthorities().equals("ROLE_ADMIN")) {
+			return "redirect:/admin/mypage";
+		}
 		return "/member/mypage";
 	}
 	
@@ -456,48 +437,29 @@ public class FpMemberController {
 	// /member/deleteCheck 페이지에서 회원탈퇴 버튼 클릭
 	@PostMapping("/member/withdrawal")
 	public String deleteCheck(@RequestParam String password, Model model, HttpSession session, LoginVo vo, HttpServletRequest request, HttpServletResponse response) {
-		Object memberObj = session.getAttribute(SessionNames.LOGIN);
+		FpMemberVo member = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
 	    try {
-	    	if (memberObj instanceof FpUsersVo) { // 일반 계정인 경우
-	    		FpUsersVo userMember = (FpUsersVo) memberObj;
-	    		vo.setUsername(userMember.getUsername());
-	    		vo.setPassword(password);
-	    		FpUsersVo user = service.login(vo);
-	    		if(user == null) {
-	    			return "/member/errorPopup";
-	    		} else {
-    		        service.keepLogin(user.getUsername(), "", new Date());
-		        	session.removeAttribute(SessionNames.LOGIN);
-	    		    
-	    		    // 쿠키를 찾아서 삭제
-	    		    Cookie loginCookie = WebUtils.getCookie(request, SessionNames.LOGIN_COOKIE);
-	    		    if (loginCookie != null) {
-	    		        loginCookie.setPath("/");    
-	    		        loginCookie.setMaxAge(0);
-	    		        response.addCookie(loginCookie);
-	    		    }
-	    		    
-	    		    session.invalidate();
-	    			service.delete(user.getUsername());
-	    			return "/member/deletePopup";
-	    		}
-	    	} else if (memberObj instanceof FpMemberVo) { // 소셜 계정인 경우
-	    		FpMemberVo member = (FpMemberVo) memberObj;
-	    		service.keepLogin(member.getMemberId(), "", new Date());
-	    		session.removeAttribute(SessionNames.LOGIN);
-    		    
-    		    // 쿠키를 찾아서 삭제
-    		    Cookie loginCookie = WebUtils.getCookie(request, SessionNames.LOGIN_COOKIE);
-    		    if (loginCookie != null) {
-    		        loginCookie.setPath("/");    
-    		        loginCookie.setMaxAge(0);
-    		        response.addCookie(loginCookie);
-    		    }
-    		    
-    		    session.invalidate();
-	    		service.delete(member.getMemberId());
-	    		return "/member/deletePopup";
-	    	}
+			vo.setUsername(member.getMemberId());
+			vo.setPassword(password);
+			FpMemberVo withMember = service.login(vo);
+			if(withMember == null) {
+				return "/member/errorPopup";
+			} else {
+		        service.keepLogin(withMember.getMemberId(), "", new Date());
+	        	session.removeAttribute(SessionNames.LOGIN);
+			    
+			    // 쿠키를 찾아서 삭제
+			    Cookie loginCookie = WebUtils.getCookie(request, SessionNames.LOGIN_COOKIE);
+			    if (loginCookie != null) {
+			        loginCookie.setPath("/");    
+			        loginCookie.setMaxAge(0);
+			        response.addCookie(loginCookie);
+			    }
+			    
+			    session.invalidate();
+				service.delete(withMember.getMemberId());
+				return "/member/deletePopup";
+			}
 	    } catch(Exception e) {
 	    	e.printStackTrace();
 	    }
