@@ -11,7 +11,6 @@ import lombok.Data;
 public class FpNoticeVo {
 
 	private int noticeNo;
-	private String Category;
 	private String adminId;
 	private String noticeTitle;
 	private String noticeContent;
