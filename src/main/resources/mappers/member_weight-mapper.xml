@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="memberweight">
 	<select id="selectList" resultType="FpMemberWeightVo">
-		select * from member_weight
+		select * from member_weight where member_id = #{memberId}
 	</select>
 <!-- 		private String userId;
 	private Date date;
@@ -24,7 +24,7 @@
 	
 	<select id="checkDate" resultType="FpMemberWeightVo" parameterType="FpMemberWeightVo">
 		SELECT member_id, weight_date FROM MEMBER_WEIGHT
-		WHERE member_id=#{memberId} and weight_date=#{weightDate}
+		WHERE member_id=#{memberId} and weight_date=replace(#{weightDate}, '-', '')
 	</select>
 	
 	<!--체중입력  -->
@@ -54,7 +54,7 @@
 	<update id="update" parameterType="FpMemberWeightVo">
 		UPDATE MEMBER_WEIGHT
 	    SET MUSCLE_MASS=#{muscleMass}, BODY_FAT_PET=#{bodyFatPet}
-		WHERE member_id=#{memberId} and weight_date=#{weightDate}
+		WHERE member_id=#{memberId} and weight_date=replace(#{weightDate}, '-', '')
 	</update>
 	
 	<!--근육량 / 체지방량 삭제 -->

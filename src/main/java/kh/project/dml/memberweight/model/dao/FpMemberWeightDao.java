@@ -16,8 +16,8 @@ public class FpMemberWeightDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<FpMemberWeightVo> selectList() {
-		return sqlSession.selectList("memberweight.selectList");
+	public List<FpMemberWeightVo> selectList(String memberId) {
+		return sqlSession.selectList("memberweight.selectList", memberId);
 	}
 	public FpMemberWeightVo selectOne(String userId) {
 		return sqlSession.selectOne("memberweight.selectOne", userId);
