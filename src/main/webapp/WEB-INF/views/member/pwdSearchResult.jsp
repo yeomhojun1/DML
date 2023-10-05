@@ -156,6 +156,7 @@
                     <div class="col-lg-12 login-form">
                         <form action="${pageContext.request.contextPath }/member/pwdSearchResult" method="post">
                             <jsp:include page="form_errors.jsp"/>
+                            <input type="hidden" name="username" value="${pwdAuth }">
 							<div class="form-group">
 								<label class="form-control-label">변경할 비밀번호</label>
 								<input type="password" name="password" id="password" class="form-control">

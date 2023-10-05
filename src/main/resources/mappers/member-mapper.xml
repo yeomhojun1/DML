@@ -40,8 +40,19 @@
 		]]>
 	</update>
 	
-	<!-- 회원가입 메일 인증 -->
+	<!-- 회원가입 메일 인증 키 삭제 -->
 	<delete id="memberAuthDelete" parameterType="string">
+		delete from member_auth
+		where member_id = #{memberId}
+	</delete>
+	
+	<!-- 패스워드 재설정 메일 인증 -->
+	<select id="pwdAuth" parameterType="map" resultType="string">
+		select member_id from MEMBER_AUTH where MEMBER_ID = #{memberId} and AUTHKEY = #{key}
+	</select>
+	
+	<!-- 패스워드 재설정 메일 인증 키 삭제-->
+	<delete id="pwdAuthDelete" parameterType="string">
 		delete from member_auth
 		where member_id = #{memberId}
 	</delete>

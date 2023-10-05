@@ -35,6 +35,8 @@ public class FpMemberDao {
 	private static final String CREATE_AUTH_KEY = NS + ".createAuthKey";
 	private static final String MEMBER_AUTH = NS + ".memberAuth";
 	private static final String MEMBER_AUTH_DELETE = NS + ".memberAuthDelete";
+	private static final String PWD_AUTH = NS + ".pwdAuth";
+	private static final String PWD_AUTH_DELETE = NS + ".pwdAuthDelete";
 	private static final String UPDATE = NS + ".update";
 	private static final String DELETE_MEMBER = NS + ".deleteMember";
 	private static final String DELETE_USER = NS + ".deleteUser";
@@ -98,6 +100,17 @@ public class FpMemberDao {
 	
 	public void memberAuthDelete(String memberId) throws Exception {
 		session.update(MEMBER_AUTH, memberId);
+	}
+	
+	public String pwdAuth(String memberId, String key) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("memberId", memberId);
+		map.put("key", key);
+		return session.selectOne(PWD_AUTH, map);
+	}
+	
+	public void pwdAuthDelete(String memberId) throws Exception {
+		session.update(PWD_AUTH, memberId);
 	}
 	
 	public void pwdChange(String username, String password) {

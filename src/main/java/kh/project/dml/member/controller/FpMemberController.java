@@ -271,6 +271,7 @@ public class FpMemberController {
         return "/member/signupReady";
     }
 	
+	// 메일 인증
 	@GetMapping("/member/signupEmail")
 	public String emailConfirm(String memberId, String key, Model model)throws Exception {
 		service.memberAuth(memberId, key);
@@ -336,7 +337,6 @@ public class FpMemberController {
 		}
 	}
 	
-	
 	// 비밀번호 찾기
 	@GetMapping("/member/pwdSearch")
 	public String pwdSearch() {
@@ -344,7 +344,7 @@ public class FpMemberController {
 	}
 	
 	@PostMapping("/member/pwdSearch")
-	public String pwdSearchResult(@RequestParam String username, @RequestParam String name, @RequestParam String birthday, Model model, HttpSession session) {
+	public String pwdSearchResult(@RequestParam String username, @RequestParam String name, @RequestParam String birthday, Model model, HttpSession session) throws Exception {
 		FpMemberVo vo = service.pwdSearch(username, name, birthday);
 		System.out.println(vo);
 		if(vo == null) {
@@ -353,20 +353,34 @@ public class FpMemberController {
 			return "/member/searchError";
 		} else {
 			session.setAttribute("pwdMember", vo);
+			return "/member/pwdMail";
+		}
+	}
+	
+	// 패스워드 재설정 메일
+	@GetMapping("/member/pwdSearchResult")
+	public String pwdChangeMail(String memberId, String key, Model model) throws Exception {
+		String pwdAuth = service.pwdAuth(memberId, key);
+		if(pwdAuth.equals(memberId)) {			
+			model.addAttribute("pwdAuth", pwdAuth);
 			return "/member/pwdSearchResult";
+		} else {
+			model.addAttribute("msg", "잘못된 경로로 접근하였습니다.");
+			model.addAttribute("prevUrlLink", "/index");
+			return "/member/searchError";
 		}
 	}
 	
 	// 비밀번호 찾기를 통한 재설정
 	@PostMapping("/member/pwdSearchResult")
-	public String pwdChangeResult(@RequestParam String password, @RequestParam String password2, Model model, HttpSession session) {
-		FpMemberVo vo = (FpMemberVo) session.getAttribute("pwdMember");
+	public String pwdChangeResult(@RequestParam String username, @RequestParam String password, @RequestParam String password2, Model model, HttpSession session) throws Exception {
 		if(!password.equals(password2)) {
 			model.addAttribute("msg", "비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
 			model.addAttribute("prevUrlLink", "/member/pwdChangeResult");
             return "/member/searchError";
         } else {
-        	service.pwdChangeResult(vo, password);
+        	service.pwdChangeResult(username, password);
+			service.pwdAuthDelete(username);
         	model.addAttribute("msg", "비밀번호 재설정이 완료되었습니다.");
         	return "/member/pwdChangeSuccess";        	
         }
