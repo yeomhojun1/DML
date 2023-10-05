@@ -20,11 +20,15 @@ public class FpMemberVo {
 	private String sessionkey;
 	private String sessionlimit;
 	
+	// 인증 정보
 	private int memberAuth;
 	
+	// 계정 권한
 	private String authorities;
+	
 	//평판 추가
 	private int reputation;
+	
 	public FpMemberVo() {}
 	
 	@Builder

@@ -11,7 +11,6 @@ import kh.project.dml.users.model.vo.LoginVo;
 
 public interface FpMemberService {
 	
-	List<FpMemberVo> selectList();
 	FpUsersVo getCurrentUser();
     FpUsersVo create(UserCreateForm userMember) throws Exception;
     void memberAuth(String memberId, String key) throws Exception;

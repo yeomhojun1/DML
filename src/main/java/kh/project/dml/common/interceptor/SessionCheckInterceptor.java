@@ -17,6 +17,7 @@ import kh.project.dml.member.model.service.FpMemberServiceImpl;
 import kh.project.dml.member.model.vo.FpMemberVo;
 import kh.project.dml.users.model.vo.FpUsersVo;
 
+// 로그인이 필요한 페이지 접근 시 동작
 @Component
 public class SessionCheckInterceptor implements HandlerInterceptor {
 	

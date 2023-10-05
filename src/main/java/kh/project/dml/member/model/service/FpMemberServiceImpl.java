@@ -31,11 +31,8 @@ public class FpMemberServiceImpl implements FpMemberService {
 	private final FpMemberRepository fpMemberRepository;
 	private final PasswordEncoder passwordEncoder;
 	private final JavaMailSender mailSender;
-	
-	public List<FpMemberVo> selectList() {
-		return dao.selectList();
-	}
-	
+
+	// SecurityConfig에서 로그인 유무 확인(미사용)
 	@Override
 	public FpUsersVo getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -50,7 +47,7 @@ public class FpMemberServiceImpl implements FpMemberService {
         return userOptional.orElse(null);
     }
     
-    // 회원가입 시 users 테이블과 member 테이블에 정보 저장
+    // 일반 계정 회원가입
     @Transactional
     @Override
     public FpUsersVo create(UserCreateForm userMember) throws Exception {
@@ -88,6 +85,7 @@ public class FpMemberServiceImpl implements FpMemberService {
         return user;
     }
     
+    // 소셜 계정 회원가입
     @Transactional
     @Override
     public FpUsersVo socialCreate(SocialCreateForm userMember) {
@@ -113,11 +111,13 @@ public class FpMemberServiceImpl implements FpMemberService {
         return user;
     }
     
+    // 중복 아이디 체크(미사용)
     @Override
     public String checkId(String memberId) {
     	return dao.checkId(memberId);
     }
     
+    // 로그인 기능
     @Transactional
     @Override
 	public FpMemberVo login(LoginVo vo) throws Exception {
@@ -144,16 +144,19 @@ public class FpMemberServiceImpl implements FpMemberService {
 	    return null;
 	}
 	
+    // 계정 정보 출력
     @Override
 	public FpMemberVo memberInfo(String memberId) {
 		return dao.memberInfo(memberId);
 	}
     
+    // 아이디 찾기
     @Override
     public List<FpMemberVo> idSearch(String name, String birthday) {
     	return dao.idSearch(name, birthday);
     }
     
+    // 비밀번호 찾기
     @Override
 	public FpMemberVo pwdSearch(String username, String name, String birthday) throws Exception {
     	FpMemberVo vo = dao.pwdSearch(username, name, birthday);
@@ -179,6 +182,7 @@ public class FpMemberServiceImpl implements FpMemberService {
     	}
     }
     
+    // 비밀번호 변경
     @Override
     @Transactional
     public int pwdChange(PwdChangeForm pwdChange) {
@@ -198,6 +202,7 @@ public class FpMemberServiceImpl implements FpMemberService {
 		return result;
     }
     
+    // 비밀번호 찾기를 통한 비밀번호 재설정
     @Transactional
     @Override
     public int pwdChangeResult(String username, String password) throws Exception {
@@ -207,6 +212,7 @@ public class FpMemberServiceImpl implements FpMemberService {
 		return result;
     }
     
+    // 회원가입 후 메일 인증
     @Transactional
     @Override
 	public void memberAuth(String memberId, String key) throws Exception {
@@ -214,21 +220,25 @@ public class FpMemberServiceImpl implements FpMemberService {
 		dao.usersAuth(memberId, key);
 	}
     
+    // 회원가입 인증 완료 후 정보 삭제
     @Override
     public void memberAuthDelete(String memberId) throws Exception {
     	dao.memberAuthDelete(memberId);
     }
     
+    // 비밀번호 재설정 메일 인증
     @Override
     public String pwdAuth(String memberId, String key) throws Exception {
     	return dao.pwdAuth(memberId, key);
     }
 	
+    // 비밀번호 재설정 후 정보 삭제
     @Override
 	public void update(FpMemberVo vo) {
 		dao.update(vo);
 	}
 	
+    // 회원탈퇴
 	@Transactional
 	@Override
 	public void delete(String username) {
@@ -236,21 +246,25 @@ public class FpMemberServiceImpl implements FpMemberService {
 		dao.deleteUser(username);
 	}
 	
+	// 로그인 유지(7일)
 	@Override
 	public void keepLogin(String memberId, String sessionId, Date expire) {
 		dao.keepLogin(memberId, sessionId, expire);
 	}
 	
+	// 로그인 유지 시 확인
 	@Override
 	public FpMemberVo checkLoginBefore(String loginCookie) {
 		return dao.checkLoginBefore(loginCookie);
 	}
 	
+	// SNS 계정 확인
 	@Override
 	public FpMemberVo getBySns(FpMemberVo snsMember) {
 		return dao.getBySns(snsMember);
 	}
-
+	
+	// 평판 정보
 	@Override
 	public int plusReputation(String memberId) {
 		return dao.plusReputation(memberId);

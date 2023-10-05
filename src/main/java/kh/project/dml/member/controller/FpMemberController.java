@@ -61,13 +61,6 @@ public class FpMemberController {
 	private final GoogleConnectionFactory googleConnectionFactory;
 	private final OAuth2Parameters googleOAuth2Parameters;
 	
-	// 멤버 페이지(임시)
-	@GetMapping("/member/list")
-	public String memberList(Model model) {
-		model.addAttribute("memberList", service.selectList());
-		return "/member/list";
-	}
-	
 	// 소셜 로그인 시 각 소셜 API에서 콜백 받을때
 	@RequestMapping(value = "/auth/{snsService}/callback", 
 			method = { RequestMethod.GET, RequestMethod.POST})
@@ -314,7 +307,6 @@ public class FpMemberController {
 	public String idSearch() {
 		return "/member/idSearch";
 	}
-	
 	@PostMapping("/member/idSearch")
 	public String idSearchResult(@RequestParam String name, @RequestParam String birthday, Model model) {
 		List<FpMemberVo> vo = service.idSearch(name, birthday);
@@ -334,7 +326,6 @@ public class FpMemberController {
 	public String pwdSearch() {
 		return "/member/pwdSearch";
 	}
-	
 	@PostMapping("/member/pwdSearch")
 	public String pwdSearchResult(@RequestParam String username, @RequestParam String name, @RequestParam String birthday, Model model, HttpSession session) throws Exception {
 		FpMemberVo vo = service.pwdSearch(username, name, birthday);
@@ -397,16 +388,19 @@ public class FpMemberController {
 		return "redirect:/member/mypage";
 	}
 	
+	// 비밀번호 변경 페이지
 	@GetMapping("/member/mypage/pwdChange")
 	public String pwdChange() {
 		return "/member/pwdChange";
 	}
 	
+	// 비밀번호 변경 관련 팝업 
 	@GetMapping("/member/mypage/pwdChangePopup")
 	public String pwdChangePopup() {
 		return "/member/pwdChangePopup";
 	}
 	
+	// 비밀번호 변경 페이지에서 버튼 클릭 시
 	@PostMapping("/member/mypage/pwdChange")
 	public String pwdChangeDo(@Valid PwdChangeForm pwdChangeForm, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
@@ -477,6 +471,8 @@ public class FpMemberController {
 	public String deletePopup() {
 		return "/member/deletePopup";
 	}
+	
+	// 평판 정보 불러오기
 	@GetMapping("/plusReputation")
 	@ResponseBody
 	public int plusReputation(String memberId) {

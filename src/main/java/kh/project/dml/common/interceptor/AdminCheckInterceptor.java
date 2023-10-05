@@ -15,6 +15,7 @@ import kh.project.dml.member.model.service.FpMemberServiceImpl;
 import kh.project.dml.member.model.vo.FpMemberVo;
 import kh.project.dml.users.model.vo.FpUsersVo;
 
+// Admin 페이지 관련 동작
 @Component
 public class AdminCheckInterceptor implements HandlerInterceptor {
 	

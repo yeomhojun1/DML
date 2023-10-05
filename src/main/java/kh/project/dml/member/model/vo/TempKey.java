@@ -2,6 +2,7 @@ package kh.project.dml.member.model.vo;
 
 import java.util.Random;
 
+// 메일 인증 임시 키 생성
 public class TempKey{
 	private boolean lowerCheck;
 	private int size;
