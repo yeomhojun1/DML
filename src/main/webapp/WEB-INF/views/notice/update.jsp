@@ -64,12 +64,40 @@
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">Daily Muscle Life</h1>
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
-						<!-- 우리가 여기에 추가해야함 -->
+					<form method="post"
+						action=${pageContext.request.contextPath}/notice/update
+					enctype="multipart/form-data">
+					<input type="hidden" value="${member.memberId}" name="adminId">
+					<input type="hidden" value="${noticeone.noticeNo}" name="noticeNo">
+					<span>제목 : </span>
+					<textarea rows="1" cols="50" name="noticeTitle">${noticeone.noticeTitle}</textarea>
 				</div>
+
+				<div>
+					<span>내용 : </span>
+					<textarea rows="10" cols="20" name="noticeContent" id="editor">${noticeone.noticeContent}</textarea>
+						</div>
+            	<div id="d_file">
+					<input type="submit" value="저장">
+           		 </form>
+			</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
 	</div>
-	
+	<script>
+		ClassicEditor.create(document.querySelector('#editor'));
+	/* 	.then(editor => {
+		      // CKEditor의 높이 설정
+		      editor.ui.view.editable.style.height = '200px'; // 높이를 원하는 값으로 조정
+		    }); */
+		
+		var cnt = 1;
+		function fn_addFile() {
+			$("#d_file").append(
+					"<br>" + "<input type='file' name='file" + cnt + "' />");
+			cnt++;
+		}
+	</script> 
 </body>
 </html>

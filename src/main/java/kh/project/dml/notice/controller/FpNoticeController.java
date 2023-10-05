@@ -103,7 +103,7 @@ public class FpNoticeController {
 		return viewPage;
 	}
 	@PostMapping("/delete")
-	public String deleteDonotice(RedirectAttributes redirectAttr,int noticeNo ) {
+	public String deleteDonotice(RedirectAttributes redirectAttr, int noticeNo) {
 		String viewPage = "redirect:/";
 		int result = fpNoticeServiceImpl.delete(noticeNo);
 		try {

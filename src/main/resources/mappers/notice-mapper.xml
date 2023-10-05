@@ -21,8 +21,9 @@
 	</insert>
 
 	<update id="update" parameterType="FpNoticeVo">
-		UPDATE NOTICE SET notice_no=#{noticeNo}, ADMINID=#{adminId},
-		NOTICETITLE=#{noticeTitle}, NOTICECONTENT=#{noticeContent}, NOTICEDATE=#{noticeDate}, NOTICEVIEW=#{noticeView}
+		UPDATE NOTICE SET notice_no=#{noticeNo}, admin_id=#{adminId},
+		notice_title=#{noticeTitle}, notice_content=#{noticeContent},  notice_date= sysdate, notice_view=#{noticeView}
+		where notice_no = #{noticeNo}
 	</update>
 
 	<delete id="delete" parameterType="_int">
