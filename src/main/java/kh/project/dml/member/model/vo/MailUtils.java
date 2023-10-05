@@ -9,6 +9,7 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
+// 메일 기능 사용
 public class MailUtils {
 	private JavaMailSender mailSender;
 	private MimeMessage message;

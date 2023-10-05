@@ -7,6 +7,7 @@ import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
+// 일반 회원가입 유효성 체크
 @Getter
 @Setter
 public class UserCreateForm {

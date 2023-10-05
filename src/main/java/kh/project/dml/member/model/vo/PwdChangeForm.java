@@ -5,6 +5,7 @@ import javax.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 
+// 패스워드 변경 유효성 체크
 @Getter
 @Setter
 public class PwdChangeForm {

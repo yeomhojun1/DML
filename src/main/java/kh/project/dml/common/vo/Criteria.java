@@ -2,6 +2,7 @@ package kh.project.dml.common.vo;
 
 import lombok.Data;
 
+// 페이징 기능 사용
 @Data
 public class Criteria {
 	

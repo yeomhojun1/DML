@@ -5,6 +5,7 @@ import java.util.Map;
 import lombok.Builder;
 import lombok.Getter;
 
+// SNS 프로필 정보 불러오기
 @Getter
 @Builder
 public class OAuthAttributes {
