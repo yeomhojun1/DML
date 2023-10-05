@@ -88,7 +88,7 @@ public class FpBoardController {
 
 	@GetMapping("/plusCount")
 	@ResponseBody
-	public Integer updatememberexset(ModelAndView mv, FpBoardParam param) {
+	public Integer updatememberexset(FpBoardParam param) {
 		return fpBoardServiceImpl.plusCount(param);
 	}
 

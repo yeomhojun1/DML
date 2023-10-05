@@ -21,7 +21,8 @@ public class FpMemberVo {
 	private String sessionlimit;
 	
 	private String authorities;
-	
+	//평판 추가
+	private int reputation;
 	public FpMemberVo() {}
 	
 	@Builder

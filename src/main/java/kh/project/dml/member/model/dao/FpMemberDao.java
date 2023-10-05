@@ -40,6 +40,7 @@ public class FpMemberDao {
 	private static final String GET_BY_SNS_NAVER = NS + ".getBySnsNaver";
 	private static final String GET_BY_SNS_GOOGLE = NS + ".getBySnsGoogle";
 	private static final String GET_BY_SNS_KAKAO = NS + ".getBySnsKakao";
+	private static final String PLUS_REPUTATION = NS + ".plusreputation";
 
 	public List<FpMemberVo> selectList() {
 		return session.selectList(SELECT_LIST);
@@ -115,6 +116,9 @@ public class FpMemberDao {
 		} else {
 			return session.selectOne(GET_BY_SNS_KAKAO, snsMember.getKakaoid());
 		}
+	}
+	public int plusReputation(String memberId) {
+		return session.update(PLUS_REPUTATION, memberId);
 	}
 }
 

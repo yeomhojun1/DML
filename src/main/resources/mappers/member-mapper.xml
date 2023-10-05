@@ -100,4 +100,7 @@
 		join users u on m.member_id = u.username
 		where kakaoid = #{kakaoid}
     </select>
+    <update id="plusreputation" parameterType="string">
+		update member set reputation+1 where member_id=#{memberId}    
+    </update>
 </mapper>

@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.WebUtils;
 
 import kh.project.dml.common.auth.SnsLogin;
@@ -485,6 +486,11 @@ public class FpMemberController {
 	@GetMapping("/member/deletePopup")
 	public String deletePopup() {
 		return "/member/deletePopup";
+	}
+	@GetMapping("/plusReputation")
+	@ResponseBody
+	public int plusReputation(String memberId) {
+		return service.plusReputation(memberId);
 	}
 }
 

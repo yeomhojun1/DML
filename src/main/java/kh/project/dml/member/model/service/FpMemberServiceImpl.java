@@ -190,4 +190,10 @@ public class FpMemberServiceImpl implements FpMemberService {
 	public FpMemberVo getBySns(FpMemberVo snsMember) {
 		return dao.getBySns(snsMember);
 	}
+
+	@Override
+	public int plusReputation(String memberId) {
+		return dao.plusReputation(memberId);
+	}
+	
 }
