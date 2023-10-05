@@ -34,9 +34,8 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
         url = url.replaceAll("/dml", "");
         url = url.replaceAll("/member/logout", "/index");
         FpMemberVo member = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
-        session.setAttribute("member", service.memberInfo(member.getMemberId()));
     	
-        if (session.getAttribute("member") == null) {
+        if (member == null) {
             // 세션 정보가 유효하지 않은 경우 처리
             Cookie loginCookie = WebUtils.getCookie(request, SessionNames.LOGIN_COOKIE);
             if (loginCookie != null) {
@@ -52,6 +51,7 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
             return false; // 컨트롤러 메소드 실행 중지
         } else {
             // 세션 정보가 유효한 경우
+        	session.setAttribute("member", member);
             session.setAttribute(SessionNames.LOGIN, member);
             return true; // 컨트롤러 메소드 실행 계속
         }
