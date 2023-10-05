@@ -208,7 +208,7 @@
 		crossorigin="anonymous"></script>
 
 <%-- <script src="${pageContext.request.contextPath }/resources/resources1/js/chart-area-demo.js"></script> --%>
-<script>
+<!-- <script>
   const ctx = document.getElementById('myAreaChart');
 
   new Chart(ctx, {
@@ -217,7 +217,7 @@
       labels: ['${member.weight}', 'Yellow', 'Green', 'Purple', 'Orange'],
       datasets: [{
         label: '# 날짜별 몸무게',
-        data: ['${member.weight}', 19, 3, 5, 2, 3],
+        data: ['${member.weight}'],
         borderWidth: 1
       }]
     },
@@ -229,7 +229,53 @@
       }
     }
   });
-</script>
+</script> -->
+
+
+
+    <script>
+
+        // 날짜 데이터 배열
+        const dates = [];
+        // 몸무게 데이터 배열
+        const weights = [];
+        
+        const fpMemberWeightVoListJson = '${fpMemberWeightVoListJson}';
+        const fpMemberWeightVoList = JSON.parse(fpMemberWeightVoListJson);
+        for (var i=0; i<fpMemberWeightVoList.length; i++){
+        	dates.push(fpMemberWeightVoList[i].weightDate);
+        	weights.push(fpMemberWeightVoList[i].weight);
+        }
+        
+        
+        // 캔버스 요소 가져오기
+        const ctx = document.getElementById('myAreaChart').getContext('2d');
+
+        // Chart.js를 사용하여 선 그래프 생성
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dates, // 날짜 라벨을 날짜 데이터로 설정
+                datasets: [{
+                    label: '# 날짜별 몸무게',
+                    data: weights, // 몸무게 데이터를 몸무게 데이터 배열로 설정
+                    borderWidth: 1,
+                    borderColor: 'blue', // 선의 색상
+                    backgroundColor: 'rgba(0, 0, 255, 0.2)' // 영역의 배경색
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+  
+
+
 
 
 	<script>

@@ -17,8 +17,8 @@ public class FpMemberWeightServiceImpl implements FpMemberWeightService {
 	private FpMemberWeightDao fpMemberWeightDao;
 	
 	@Override
-	public List<FpMemberWeightVo> selectList() {
-		return fpMemberWeightDao.selectList();
+	public List<FpMemberWeightVo> selectList(String memberId) {
+		return fpMemberWeightDao.selectList(memberId);
 	}
 	@Override
 	public FpMemberWeightVo selectOne(String memberId) {
@@ -46,6 +46,7 @@ public class FpMemberWeightServiceImpl implements FpMemberWeightService {
 	}
 
 	//근육량, 체지방량  update/insert
+	@Transactional
 	@Override
 	public int insertUpdate(FpMemberWeightVo vo) {
 		System.out.println("service:"+vo.getWeight());

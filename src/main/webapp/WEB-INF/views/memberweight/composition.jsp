@@ -24,6 +24,8 @@
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
 	crossorigin="anonymous"></script>
+<script src="${pageContext.request.contextPath }/resources/resources1/js/Chart.min.js"></script>	
+	
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -632,12 +634,12 @@ font-size:16px;
 								maxDate : "+5Y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
 								,
 								onSelect : function() {
-									var exerciseDate = $.datepicker.formatDate(
+									var weightDate = $.datepicker.formatDate(
 											"yymmdd", $("#datepicker")
 													.datepicker("getDate"));
-									exerciseDate = $("#datepicker").val();
-									exerciseDate=exerciseDate.replaceAll("-", "");
-									console.log(exerciseDate);
+									weightDate = $("#datepicker").val();
+									weightDate = weightDate.replaceAll("-", "");
+									console.log(weightDate);
 									
 
 								}
@@ -671,6 +673,26 @@ font-size:16px;
 		}
 		
 	
+		 const ctx = document.getElementById('myAreaChart');
+
+		  new Chart(ctx, {
+		    type: 'line',
+		    data: {
+		      labels: ['${member.weight}', 'Yellow', 'Green', 'Purple', 'Orange'],
+		      datasets: [{
+		        label: '# 날짜별 몸무게',
+		        data: ['${member.weight}', 19, 3, 5, 2, 3],
+		        borderWidth: 1
+		      }]
+		    },
+		    options: {
+		      scales: {
+		        y: {
+		          beginAtZero: true
+		        }
+		      }
+		    }
+		  });
 		
 		
 		

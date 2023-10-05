@@ -11,7 +11,7 @@ import kh.project.dml.memberweight.model.vo.FpMemberWeightVo;
 
 public interface FpMemberWeightService {
 	
-	public List<FpMemberWeightVo> selectList();
+	/* public List<FpMemberWeightVo> selectList(); */
 	public FpMemberWeightVo selectOne(String userId);
 	// 몸무게 입력
 	public int dateWeight(FpMemberWeightVo vo, String now);
@@ -24,4 +24,6 @@ public interface FpMemberWeightService {
 	//체지방량, 근육량 삭제
 	public int delete(String weightDate , String memberId) ;
 	
+	//TODO - dfkdsjflkjsdfklsjdflkjsdlfkjsdlkfjsdlkfjsldkj
+	public List<FpMemberWeightVo> selectList(String memberId);
 }
