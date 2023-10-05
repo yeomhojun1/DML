@@ -56,7 +56,7 @@
 													<div class="Plan_bottom1_second_bar_each__cBwag Plan_modal_food_bar_ctl__CV6ad"></div>
 												</div>
 											</div>
-											<div class="Plan_modal_food_right__sg_CE row">
+										<!-- 	<div class="Plan_modal_food_right__sg_CE row">
 												<div class="Plan_modal_food_desc__QsT8R col-xl-6"  >
 													<div class="Plan_modal_food_desc_title__GwIXK">
 														식품
@@ -78,7 +78,7 @@
 														<div
 															style="flex: 1 1 0%; font-weight: normal; justify-content: flex-end; text-align: right;"></div>
 													</div>
-												</div>
+												</div> -->
 											
 														<div
 															style="flex: 1 1 0%; font-weight: normal; justify-content: flex-end; text-align: right;">
@@ -122,13 +122,12 @@
 														</div> -->
 											
 														
-																<div class="Plan_modal_food_bottom_bar__r962X">
-												<button type="button"
-													class="ant-btn css-1s3dcof ant-btn-default Plan_modal_food_close_btn__QsNOd Global_button__iJeUH">
-													<span>닫기</span>
-												</button>
-											
-											</div>
+													<div class="Plan_modal_food_bottom_bar__r962X">
+													<button type="button"
+														class="ant-btn css-1s3dcof ant-btn-default Plan_modal_food_close_btn__QsNOd Global_button__iJeUH" id="closeButton">
+														<span>닫기</span>
+													</button>
+													</div>
 													</div>
 												</div>
 											</div>
@@ -144,6 +143,14 @@
 				</div>
 		</div>
 <script>
+$(document).ready(function() {
+
+	   $("#closeButton").click(function() {
+	      console.log(this);
+	      $(".modal").modal("hide");
+	   });
+	   
+	});
 
 </script>
 	
