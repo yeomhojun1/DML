@@ -142,7 +142,7 @@ public class FpBoardController {
 
 						// 파일이 연결되는 Url 주소 설정
 						String fileUrl = request.getContextPath() + "/resources/ckimage/" + fileName;
-
+				
 						// 생성된 jason 객체를 이용해 파일 업로드 + 이름 + 주소를 CkEditor에 전송
 						json.addProperty("uploaded", 1);
 						json.addProperty("fileName", fileName);

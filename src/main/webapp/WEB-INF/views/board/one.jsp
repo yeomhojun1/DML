@@ -94,12 +94,10 @@
 								<label for="regDate" class="form-label">작성일</label>
 								<div class="form-control" id="regDate" name="regDate">${boardone.boardDate}</div>
 							</div>
-							<c:set var="loginId" value="${member.memberId} " />
-							<c:set var="authorId" value="${boardone.memberId}"/>
-							<c:if test="${authorId eq loginId}">
+					
 								<button type="button" class="updateBoard">수정</button>
 								<button type="button" class="deleteBoard">삭제</button>
-							</c:if>
+							
 							<button type="button" class="replyBoard">댓글 달기</button>
 						</div>
 					</div>
@@ -258,8 +256,37 @@
 			
 		}
 		function deletereplyHandler(forNumber){
-			console.log(this);
+			console.log(forNumber);
 			 $.ajax({
+			       type: "get",
+			       url: "${pageContext.request.contextPath}/replyboard/one",
+			       data: {replyNo :forNumber},
+			       success: function (result) {
+			    	   console.log(result.memberId);
+			    	   console.log("${member.memberId}");
+			    	
+			    	  if(result.memberId != "${member.memberId}"){
+			    		   alert("작성자가 아닙니다.");
+			    	   }else{
+			    		   $.ajax({
+						       type: "post",
+						       url: "${pageContext.request.contextPath}/replyboard/delete",
+						       data: {replyNo :forNumber},
+						       success: function (result) {
+						    	   location.reload(true);
+						    	   },
+								error : function (){
+									 console.log("error");
+									},dataType:"json"
+							});
+			    	   }; 
+			    	   },
+					error : function (){
+						 console.log("error");
+						},dataType:"json"
+				});
+			
+			/*  $.ajax({
 			       type: "post",
 			       url: "${pageContext.request.contextPath}/replyboard/delete",
 			       data: {replyNo :forNumber},
@@ -269,7 +296,7 @@
 					error : function (){
 						 console.log("error");
 						},dataType:"json"
-				});
+				}); */
 		}
 		function updatereplyHandler(){
 			var replyWriter= $(this).parents(".replyCard").data("writer");

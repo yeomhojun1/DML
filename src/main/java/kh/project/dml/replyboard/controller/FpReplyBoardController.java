@@ -40,10 +40,10 @@ public class FpReplyBoardController {
 	}
 	
 	@GetMapping("/one")
-	public ModelAndView selectOnereplyboard(ModelAndView mv, int replyNo) {
-		mv.addObject("replyboard", fpReplyBoardServiceImpl.selectOne(replyNo));
-		mv.setViewName("replyboard/one");
-		return mv;
+	@ResponseBody
+	public String selectOnereplyboard(int replyNo) {
+		FpReplyBoardVo result = fpReplyBoardServiceImpl.selectOne(replyNo);
+		return new Gson().toJson(result);
 	}
 	@PostMapping("/insert")
 	@ResponseBody

@@ -64,16 +64,15 @@
 					<div class="card">
 						<form method="post"
 							action=${pageContext.request.contextPath}/board/update
-							enctype="multipart/form-data" class="">
+							enctype="multipart/form-data" >
 							<input type="hidden" value="${member.memberId}" name="memberId">
-							<input type="hidden" value="${boardone.boardNo}" name="boardNo">
 							<div>
 								제목 :
-								<textarea rows="1" class="col-xl-12" name="boardTitle">${boardone.boardTitle}</textarea>
+								<textarea rows="1" class="col-xl-12" name="boardTitle"></textarea>
 							</div>
 							<div>
 								내용 :
-								<textarea rows="10" cols="20" name="boardContent" id="editor1">${boardone.boardContent}</textarea>
+								<textarea rows="10" cols="20" name="boardContent" id="editor1"></textarea>
 							</div>
 							<input type="submit" value="저장">
 					</div>
