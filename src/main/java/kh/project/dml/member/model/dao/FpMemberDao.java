@@ -108,7 +108,7 @@ public class FpMemberDao {
 	
 	// 회원가입 인증 후 인증 필요 정보 삭제
 	public void memberAuthDelete(String memberId) throws Exception {
-		session.update(MEMBER_AUTH, memberId);
+		session.delete(MEMBER_AUTH_DELETE, memberId);
 	}
 	
 	// 패스워드 재설정 페이지 접근 시
@@ -121,7 +121,7 @@ public class FpMemberDao {
 	
 	// 패스워드 재설정 후 인증 정보 삭제
 	public void pwdAuthDelete(String memberId) throws Exception {
-		session.update(PWD_AUTH, memberId);
+		session.delete(PWD_AUTH_DELETE, memberId);
 	}
 	
 	public void pwdChange(String username, String password) {
