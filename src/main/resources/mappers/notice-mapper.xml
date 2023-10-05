@@ -25,6 +25,11 @@
 		notice_title=#{noticeTitle}, notice_content=#{noticeContent},  notice_date= sysdate, notice_view=#{noticeView}
 		where notice_no = #{noticeNo}
 	</update>
+	
+	<update id="updateViewCount" parameterType="_int">
+	UPDATE NOTICE SET notice_view = notice_view+1
+	where notice_no = #{noticeNo}
+	</update>
 
 	<delete id="delete" parameterType="_int">
 		DELETE FROM NOTICE WHERE notice_no=#{noticeNo}

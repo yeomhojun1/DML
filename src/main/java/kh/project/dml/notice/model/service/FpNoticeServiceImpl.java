@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kh.project.dml.notice.model.dao.FpNoticeDao;
 import kh.project.dml.notice.model.vo.FpNoticeVo;
@@ -19,7 +20,9 @@ public class FpNoticeServiceImpl implements FpNoticeService  {
 		return fpNoticeDao.selectList();
 	}
 	@Override
+	@Transactional
 	public FpNoticeVo selectOne(int noticeNo) {
+		fpNoticeDao.updateViewCount(noticeNo);
 		return fpNoticeDao.selectOne(noticeNo);
 	}
 	@Override

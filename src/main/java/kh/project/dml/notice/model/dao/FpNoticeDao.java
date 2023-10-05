@@ -29,6 +29,11 @@ public class FpNoticeDao {
 	public int update(FpNoticeVo vo) {
 		return sqlSession.update("notice.update", vo);
 	}
+	
+	public int updateViewCount(int noticeNo){
+		return sqlSession.update("notice.updateViewCount", noticeNo);
+	}
+	
 
 	public int delete(int noticeNo) {
 		return sqlSession.delete("notice.delete", noticeNo);
