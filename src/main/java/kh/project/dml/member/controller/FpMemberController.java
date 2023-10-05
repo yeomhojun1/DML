@@ -471,9 +471,8 @@ public class FpMemberController {
 	public String deletePopup() {
 		return "/member/deletePopup";
 	}
-	
-	// 평판 정보 불러오기
-	@GetMapping("/plusReputation")
+
+	@GetMapping("/member/plusReputation")
 	@ResponseBody
 	public int plusReputation(String memberId) {
 		return service.plusReputation(memberId);

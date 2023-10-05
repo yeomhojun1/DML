@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kh.project.dml.board.model.vo.FpBoardParam;
+import kh.project.dml.board.model.vo.FpBoardSelectReplyParam;
 import kh.project.dml.board.model.vo.FpBoardVo;
 
 @Repository
@@ -21,6 +22,9 @@ public class FpBoardDao {
 	public FpBoardVo selectOne(Integer boardNo) {
 		return sqlSession.selectOne("board.selectOne", boardNo);
 	}
+	public FpBoardVo selectOneForReply(Integer boardNo) {
+		return sqlSession.selectOne("board.selectOneJoinReply", boardNo);
+	}
 	public int insert(FpBoardVo vo) {
 		return sqlSession.insert("board.insert", vo);
 	}
@@ -32,5 +36,8 @@ public class FpBoardDao {
 	}
 	public int delete(int boardNo) {
 		return sqlSession.delete("board.delete" ,boardNo);
+	}
+	public int selectReply(FpBoardSelectReplyParam param) {
+		return sqlSession.update("board.selectReply", param);
 	}
 }

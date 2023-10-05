@@ -36,6 +36,7 @@ import com.nimbusds.oauth2.sdk.util.StringUtils;
 import io.jsonwebtoken.io.IOException;
 import kh.project.dml.board.model.service.FpBoardService;
 import kh.project.dml.board.model.vo.FpBoardParam;
+import kh.project.dml.board.model.vo.FpBoardSelectReplyParam;
 import kh.project.dml.board.model.vo.FpBoardVo;
 import kh.project.dml.common.FileUpload;
 
@@ -142,7 +143,7 @@ public class FpBoardController {
 
 						// 파일이 연결되는 Url 주소 설정
 						String fileUrl = request.getContextPath() + "/resources/ckimage/" + fileName;
-				
+
 						// 생성된 jason 객체를 이용해 파일 업로드 + 이름 + 주소를 CkEditor에 전송
 						json.addProperty("uploaded", 1);
 						json.addProperty("fileName", fileName);
@@ -162,6 +163,12 @@ public class FpBoardController {
 			}
 		}
 		return null;
+	}
+
+	@PostMapping("/selectReply")
+	@ResponseBody
+	public FpBoardVo selectReplyBoard(ModelAndView mv, FpBoardSelectReplyParam param) {
+		return fpBoardServiceImpl.selectReply(param);
 	}
 
 	@GetMapping("/update")

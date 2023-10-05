@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kh.project.dml.board.model.dao.FpBoardDao;
 import kh.project.dml.board.model.vo.FpBoardParam;
+import kh.project.dml.board.model.vo.FpBoardSelectReplyParam;
 import kh.project.dml.board.model.vo.FpBoardVo;
 
 @Service("fpBoardServiceImpl")
@@ -38,5 +40,12 @@ public class FpBoardServiceImpl implements FpBoardService {
 	@Override
 	public int plusCount(FpBoardParam param) {
 		return fpBoardDao.updateCount(param);
+	}
+	@Override
+	@Transactional
+	public FpBoardVo selectReply(FpBoardSelectReplyParam param) {
+		fpBoardDao.selectReply(param);
+		FpBoardVo selectReplyBoard = fpBoardDao.selectOneForReply(param.getBoardNo());
+		return selectReplyBoard;
 	}
 }

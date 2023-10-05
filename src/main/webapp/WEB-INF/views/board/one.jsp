@@ -137,13 +137,20 @@
 		        	  for (var i = 0; i < result.length; i++) {
 		        		  if(result[i].rref==0){
 	        			var  htmlVal =  '<div class="card replyCard" data-replyno="'+result[i].replyNo+'" data-writer="'+ result[i].memberId+'"><div class="firstReply card"><div class="updatewriter">작성자 : '+ result[i].memberId+'</div><div class="updatereplyContent">내용 : '+result[i].replyContent+'</div><div class="updatereplyDate">입력날짜 : '+result[i].replyDate+'</div>'
-	    		   		+'<div class="groupbtn"><button class="updatereply">수정</button><button onclick="deletereplyHandler('+result[i].replyNo+');">삭제</button><button class="insertreplyreply">댓글 삽입</button>'
-	    		   		+'<button class="moreReply" data-replyno="'+result[i].replyNo+'">댓글 더보기</button></div></div><div class="forAppendArea"></div>';
-	    		   		$(".testappend").append(htmlVal);
+	    		   		+'<div class="groupbtn"><button class="updatereply">수정</button><button onclick="deletereplyHandler("'+result[i].replyNo+'");">삭제</button><button class="insertreplyreply">댓글 삽입</button>'
+	    		   		+'<button class="moreReply" data-replyno="'+result[i].replyNo+'">댓글 더보기</button>';
+	    		   	 	if(writerHtml=="${member.memberId}"){
+	    		   			htmlVal+='<button class="forPlusRequtation" onclick="forPlusReputationHandler(\''+result[i].replyNo+'\');">채택하기</button>'  		   				
 	        		    }
-	    		   	
-		        		  
+	    		   	 	htmlVal+='</div></div><div class="forAppendArea"></div>'
+	    		   		$(".testappend").append(htmlVal);
+		        		 
+		        		  }
 		        	   }  // for
+		        	/*   if(writerHtml=="${member.memberId}"){
+  		   				var plusreputation='<button type="button" class="forPlusReputation" onclick="forPlusReputationHandler('+result[i].memberId+')">채택하기</button>'  		   				
+  		   				$(".groupbtn").append(plusreputation); 
+  		   			}*/ 	    		   	
 		        	   $(".updatereply").click(updatereplyHandler);
 		        	   $(".insertreplyreply").click(insertreplyreplyHandler);
 		        	   $(".moreReply").click(moreReplyHandler);
@@ -153,9 +160,36 @@
 					},
 					dataType:"json"
 				});
-
-		
 		}
+		 function forPlusReputationHandler(replyNo){
+			 console.log(replyNo);
+			 $.ajax({
+				type : "post",
+				url : "${pageContext.request.contextPath}/board/selectReply",
+				data: { selectReplyNo: replyNo, boardNo: ${boardone.boardNo}},
+				success : function (result) {
+					console.log(${boardone.selectReplyNo});
+					console.log(result);
+				},
+				error : function(){
+					console.log("error");
+					}
+				}); 
+		/* 	$.ajax({
+				type : "get",
+				url : "${pageContext.request.contextPath}/member/plusReputation",
+				data: { memberId:memberId},
+				success : function (result) {
+					console.log("success");
+					$(".forPlusRequtation").remove();
+				},
+				error : function(){
+					console.log("error");
+					}
+				}); */
+		 }
+			  
+		
 		function moreReplyHandler(e){
 			var rrefReplyNo=$(this).data("replyno");
 			var eTarget=e.target;
@@ -165,13 +199,16 @@
 				data: { rref:rrefReplyNo},
 				success : function (result) {
 					$(".forAppendArea").html("");
-					console.log(result);
+					console.log(result.length);
+					if(result.length==0){
+						alert("답글이 없습니다.");
+					}else{
 					//console.log($(this).val());
 					 for (var i = 0; i < result.length; i++) {
 	        			var  htmlVal =  '<div class="firstReply card"  style="padding-left :'+replyreplyleftpadding+'px" data-replyno="'+result[i].replyNo+'" data-writer="'+ result[i].memberId+'"><div class="updatewriter">작성자 : '+ result[i].memberId+'</div><div class="updatereplyContent">내용 : '+result[i].replyContent+'</div><div class="updatereplyDate">입력날짜 : '+result[i].replyDate+'</div>'
 	    		   		+'<div class="groupbtn"><button onclick="deletereplyHandler('+result[i].replyNo+');">삭제</button></div>';
 	    		   		$(eTarget).parents(".replyCard").find(".forAppendArea").append(htmlVal);
-	    		   		
+					 }
         		      }  
 					 
 		        },  // success,

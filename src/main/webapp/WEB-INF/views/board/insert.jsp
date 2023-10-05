@@ -63,7 +63,7 @@
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
 					<div class="card">
 						<form method="post"
-							action=${pageContext.request.contextPath}/board/update
+							action=${pageContext.request.contextPath}/board/insert
 							enctype="multipart/form-data" >
 							<input type="hidden" value="${member.memberId}" name="memberId">
 							<div>

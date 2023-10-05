@@ -649,5 +649,11 @@ CREATE SEQUENCE board_no_seq
        NOORDER;
 
 commit;
-select * from replyboard;
-	select * from replyboard where board_no=1 and rref=4 order by reply_no desc;
+SELECT * FROM BOARD;
+select * from replyboard ;
+update member set reputation=(select reputation from member where member_id='ghwnswkd123@naver.com')+1 where member_id='ghwnswkd123@naver.com';
+ALTER TABLE board ADD SELECT_REPLY_NO NUMBER DEFAULT 0;
+select * from board b  join replyboard r on b.select_reply_no=r.reply_no where b.board_no=1;
+
+
+

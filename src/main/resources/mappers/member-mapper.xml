@@ -135,7 +135,8 @@
 		join users u on m.member_id = u.username
 		where kakaoid = #{kakaoid}
     </select>
+    <!-- 평판 증가 -->
     <update id="plusreputation" parameterType="string">
-		update member set reputation+1 where member_id=#{memberId}    
+		 update member set reputation=(select reputation from member where member_id=#{memberId})+1 where member_id=#{memberId}
     </update>
 </mapper>

@@ -16,4 +16,5 @@ public class FpBoardVo {
 	private int boardCount;
 	private int bstep;
 	private int blevel;
+	private int selectReplyNo;
 }
