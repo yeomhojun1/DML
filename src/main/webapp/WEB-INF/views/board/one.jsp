@@ -144,8 +144,7 @@
 	        		    }
 	    		   	 	htmlVal+='</div></div><div class="forAppendArea"></div>'
 	    		   		$(".testappend").append(htmlVal);
-		        		 
-		        		  }
+		        		  } //if
 		        	   }  // for
 		        	/*   if(writerHtml=="${member.memberId}"){
   		   				var plusreputation='<button type="button" class="forPlusReputation" onclick="forPlusReputationHandler('+result[i].memberId+')">채택하기</button>'  		   				
@@ -154,42 +153,53 @@
 		        	   $(".updatereply").click(updatereplyHandler);
 		        	   $(".insertreplyreply").click(insertreplyreplyHandler);
 		        	   $(".moreReply").click(moreReplyHandler);
-					},
+						if(${boardone.selectReplyNo}!=0){	
+						//	console.log("${boardone.selectReplyNo}!=0");
+							var replyCard = document.getElementsByClassName('replyCard');
+							//console.log(replyCard[1]); 
+		 						for (var i = 0; i < replyCard.length; i++){
+					 				/* console.log($(replyCard[i]).data("replyno"));
+					 				console.log(replyCard[i].dataset.replyno); */
+					 				if($(replyCard[i]).data("replyno")==${boardone.selectReplyNo}){
+										 replyCard[i].style.backgroundColor= 'red';
+										 console.log(replyCard[i]);
+										console.log("제대로 돌아감 !! "+replyCard[i].dataset.replyno);
+									}   
+								} 
+							}
+					}, //success
 					error : function(result){
 						console.log("error");
 					},
 					dataType:"json"
 				});
 		}
-		 function forPlusReputationHandler(replyNo){
-			 console.log(replyNo);
+		function forPlusReputationHandler(replyNo){
 			 $.ajax({
 				type : "post",
 				url : "${pageContext.request.contextPath}/board/selectReply",
 				data: { selectReplyNo: replyNo, boardNo: ${boardone.boardNo}},
 				success : function (result) {
-					console.log(${boardone.selectReplyNo});
-					console.log(result);
+					var forReply=result.selectReplyNo;
+					$.ajax({
+						type : "get",
+						url : "${pageContext.request.contextPath}/member/plusReputation",
+						data: { replyNo: forReply },
+						success : function (result) {
+							console.log("plusReputation : success");
+							$(".forPlusRequtation").remove();
+						},
+						error : function(){
+							console.log("error");
+							}
+						}); 
 				},
 				error : function(){
 					console.log("error");
 					}
 				}); 
-		/* 	$.ajax({
-				type : "get",
-				url : "${pageContext.request.contextPath}/member/plusReputation",
-				data: { memberId:memberId},
-				success : function (result) {
-					console.log("success");
-					$(".forPlusRequtation").remove();
-				},
-				error : function(){
-					console.log("error");
-					}
-				}); */
-		 }
-			  
-		
+			
+		}
 		function moreReplyHandler(e){
 			var rrefReplyNo=$(this).data("replyno");
 			var eTarget=e.target;
@@ -228,7 +238,7 @@
 			}else{
 				location.href = '${pageContext.request.contextPath}/board/update?boardNo=${boardone.boardNo}';
 			}
-	}
+		}
 		$(".deleteBoard").click(deleteBoardHandler);
 		function deleteBoardHandler() {
 			console.log(writerHtml);

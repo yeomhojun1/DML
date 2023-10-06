@@ -198,7 +198,7 @@
 					<!--   <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol> -->
-					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
+					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
 					<!-- 우리가 만져야하는 부분임 -->
 					<div class="main_content_part col-xl-12">
 						<!-- <div class="appendtest123"></div> -->
