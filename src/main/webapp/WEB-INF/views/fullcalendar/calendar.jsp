@@ -28,6 +28,9 @@
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
 
 <script>
+ 	window.onload = function() {
+		  $("#exampleModal").hide();
+	} 
   	document.addEventListener('DOMContentLoaded', function() {
   	// div id 값 
     var calendarEl = document.getElementById('calendar');
@@ -82,13 +85,14 @@
 		              ],
 				        
   				      dateClick : (info)=>{ // 선택한 날짜 값 뽑아내기
-  				    	  console.log(info);
+  				    	  $("#insertPlan").modal("toggle");
+  				    	 /*  console.log(info);
   				    	  var clickDate = info.dateStr;
 //   				    	  function add_ClickSchedule(clickDate){ // 클릭된 날짜부터 일정 추가
   				    	  var url = "${pageContext.request.contextPath}/calendar/calendarSelected?startDate="+clickDate+"&endDate="+clickDate;
   				    	  var name = "일정 추가";
   				    	  var option = "width = 600, height = 600 left = 100, top=50,location=no";
-  				    	  window.open(url,name,option)
+  				    	  window.open(url,name,option) */
   				    		//alert(year+"년"+month+"월"+day+"일");
 //   				    	};
 //   				    	  clickDate = clickDate.replaceAll("-", "");
@@ -103,69 +107,19 @@
   				      	const start = info.event.startStr;
   				      	const end = info.event.endStr;
   				        const titles = info.event.title;
-
-  				    
+  				   	 	$("#startdate").html(start);
+  				   	 	$("#startdate").html(start);
   				    	console.log(info);
-				    	  var url = "${pageContext.request.contextPath}/calendar/calendarSelected?calendarno="+id+"&startDate="+start+"&endDate="+end+"&title="+titles;
+				    	/*   var url = "${pageContext.request.contextPath}/calendar/calendarSelected?calendarno="+id+"&startDate="+start+"&endDate="+end+"&title="+titles;
   				    	  var name = "일정 추가";
   				    	  var option = "width = 600, height = 600 left = 100, top=50,location=no";
-  				    	  window.open(url,name,option)
+  				    	  window.open(url,name,option); */
+  				    	 $("#updatePlan").modal("toggle");
   				      }
 				     
 				   }); // calendar
-				   
 		   calendar.render();		
-		   $(".ex_part").click(expartClickHandler);
-			function expartClickHandler(){
-				$.ajax({
-				url:"${pageContext.request.contextPath}/exercise/searchlist",
-					type: "get"
-					, data : {searchword : $(this).data("part")}
-					, success : function(result){displayExercisePart(result)}		
-					, dataType: "json"
-				})
-			}
-			
-			function displayExercisePart(result){
-				$(".ex_part_one_group").remove();
-				$(".ex_one").remove();
-				$(".ex_part_one").remove();
-				$(".ex_one_group").remove();
-				htmlVal = '	<div class="ex_part_one_group col-xl-4">';
-				for (var i = 0; i < result.length; i++) {
-					htmlVal += '<div class="ex_part_one btn col-xl-12" data-part="'+result[i].ecode+'">'+result[i].exName+'</div>'
-				}
-				htmlVal +='</div>'
-				$(".exercisetest").append(htmlVal);
-				$(".ex_part_one").click(expartoneHandler);
-				//for()
-				//$(".aaaa").html("<p>"+result[0].mid+"</p>");
-				//$(".aaaa").show();
-			}
-			<!-- 운동 하나를 선택하면 그 운동에 대한 상세정보들이 나오도록함 -->
-			function expartoneHandler(){
-			
-				$.ajax({
-					url:"${pageContext.request.contextPath}/exercise/one",
-					type: "get",
-					data : {ecode : $(this).data("part")},
-					success : displayExercisePartOne,
-					dataType : "json"
-				})
-			}
-			
-			function displayExercisePartOne(result){
-			
-				$(".ex_one").remove();
-				$(".ex_one_group").remove();
-				htmlVal = "<div class='col-xl-4 ex_one_group'>"
-				htmlVal += '<div class="ex_one col-xl-12" data-code="'+result.ecode+'" data-name="'+result.exName+'"><h4>'+result.epose+'</h4></div></div>'
-				$(".exercisetest").append(htmlVal);
-				$("#btn-modal").click(modalHandler);
-				var testOjbect ={eposeLink: result.eposeLink,exName: result.exName };
-				$("#btn-modal1").click(()=>youtubeModalHandler(testOjbect));
-			
-			}
+		  
 			
   	});
   
@@ -221,8 +175,10 @@
 						<button type="button" class="btn btn-primary"
 							data-bs-toggle="modal" data-bs-target="#exampleModal">
 							Launch demo modal</button>
-						<div class="modal fade" id="exampleModal" tabindex="-1"
-							aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal fade" id="insertPlan" >
+					<!-- 	tabindex="-1"
+							aria-labelledby="exampleModalLabel" aria-hidden="true" -->
+							
 							<div class="modal-dialog modal-xl">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -273,7 +229,7 @@
 						</div>
 					</div>
 					<!-- 모달창 -->
-					<div class="modal fade" id="exampleModal" tabindex="-1"
+					<div class="modal fade" id="udpatePlan" tabindex="-1"
 						aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog modal-sm">
 							<div class="modal-content">
