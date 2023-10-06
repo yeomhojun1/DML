@@ -433,27 +433,44 @@ public class FpMemberController {
 	public String deleteCheck(@RequestParam String password, Model model, HttpSession session, LoginVo vo, HttpServletRequest request, HttpServletResponse response) {
 		FpMemberVo member = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
 	    try {
-			vo.setUsername(member.getMemberId());
-			vo.setPassword(password);
-			FpMemberVo withMember = service.login(vo);
-			if(withMember == null) {
-				return "/member/errorPopup";
-			} else {
-		        service.keepLogin(withMember.getMemberId(), "", new Date());
-	        	session.removeAttribute(SessionNames.LOGIN);
-			    
-			    // 쿠키를 찾아서 삭제
-			    Cookie loginCookie = WebUtils.getCookie(request, SessionNames.LOGIN_COOKIE);
-			    if (loginCookie != null) {
-			        loginCookie.setPath("/");    
-			        loginCookie.setMaxAge(0);
-			        response.addCookie(loginCookie);
-			    }
-			    
-			    session.invalidate();
-				service.delete(withMember.getMemberId());
-				return "/member/deletePopup";
-			}
+	    	if(member.getAuthorities().equals("ROLE_MEMBER")) {	    		
+	    		vo.setUsername(member.getMemberId());
+	    		vo.setPassword(password);
+	    		FpMemberVo withMember = service.login(vo);
+	    		if(withMember == null) {
+	    			return "/member/errorPopup";
+	    		} else {
+	    			service.keepLogin(withMember.getMemberId(), "", new Date());
+	    			session.removeAttribute(SessionNames.LOGIN);
+	    			
+	    			// 쿠키를 찾아서 삭제
+	    			Cookie loginCookie = WebUtils.getCookie(request, SessionNames.LOGIN_COOKIE);
+	    			if (loginCookie != null) {
+	    				loginCookie.setPath("/");    
+	    				loginCookie.setMaxAge(0);
+	    				response.addCookie(loginCookie);
+	    			}
+	    			
+	    			session.invalidate();
+	    			service.delete(withMember.getMemberId());
+	    			return "/member/deletePopup";
+	    		}
+	    	} else if(member.getAuthorities().equals("ROLE_SOCIAL")) {
+	    		service.keepLogin(member.getMemberId(), "", new Date());
+    			session.removeAttribute(SessionNames.LOGIN);
+    			
+    			// 쿠키를 찾아서 삭제
+    			Cookie loginCookie = WebUtils.getCookie(request, SessionNames.LOGIN_COOKIE);
+    			if (loginCookie != null) {
+    				loginCookie.setPath("/");    
+    				loginCookie.setMaxAge(0);
+    				response.addCookie(loginCookie);
+    			}
+    			
+    			session.invalidate();
+    			service.delete(member.getMemberId());
+    			return "/member/deletePopup";
+	    	}
 	    } catch(Exception e) {
 	    	e.printStackTrace();
 	    }
