@@ -52,6 +52,7 @@ public class FpDietController {
 
 		} else {
 			System.out.println("===========================================================");
+
 //			System.out.println("userMember : " + userMember);
 
 			System.out.println("userMember : " + member );
