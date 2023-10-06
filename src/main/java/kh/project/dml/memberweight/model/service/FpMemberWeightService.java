@@ -24,6 +24,6 @@ public interface FpMemberWeightService {
 	//체지방량, 근육량 삭제
 	public int delete(String weightDate , String memberId) ;
 	
-	//TODO - dfkdsjflkjsdfklsjdflkjsdlfkjsdlkfjsdlkfjsldkj
+	//체중관리 페이지 - 날짜 List 
 	public List<FpMemberWeightVo> selectList(String memberId);
 }
