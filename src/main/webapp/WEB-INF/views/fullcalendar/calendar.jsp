@@ -16,7 +16,8 @@
 <link href="${pageContext.request.contextPath}/css/scss.css"
 	rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/bootstrap.css" />
-<script src="${pageContext.request.contextPath }/resources/js/custom-calendar.js"></script>
+<script
+	src="${pageContext.request.contextPath }/resources/js/custom-calendar.js"></script>
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
@@ -192,7 +193,8 @@
 
 .ex_part_one {
 	height: 10%;
-}</style>
+}
+</style>
 </head>
 <body class="sb-nav-fixed">
 	<jsp:include page="/WEB-INF/views/frame/nav.jsp"></jsp:include>
@@ -215,11 +217,12 @@
 					<div>
 
 						<h2 style="text-align: center;">${member.mname }님의캘린더</h2>
-						
+
 						<button type="button" class="btn btn-primary"
 							data-bs-toggle="modal" data-bs-target="#exampleModal">
 							Launch demo modal</button>
-						<div class="modal fade" id="exampleModal" tabindex="-1"	aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal fade" id="exampleModal" tabindex="-1"
+							aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog modal-xl">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -229,32 +232,85 @@
 											data-bs-dismiss="modal" aria-label="Close"></button>
 									</div>
 									<div class="modal-body">
-										<div class="main_content_part col-xl-12">
-											<!-- <div class="appendtest123"></div> -->
-											<div class="exercisetest row">
-												<div class="col-xl-4 ex_part_group">
-													<div class="ex_part btn col-xl-12" data-part="등">등</div>
-													<div class="ex_part btn col-xl-12" data-part="가슴">가슴</div>
-													<div class="ex_part btn col-xl-12" data-part="어깨">어깨</div>
-													<div class="ex_part btn col-xl-12" data-part="팔">팔</div>
-													<div class="ex_part btn col-xl-12" data-part="하체">하체</div>
+										<div>
+											<form id="calendarData">
+												<div>
+													제목 : <input type="text" name="title" id="title"
+														placeholder="제목 입력">
 												</div>
-										
-											</div>
-										</div>
-									</div>
+												<br>
+												<div>
+													시작 날짜 : <input type="date" name="startDate" id="startDate"
+														size="12" value="${startDate}" />
+												</div>
+												<br>
+												<div>
+													종료 날짜 : <input type="date" name="endDate" id="endDate"
+														size="12" value="${endDate}" />
 
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-bs-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-primary">Save
-										changes</button>
+												</div>
+												<br> 설명
+												<div>
+													<textarea name="content" id="content" rows="10" cols="30"></textarea>
+												</div>
+												<br> <input type="button" value="저장"
+													onClick="send_save()">
+
+
+
+											</form>
+										</div>
+
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary"
+											data-bs-dismiss="modal">Close</button>
+										<button type="button" class="btn btn-primary">Save
+											changes</button>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+					<!-- 모달창 -->
+					<div class="modal fade" id="exampleModal" tabindex="-1"
+						aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-sm">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<form>
+										<div>
+											<span>무게 : </span> <input type="number"
+												class="addExerciseWeight text-center">
+										</div>
+										<div>
+											<span>횟수 : </span> <input type="number"
+												class="addExerciseNumber text-center">
+										</div>
+										<div>
+											<span>세트 : </span> <input type="number"
+												class="addExerciseSet text-center">
+										</div>
+										<button type="button"
+											class="btn btn-primary updateDayExSet floatRight mt-3">저장</button>
+										<button type="button"
+											class="btn btn-secondary floatRight mt-3"
+											data-bs-dismiss="modal">닫기</button>
+
+									</form>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+					<button type="button" data-bs-toggle="modal"
+						data-bs-target="#exampleModal" class="sendDayExSet">수정</button>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
@@ -266,6 +322,10 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
-		
+	<script>
+let contextPath = "${pageContext.request.contextPath }";
+</script>
+	<script
+		src="${pageContext.request.contextPath }/resources/js/custom-calendar.js"></script>
 </body>
 </html>
