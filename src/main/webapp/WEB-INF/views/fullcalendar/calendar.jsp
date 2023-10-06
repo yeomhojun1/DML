@@ -85,7 +85,9 @@
 		              ],
 				        
   				      dateClick : (info)=>{ // 선택한 날짜 값 뽑아내기
-  				    	  $("#insertPlan").modal("toggle");
+  				    	$("#insertPlan [name=startDate]").val(info.dateStr);
+  				    	$("#insertPlan [name=endDate]").val(info.dateStr);
+  				   	 	 $("#insertPlan").modal("toggle");
   				    	 /*  console.log(info);
   				    	  var clickDate = info.dateStr;
 //   				    	  function add_ClickSchedule(clickDate){ // 클릭된 날짜부터 일정 추가
@@ -107,15 +109,16 @@
   				      	const start = info.event.startStr;
   				      	const end = info.event.endStr;
   				        const titles = info.event.title;
-  				   	 	$("#startdate").html(start);
-  				   	 	$("#startdate").html(start);
+  				   	 	$("#startdate").html(info.event.startStr);
+  				   	 	$("#startdate").html(info.event.endStr);
   				    	console.log(info);
-				    	/*   var url = "${pageContext.request.contextPath}/calendar/calendarSelected?calendarno="+id+"&startDate="+start+"&endDate="+end+"&title="+titles;
+				    	   var url = "${pageContext.request.contextPath}/calendar/calendarSelected?calendarno="+id+"&startDate="+start+"&endDate="+end+"&title="+titles;
   				    	  var name = "일정 추가";
   				    	  var option = "width = 600, height = 600 left = 100, top=50,location=no";
-  				    	  window.open(url,name,option); */
+  				    	  window.open(url,name,option); 
   				    	 $("#updatePlan").modal("toggle");
   				      }
+  				      
 				     
 				   }); // calendar
 		   calendar.render();		
@@ -188,7 +191,11 @@
 											data-bs-dismiss="modal" aria-label="Close"></button>
 									</div>
 									<div class="modal-body">
+									
 										<div>
+										<div>
+										<h2>일정추가</h2>
+										</div>
 											<form id="calendarData">
 												<div>
 													제목 : <input type="text" name="title" id="title"
@@ -229,6 +236,7 @@
 						</div>
 					</div>
 					<!-- 모달창 -->
+					
 					<div class="modal fade" id="udpatePlan" tabindex="-1"
 						aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog modal-sm">
