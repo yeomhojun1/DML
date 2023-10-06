@@ -263,11 +263,10 @@ public class FpMemberServiceImpl implements FpMemberService {
 	public FpMemberVo getBySns(FpMemberVo snsMember) {
 		return dao.getBySns(snsMember);
 	}
-	
 	// 평판 정보
 	@Override
-	public int plusReputation(String memberId) {
-		return dao.plusReputation(memberId);
+	public int plusReputation(int replyNo) {
+		return dao.plusReputation(replyNo);
 	}
 	
 }

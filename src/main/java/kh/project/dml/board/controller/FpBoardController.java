@@ -167,7 +167,7 @@ public class FpBoardController {
 
 	@PostMapping("/selectReply")
 	@ResponseBody
-	public FpBoardVo selectReplyBoard(ModelAndView mv, FpBoardSelectReplyParam param) {
+	public FpBoardVo selectReplyBoard( FpBoardSelectReplyParam param) {
 		return fpBoardServiceImpl.selectReply(param);
 	}
 

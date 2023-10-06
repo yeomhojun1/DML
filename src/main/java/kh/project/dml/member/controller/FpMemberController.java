@@ -474,8 +474,8 @@ public class FpMemberController {
 
 	@GetMapping("/member/plusReputation")
 	@ResponseBody
-	public int plusReputation(String memberId) {
-		return service.plusReputation(memberId);
+	public int plusReputation(int replyNo) {
+		return service.plusReputation(replyNo);
 	}
 }
 

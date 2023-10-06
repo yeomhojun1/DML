@@ -136,7 +136,7 @@
 		           success: function (result) {
 		        	  for (var i = 0; i < result.length; i++) {
 		        		  if(result[i].rref==0){
-	        			var  htmlVal =  '<div class="card replyCard" data-replyno="'+result[i].replyNo+'" data-writer="'+ result[i].memberId+'"><div class="firstReply card"><div class="updatewriter">작성자 : '+ result[i].memberId+'</div><div class="updatereplyContent">내용 : '+result[i].replyContent+'</div><div class="updatereplyDate">입력날짜 : '+result[i].replyDate+'</div>'
+	        			var  htmlVal =  '<div class="card replyCard" data-replyno="'+result[i].replyNo+'" data-writer="'+ result[i].memberId+'"><div class="firstReply card" data-replyno="'+result[i].replyNo+'" data-writer="'+ result[i].memberId+'"><div class="updatewriter">작성자 : '+ result[i].memberId+'</div><div class="updatereplyContent">내용 : '+result[i].replyContent+'</div><div class="updatereplyDate">입력날짜 : '+result[i].replyDate+'</div>'
 	    		   		+'<div class="groupbtn"><button class="updatereply">수정</button><button onclick="deletereplyHandler("'+result[i].replyNo+'");">삭제</button><button class="insertreplyreply">댓글 삽입</button>'
 	    		   		+'<button class="moreReply" data-replyno="'+result[i].replyNo+'">댓글 더보기</button>';
 	    		   	 	if(writerHtml=="${member.memberId}"){
@@ -154,19 +154,14 @@
 		        	   $(".insertreplyreply").click(insertreplyreplyHandler);
 		        	   $(".moreReply").click(moreReplyHandler);
 						if(${boardone.selectReplyNo}!=0){	
-						//	console.log("${boardone.selectReplyNo}!=0");
-							var replyCard = document.getElementsByClassName('replyCard');
-							//console.log(replyCard[1]); 
-		 						for (var i = 0; i < replyCard.length; i++){
-					 				/* console.log($(replyCard[i]).data("replyno"));
-					 				console.log(replyCard[i].dataset.replyno); */
-					 				if($(replyCard[i]).data("replyno")==${boardone.selectReplyNo}){
-										 replyCard[i].style.backgroundColor= 'red';
-										 console.log(replyCard[i]);
-										console.log("제대로 돌아감 !! "+replyCard[i].dataset.replyno);
-									}   
-								} 
-							}
+						//	$(".forPlusRequtation").remove();
+							var firstReply = document.getElementsByClassName('firstReply');
+		 					for (var i = 0; i < firstReply.length; i++){
+					 			if($(firstReply[i]).data("replyno")==${boardone.selectReplyNo}){
+									firstReply[i].classList.add('text-bg-warning');
+								}   
+							} 
+						}
 					}, //success
 					error : function(result){
 						console.log("error");
@@ -180,6 +175,7 @@
 				url : "${pageContext.request.contextPath}/board/selectReply",
 				data: { selectReplyNo: replyNo, boardNo: ${boardone.boardNo}},
 				success : function (result) {
+					console.log(result);
 					var forReply=result.selectReplyNo;
 					$.ajax({
 						type : "get",
@@ -188,6 +184,7 @@
 						success : function (result) {
 							console.log("plusReputation : success");
 							$(".forPlusRequtation").remove();
+							// location.reload(true);
 						},
 						error : function(){
 							console.log("error");
@@ -200,6 +197,23 @@
 				}); 
 			
 		}
+	/* 	function plusReputationHandler(forReply){
+			console.log("plusReputationHandler : "+forReply);
+			$.ajax({
+				type : "get",
+				url : "${pageContext.request.contextPath}/member/plusReputation",
+				data: { replyNo: forReply },
+				success : function (result) {
+					console.log("plusReputation : success");
+					$(".forPlusRequtation").remove();
+					 location.reload(true);
+				},
+				error : function(){
+					console.log("error");
+					}
+				}); 
+		} */
+		
 		function moreReplyHandler(e){
 			var rrefReplyNo=$(this).data("replyno");
 			var eTarget=e.target;

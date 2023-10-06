@@ -164,8 +164,8 @@ public class FpMemberDao {
 			return session.selectOne(GET_BY_SNS_KAKAO, snsMember.getKakaoid());
 		}
 	}
-	public int plusReputation(String memberId) {
-		return session.update(PLUS_REPUTATION, memberId);
+	public int plusReputation(int replyNo) {
+		return session.update(PLUS_REPUTATION, replyNo);
 	}
 }
 

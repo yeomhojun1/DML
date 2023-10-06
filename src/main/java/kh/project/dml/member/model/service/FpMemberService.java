@@ -29,5 +29,5 @@ public interface FpMemberService {
 	void keepLogin(String memberId, String sessionId, Date expire);
 	FpMemberVo checkLoginBefore(String loginCookie);
 	FpMemberVo getBySns(FpMemberVo snsMember);
-	int plusReputation(String memberId);
+	int plusReputation(int replyNo);
 }
