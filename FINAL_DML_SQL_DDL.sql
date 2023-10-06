@@ -651,9 +651,13 @@ CREATE SEQUENCE board_no_seq
 commit;
 SELECT * FROM BOARD;
 select * from replyboard ;
+select * from member;
 update member set reputation=(select reputation from member where member_id='ghwnswkd123@naver.com')+1 where member_id='ghwnswkd123@naver.com';
 ALTER TABLE board ADD SELECT_REPLY_NO NUMBER DEFAULT 0;
 select * from board b  join replyboard r on b.select_reply_no=r.reply_no where b.board_no=1;
 
-
-
+select member_id from replyboard where reply_no=62;
+ update member set reputation=(select reputation from member where member_id=(select member_id from replyboard where reply_no=62))+1 where member_id=(select member_id from replyboard where reply_no=62);
+  update member set reputation=(select reputation from member where member_id=(select member_id from replyboard where reply_no=65))+1 where member_id=(select member_id from replyboard where reply_no=65);
+ update member set reputation=(select reputation from member where member_id=(select member_id from replyboard where reply_no=60))+1 where member_id=(select member_id from replyboard where reply_no=60);
+    

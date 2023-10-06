@@ -136,7 +136,7 @@
 		where kakaoid = #{kakaoid}
     </select>
     <!-- 평판 증가 -->
-    <update id="plusreputation" parameterType="string">
+    <update id="plusreputation" parameterType="_int">
 		 update member set reputation=(select reputation from member where member_id=(select member_id from replyboard where reply_no=#{replyNo}))+1 where member_id=(select member_id from replyboard where reply_no=#{replyNo})
     </update>
 </mapper>
