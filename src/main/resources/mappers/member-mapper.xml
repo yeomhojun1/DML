@@ -106,7 +106,7 @@
         update member set sessionkey = #{sessionkey}, sessionlimit = #{sessionlimit}
 		where member_id = #{memberId}
     </update>
-
+	
     <!-- 쿠키에 저장된 세션키 비교 -->
     <select id="checkLoginBefore" resultType="FpMemberVo">
 		select m.*, authorities from member m
@@ -135,6 +135,7 @@
 		join users u on m.member_id = u.username
 		where kakaoid = #{kakaoid}
     </select>
+    
     <!-- 평판 증가 -->
     <update id="plusreputation" parameterType="_int">
 		 update member set reputation=(select reputation from member where member_id=(select member_id from replyboard where reply_no=#{replyNo}))+1 where member_id=(select member_id from replyboard where reply_no=#{replyNo})

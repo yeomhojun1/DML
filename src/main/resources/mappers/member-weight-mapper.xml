@@ -58,11 +58,10 @@
 	</update>
 	
 	<!--근육량 / 체지방량 삭제 -->
-	
-	
-		<delete id="delete" parameterType="map">
-		delete from MEMBER_WEIGHT where weight_date = #{weightDate}	and member_id=#{memberId}
-		</delete>
+	<update id="delete" parameterType="map">
+		UPDATE MEMBER_WEIGHT SET MUSCLE_MASS='', BODY_FAT_PET=''
+		WHERE member_id=#{memberId} AND weight_date=#{weightDate}
+	</update>
 	
 	
 	<!--delete  -->

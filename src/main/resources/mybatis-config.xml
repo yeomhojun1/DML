@@ -35,7 +35,7 @@
 		<mapper resource="mappers/admin-mapper.xml"/>
 		<mapper resource="mappers/notice-mapper.xml"/>
 		<mapper resource="mappers/member-ex-set-mapper.xml"/>
-		<mapper resource="mappers/member_weight-mapper.xml"/>
+		<mapper resource="mappers/member-weight-mapper.xml"/>
 		<mapper resource="mappers/member-repository-mapper.xml"/>
 		<mapper resource="mappers/calender-mapper.xml"/>
 		<mapper resource="mappers/foodapi-mapper.xml"/>

@@ -31,8 +31,6 @@ public class FpMemberWeightController {
 	@Autowired
 	private FpMemberWeightServiceImpl fpMemberWeightServiceImpl;
 	
-	private FpMemberServiceImpl service; 
-
 	@GetMapping("/weight")
 	public ModelAndView mainPageOpen9(ModelAndView mv, HttpSession session) {
 		
@@ -66,12 +64,10 @@ public class FpMemberWeightController {
 		fpMemberWeightServiceImpl.deleteWeight(memberId, weightDate);
 		return "memberweight/weight2";
 	}
-
 	
-	  @GetMapping("/composition") public String mainPageOpen11() { 
-		  
-		  return"memberweight/composition";
-		  }
+	@GetMapping("/composition") public String mainPageOpen11() { 
+		return"memberweight/composition";
+	}
 	 
 	
 	/*
@@ -82,6 +78,7 @@ public class FpMemberWeightController {
 	 * Gson().toJson(fpMemberWeightServiceImpl.selectList(memberId))); return
 	 * "memberweight/composition"; }
 	 */
+	  
 	// 근육량 체지방량 update
 	@PostMapping("/composition")
 	public String mainPageOpen15(
