@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.nimbusds.jose.shaded.json.parser.ParseException;
+
 import kh.project.dml.calender.model.dao.FpCalenderDao;
 import kh.project.dml.calender.model.vo.FpCalenderVo;
 import kh.project.dml.member.model.vo.FpMemberVo;
@@ -22,24 +24,29 @@ public class FpCalenderServiceImpl implements FpCalenderService  {
 	private FpCalenderDao fpcalenderDao;
 	
 	@Override
-	public List<FpCalenderVo> selectList(FpMemberVo loginInfo){
+	public List<FpCalenderVo> selectList(String loginInfo){
 		return fpcalenderDao.selectList(loginInfo);
 	}
+	public List<FpCalenderVo> table(String memberId, String startDate) {
+		return fpcalenderDao.selectOne(memberId, startDate);
+	}
+	
 	@Override
 	public FpCalenderVo seletOne(int calendarno) {
 		return fpcalenderDao.selectOne(calendarno);
 	}
 	@Override
-	public int insert(FpCalenderVo vo) {
-		return fpcalenderDao.insert(vo);
+	public int insert(String memberId, String title, String startDate, String endDate, String content) {
+		System.out.println("Service 동작");
+		return fpcalenderDao.insert(memberId, title, startDate, endDate, content);
 	}
 	@Override
 	public int update(FpCalenderVo vo) {
 		return fpcalenderDao.update(vo);
 	}
 	@Override
-	public int delete(int calendarno) {
-		return fpcalenderDao.delete(calendarno);
+	public int delete(FpCalenderVo vo) {
+		return fpcalenderDao.delete(vo);
 	}
 	@Override
     public List<Map<String, Object>> getEventList() {
@@ -56,5 +63,13 @@ public class FpCalenderServiceImpl implements FpCalenderService  {
         eventList.add(event);
         return eventList;
     }
+	@Override
+	public String getContent(String calendarno) {
+		return fpcalenderDao.selectOne(calendarno);
+	}
+	@Override
+	public int editCalendar(FpCalenderVo vo) {
+		return fpcalenderDao.update(vo);
+	}
 }
 

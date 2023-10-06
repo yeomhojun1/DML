@@ -16,6 +16,7 @@
 <link href="${pageContext.request.contextPath}/css/scss.css"
 	rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/bootstrap.css" />
+<script src="${pageContext.request.contextPath }/resources/js/custom-calendar.js"></script>
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
@@ -68,8 +69,9 @@
 		                 {
 		                    id    : '${showList.calendarno}',
 		                    title : '${showList.title}',
-		                    start : '${showList.startdate}',
-		                    end    : '${showList.enddate}'
+		                    start : '${showList.startDate}',
+		                    end    : '${showList.endDate}',
+		                   content : '${showList.content}'
 		                 },
 		                 </c:forEach>
 		                 {
@@ -90,13 +92,23 @@
 //   				    	};
 //   				    	  clickDate = clickDate.replaceAll("-", "");
 //   				    	clickDate = parseInt(clickDate);
-//   				    	alert(clickDate); //경고창d
+//   				    	alert(clickDate); //경고창
 //   				    	 $(".btn-primary").click(expartClickHandler);
   				    	  
   				      },
   				      eventClick: function(info){ // 클릭한 일정 값 뽑아내기
-  				    	  const title = info.event.title;
-  				    	alert(title); //경고창
+  				    	const title = info.event.title;
+  				      	const id = info.event.id;
+  				      	const start = info.event.startStr;
+  				      	const end = info.event.endStr;
+  				        const titles = info.event.title;
+
+  				    
+  				    	console.log(info);
+				    	  var url = "${pageContext.request.contextPath}/calendar/calendarSelected?calendarno="+id+"&startDate="+start+"&endDate="+end+"&title="+titles;
+  				    	  var name = "일정 추가";
+  				    	  var option = "width = 600, height = 600 left = 100, top=50,location=no";
+  				    	  window.open(url,name,option)
   				      }
 				     
 				   }); // calendar
@@ -254,39 +266,6 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
-		
-	<script>
-	<script>
-	 function send_save() {
-	    var title = $("#title").val();
-	    var startdate = $("#startdate").val();
-	    var enddate = $("#enddate").val();
-	    var content = $("#content").val();
-
-	    // AJAX 요청 설정
-	    $.ajax({
-	        type: "POST", // 또는 "GET"에 따라서 서버 요청 방식을 선택하세요.
-	        url: "/calendar/save", // 
-	        data: {
-	            title: title,
-	            startdate: startdate,
-	            enddate: enddate,
-	            content: content
-	        },
-	        success: function(response) {
-	            // 서버로부터의 응답 처리
-	            alert("일정이 저장되었습니다."); // 예시: 서버에서 성공 응답을 받았을 때 알림창 표시
-	        },
-	        error: function(error) {
-	            // 에러 처리
-	            console.log(error);
-	            alert("일정 저장 중 오류가 발생하였습니다."); // 오류 발생 시 알림창 표시
-	        }
-	    });
-	} 
-	</script>
-	
-	</script>
 		
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="calender">
-  <select id="selectList" parameterType="FpMemberVo" resultType="FpCalenderVo">
+  <select id="selectList" parameterType="string" resultType="FpCalenderVo">
 	SELECT 
 	  	 CALENDARNO
 		,MEMBER_ID
@@ -10,24 +10,40 @@
 		,ENDDATE
 		,CONTENT 
 	FROM CALENDAR 
-		WHERE MEMBER_ID = #{memberId}
+		WHERE MEMBER_ID = #{username}
   </select>
   
   <select id="selectOne" resultType="FpCalenderVo">
-  select * from calendar where calendarno=#{calendarno} 
+  select * from calendar where MEMBER_ID = #{memberId} and STARTDATE = #{startDate}
   </select>
   
+  <select id="selectOneContent" resultType="String">
+  select CONTENT from calendar where CALENDARNO = #{calendarno}
+  </select>
+  <!-- 
   <insert id="insert" parameterType="FpCalenderVo">
-  insert into calender values(#{calendarno},#{memberId},#{title},#{startdate},#{enddate},#{content})
+  insert into calendar values(#{calendarno},#{memberId},#{title},#{startdate},#{enddate},#{content})
   </insert>
+   -->
+   <!-- 일정 추가 -->
+   <insert id="insert" parameterType="map">
+   			INSERT INTO calendar (CALENDARNO, MEMBER_ID, TITLE, STARTDATE , ENDDATE , CONTENT)
+				VALUES(CALENDARID.NEXTVAL, #{memberId},#{title},replace(#{startDate}, '-', ''), replace(#{endDate}, '-', ''),#{content})
+   </insert>
+  
+ 
   
   <update id="update" parameterType="FpCalenderVo">
-  update calender set memberId = #{memberId}, title = #{title},
-   startdate = #{startdate}, enddate = #{enddate}, content = #{content}
+  update calendar 
+  set title = #{title}
+  , startdate = #{startDate}
+  , enddate = #{endDate}
+  , content = #{content}
    where calendarno = #{calendarno}
+ 
   </update>
   
-  <delete id="delete" parameterType="int">
-  delect from calender where calendarno = #{calendarno}
+  <delete id="delete" parameterType="FpCalenderVo">
+  delete from calendar where CALENDARNO = #{calendarno} and MEMBER_ID = #{memberId}
   </delete>
 </mapper>

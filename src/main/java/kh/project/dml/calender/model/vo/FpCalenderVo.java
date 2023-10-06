@@ -1,11 +1,8 @@
 package kh.project.dml.calender.model.vo;
 
-import org.springframework.stereotype.Component;
-
 import lombok.Data;
 
 @Data
-@Component
 public class FpCalenderVo {
 
 	
@@ -21,7 +18,8 @@ public class FpCalenderVo {
 	private int calendarno;
 	private String memberId;
 	private String title;
-	private String startdate;
-	private String enddate;
+	private String startDate;
+	private String endDate;
 	private String content;
+	
 }
