@@ -93,7 +93,7 @@ public class FpMemberController {
 				return "/member/agreement";
 			} else {
 				// 아이디 중복 시
-				return "redirect:/member/duplicationId";
+				return "/member/duplicationId";
 			}
 		} else {
 			// 4. 존재시 강제로그인
