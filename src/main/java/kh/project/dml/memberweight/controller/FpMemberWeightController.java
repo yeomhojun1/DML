@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 
 import kh.project.dml.common.interceptor.SessionNames;
+import kh.project.dml.member.model.service.FpMemberServiceImpl;
 import kh.project.dml.member.model.vo.FpMemberVo;
 import kh.project.dml.memberweight.model.service.FpMemberWeightServiceImpl;
 import kh.project.dml.memberweight.model.vo.FpMemberWeightVo;
@@ -29,10 +30,12 @@ public class FpMemberWeightController {
 
 	@Autowired
 	private FpMemberWeightServiceImpl fpMemberWeightServiceImpl;
+	
+	private FpMemberServiceImpl service; 
 
 	@GetMapping("/weight")
 	public ModelAndView mainPageOpen9(ModelAndView mv, HttpSession session) {
-		// TODO
+		
 		String memberId = "ch@dml.com";
 		mv.addObject("fpMemberWeightVoListJson", new Gson().toJson(fpMemberWeightServiceImpl.selectList(memberId)));
 //		[{"memberId":"ch@dml.com","weightDate":"20230922","weight":90.0,"muscleMass":0,"bodyFatPet":0},
@@ -72,7 +75,8 @@ public class FpMemberWeightController {
 	 
 	
 	/*
-	 * @GetMapping("/composition") public String mainPageOpen11(ModelAndView mv,
+	 * @GetMapping("/composition")
+	 *  public String mainPageOpen11(ModelAndView mv,
 	 * HttpSession session) { String memberId = "ch@dml.com";
 	 * mv.addObject("fpMemberWeightVoListJson", new
 	 * Gson().toJson(fpMemberWeightServiceImpl.selectList(memberId))); return
