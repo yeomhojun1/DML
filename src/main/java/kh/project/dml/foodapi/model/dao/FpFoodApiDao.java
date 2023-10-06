@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kh.project.dml.foodapi.model.vo.FpFoodApiVo;
-import kh.project.dml.memberexset.model.vo.FpMemberExSetVo;
+
 
 @Repository
 public class FpFoodApiDao {
@@ -17,6 +17,9 @@ public class FpFoodApiDao {
 	
 	public List<FpFoodApiVo> selectList()  {
 		return sqlSession.selectList("foodapi.selectList");
+	}
+	public List<FpFoodApiVo> selectSearchList(FpFoodApiVo fpFoodApiVo) {
+		return sqlSession.selectList("foodapi.selectSearchList", fpFoodApiVo);
 	}
 	public FpFoodApiVo selectOne(String foodCd) {
 		return sqlSession.selectOne("foodapi.selectOne", foodCd);

@@ -5,7 +5,13 @@
 
 <select id="selectList" resultType="FpFoodApiVo">
 		select * from food_api 
-</select> 
+</select>
+
+<select id="selectSearchList" parameterType="string"
+	resultType="FpFoodApiVo">
+	<bind name="foodName" value="'%'+foodName+'%'" />
+	SELECT * FROM food_api where food_name like #{foodName}
+</select>  
 	
 <select id="seletOne" resultType="FpFoodApiVo" parameterType="string">
 select * from where foodCd=#{foodCd}

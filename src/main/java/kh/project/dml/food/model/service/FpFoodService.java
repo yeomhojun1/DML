@@ -17,4 +17,5 @@ public interface FpFoodService {
 	public int insert(FpDietVo vo);
 	public int update(FpFoodVo vo);
 	public int delete(String foodCd);
+
 }

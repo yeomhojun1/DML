@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +29,7 @@ import kh.project.dml.diet.model.vo.FpDietVo;
 import kh.project.dml.diet.model.vo.TotalFoodListDTO;
 import kh.project.dml.food.model.service.FpFoodService;
 import kh.project.dml.food.model.service.FpFoodServiceImpl;
+import kh.project.dml.foodapi.model.vo.FpFoodApiVo;
 import kh.project.dml.member.model.vo.FpMemberVo;
 import kh.project.dml.users.model.vo.FpUsersVo;
 
@@ -36,10 +38,10 @@ import kh.project.dml.users.model.vo.FpUsersVo;
 public class FpDietController {
 
 	@Autowired
-	public FpDietService fpDietServiceImpl;
+	public FpDietService fpDietServiceImpl; 
 	
 	@Autowired
-	private FpFoodServiceImpl fpFoodServiceImpl;
+	private FpFoodService fpFoodServiceImpl;
 	
 	@ResponseBody
 	@PostMapping("/list")
@@ -78,7 +80,7 @@ public class FpDietController {
 		
 		TotalFoodListDTO totalDto = null;
 		
-		totalDto =fpDietServiceImpl.TotalSelectList(dietVo);
+		totalDto =fpDietServiceImpl.totalSelectList(dietVo);
 		
 		if(totalDto != null) 
 		{
@@ -108,14 +110,11 @@ public class FpDietController {
 			totalDto.setTotalProtein("");
 		}
 		
-	
-		
-		
 		map.put("dietList", fpDietServiceImpl.selectList(dietVo));
 		map.put("totalDietList", totalDto); 
 		
 		return map;
-	};
+	}
 	
 	@GetMapping("/list")
 	public ModelAndView selectListdiet(ModelAndView mv,HttpSession session) {
@@ -172,7 +171,7 @@ public class FpDietController {
 		
 		TotalFoodListDTO totalDto = null;
 		
-		totalDto =fpDietServiceImpl.TotalSelectList(dietVo);
+		totalDto =fpDietServiceImpl.totalSelectList(dietVo);
 		
 		if(totalDto != null) 
 		{
@@ -216,11 +215,14 @@ public class FpDietController {
 	}
 	
 	/*
-	 * @GetMapping("/dietlist") public String selectList2() { return
-	 * "diet/dietlist";
+	 * @GetMapping("/getSearchList")
 	 * 
-	 * }
+	 * @ResponseBody public List<FpFoodApiVo> getSearchList( //@RequestParam("type")
+	 * String type, //@RequestParam("keyword") String keyword FpDietVo fpDietVo ,
+	 * Model model) { System.out.println("aaaa"); List<FpFoodApiVo> result =
+	 * fpFOODAPServiceImpl.getSearchList(fpFoodApiVo); return result; }
 	 */
+	
 	
 	@GetMapping("/one")
 	public ModelAndView selectOnediet(ModelAndView mv, String mealCode) {
@@ -278,9 +280,6 @@ public class FpDietController {
 	@ResponseBody
 	@PostMapping("/delete")
 	public String deleteDoMemeber(RedirectAttributes redirectAttr, @RequestBody FpDietVo FpDietVo) {
-		
-		
-		
 		int result = fpDietServiceImpl.delete(FpDietVo);
 		
 		System.out.println("======================================");

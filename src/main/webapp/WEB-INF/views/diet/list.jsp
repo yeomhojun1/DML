@@ -195,9 +195,12 @@
 								</div>
 						</div>
 					</div>					
-					</main>
-				</div>
+				</main>
+			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
+	</div>
+
+
 	<script		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"		crossorigin="anonymous"></script>
 	<script src="${pageContext.request.contextPath }/js/scripts.js"></script>
 	<script		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"		crossorigin="anonymous"></script>
@@ -349,7 +352,8 @@
 				});
 				  
 				$(".Plan_modal_food_left__wihxs > .frm").remove();
-				$(".Plan_modal_food_left__wihxs").append(htmlVal);
+				//$(".Plan_modal_food_left__wihxs").append(htmlVal);
+				$(".Plan_brother").html(htmlVal);
 				
 			}
 			,error: function(e){
@@ -748,3 +752,5 @@
 	</script>
 
 
+</body>
+</html>

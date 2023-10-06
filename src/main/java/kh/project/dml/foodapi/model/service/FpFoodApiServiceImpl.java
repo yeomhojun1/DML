@@ -15,26 +15,30 @@ public class FpFoodApiServiceImpl implements FpFoodApiService{
 
 
 	@Autowired
-	private FpFoodApiDao fdFoodApiDao;
+	private FpFoodApiDao fpFoodApiDao;
 	
 	@Override
 	public List<FpFoodApiVo> selectList()  {
-		return fdFoodApiDao.selectList();
+		return fpFoodApiDao.selectList();
 	}
 	@Override
 	public FpFoodApiVo selectOne(String foodCd)  {
-		return fdFoodApiDao.selectOne(foodCd);
+		return fpFoodApiDao.selectOne(foodCd);
+	}
+	@Override
+	public List<FpFoodApiVo> getSearchList(FpFoodApiVo fpFoodApiVo) {
+		return fpFoodApiDao.selectSearchList(fpFoodApiVo);
 	}
 	@Override
 	public int insert(FpFoodApiVo vo)  {
-		return fdFoodApiDao.insert(vo);
+		return fpFoodApiDao.insert(vo);
 	}
 	@Override
 	public int update(FpFoodApiVo vo) {
-		return fdFoodApiDao.update(vo);
+		return fpFoodApiDao.update(vo);
 	}
 	@Override
 	public int delete(String foodCd)  {
-		return fdFoodApiDao.delete(foodCd);
+		return fpFoodApiDao.delete(foodCd);
 	}
 }

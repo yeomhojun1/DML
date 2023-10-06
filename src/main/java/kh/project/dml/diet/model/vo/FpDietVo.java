@@ -23,6 +23,10 @@ public class FpDietVo {
 	private int protein;
 	private int fat;
 	
+	//검색
+	private String type;
+	private String keyword;
+	
 
 	
 	private List<FpFoodVo> foodlist;

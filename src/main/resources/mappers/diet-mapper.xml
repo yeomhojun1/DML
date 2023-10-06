@@ -62,9 +62,14 @@
    	   GROUP BY a.food_time
 	   </if>
 	   
-        
+      </select>
 
-	</select>
+	
+<!-- 	<select id="selectSearchList" parameterType="string" resultType="FpFoodApiVo">
+	<bind name="foodName" value="'%'+foodName+'%'"/>
+	SELECT * FROM food_api where food_name like #{foodName}
+	</select>  -->
+	
 	
 	<select id="selectDayList" resultType="FpDietVo" parameterType="string">
 		<bind name="mealCode" value="'%'+mealCode+'%'"/>

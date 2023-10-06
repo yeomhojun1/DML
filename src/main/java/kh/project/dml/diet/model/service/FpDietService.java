@@ -18,7 +18,9 @@ public interface FpDietService {
 	public int update(FpDietVo vo);
 
 	public int delete(FpDietVo FpDietVo);
-	
-	public TotalFoodListDTO TotalSelectList(FpDietVo dietVo);
+
+	public TotalFoodListDTO totalSelectList(FpDietVo dietVo);
+
+	/* public List<FpFoodApiVo> getSearchList(FpFoodApiVo fpFoodApiVo); */
 
 }

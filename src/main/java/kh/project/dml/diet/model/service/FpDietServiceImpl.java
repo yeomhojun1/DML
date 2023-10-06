@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import kh.project.dml.diet.model.dao.FpDietDao;
 import kh.project.dml.diet.model.vo.FpDietVo;
 import kh.project.dml.diet.model.vo.TotalFoodListDTO;
+import kh.project.dml.foodapi.model.vo.FpFoodApiVo;
 
 @Service("fpDietServiceImpl")
 public class FpDietServiceImpl implements FpDietService {
@@ -24,7 +25,11 @@ public class FpDietServiceImpl implements FpDietService {
 	public List<FpDietVo> selectDayList(String mealCode) {
 		return fpDietDao.selectDayList(mealCode);
 	}
-
+	
+	/*
+	 * @Override public List<FpFoodApiVo> getSearchList(FpFoodApiVo fpFoodApiVo) {
+	 * return fpFoodApiDao.selectSearchList(fpFoodApiVo); }
+	 */
 
 	@Override
 	public FpDietVo selectOne(String mealCode) {
@@ -47,7 +52,7 @@ public class FpDietServiceImpl implements FpDietService {
 	}
 
 	@Override
-	public TotalFoodListDTO TotalSelectList(FpDietVo dietVo) {
+	public TotalFoodListDTO totalSelectList(FpDietVo dietVo) {
 	
 		return fpDietDao.totalSelectList(dietVo);
 	}

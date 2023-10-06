@@ -17,4 +17,5 @@ public interface FpFoodApiService {
 	public int insert(FpFoodApiVo vo);
 	public int update(FpFoodApiVo vo);
 	public int delete(String foodCd);
+	public List<FpFoodApiVo> getSearchList(FpFoodApiVo fpFoodApiVo);
 }

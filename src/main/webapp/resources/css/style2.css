@@ -736,7 +736,8 @@
 .Plan_modal_food_tabs_bar__JHpPi {
 	height: 80px;
 	display: flex;
-	flex-direction: row
+	flex-direction: row;
+	justify-content: center;
 }
 
 .Plan_modal_food_tab_each__3kNM_ {
