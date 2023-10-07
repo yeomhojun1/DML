@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import kh.project.dml.common.auth.SnsLogin;
@@ -494,5 +495,12 @@ public class FpMemberController {
 	public int plusReputation(int replyNo) {
 		return service.plusReputation(replyNo);
 	}
+	@GetMapping("/member/memberReputation")
+	public ModelAndView memberReputation(ModelAndView mv) {
+		mv.addObject("memberList", service.memberReputation());
+		mv.setViewName("frame/asidebar");
+		return mv;
+	}
+	
 }
 

@@ -69,8 +69,11 @@
 			</div>
 		</div>
 		<div class="sb-sidenav-footer">
-			<div class="small">Logged in as:</div>
-			Start Bootstrap
+			<div class="small">
+			<c:forEach items="${memberList}" var="vo">
+									<div>${vo.memberId} </div>
+								</c:forEach></div>
+			
 		</div>
 	</nav>
 </div>

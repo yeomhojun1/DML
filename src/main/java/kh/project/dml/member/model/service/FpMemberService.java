@@ -30,4 +30,5 @@ public interface FpMemberService {
 	FpMemberVo checkLoginBefore(String loginCookie);
 	FpMemberVo getBySns(FpMemberVo snsMember);
 	int plusReputation(int replyNo);
+	List<FpMemberVo> memberReputation();
 }

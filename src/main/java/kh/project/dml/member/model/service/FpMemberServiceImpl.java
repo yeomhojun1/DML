@@ -268,5 +268,8 @@ public class FpMemberServiceImpl implements FpMemberService {
 	public int plusReputation(int replyNo) {
 		return dao.plusReputation(replyNo);
 	}
-	
+	@Override
+	public List<FpMemberVo> memberReputation() {
+		return dao.memberReputation();
+	}
 }

@@ -28,7 +28,7 @@
 						</div>
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-success text-white mb-4">
-								<div class="card-body card-cursor" onClick="location.href='${pageContext.request.contextPath }/memberweight/healthmap';">주변 헬스장 찾기</div>
+								<div class="card-body card-cursor" onClick="location.href='${pageContext.request.contextPath }/board/list';">커뮤니티</div>
 								<%-- <div
 									class="card-footer d-flex align-items-center justify-content-between card-cursor" onClick="location.href='${pageContext.request.contextPath }/memberweight/healthmap';">
 									<!--    <a class="small text-white stretched-link" href="#">View Details</a> -->

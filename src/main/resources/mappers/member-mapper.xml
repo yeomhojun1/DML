@@ -140,4 +140,8 @@
     <update id="plusreputation" parameterType="_int">
 		 update member set reputation=(select reputation from member where member_id=(select member_id from replyboard where reply_no=#{replyNo}))+1 where member_id=(select member_id from replyboard where reply_no=#{replyNo})
     </update>
+    
+    <select id="memberReputation" resultType="FpMemberVo">
+	select * from member order by REPUTATION desc;
+	</select>
 </mapper>

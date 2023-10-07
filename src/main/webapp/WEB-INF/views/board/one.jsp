@@ -140,7 +140,9 @@
 	    		   		+'<div class="groupbtn"><button class="updatereply">수정</button><button onclick="deletereplyHandler("'+result[i].replyNo+'");">삭제</button><button class="insertreplyreply">댓글 삽입</button>'
 	    		   		+'<button class="moreReply" data-replyno="'+result[i].replyNo+'">댓글 더보기</button>';
 	    		   	 	if(writerHtml=="${member.memberId}"){
-	    		   			htmlVal+='<button class="forPlusRequtation" onclick="forPlusReputationHandler(\''+result[i].replyNo+'\');">채택하기</button>'  		   				
+	    		   	 		if(!${boardone.selectReplyNo}){
+	    		   			htmlVal+='<button class="forPlusRequtation" onclick="forPlusReputationHandler(\''+result[i].replyNo+'\');">채택하기</button>'  		
+	    		   	 		}
 	        		    }
 	    		   	 	htmlVal+='</div></div><div class="forAppendArea"></div>'
 	    		   		$(".testappend").append(htmlVal);
@@ -183,8 +185,8 @@
 						data: { replyNo: forReply },
 						success : function (result) {
 							console.log("plusReputation : success");
-							$(".forPlusRequtation").remove();
-							// location.reload(true);
+							//$(".forPlusRequtation").remove();
+							location.reload(true);
 						},
 						error : function(){
 							console.log("error");
