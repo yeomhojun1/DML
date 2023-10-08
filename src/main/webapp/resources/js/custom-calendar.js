@@ -69,17 +69,17 @@ function send_update(){ // ajax 비동기 처리 - 일정 수정
 	if(checkCorrectDate()){
 
 		var data = {}; // input에 입력된 내용을 전달 - 하지만 내가 원하는건 클릭한 날짜를 전달해야하지만, null 이 전달됨
-		data["calendarno"] = $("#calendarno").val();
-		data["title"] = $("#title").val();
-		data["startDate"] = $("#startDate").val();
-		data["endDate"] = $("#endDate").val();
-		data["content"] = $("#content").val();
+		data["calendarno"] = $("#updatePlan [name=calendarno]").val();
+		data["title"] = $("#updatePlan [name=title]").val();
+		data["startDate"] = $("#updatePlan [name=startDate]").val();
+		data["endDate"] = $("#updatePlan [name=endDate]").val();
+		data["content"] = $("#updatePlan [name=content]").val();
 		console.log("스크립트 시작");
 		console.log(data);
 		
 		$.ajax({
 			data : data,	//JSON.stringify(data)
-			url : contextPath+"/calendar/editCalendar",
+			url : contextPath + "/calendar/update",
 			type : "POST",
 			dataType : "json",
 			success:function(response){

@@ -103,20 +103,24 @@
 //   				    	 $(".btn-primary").click(expartClickHandler);
   				    	  
   				      },
-  				      eventClick: function(info){ // 클릭한 일정 값 뽑아내기
+  				      eventClick: (info) => { // 클릭한 일정 값 뽑아내기
+  				     	$("#updatePlan [name=calendarno]").val(info.event.id);
+  				     	$("#updatePlan [name=title]").val(info.event.title);
+  				     	$("#updatePlan [name=startDate]").val(info.event.startStr);
+  				    	$("#updatePlan [name=endDate]").val(info.event.endStr); 
+  				    	$("#updatePlan [name=content]").val(info.event.extendedProps.content); 
+  				    	$("#updatePlan").modal("toggle");
   				    	const title = info.event.title;
   				      	const id = info.event.id;
   				      	const start = info.event.startStr;
   				      	const end = info.event.endStr;
-  				        const titles = info.event.title;
-  				   	 	$("#startdate").html(info.event.startStr);
-  				   	 	$("#startdate").html(info.event.endStr);
+  				        const content = info.event.extendedProps.content; 
   				    	console.log(info);
-				    	   var url = "${pageContext.request.contextPath}/calendar/calendarSelected?calendarno="+id+"&startDate="+start+"&endDate="+end+"&title="+titles;
+				    	  /*  var url = "${pageContext.request.contextPath}/calendar/calendarSelected?calendarno="+id+"&startDate="+start+"&endDate="+end+"&title="+titles;
   				    	  var name = "일정 추가";
   				    	  var option = "width = 600, height = 600 left = 100, top=50,location=no";
-  				    	  window.open(url,name,option); 
-  				    	 $("#updatePlan").modal("toggle");
+  				    	  window.open(url,name,option);  */
+  				    	 
   				      }
   				      
 				     
@@ -178,10 +182,10 @@
 						<button type="button" class="btn btn-primary"
 							data-bs-toggle="modal" data-bs-target="#exampleModal">
 							Launch demo modal</button>
-						<div class="modal fade" id="insertPlan" >
-					<!-- 	tabindex="-1"
+						<div class="modal fade" id="insertPlan">
+							<!-- 	tabindex="-1"
 							aria-labelledby="exampleModalLabel" aria-hidden="true" -->
-							
+
 							<div class="modal-dialog modal-xl">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -191,11 +195,11 @@
 											data-bs-dismiss="modal" aria-label="Close"></button>
 									</div>
 									<div class="modal-body">
-									
+
 										<div>
-										<div>
-										<h2>일정추가</h2>
-										</div>
+											<div>
+												<h2>일정추가</h2>
+											</div>
 											<form id="calendarData">
 												<div>
 													제목 : <input type="text" name="title" id="title"
@@ -236,45 +240,61 @@
 						</div>
 					</div>
 					<!-- 모달창 -->
-					
-					<div class="modal fade" id="udpatePlan" tabindex="-1"
-						aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog modal-sm">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-									<button type="button" class="btn-close" data-bs-dismiss="modal"
-										aria-label="Close"></button>
-								</div>
-								<div class="modal-body">
-									<form>
-										<div>
-											<span>무게 : </span> <input type="number"
-												class="addExerciseWeight text-center">
-										</div>
-										<div>
-											<span>횟수 : </span> <input type="number"
-												class="addExerciseNumber text-center">
-										</div>
-										<div>
-											<span>세트 : </span> <input type="number"
-												class="addExerciseSet text-center">
-										</div>
-										<button type="button"
-											class="btn btn-primary updateDayExSet floatRight mt-3">저장</button>
-										<button type="button"
-											class="btn btn-secondary floatRight mt-3"
-											data-bs-dismiss="modal">닫기</button>
+					<button type="button" class="btn btn-primary"
+							data-bs-toggle="modal" data-bs-target="#updateModal">
+							Launch demo modal</button>
+						<div class="modal fade" id="updatePlan">
+							<div class="modal-dialog modal-xl">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Modal
+											title</h5>
+										<button type="button" class="btn-close"
+											data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										
+											<div>
+												<h1>일정 수정</h1>
+											</div>
+											<div>
+												<form id="calendarUpDate">
+													<input type="hidden" name="calendarno" id="calendarno"
+														value="${calendarno}" /> <input type="hidden"
+														name="memberId" id="memberId" value="${member.memberId}" />
+													<div>
+													제목 : <input type="text" name="title" id="title"
+														placeholder="제목 입력">
+												</div>
+												<br>
+												<div>
+													시작 날짜 : <input type="date" name="startDate" id="startDate"
+														size="12" value="${startDate}" />
+												</div>
+												<br>
+												<div>
+													종료 날짜 : <input type="date" name="endDate" id="endDate"
+														size="12" value="${endDate}" />
 
-									</form>
+												</div>
+												<br> 설명
+												<div>
+													<textarea name="content" id="content" rows="10" cols="30"></textarea>
+												</div>
+													<br>
+												</form>
+												<input type="button" value="수정" onclick="send_update()" /> <input
+													type="button" value="삭제" onClick="send_delete()">
+											</div>
+										
+									</div>
+
 								</div>
 
 							</div>
-
 						</div>
-					</div>
-					<button type="button" data-bs-toggle="modal"
-						data-bs-target="#exampleModal" class="sendDayExSet">수정</button>
+						<button type="button" data-bs-toggle="modal"
+							data-bs-target="#exampleModal" class="sendDayExSet">수정</button>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>

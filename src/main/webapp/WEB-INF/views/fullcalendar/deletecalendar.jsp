@@ -20,7 +20,7 @@ let contextPath = "${pageContext.request.contextPath }";
 	 	<h1>일정 수정</h1>
 	 </div>
 	 <div>
-	 	<form id="calendarUpDate">
+	 	<form id="calendarData">
 	 		<input type="hidden" name="calendarno" id="calendarno" value="${calendarno}" />
 			<input type="hidden" name="memberId" id="memberId" value="${member.memberId}" />
 	 		<div>

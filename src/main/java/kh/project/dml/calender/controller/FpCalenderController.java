@@ -132,13 +132,14 @@ public class FpCalenderController {
 		}
 		fpCalenderServiceImpl.insert(memberId, title, startDate, endDate, content);
 		String responseMessage = "일정이 성공적으로 저장되었습니다.";
+		
 		return ResponseEntity.ok("{\"message\":\"" + responseMessage + "\", \"key\":\"success\"}");
 	}
 	
 	//캘린더 번호랑 멤버 아이디 불러오는 param
 	@PostMapping("/calendarNumber")
-	public String calendarNumber(@RequestParam int calendarno, @RequestParam String memberId, Model model ) {
-		model.addAttribute("calendarno",calendarno);
+	public String calendarNumber(@RequestParam int calendarno, @RequestParam String memberId, Model model, HttpSession session) {
+		session.setAttribute("calendarno", calendarno);
 		model.addAttribute("memberId",memberId);
 		return "/fullcalendar/deletecalendar";
 	}
@@ -164,11 +165,10 @@ public class FpCalenderController {
 	} 
 	
 	// ajax 통신 - 일정 수정
-	@PostMapping(value="/editCalendar")
+	@PostMapping(value="/update")
 	@ResponseBody
-	public HashMap edit(FpCalenderVo vo) throws Exception{
+	public HashMap edit(FpCalenderVo vo, HttpSession session) throws Exception{
 		HashMap map = new HashMap<String, Object>();
-		
 		vo.setStartDate(vo.getStartDate().replace("-", "")); // 2023-10-04 -> 20231004
 		vo.setEndDate(vo.getEndDate().replace("-", "")); // 2023-10-04 -> 20231004
 		
