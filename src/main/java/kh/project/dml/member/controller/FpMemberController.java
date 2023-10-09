@@ -496,10 +496,9 @@ public class FpMemberController {
 		return service.plusReputation(replyNo);
 	}
 	@GetMapping("/member/memberReputation")
-	public ModelAndView memberReputation(ModelAndView mv) {
-		mv.addObject("memberList", service.memberReputation());
-		mv.setViewName("frame/asidebar");
-		return mv;
+	@ResponseBody
+	public List<FpMemberVo> memberReputation() {
+		return  service.memberReputation();
 	}
 	
 }

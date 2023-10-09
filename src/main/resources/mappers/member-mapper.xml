@@ -142,6 +142,6 @@
     </update>
     
     <select id="memberReputation" resultType="FpMemberVo">
-	select * from member order by REPUTATION desc;
+	select * from member order by REPUTATION desc
 	</select>
 </mapper>

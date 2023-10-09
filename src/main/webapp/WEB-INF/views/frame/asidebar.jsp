@@ -69,11 +69,33 @@
 			</div>
 		</div>
 		<div class="sb-sidenav-footer">
-			<div class="small">
-			<c:forEach items="${memberList}" var="vo">
-									<div>${vo.memberId} </div>
-								</c:forEach></div>
+		<div>답변 채택 순위</div>
+			<div class="small rankingMember">
+			</div>
 			
 		</div>
 	</nav>
 </div>
+<script>
+window.onload = function() {
+		$.ajax({
+	           type: "get",
+	           url: "${pageContext.request.contextPath}/member/memberReputation",
+			success: function(result){
+				 var htmlVal = "";
+				for(var i=1; i<4;i++){
+					htmlVal +=
+						'<div> '+i+'등 '+result[i].memberId+' </div>'
+				}
+				$(".rankingMember").html(htmlVal); 
+			
+			},
+			error : function(){
+				console.log("asidebar error");
+			}
+		})
+	}
+
+
+
+</script>
