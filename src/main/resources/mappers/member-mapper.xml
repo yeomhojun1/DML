@@ -42,7 +42,7 @@
 	<update id="usersAuth" parameterType="map">
 		<![CDATA[
 		update USERS set MEMBER_AUTH = 1 
-		where username=#{username} and ((select count(*) from MEMBER_AUTH where MEMBER_ID = #{memberId} and AUTHKEY = #{key}) > 0)
+		where username=#{username} and ((select count(*) from MEMBER_AUTH where MEMBER_ID = #{username} and AUTHKEY = #{key}) > 0)
 		]]>
 	</update>
 	

@@ -34,6 +34,7 @@ public class FpMemberDao {
 	private static final String PWD_CHANGE = NS + ".pwdChange";
 	private static final String CREATE_AUTH_KEY = NS + ".createAuthKey";
 	private static final String MEMBER_AUTH = NS + ".memberAuth";
+	private static final String USERS_AUTH = NS + ".usersAuth";
 	private static final String MEMBER_AUTH_DELETE = NS + ".memberAuthDelete";
 	private static final String PWD_AUTH = NS + ".pwdAuth";
 	private static final String PWD_AUTH_DELETE = NS + ".pwdAuthDelete";
@@ -103,7 +104,7 @@ public class FpMemberDao {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("username", username);
 		map.put("key", key);
-		session.update(MEMBER_AUTH, map);
+		session.update(USERS_AUTH, map);
 	}
 	
 	// 회원가입 인증 후 인증 필요 정보 삭제

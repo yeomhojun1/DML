@@ -56,6 +56,7 @@ public class FpMemberServiceImpl implements FpMemberService {
         user.setPassword(passwordEncoder.encode(userMember.getPassword()));
         user.setUserEnabled(1);
         user.setAuthorities("ROLE_MEMBER");
+        user.setMemberAuth(0);
         this.fpMemberRepository.saveUser(user);
         
         FpMemberVo member = new FpMemberVo();
@@ -65,6 +66,7 @@ public class FpMemberServiceImpl implements FpMemberService {
         member.setGender(userMember.getGender());
         member.setHeight(Double.parseDouble(userMember.getHeight()));
         member.setWeight(Double.parseDouble(userMember.getWeight()));
+        member.setMemberAuth(0);
         this.fpMemberRepository.saveMember(member);
 
         String key = new TempKey().getKey(50,false);

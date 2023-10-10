@@ -22,6 +22,7 @@ import org.springframework.social.oauth2.GrantType;
 import org.springframework.social.oauth2.OAuth2Operations;
 import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -258,12 +259,12 @@ public class FpMemberController {
     }
 	
 	// 메일 인증
+	@Transactional
 	@GetMapping("/member/signupEmail")
 	public String emailConfirm(String memberId, String key, Model model)throws Exception {
 		service.memberAuth(memberId, key);
 		model.addAttribute("memberId", memberId);
 		service.memberAuthDelete(memberId);
-		
 		return "/member/signupEmail";
 	}
 	

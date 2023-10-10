@@ -14,9 +14,9 @@
     
     <!-- 회원가입 시 데이터 저장 -->
     <insert id="saveUser" parameterType="FpUsersVo">
-    	INSERT INTO users (username, password, user_enabled, authorities) VALUES (#{username}, #{password}, #{userEnabled}, #{authorities})
+    	INSERT INTO users (username, password, user_enabled, authorities, member_auth) VALUES (#{username}, #{password}, #{userEnabled}, #{authorities}, #{memberAuth})
     </insert>
     <insert id="saveMember" parameterType="FpMemberVo">
-    	INSERT INTO member (member_id, mname, mbirthday, gender, height, weight, googleid, naverid, kakaoid) VALUES (#{memberId}, #{mname}, #{mbirthday}, #{gender}, #{height}, #{weight}, #{googleid}, #{naverid}, #{kakaoid})
+    	INSERT INTO member (member_id, mname, mbirthday, gender, height, weight, googleid, naverid, kakaoid, member_auth) VALUES (#{memberId}, #{mname}, #{mbirthday}, #{gender}, #{height}, #{weight}, #{googleid}, #{naverid}, #{kakaoid}, #{memberAuth})
     </insert>
 </mapper>
