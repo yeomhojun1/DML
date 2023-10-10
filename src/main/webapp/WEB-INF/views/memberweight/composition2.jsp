@@ -123,7 +123,7 @@
 
 								<div style="margin-top: 30px;" class="insertdate">
 									<div>
-										<h2>날짜/몸무게 입력</h2>
+										<h2>근육량/체지방량 입력</h2>
 									</div>
 									<form >
 									<div class="col-xl-12 setdayweight">
@@ -145,15 +145,53 @@
 													style="flex: 1 1 0%; display: flex; flex-direction: row;">
 													<div
 														style="flex: 0 1 0%; margin-right: 10px; min-width: 100px; align-self: center;">
-														<h3>몸무게</h3>
+														<h3>근육량</h3>
 													</div>
 													<span
 														class="ant-input-affix-wrapper Track_input_basic__yj5u2 css-1s3dcof">
-														<input class="ant-input css-1s3dcof" type="text" name="weight" value=${member.weight }><span
+														<input
+								class="ant-input css-1s3dcof Composition_input_basic2__HoLj8" name="muscleMass"
+								type="text" value="50"><span
 														class="ant-input-suffix">kg</span>
 													</span>
 												</div>
+
+
 											</div>
+											<!-- 
+											<div
+													style="flex: 1 1 0%; display: flex; flex-direction: row; margin-bottom: 20px; margin-top: 20px;">
+													<div
+														style="flex: 0 1 0%; margin-right: 10px; min-width: 100px; align-self: center;">
+														<h3>날짜</h3>
+													</div>
+													<div>
+														<div>
+															<input type="text" id="datepicker" name="date">
+														</div>
+													</div>
+												</div> -->
+												<div
+													style="flex: 1 1 0%; display: flex; flex-direction: row;">
+													<div
+														style="flex: 0 1 0%; margin-right: 10px; min-width: 100px; align-self: center;">
+														<h3>체지방량</h3>
+													</div>
+													<span
+														class="ant-input-affix-wrapper Track_input_basic__yj5u2 css-1s3dcof">
+														<input
+								class="ant-input css-1s3dcof Composition_input_basic2__HoLj8" name="bodyFatPet"
+								type="text" value="50"><span
+														class="ant-input-suffix">%</span>
+													</span>
+												</div>
+
+
+											</div>
+											
+											
+											
+											
 											<div style="margin-top: 20px;">* 이미 값이 존재하는 경우, 새 값으로
 												갱신됩니다.</div>
 										</div>
@@ -164,7 +202,7 @@
 												<span>저장하기</span>
 											</button>
 											<button type="button" style="margin-top: 20px;" class="deleteWeight">
-												<span>선택한 날짜의 데이터 삭제</span>
+												<span>삭제</span>
 											</button>
 											
 										</div>

@@ -33,12 +33,8 @@ public class FpMemberWeightController {
 	
 	@GetMapping("/weight")
 	public ModelAndView mainPageOpen9(ModelAndView mv, HttpSession session) {
-		
-		String memberId = "ch@dml.com";
-		mv.addObject("fpMemberWeightVoListJson", new Gson().toJson(fpMemberWeightServiceImpl.selectList(memberId)));
-//		[{"memberId":"ch@dml.com","weightDate":"20230922","weight":90.0,"muscleMass":0,"bodyFatPet":0},
-//		{"memberId":"ch@dml.com","weightDate":"230904","weight":77.0,"muscleMass":36,"bodyFatPet":25},
-//		{"memberId":"ch@dml.com","weightDate":"230908","weight":77.0,"muscleMass":42,"bodyFatPet":29},{"memberId":"ch@dml.com","weightDate":"20230921","weight":90.0,"muscleMass":0,"bodyFatPet":0},{"memberId":"ch@dml.com","weightDate":"20230926","weight":70.0122,"muscleMass":0,"bodyFatPet":0},{"memberId":"ch@dml.com","weightDate":"20230904","weight":50.0,"muscleMass":0,"bodyFatPet":0},{"memberId":"ch@dml.com","weightDate":"20230925","weight":70.0,"muscleMass":25,"bodyFatPet":15},{"memberId":"ch@dml.com","weightDate":"20230927","weight":85.0,"muscleMass":0,"bodyFatPet":0},{"memberId":"ch@dml.com","weightDate":"20230912","weight":55.0,"muscleMass":0,"bodyFatPet":0},{"memberId":"ch@dml.com","weightDate":"20230920","weight":55.0,"muscleMass":0,"bodyFatPet":0},{"memberId":"ch@dml.com","weightDate":"20230905","weight":77.0,"muscleMass":0,"bodyFatPet":0},{"memberId":"ch@dml.com","weightDate":"20230907","weight":80.0,"muscleMass":0,"bodyFatPet":0},{"memberId":"ch@dml.com","weightDate":"20230929","weight":33.0,"muscleMass":0,"bodyFatPet":0},{"memberId":"ch@dml.com","weightDate":"20231001","weight":55.0,"muscleMass":0,"bodyFatPet":0},{"memberId":"ch@dml.com","weightDate":"20231002","weight":50.0,"muscleMass":0,"bodyFatPet":0},{"memberId":"ch@dml.com","weightDate":"20231004","weight":0.0,"muscleMass":0,"bodyFatPet":0},{"memberId":"ch@dml.com","weightDate":"20231012","weight":0.0,"muscleMass":20,"bodyFatPet":15},{"memberId":"ch@dml.com","weightDate":"20231005","weight":55.0,"muscleMass":77,"bodyFatPet":15},{"memberId":"ch@dml.com","weightDate":"20231019","weight":0.0,"muscleMass":20,"bodyFatPet":15},{"memberId":"ch@dml.com","weightDate":"20231021","weight":0.0,"muscleMass":25,"bodyFatPet":15},{"memberId":"ch@dml.com","weightDate":"20231017","weight":0.0,"muscleMass":10,"bodyFatPet":15},{"memberId":"ch@dml.com","weightDate":"20231003","weight":0.0,"muscleMass":10,"bodyFatPet":15},{"memberId":"ch@dml.com","weightDate":"20231007","weight":0.0,"muscleMass":20,"bodyFatPet":15},{"memberId":"ch@dml.com","weightDate":"20231011","weight":0.0,"muscleMass":27,"bodyFatPet":10}]}]
+		FpMemberVo vo = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
+		mv.addObject("fpMemberWeightVoListJson", new Gson().toJson(fpMemberWeightServiceImpl.selectList(vo.getMemberId())));
 
 		mv.setViewName("memberweight/weight2");
 		return mv;
@@ -66,7 +62,7 @@ public class FpMemberWeightController {
 	}
 	
 	@GetMapping("/composition") public String mainPageOpen11() { 
-		return"memberweight/composition";
+		return"memberweight/composition2";
 	}
 	 
 	
@@ -87,7 +83,7 @@ public class FpMemberWeightController {
 		System.out.println(fpMemberWeightVo);
 //		FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(memberId, weightDate2, muscleMass, bodyFatPet);
 		fpMemberWeightServiceImpl.insertUpdate(fpMemberWeightVo);
-		return "redirect:/memberweight/composition";
+		return "redirect:/memberweight/composition2";
 
 	}
 
@@ -96,7 +92,7 @@ public class FpMemberWeightController {
 	public String mainPageOpen17(@RequestParam String weightDate, @RequestParam String memberId, Model model) {
 		/* FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(weight); */
 		fpMemberWeightServiceImpl.delete(weightDate, memberId);
-		return "memberweight/composition";
+		return "memberweight/composition2";
 	}
 
 	@GetMapping("/healthmap")
