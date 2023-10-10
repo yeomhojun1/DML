@@ -21,6 +21,29 @@
 		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<link href="${pageContext.request.contextPath}/css/style1.css"	rel="stylesheet" /> 
 		<link href="${pageContext.request.contextPath}/css/style2.css"	rel="stylesheet" />
+	<style>
+	.quantity-box {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+	.quantity-box button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.quantity-box #quantityDisplay {
+    padding: 0 10px;
+}
+	</style>
     </head>
 
     
@@ -148,7 +171,7 @@
 				<div class="Plan_bottom1_second_bar_food__Nea0w">${item.foodName}
 				</div>
 				 <div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
-				수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">20</span>
+				  <br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">${item.foodQuality} </span>
 				</div> 
 				<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
 					칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >${item.calorie}</span>
@@ -363,6 +386,17 @@
 		
 		})
 	}
+	function changeQuantity(change) {
+	    const quantityDisplay = document.getElementById("quantityDisplay");
+	    let quantity = parseInt(quantityDisplay.textContent);
+
+	    // 수량을 변경하고 최소값을 1로 유지합니다.
+	    quantity = Math.max(quantity + change, 1);
+
+	    quantityDisplay.textContent = quantity;
+
+	    // 이곳에서 수량을 서버로 업데이트하는 등의 작업을 수행할 수 있습니다.
+	}
 	
 	function doAction()
  	{
@@ -394,6 +428,7 @@
 		console.log("foodCd : " +  $(thisElement).data("foodcd"));
 		var foodcd = $(thisElement).data("foodcd");
 		foodName = $(thisElement).parent().prevAll(".foodName").text();
+		foodQuality = $(thisElement).parent().prevAll(".foodQuality").text();
 		calorie = $(thisElement).parent().prevAll(".calorie").text();
 		carbs = $(thisElement).parent().prevAll(".crabs").text();
 		protein = $(thisElement).parent().prevAll(".protein").text();
@@ -429,7 +464,14 @@
 				<div class="Plan_bottom1_second_bar_food__Nea0w">\${foodName}
 				</div>
 				 <div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
-				수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">20</span>
+				수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodQuality}</span>
+				  <div class="quantity-box">
+					<button class="quantity btn minus_btn"
+						onclick="changeQuantity(-1)">-</button>
+					<span id="quantityDisplay">1</span>
+					<button class="quantity btn plus_btn"
+						onclick="changeQuantity(1)">+</button>
+	 			</div>
 				</div> 
 				<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
 					칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${calorie}</span>
@@ -500,17 +542,7 @@
 			
 			
 			
-	}// btnDeleteClickHandler
-			/* 	function btnDeleteClickHandler(thisElement){
-					console.log(thisElement);
-					console.log($(thisElement).data("foodcd"));
-					// TODO :ajax : food table delete
-					var deleteForDiet = $()
-					
-
-					$(thisElement).closest(".Plan_bottom1_food_each__s9jUi").remove();
-				}
-		 */
+	}
 	$("button.save").click(btnSaveHandler);
 	function btnSaveHandler(){
 		var food_length = $(".Plan_bottom1_food_each__s9jUi").length;
@@ -717,7 +749,7 @@
 					<div class="Plan_bottom1_second_bar_food__Nea0w">\${item.foodName}
 					</div>
 					 <div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
-					수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">20</span>
+					수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">1</span>
 					</div> 
 					<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
 						칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${item.calorie}</span>

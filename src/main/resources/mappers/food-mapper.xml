@@ -32,7 +32,7 @@
 	</insert>
 	
 	<update id="update" parameterType="FpFoodVo">
-		update food set food_cd=#{foodCd}, food_quality=#{foodQuality}
+		update food set food_quality=#{foodQuality}
 		where meal_code = #{mealCode}
 	</update>
 	
