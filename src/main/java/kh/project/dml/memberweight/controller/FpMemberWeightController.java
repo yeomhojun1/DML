@@ -61,10 +61,17 @@ public class FpMemberWeightController {
 		return "memberweight/weight2";
 	}
 	
-	@GetMapping("/composition") public String mainPageOpen11() { 
-		return"memberweight/composition2";
+	
+	
+	@GetMapping("/composition")
+	public ModelAndView mainPageOpen11(ModelAndView mv, HttpSession session) { 
+		
+		FpMemberVo vo = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
+		mv.addObject("fpMemberWeightVoListJson", new Gson().toJson(fpMemberWeightServiceImpl.selectList(vo.getMemberId())));
+
+		mv.setViewName("memberweight/composition2");
+		return mv;
 	}
-	 
 	
 	/*
 	 * @GetMapping("/composition")
@@ -72,7 +79,7 @@ public class FpMemberWeightController {
 	 * HttpSession session) { String memberId = "ch@dml.com";
 	 * mv.addObject("fpMemberWeightVoListJson", new
 	 * Gson().toJson(fpMemberWeightServiceImpl.selectList(memberId))); return
-	 * "memberweight/composition"; }
+	 * "memberweight/composition2"; }
 	 */
 	  
 	// 근육량 체지방량 update

@@ -268,43 +268,51 @@
 
 
     <script>
-
         // 날짜 데이터 배열
         const dates = [];
         // 몸무게 데이터 배열
-        const weights = [];
+        const musclemass = [];
+        const bodyfatpet = [];
         
         const fpMemberWeightVoListJson = '${fpMemberWeightVoListJson}';
         const fpMemberWeightVoList = JSON.parse(fpMemberWeightVoListJson);
         for (var i=0; i<fpMemberWeightVoList.length; i++){
         	dates.push(fpMemberWeightVoList[i].weightDate);
-        	weights.push(fpMemberWeightVoList[i].weight);
+        	musclemass.push(fpMemberWeightVoList[i].muscleMass);
+        	bodyfatpet.push(fpMemberWeightVoList[i].bodyFatPet);
         }
         
         
         // 캔버스 요소 가져오기
         const ctx = document.getElementById('myAreaChart').getContext('2d');
 
-        // Chart.js를 사용하여 선 그래프 생성
+     // Chart.js를 사용하여 선 그래프 생성
         new Chart(ctx, {
             type: 'line',
             data: {
                 labels: dates, // 날짜 라벨을 날짜 데이터로 설정
-                datasets: [{
-                    label: '# 날짜별 몸무게',
-                    data: weights, // 몸무게 데이터를 몸무게 데이터 배열로 설정
-                    borderWidth: 1,
-                    borderColor: 'blue', // 선의 색상
-                    backgroundColor: 'rgba(0, 0, 255, 0.2)' // 영역의 배경색
-                }]
+                datasets: [
+                    {
+                        label: '날짜별 근육량', // 첫 번째 데이터 세트 라벨
+                        data: musclemass, // 첫 번째 데이터 세트 데이터
+                        borderWidth: 1,
+                        borderColor: 'blue', // 첫 번째 데이터 세트 선의 색상
+                    },
+                    {
+                        label: '날짜별 체지방량', // 두 번째 데이터 세트 라벨
+                        data: bodyfatpet, // 두 번째 데이터 세트 데이터
+                        borderWidth: 1,
+                        borderColor: 'red', // 두 번째 데이터 세트 선의 색상
+                    },
+                ],
             },
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
-                    }
-                }
-            }
+                        beginAtZero: true,
+                    },
+                },
+            },
         });
     </script>
   
