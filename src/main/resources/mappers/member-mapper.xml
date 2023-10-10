@@ -76,10 +76,6 @@
 	</update>
 	
 	<!-- 회원탈퇴 -->
-	<delete id="deleteMember" parameterType="string">
-		delete from member
-		where member_id = #{username}
-	</delete>
 	<delete id="deleteUser" parameterType="string">
 		delete from users
 		where username = #{username}

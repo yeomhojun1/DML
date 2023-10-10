@@ -242,7 +242,6 @@ public class FpMemberServiceImpl implements FpMemberService {
 	@Transactional
 	@Override
 	public void delete(String username) {
-		dao.deleteMember(username);
 		dao.deleteUser(username);
 	}
 	

@@ -33,7 +33,6 @@
     	( #{weightDate} , #{memberId}, #{weight})
 	</insert>
 	
-	
 	<update id="updateWeight" parameterType="FpMemberWeightVo">
 		UPDATE MEMBER_WEIGHT 
 		SET WEIGHT=#{weight}

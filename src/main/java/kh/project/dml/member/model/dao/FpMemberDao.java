@@ -38,7 +38,6 @@ public class FpMemberDao {
 	private static final String PWD_AUTH = NS + ".pwdAuth";
 	private static final String PWD_AUTH_DELETE = NS + ".pwdAuthDelete";
 	private static final String UPDATE = NS + ".update";
-	private static final String DELETE_MEMBER = NS + ".deleteMember";
 	private static final String DELETE_USER = NS + ".deleteUser";
 	private static final String KEEP_LOGIN = NS + ".keepLogin";
 	private static final String CHECK_LOGIN_BEFORE = NS + ".checkLoginBefore";
@@ -134,10 +133,6 @@ public class FpMemberDao {
 	
 	public void update(FpMemberVo vo) {
 		session.update(UPDATE, vo);
-	}
-	
-	public void deleteMember(String username) {
-		session.delete(DELETE_MEMBER, username);
 	}
 	
 	public void deleteUser(String username) {
