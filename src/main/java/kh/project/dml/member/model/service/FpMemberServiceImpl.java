@@ -107,6 +107,7 @@ public class FpMemberServiceImpl implements FpMemberService {
         member.setNaverid(userMember.getNaverid());
         member.setGoogleid(userMember.getGoogleid());
         member.setKakaoid(userMember.getKakaoid());
+        member.setMemberAuth(1);
         this.fpMemberRepository.saveMember(member);
         return user;
     }

@@ -51,10 +51,12 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
             response.sendRedirect(request.getContextPath() + "/member/loginPopup"); // 예시: 로그인 페이지로 리다이렉트
             return false; // 컨트롤러 메소드 실행 중지
         } else {
-    		if(member.getMemberAuth() == 0) {
-    			response.sendRedirect(request.getContextPath() + "/member/signupReady"); // 예시: 로그인 페이지로 리다이렉트
-    			return false;
-    		}
+        	if (!member.getAuthorities().equals("ROLE_SOCIAL")) {
+        		if(member.getMemberAuth() == 0) {
+        			response.sendRedirect(request.getContextPath() + "/member/signupReady"); // 예시: 로그인 페이지로 리다이렉트
+        			return false;
+        		}
+        	}
             // 세션 정보가 유효한 경우
         	session.setAttribute("member", member);
             session.setAttribute(SessionNames.LOGIN, member);
