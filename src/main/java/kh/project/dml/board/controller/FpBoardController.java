@@ -105,6 +105,7 @@ public class FpBoardController {
 		OutputStream out = null;
 		// 파일을 가져오기 위해 MultipartHttpServletRequest 의 getFile 메서드 사용
 		MultipartFile file = multiFile.getFile("upload");
+		
 		// 파일이 비어있지 않고(비어 있다면 null 반환)
 		if (file != null) {
 			// 파일 사이즈가 0보다 크고, 파일이름이 공백이 아닐때

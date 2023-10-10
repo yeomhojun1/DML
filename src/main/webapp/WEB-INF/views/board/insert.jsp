@@ -91,6 +91,7 @@
 								filebrowserUploadUrl : '${pageContext.request.contextPath}/board/upload'
 							});
 		});
+	
 	</script>
 </body>
 </html>

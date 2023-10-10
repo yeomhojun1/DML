@@ -656,6 +656,8 @@ update member set reputation=(select reputation from member where member_id='ghw
 ALTER TABLE board ADD SELECT_REPLY_NO NUMBER DEFAULT 0;
 select * from board b  join replyboard r on b.select_reply_no=r.reply_no where b.board_no=1;
 
+select * from users;
+
 select member_id from replyboard where reply_no=62;
  update member set reputation=(select reputation from member where member_id=(select member_id from replyboard where reply_no=62))+1 where member_id=(select member_id from replyboard where reply_no=62);
   update member set reputation=(select reputation from member where member_id=(select member_id from replyboard where reply_no=65))+1 where member_id=(select member_id from replyboard where reply_no=65);
