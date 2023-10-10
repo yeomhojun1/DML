@@ -179,9 +179,9 @@
 
 						<h2 style="text-align: center;">${member.mname }님의캘린더</h2>
 
-						<button type="button" class="btn btn-primary"
+						<!-- <button type="button" class="btn btn-primary"
 							data-bs-toggle="modal" data-bs-target="#exampleModal">
-							Launch demo modal</button>
+							Launch demo modal</button> -->
 						<div class="modal fade" id="insertPlan">
 							<!-- 	tabindex="-1"
 							aria-labelledby="exampleModalLabel" aria-hidden="true" -->
@@ -220,9 +220,10 @@
 												<div>
 													<textarea name="content" id="content" rows="10" cols="30"></textarea>
 												</div>
-												<br> <input type="button" value="저장"
+												<br>
+												<!-- <input type="button" value="저장"
 													onClick="send_save()">
-
+ -->
 
 
 											</form>
@@ -231,70 +232,71 @@
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
-											data-bs-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary">Save
-											changes</button>
+											data-bs-dismiss="modal" onClick="send_save()">저장</button>
+
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<!-- 모달창 -->
-					<button type="button" class="btn btn-primary"
-							data-bs-toggle="modal" data-bs-target="#updateModal">
-							Launch demo modal</button>
-						<div class="modal fade" id="updatePlan">
-							<div class="modal-dialog modal-xl">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Modal
-											title</h5>
-										<button type="button" class="btn-close"
-											data-bs-dismiss="modal" aria-label="Close"></button>
-									</div>
-									<div class="modal-body">
-										
-											<div>
-												<h1>일정 수정</h1>
-											</div>
-											<div>
-												<form id="calendarUpDate">
-													<input type="hidden" name="calendarno" id="calendarno"
-														value="${calendarno}" /> <input type="hidden"
-														name="memberId" id="memberId" value="${member.memberId}" />
-													<div>
-													제목 : <input type="text" name="title" id="title"
-														placeholder="제목 입력">
-												</div>
-												<br>
-												<div>
-													시작 날짜 : <input type="date" name="startDate" id="startDate"
-														size="12" value="${startDate}" />
-												</div>
-												<br>
-												<div>
-													종료 날짜 : <input type="date" name="endDate" id="endDate"
-														size="12" value="${endDate}" />
 
-												</div>
-												<br> 설명
-												<div>
-													<textarea name="content" id="content" rows="10" cols="30"></textarea>
-												</div>
-													<br>
-												</form>
-												<input type="button" value="수정" onclick="send_update()" /> <input
-													type="button" value="삭제" onClick="send_delete()">
+					<div class="modal fade" id="updatePlan">
+						<div class="modal-dialog modal-xl">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+
+									<div>
+										<h1>일정 수정</h1>
+									</div>
+									<div>
+										<form id="calendarUpDate">
+											<input type="hidden" name="calendarno" id="calendarno"
+												value="${calendarno}" /> <input type="hidden"
+												name="memberId" id="memberId" value="${member.memberId}" />
+											<div>
+												제목 : <input type="text" name="title" id="title"
+													placeholder="제목 입력">
 											</div>
-										
+											<br>
+											<div>
+												시작 날짜 : <input type="date" name="startDate" id="startDate"
+													size="12" value="${startDate}" />
+											</div>
+											<br>
+											<div>
+												종료 날짜 : <input type="date" name="endDate" id="endDate"
+													size="12" value="${endDate}" />
+
+											</div>
+											<br> 설명
+											<div>
+												<textarea name="content" id="content" rows="10" cols="30"></textarea>
+											</div>
+											<br>
+										</form>
+										<!-- <input type="button" value="수정" onclick="send_update()" /> <input
+											type="button" value="삭제" onClick="send_delete()"> -->
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary"
+											data-bs-dismiss="modal" onclick="send_update()">수정</button>
+										<button type="button" class="btn btn-secondary"
+											data-bs-dismiss="modal" onClick="send_delete()">삭제</button>
+
 									</div>
 
 								</div>
 
 							</div>
+
 						</div>
-						<button type="button" data-bs-toggle="modal"
-							data-bs-target="#exampleModal" class="sendDayExSet">수정</button>
+					</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
