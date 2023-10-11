@@ -21,6 +21,15 @@ public class FpCalenderDao {
 	public List<FpCalenderVo> selectList(String username) {
 		return sqlSession.selectList("calender.selectList", username);
 	}
+	
+	//날짜를 클릭했을시 일정에 뜨는 그날의 데이터값
+	public List<FpCalenderVo> nowList(String username, String date) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("username", username);
+		map.put("date", date);
+		return sqlSession.selectList("calender.nowList", map);
+	}
+	
 	public List<FpCalenderVo> selectSearchList(int calendarno) {
 		return sqlSession.selectList("calender.selectSearchList", calendarno);
 	}

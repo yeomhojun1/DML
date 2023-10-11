@@ -44,7 +44,7 @@
 				     slotMaxTime: '20:00', // Day 캘린더에서 종료 시간
 				     businessHours: true, // 주말 표시
 				     
-				        headerToolbar: { // todat,달,주,일,리스트 기능
+				        headerToolbar: { // today,달,주,일,리스트 기능
 				            left: 'prev,next today',
 				            center: 'title',
 				            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
@@ -88,6 +88,8 @@
   				    	$("#listPlan [name=startDate]").val(info.dateStr);
   				    	$("#listPlan [name=endDate]").val(info.dateStr);
   				   	 	 $("#listPlan").modal("toggle");
+						$(".testContent div").remove();
+  				   	 	 $("#dmllist").html(info.dateStr);
   				    	 /*  console.log(info);
   				    	  var clickDate = info.dateStr;
 //   				    	  function add_ClickSchedule(clickDate){ // 클릭된 날짜부터 일정 추가
@@ -97,8 +99,8 @@
   				    	  window.open(url,name,option) */
   				    		//alert(year+"년"+month+"월"+day+"일");
 //   				    	};
-//   				    	  clickDate = clickDate.replaceAll("-", "");
-//   				    	clickDate = parseInt(clickDate);
+   				    	  // clickDate = clickDate.replaceAll("-", "");
+  				    	// clickDate = parseInt(clickDate);
 //   				    	alert(clickDate); //경고창
 //   				    	 $(".btn-primary").click(expartClickHandler);
   				    	  
@@ -176,31 +178,24 @@
 					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
 					
 					<h2 style="text-align: center;">${member.mname }님의캘린더</h2> <!-- 멤버이름 님의 캘린더 -->
-					<script>
-					 $(".forExecise").click(forExecisehandler);
-					  function forExecisehandler(){
-						  var test ='<div>test</div>'
-						  $(".testContent").append(test);
-					  }
-					</script>
+					
 					
 						<div>   <!-- 일정추가버튼 눌렀을시 일정추가 -->
 						<button type="button" class="btn btn-primary"
 							data-bs-toggle="modal" data-bs-target="#insertPlan">
 							일정추가</button>
 						<div class="modal fade" id="insertPlan">
-
-
 							<div class="modal-dialog modal-l">
+							
 								<div class="modal-content">
 									<div class="modal-header">
-										<h3 class="modal-title" id="exampleModalLabel">${member.mname }의
+										<h3 class="modal-title" id="add">${member.mname }의
 											일정추가</h3>
 										<button type="button" class="btn-close"
 											data-bs-dismiss="modal" aria-label="Close"></button>
 									</div>
 									<div class="modal-body">
-										<div class="testContent">
+										<div class="insertContent">
 											<form id="calendarData">
 												<div>
 													제목 : <input type="text" name="title" id="title"
@@ -224,9 +219,6 @@
 												<br>
 												<!-- <input type="button" value="저장"
 													onClick="send_save()"> -->
-
-
-
 											</form>
 										</div>
 
@@ -239,34 +231,55 @@
 								</div>
 							</div>
 						</div>
-						<div class="modal fade" id="listPlan"> <!--날짜를 클릭했을떄 나오는 모달창  -->
-							<!-- 	tabindex="-1"
-							aria-labelledby="exampleModalLabel" aria-hidden="true" -->
+					</div>
+					<div class="modal fade" id="listPlan"> <!--날짜를 클릭했을떄 나오는 모달창  -->
+						<!-- 	tabindex="-1"
+						aria-labelledby="exampleModalLabel" aria-hidden="true" -->
 
-							<div class="modal-dialog modal-xl">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Modal
-											title</h5>
-										<button type="button" class="btn-close"
-											data-bs-dismiss="modal" aria-label="Close"></button>
+						<div class="modal-dialog modal-xl">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="dmllist">Modal
+										title</h5>
+									<button type="button" class="btn-close"
+										data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<div>
+										<ul class="col-xl-12 nav justify-content-center">
+											<li class="col-xl-4 nav-item text-center forExecise"><a
+												class="nav-link active " aria-current="page" href="#">운동</a>
+											</li>
+											<li class="col-xl-4 nav-item text-center"><a
+												class="nav-link" href="#">식단</a></li>
+											<li class="col-xl-4 nav-item text-center forcalendar"><a
+												class="nav-link" href="#">일정</a></li>
+										</ul>
 									</div>
-									<div class="modal-body">
-
-										<div>
-											<ul class="col-xl-12 nav justify-content-center">
-												<li class="col-xl-4 nav-item text-center forExecise"><a
-													class="nav-link active " aria-current="page" href="#">운동</a>
-												</li>
-												<li class="col-xl-4 nav-item text-center"><a
-													class="nav-link" href="#">식단</a></li>
-												<li class="col-xl-4 nav-item text-center"><a
-													class="nav-link" href="#">일정</a></li>
-											</ul>
-										</div>
-										<div class="testContent">
-											
-										</div>
+								<script> /* 날짜 클릭시 일정부분에서 그날에 해당하는 데이터값 불러오는 ajax */
+								 $(".forcalendar").click(forExecisehandler);
+								  function forExecisehandler() {
+									    var date = $("#dmllist").html();
+									    console.log(date);
+									    $.ajax({
+									        type: "POST",
+									        url: "${pageContext.request.contextPath}/calendar/dateNow",
+									        data: { "date": date }, // 데이터를 JSON 객체로 전달
+									        success: function(response) {
+									            // 성공 처리 코드
+									        	var now = response.dateNowList;
+												  console.log(JSON.stringify(now));
+												  $(".testContent div").remove();
+												  $(".testContent").append("<div>"+JSON.stringify(now)+"</div>");
+									        },
+									        error: (request, status, error) => {
+									            alert("code : " + request.status + "\n" + "message : " + request.responseText + "\n" + "error : " + request.error);
+									        }
+									    });
+									}
+								</script>
+									<div class="testContent">
+										
 									</div>
 								</div>
 							</div>
@@ -281,7 +294,7 @@
 						<div class="modal-dialog modal-xm">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h3 class="modal-title" id="exampleModalLabel">${member.mname }의
+									<h3 class="modal-title" id="fix">${member.mname }의
 										일정수정</h3>
 									<button type="button" class="btn-close" data-bs-dismiss="modal"
 										aria-label="Close"></button>
