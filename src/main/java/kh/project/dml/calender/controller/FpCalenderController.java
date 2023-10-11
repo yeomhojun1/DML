@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,20 +47,26 @@ public class FpCalenderController {
 	
 	@GetMapping
 	public String viewCalendar(Model model, HttpSession session) {
-		Object memberObj = session.getAttribute(SessionNames.LOGIN);
-		if (memberObj instanceof FpUsersVo) {
-			FpUsersVo userMember = (FpUsersVo) memberObj;
-			List<FpCalenderVo> list = fpCalenderServiceImpl.selectList(userMember.getUsername());
-			model.addAttribute("getCalendarList", list);
-
-		} else if (memberObj instanceof FpMemberVo) {
-			FpMemberVo member = (FpMemberVo) memberObj;
-			List<FpCalenderVo> list = fpCalenderServiceImpl.selectList(member.getMemberId());
-			model.addAttribute("getCalendarList", list);
-		}
+		FpMemberVo member = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
+		List<FpCalenderVo> list = fpCalenderServiceImpl.selectList(member.getMemberId());
+		model.addAttribute("getCalendarList", list);
 
 		return "/fullcalendar/calendar";
 	}
+	
+	@PostMapping("/dateNow")
+	public ResponseEntity<Map<String, Object>> dateNow(Model model, HttpSession session, @RequestParam(name = "date", required = false) String localDate) {
+	    FpMemberVo member = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
+	    String date = localDate.replace("-", "");
+	    List<FpCalenderVo> list = fpCalenderServiceImpl.nowList(member.getMemberId(), date);
+	    model.addAttribute("dateNowList", list);
+
+	    Map<String, Object> responseMap = new HashMap<>();
+	    responseMap.put("dateNowList", list);
+
+	    return new ResponseEntity<>(responseMap, HttpStatus.OK);
+	}
+
 
 	// 클릭된날짜에 대한 일정 추가 팝업 show
 	@GetMapping("/calendarSelected")
