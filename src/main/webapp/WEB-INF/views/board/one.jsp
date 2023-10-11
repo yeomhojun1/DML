@@ -123,9 +123,10 @@
 		           data: {  boardCount :${boardone.boardCount},boardNo:${boardone.boardNo}  },
 		           success: function (result) {
 		        	   console.log("plusCount : success");
-					},error : function(result){
-						console.log("error");
+					},error : function(request, status, error){
+						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 					}
+
 					//,dataType : "json"
 				});
 			 var moreReply ="";
@@ -165,8 +166,8 @@
 							} 
 						}
 					}, //success
-					error : function(result){
-						console.log("error");
+					error : (request, status, error) => {
+						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 					},
 					dataType:"json"
 				});

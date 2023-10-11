@@ -52,6 +52,7 @@
 							href="${pageContext.request.contextPath }/exercise/list">운동
 							도우미</a> <a class="nav-link"
 							href="${pageContext.request.contextPath }/product">제품 추천</a>
+							
 					</nav>
 				</div>
 				<%-- <div class="sb-sidenav-menu-heading">운동/제품</div>
