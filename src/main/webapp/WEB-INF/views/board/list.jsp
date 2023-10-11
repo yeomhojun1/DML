@@ -91,9 +91,10 @@
 							<tbody>
 								<c:forEach items="${boardList}" var="vo">
 									<tr class="foreachValue">
-										<th>${vo.boardNo}</th>
-										<%-- <td class="plusCount boardTitleVal">${vo.boardTitle}</td> --%>
-										 <td><a href="${pageContext.request.contextPath }/board/one?boardNo=${vo.boardNo}" class="plusCount"> ${vo.boardTitle}</a></td>
+										<th>${vo.rownum}</th>
+										<td><a
+											href="${pageContext.request.contextPath }/board/one?boardNo=${vo.boardNo}"
+											class="plusCount"> ${vo.boardTitle}</a></td>
 										<td><div class="	">${vo.memberId}</div></td>
 										<td><div class="boardDateVal">${vo.boardDate}</div></td>
 										<td><div class="boardCountVal">${vo.boardCount}</div></td>
@@ -105,20 +106,67 @@
 						<a href="${pageContext.request.contextPath }/board/insert"><button
 								type="btn btn-default" class="addBoard">질문 등록</button></a>
 					</div>
-					<div class="text-align">
-						<ul class="pagination justify-center-center">
-							<li><a href="#" style="margin-right:5px">1</a></li>
-							<li><a href="#" style="margin-right:5px">2</a></li>
-							<li><a href="#" style="margin-right:5px">3</a></li>
-							<li><a href="#" style="margin-right:5px">4</a></li>
-							<li><a href="#" style="margin-right:5px">5</a></li>
-						</ul>
+					<div class="search_wrap">
+						<div class="search_area">
+							<select name="type">
+								<option value="I"
+									<c:out value="${pageMaker.cri.type eq 'I'?'selected':'' }"/>>작성자 이름</option>
+								<option value="N"
+									<c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>질문 제목</option>
+								<option value="A"
+									<c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>질문 내용</option>
+							</select> <input type="text" name="keyword" class="searchInput"
+								value="${pageMaker.cri.keyword }">
+							<button>Search</button>
+						</div>
 					</div>
+					<div class="pageInfo_wrap">
+						<div class="pageInfo_area">
+							<ul id="pageInfo" class="pageInfo">
+								<!-- 이전페이지 버튼 -->
+								<c:if test="${pageMaker.prev}">
+									<li class="pageInfo_btn previous"><a
+										href="${pageMaker.startPage-1}">Previous</a></li>
+								</c:if>
+								<!-- 각 번호 페이지 버튼 -->
+								<c:forEach var="num" begin="${pageMaker.startPage}"
+									end="${pageMaker.endPage}">
+									<li class="pageInfo_btn ${pageMaker.cri.pageNum == num ? "active":"" }"><a
+										href="${num}">${num}</a></li>
+								</c:forEach>
+								<!-- 다음페이지 버튼 -->
+								<c:if test="${pageMaker.next}">
+									<li class="pageInfo_btn next"><a
+										href="${pageMaker.endPage + 1 }">Next</a></li>
+								</c:if>
+							</ul>
+						</div>
+					</div>
+					<form id="moveForm" method="get">
+						<input type="hidden" name="pageNum"
+							value="${pageMaker.cri.pageNum }"> <input type="hidden"
+							name="amount" value="${pageMaker.cri.amount }"> <input
+							type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
+						<input type="hidden" name="type" value="${pageMaker.cri.type }">
+					</form>
 				</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
 	</div>
-
+	<script>
+		$(".pageInfo a")
+				.on(
+						"click",
+						function(e) {
+							e.preventDefault();
+							moveForm.find("input[name='pageNum']").val(
+									$(this).attr("href"));
+							moveForm
+									.attr("action",
+											"${pageContext.request.contextPath}/board/list");
+							moveForm.submit();
+						});
+	</script>
 </body>
 </html>

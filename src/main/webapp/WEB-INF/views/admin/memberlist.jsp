@@ -21,18 +21,20 @@
 <!-- 템플릿의 상세내용의 css -->
 <link href="${pageContext.request.contextPath}/css/scss.css"
 	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/mypage.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/mypage.css"
+	rel="stylesheet" />
 
-<link href="${pageContext.request.contextPath}/css/adminTable.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/adminTable.css"
+	rel="stylesheet" />
 
 <!-- JQuery 사용 -->
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
-	
+
 <!-- 템플릿 아이콘 사용 -->
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
 	crossorigin="anonymous"></script>
-	
+
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -48,20 +50,20 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 	crossorigin="anonymous"></script>
-	<!-- 템플릿에서 메뉴 클릭 시 서브메뉴 출력 -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
-	
-	<!-- 차트 기능 사용 -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-		crossorigin="anonymous"></script>
-	
-	
-	<script
-		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-		crossorigin="anonymous"></script>
+<!-- 템플릿에서 메뉴 클릭 시 서브메뉴 출력 -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+	crossorigin="anonymous"></script>
+
+<!-- 차트 기능 사용 -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+	crossorigin="anonymous"></script>
+
+
+<script
+	src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+	crossorigin="anonymous"></script>
 
 </head>
 <body class="sb-nav-fixed">
@@ -93,28 +95,27 @@
 							<th>정지</th>
 						</tr>
 						<c:forEach items="${memberlist }" var="member">
-						<tr>
-							<td><c:out value="${member.rownum + ((pageMaker.cri.pageNum-1) * 10)}"/></td>
-							<td><c:out value="${member.memberId}"/></td>
-							<td><c:out value="${member.mname}"/></td>
-							<td><c:out value="${member.mbirthday}"/></td>
-							<td><c:out value="${member.gender}"/></td>
-							<td><c:out value="${member.height}"/></td>
-							<td><c:out value="${member.weight}"/></td>
-							<td>
-								<c:choose>
-									<c:when test="${member.userEnabled == 1}">
+							<tr>
+								<td><c:out
+										value="${member.rownum + ((pageMaker.cri.pageNum-1) * 10)}" /></td>
+								<td><c:out value="${member.memberId}" /></td>
+								<td><c:out value="${member.mname}" /></td>
+								<td><c:out value="${member.mbirthday}" /></td>
+								<td><c:out value="${member.gender}" /></td>
+								<td><c:out value="${member.height}" /></td>
+								<td><c:out value="${member.weight}" /></td>
+								<td><c:choose>
+										<c:when test="${member.userEnabled == 1}">
 										활성화
 									</c:when>
-									<c:when test="${member.userEnabled == 0}">
+										<c:when test="${member.userEnabled == 0}">
 										정지
 									</c:when>
-								</c:choose>
-							</td>
-							<td><c:out value="${member.authorities}"/></td>
-							<td><button class="suspended_btn" value="${member.memberId}">
-									정지</button></td>
-						</tr>
+									</c:choose></td>
+								<td><c:out value="${member.authorities}" /></td>
+								<td><button class="suspended_btn"
+										value="${member.memberId}">정지</button></td>
+							</tr>
 						</c:forEach>
 					</table>
 					<div class="search_wrap">
@@ -126,8 +127,8 @@
 									<c:out value="${pageMaker.cri.type eq 'N'?'selected':'' }"/>>이름</option>
 								<option value="A"
 									<c:out value="${pageMaker.cri.type eq 'A'?'selected':'' }"/>>권한</option>
-							</select> 
-							<input type="text" name="keyword" class="searchInput" value="${pageMaker.cri.keyword }">
+							</select> <input type="text" name="keyword" class="searchInput"
+								value="${pageMaker.cri.keyword }">
 							<button>Search</button>
 						</div>
 					</div>
@@ -154,11 +155,12 @@
 						</div>
 					</div>
 					<form id="moveForm" method="get">
-						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
-						<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
-						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
+						<input type="hidden" name="pageNum"
+							value="${pageMaker.cri.pageNum }"> <input type="hidden"
+							name="amount" value="${pageMaker.cri.amount }"> <input
+							type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
 						<input type="hidden" name="type" value="${pageMaker.cri.type }">
-				    </form>
+					</form>
 				</div>
 			</main>
 			<jsp:include page="./frame/footer.jsp"></jsp:include>
@@ -176,61 +178,72 @@
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
 	<script>
-	
 		let moveForm = $("#moveForm");
 
-		$(".pageInfo a").on("click", function(e) {
-			e.preventDefault();
-			moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-			moveForm.attr("action", "${pageContext.request.contextPath}/admin/memberlist");
-			moveForm.submit();
-		});
-		
+		$(".pageInfo a")
+				.on(
+						"click",
+						function(e) {
+							e.preventDefault();
+							moveForm.find("input[name='pageNum']").val(
+									$(this).attr("href"));
+							moveForm
+									.attr("action",
+											"${pageContext.request.contextPath}/admin/memberlist");
+							moveForm.submit();
+						});
+
 		$(".search_area button").on("click", function(e) {
 			e.preventDefault();
-		    doSearch();
+			doSearch();
 		});
-		
+
 		$(".searchInput").on("keypress", function(e) {
 			if (e.which === 13) {
-		        e.preventDefault();
-		        doSearch();
-		    }
+				e.preventDefault();
+				doSearch();
+			}
 		});
-		
+
 		function doSearch() {
 			let type = $(".search_area select").val();
 			let keyword = $(".search_area input[name='keyword']").val();
-			
-			if(!keyword){
+
+			if (!keyword) {
 				alert("키워드를 입력하세요.");
 				return false;
-			}		
-			
+			}
+
 			moveForm.find("input[name='type']").val(type);
 			moveForm.find("input[name='keyword']").val(keyword);
 			moveForm.find("input[name='pageNum']").val(1);
 			moveForm.submit();
 		}
-		
-		$(".suspended_btn").on("click", function() {
-	        var memberId = $(this).val();
-	        console.log(memberId);
-	        $.ajax({
-	            type: "POST", // 또는 GET 등 HTTP 메소드 선택
-	            url: "${pageContext.request.contextPath}/admin/suspended/active",
-	            data: { memberId: memberId },
-	            success: function(response) {
-	                // 성공 시 수행할 로직
-	                location.href="${pageContext.request.contextPath}/admin/memberlist";
-	                console.log(response);
-	            },
-	            error: function(error) {
-	                // 에러 시 수행할 로직
-	                console.error(error);
-	            }
-	        });
-	    });
+
+		$(".suspended_btn")
+				.on(
+						"click",
+						function() {
+							var memberId = $(this).val();
+							console.log(memberId);
+							$
+									.ajax({
+										type : "POST", // 또는 GET 등 HTTP 메소드 선택
+										url : "${pageContext.request.contextPath}/admin/suspended/active",
+										data : {
+											memberId : memberId
+										},
+										success : function(response) {
+											// 성공 시 수행할 로직
+											location.href = "${pageContext.request.contextPath}/admin/memberlist";
+											console.log(response);
+										},
+										error : function(error) {
+											// 에러 시 수행할 로직
+											console.error(error);
+										}
+									});
+						});
 	</script>
 </body>
 </html>

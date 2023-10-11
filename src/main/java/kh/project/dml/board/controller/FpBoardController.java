@@ -43,6 +43,7 @@ import kh.project.dml.board.model.vo.FpBoardParam;
 import kh.project.dml.board.model.vo.FpBoardSelectReplyParam;
 import kh.project.dml.board.model.vo.FpBoardVo;
 import kh.project.dml.common.FileUpload;
+import kh.project.dml.common.vo.Criteria;
 
 
 
@@ -58,8 +59,8 @@ public class FpBoardController {
 	private static final String CURR_IMAGE_REPO_PATH = "C:\\workspace\\github\\DML\\src\\main\\webapp\\WEB-INF\\views\\board\\upload";
 
 	@GetMapping("/list")
-	public ModelAndView selectListboard(ModelAndView mv) {
-		mv.addObject("boardList", fpBoardServiceImpl.selectList());
+	public ModelAndView selectListboard(ModelAndView mv,Criteria cri) {
+		mv.addObject("boardList", fpBoardServiceImpl.selectList(cri));
 		mv.setViewName("board/list");
 		return mv;
 	}

@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="board">
+<sql id="criteria">
+		<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'I'.toString()">
+							and member_id like '%'||#{keyword}||'%' 
+						</when>
+						<when test="type == 'T'.toString()">
+							and Board_title like '%'||#{keyword}||'%' 
+						</when>
+						<when test="type == 'C'.toString()">
+							and board_content like '%'||#{keyword}||'%' 
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
 	<select id="selectList" resultType="FpBoardVo">
-		select board_no ,
-		member_id,Board_title,board_content, board_date,board_Count, bstep,
-		bleveL from board order by board_No desc
+	<![CDATA[
+	select rownum,board_no,member_id,Board_title,board_content, board_date,board_Count, bstep,
+		bleveL from
+		(select rownum as rn,board_no,member_id,Board_title,board_content, board_date,board_Count, bstep,
+		bleveL from board where rownum <= #{pageNum} * #{amount} 
+	]]>
+	<if test="keyword != null">
+				<include refid="criteria"></include> 
+			</if>
+			<![CDATA[        
+			    )
+		where rn > (#{pageNum} -1) * #{amount} order by board_No desc
+		]]>
 	</select>
 
 

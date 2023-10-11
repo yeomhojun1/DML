@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import kh.project.dml.board.model.vo.FpBoardParam;
 import kh.project.dml.board.model.vo.FpBoardSelectReplyParam;
 import kh.project.dml.board.model.vo.FpBoardVo;
+import kh.project.dml.common.vo.Criteria;
 
 @Repository
 public class FpBoardDao {
@@ -16,8 +17,8 @@ public class FpBoardDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<FpBoardVo> selectList() {
-		return sqlSession.selectList("board.selectList");
+	public List<FpBoardVo> selectList(Criteria cri) {
+		return sqlSession.selectList("board.selectList",cri);
 	}
 	public FpBoardVo selectOne(Integer boardNo) {
 		return sqlSession.selectOne("board.selectOne", boardNo);

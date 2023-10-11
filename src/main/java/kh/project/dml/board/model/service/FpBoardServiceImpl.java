@@ -10,6 +10,7 @@ import kh.project.dml.board.model.dao.FpBoardDao;
 import kh.project.dml.board.model.vo.FpBoardParam;
 import kh.project.dml.board.model.vo.FpBoardSelectReplyParam;
 import kh.project.dml.board.model.vo.FpBoardVo;
+import kh.project.dml.common.vo.Criteria;
 
 @Service("fpBoardServiceImpl")
 public class FpBoardServiceImpl implements FpBoardService {
@@ -18,8 +19,8 @@ public class FpBoardServiceImpl implements FpBoardService {
 	private FpBoardDao fpBoardDao;
 	
 	@Override
-	public List<FpBoardVo> selectList() {
-		return fpBoardDao.selectList();
+	public List<FpBoardVo> selectList(Criteria cri) {
+		return fpBoardDao.selectList(cri);
 	}
 	@Override
 	public FpBoardVo selectOne(Integer boardNo) {
