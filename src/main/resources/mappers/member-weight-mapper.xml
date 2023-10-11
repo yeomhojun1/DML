@@ -2,7 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="memberweight">
 	<select id="selectList" resultType="FpMemberWeightVo">
-		select * from member_weight where member_id = #{memberId}
+		SELECT * FROM member_weight
+		WHERE member_id = #{memberId}
+		AND (weight_date between (SYSDATE - 7) and SYSDATE)  
 	</select>
 <!-- 		private String userId;
 	private Date date;
@@ -63,7 +65,7 @@
 	</update>
 	
 	
-	<!--delete  -->
+	<!--delete 몸무게 삭제 -->
 	<update id="deleteWeight" parameterType="map" >
 		UPDATE MEMBER_WEIGHT SET WEIGHT=''
 		WHERE member_id=#{memberId} AND weight_date=#{weightDate}
