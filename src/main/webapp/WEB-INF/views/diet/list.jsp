@@ -386,7 +386,8 @@
 		
 		})
 	}
-	function changeQuantity(change) {
+	
+/* 	function changeQuantity(change) {
 	    const quantityDisplay = document.getElementById("quantityDisplay");
 	    let quantity = parseInt(quantityDisplay.textContent);
 
@@ -397,6 +398,8 @@
 
 	    // 이곳에서 수량을 서버로 업데이트하는 등의 작업을 수행할 수 있습니다.
 	}
+	 */
+	
 	
 	function doAction()
  	{
@@ -416,27 +419,25 @@
  	}
 	
 	function btnPlusClickHandler(thisElement){
-		
-		var foodTime = document.getElementById("selectbox");
-		
-		var foodTimeValue = foodTime.options[foodTime.selectedIndex].value;
-		
-		var foodTimeValueConvert = "";
-		
-		
+			
+			var foodTime = document.getElementById("selectbox");
+			
+			var foodTimeValue = foodTime.options[foodTime.selectedIndex].value;
+			
+			var foodTimeValueConvert = "";
+			
+			var foodQuality = 1;
 		
 		console.log("foodCd : " +  $(thisElement).data("foodcd"));
 		var foodcd = $(thisElement).data("foodcd");
 		foodName = $(thisElement).parent().prevAll(".foodName").text();
-		foodQuality = $(thisElement).parent().prevAll(".foodQuality").text();
+		//foodQuality = $(thisElement).parent().prevAll(".foodQuality").text();
 		calorie = $(thisElement).parent().prevAll(".calorie").text();
 		carbs = $(thisElement).parent().prevAll(".crabs").text();
 		protein = $(thisElement).parent().prevAll(".protein").text();
 		fat = $(thisElement).parent().prevAll(".fat").text();
         
 	
-		
-		
 		
 		switch (foodTimeValue) {
 		  case 'A':
@@ -463,16 +464,14 @@
 				</div>				
 				<div class="Plan_bottom1_second_bar_food__Nea0w">\${foodName}
 				</div>
-				 <div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
-				수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodQuality}</span>
-				  <div class="quantity-box">
-					<button class="quantity btn minus_btn"
-						onclick="changeQuantity(-1)">-</button>
-					<span id="quantityDisplay">1</span>
-					<button class="quantity btn plus_btn"
-						onclick="changeQuantity(1)">+</button>
-	 			</div>
-				</div> 
+			    <div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
+	                수량<br>
+	                <span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodQuality}</span>
+	                <div class="quantity-box">
+	                    <button class="quantity btn minus_btn" onclick="changeFoodQuality(-1, this);">-</button>
+	                    <button class="quantity btn plus_btn" onclick="changeFoodQuality(1, this);">+</button>
+	                </div>
+	            </div> 
 				<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
 					칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${calorie}</span>
 				</div>
@@ -497,6 +496,44 @@
 		//modal 
 		
 	}  // btnPlusClickHandler
+	function changeFoodQuality(change,aaaa) {
+		console.log(this);   // window
+		console.log(event.target);   // click element
+		console.log(aaaa);   // click element
+	    // 현재 수량을 가져옵니다.	
+	     var foodQualityElement = $(aaaa).parents(".Plan_bottom1_second_bar_kcal__2i7Y2.foodQuality").find(".Plan_bottom1_second_bar_sub___m2EJ");
+	    console.log(foodQualityElement)
+    	var currentQuality = parseInt(foodQualityElement.text());
+    
+	    //var currentQuality = parseInt(foodQualityElement.innerText);
+
+	    // 수량을 변경합니다.
+	    var newQuality = currentQuality + change;
+
+	    // 수량이 1 미만으로 내려가지 않도록 제한합니다.
+	    if (newQuality < 1) {
+	        newQuality = 1;
+	    }
+
+	    // 수량을 업데이트합니다.
+	    foodQualityElement.text(newQuality);
+	    var $parentElement = $(aaaa).parents(".Plan_bottom1_food_each__s9jUi");
+	    var calorie = parseFloat($parentElement.find(".calorie").children("span").text());
+	    var carbs = parseFloat($parentElement.find(".carbs").children("span").text());
+	    var protein = parseFloat($parentElement.find(".protein").children("span").text());
+	    var fat = parseFloat($parentElement.find(".fat").children("span").text());
+
+	    calorie = calorie * newQuality;
+	    carbs = carbs * newQuality;
+	    protein = protein * newQuality;
+	    fat = fat * newQuality;
+
+	    $parentElement.find(".calorie").children("span").text(calorie);
+	    $parentElement.find(".carbs").children("span").text(carbs);
+	    $parentElement.find(".protein").children("span").text(protein);
+	    $parentElement.find(".fat").children("span").text(fat);
+	}
+	
 	
 	function btnDeleteClickHandler(thisElement) {
 	    	var foodCdToDelete = $(thisElement).val();
@@ -539,10 +576,8 @@
 		    	 });
 		}  // else
 			
-			
-			
-			
 	}
+	
 	$("button.save").click(btnSaveHandler);
 	function btnSaveHandler(){
 		var food_length = $(".Plan_bottom1_food_each__s9jUi").length;
