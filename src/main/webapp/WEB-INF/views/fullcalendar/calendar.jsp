@@ -38,7 +38,7 @@
     var calendar = new FullCalendar.Calendar(calendarEl, {
 				     initialView: 'dayGridMonth',
 				     locale: 'ko', // 한국어 설정
-				     height: '700px', // calendar 높이 설정
+				     height: '1000px', // calendar 높이 설정
 				     expandRows: true, // 화면에 맞게 높이 재설정
 				     slotMinTime: '08:00', // Day 캘린더에서 시작 시간
 				     slotMaxTime: '20:00', // Day 캘린더에서 종료 시간
@@ -85,9 +85,9 @@
 		              ],
 				        
   				      dateClick : (info)=>{ // 선택한 날짜 값 뽑아내기
-  				    	$("#insertPlan [name=startDate]").val(info.dateStr);
-  				    	$("#insertPlan [name=endDate]").val(info.dateStr);
-  				   	 	 $("#insertPlan").modal("toggle");
+  				    	$("#listPlan [name=startDate]").val(info.dateStr);
+  				    	$("#listPlan [name=endDate]").val(info.dateStr);
+  				   	 	 $("#listPlan").modal("toggle");
   				    	 /*  console.log(info);
   				    	  var clickDate = info.dateStr;
 //   				    	  function add_ClickSchedule(clickDate){ // 클릭된 날짜부터 일정 추가
@@ -129,7 +129,7 @@
 		  
 			
   	});
-  
+ 
   </script>
 <style>
 .btn {
@@ -174,32 +174,33 @@
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol> -->
 					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
-					<div id='calendar'></div>
-					<div>
-
-						<h2 style="text-align: center;">${member.mname }님의캘린더</h2>
-
-						<!-- <button type="button" class="btn btn-primary"
-							data-bs-toggle="modal" data-bs-target="#exampleModal">
-							Launch demo modal</button> -->
+					
+					<h2 style="text-align: center;">${member.mname }님의캘린더</h2> <!-- 멤버이름 님의 캘린더 -->
+					<script>
+					 $(".forExecise").click(forExecisehandler);
+					  function forExecisehandler(){
+						  var test ='<div>test</div>'
+						  $(".testContent").append(test);
+					  }
+					</script>
+					
+						<div>   <!-- 일정추가버튼 눌렀을시 일정추가 -->
+						<button type="button" class="btn btn-primary"
+							data-bs-toggle="modal" data-bs-target="#insertPlan">
+							일정추가</button>
 						<div class="modal fade" id="insertPlan">
-							<!-- 	tabindex="-1"
-							aria-labelledby="exampleModalLabel" aria-hidden="true" -->
 
-							<div class="modal-dialog modal-xl">
+
+							<div class="modal-dialog modal-l">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Modal
-											title</h5>
+										<h3 class="modal-title" id="exampleModalLabel">${member.mname }의
+											일정추가</h3>
 										<button type="button" class="btn-close"
 											data-bs-dismiss="modal" aria-label="Close"></button>
 									</div>
 									<div class="modal-body">
-
-										<div>
-											<div>
-												<h2>일정추가</h2>
-											</div>
+										<div class="testContent">
 											<form id="calendarData">
 												<div>
 													제목 : <input type="text" name="title" id="title"
@@ -222,8 +223,8 @@
 												</div>
 												<br>
 												<!-- <input type="button" value="저장"
-													onClick="send_save()">
- -->
+													onClick="send_save()"> -->
+
 
 
 											</form>
@@ -238,22 +239,54 @@
 								</div>
 							</div>
 						</div>
+						<div class="modal fade" id="listPlan"> <!--날짜를 클릭했을떄 나오는 모달창  -->
+							<!-- 	tabindex="-1"
+							aria-labelledby="exampleModalLabel" aria-hidden="true" -->
+
+							<div class="modal-dialog modal-xl">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Modal
+											title</h5>
+										<button type="button" class="btn-close"
+											data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+
+										<div>
+											<ul class="col-xl-12 nav justify-content-center">
+												<li class="col-xl-4 nav-item text-center forExecise"><a
+													class="nav-link active " aria-current="page" href="#">운동</a>
+												</li>
+												<li class="col-xl-4 nav-item text-center"><a
+													class="nav-link" href="#">식단</a></li>
+												<li class="col-xl-4 nav-item text-center"><a
+													class="nav-link" href="#">일정</a></li>
+											</ul>
+										</div>
+										<div class="testContent">
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
+					
+					<div id='calendar'></div> <!-- 캘린더 불러오는 코드 -->
+					
 					<!-- 모달창 -->
 
-					<div class="modal fade" id="updatePlan">
-						<div class="modal-dialog modal-xl">
+					<div class="modal fade" id="updatePlan"> <!--수정페이지 모달창  -->
+						<div class="modal-dialog modal-xm">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+									<h3 class="modal-title" id="exampleModalLabel">${member.mname }의
+										일정수정</h3>
 									<button type="button" class="btn-close" data-bs-dismiss="modal"
 										aria-label="Close"></button>
 								</div>
 								<div class="modal-body">
-
-									<div>
-										<h1>일정 수정</h1>
-									</div>
 									<div>
 										<form id="calendarUpDate">
 											<input type="hidden" name="calendarno" id="calendarno"
@@ -280,23 +313,30 @@
 											</div>
 											<br>
 										</form>
-										<!-- <input type="button" value="수정" onclick="send_update()" /> <input
-											type="button" value="삭제" onClick="send_delete()"> -->
+										<input type="button" value="수정" onclick="send_update()" /> <input
+											type="button" value="삭제" onClick="send_delete()">
 									</div>
-									<div class="modal-footer">
+
+
+								</div>
+
+
+
+
+
+							</div>
+
+
+						</div>
+					</div>
+
+					<!-- 	<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-bs-dismiss="modal" onclick="send_update()">수정</button>
 										<button type="button" class="btn btn-secondary"
 											data-bs-dismiss="modal" onClick="send_delete()">삭제</button>
 
-									</div>
-
-								</div>
-
-							</div>
-
-						</div>
-					</div>
+									</div> -->
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
@@ -313,5 +353,8 @@ let contextPath = "${pageContext.request.contextPath }";
 </script>
 	<script
 		src="${pageContext.request.contextPath }/resources/js/custom-calendar.js"></script>
+	<script>
+			
+		</script>
 </body>
 </html>

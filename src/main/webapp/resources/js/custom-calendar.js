@@ -58,6 +58,7 @@ function send_save(){ // ajax 비동기 처리 - 일정 추가
 					alert(response.message);				
 				}
 			},
+			
 			error:function(error){
 				alert(error.message);
 			}
