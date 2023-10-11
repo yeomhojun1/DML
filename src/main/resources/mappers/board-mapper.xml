@@ -7,13 +7,13 @@
 				<trim prefix="OR">
 					<choose>
 						<when test="type == 'I'.toString()">
-							and member_id like '%'||#{keyword}||'%' 
+						 member_id like '%'||#{keyword}||'%' 
 						</when>
 						<when test="type == 'T'.toString()">
-							and Board_title like '%'||#{keyword}||'%' 
+							 Board_title like '%'||#{keyword}||'%' 
 						</when>
 						<when test="type == 'C'.toString()">
-							and board_content like '%'||#{keyword}||'%' 
+							 board_content like '%'||#{keyword}||'%' 
 						</when>
 					</choose>
 				</trim>
@@ -22,20 +22,26 @@
 	</sql>
 	<select id="selectList" resultType="FpBoardVo">
 	<![CDATA[
+	select * from (
 	select rownum,board_no,member_id,Board_title,board_content, board_date,board_Count, bstep,
 		bleveL from
 		(select rownum as rn,board_no,member_id,Board_title,board_content, board_date,board_Count, bstep,
-		bleveL from board where rownum <= #{pageNum} * #{amount} 
+		bleveL from board where rownum <= #{pageNum} * #{amount} order by board_No desc
 	]]>
 	<if test="keyword != null">
-				<include refid="criteria"></include> 
+			and	<include refid="criteria"></include> 
 			</if>
 			<![CDATA[        
 			    )
-		where rn > (#{pageNum} -1) * #{amount} order by board_No desc
+		where rn > (#{pageNum} -1) * #{amount} ) order by board_No desc
 		]]>
 	</select>
-
+<select id="getTotalBoard" resultType="_int">
+		select count(*) from board
+		<if test="keyword != null">
+			where<include refid="criteria"></include>
+		</if>
+	</select>
 
 	<select id="selectOne" resultType="FpBoardVo"
 		parameterType="_int">

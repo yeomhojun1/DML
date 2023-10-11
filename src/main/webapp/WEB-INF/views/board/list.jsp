@@ -91,7 +91,8 @@
 							<tbody>
 								<c:forEach items="${boardList}" var="vo">
 									<tr class="foreachValue">
-										<th>${vo.rownum}</th>
+										<th>${vo.boardNo}</th>
+										<%-- <td class="plusCount boardTitleVal">${vo.boardTitle}</td> --%>
 										<td><a
 											href="${pageContext.request.contextPath }/board/one?boardNo=${vo.boardNo}"
 											class="plusCount"> ${vo.boardTitle}</a></td>
@@ -155,18 +156,47 @@
 		</div>
 	</div>
 	<script>
-		$(".pageInfo a")
-				.on(
-						"click",
-						function(e) {
-							e.preventDefault();
-							moveForm.find("input[name='pageNum']").val(
-									$(this).attr("href"));
-							moveForm
-									.attr("action",
-											"${pageContext.request.contextPath}/board/list");
-							moveForm.submit();
-						});
+	let moveForm = $("#moveForm");
+
+	$(".pageInfo a")
+			.on(
+					"click",
+					function(e) {
+						e.preventDefault();
+						moveForm.find("input[name='pageNum']").val(
+								$(this).attr("href"));
+						moveForm
+								.attr("action",
+										"${pageContext.request.contextPath}/board/list");
+						moveForm.submit();
+					});
+
+	$(".search_area button").on("click", function(e) {
+		e.preventDefault();
+		doSearch();
+	});
+
+	$(".searchInput").on("keypress", function(e) {
+		if (e.which === 13) {
+			e.preventDefault();
+			doSearch();
+		}
+	});
+
+	function doSearch() {
+		let type = $(".search_area select").val();
+		let keyword = $(".search_area input[name='keyword']").val();
+
+		if (!keyword) {
+			alert("키워드를 입력하세요.");
+			return false;
+		}
+
+		moveForm.find("input[name='type']").val(type);
+		moveForm.find("input[name='keyword']").val(keyword);
+		moveForm.find("input[name='pageNum']").val(1);
+		moveForm.submit();
+	}
 	</script>
 </body>
 </html>

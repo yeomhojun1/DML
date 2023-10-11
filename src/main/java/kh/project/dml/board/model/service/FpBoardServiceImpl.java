@@ -49,4 +49,8 @@ public class FpBoardServiceImpl implements FpBoardService {
 		FpBoardVo selectReplyBoard = fpBoardDao.selectOneForReply(param.getBoardNo());
 		return selectReplyBoard;
 	}
+	@Override
+	public int getTotalBoard(Criteria cri) {
+		return fpBoardDao.getTotalBoard(cri);
+	}
 }

@@ -41,4 +41,7 @@ public class FpBoardDao {
 	public int selectReply(FpBoardSelectReplyParam param) {
 		return sqlSession.update("board.selectReply", param);
 	}
+	public int getTotalBoard(Criteria cri) {
+		return sqlSession.selectOne("board.getTotalBoard", cri);
+	}
 }

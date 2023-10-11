@@ -18,4 +18,5 @@ public interface FpBoardService {
 	public int delete(int boardNo);
 	public int plusCount(FpBoardParam param);
 	public FpBoardVo selectReply(FpBoardSelectReplyParam param);
+	public int getTotalBoard(Criteria cri);
 }
