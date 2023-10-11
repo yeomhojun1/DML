@@ -118,9 +118,9 @@
 					alert("삭제완료");
 			location.href="${pageContext.request.contextPath}/notice/list";	
 			},
-			error: function(data){
-				console.log("error");
-			}
+			error : (request, status, error) => {
+				   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}
 		});
 	});
 	

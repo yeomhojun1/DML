@@ -27,6 +27,13 @@ public class FpCalenderServiceImpl implements FpCalenderService  {
 	public List<FpCalenderVo> selectList(String loginInfo){
 		return fpcalenderDao.selectList(loginInfo);
 	}
+	
+	//날짜를 클릭했을시 일정에 뜨는 그날의 데이터값
+	@Override
+	public List<FpCalenderVo> nowList(String username, String date){
+		return fpcalenderDao.nowList(username, date);
+	}
+	
 	public List<FpCalenderVo> table(String memberId, String startDate) {
 		return fpcalenderDao.selectOne(memberId, startDate);
 	}

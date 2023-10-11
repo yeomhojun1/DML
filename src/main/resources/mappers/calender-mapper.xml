@@ -13,6 +13,19 @@
 		WHERE MEMBER_ID = #{username}
   </select>
   
+  <!--일정 클릭시 그날 데이터 불러오는거  -->
+  <select id="nowList" parameterType="map" resultType="FpCalenderVo">
+	SELECT 
+	  	 CALENDARNO
+		,MEMBER_ID
+		,TITLE
+		,STARTDATE
+		,ENDDATE
+		,CONTENT 
+	FROM CALENDAR 
+		WHERE MEMBER_ID = #{username} and (#{date} between STARTDATE and ENDDATE)
+  </select>
+  
   <select id="selectOne" resultType="FpCalenderVo">
   select * from calendar where MEMBER_ID = #{memberId} and STARTDATE = #{startDate}
   </select>
