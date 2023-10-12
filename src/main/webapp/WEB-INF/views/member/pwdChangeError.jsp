@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>정보 없음</title>
+<title>Daily Muscle Life | 정보 없음</title>
 </head>
 <body>
 <script>

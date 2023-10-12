@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <title>로그인 페이지</title>
+    <title>Daily Muscle Life | 로그인 페이지</title>
     <style>
         body {
     background: #222D32;
@@ -184,7 +184,7 @@ label {
                     </div>
 					<div class="form-group">
 						<label>
-							<input type="checkbox" name="useCookie">&nbsp<label class="form-control-label">로그인유지</label>
+							<input type="checkbox" name="useCookie" id="useCookie">&nbsp<label class="form-control-label" for="useCookie">로그인유지</label>
 						</label>
 					</div>
                     <div class="form-group social-form">

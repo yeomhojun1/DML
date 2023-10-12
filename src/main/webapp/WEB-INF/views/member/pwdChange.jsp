@@ -10,13 +10,29 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Daily Muscle Life</title>
+<title>Daily Muscle Life | 비밀번호 변경</title>
+<link rel="icon" type="image/x-icon" href="${pagecontext.request.contextPath }/resources/assets/favicon.ico" />
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+<!-- 템플릿의 기본 css -->
 <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" />
+<!-- 템플릿의 상세내용의 css -->
 <link href="${pageContext.request.contextPath}/css/scss.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/mypage.css" rel="stylesheet" />
+<!-- JQuery 사용 -->
 <script	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
+<!-- 템플릿 아이콘 사용 -->
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"	crossorigin="anonymous"></script>
+<!-- 템플릿에서 메뉴 클릭 시 서브메뉴 출력 -->
+<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<!-- 차트 기능 사용 -->
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script	src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+<link href="${pageContext.request.contextPath}/css/mypage.css" rel="stylesheet" />
+<style>
+	.ranktable { margin-top : 10px; border : 1px solid #fff; padding: 5px; }
+	.rankth { text-align : center; }
+	.rankth, .ranktd { border : 1px solid #fff; padding: 5px; }
+</style>
 <style>
 	.btn-outline-primary {
 		margin-top:10px;

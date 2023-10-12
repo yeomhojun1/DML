@@ -15,7 +15,7 @@
 							mname like '%'||#{keyword}||'%' 
 						</when>
 						<when test="type == 'A'.toString()">
-							user_enabled like '%'||#{keyword}||'%' 
+							authorities like '%'||#{keyword}||'%' 
 						</when>
 					</choose>
 				</trim>
@@ -85,7 +85,7 @@
 		select count(*) from member m join users u on m.member_id = u.username 
 		where authorities != 'ROLE_ADMIN'
 		<if test="keyword != null">
-			where rownum > 0 <include refid="criteria"></include>
+			and rownum > 0 <include refid="criteria"></include>
 		</if>
 	</select>
 

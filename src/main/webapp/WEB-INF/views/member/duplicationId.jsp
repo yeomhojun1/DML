@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>중복ID</title>
+<title>Daily Muscle Life | 중복ID</title>
 </head>
 <body>
 <script>

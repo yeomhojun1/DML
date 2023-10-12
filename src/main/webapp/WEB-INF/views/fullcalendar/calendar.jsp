@@ -152,6 +152,7 @@
 	let forPk="";
 	let dateVal="";
 	let foodDate="";
+
 	  function forExercisehandler(){
 		  $.ajax({
 				url : "${pageContext.request.contextPath}/memberexset/list.ajax",
@@ -393,28 +394,6 @@
 												class="nav-link" href="#">일정</a></li>
 										</ul>
 									</div>
-								<script> /* 날짜 클릭시 일정부분에서 그날에 해당하는 데이터값 불러오는 ajax */
-								 $(".forcalendar").click(forExecisehandler);
-								  function forExecisehandler() {
-									    var date = $("#dmllist").html();
-									    console.log(date);
-									    $.ajax({
-									        type: "POST",
-									        url: "${pageContext.request.contextPath}/calendar/dateNow",
-									        data: { "date": date }, // 데이터를 JSON 객체로 전달
-									        success: function(response) {
-									            // 성공 처리 코드
-									        	var now = response.dateNowList;
-												  console.log(JSON.stringify(now));
-												  $(".testContent div").remove();
-												  $(".testContent").append("<div>"+JSON.stringify(now)+"</div>");
-									        },
-									        error: (request, status, error) => {
-									            alert("code : " + request.status + "\n" + "message : " + request.responseText + "\n" + "error : " + request.error);
-									        }
-									    });
-									}
-								</script>
 									<div class="testContent">
 										
 									</div>
@@ -466,17 +445,8 @@
 										<input type="button" value="수정" onclick="send_update()" /> <input
 											type="button" value="삭제" onClick="send_delete()">
 									</div>
-
-
 								</div>
-
-
-
-
-
 							</div>
-
-
 						</div>
 					</div>
 
@@ -504,7 +474,37 @@ let contextPath = "${pageContext.request.contextPath }";
 	<script
 		src="${pageContext.request.contextPath }/resources/js/custom-calendar.js"></script>
 	<script>
-			
-		</script>
+	$(".forcalendar").click(forcalendarhandler);
+	  function forcalendarhandler() {
+		    var date = $("#dmllist").html();
+		    console.log(date);
+		    $.ajax({
+		        type: "POST",
+		        url: "${pageContext.request.contextPath}/calendar/dateNow",
+		        data: { "date": date }, // 데이터를 JSON 객체로 
+		        success: function(response) {
+		            // 성공 처리 코드
+		            var now = JSON.stringify(response.dateNowList);
+		            var nowDate = JSON.parse(now);
+		        	workCalendar(nowDate);
+		        },
+		        error: (request, status, error) => {
+		            alert("code : " + request.status + "\n" + "message : " + request.responseText + "\n" + "error : " + request.error);
+		        }
+		    });
+		}
+	  
+	  function workCalendar(now){
+			htmlVal = '	<div class="row">';
+			for (var i = 0; i < now.length; i++) {
+				htmlVal += '<div class="card"> 제목 : '+now[i].title+' / ';
+				htmlVal += '시작날짜 : '+now[i].startDate+' / ';
+				htmlVal += '종료날짜 : '+now[i].endDate;
+				htmlVal += '<br> 내용 : '+now[i].content+'</div>';
+			}
+			htmlVal += '</div>';
+			$(".testContent").html(htmlVal);
+	  }
+	</script>
 </body>
 </html>
