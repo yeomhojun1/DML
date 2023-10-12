@@ -220,7 +220,7 @@
 
 					<h2 style="text-align: center;">${member.mname }님의캘린더</h2>
 					<!-- 멤버이름 님의 캘린더 -->
-
+<div id='calendar'></div> 
 
 					<div>
 						<!-- 일정추가버튼 눌렀을시 일정추가 -->
@@ -275,7 +275,7 @@
 								</div>
 							</div>
 						</div>
-			aria-labelledby="exampleModalLabel" aria-hidden="true" -->
+		
 
 						<div class="modal fade" id="listPlan">
 							<!--날짜를 클릭했을떄 나오는 모달창  -->
