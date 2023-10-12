@@ -45,60 +45,30 @@ public class FpDietController {
 	
 	@ResponseBody
 	@PostMapping("/list")
-	public Map<String, Object> selectListDiet(@RequestBody FpDietVo vo, HttpSession session) 
+	public Map<String, Object> selectListDiet(FpDietVo vo) 
 	{
-		FpMemberVo member = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
-		FpDietVo dietVo = new FpDietVo();
-		if (member == null) { // 일반 계정인 경우
-			dietVo.setMemberId("");
-
-		} else {
-			System.out.println("===========================================================");
-
-//			System.out.println("userMember : " + userMember);
-
-			System.out.println("userMember : " + member );
-
-			System.out.println("===========================================================");
-			
-			dietVo.setMemberId(member.getMemberId());
-		}
-		
-		if(!"ALL".equals(vo.getFoodTime()))
-		{
-			dietVo.setFoodTime(vo.getFoodTime());
-		}
-		
-		
-		dietVo.setFoodDate(vo.getFoodDate());
-		
-		System.out.println("==============================================================================");
-		System.out.println("vo : " + dietVo);
-		System.out.println("==============================================================================");
-		
 		Map<String, Object> map = new HashMap<>();
 		
 		TotalFoodListDTO totalDto = null;
 		
-		totalDto =fpDietServiceImpl.totalSelectList(dietVo);
+		totalDto =fpDietServiceImpl.totalSelectList(vo);
 		
 		if(totalDto != null) 
 		{
-			if(totalDto.getFoodTime() ==null)
+			if(totalDto.getFoodTime() == null)
 				totalDto.setFoodTime("");
 			
-			if(totalDto.getTotalCal() ==null)
+			if(totalDto.getTotalCal() == null)
 				totalDto.setTotalCal("");
 			
-			if(totalDto.getTotalCrabs() ==null)
+			if(totalDto.getTotalCrabs() == null)
 				totalDto.setTotalCrabs("");
 			
-			if(totalDto.getTotalFat() ==null)
+			if(totalDto.getTotalFat() == null)
 				totalDto.setTotalFat("");
 			
-			if(totalDto.getTotalProtein() ==null)
+			if(totalDto.getTotalProtein() == null)
 				totalDto.setTotalProtein("");
-		
 		}
 		else 
 		{
@@ -110,7 +80,7 @@ public class FpDietController {
 			totalDto.setTotalProtein("");
 		}
 		
-		map.put("dietList", fpDietServiceImpl.selectList(dietVo));
+		map.put("dietList", fpDietServiceImpl.selectList(vo));
 		map.put("totalDietList", totalDto); 
 		
 		return map;

@@ -53,6 +53,7 @@
 	
 	<div id="layoutSidenav">
 		<jsp:include page="/WEB-INF/views/frame/asidebar.jsp"></jsp:include>
+
 		
 
 		<div id="layoutSidenav_content">
@@ -387,19 +388,7 @@
 		})
 	}
 	
-/* 	function changeQuantity(change) {
-	    const quantityDisplay = document.getElementById("quantityDisplay");
-	    let quantity = parseInt(quantityDisplay.textContent);
 
-	    // 수량을 변경하고 최소값을 1로 유지합니다.
-	    quantity = Math.max(quantity + change, 1);
-
-	    quantityDisplay.textContent = quantity;
-
-	    // 이곳에서 수량을 서버로 업데이트하는 등의 작업을 수행할 수 있습니다.
-	}
-	 */
-	
 	
 	function doAction()
  	{
@@ -496,6 +485,7 @@
 		//modal 
 		
 	}  // btnPlusClickHandler
+	
 	function changeFoodQuality(change,aaaa) {
 		console.log(this);   // window
 		console.log(event.target);   // click element
@@ -506,34 +496,42 @@
     	var currentQuality = parseInt(foodQualityElement.text());
     
 	    //var currentQuality = parseInt(foodQualityElement.innerText);
+		    $parentElement = $(aaaa).parents(".Plan_bottom1_food_each__s9jUi");
+		    var calorie = parseFloat($parentElement.find(".calorie").children("span").text());
+		    var carbs = parseFloat($parentElement.find(".carbs").children("span").text());
+		   	var protein = parseFloat($parentElement.find(".protein").children("span").text());
+		    var fat = parseFloat($parentElement.find(".fat").children("span").text()); 
 
+	    	var originCalorie = calorie / currentQuality;
+	    	var originCarbs = carbs / currentQuality;
+	    	var originProtein = protein / currentQuality;
+	    	var originFat = fat / currentQuality;
+	    
 	    // 수량을 변경합니다.
-	    var newQuality = currentQuality + change;
-
-	    // 수량이 1 미만으로 내려가지 않도록 제한합니다.
-	    if (newQuality < 1) {
-	        newQuality = 1;
-	    }
-
-	    // 수량을 업데이트합니다.
-	    foodQualityElement.text(newQuality);
-	    var $parentElement = $(aaaa).parents(".Plan_bottom1_food_each__s9jUi");
-	    var calorie = parseFloat($parentElement.find(".calorie").children("span").text());
-	    var carbs = parseFloat($parentElement.find(".carbs").children("span").text());
-	    var protein = parseFloat($parentElement.find(".protein").children("span").text());
-	    var fat = parseFloat($parentElement.find(".fat").children("span").text());
-
-	    calorie = calorie * newQuality;
-	    carbs = carbs * newQuality;
-	    protein = protein * newQuality;
-	    fat = fat * newQuality;
-
-	    $parentElement.find(".calorie").children("span").text(calorie);
-	    $parentElement.find(".carbs").children("span").text(carbs);
-	    $parentElement.find(".protein").children("span").text(protein);
-	    $parentElement.find(".fat").children("span").text(fat);
-	}
+		    var newQuality = currentQuality + change;
 	
+		    // 수량이 1 미만으로 내려가지 않도록 제한합니다.
+		    if (newQuality < 1) {
+		        newQuality = 1;
+		    }
+	
+		    // 수량을 업데이트합니다.
+		    foodQualityElement.text(newQuality);
+		    
+
+		    var newCalorie = originCalorie * newQuality;
+		    var newCarbs = originCarbs * newQuality;
+		    var newProtein = originProtein * newQuality;
+		    var newFat = originFat * newQuality;
+		    
+		 
+		    $parentElement.find(".calorie").children("span").text(newCalorie+"kcal");
+		    $parentElement.find(".carbs").children("span").text(newCarbs+"g");
+		    $parentElement.find(".protein").children("span").text(newProtein+"g");
+		    $parentElement.find(".fat").children("span").text(newFat+"g");
+		    
+		}
+		
 	
 	function btnDeleteClickHandler(thisElement) {
 	    	var foodCdToDelete = $(thisElement).val();
@@ -689,8 +687,10 @@
 	    $.ajax({
 			url:"${pageContext.request.contextPath}/diet/list",
 			type: "post"
-			,contentType: "application/json"
-			, data: JSON.stringify(objfinal)
+			//,contentType: "application/json"
+			//, data: JSON.stringify(objfinal)
+			, data: {foodTime : selectValue, foodDate : foodDate ,memberId:"${member.memberId}"}
+			, dataType: "json"
 			, success : function(result) {
 				console.log(result.dietList);
 				console.log("success");
@@ -784,7 +784,7 @@
 					<div class="Plan_bottom1_second_bar_food__Nea0w">\${item.foodName}
 					</div>
 					 <div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
-					수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">1</span>
+					수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">\${item.foodQuality}</span>
 					</div> 
 					<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
 						칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${item.calorie}</span>

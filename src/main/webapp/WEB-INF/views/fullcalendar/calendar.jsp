@@ -87,17 +87,26 @@
   				      dateClick : (info)=>{ // 선택한 날짜 값 뽑아내기
   				    	$("#listPlan [name=startDate]").val(info.dateStr);
   				    	$("#listPlan [name=endDate]").val(info.dateStr);
-  				   	 	 $("#listPlan").modal("toggle");
+  				   	 	$("#listPlan").modal("toggle");
 						$(".testContent div").remove();
-  				   	 	 $("#dmllist").html(info.dateStr);
-  				   	forPk=info.dateStr;
-				 		 forPk= forPk.replaceAll("-", "");
+  				   	 	$("#dmllist").html(info.dateStr);
+  				   	 	
+  				   		forPk=info.dateStr;
+				 		forPk= forPk.replaceAll("-", "");
 						forPk=forPk+"${member.memberId}";
 				   		console.log(forPk);
+				   		
+				   		// view display
 				   		dateVal=info.dateStr;
 				 		dateVal=forPk.replaceAll("-", ".");
 				 		//$(".testContent").html("");
 				   		$(".forExercise").click(forExercisehandler);
+				   		
+				   		
+				   		foodDate = info.dateStr;
+				   		foodDate = foodDate.replaceAll("-", "");  // 20231012
+				   		$(".forDiet").click(forDiethandler);
+				   		
 
   				    	 /*  console.log(info);
   				    	  var clickDate = info.dateStr;
@@ -142,6 +151,7 @@
   	});
 	let forPk="";
 	let dateVal="";
+	let foodDate="";
 	  function forExercisehandler(){
 		  $.ajax({
 				url : "${pageContext.request.contextPath}/memberexset/list.ajax",
@@ -170,6 +180,94 @@
 			//addEventAfterDisplay(".deleteDayExSet", deleteDayExSetHandler);
 			$(".testContent").html(htmlVal);
 	  }
+	  
+		  function forDiethandler(){
+			  $(".testContent").html("");
+			    $.ajax({
+					url:"${pageContext.request.contextPath}/diet/list",
+					type: "post"
+					//,contentType: "application/json"
+					, data: 
+						//JSON.stringify(objfinal)
+					 {foodTime:"ALL" , foodDate: foodDate, memberId:"${member.memberId}"} 
+					, dataType:"json"
+					, success : function(result) {
+						console.log("success");
+						console.log(result);
+						renderData(result.dietList);
+					}
+					, error : (request, status, error) => {
+						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					},
+				});  // ajax
+		  }  // function forDiethandler
+			
+			function renderData(data)
+			{
+				var planBarDiv = document.querySelector('.Plan_bottom1_second_bar___Z7S8');
+				var foodTimeValueConvert = '';
+				htmlVal = "";
+				
+				console.log("data : " +  data);
+			
+			
+			    // 데이터를 해당 요소에 동적으로 추가
+			     data.forEach(function(item) {
+			    	
+			    	switch (item.foodTime) {
+					  case 'A':
+						  foodTimeValueConvert = "아침"
+					    break;
+					  case 'B':
+						  foodTimeValueConvert = "점심"
+						break;
+					  case 'C':
+						  foodTimeValueConvert = "저녁"
+					    break;
+					  case 'Z':
+						  foodTimeValueConvert = "간식"
+					    break;	  
+					  default:
+						  foodTimeValueConvert = "전체"
+					}
+			    	
+					htmlVal += `
+						<div class="Plan_bottom1_food_each__s9jUi">	
+						 	<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH foodTime">
+							<span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodTimeValueConvert}</span>
+							</div>				
+							<div class="Plan_bottom1_second_bar_food__Nea0w">\${item.foodName}
+							</div>
+							 <div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
+							수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">\${item.foodQuality}</span>
+							</div> 
+							<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
+								칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${item.calorie}</span>
+							</div>
+							<div class="Plan_bottom1_second_bar_carb__0dt0o carbs">
+								탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.crabs}</span>
+							</div>
+							<div class="Plan_bottom1_second_bar_protein__BHBRu protein">
+								단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.protein}</span>
+							</div>
+							<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
+								지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.fat}</span>
+							</div>
+							<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
+								<button type="button" onclick="btnDeleteClickHandler(this)" value=\${item.foodGp}>삭제</button>
+								
+							</div>
+						</div>
+					`;
+				
+					
+			    });   // each
+			    
+			 
+				$(".testContent").html(htmlVal); 
+				
+			}// function renderData 
+			
   </script>
 <style>
 .btn {
@@ -202,6 +300,7 @@
 	<div id="layoutSidenav">
 
 		<jsp:include page="/WEB-INF/views/frame/asidebar.jsp"></jsp:include>
+		
 
 		<div id="layoutSidenav_content">
 			<main>
@@ -288,8 +387,8 @@
 											<li class="col-xl-4 nav-item text-center forExercise"><a
 												class="nav-link active " aria-current="page" href="#">운동</a>
 											</li>
-											<li class="col-xl-4 nav-item text-center"><a
-												class="nav-link" href="#">식단</a></li>
+											<li class="col-xl-4 nav-item text-center forDiet"><a
+												class="nav-link active " aria-current="page" href="#">식단</a></li>
 											<li class="col-xl-4 nav-item text-center forcalendar"><a
 												class="nav-link" href="#">일정</a></li>
 										</ul>
