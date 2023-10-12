@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <title>로그인 페이지</title>
+    <title>Daily Muscle Life | 메일 인증 필요</title>
     <style>
         body {
     background: #222D32;
@@ -151,7 +151,6 @@ label {
 	border-radius: 50%;
 	margin: 10px 0;
 }
-
 </style>
 </head>
 <body>
@@ -175,8 +174,5 @@ label {
                 <div class="col-lg-3 col-md-2"></div>
             </div>
         </div>
-        </div>
-        </div>
-    </form>
 </body>
 </html>

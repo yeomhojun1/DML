@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>에러</title>
+<title>Daily Muscle Life | 에러</title>
 </head>
 <body>
 <script>

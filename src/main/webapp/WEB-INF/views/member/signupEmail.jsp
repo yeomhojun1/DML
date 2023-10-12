@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>이메일 인증</title>
+<title>Daily Muscle Life | 이메일 인증</title>
 </head>
 <body>
 	<script type="text/javascript">

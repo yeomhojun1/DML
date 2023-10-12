@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Daily Muscle Life | 회원탈퇴 완료</title>
 </head>
 <body>
 <script>

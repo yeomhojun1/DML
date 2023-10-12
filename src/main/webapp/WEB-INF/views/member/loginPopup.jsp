@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 필요</title>
+<title>Daily Muscle Life | 로그인 필요</title>
 </head>
 <body>
 <script>
