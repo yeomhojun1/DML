@@ -26,20 +26,20 @@
 	select rownum,board_no,member_id,Board_title,board_content, board_date,board_Count, bstep,
 		bleveL from
 		(select rownum as rn,board_no,member_id,Board_title,board_content, board_date,board_Count, bstep,
-		bleveL from board where rownum <= #{pageNum} * #{amount} order by board_No desc
+		bleveL from board where rownum <= #{pageNum} * #{amount} 
 	]]>
 	<if test="keyword != null">
-			and	<include refid="criteria"></include> 
+				<include refid="criteria"></include> 
 			</if>
 			<![CDATA[        
 			    )
-		where rn > (#{pageNum} -1) * #{amount} ) order by board_No desc
+		where rn > (#{pageNum} -1) * #{amount} ) order by  board_No desc
 		]]>
 	</select>
 <select id="getTotalBoard" resultType="_int">
-		select count(*) from board
+		select count(*) from board 
 		<if test="keyword != null">
-			where<include refid="criteria"></include>
+			 where rownum >0 <include refid="criteria"></include>
 		</if>
 	</select>
 

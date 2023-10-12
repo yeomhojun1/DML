@@ -226,9 +226,9 @@
 	                location.href="${pageContext.request.contextPath}/admin/memberlist";
 	                console.log(response);
 	            },
-	            error: function(error) {
+	            error: (request, status, error) => {
 	                // 에러 시 수행할 로직
-	                console.error(error);
+	                alert("code : " + request.status + "\n" + "message : " + request.responseText + "\n" + "error : " + error);
 	            }
 	        });
 	    });

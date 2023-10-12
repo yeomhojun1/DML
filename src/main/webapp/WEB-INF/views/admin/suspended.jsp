@@ -217,7 +217,6 @@
 		
 		$(".suspended_btn").on("click", function() {
 	        var memberId = $(this).val();
-	        console.log(memberId);
 	        $.ajax({
 	            type: "POST", // 또는 GET 등 HTTP 메소드 선택
 	            url: "${pageContext.request.contextPath}/admin/suspended/clear",
@@ -227,9 +226,9 @@
 	                location.href="${pageContext.request.contextPath}/admin/suspended";
 	                console.log(response);
 	            },
-	            error: function(error) {
+	            error: (request, status, error) => {
 	                // 에러 시 수행할 로직
-	                console.error(error);
+	            	alert("code : " + request.status + "\n" + "message : " + request.responseText + "\n" + "error : " + error);
 	            }
 	        });
 	    });

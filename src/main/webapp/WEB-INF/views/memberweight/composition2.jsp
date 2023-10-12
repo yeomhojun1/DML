@@ -125,7 +125,7 @@
 									<div>
 										<h2>근육량/체지방량 입력</h2>
 									</div>
-									<form >
+									<form>
 									<div class="col-xl-12 setdayweight">
 										<div>
 											<div>
@@ -158,19 +158,6 @@
 
 
 											</div>
-											<!-- 
-											<div
-													style="flex: 1 1 0%; display: flex; flex-direction: row; margin-bottom: 20px; margin-top: 20px;">
-													<div
-														style="flex: 0 1 0%; margin-right: 10px; min-width: 100px; align-self: center;">
-														<h3>날짜</h3>
-													</div>
-													<div>
-														<div>
-															<input type="text" id="datepicker" name="date">
-														</div>
-													</div>
-												</div> -->
 												<div
 													style="flex: 1 1 0%; display: flex; flex-direction: row;">
 													<div
@@ -186,22 +173,15 @@
 													</span>
 												</div>
 
-
-											</div>
-											
-											
-											
-											
 											<div style="margin-top: 20px;">* 이미 값이 존재하는 경우, 새 값으로
 												갱신됩니다.</div>
 										</div>
 											<input type="hidden" name="memberId" value="${member.memberId }" >
 										<div>
 											<button type="button" class="weightDate">
-
 												<span>저장하기</span>
 											</button>
-											<button type="button" style="margin-top: 20px;" class="deleteWeight">
+											<button type="button" style="margin-top: 20px;" class="deleteComposition">
 												<span>삭제</span>
 											</button>
 											
@@ -268,9 +248,20 @@
 
 
     <script>
+    
+    
+ // 최근 7일 동안의 데이터 필터링
+/*     const filteredData = fpMemberWeightVoList.filter(item => {
+        const weightDate = new Date(item.weightDate);
+        return weightDate >= sevenDaysAgo && weightDate <= currentDate;
+    });
+     */
+    
+    
+    
         // 날짜 데이터 배열
         const dates = [];
-        // 몸무게 데이터 배열
+        // 근육량 체지방량 배열
         const musclemass = [];
         const bodyfatpet = [];
         
@@ -314,12 +305,28 @@
                 },
             },
         });
+     
+      //delete
+		$(".deleteComposition").click(deleteComposition);
+		function deleteComposition(){
+			var dateVal = $("#datepicker").val()
+			//replace([기존문자],[바꿀문자])
+			dateVal= dateVal.replaceAll("-", "");
+			$.ajax({
+				url:"${pageContext.request.contextPath}/memberweight/delete",
+				type: "post",
+				data : {memberId : "${member.memberId}"
+					,weightDate: dateVal
+					,}
+				,success : function(){
+					console.log("success");
+					location.href="${pageContext.request.contextPath}/memberweight/composition";}
+				,error : function(){
+					console.log("error");
+				}
+			})
+		}
     </script>
-  
-
-
-
-
 	<script>
 		$(function() {
 			//input을 datepicker로 선언
@@ -380,25 +387,7 @@
 			$('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
 		});
 		
-		
-		//delete
-		$(".deleteWeight").click(deleteWeight);
-		function deleteWeight(){
-			var dateVal = $("#datepicker").val()
-			//replace([기존문자],[바꿀문자])
-			dateVal= dateVal.replaceAll("-", "");
-			$.ajax({
-				url:"${pageContext.request.contextPath}/memberweight/deleteWeight",
-				type: "post",
-				data : {memberId : "${member.memberId}"
-					,weightDate: dateVal}
-				,success : function(){location.href="${pageContext.request.contextPath}/memberweight/weight";}
-				,error : function(){
-					console.log("error");
-				}
-			})
-		}
-		 //날짜
+		//날짜
 		$(".weightDate").click(weightDate);
 		function weightDate(){
 			var dateVal = $("#datepicker").val()
@@ -406,25 +395,26 @@
 			dateVal= dateVal.replaceAll("-", "");
 			console.log(dateVal);
 			$.ajax({
-				url:"${pageContext.request.contextPath}/memberweight/weight",
+				url:"${pageContext.request.contextPath}/memberweight/composition",
 				type: "post",
 				data : {memberId : "${member.memberId}"
 					,weightDate: dateVal
-					,weight :  $("[name=weight]").val()
+					,muscleMass :  $("[name=muscleMass]").val()
+					,bodyFatPet :  $("[name=bodyFatPet]").val()
 				}
 				,success : function(result){
 					console.log("success");
 					if(result == 0 ){
 						alert("sjflksdjflksjdfl");	
 					} else {
-					  location.href="${pageContext.request.contextPath}/memberweight/weight";
+					  location.href="${pageContext.request.contextPath}/memberweight/composition";
 					}
 				}				
 				,error : function(){
 					console.log("error");
 				}
 			})
-		} 
+		}
 		
 		
 		

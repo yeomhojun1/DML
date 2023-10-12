@@ -68,7 +68,7 @@ public class FpMemberServiceImpl implements FpMemberService {
         member.setWeight(Double.parseDouble(userMember.getWeight()));
         member.setMemberAuth(0);
         this.fpMemberRepository.saveMember(member);
-
+        
         String key = new TempKey().getKey(50,false);
 		dao.createAuthKey(member.getMemberId(), key);
 		MailUtils sendMail = new MailUtils(mailSender);
@@ -197,6 +197,7 @@ public class FpMemberServiceImpl implements FpMemberService {
 				dao.pwdChange(pwdChange.getUsername(), passwordEncoder.encode(pwdChange.getPassword2()));
 				result = 1;
 			} else {
+				
 				return result;
 			}
 		} catch (Exception e) {
@@ -265,6 +266,7 @@ public class FpMemberServiceImpl implements FpMemberService {
 	public FpMemberVo getBySns(FpMemberVo snsMember) {
 		return dao.getBySns(snsMember);
 	}
+	
 	// 평판 정보
 	@Override
 	public int plusReputation(int replyNo) {

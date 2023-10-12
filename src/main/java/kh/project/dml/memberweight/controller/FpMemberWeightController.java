@@ -30,12 +30,11 @@ public class FpMemberWeightController {
 
 	@Autowired
 	private FpMemberWeightServiceImpl fpMemberWeightServiceImpl;
-	
+	//체중관리차트 controller
 	@GetMapping("/weight")
 	public ModelAndView mainPageOpen9(ModelAndView mv, HttpSession session) {
 		FpMemberVo vo = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
 		mv.addObject("fpMemberWeightVoListJson", new Gson().toJson(fpMemberWeightServiceImpl.selectList(vo.getMemberId())));
-
 		mv.setViewName("memberweight/weight2");
 		return mv;
 	}
@@ -62,7 +61,7 @@ public class FpMemberWeightController {
 	}
 	
 	
-	
+	//근육량 체지방량 차트 controller
 	@GetMapping("/composition")
 	public ModelAndView mainPageOpen11(ModelAndView mv, HttpSession session) { 
 		
@@ -73,14 +72,6 @@ public class FpMemberWeightController {
 		return mv;
 	}
 	
-	/*
-	 * @GetMapping("/composition")
-	 *  public String mainPageOpen11(ModelAndView mv,
-	 * HttpSession session) { String memberId = "ch@dml.com";
-	 * mv.addObject("fpMemberWeightVoListJson", new
-	 * Gson().toJson(fpMemberWeightServiceImpl.selectList(memberId))); return
-	 * "memberweight/composition2"; }
-	 */
 	  
 	// 근육량 체지방량 update
 	@PostMapping("/composition")
@@ -90,7 +81,7 @@ public class FpMemberWeightController {
 		System.out.println(fpMemberWeightVo);
 //		FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(memberId, weightDate2, muscleMass, bodyFatPet);
 		fpMemberWeightServiceImpl.insertUpdate(fpMemberWeightVo);
-		return "redirect:/memberweight/composition2";
+		return "redirect:/memberweight/composition";
 
 	}
 

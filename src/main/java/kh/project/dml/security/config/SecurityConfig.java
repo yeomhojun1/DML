@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -13,32 +14,28 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
 import javax.sql.DataSource;
 
 import kh.project.dml.common.CustomLoginSuccessHandler;
+import kh.project.dml.member.model.service.FpMemberServiceImpl;
 import kh.project.dml.security.service.CustomOAuth2UserService;
 import kh.project.dml.security.service.UserSecurityService;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
+@ImportResource("/WEB-INF/spring/appServlet/servlet-context.xml")
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
     
 	// 로그 수집 기능
 	private static final Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
 	
     private final CustomOAuth2UserService customOAuth2UserService;
-    private final UserSecurityService userSecurityService;
+    private final DataSource dataSource; // 데이터소스 주입
     
-    @Autowired
-    private DataSource dataSource; // 데이터소스 주입
-
-    public SecurityConfig(CustomOAuth2UserService customOAuth2UserService, UserSecurityService userSecurityService) {
-        this.customOAuth2UserService = customOAuth2UserService;
-        this.userSecurityService = userSecurityService;
-    }
-
     @Bean
     public AuthenticationManager authManager(HttpSecurity http) throws Exception {
         return http.getSharedObject(AuthenticationManagerBuilder.class)
@@ -79,7 +76,7 @@ public class SecurityConfig {
 //                        .antMatchers("/member/login", "/member/signup",
 //                        		"/member/agreement", "/member/*Popup").permitAll()
 //                        // admin 경로는 ROLE_ADMIN 역할을 가진 사용자에게만 허용
-//                        .antMatchers("/admin/**").hasRole("ROLE_ADMIN")
+                        .antMatchers("/admin/**").hasRole("ROLE_ADMIN")
                         .anyRequest().authenticated())
                 // 로그인 관련 설정
                 .formLogin((formLogin) -> formLogin

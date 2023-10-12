@@ -112,9 +112,9 @@
 							<select name="type">
 								<option value="I"
 									<c:out value="${pageMaker.cri.type eq 'I'?'selected':'' }"/>>작성자 이름</option>
-								<option value="N"
+								<option value="T"
 									<c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>질문 제목</option>
-								<option value="A"
+								<option value="C"
 									<c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>질문 내용</option>
 							</select> <input type="text" name="keyword" class="searchInput"
 								value="${pageMaker.cri.keyword }">
