@@ -313,7 +313,7 @@
 					<!--   <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol> -->
-					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
+					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
 					
 					<h2 style="text-align: center;">${member.mname }님의캘린더</h2> <!-- 멤버이름 님의 캘린더 -->
 					

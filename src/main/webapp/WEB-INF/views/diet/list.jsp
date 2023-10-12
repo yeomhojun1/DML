@@ -60,7 +60,7 @@
 			<main>
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">Daily Muscle Life</h1>
-					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
+					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
 					
 					
 					

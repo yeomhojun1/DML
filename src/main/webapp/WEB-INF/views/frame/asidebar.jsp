@@ -91,59 +91,48 @@
 							href="${pageContext.request.contextPath }/board/list">질문/답변</a>
 					</nav>
 				</div>
-				<div class="sb-sidenav-menu-heading">마이페이지</div>
-				<a class="nav-link"
-					href="${pageContext.request.contextPath }/member/mypage">
-					<div class="sb-nav-link-icon">
-						<i class="far fa-id-card"></i>
-					</div> 마이페이지</a>
-				<a class="nav-link"
-					href="${pageContext.request.contextPath }/member/mypage/pwdChange">
-					<div class="sb-nav-link-icon">
-						<i class="fas fa-lock"></i>
-					</div> 비밀번호 변경</a>
-					<c:choose>
-						<c:when test="${member.authorities eq 'ROLE_ADMIN'}">
-					<div class="sb-sidenav-menu-heading">회원관리</div>
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-							data-bs-target="#collapseMember" aria-expanded="false"
-							aria-controls="collapseMember">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-columns"></i>
-							</div> 회원정보 
-							<div class="sb-sidenav-collapse-arrow">
-								<i class="fas fa-angle-down"></i>
-							</div>
-						</a>
-						<div class="collapse" id="collapseMember">
-							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" 
-									href="${pageContext.request.contextPath }/admin/memberlist">멤버 리스트</a> 
-								<a class="nav-link" 
-									href="${pageContext.request.contextPath }/admin/suspended">정지 멤버 리스트</a>
-								<a class="nav-link" 
-									href="${pageContext.request.contextPath }/admin/adminlist">관리자 리스트</a>
-							</nav>
+				<c:choose>
+					<c:when test="${member.authorities eq 'ROLE_ADMIN'}">
+				<div class="sb-sidenav-menu-heading">회원관리</div>
+					<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+						data-bs-target="#collapseMember" aria-expanded="false"
+						aria-controls="collapseMember">
+						<div class="sb-nav-link-icon">
+							<i class="fas fa-columns"></i>
+						</div> 회원정보 
+						<div class="sb-sidenav-collapse-arrow">
+							<i class="fas fa-angle-down"></i>
 						</div>
-						<div class="sb-sidenav-menu-heading">공지사항/이벤트</div>
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-							data-bs-target="#collapseNotice" aria-expanded="false"
-							aria-controls="collapseNotice">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-book-open"></i>
-							</div> 게시판
-							<div class="sb-sidenav-collapse-arrow">
-								<i class="fas fa-angle-down"></i>
-							</div>
-						</a>
-						<div class="collapse" id="collapseNotice">
-							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="${pageContext.request.contextPath }/board/list">공지사항</a> 
-								<a class="nav-link" href="${pageContext.request.contextPath }/board/list">이벤트</a>
-							</nav>
+					</a>
+					<div class="collapse" id="collapseMember">
+						<nav class="sb-sidenav-menu-nested nav">
+							<a class="nav-link" 
+								href="${pageContext.request.contextPath }/admin/memberlist">멤버 리스트</a> 
+							<a class="nav-link" 
+								href="${pageContext.request.contextPath }/admin/suspended">정지 멤버 리스트</a>
+							<a class="nav-link" 
+								href="${pageContext.request.contextPath }/admin/adminlist">관리자 리스트</a>
+						</nav>
+					</div>
+					<div class="sb-sidenav-menu-heading">공지사항/이벤트</div>
+					<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+						data-bs-target="#collapseNotice" aria-expanded="false"
+						aria-controls="collapseNotice">
+						<div class="sb-nav-link-icon">
+							<i class="fas fa-book-open"></i>
+						</div> 게시판
+						<div class="sb-sidenav-collapse-arrow">
+							<i class="fas fa-angle-down"></i>
 						</div>
-						</c:when>
-					</c:choose>
+					</a>
+					<div class="collapse" id="collapseNotice">
+						<nav class="sb-sidenav-menu-nested nav">
+							<a class="nav-link" href="${pageContext.request.contextPath }/board/list">공지사항</a> 
+							<a class="nav-link" href="${pageContext.request.contextPath }/board/list">이벤트</a>
+						</nav>
+					</div>
+					</c:when>
+				</c:choose>
 			</div>
 		</div>
 		<div class="sb-sidenav-footer">

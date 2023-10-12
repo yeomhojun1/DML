@@ -32,6 +32,7 @@
 							<ul class="Menu_list">
 								<li style="font-weight: bold;"><a>Admin 마이페이지</a></li>
 							</ul>
+							
 						</div>
 						<jsp:include page="./frame/adminmenu.jsp"></jsp:include>
 						<div>
