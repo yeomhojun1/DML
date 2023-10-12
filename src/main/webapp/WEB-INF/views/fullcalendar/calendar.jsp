@@ -88,18 +88,16 @@
   				    	$("#listPlan [name=startDate]").val(info.dateStr);
   				    	$("#listPlan [name=endDate]").val(info.dateStr);
   				   	 	 $("#listPlan").modal("toggle");
-
-						
+						$(".testContent div").remove();
   				   	 	 $("#dmllist").html(info.dateStr);
-
-  				   		forPk=info.dateStr;
-  				 		 forPk= forPk.replaceAll("-", "");
-  						forPk=forPk+"${member.memberId}";
-  				   		console.log(forPk);
-  				   		$(".forExercise").click(forExercisehandler);
-  				   		dateVal=info.dateStr;
-  				 		dateVal=forPk.replaceAll("-", ".");
-  				 		$(".testContent").html("");
+  				   	forPk=info.dateStr;
+				 		 forPk= forPk.replaceAll("-", "");
+						forPk=forPk+"${member.memberId}";
+				   		console.log(forPk);
+				   		dateVal=info.dateStr;
+				 		dateVal=forPk.replaceAll("-", ".");
+				 		//$(".testContent").html("");
+				   		$(".forExercise").click(forExercisehandler);
 
   				    	 /*  console.log(info);
   				    	  var clickDate = info.dateStr;
@@ -142,7 +140,7 @@
 		  
 			
   	});
- 	let forPk="";
+	let forPk="";
 	let dateVal="";
 	  function forExercisehandler(){
 		  $.ajax({
@@ -215,16 +213,12 @@
 					<!--   <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol> -->
-
-					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
-
-					<h2 style="text-align: center;">${member.mname }님의캘린더</h2>
-					<!-- 멤버이름 님의 캘린더 -->
-<div id='calendar'></div> 
-
-					<div>
-						<!-- 일정추가버튼 눌렀을시 일정추가 -->
-
+					<jsp:include page="/WEB-INF/views/frame/menu9.jsp"></jsp:include>
+					
+					<h2 style="text-align: center;">${member.mname }님의캘린더</h2> <!-- 멤버이름 님의 캘린더 -->
+					
+					
+						<div>   <!-- 일정추가버튼 눌렀을시 일정추가 -->
 						<button type="button" class="btn btn-primary"
 							data-bs-toggle="modal" data-bs-target="#insertPlan">
 							일정추가</button>
@@ -275,13 +269,10 @@
 								</div>
 							</div>
 						</div>
-		
-
-						<div class="modal fade" id="listPlan">
-							<!--날짜를 클릭했을떄 나오는 모달창  -->
-							<!-- 	tabindex="-1"
-							aria-labelledby="exampleModalLabel" aria-hidden="true" -->
-
+					</div>
+					<div class="modal fade" id="listPlan"> <!--날짜를 클릭했을떄 나오는 모달창  -->
+						<!-- 	tabindex="-1"
+						aria-labelledby="exampleModalLabel" aria-hidden="true" -->
 
 						<div class="modal-dialog modal-xl">
 							<div class="modal-content">
@@ -303,7 +294,6 @@
 												class="nav-link" href="#">일정</a></li>
 										</ul>
 									</div>
-
 								<script> /* 날짜 클릭시 일정부분에서 그날에 해당하는 데이터값 불러오는 ajax */
 								 $(".forcalendar").click(forExecisehandler);
 								  function forExecisehandler() {
@@ -328,36 +318,17 @@
 								</script>
 									<div class="testContent">
 										
-
-									<div class="modal-body">
-
-										<div>
-											<ul class="col-xl-12 nav justify-content-center">
-												<li class="col-xl-4 nav-item text-center forExercise"><a
-													class="nav-link active " aria-current="page" href="#">운동</a>
-												</li>
-											
-												<li class="col-xl-4 nav-item text-center"><a
-													class="nav-link" href="#">식단</a></li>
-												<li class="col-xl-4 nav-item text-center"><a
-													class="nav-link" href="#">일정</a></li>
-											</ul>
-										</div>
-										<div class="testContent"></div>
-
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
-					<div id='calendar'></div>
-					<!-- 캘린더 불러오는 코드 -->
-
+					
+					<div id='calendar'></div> <!-- 캘린더 불러오는 코드 -->
+					
 					<!-- 모달창 -->
 
-					<div class="modal fade" id="updatePlan">
-						<!--수정페이지 모달창  -->
+					<div class="modal fade" id="updatePlan"> <!--수정페이지 모달창  -->
 						<div class="modal-dialog modal-xm">
 							<div class="modal-content">
 								<div class="modal-header">
