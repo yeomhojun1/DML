@@ -285,7 +285,7 @@
 								<div class="modal-body">
 									<div>
 										<ul class="col-xl-12 nav justify-content-center">
-											<li class="col-xl-4 nav-item text-center forExecise"><a
+											<li class="col-xl-4 nav-item text-center forExercise"><a
 												class="nav-link active " aria-current="page" href="#">운동</a>
 											</li>
 											<li class="col-xl-4 nav-item text-center"><a
