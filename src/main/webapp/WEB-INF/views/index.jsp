@@ -1,68 +1,110 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>DML | Daily Muscle Life</title>
-        <link
-			href="${pageContext.request.contextPath }/resources/resources1/css/styles.css"
-			rel="stylesheet">
-        <link rel="icon" type="image/x-icon" href="${pagecontext.request.contextPath }/resources/assets/favicon.ico"/>
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top">
-                    <img src="${pageContext.request.contextPath }/resources/images/dmlLogo.png" style="width:120px; height:50px;">
-                </a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/memberweight/weight">체중관리</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/diet/list">식단관리</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/exercise/list">운동 도우미</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/product">제품추천</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/calendar">캘린더</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/board/list">게시판</a></li>
-                        <%-- 사용자가 로그인되어 있지 않은 경우 --%>
-						<c:if test="${empty sessionScope.loginUser}">
-							<li class="nav-item"><a class="nav-link"
-								href="${pageContext.request.contextPath }/member/login">로그인</a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="${pageContext.request.contextPath }/member/signup">회원가입</a></li>
-						</c:if>
-	
-						<%-- 사용자가 로그인된 경우 --%>
-						<c:if test="${not empty sessionScope.loginUser}">
-							<li class="nav-item"><a class="nav-link"
-								href="${pageContext.request.contextPath }/member/mypage">마이페이지</a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="${pageContext.request.contextPath }/member/logout">로그아웃</a></li>
-						</c:if>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>DML | Daily Muscle Life</title>
+<link
+	href="${pageContext.request.contextPath }/resources/resources1/css/styles.css"
+	rel="stylesheet">
+<link rel="icon" type="image/x-icon"
+	href="${pagecontext.request.contextPath }/resources/assets/favicon.ico" />
+<!-- Font Awesome icons (free version)-->
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+	crossorigin="anonymous"></script>
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css?family=Varela+Round"
+	rel="stylesheet" />
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+	crossorigin="anonymous"></script>
+</head>
+<body id="page-top">
+	<!-- Navigation-->
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top"
+		id="mainNav">
+		<div class="container px-4 px-lg-5">
+			<a class="navbar-brand" href="#page-top"> <img
+				src="${pageContext.request.contextPath }/resources/images/dmlLogo.png"
+				style="width: 120px; height: 50px;">
+			</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+				aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation">
+				Menu <i class="fas fa-bars"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath }/memberweight/weight">체중관리</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath }/diet/list">식단관리</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath }/exercise/list">운동
+							도우미</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath }/product">제품추천</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath }/calendar">캘린더</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath }/board/list">게시판</a></li>
+					<%-- 사용자가 로그인되어 있지 않은 경우 --%>
+					<c:if test="${empty sessionScope.loginUser}">
+						<li class="nav-item"><a class="nav-link"
+							href="${pageContext.request.contextPath }/member/login">로그인</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="${pageContext.request.contextPath }/member/signup">회원가입</a></li>
+					</c:if>
+
+					<%-- 사용자가 로그인된 경우 --%>
+					<c:if test="${not empty sessionScope.loginUser}">
+						<li class="nav-item"><a class="nav-link"
+							href="${pageContext.request.contextPath }/member/mypage">마이페이지</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="${pageContext.request.contextPath }/member/logout">로그아웃</a></li>
+					</c:if>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- Masthead-->
+
+	<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active data-bs-interval='200'">
+     <img src="${pageContext.request.contextPath }/resources/images/ExercisePicture1.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item  data-bs-interval='200'">
+      <img src="${pageContext.request.contextPath }/resources/images/ExercisePicture2.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item data-bs-interval='200'">
+      <img src="${pageContext.request.contextPath }/resources/images/FoodPicture1.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+	<!-- 메인 고치는중 -->
+	<%--  <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
                 <div class="d-flex justify-content-center">
                     <div class="text-center">
                         <img src="${pageContext.request.contextPath }/resources/images/dmlLogo.png" style="width:609px; height:255px;">
@@ -70,10 +112,9 @@
                         <a class="btn btn-primary" href="${pageContext.request.contextPath }/memberweight/weight">Get Started</a>
                     </div>
                 </div>
-            </div>
-        </header>
-        <!-- About-->
-  <!--       <section class="about-section text-center" id="about">
+            </div> --%>
+	<!-- About-->
+	<!--       <section class="about-section text-center" id="about">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8">
@@ -228,7 +269,7 @@
         * * Activate your form at https://startbootstrap.com/solution/contact-forms * *
         * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
-    </body>
+</body>
 </html>
 
 

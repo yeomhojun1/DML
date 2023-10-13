@@ -54,30 +54,6 @@
 					</div> 질문/답변</a>
 			</div>
 		</div>
-		<div class="sb-sidenav-footer">
-		<div style="font-weight: bold;">답변 채택 순위</div>
-			<div class="small rankingMember">
-			</div>
-		</div>
+		
 	</nav>
 </div>
-<script>
-	window.onload = function() {
-		$.ajax({
-	           type: "get",
-	           url: "${pageContext.request.contextPath}/member/memberReputation",
-			success: function(result){
-				 var htmlVal = "<table class='ranktable'><tr><th class='rankth'>등수</th><th class='rankth'>이름</th><th class='rankth'>점수</th><tr>";
-				for(var i=0; i<3;i++){
-					htmlVal += "<tr><td class='ranktd'>"+(i+1)+"등</td><td class='ranktd'>"+result[i].mname+"</td><td class='ranktd'>"+result[i].reputation+"점</td></tr>"
-				}
-				htmlVal += "</table>"
-				$(".rankingMember").html(htmlVal); 
-			
-			},
-			error : function(){
-				console.log("asidebar error");
-			}
-		})
-	}
-</script>
