@@ -2,13 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Daily Muscle Life</title>
+        <title>Daily Muscle Life | 식단 관리</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" />
         <link href="${pageContext.request.contextPath}/css/scss.css" rel="stylesheet" />
@@ -21,7 +21,8 @@
 		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<link href="${pageContext.request.contextPath}/css/style1.css"	rel="stylesheet" /> 
 		<link href="${pageContext.request.contextPath}/css/style2.css"	rel="stylesheet" />
-	<style>
+		<link href="${pageContext.request.contextPath}/css/mypage.css" rel="stylesheet" />
+<style>
 	.quantity-box {
     display: inline-flex;
     align-items: center;
@@ -43,9 +44,13 @@
 .quantity-box #quantityDisplay {
     padding: 0 10px;
 }
-	</style>
-    </head>
 
+.ranktable { margin-top : 10px; border : 1px solid #fff; padding: 5px; }
+.rankth { text-align : center; }
+.rankth, .ranktd { border : 1px solid #fff; padding: 5px; }
+
+</style>
+</head>
     
 <body class="sb-nav-fixed">
 	<jsp:include page="/WEB-INF/views/diet/modal_insert.jsp"></jsp:include>
@@ -54,15 +59,15 @@
 	<div id="layoutSidenav">
 		<jsp:include page="/WEB-INF/views/frame/asidebar.jsp"></jsp:include>
 
-		
-
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">Daily Muscle Life</h1>
+					<div class="Menu_container">
+							<ul class="Menu_list">
+								<li style="font-weight: bold;"><a>식단 관리</a></li>
+							</ul>
+						</div>
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
-					
-					
 					
 					<div class="DateBars_date_bar__QeCa3" >
 						<div id = "myDiv" class="DateBars_date__DyX0X"><%String Date = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());%>
@@ -70,7 +75,6 @@
 						<div class="DateBars_date_selector__ajXTR">
 
 							</div>
-							
 							
 						<div class="DateBars_date_picker__GCWt1">
 							<div class="DateBars_date_picker_wrapper__8Axpy">
@@ -86,13 +90,8 @@
 												
 												<input type="text" id="datepicker">
 									
-
-												<!--  <img
-													class="ant-image-img DateBars_date_bar_calendar_icon__gPVOu"
-													src="resources/images/date_bar_calendar_icon.png"
-													width="31" height="27" style="height: 27px;"> -->
 												</div>
-											</div></span>
+											</div>
 									</div>
 								</div>
 							</div>
@@ -100,7 +99,6 @@
 					</div>
 					<div id="totalSelectedPlan">
 					<div class="totalParentPlan">
-					
 					
 					<div class="Plan_top1__f4K0_">
 					

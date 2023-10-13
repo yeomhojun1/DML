@@ -47,7 +47,7 @@
 						<div class="collapse" id="collapsePages"
 							aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="${pageContext.request.contextPath }/board/list">
+								<a class="nav-link" href="${pageContext.request.contextPath }/notice/list">
 								공지사항</a> 
 								<a class="nav-link" href="${pageContext.request.contextPath }/board/list">
 								이벤트</a>

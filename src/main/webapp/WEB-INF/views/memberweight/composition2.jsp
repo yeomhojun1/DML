@@ -10,7 +10,8 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Daily Muscle Life</title>
+<title>Daily Muscle Life | 체조성 기록</title>
+<link rel="icon" type="image/x-icon" href="${pagecontext.request.contextPath }/resources/assets/favicon.ico" />
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
 	rel="stylesheet" />
@@ -26,7 +27,7 @@
 	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<link href="${pageContext.request.contextPath}/css/mypage.css" rel="stylesheet" />
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
@@ -67,6 +68,9 @@
 	padding: 20px;
 	margin-top: 20px;
 
+.ranktable { margin-top : 10px; border : 1px solid #fff; padding: 5px; }
+.rankth { text-align : center; }
+.rankth, .ranktd { border : 1px solid #fff; padding: 5px; }
 }
 </style>
 </head>
@@ -79,10 +83,11 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">Daily Muscle Life</h1>
-					<!--   <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol> -->
+					<div class="Menu_container">
+							<ul class="Menu_list">
+								<li style="font-weight: bold;"><a>체조성 기록</a></li>
+							</ul>
+						</div>
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
 					<div class="row">
 
@@ -92,21 +97,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
+                                    <h6 class="m-0 font-weight-bold text-primary">1주일간 체조성 기록 차트</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -190,19 +181,6 @@
 									</div>
 									</form>
 								</div>
-								<div>
-									<div class="recordstart">
-										<!-- <div style="display: flex; flex-direction: row;">
-											<div style="flex: 1 1 0%; font-weight: bold;">체중 추세 기울기</div>
-											<div style="flex: 1 1 0%; text-align: right;">10.2kg</div>
-										</div>
-										<div
-											style="display: flex; flex-direction: row; margin-top: 20px;">
-											<div style="flex: 1 1 0%; font-weight: bold;">기록 시작 날짜</div>
-											<div style="flex: 1 1 0%; text-align: right;">Invalid
-												DateTime</div> -->
-										</div>
-									</div>
 								</div>
 
 							</div>
@@ -221,43 +199,7 @@
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
 
-<%-- <script src="${pageContext.request.contextPath }/resources/resources1/js/chart-area-demo.js"></script> --%>
-<!-- <script>
-  const ctx = document.getElementById('myAreaChart');
-
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['${member.weight}', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# 날짜별 몸무게',
-        data: ['${member.weight}'],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script> -->
-
-
-
     <script>
-    
-    
- // 최근 7일 동안의 데이터 필터링
-/*     const filteredData = fpMemberWeightVoList.filter(item => {
-        const weightDate = new Date(item.weightDate);
-        return weightDate >= sevenDaysAgo && weightDate <= currentDate;
-    });
-     */
-    
-    
     
         // 날짜 데이터 배열
         const dates = [];
@@ -272,7 +214,6 @@
         	musclemass.push(fpMemberWeightVoList[i].muscleMass);
         	bodyfatpet.push(fpMemberWeightVoList[i].bodyFatPet);
         }
-        
         
         // 캔버스 요소 가져오기
         const ctx = document.getElementById('myAreaChart').getContext('2d');
@@ -415,10 +356,6 @@
 				}
 			})
 		}
-		
-		
-		
-		
 	</script>
 </body>
 </html>

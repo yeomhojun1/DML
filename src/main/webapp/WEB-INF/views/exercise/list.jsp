@@ -11,7 +11,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Daily Muscle Life</title>
+<title>Daily Muscle Life | 운동 추가</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
 	rel="stylesheet" />
@@ -23,7 +23,6 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link href="${pageContext.request.contextPath}/css/styles.css"
 	rel="stylesheet" />
-
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
 <script language="javascript"
@@ -35,13 +34,10 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
-
-
-
 	<script
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
-
+<link href="${pageContext.request.contextPath}/css/mypage.css" rel="stylesheet" />
 
 <style>
 #modal.modal-overlay {
@@ -182,6 +178,10 @@
 .ex_part_one {
 	height: 10%;
 }
+
+.ranktable { margin-top : 10px; border : 1px solid #fff; padding: 5px; }
+.rankth { text-align : center; }
+.rankth, .ranktd { border : 1px solid #fff; padding: 5px; }
 </style>
 
 </head>
@@ -194,10 +194,11 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">Daily Muscle Life </h1>
-					<!--   <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol> -->
+					<div class="Menu_container">
+							<ul class="Menu_list">
+								<li style="font-weight: bold;"><a>운동 추가</a></li>
+							</ul>
+						</div>
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
 					<!-- 우리가 만져야하는 부분임 -->
 					<div class="main_content_part col-xl-12">

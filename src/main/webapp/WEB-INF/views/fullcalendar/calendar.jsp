@@ -3,14 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Daily Muscle Life</title>
+<title>Daily Muscle Life | 캘린더</title>
 <link href="${pageContext.request.contextPath}/css/styles.css"
 	rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/scss.css"
@@ -26,7 +26,7 @@
 <link href='<c:url value="/css/fullcalendar.css" />' rel='stylesheet' />
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
-
+<link href="${pageContext.request.contextPath}/css/mypage.css" rel="stylesheet" />
 <script>
  	window.onload = function() {
 		  $("#exampleModal").hide();
@@ -294,6 +294,10 @@
 .ex_part_one {
 	height: 10%;
 }
+
+.ranktable { margin-top : 10px; border : 1px solid #fff; padding: 5px; }
+.rankth { text-align : center; }
+.rankth, .ranktd { border : 1px solid #fff; padding: 5px; }
 </style>
 </head>
 <body class="sb-nav-fixed">
@@ -307,16 +311,12 @@
 			<main>
 				<div class="container-fluid px-4">
 
-					<div>
-						<h1 class="mt-4">Daily Muscle Life</h1>
-					</div>
-					<!--   <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol> -->
+					<div class="Menu_container">
+							<ul class="Menu_list">
+								<li style="font-weight: bold;"><a>${member.mname }님의캘린더</a></li>
+							</ul>
+						</div>
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
-					
-					<h2 style="text-align: center;">${member.mname }님의캘린더</h2> <!-- 멤버이름 님의 캘린더 -->
-					
 					
 						<div>   <!-- 일정추가버튼 눌렀을시 일정추가 -->
 						<button type="button" class="btn btn-primary"

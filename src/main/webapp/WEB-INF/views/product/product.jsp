@@ -10,44 +10,55 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Daily Muscle Life</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/styles.css"	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/scss.css"	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/resources/css/product.css" rel="stylesheet" />
-<script
-	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
+<title>Daily Muscle Life | 제품 추천</title>
+<link rel="icon" type="image/x-icon" href="${pagecontext.request.contextPath }/resources/assets/favicon.ico" />
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+<!-- 템플릿의 기본 css -->
+<link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" />
+<!-- 템플릿의 상세내용의 css -->
+<link href="${pageContext.request.contextPath}/css/scss.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/mypage.css" rel="stylesheet" />
+<!-- JQuery 사용 -->
+<script	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
+<!-- 템플릿 아이콘 사용 -->
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"	crossorigin="anonymous"></script>
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- 템플릿에서 메뉴 클릭 시 서브메뉴 출력 -->
+<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<link href="${pageContext.request.contextPath}/resources/css/product.css" rel="stylesheet" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link href="css/sb-admin-2.css" rel="stylesheet">
-<!-- ck에디터적용코드  -->
-<script language="javascript"
-	src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+<style>
+	.ranktable { margin-top : 10px; border : 1px solid #fff; padding: 5px; }
+	.rankth { text-align : center; }
+	.rankth, .ranktd { border : 1px solid #fff; padding: 5px; }
+</style>
 </head>
 <body class="sb-nav-fixed">
 	<jsp:include page="/WEB-INF/views/frame/nav.jsp"></jsp:include>
 	<div id="layoutSidenav">
 
 		<jsp:include page="/WEB-INF/views/frame/asidebar.jsp"></jsp:include>
-
+		
 		<div id="layoutSidenav_content">
-		
-		<jsp:include page="/WEB-INF/views/product/productFristTab.jsp"></jsp:include>
-		<jsp:include page="/WEB-INF/views/product/productSecondTab.jsp"></jsp:include>
-		
-		<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
+			<main>
+				<div class="container-fluid px-4">
+					<div class="Menu_container">
+							<ul class="Menu_list">
+								<li style="font-weight: bold;"><a>제품 추천</a></li>
+							</ul>
+						</div>
+					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
+						<!-- 우리가 여기에 추가해야함 -->
+						<jsp:include page="/WEB-INF/views/product/productFristTab.jsp"></jsp:include>
+						<jsp:include page="/WEB-INF/views/product/productSecondTab.jsp"></jsp:include>
+				</div>
+			</main>
+			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
 		<!-- End of Page Wrapper  layoutSidenav_content -->
-
-
 	</div>
-	
-	
 	
 	<!-- Bootstrap core JavaScript-->
 	<!-- <script src="vendor/jquery/jquery.min.js"></script>

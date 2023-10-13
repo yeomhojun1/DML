@@ -28,16 +28,6 @@
 								</div>
 								<div class="Plan_modal_food_contents__bU3Ad">
 									<div>
-										<%-- 	<div class="search-container">
-
-											<form class="search-form"
-												action="<%=request.getContextPath()%>/Board" method="get">
-												<input type="text" name="keyword"
-													placeholder="검색어를 입력하세요">
-												<button type="submit">검색</button>
-											</form>
-										</div> --%>
-
 										<div
 											class="ant-input-group-wrapper ant-input-search ant-input-search-with-button Plan_modal_food_bar_search__8h6t_ css-1s3dcof">
 											<input placeholder="식품 검색"

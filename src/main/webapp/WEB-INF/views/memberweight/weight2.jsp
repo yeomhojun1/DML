@@ -10,7 +10,8 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Daily Muscle Life</title>
+<title>Daily Muscle Life | 체중 관리</title>
+<link rel="icon" type="image/x-icon" href="${pagecontext.request.contextPath }/resources/assets/favicon.ico" />
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
 	rel="stylesheet" />
@@ -26,7 +27,7 @@
 	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<link href="${pageContext.request.contextPath}/css/mypage.css" rel="stylesheet" />
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
@@ -67,6 +68,9 @@
 	padding: 20px;
 	margin-top: 20px;
 
+.ranktable { margin-top : 10px; border : 1px solid #fff; padding: 5px; }
+.rankth { text-align : center; }
+.rankth, .ranktd { border : 1px solid #fff; padding: 5px; }
 }
 </style>
 </head>
@@ -79,10 +83,11 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">Daily Muscle Life</h1>
-					<!--   <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol> -->
+					<div class="Menu_container">
+							<ul class="Menu_list">
+								<li style="font-weight: bold;"><a>체중 관리</a></li>
+							</ul>
+						</div>
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
 					<div class="row">
 
@@ -92,21 +97,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
+                                    <h6 class="m-0 font-weight-bold text-primary">1주일간 체중 기록 차트</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -123,7 +114,7 @@
 
 								<div style="margin-top: 30px;" class="insertdate">
 									<div>
-										<h2>날짜/몸무게 입력</h2>
+										<h3>날짜/몸무게 입력</h3>
 									</div>
 									<form >
 									<div class="col-xl-12 setdayweight">
@@ -133,7 +124,7 @@
 													style="flex: 1 1 0%; display: flex; flex-direction: row; margin-bottom: 20px; margin-top: 20px;">
 													<div
 														style="flex: 0 1 0%; margin-right: 10px; min-width: 100px; align-self: center;">
-														<h3>날짜</h3>
+														<h4>날짜</h4>
 													</div>
 													<div>
 														<div>
@@ -145,7 +136,7 @@
 													style="flex: 1 1 0%; display: flex; flex-direction: row;">
 													<div
 														style="flex: 0 1 0%; margin-right: 10px; min-width: 100px; align-self: center;">
-														<h3>몸무게</h3>
+														<h4>몸무게</h4>
 													</div>
 													<span
 														class="ant-input-affix-wrapper Track_input_basic__yj5u2 css-1s3dcof">
@@ -172,19 +163,6 @@
 									</div>
 									</form>
 								</div>
-								<div>
-									<div class="recordstart">
-										<!-- <div style="display: flex; flex-direction: row;">
-											<div style="flex: 1 1 0%; font-weight: bold;">체중 추세 기울기</div>
-											<div style="flex: 1 1 0%; text-align: right;">10.2kg</div>
-										</div>
-										<div
-											style="display: flex; flex-direction: row; margin-top: 20px;">
-											<div style="flex: 1 1 0%; font-weight: bold;">기록 시작 날짜</div>
-											<div style="flex: 1 1 0%; text-align: right;">Invalid
-												DateTime</div> -->
-										</div>
-									</div>
 								</div>
 
 							</div>
