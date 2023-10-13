@@ -12,14 +12,14 @@
     <title>Daily Muscle Life | 비밀번호 찾기</title>
 <style>
     body {
-	    background: #222D32;
+	    background: #fafeff;
 	    font-family: 'Roboto', sans-serif;
 	}
 	
 	.login-box {
 	    margin-top: 75px;
 	    height: auto;
-	    background: #1A2226;
+	    background: #fafeff;
 	    text-align: center;
 	    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 	}
@@ -28,7 +28,7 @@
 	    height: 100px;
 	    font-size: 80px;
 	    line-height: 100px;
-	    background: -webkit-linear-gradient(#27EF9F, #0DB8DE);
+	    background: -webkit-linear-gradient(#4f5254, #00aeef);
 	    -webkit-background-clip: text;
 	    -webkit-text-fill-color: transparent;
 	}
@@ -40,7 +40,7 @@
 	    letter-spacing: 2px;
 	    margin-top: 15px;
 	    font-weight: bold;
-	    color: #ECF0F5;
+	    color: #4f5254;
 	}
 	
 	.login-form {
@@ -51,16 +51,16 @@
 	input[type=text],
 	input[type=number],
 	input[type=password] {
-	    background-color: #1A2226;
+	    background-color: #fafeff;
 	    border: none;
-	    border-bottom: 2px solid #0DB8DE;
+	    border-bottom: 2px solid #00aeef;
 	    border-top: 0px;
 	    border-radius: 0px;
 	    font-weight: bold;
 	    outline: 0;
 	    margin-bottom: 20px;
 	    padding-left: 0px;
-	    color: #ECF0F5;
+	    color: #4f5254;
 	}
 	
 	input[type="number"]::-webkit-outer-spin-button,
@@ -79,10 +79,10 @@
 	    border-color: inherit;
 	    -webkit-box-shadow: none;
 	    box-shadow: none;
-	    border-bottom: 2px solid #0DB8DE;
+	    border-bottom: 2px solid #00aeef;
 	    outline: 0;
-	    background-color: #1A2226;
-	    color: #ECF0F5;
+	    background-color: #fafeff;
+	    color: #4f5254;
 	}
 	
 	input:focus {
@@ -96,14 +96,14 @@
 	
 	.form-control-label {
 	    font-size: 15px;
-	    color: #6C6C6C;
+	    color: #4f5254;
 	    font-weight: bold;
 	    letter-spacing: 1px;
 	}
 	
 	.btn-outline-primary {
-	    border-color: #0DB8DE;
-	    color: #0DB8DE;
+	    border-color: #00aeef;
+	    color: #00aeef;
 	    border-radius: 0px;
 	    font-weight: bold;
 	    letter-spacing: 1px;
@@ -111,7 +111,7 @@
 	}
 	
 	.btn-outline-primary:hover {
-	    background-color: #0DB8DE;
+	    background-color: #00aeef;
 	    right: 0px;
 	}
 	
@@ -128,7 +128,7 @@
 	.login-text {
 	    text-align: left;
 	    padding-left: 0px;
-	    color: #A2A4A4;
+	    color: #4f5254;
 	}
 	
 	.loginbttm {

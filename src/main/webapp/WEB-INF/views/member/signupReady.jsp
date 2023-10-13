@@ -13,7 +13,7 @@
     <title>Daily Muscle Life | 메일 인증 필요</title>
     <style>
         body {
-    background: #222D32;
+    background: #fafeff;
     font-family: 'Roboto', sans-serif;
 }
 

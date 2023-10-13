@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);body,html {
     padding: 0;
     margin: 0;
-    background-color: #f9faff!important;
+    background-color: #fafeff !important;
     font-family: Noto Sans KR,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif
 }
 
@@ -354,8 +354,10 @@ mark {
 .MyPage_basic_btn {
     height: 60px;
     border-radius: 30px;
-    background-color: #99d3e9;
-    color: #fff;
+    background-color: #00aeef;
+    color: #fafeff;
+    margin: 5px;
+    padding: 5px;
     border: 1px solid transparent;
     font-family: Noto Sans KR;
     font-size: 18px;
@@ -367,8 +369,8 @@ mark {
 }
 
 .MyPage_basic_btn:hover {
-    color: #fff!important;
-    border-color: #99d3e9!important
+    color: #fafeff !important;
+    border-color: #00aeef !important
 }
 
 .MyPage_btn_right {
