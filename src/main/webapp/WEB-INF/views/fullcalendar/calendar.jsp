@@ -499,15 +499,12 @@ let contextPath = "${pageContext.request.contextPath }";
 		}
 	  
 	  function workCalendar(now){
-			htmlVal = '	<div class="row">';
-			for (var i = 0; i < now.length; i++) {
-				htmlVal += '<div class="card"> 제목 : '+now[i].title+' / ';
-				htmlVal += '시작날짜 : '+now[i].startDate+' / ';
-				htmlVal += '종료날짜 : '+now[i].endDate;
-				htmlVal += '<br> 내용 : '+now[i].content+'</div>';
-			}
-			htmlVal += '</div>';
-			$(".testContent").html(htmlVal);
+		var htmlVal = '<div class="row">';
+		for (var i = 0; i < now.length; i++) {
+		  htmlVal += '<div class="col-xl-3 col-md-6"><div class="card bg-secondary text-white mb-4"><div class="card-body card-cursorcollapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCalendar'+i+'" aria-expanded="false">제목 : '+now[i].title+' <br> '+now[i].startDate+' ~ '+now[i].endDate+'</div><div class="collapse" id="collapseCalendar'+i+'"><div class="card-footer d-flex align-items-center justify-content-between card-cursor">내용 : <br>'+now[i].content+'</div></div></div></div>';
+		}
+		htmlVal += '</div>';
+		$(".testContent").html(htmlVal);
 	  }
 	</script>
 </body>
