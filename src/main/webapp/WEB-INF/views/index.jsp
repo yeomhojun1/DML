@@ -83,7 +83,6 @@
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath }/member/signup">회원가입</a></li>
 					</c:if>
-
 					<%-- 사용자가 로그인된 경우 --%>
 					<c:if test="${not empty sessionScope.loginUser}">
 						<li class="nav-item"><a class="nav-link"
