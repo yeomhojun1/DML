@@ -97,7 +97,7 @@
 						</table>
 
 						<a href="${pageContext.request.contextPath }/board/insert"><button
-								type="btn btn-default" class="addBoard">질문 등록</button></a>
+								type="btn btn-default" class="addBoard btn btn-outline-primary">질문 등록</button></a>
 					</div>
 					<div class="search_wrap">
 						<div class="search_area">
@@ -110,27 +110,25 @@
 									<c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>질문 내용</option>
 							</select> <input type="text" name="keyword" class="searchInput"
 								value="${pageMaker.cri.keyword }">
-							<button>Search</button>
+							<button class="btn btn-outline-primary">Search</button>
 						</div>
 					</div>
-					<div class="pageInfo_wrap">
-						<div class="pageInfo_area">
+					
+					<div class="pageInfo_wrap btn-toolbar"  role="toolbar" aria-label="Toolbar with button groups">
+						<div class="pageInfo_area btn-group me-2" role="group" aria-label="First group">
 							<ul id="pageInfo" class="pageInfo">
 								<!-- 이전페이지 버튼 -->
 								<c:if test="${pageMaker.prev}">
-									<li class="pageInfo_btn previous"><a
-										href="${pageMaker.startPage-1}">Previous</a></li>
+									<a href="${pageMaker.startPage-1}"><button  class="pageInfo_btn previous btn  btn-outline-primary">Previous</button ></a>
 								</c:if>
 								<!-- 각 번호 페이지 버튼 -->
 								<c:forEach var="num" begin="${pageMaker.startPage}"
 									end="${pageMaker.endPage}">
-									<li class="pageInfo_btn ${pageMaker.cri.pageNum == num ? "active":"" }"><a
-										href="${num}">${num}</a></li>
+									<a href="${num}"><button  class="pageInfo_btn btn  btn-outline-primary ${pageMaker.cri.pageNum == num ? "active":"" }" >${num}</button ></a>
 								</c:forEach>
 								<!-- 다음페이지 버튼 -->
 								<c:if test="${pageMaker.next}">
-									<li class="pageInfo_btn next"><a
-										href="${pageMaker.endPage + 1 }">Next</a></li>
+									<a href="${pageMaker.endPage + 1 }"><button  class="pageInfo_btn next btn  btn-outline-primary">Next</button ></a>
 								</c:if>
 							</ul>
 						</div>
