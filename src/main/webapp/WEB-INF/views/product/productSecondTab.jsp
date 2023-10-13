@@ -31,7 +31,7 @@
 							<c:forEach items="${chickenproductlist }" var="chickenproduct" varStatus="vs">
 								<div class="col-lg-12 mb-2">
 								
-									<div class="row bg-primary text-white shadow">
+									<div class="row bg-secondary text-white shadow">
 										<div  class="col-lg-10">
 											<h5>${chickenproduct.type},  ${chickenproduct.productName}</h5>
 											<h5>${chickenproduct.productName},  ${chickenproduct.price}</h5>

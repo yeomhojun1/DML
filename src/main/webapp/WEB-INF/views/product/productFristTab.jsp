@@ -78,7 +78,7 @@
 							<!--  varStatus 숫자 자동으로 1,2,3~ 하게 하는것 -->
 							<c:forEach items="${nutruentBeginerlist }" var="nutruent" varStatus="vs">
 								<div class="col-lg-12 mb-2">
-									<div class="card bg-primary text-white shadow">
+									<div class="card bg-secondary text-white shadow">
 										<button
 											class="btn-menu card-body beginner-btn btn-sub${vs.count }"
 											data-toggle="menu-${vs.count }">
@@ -95,7 +95,7 @@
 							<div class="row col-lg-6 btn-menu menu-${vs.count }">
 								<c:forEach items="${a.fpSuplementList}" var="b" varStatus="ss"> 
 									<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
+									<div class="card bg-secondary text-white shadow">
 										<div class="card-body">
 											<a style="color: white;" href="${b.link }">${b.suplementname }</a>
 										</div>
@@ -114,7 +114,7 @@
 						<div class="row col-lg-6 export">
 							<c:forEach items="${nutruentExpertlist}" var="q" varStatus="vv">
 								<div class="col-lg-12 mb-2">
-									<div class="card bg-primary text-white shadow">
+									<div class="card bg-secondary text-white shadow">
 
 										<button
 											class="btn-menu card-body export-btn btn-sub${vv.count } active"
@@ -132,7 +132,7 @@
 						<div class="row col-lg-6 btn-menu menu-${vv.count }">
 							<c:forEach items="${q.fpSuplementList}" var="b" varStatus="ss">
 								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-primary text-white shadow">
+									<div class="card bg-secondary text-white shadow">
 										<div class="card-body">
 											<a style="color: white;" href="${b.link}">
 											${b.suplementname} </a>
