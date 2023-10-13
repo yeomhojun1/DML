@@ -164,7 +164,8 @@
 }
 
 .btn:hover {
-	background-color: red;
+	color: #00aeef;
+	border : white;
 }
 
 .exercisetest {
@@ -183,7 +184,6 @@
 .rankth { text-align : center; }
 .rankth, .ranktd { border : 1px solid #fff; padding: 5px; }
 </style>
-
 </head>
 <body class="sb-nav-fixed">
 	<jsp:include page="/WEB-INF/views/frame/nav.jsp"></jsp:include>
