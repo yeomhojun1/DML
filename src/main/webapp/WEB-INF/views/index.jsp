@@ -32,12 +32,17 @@
 	crossorigin="anonymous"></script>
 <style>
 	nav#mainNav {
-		background-color: #000;
+		background-color: #fafeff;
 	}
 	a.nav-link {
-		color: #fff !important;
+		color: #4f5254 !important;
 		font-size: 18px;
 		font-weight: bold;
+	}
+	a.nav-link:hover {
+		color: #00aeef !important;
+		font-size: 18px;
+		font-weight: bold;	
 	}
 </style>
 </head>
