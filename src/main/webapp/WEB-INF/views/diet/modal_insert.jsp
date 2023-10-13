@@ -54,29 +54,6 @@
 												</div>
 												<div class="Plan_brother"></div>
 											</div>
-											<!-- 	<div class="Plan_modal_food_right__sg_CE row">
-												<div class="Plan_modal_food_desc__QsT8R col-xl-6"  >
-													<div class="Plan_modal_food_desc_title__GwIXK">
-														식품
-														<div
-															style="flex: 1 1 0%; font-weight: normal; justify-content: flex-end; text-align: right;"></div>
-													</div>
-													<div class="Plan_modal_food_desc_subtitle__t8EOz">
-														탄수화물
-														<div
-															style="flex: 1 1 0%; font-weight: normal; justify-content: flex-end; text-align: right;"></div>
-													</div>
-													<div class="Plan_modal_food_desc_subtitle__t8EOz">
-														단백질
-														<div
-															style="flex: 1 1 0%; font-weight: normal; justify-content: flex-end; text-align: right;"></div>
-													</div>
-													<div class="Plan_modal_food_desc_subtitle__t8EOz">
-														지방
-														<div
-															style="flex: 1 1 0%; font-weight: normal; justify-content: flex-end; text-align: right;"></div>
-													</div>
-												</div> -->
 
 											<div
 												style="flex: 1 1 0%; font-weight: normal; justify-content: flex-end; text-align: right;">
@@ -122,6 +99,8 @@ $(document).ready(function() {
 	   
 	});
 	
+
+
 function getSearchList(thisElement){
 	console.log($("form[name=search-form]").serialize());
 	console.log($("[name=keyword]").val());
@@ -168,8 +147,16 @@ function getSearchList(thisElement){
 		}
 	})
 } 
-</script>
 
+
+</script>
+<script>
+$("[name=keyword]").on('keydown', function(event) {
+    if (event.key === "Enter") {
+       getSearchList();
+    }
+ });
+</script>
 
 
 
