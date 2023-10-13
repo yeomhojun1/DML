@@ -34,6 +34,11 @@
 	nav#mainNav {
 		background-color: #000;
 	}
+	a.nav-link {
+		color: #fff !important;
+		font-size: 18px;
+		font-weight: bold;
+	}
 </style>
 </head>
 <body id="page-top">
