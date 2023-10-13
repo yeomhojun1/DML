@@ -41,10 +41,10 @@
 	<select id = "totalSelectList" parameterType="FpDietVo" resultType="TotalFoodListDTO">
 	   SELECT 
          
-	        sum(c.calorie) as total_cal
-	      , sum(c.crabs) as total_crabs
-	      , sum(c.protein) as total_protein
-	      , sum(fat) as total_fat
+	        sum(c.calorie*b.food_quality) as total_cal
+	      , sum(c.crabs*b.food_quality) as total_crabs
+	      , sum(c.protein*b.food_quality) as total_protein
+	      , sum(fat*b.food_quality) as total_fat
        FROM 
 	        diet a
 	      , FOOD b
