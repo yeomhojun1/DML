@@ -35,7 +35,7 @@ function click_Calendar(calendarNo){ // 클릭된 일정 정보 불러오기 - �
 
 function send_save(){ // ajax 비동기 처리 - 일정 추가
 	if(checkCorrectDate()){
-		var data = {}; // input에 입력된 내용을 전달 - 하지만 내가 원하는건 클릭한 날짜를 전달해야하지만, null 이 전달됨
+		var data = {}; // input에 입력된 내용을 전달
 		data["title"] = $("#title").val();
 		data["startDate"] = $("#startDate").val();
 		data["endDate"] = $("#endDate").val();
@@ -52,10 +52,10 @@ function send_save(){ // ajax 비동기 처리 - 일정 추가
 				console.log(response);
 				if(response.key == "success"){
 					alert(response.message);
-					opener.parent.location.reload();
-					window.close();
+        			// 캘린더 페이지로 리다이렉트
+					location.href = contextPath+"/calendar";
 				}else{
-					alert(response.message);				
+					alert(response.message);
 				}
 			},
 			
@@ -86,8 +86,8 @@ function send_update(){ // ajax 비동기 처리 - 일정 수정
 			success:function(response){
 				if(response.key == "success"){
 					alert(response.msg);
-					opener.parent.location.reload();
-					window.close();
+					// 캘린더 페이지로 리다이렉트
+					location.href = contextPath+"/calendar";
 				}else{
 					alert(response.msg);				
 				}
@@ -114,8 +114,8 @@ function send_delete() { // ajax 비동기 처리 - 일정 삭제
             success: function (response) {
                 if (response.key == "success") {
                     alert(response.msg);
-                    opener.parent.location.reload();
-                    window.close();
+                    // 캘린더 페이지로 리다이렉트
+					location.href = contextPath+"/calendar";
                 } else {
                     alert(response.msg);
                 }

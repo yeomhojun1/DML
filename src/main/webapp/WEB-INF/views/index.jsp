@@ -30,6 +30,11 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 	crossorigin="anonymous"></script>
+<style>
+	nav#mainNav {
+		background-color: #000;
+	}
+</style>
 </head>
 <body id="page-top">
 	<!-- Navigation-->

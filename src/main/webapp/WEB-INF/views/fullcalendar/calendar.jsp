@@ -74,7 +74,7 @@
 		                    id    : '${showList.calendarno}',
 		                    title : '${showList.title}',
 		                    start : '${showList.startDate}',
-		                    end    : '${showList.endDate}',
+		                    end    : '${showList.endDate+1}',
 		                   content : '${showList.content}'
 		                 },
 		                 </c:forEach>
@@ -86,7 +86,7 @@
 				        
   				      dateClick : (info)=>{ // 선택한 날짜 값 뽑아내기
   				    	$("#listPlan [name=startDate]").val(info.dateStr);
-  				    	$("#listPlan [name=endDate]").val(info.dateStr);
+  				    	$("#listPlan [name=endDate]").val((info.dateStr)-1);
   				   	 	$("#listPlan").modal("toggle");
 						$(".testContent div").remove();
   				   	 	$("#dmllist").html(info.dateStr);
@@ -127,7 +127,13 @@
   				     	$("#updatePlan [name=calendarno]").val(info.event.id);
   				     	$("#updatePlan [name=title]").val(info.event.title);
   				     	$("#updatePlan [name=startDate]").val(info.event.startStr);
-  				    	$("#updatePlan [name=endDate]").val(info.event.endStr); 
+  				     	var endDate = new Date(info.event.endStr);
+  				    	endDate.setDate(endDate.getDate() - 1);
+  				   		// 날짜 포맷을 맞춰서 문자열로 변환
+  				    	var formattedEndDate = endDate.toISOString().split('T')[0];
+  				    	// 해당 값을 업데이트
+  				    	$("#updatePlan [name=endDate]").val(formattedEndDate);
+  				    	/* $("#updatePlan [name=endDate]").val(info.event.endStr); */
   				    	$("#updatePlan [name=content]").val(info.event.extendedProps.content); 
   				    	$("#updatePlan").modal("toggle");
   				    	const title = info.event.title;
@@ -260,10 +266,8 @@
 							</div>
 						</div>
 					`;
-				
 					
 			    });   // each
-			    
 			 
 				$(".testContent").html(htmlVal); 
 				
@@ -364,12 +368,12 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-bs-dismiss="modal" onClick="send_save()">저장</button>
-
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+				</div>
 					<div class="modal fade" id="listPlan"> <!--날짜를 클릭했을떄 나오는 모달창  -->
 						<!-- 	tabindex="-1"
 						aria-labelledby="exampleModalLabel" aria-hidden="true" -->
