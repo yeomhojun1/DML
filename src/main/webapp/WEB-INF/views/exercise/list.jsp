@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import = "java.util.Calendar" %>
+<%@ page import="java.util.Calendar"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -210,7 +210,7 @@
 								<div class="ex_part btn col-xl-12" data-part="어깨">어깨</div>
 								<div class="ex_part btn col-xl-12" data-part="팔">팔</div>
 								<div class="ex_part btn col-xl-12" data-part="하체">하체</div>
-							
+
 							</div>
 							<!-- <div class="appendtest"></div>
 					 	<textarea name="bookIntro" id="bookIntro_textarea"></textarea>
@@ -225,7 +225,7 @@
 	</div>
 
 
-	<div id="modal" class="modal-overlay ">
+	<!-- 	<div id="modal" class="modal-overlay ">
 		<div class="modal-window">
 			<div class="title">
 				<h2>운동 루틴 추가</h2>
@@ -237,22 +237,23 @@
 						name="calendarNo">
 				</div>
 				<div class="divAddExerciseWeight">
-					<span>무게 : </span><input type="text" class="addExerciseWeight" name="ExerciseWeight">
+					<span>무게 : </span><input type="text" class="addExerciseWeight"
+						name="ExerciseWeight">
 				</div>
 				<div class="divAddExerciseNumber">
-					<span>횟수 : </span><input type="number" class="addExerciseNumber" name="ExerciseNumber">
+					<span>횟수 : </span><input type="number" class="addExerciseNumber"
+						name="ExerciseNumber">
 				</div>
 				<div class="divAddExerciseSet">
-					<span>세트 : </span><input type="number" class="addExerciseSet" name="ExerciseSet">
+					<span>세트 : </span><input type="number" class="addExerciseSet"
+						name="ExerciseSet">
 				</div>
-				
-				<div class="divButtonMemberExSet">
-					
-				</div>
+
+				<div class="divButtonMemberExSet"></div>
 
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<div class="bigModalCss">
 		<div id="youtubeModal" class="modal-overlay">
@@ -270,8 +271,65 @@
 			</div>
 		</div>
 	</div>
+	<!-- 모달 연습 -->
 
 
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">운동 추가</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div>
+						<span>날짜 : </span><input type="text" id="datepicker"
+							name="calendarNo">
+					</div>
+					<div class="divAddExerciseWeight">
+						<span>무게 : </span><input type="text" class="addExerciseWeight"
+							name="ExerciseWeight">
+					</div>
+					<div class="divAddExerciseNumber">
+						<span>횟수 : </span><input type="number" class="addExerciseNumber"
+							name="ExerciseNumber">
+					</div>
+					<div class="divAddExerciseSet">
+						<span>세트 : </span><input type="number" class="addExerciseSet"
+							name="ExerciseSet">
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-outline-primary divButtonMemberExSet">저장</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 두번째 모달 연습 -->
+	<div class="modal fade modal-xl" id="exampleModal6" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title exModalTitle" id="exampleModalLabel"></h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body exModalContent"></div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	<script>
 	window.onload = function() {
 		$(".divAddExerciseWeight").hide();
@@ -309,7 +367,6 @@
 	}
 	<!-- 운동 하나를 선택하면 그 운동에 대한 상세정보들이 나오도록함 -->
 	function expartoneHandler(){
-	
 		$.ajax({
 			url:"${pageContext.request.contextPath}/exercise/one",
 			type: "get",
@@ -318,97 +375,25 @@
 			dataType : "json"
 		})
 	}
-	
 	function displayExercisePartOne(result){
 	
 		$(".ex_one").remove();
 		$(".ex_one_group").remove();
 		htmlVal = "<div class='col-xl-4 ex_one_group'>"
-		htmlVal += '<div class="ex_one col-xl-12" data-code="'+result.ecode+'" data-name="'+result.exName+'">'+result.epose+'<div><button id="btn-modal1">자세 유튜브 보기</button></div><div><button id="btn-modal">운동 추가</button></div></div></div>'
+		htmlVal += '<div class="ex_one col-xl-12" data-code="'+result.ecode+'" data-name="'+result.exName+'">'+result.epose+'<br><div class="btn-group" role="group" aria-label="Basic outlined example"><button type="button" class="btn btn-outline-primary btn-modal1 " data-bs-toggle="modal" data-bs-target="#exampleModal6">'
+		  +'유튜브 보기</button><button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"'
+			+'data-bs-target="#exampleModal">운동 추가</button></div></div></div>'
 		
 		$(".exercisetest").append(htmlVal);
 		$("#btn-modal").click(modalHandler);
 		var testOjbect ={eposeLink: result.eposeLink,exName: result.exName };
-		$("#btn-modal1").click(()=>youtubeModalHandler(testOjbect));
+		$(".btn-modal1").click(()=>youtubeModalHandler(testOjbect));
 	
 	}
-	function modalOff(result) {
-		modal.style.display = "none"
-	}
-	const modal = document.getElementById("modal")
-	function modalHandler(){
-			modalOn();
-		function modalOn() {
-		    modal.style.display = "flex"
-		}
-		function isModalOn() {
-		    return modal.style.display === "flex"
-		}
-		const btnModal = document.getElementById("btn-modal")
-		btnModal.addEventListener("click", e => {
-		    modalOn()
-		})
-		const closeBtn = modal.querySelector(".close-area")
-		closeBtn.addEventListener("click", e => {
-		    modalOff()
-		})
-		modal.addEventListener("click", e => {
-		    const evTarget = e.target
-		    if(evTarget.classList.contains("modal-overlay")) {
-		        modalOff()
-		    }
-		})
-	}
-	
-
 	function youtubeModalHandler(result){
-		console.log(result);
-		$("#youtubeModal").remove();
-		const bigModal=`
-			<div id="youtubeModal" class="modal-overlay">
-			<div class="modal-window ">
-				<div class="title">
-					<h2 class="exModalTitle"></h2>
-				</div>
-				<div class="close-area">X</div>
-				<div class="content col-xl-12">
-					<div class="col-xl-12">
-						<div class="exModalContent col-xl-12"></div>
-						<div class="close-area">닫기</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		`
-		$(".bigModalCss").append(bigModal);
-		const youtubeModal= document.getElementById("youtubeModal")
-	   	if(!isYoutubeModalOn()) {
-	   		youtubeModalOn();
-    	}
-		youtubeModal.addEventListener("click", e => {
-	    	const evTarget = e.target
-	  		  if(evTarget.classList.contains("modal-overlay")) {
-		    	if(isYoutubeModalOn) {
-		    		youtubeModalOff()
-		    	}
-		    }
-		})
-		function isYoutubeModalOn(){
-			return modal.style.display === "flex"
-		}
-		function youtubeModalOn() {
-			youtubeModal.style.display ="flex"
-		}
-		function youtubeModalOff() {
-			youtubeModal.style.display = "none"
-		}
-		const closeBtn1 = youtubeModal.querySelector(".close-area")
-			closeBtn1.addEventListener("click", e => {
-			youtubeModalOff()
-		})
 		const eposeLink1 = '<div class="eposeLinkCss">'+result.eposeLink+'</div>'
-		$(".exModalTitle").append(result.exName);
-		$(".exModalContent").append(eposeLink1);
+		$(".exModalTitle").html(result.exName);
+		$(".exModalContent").html(eposeLink1);
 		$(".eposeLinkCss>iframe").prop("width", "100%");
 	}
 	 $(function() {
@@ -452,7 +437,9 @@
 							var appendButton=`
 							<button class="updateMemberExSet">수정</button>
 							`
-							$(".divButtonMemberExSet").append(appendButton);
+							$(".divButtonMemberExSet").html("수정");
+							$(".divButtonMemberExSet").removeClass("divButtonMemberExSet");
+							$(".divButtonMemberExSet").addClass("updateMemberExSet");
 							$(".updateMemberExSet").click(updateMemberExSetHandler);
 	    				}else{
 	    					console.log("result is null");
@@ -466,7 +453,9 @@
 							var appendButton=`
 								<button class="addMemberExSet">등록</button>
 								`
-								$(".divButtonMemberExSet").append(appendButton);
+							$(".divButtonMemberExSet").html("등록");
+							$(".divButtonMemberExSet").removeClass("updateMemberExSet");
+							$(".divButtonMemberExSet").addClass("addMemberExSet");
 							$(".addMemberExSet").click(addMemberExSetHandler);
 	    				}
 	    				
