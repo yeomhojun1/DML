@@ -33,7 +33,7 @@ a,a:hover,a:visited {
     format:("otf")}
 
 input:hover {
-    border-color: #97d4e9!important
+    border-color: #00aeef !important
 }
 
 ul {
@@ -335,7 +335,8 @@ mark {
     text-align: left;
     flex: 0 1;
     width: 150px;
-    min-width: 150px
+    min-width: 150px;
+    color: #4f5254;
 }
 
 .MyPage_basic_input_content {
@@ -347,7 +348,7 @@ mark {
 .MyPage_basic_input {
     height: 60px;
     border-radius: 30px;
-    border: 1px solid #99d3e9;
+    border: 1px solid #00aeef;
     padding-left: 30px
 }
 

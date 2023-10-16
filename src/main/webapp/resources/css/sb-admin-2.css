@@ -84,7 +84,7 @@
 .difficulty button {
 	border: 0;
 	background-color: transparent;
-	color: #fff;
+	color: #fafeff;
 	width: 100%;
 	height: 100%;	
 }
@@ -93,8 +93,8 @@
 .beginner div button,
 .export div button {
 	border: 0;
-	background-color: #858796;
-	color: #fff;
+	background-color: #4f5254;
+	color: #fafeff;
 	width: 100%;
 	height: 100%;
 }
@@ -6458,13 +6458,13 @@ button.bg-primary:focus {
 }
 
 .bg-secondary {
-  background-color: #858796 !important;
+  background-color: #4f5254 !important;
 }
 
 a.bg-secondary:hover, a.bg-secondary:focus,
 button.bg-secondary:hover,
 button.bg-secondary:focus {
-  background-color: #6b6d7d !important;
+  background-color: #4f5254 !important;
 }
 
 .bg-success {
@@ -9615,7 +9615,7 @@ button.bg-light:focus {
 }
 
 .text-white {
-  color: #fff !important;
+  color: #fafeff !important;
 }
 
 .text-primary {
