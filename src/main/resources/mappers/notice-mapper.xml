@@ -3,7 +3,7 @@
 <mapper namespace="notice">
 	<select id="selectList" resultType="FpNoticeVo">
 		select notice_no, admin_id, notice_title, notice_content,
-		 notice_date, notice_view from notice order by notice_no asc
+		 notice_date, notice_view from notice order by notice_no desc
 	</select>
 
 	<select id="selectOne" resultType="FpNoticeVo"
