@@ -93,6 +93,11 @@ public class FpMemberController {
 			}
 		} else {
 			// 4. 존재시 강제로그인
+			if(member.getUserEnabled() == 0) {
+    			model.addAttribute("loginResult", "정지된 ID입니다. 관리자에게 문의하세요.");
+    			return "/member/login";
+    		}
+			
 			Date expire = new Date(System.currentTimeMillis() + SessionNames.EXPIRE * 1000);
 			service.keepLogin(member.getMemberId(), session.getId(), expire);
 			session.setAttribute(SessionNames.LOGIN, member);
@@ -150,6 +155,11 @@ public class FpMemberController {
         		if(memberLogin.getMemberAuth() == 0) {
         			model.addAttribute("Auth", memberLogin.getMemberAuth());
         			return "/member/signupReady";
+        		}
+        		
+        		if(memberLogin.getUserEnabled() == 0) {
+        			model.addAttribute("loginResult", "정지된 ID입니다. 관리자에게 문의하세요.");
+        			return "/member/login";
         		}
         		
            		model.addAttribute("member", service.memberInfo(memberLogin.getMemberId()));
@@ -377,10 +387,11 @@ public class FpMemberController {
 	
 	// 마이페이지에서 정보 변경 후 저장버튼을 누르면 정보 업데이트
 	@PostMapping("/member/update")
-	public String updateMember(@RequestBody FpMemberVo member, Model model, HttpSession session) {
+	public String updateMember(@RequestBody FpMemberVo member, HttpSession session) {
 		service.update(member);
 	    member = service.memberInfo(member.getMemberId());
-	    model.addAttribute("member", member);
+	    System.out.println(member);
+	    session.setAttribute(SessionNames.LOGIN, member);
 		return "redirect:/member/mypage";
 	}
 	
@@ -496,6 +507,5 @@ public class FpMemberController {
 	public List<FpMemberVo> memberReputation() {
 		return  service.memberReputation();
 	}
-	
 }
 

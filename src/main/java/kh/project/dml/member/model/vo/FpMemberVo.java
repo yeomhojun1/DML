@@ -24,6 +24,7 @@ public class FpMemberVo {
 	private int memberAuth;
 	
 	// 계정 권한
+	private int userEnabled;
 	private String authorities;
 	
 	//평판 추가

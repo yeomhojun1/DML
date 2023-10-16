@@ -41,7 +41,7 @@ public class SessionCheckInterceptor implements HandlerInterceptor {
             Cookie loginCookie = WebUtils.getCookie(request, SessionNames.LOGIN_COOKIE);
             if (loginCookie != null) {
                 FpMemberVo vo = service.checkLoginBefore(loginCookie.getValue());
-                if (vo != null) {                	
+                if (vo != null) {
                 	session.setAttribute(SessionNames.LOGIN, vo);
                 	return true;
                 }

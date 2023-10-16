@@ -9,7 +9,7 @@
 	
 	<!-- 특정 계정 멤버 정보 검색 -->
 	<select id="info" parameterType="string" resultType="FpMemberVo">
-		select m.*, authorities from member m
+		select m.*, user_enabled, authorities from member m
 		join users u on m.member_id = u.username
 		where member_id = #{memberId}
 	</select>
@@ -105,7 +105,7 @@
 	
     <!-- 쿠키에 저장된 세션키 비교 -->
     <select id="checkLoginBefore" resultType="FpMemberVo">
-		select m.*, authorities from member m
+		select m.*, user_enabled, authorities from member m
 		join users u on m.member_id = u.username
 		where sessionkey = #{loginCookie}
 		AND TO_TIMESTAMP(sessionlimit, 'RR/MM/DD HH24:MI:SS.FF9') > SYSTIMESTAMP
@@ -113,21 +113,21 @@
     
     <!-- 네이버 계정 확인 -->
     <select id="getBySnsNaver" resultType="FpMemberVo">
-        select m.*, authorities from member m
+        select m.*, user_enabled, authorities from member m
 		join users u on m.member_id = u.username
 		where naverid = #{naverid}
     </select>
     
     <!-- 구글 계정 확인 -->
     <select id="getBySnsGoogle" resultType="FpMemberVo">
-        select m.*, authorities from member m
+        select m.*, user_enabled, authorities from member m
 		join users u on m.member_id = u.username
 		where googleid = #{googleid}
     </select>
     
     <!-- 카카오 계정 확인 -->
     <select id="getBySnsKakao" resultType="FpMemberVo">
-        select m.*, authorities from member m
+        select m.*, user_enabled, authorities from member m
 		join users u on m.member_id = u.username
 		where kakaoid = #{kakaoid}
     </select>
