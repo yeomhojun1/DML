@@ -23,9 +23,16 @@ public class FpMemberWeightServiceImpl implements FpMemberWeightService {
 	public FpMemberWeightVo selectOne(String memberId) {
 		return fpMemberWeightDao.selectOne(memberId);
 	}
+	//근육량 체지방 입력시 화면구현되게
 	@Override
 	public FpMemberWeightVo nowComposition(String selectDate, String memberId) {
 		return fpMemberWeightDao.nowComposition(selectDate, memberId);
+	}
+	
+	
+	//몸무게 날짜 입력시 화면구현되게
+	public FpMemberWeightVo nowWeight(String selectDate, String memberId) {
+		return fpMemberWeightDao.nowWeight(selectDate, memberId);
 	}
 	
 	@Transactional

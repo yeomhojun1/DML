@@ -304,7 +304,21 @@
 									/* alert(exerciseDate); */
 									selectDate= selectDate.replaceAll("-", "");
 									console.log(selectDate);
-
+									$.ajax({
+										url:"${pageContext.request.contextPath}/memberweight/weight/nowDate",
+										type: "post",
+										data : {memberId : "${member.memberId}"
+											,selectDate: selectDate
+										}
+										,success : function(result){
+											console.log("success");
+											console.log(result);
+											$("[name=weight]").val(result.weight);
+										}				
+										,error : function(){
+											console.log("error");
+										}
+									})
 								}
 							});
 

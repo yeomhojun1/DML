@@ -23,11 +23,20 @@
 		SELECT MEMBER_ID, WEIGHT_DATE, WEIGHT, MUSCLE_MASS, BODY_FAT_PET FROM MEMBER_WEIGHT
 		WHERE MEMBER_ID=#{memberId} 
 	</select>
-	
+	<!-- 근육량, 체지방량 화면에 나타나게 -->
 	<select id="nowComposition" resultType="FpMemberWeightVo" parameterType="map">
 		SELECT MEMBER_ID, WEIGHT_DATE, WEIGHT, MUSCLE_MASS, BODY_FAT_PET FROM MEMBER_WEIGHT
 		WHERE MEMBER_ID=#{memberId} and weight_date=#{selectDate}
 	</select>
+	
+	
+		<!-- 날짜 몸무게 화면에 나타나게 -->
+	<select id="nowWeight" resultType="FpMemberWeightVo" parameterType="map">
+		SELECT MEMBER_ID, WEIGHT_DATE, WEIGHT FROM MEMBER_WEIGHT
+		WHERE MEMBER_ID=#{memberId} and weight_date=#{selectDate}
+	</select>
+	
+	
 	
 	<select id="checkDate" resultType="FpMemberWeightVo" parameterType="FpMemberWeightVo">
 		SELECT member_id, weight_date FROM MEMBER_WEIGHT

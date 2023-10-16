@@ -29,12 +29,27 @@ public class FpMemberWeightController {
 	@Autowired
 	private FpMemberWeightServiceImpl fpMemberWeightServiceImpl;
 	//체중관리차트 controller
+	
 	@GetMapping("/weight")
 	public ModelAndView mainPageOpen9(ModelAndView mv, HttpSession session) {
+		Date now = new Date(); // 오늘 날짜
+		SimpleDateFormat dFormat = new SimpleDateFormat("yyyyMMdd");
+		String nowDate = dFormat.format(now);
+		
 		FpMemberVo vo = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
 		mv.addObject("fpMemberWeightVoListJson", new Gson().toJson(fpMemberWeightServiceImpl.selectList(vo.getMemberId())));
+		mv.addObject("memberComposition", fpMemberWeightServiceImpl.nowWeight(nowDate, vo.getMemberId()));
 		mv.setViewName("memberweight/weight2");
 		return mv;
+	}
+	
+	//체중관리 입력시 화면구현 controller
+	@GetMapping("/weight/nowDate")
+	@ResponseBody
+	public FpMemberWeightVo mainPageOpen17(@RequestParam String selectDate, ModelAndView mv, HttpSession session) {
+		FpMemberVo vo = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
+		FpMemberWeightVo result = fpMemberWeightServiceImpl.nowWeight(selectDate, vo.getMemberId());
+		return result;
 	}
 
 //	update 체중관리
