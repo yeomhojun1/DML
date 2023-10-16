@@ -17,6 +17,13 @@
 										</div>
 									</div>
 									<div
+										class="card-footer d-flex align-items-center justify-content-between card-cursor" onClick="location.href='${pageContext.request.contextPath }/diet/list';">
+										식단 관리
+										<div class="small text-white">
+											<i class="fas fa-angle-right"></i>
+										</div>
+									</div>
+									<div
 										class="card-footer d-flex align-items-center justify-content-between card-cursor" onClick="location.href='${pageContext.request.contextPath }/memberweight/composition';">
 										체조성 기록
 										<div class="small text-white">
@@ -26,13 +33,6 @@
 									<div
 										class="card-footer d-flex align-items-center justify-content-between card-cursor" onClick="location.href='${pageContext.request.contextPath }/memberweight/healthmap';">
 										주변 헬스장 찾기
-										<div class="small text-white">
-											<i class="fas fa-angle-right"></i>
-										</div>
-									</div>
-									<div
-										class="card-footer d-flex align-items-center justify-content-between card-cursor" onClick="location.href='${pageContext.request.contextPath }/diet/list';">
-										식단 관리
 										<div class="small text-white">
 											<i class="fas fa-angle-right"></i>
 										</div>
