@@ -12,8 +12,8 @@
 						<button class="h3 mb-0 text-gray-800 card h-100 py-2 btn1_title tabmenu active" data-tabmenu="1">보충제</button>
 						<button class="h3 mb-0 text-gray-800 card h-100 py-2 btn2_title tabmenu" data-tabmenu="2">닭가슴살</button>
 						
-						<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="${pageContext.request.contextPath }/fullcalendar/calendar"><i
-							class="fas fa-download fa-sm text-white-50"></i>calendar</a>
+						<a class="d-none d-sm-inline-block btn btn-sm btn-white shadow-sm" href="${pageContext.request.contextPath }/calendar"><i
+							class="fas fa-download fa-sm text-white-10"></i>calendar</a>
 					</div>
 
 					<!-- Content Row -->
@@ -21,7 +21,7 @@
 
 						<!-- Earnings (Monthly) Card Example -->
 						<div class="col-xl-3 col-md-6 mb-4">
-							<div class="card border-left-primary shadow h-100 py-2 difficulty">
+							<div class="card border-left-dark shadow h-100 py-2 difficulty">
 							
 									<button class="h5 mb-0 font-weight-bold text-gray-800 card-body difficulty-btn btn1 active">초보자</button>
 									
@@ -30,7 +30,7 @@
 
 						<!-- Earnings (Monthly) Card Example -->
 						<div class="col-xl-3 col-md-6 mb-4">
-							<div class="card border-left-success shadow h-100 py-2 difficulty">
+							<div class="card border-left-dark shadow h-100 py-2 difficulty">
 							
 									<button class="h5 mb-0 font-weight-bold text-gray-800 card-body difficulty-btn btn2 active">숙련자</button>
 									
@@ -39,7 +39,7 @@
 						
 						<!-- Earnings (Monthly) Card Example -->
 						<div class="col-xl-3 col-md-6 mb-4">
-							<div class="card border-left-success shadow h-100 py-2 difficulty">
+							<div class="card border-left-dark shadow h-100 py-2 difficulty">
 							
 									<button class="h5 mb-0 font-weight-bold text-gray-800 card-body" onClick="location.href='https://ptsports.co.kr/'">운동기구 바로가기</button>
 									
@@ -48,7 +48,7 @@
 
 						<!-- Pending Requests Card Example -->
 						<div class="col-xl-3 col-md-6 mb-4">
-							<div class="card border-left-warning shadow h-100 py-2 difficulty">
+							<div class="card border-left-dark shadow h-100 py-2 difficulty">
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
@@ -95,9 +95,9 @@
 							<div class="row col-lg-6 btn-menu menu-${vs.count }">
 								<c:forEach items="${a.fpSuplementList}" var="b" varStatus="ss"> 
 									<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-secondary text-white shadow">
+									<div class="card bg-white text-white shadow">
 										<div class="card-body">
-											<a style="color: white;" href="${b.link }">${b.suplementname }</a>
+											<a style="color: black;" href="${b.link }">${b.suplementname }</a>
 										</div>
 									</div>
 									</div>
@@ -155,7 +155,7 @@
 							<div class="card shadow mb-4 ">
 							
 								<div class="card-header py-2">
-									<h6 class="m-0 font-weight-bold text-primary">*A급 
+									<h6 class="m-0 font-weight text-black">*A급 
 										*B급 번외 성분</h6>
 								</div>
 								<div class="card-body menu-comment comment1">
@@ -374,7 +374,7 @@
 							
 							<div class="card shadow mb-4">
 								<div class="card-header py-2 ">
-									<h6 class="m-0 font-weight-bold text-primary">섭취 방법</h6>
+									<h6 class="m-0 font-weight text-black">섭취 방법</h6>
 								</div>
 								<div class="card-body menu-comment comment1">
 									<p>운동후 섭취 혹은 단백질이 적은 식사 후, 운동후 식사가 바로 있다면 20g, 운동후 식사가 바로

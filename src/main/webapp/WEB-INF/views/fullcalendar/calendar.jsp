@@ -47,7 +47,7 @@
 				        headerToolbar: { // today,달,주,일,리스트 기능
 				            left: 'prev,next today',
 				            center: 'title',
-				            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+				            right: 'dayGridMonth,RlistWeek'
 				          },
 				          
 				     //schedule(스케줄)이 생기면 아래 + 버튼을 누를면 스케줄이 표시되는코드
