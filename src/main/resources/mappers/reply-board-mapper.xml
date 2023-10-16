@@ -7,14 +7,14 @@
 		select * from replyboard where board_no=#{boardNo}  order by Reply_no desc,reply_Date desc 
 </select> 
 <select id="selectReply" resultType="FpreplyboardVo">
-		select * from replyboard where rref=#{rref}  order by RSTEP asc,reply_Date  
+		select * from replyboard where rref=#{rref} and reply_no!=#{rref} order by RSTEP asc,reply_Date  
 </select> 
 <select id="selectOne" resultType="FpreplyboardVo" parameterType="_int">
 select * from replyboard where reply_No=#{replyNo}
 </select>
 
 <insert id="insert" parameterType="FpreplyboardVo">
-insert into replyboard values(REPLY_no_seq.nextval,#{memberId},#{replyContent},default,#{boardNo},#{rref},#{rstep},#{rlevel})
+insert into replyboard values(REPLY_no_seq.nextval,#{memberId},#{replyContent},default,#{boardNo},REPLY_no_seq.currval,#{rstep},#{rlevel})
 </insert>
 
 <insert id="insertreplyreply">

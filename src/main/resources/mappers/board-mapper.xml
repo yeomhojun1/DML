@@ -24,16 +24,16 @@
 		<![CDATA[
 			select rownum, board_no, member_id, board_title , board_content, board_date, board_count, bstep, blevel 
 			from (select rownum as rn, board_no, member_id, board_title, board_content, board_date, board_count, bstep, blevel from board 
-			where rownum <= #{pageNum} * #{amount}
+			 where rownum <= #{pageNum} * #{amount} 
 		]]>
 		<if test="keyword != null">
 			<include refid="criteria"></include> 
 		</if>
 		<![CDATA[        
-		    )
+		 order by board_no desc   )
 		where rn > (#{pageNum} -1) * #{amount}
 		]]>
-		order by board_no desc
+		
 	</select>
 	
 	<select id="getTotalBoard" resultType="_int">
