@@ -140,10 +140,11 @@
 		           url: "${pageContext.request.contextPath}/replyboard/list",
 		           data: { boardNo:${boardone.boardNo}},
 		           success: function (result) {
+		        	   console.log("success");
 		        	  for (var i = 0; i < result.length; i++) {
-		        		  if(result[i].rref==0){
+		        		  if(result[i].rref==result[i].replyNo){
 	        			var  htmlVal =  '<div class="card replyCard" data-replyno="'+result[i].replyNo+'" data-writer="'+ result[i].memberId+'"><div class="firstReply card" data-replyno="'+result[i].replyNo+'" data-writer="'+ result[i].memberId+'"><div class="updatewriter">작성자 : '+ result[i].memberId+'</div><div class="updatereplyContent">내용 : '+result[i].replyContent+'</div><div class="updatereplyDate">입력날짜 : '+result[i].replyDate+'</div>'
-	    		   		+'<div class="groupbtn col-xl-6 btn-group" role="group" aria-label="Basic outlined example"><button class="updatereply btn btn-outline-primary">수정</button><button class="btn btn-outline-primary" onclick="deletereplyHandler("'+result[i].replyNo+'");">삭제</button><button class="insertreplyreply btn btn-outline-primary">댓글 삽입</button>'
+	    		   		+'<div class="groupbtn col-xl-6 btn-group" role="group" aria-label="Basic outlined example"><button class="updatereply btn btn-outline-primary">수정</button><button class="btn btn-outline-primary" onclick="deletereplyHandler('+result[i].replyNo+');">삭제</button><button class="insertreplyreply btn btn-outline-primary">댓글 삽입</button>'
 	    		   		+'<button class="moreReply btn btn-outline-primary" data-replyno="'+result[i].replyNo+'">댓글 더보기</button>';
 	    		   	 	if(writerHtml=="${member.memberId}"){
 	    		   	 		if(!${boardone.selectReplyNo}){
@@ -161,7 +162,7 @@
 		        	   $(".updatereply").click(updatereplyHandler);
 		        	   $(".insertreplyreply").click(insertreplyreplyHandler);
 		        	   $(".moreReply").click(moreReplyHandler);
-						if(${boardone.selectReplyNo}!=0){	
+						/* if(${boardone.selectReplyNo}!=0){	
 						//	$(".forPlusRequtation").remove();
 							var firstReply = document.getElementsByClassName('firstReply');
 		 					for (var i = 0; i < firstReply.length; i++){
@@ -171,7 +172,7 @@
 									firstReply[i].append(forBadge);
 								}   
 							} 
-						}
+						} */
 					}, //success
 					error : (request, status, error) => {
 						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -312,7 +313,7 @@
 		    		   $(".testappend").html("");
 						for (var i = 0; i < result.length; i++) {
 		    		   		var  htmlVal =  '<div class="card replyCard" data-replyno="'+result[i].replyNo+'" data-writer="'+ result[i].memberId+'"><div class="firstReply card" data-replyno="'+result[i].replyNo+'" data-writer="'+ result[i].memberId+'"><div class="updatewriter">작성자 : '+ result[i].memberId+'</div><div class="updatereplyContent">내용 : '+result[i].replyContent+'</div><div class="updatereplyDate">입력날짜 : '+result[i].replyDate+'</div>'
-		    		   		+'<div class="groupbtn col-xl-6 btn-group" role="group" aria-label="Basic outlined example"><button class="updatereply btn btn-outline-primary">수정</button><button class="btn btn-outline-primary" onclick="deletereplyHandler("'+result[i].replyNo+'");">삭제</button><button class="insertreplyreply btn btn-outline-primary">댓글 삽입</button>'
+		    		   		+'<div class="groupbtn col-xl-6 btn-group" role="group" aria-label="Basic outlined example"><button class="updatereply btn btn-outline-primary">수정</button><button class="btn btn-outline-primary" onclick="deletereplyHandler('+result[i].replyNo+');">삭제</button><button class="insertreplyreply btn btn-outline-primary">댓글 삽입</button>'
 		    		   		+'<button class="moreReply btn btn-outline-primary" data-replyno="'+result[i].replyNo+'">댓글 더보기</button></div></div>';
 		    				$(".testappend").append(htmlVal);   
 		    				

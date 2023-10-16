@@ -43,7 +43,7 @@ CREATE TABLE "REPLYBOARD" (
 	"REPLY_CONTENT"	CLOB		NOT NULL,
 	"REPLY_DATE"	TIMESTAMP	default sysdate	NOT NULL,
     "BOARD_NO"	NUMBER		NOT NULL,
-    "RREF" NUMBER DEFAULT 0 NULL,
+    "RREF" NUMBER  NULL,
     "RSTEP" NUMBER default 0 NULL,
     "RLEVEL" NUMBER default 0 NULL
 );
@@ -55,7 +55,7 @@ CREATE SEQUENCE REPLY_no_seq
        NOCYCLE
        NOCACHE
        NOORDER;
-       
+
 CREATE TABLE "MEMBER" (
 	"MEMBER_ID"	VARCHAR2(100)		NOT NULL,
 	"MNAME"	VARCHAR2(50)		NOT NULL,
@@ -663,3 +663,8 @@ select member_id from replyboard where reply_no=62;
   update member set reputation=(select reputation from member where member_id=(select member_id from replyboard where reply_no=65))+1 where member_id=(select member_id from replyboard where reply_no=65);
  update member set reputation=(select reputation from member where member_id=(select member_id from replyboard where reply_no=60))+1 where member_id=(select member_id from replyboard where reply_no=60);
     
+
+select * from replyboard;
+
+commit;
+

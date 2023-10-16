@@ -385,12 +385,12 @@
 			+'data-bs-target="#exampleModal">운동 추가</button></div></div></div>'
 		
 		$(".exercisetest").append(htmlVal);
-		$("#btn-modal").click(modalHandler);
 		var testOjbect ={eposeLink: result.eposeLink,exName: result.exName };
 		$(".btn-modal1").click(()=>youtubeModalHandler(testOjbect));
 	
 	}
 	function youtubeModalHandler(result){
+		console.log("youtubeModalHandler : "+result);
 		const eposeLink1 = '<div class="eposeLinkCss">'+result.eposeLink+'</div>'
 		$(".exModalTitle").html(result.exName);
 		$(".exModalContent").html(eposeLink1);
