@@ -246,45 +246,29 @@
         defaultDate: today,
 
 		 
-	       onSelect: function(dateText, inst) {
-	           $(".DateBars_date__DyX0X").text(dateText); // 맨 위의 날짜 변경
-	           var date=new Date($("#datepicker").datepicker({dateFormat:"yy-mm-dd"}).val());
-	           //일요일 0~
-	          var selectDate = $.datepicker.formatDate("yymmdd",$("#datepicker").datepicker("getDate")); 
-         		selectDate = $("#datepicker").val();
-         		
-         		var selectDate1= selectDate.replaceAll("-", "");
-	           alert(selectDate1);
-	           week=new Array("일","월","화","수","목","금","토");
-	           $(".DateBars_day_of_week__ShQrM").text(week[date.getDay()]);
-	           
-	           
-		     var scrollTo = $(".ant-btn-circle span", container).filter(function() {
-		       return parseInt($(this).text()) === inst.selectedDay;
-		     });
-		
-		     if (scrollTo.length) {
-		       container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop());
-		     }
-		 	/* 	replace([기존문자],[바꿀문자])
-				dateVal= dateVal.replaceAll("-", ""); */
-		 	  $.ajax({
-					url:"${pageContext.request.contextPath}/diet/search",
-					type: "get"
-					,contentType: "application/json"
-					, data: {mealCode: selectDate1 + "${member.memberId}" }
-					, success : function(result){
-						console.log("success");
-						
-						}
-					
-					, error : function(){
-						console.log("error")
-					}
-					});
-					
-		     // onSelect 
-		 	},
+        onSelect: function(dateText, inst) {
+            $(".DateBars_date__DyX0X").text(dateText); // 맨 위의 날짜 변경
+  			$("#selectbox").val("ALL").prop("selected", true);
+  			chageLangSelect();
+  			$.ajax({
+  				url:"${pageContext.request.contextPath}/diet/list",
+  				type: "post"
+  				, data: {foodTime : "ALL", foodDate : selectDate1 ,memberId:"${member.memberId}"}
+  				, dataType: "json"
+  				, success : function(result) {
+  					console.log(result.dietList);
+  					console.log("success");	
+  					renderData(result.dietList);	
+  					totalSelectList(result.totalDietList);	
+  				}
+  				, error : function(e){
+  					console.log(e);	
+  					console.log("error");
+  				}
+  			});  // ajax
+  			
+  	     // onSelect 
+   	},
    onChangeMonthYear:function(year, month, inst){
      setTimeout(function(){
        var selectedDay = parseInt($(".ui-datepicker-calendar .ui-state-active a", inst.dpDiv).text());
@@ -328,7 +312,7 @@
 						<div class="Plan_raw_food_bar_each__VYL98  protein">\${vo.protein}g</div>
 						<div class="Plan_raw_food_bar_each__VYL98  fat">\${vo.fat}g</div>
 					 	<div class="Plan_raw_food_bar_each__VYL98  foodcd Plan_raw_food_bar_ctl__bADrg">
-							<button type="button"  data-foodcd="\${vo.foodCd}" onclick="btnPlusClickHandler(this);"
+							<button type="button"  data-foodcd="\${vo.foodCd}" onclick="btnPlusClickHandler(this); "
 								class="ant-btn css-1s3dcof ant-btn-circle ant-btn-default ant-btn-icon-only Plan_raw_food_bar_icon__GUMkf foodcdval" value="\${vo.foodCd}"
 								ant-click-animating-without-extra-node="false">
 								<span role="img" aria-label="plus"
@@ -361,7 +345,6 @@
 		
 		})
 	}
-	
 
 	
 	function doAction()
@@ -382,15 +365,11 @@
  	}
 	
 	function btnPlusClickHandler(thisElement){
-			
 			var foodTime = document.getElementById("selectbox");
-			
 			var foodTimeValue = foodTime.options[foodTime.selectedIndex].value;
-			
 			var foodTimeValueConvert = "";
-			
 			var foodQuality = 1;
-		
+			
 		console.log("foodCd : " +  $(thisElement).data("foodcd"));
 		var foodcd = $(thisElement).data("foodcd");
 		foodName = $(thisElement).parent().prevAll(".foodName").text();
@@ -400,7 +379,7 @@
 		protein = $(thisElement).parent().prevAll(".protein").text();
 		fat = $(thisElement).parent().prevAll(".fat").text();
         
-	
+		
 		
 		switch (foodTimeValue) {
 		  case 'A':
@@ -434,7 +413,7 @@
 	                    <button class="quantity btn minus_btn" onclick="changeFoodQuality(-1, this);">-</button>
 	                    <button class="quantity btn plus_btn" onclick="changeFoodQuality(1, this);">+</button>
 	                </div>
-	            </div> 
+	            </div> 	
 				<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
 					칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${calorie}</span>
 				</div>
@@ -456,8 +435,9 @@
 		
 		
 		$("#wrapSelectedPlan").append(htmlVal);
+		$(thisElement).prop('disabled', true);
 		//modal 
-		
+	
 	}  // btnPlusClickHandler
 	
 	function changeFoodQuality(change,aaaa) {

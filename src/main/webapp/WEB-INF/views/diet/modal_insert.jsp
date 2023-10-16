@@ -121,14 +121,14 @@ function getSearchList(thisElement){
 					<div class="Plan_raw_food_bar_each__VYL98  protein">\${result[i].protein}</div>
 					<div class="Plan_raw_food_bar_each__VYL98  fat">\${result[i].fat}</div>
 				 	<div class="Plan_raw_food_bar_each__VYL98  foodcd Plan_raw_food_bar_ctl__bADrg">
-						<button type="button"  data-foodcd="\${result[i].foodCd}" onclick="btnPlusClickHandler(this);"
+						<button type="button"  data-foodcd="\${result[i].foodCd}" onclick="btnPlusClickHandler(this); handleButtonClick(this);"
 							class="ant-btn css-1s3dcof ant-btn-circle ant-btn-default ant-btn-icon-only Plan_raw_food_bar_icon__GUMkf foodcdval" value="\${result[i].foodCd}"
 							ant-click-animating-without-extra-node="false">
 							<span role="img" aria-label="plus"
 								class="anticon anticon-plus Plan_raw_food_bar_icon_plus__lIKKS"><svg
 									viewBox="64 64 896 896" focusable="false"	
 									data-icon="plus" width="1em" height="1em"
-									fill="currentColor" aria-hidden="true">
+									fill="currentColor" aria-hidden=	"true">
 									<defs>
 									<style></style></defs>
 									<path
