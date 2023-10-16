@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import kh.project.dml.member.model.vo.FpMemberVo;
 import kh.project.dml.memberweight.model.dao.FpMemberWeightDao;
 import kh.project.dml.memberweight.model.vo.FpMemberWeightVo;
 
@@ -23,6 +22,10 @@ public class FpMemberWeightServiceImpl implements FpMemberWeightService {
 	@Override
 	public FpMemberWeightVo selectOne(String memberId) {
 		return fpMemberWeightDao.selectOne(memberId);
+	}
+	@Override
+	public FpMemberWeightVo nowComposition(String selectDate, String memberId) {
+		return fpMemberWeightDao.nowComposition(selectDate, memberId);
 	}
 	
 	@Transactional

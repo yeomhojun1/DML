@@ -1,5 +1,6 @@
 package kh.project.dml.memberweight.model.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ public interface FpMemberWeightService {
 	
 	/* public List<FpMemberWeightVo> selectList(); */
 	public FpMemberWeightVo selectOne(String userId);
+	
+	public FpMemberWeightVo nowComposition(String selectDate, String memberId);
+	
 	// 몸무게 입력
 	public int dateWeight(FpMemberWeightVo vo, String now);
 	//몸무게 삭제

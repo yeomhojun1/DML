@@ -18,11 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 
 import kh.project.dml.common.interceptor.SessionNames;
-import kh.project.dml.member.model.service.FpMemberServiceImpl;
 import kh.project.dml.member.model.vo.FpMemberVo;
 import kh.project.dml.memberweight.model.service.FpMemberWeightServiceImpl;
 import kh.project.dml.memberweight.model.vo.FpMemberWeightVo;
-import kh.project.dml.users.model.vo.FpUsersVo;
 
 @Controller
 @RequestMapping("/memberweight")
@@ -64,12 +62,24 @@ public class FpMemberWeightController {
 	//근육량 체지방량 차트 controller
 	@GetMapping("/composition")
 	public ModelAndView mainPageOpen11(ModelAndView mv, HttpSession session) { 
+		Date now = new Date(); // 오늘 날짜
+		SimpleDateFormat dFormat = new SimpleDateFormat("yyyyMMdd");
+		String nowDate = dFormat.format(now);
 		
 		FpMemberVo vo = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
 		mv.addObject("fpMemberWeightVoListJson", new Gson().toJson(fpMemberWeightServiceImpl.selectList(vo.getMemberId())));
-
+		mv.addObject("memberComposition", fpMemberWeightServiceImpl.nowComposition(nowDate, vo.getMemberId()));
 		mv.setViewName("memberweight/composition2");
 		return mv;
+	}
+	
+	//근육량 체지방량 차트 controller
+	@PostMapping("/composition/nowdate")
+	@ResponseBody
+	public FpMemberWeightVo nowDate(@RequestParam String selectDate, ModelAndView mv, HttpSession session) { 
+		FpMemberVo vo = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
+		FpMemberWeightVo result = fpMemberWeightServiceImpl.nowComposition(selectDate, vo.getMemberId());
+		return result;
 	}
 	
 	  

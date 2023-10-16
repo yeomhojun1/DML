@@ -142,7 +142,7 @@
 														class="ant-input-affix-wrapper Track_input_basic__yj5u2 css-1s3dcof">
 														<input
 								class="ant-input css-1s3dcof Composition_input_basic2__HoLj8" name="muscleMass"
-								type="text" value="50"><span
+								type="text" value=${memberComposition.muscleMass }><span
 														class="ant-input-suffix">kg</span>
 													</span>
 												</div>
@@ -159,7 +159,7 @@
 														class="ant-input-affix-wrapper Track_input_basic__yj5u2 css-1s3dcof">
 														<input
 								class="ant-input css-1s3dcof Composition_input_basic2__HoLj8" name="bodyFatPet"
-								type="text" value="50"><span
+								type="text" value=${memberComposition.bodyFatPet }><span
 														class="ant-input-suffix">%</span>
 													</span>
 												</div>
@@ -320,7 +320,22 @@
 									/* alert(exerciseDate); */
 									selectDate= selectDate.replaceAll("-", "");
 									console.log(selectDate);
-
+									$.ajax({
+										url:"${pageContext.request.contextPath}/memberweight/composition/nowdate",
+										type: "post",
+										data : {memberId : "${member.memberId}"
+											,selectDate: selectDate
+										}
+										,success : function(result){
+											console.log("success");
+											console.log(result);
+											$("[name=muscleMass]").val(result.muscleMass);
+											$("[name=bodyFatPet]").val(result.bodyFatPet);
+										}				
+										,error : function(){
+											console.log("error");
+										}
+									})
 								}
 							});
 

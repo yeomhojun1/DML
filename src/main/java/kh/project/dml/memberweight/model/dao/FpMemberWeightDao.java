@@ -1,5 +1,6 @@
 package kh.project.dml.memberweight.model.dao;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,13 @@ public class FpMemberWeightDao {
 	}
 	public FpMemberWeightVo selectOne(String userId) {
 		return sqlSession.selectOne("memberweight.selectOne", userId);
+	}
+	
+	public FpMemberWeightVo nowComposition(String selectDate, String memberId) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("selectDate", selectDate);
+		map.put("memberId", memberId);
+		return sqlSession.selectOne("memberweight.nowComposition", map);
 	}
 	
 	public FpMemberWeightVo checkDate(FpMemberWeightVo vo) {
