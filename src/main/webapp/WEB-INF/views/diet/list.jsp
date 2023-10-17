@@ -29,7 +29,6 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 5px;
-    margin-left: 10px;
 	}
 	
 	.quantity-box button {
@@ -91,14 +90,14 @@
 				<div class="Plan_top1_value1__JkpyX">
 					<div>
 						<div>
-							<div class="Plan_top1_value1__JkpyX"> ${totalDietList.totalCal}</div>
+							<div class="Plan_top1_value1__JkpyX"> ${totalDietList.totalCal} kcal</div>
 						</div>
 					</div>
 				</div>
-				<div class="Plan_top1_kcal__wgGCD">탄수화물 : ${totalDietList.totalCrabs}</div>
-				<div class="Plan_top1_value3__USxBx">단박질 : ${totalDietList.totalProtein}</div>
-				<div class="Plan_span__XoR2b">지방 : ${totalDietList.totalFat}</div>
-				<div class="Plan_top1_value2__a0gQ9"></div>			
+				<div class="Plan_top1_kcal__wgGCD"> 탄수화물 : ${totalDietList.totalCrabs} / </div>
+				<div class="Plan_top1_kcal__wgGCD"> 단백질 : ${totalDietList.totalProtein} / </div>
+				<div class="Plan_top1_kcal__wgGCD"> 지방 : ${totalDietList.totalFat}</div>
+				<div class="Plan_top1_kcal__wgGCD"></div>			
 				</div>
 			</div>
 			</div> 
@@ -114,7 +113,7 @@
 			
 			<div class="Plan_bottom1_save____Cw1">
 					<button type="button"
-						class="ant-btn css-1s3dcof ant-btn-default Plan_bottom1_save_btn__14v5t Global_button__iJeUH save">
+						class="MyPage_basic_btn save">
 						<span>저장하기</span>
 					</button>						
 				</div>
@@ -162,8 +161,9 @@
 				<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
 					지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${item.fat * item.foodQuality}</span>
 				</div>
+				<input type="hidden" value="${foodGp }">
 				<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
-					<button type="button" onclick="btnDeleteClickHandler(this)" value="${foodGp}">삭제</button>
+					<button class="btn btn-outline-primary" type="button" onclick="btnDeleteClickHandler(this)" value="${item.foodCd}">삭제</button>
 					
 				</div>
 			</div>
@@ -171,8 +171,6 @@
 			</c:forEach> 
 			
 					</div>
-					
-					
 					
 					<div class="Plan_bottom1_food_list__gjfsu">
 						<div></div>
@@ -188,7 +186,7 @@
 						
 								<div class="Plan_bottom1_control_panel_add__F5yxB" >
 									<!-- Button trigger modal -->
-									<button type="button" id="dietinsert"  onclick="doAction()" class="ant-btn css-1s3dcof ant-btn-default Plan_bottom1_control_panel_btn__3jlBx Global_button__iJeUH" style="float: right;">
+									<button type="button" id="dietinsert"  onclick="doAction()" class="MyPage_basic_btn" style="float: right;">
 										<span>식단 추가 +</span>
 										<!-- data-bs-toggle="modal" data-bs-target="#dietInsertModal"  -->
 									</button>
@@ -400,7 +398,7 @@
 		
 		htmlVal = '';
 		htmlVal += `
-			<div class="Plan_bottom1_food_each__s9jUi" style="background-color: yellow;">	
+			<div class="Plan_bottom1_food_each__s9jUi" style="background-color: #00aeef;">	
 			 	<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH foodTime">
 				<span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodTimeValueConvert}</span>
 				</div>				
@@ -411,6 +409,8 @@
 	                <span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodQuality}</span>
 	                <div class="quantity-box">
 	                    <button class="quantity btn minus_btn" onclick="changeFoodQuality(-1, this);">-</button>
+	                </div>
+	                <div class="quantity-box">
 	                    <button class="quantity btn plus_btn" onclick="changeFoodQuality(1, this);">+</button>
 	                </div>
 	            </div> 	
@@ -426,8 +426,9 @@
 				<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
 					지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${fat}</span>
 				</div>
+				<input type="hidden" value="${foodGp }">
 				<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
-					<button type="button" onclick="btnDeleteClickHandler(this)" value=\${foodcd}>삭제</button>
+					<button class="btn btn-outline-primary" type="button" onclick="btnDeleteClickHandler(this)" value=\${foodcd}>삭제</button>
 					
 				</div>
 			</div>
@@ -488,7 +489,7 @@
 		
 	
 	function btnDeleteClickHandler(thisElement) {
-	    	var foodCdToDelete = $(thisElement).val();
+	    	var foodCdToDelete = $(thisElement).parent().prev().val();
 			console.log(foodCdToDelete);
 			if(foodCdToDelete == null){
 			}  else {
@@ -655,14 +656,14 @@
 		<div class="Plan_top1_value1__JkpyX">
 		<div>
 			<div>
-				<div class="Plan_top1_value1__JkpyX">\${data.totalCal} </div>
+				<div class="Plan_top1_value1__JkpyX">\${data.totalCal} Kcal</div>
 				</div>
 			</div>
 		</div>
-		<div class="Plan_top1_kcal__wgGCD">탄수화물 : \${data.totalCrabs}</div>
-		<div class="Plan_top1_value3__USxBx">단백질 : \${data.totalProtein}</div>
-		<div class="Plan_span__XoR2b">지방 : \${data.totalFat}</div>
-		<div class="Plan_top1_value2__a0gQ9"></div>
+		<div class="Plan_top1_kcal__wgGCD"> 탄수화물 : \${data.totalCrabs} / </div>
+		<div class="Plan_top1_kcal__wgGCD"> 단백질 : \${data.totalProtein} / </div>
+		<div class="Plan_top1_kcal__wgGCD"> 지방 : \${data.totalFat} </div>
+		<div class="Plan_top1_kcal__wgGCD"></div>
 		
 	</div>
 	`;
@@ -722,8 +723,8 @@
 			지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.fat * item.foodQuality}</span>
 		</div>
 	<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
-	<button type="button" onclick="btnDeleteClickHandler(this)" value=\${item.foodGp}>삭제</button>
-						
+	<button class="btn btn-outline-primary" type="button" onclick="btnDeleteClickHandler(this)" value=\${item.foodCd}>삭제</button>
+
 		</div>
 	</div>
 	`;

@@ -31,8 +31,9 @@ public class FpFoodDao {
 	public int update(FpFoodVo vo)  {
 		return sqlSession.update("food.update", vo);
 	}
-	public int delete(String foodCd) {
-		return sqlSession.delete("food.delete", foodCd);
+	
+	public int delete(String mealCode) {
+		return sqlSession.delete("food.delete", mealCode);
 	}
 
 }

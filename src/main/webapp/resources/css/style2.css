@@ -307,13 +307,13 @@
 .Plan_bottom1_second_bar_sub___m2EJ {
 	font-size: 14px;
 	font-weight: 900;
-	color: #c6c6c6
+	color: #4f5254;
 }
 
 .Plan_bottom1_second_bar_sub2__EP8ul {
 	font-size: 14px;
 	font-weight: 400;
-	color: #c6c6c6
+	color: #c6c6c6;
 }
 
 .Plan_bottom1_second_bar_foodcategory__Ew3pH {
@@ -374,6 +374,7 @@
 }
 
 .Plan_bottom1_food_each__s9jUi>div {
+	color: #4f5254;
 	flex: 1 1;
 	text-align: center;
 	align-self: center

@@ -120,8 +120,6 @@
      	, #{foodTime, jdbcType=VARCHAR}
      	, #{feedback, jdbcType=VARCHAR}
 	) -->
-	
-
   
 	</insert>
 	
@@ -130,7 +128,7 @@
 		where MEAL_CODE = #{mealCode}
 	</update>
 	
-	<delete id="delete" parameterType="FpDietVo">
-	delete from food where food_gp = #{foodGp}
+	<delete id="delete" parameterType="string">
+		delete from diet where meal_code = #{mealCode}
 	</delete>
 </mapper>

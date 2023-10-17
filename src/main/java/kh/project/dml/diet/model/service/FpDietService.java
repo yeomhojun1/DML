@@ -17,7 +17,9 @@ public interface FpDietService {
 
 	public int update(FpDietVo vo);
 
-	public int delete(FpDietVo FpDietVo);
+	public String mealCodeSearch(int foodGp);
+	
+	public int delete(String mealCode);
 
 	public TotalFoodListDTO totalSelectList(FpDietVo dietVo);
 

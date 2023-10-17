@@ -36,7 +36,13 @@
 		where meal_code = #{mealCode}
 	</update>
 	
+	<select id="mealCodeSearch" parameterType="_int" resultType="string">
+		select meal_code from food
+		join diet using (meal_code)
+		where food_gp = #{foodGp}
+	</select>
+	
 	<delete id="delete" parameterType="string">
-	delete from food where foodCd = #{foodCd}
+		delete from food where meal_code = #{mealCode}
 	</delete>
 </mapper>

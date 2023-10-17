@@ -234,37 +234,18 @@ public class FpDietController {
 	public String updateDoMemeber(RedirectAttributes redirectAttr, FpDietVo vo ) {
 		String viewPage = "redirect:/";
 		int result = fpDietServiceImpl.update(vo);
-		try {
-			if (result < 1) {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 실패했습니다 \n 다시 입력해주세요");
-				viewPage = "redirect:/diet/update";
-			} else {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 수정 됐습니다");
-				viewPage = "redirect:/diet/list";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		return viewPage;
 	}
 	@ResponseBody
 	@PostMapping("/delete")
 	public String deleteDoMemeber(RedirectAttributes redirectAttr, @RequestBody FpDietVo FpDietVo) {
-		int result = fpDietServiceImpl.delete(FpDietVo);
+		String mealCode = fpDietServiceImpl.mealCodeSearch(FpDietVo.getFoodGp());
+		int result = fpDietServiceImpl.delete(mealCode);
 		
 		System.out.println("======================================");
-		System.out.println("delete 컨트롤러 호출 : " + result + "foodGp : " + FpDietVo);
+		System.out.println("delete 컨트롤러 호출 : " + mealCode);
 		System.out.println("======================================");
 		
-		try {
-			if (result < 1) {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 실패했습니다 \n 다시 입력해주세요");
-			} else {
-				redirectAttr.addFlashAttribute("msg", "회원 정보 삭제 됐습니다");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		return String.valueOf(result);
 	}
 }
