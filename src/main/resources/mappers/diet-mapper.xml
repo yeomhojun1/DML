@@ -34,7 +34,7 @@
    			 AND a.food_time = #{foodTime}
 			</if>
 		   
-		   ORDER BY a.food_time 
+		   ORDER BY a.food_time asc, b.FOOD_GP desc 
 		   
 	</select>
 	

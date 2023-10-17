@@ -4,6 +4,7 @@
 
  <select id="selectList" resultType="FpFoodVo">
 		select * from food
+		order by food_time asc, food_gp desc
 	</select>
 	
 	<select id="selectOne" resultType="FpFoodVo" parameterType="string">

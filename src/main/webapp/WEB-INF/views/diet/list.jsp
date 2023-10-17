@@ -58,8 +58,8 @@
 	<div id="layoutSidenav">
 	<jsp:include page="/WEB-INF/views/frame/asidebar.jsp"></jsp:include>
 	<div id="layoutSidenav_content">
-	<main>
-		<div class="container-fluid px-4">
+	<main class="container-fluid px-4">
+		<div>
 		<div class="Menu_container">
 			<ul class="Menu_list">
 				<li style="font-weight: bold;"><a>식단 관리</a></li>
@@ -86,28 +86,27 @@
 		<div id="totalSelectedPlan">
 		<div class="totalParentPlan">
 			<div class="Plan_top1__f4K0_">
-				<div class="Plan_top1_title__wZHYO">섭취할 칼로리</div>
+				<div class="Plan_top1_title__wZHYO">총 칼로리</div>
 				<div class="Plan_top1_value1__JkpyX">
 					<div>
 						<div>
-							<div class="Plan_top1_value1__JkpyX"> ${totalDietList.totalCal} kcal</div>
+							<div class="Plan_top1_value1__JkpyX"> ${totalDietList.totalCal} Kcal</div>
 						</div>
 					</div>
 				</div>
-				<div class="Plan_top1_kcal__wgGCD"> 탄수화물 : ${totalDietList.totalCrabs} / </div>
-				<div class="Plan_top1_kcal__wgGCD"> 단백질 : ${totalDietList.totalProtein} / </div>
-				<div class="Plan_top1_kcal__wgGCD"> 지방 : ${totalDietList.totalFat}</div>
-				<div class="Plan_top1_kcal__wgGCD"></div>			
+				<div class="Plan_top1_kcal__wgGCD"> 탄수화물 : ${totalDietList.totalCrabs}g / </div>
+				<div class="Plan_top1_kcal__wgGCD"> 단백질 : ${totalDietList.totalProtein}g / </div>
+				<div class="Plan_top1_kcal__wgGCD"> 지방 : ${totalDietList.totalFat}g</div>
 				</div>
 			</div>
 			</div> 
 			<form>
-			  <select name="language" id="selectbox"" name="selectbox" onchange="chageLangSelect()">
-			    <option value="ALL">전체</option>
-			    <option value="A">아침</option>
-			    <option value="B">점심</option>
-			    <option value="C">저녁</option>
-			    <option value="Z">간식</option> 
+			  <select class="card bg-secondary text-white mb-4 card-body" name="language" id="selectbox"" name="selectbox" onchange="chageLangSelect()">
+			    <option class="card-footer d-flex align-items-center justify-content-between card-cursor" value="ALL">전체</option>
+			    <option class="card-footer d-flex align-items-center justify-content-between card-cursor" value="A">아침</option>
+			    <option class="card-footer d-flex align-items-center justify-content-between card-cursor" value="B">점심</option>
+			    <option class="card-footer d-flex align-items-center justify-content-between card-cursor" value="C">저녁</option>
+			    <option class="card-footer d-flex align-items-center justify-content-between card-cursor" value="Z">간식</option> 
 			  </select>
 			</form>
 			
@@ -124,16 +123,16 @@
 						<div class="Plan_bottom1_second_bar_food__Nea0w">음식</div>
 						<div class="Plan_bottom1_second_bar_kcal__2i7Y2">수량</div>
 						<div class="Plan_bottom1_second_bar_kcal__2i7Y2">
-							칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ"></span>
+							칼로리<br> 
 						</div>
 						<div class="Plan_bottom1_second_bar_carb__0dt0o">
-							탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ"></span>
+							탄수화물 <br> 
 						</div>
 						<div class="Plan_bottom1_second_bar_protein__BHBRu">
-							단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ"></span>
+							단백질 <br> 
 						</div>
 						<div class="Plan_bottom1_second_bar_fat__8Tyy8">
-							지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ"></span>
+							지방 <br> 
 						</div>
 						<div class="Plan_bottom1_second_bar_ctl__2Pelr">&nbsp;</div>
 					</div>
@@ -150,21 +149,20 @@
 				  수량 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">${item.foodQuality} </span>
 				</div> 
 				<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
-					칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >${item.calorie * item.foodQuality}</span>
+					칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >${item.calorie * item.foodQuality}Kcal</span>
 				</div>
 				<div class="Plan_bottom1_second_bar_carb__0dt0o carbs">
-					탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${item.crabs * item.foodQuality}</span>
+					탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${item.crabs * item.foodQuality}g</span>
 				</div>
 				<div class="Plan_bottom1_second_bar_protein__BHBRu protein">
-					단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${item.protein * item.foodQuality}</span>
+					단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${item.protein * item.foodQuality}g</span>
 				</div>
 				<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
-					지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${item.fat * item.foodQuality}</span>
+					지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${item.fat * item.foodQuality}g</span>
 				</div>
-				<input type="hidden" value="${foodGp }">
 				<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
+					<input class="foodgp" type="hidden" value=${item.foodGp }>
 					<button class="btn btn-outline-primary" type="button" onclick="btnDeleteClickHandler(this)" value="${item.foodCd}">삭제</button>
-					
 				</div>
 			</div>
 			
@@ -173,11 +171,6 @@
 					</div>
 					
 					<div class="Plan_bottom1_food_list__gjfsu">
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
 						<div class="Plan_bottom1_control_panel__rpO5n">
 							<div class="Plan_bottom1_control_panel_left__FH6wi">
 								<div class="Plan_bottom1_control_panel_left_one__J2gfw">
@@ -371,6 +364,7 @@
 		console.log("foodCd : " +  $(thisElement).data("foodcd"));
 		var foodcd = $(thisElement).data("foodcd");
 		foodName = $(thisElement).parent().prevAll(".foodName").text();
+		foodGp = $(thisElement).parent().prevAll(".foodgp").text();
 		//foodQuality = $(thisElement).parent().prevAll(".foodQuality").text();
 		calorie = $(thisElement).parent().prevAll(".calorie").text();
 		carbs = $(thisElement).parent().prevAll(".crabs").text();
@@ -426,8 +420,8 @@
 				<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
 					지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${fat}</span>
 				</div>
-				<input type="hidden" value="${foodGp }">
 				<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
+					<input class="foodgp" type="hidden" value=\${foodGp }>
 					<button class="btn btn-outline-primary" type="button" onclick="btnDeleteClickHandler(this)" value=\${foodcd}>삭제</button>
 					
 				</div>
@@ -489,11 +483,10 @@
 		
 	
 	function btnDeleteClickHandler(thisElement) {
-	    	var foodCdToDelete = $(thisElement).parent().prev().val();
+	    	var foodCdToDelete = $(thisElement).prev().val();
 			console.log(foodCdToDelete);
 			if(foodCdToDelete == null){
 			}  else {
-				
 				
 				var pattern = /^[A-Za-z]/;
 				
@@ -520,8 +513,6 @@
 		            chageLangSelect();
 		            
 			        },
-			        
-			        
 			        
 		        error: function (error) {
 		            console.log("error"); 
@@ -660,9 +651,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="Plan_top1_kcal__wgGCD"> 탄수화물 : \${data.totalCrabs} / </div>
-		<div class="Plan_top1_kcal__wgGCD"> 단백질 : \${data.totalProtein} / </div>
-		<div class="Plan_top1_kcal__wgGCD"> 지방 : \${data.totalFat} </div>
+		<div class="Plan_top1_kcal__wgGCD"> 탄수화물 : \${data.totalCrabs}g / </div>
+		<div class="Plan_top1_kcal__wgGCD"> 단백질 : \${data.totalProtein}g / </div>
+		<div class="Plan_top1_kcal__wgGCD"> 지방 : \${data.totalFat}g </div>
 		<div class="Plan_top1_kcal__wgGCD"></div>
 		
 	</div>
@@ -711,19 +702,20 @@
 		수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">\${item.foodQuality}</span>
 		</div> 
 		<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
-			칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${item.calorie * item.foodQuality}</span>
+			칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${item.calorie * item.foodQuality}Kcal</span>
 		</div>
 		<div class="Plan_bottom1_second_bar_carb__0dt0o carbs">
-			탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.crabs * item.foodQuality}</span>
+			탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.crabs * item.foodQuality}g</span>
 		</div>
 		<div class="Plan_bottom1_second_bar_protein__BHBRu protein">
-			단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.protein * item.foodQuality}</span>
+			단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.protein * item.foodQuality}g</span>
 		</div>
 		<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
-			지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.fat * item.foodQuality}</span>
+			지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.fat * item.foodQuality}g</span>
 		</div>
 	<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
-	<button class="btn btn-outline-primary" type="button" onclick="btnDeleteClickHandler(this)" value=\${item.foodCd}>삭제</button>
+		<input class="foodgp" type="hidden" value=\${item.foodGp }>
+		<button class="btn btn-outline-primary" type="button" onclick="btnDeleteClickHandler(this)" value=\${item.foodCd}>삭제</button>
 
 		</div>
 	</div>
