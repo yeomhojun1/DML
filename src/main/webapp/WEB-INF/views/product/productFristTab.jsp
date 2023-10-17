@@ -132,9 +132,9 @@
 						<div class="row col-lg-6 btn-menu menu-${vv.count }">
 							<c:forEach items="${q.fpSuplementList}" var="b" varStatus="ss">
 								<div class="col-lg-12 mb-2 btn-menu-sub">
-									<div class="card bg-secondary text-white shadow">
+									<div class="card bg-white text-dark shadow">
 										<div class="card-body">
-											<a style="color: white;" href="${b.link}">
+											<a style="color: black;" href="${b.link}">
 											${b.suplementname} </a>
 											
 										</div>
