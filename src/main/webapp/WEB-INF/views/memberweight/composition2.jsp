@@ -92,7 +92,7 @@
 					<div class="row">
 
 					    <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
+                        <div class="col-xl-6 col-lg-6">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div
@@ -186,9 +186,9 @@
 							</div>
 						</div>
 					</div>
+				<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 			</main>
 		</div>
-			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 	</div>
 	<script src="${pageContext.request.contextPath }/resources/resources1/js/Chart.min.js"></script>
 	<script
