@@ -67,8 +67,6 @@
 							</ul>
 						</div>
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
-				</div>
-				<div>
 				<table class="table table-hover" width="100%" >
 						<thead class="table-blue" style="background-color: lavender;">
 						<tr>

@@ -164,16 +164,15 @@
 													</span>
 												</div>
 
-											<div style="margin-top: 20px;">* 이미 값이 존재하는 경우, 새 값으로
-												갱신됩니다.</div>
+											<div class="my-4">* 이미 값이 존재하는 경우, 새 값으로 갱신됩니다.</div>
 										</div>
 											<input type="hidden" name="memberId" value="${member.memberId }" >
 										<div>
-											<button type="button" class="weightDate">
+											<button type="button" class="weightDate btn btn-outline-primary">
 												<span>저장하기</span>
 											</button>
-											<button type="button" style="margin-top: 20px;" class="deleteComposition">
-												<span>삭제</span>
+											<button type="button" class="deleteComposition btn btn-outline-primary">
+												<span>선택한 날짜의 데이터 삭제</span>
 											</button>
 											
 										</div>

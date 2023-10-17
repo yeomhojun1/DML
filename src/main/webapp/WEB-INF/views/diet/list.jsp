@@ -69,20 +69,9 @@
 		<div class="DateBars_date_bar__QeCa3" >
 		<div id = "myDiv" class="DateBars_date__DyX0X"><%String Date = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());%>
 				<%=Date%></div>
-		<div class="DateBars_date_selector__ajXTR"></div>
-						
-							
-		<div class="DateBars_date_picker__GCWt1">
-		<div class="DateBars_date_picker_wrapper__8Axpy">
-		<div
-		class="ant-picker ant-picker-borderless css-1s3dcof DateBars_date_bar_calendar__XIcjP"
-		style="margin-right: 13px; margin-top: 4px;">
-		<div class="ant-picker-input">
-		<input readonly="" placeholder="Select date" title="" size="12" autocomplete="off" value=""><span
-		class="ant-picker-suffix"></span><div class="ant-image css-1s3dcof" style="width: 31px; height: 27px;"> </div>
-		</div>
+		<div class="ant-picker ant-picker-borderless css-1s3dcof DateBars_date_bar_calendar__XIcjP mx-4">
 		<input type="text" id="datepicker">
-		</div></div></div></div></div>
+		</div></div></div>
 		<div id="totalSelectedPlan">
 		<div class="totalParentPlan">
 			<div class="Plan_top1__f4K0_">
@@ -101,7 +90,7 @@
 			</div>
 			</div> 
 			<form>
-			  <select class="card bg-secondary text-white mb-4 card-body" name="language" id="selectbox"" name="selectbox" onchange="chageLangSelect()">
+			  <select class="card bg-secondary text-white my-4 card-body" name="language" id="selectbox"" name="selectbox" onchange="chageLangSelect()">
 			    <option class="card-footer d-flex align-items-center justify-content-between card-cursor" value="ALL">전체</option>
 			    <option class="card-footer d-flex align-items-center justify-content-between card-cursor" value="A">아침</option>
 			    <option class="card-footer d-flex align-items-center justify-content-between card-cursor" value="B">점심</option>
@@ -279,7 +268,7 @@
    }
  });
 /*  $('#datepicker').datepicker('setDate', new Date()); */
- $('#datepicker').datepicker('setDate', today);
+$('#datepicker').datepicker('setDate', today);
 });
 	</script>
 	
