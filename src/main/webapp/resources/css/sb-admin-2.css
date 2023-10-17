@@ -91,7 +91,8 @@
 
 /* 난이도 버튼 메뉴 */
 .beginner div button,
-.export div button {
+.export div button,
+.headpage-btn div button {
 	border: 0;
 	background-color: #4f5254;
 	color: #fafeff;
@@ -6468,7 +6469,10 @@ button.bg-secondary:focus {
 }
 
 .bg-success {
-  background-color: #1cc88a !important;
+  --bs-bg-opacity: 1;
+  /* background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important; */
+  background-color: #fafeff !important;
+  color: #4f5254 !important;
 }
 
 a.bg-success:hover, a.bg-success:focus,

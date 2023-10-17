@@ -4,19 +4,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
 	<main id="tab2">
-		<div class="container-fluid px-4">
+		<div>
 			<!-- Begin Page Content -->
-			<div class="container-fluid">
+			<div class="row">
 
 				<!-- Page Heading -->
-				<div
-					class="d-sm-flex align-items-center justify-content-between mb-4">
-					<button class="h3 mb-0 text-gray-800 card h-100 py-2 btn1_title tabmenu " data-tabmenu="1">보충제</button>
-					<button class="h3 mb-0 text-gray-800 card h-100 py-2 btn2_title tabmenu active" data-tabmenu="2">닭가슴살</button>
+				<div class="col-xl-3 col-md-6 headpage-btn">
+						<div class="h4 card bg-secondary my-4">
+							<button class="btn1_title tabmenu card-body card-cursor active" data-tabmenu="1">보충제</button>
+						</div>
+					</div>
+					<div class="col-xl-3 col-md-6 headpage-btn">
+						<div class="h4 card bg-secondary my-4">
+							<button class="btn2_title tabmenu card-body card-cursor" data-tabmenu="2">닭가슴살</button>
+						</div>
+					</div>
 					
-					<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="${pageContext.request.contextPath }/calendar"><i
-						class="fas fa-download fa-sm text-white-50"></i>calendar</a>
-				</div>
+					<div class="col-xl-3 col-md-6">
+						<div class="card bg-success text-black my-4">
+							<a class="card-body" href="${pageContext.request.contextPath }/calendar">
+								<i class="fas fa-download fa-sm text-white-10"></i>calendar</a>
+						</div>
+					</div>
 
 				<!-- Content Row -->
 				<div class="row">
@@ -43,10 +52,8 @@
 								</div>
 							</c:forEach>
 							</div>
-								
 						</div>  
-
-					</div> 
+					</div>
 
 					<div class="col-lg-3 mb-4">
 
@@ -327,8 +334,8 @@
 								<div class="card-header py-2 ">
 									<h4 class="m-0 font-weight-bold text-primary">해당 링크를 통해 구매시 DML에게 도움이 됩니다.</h4>
 								</div>
-								
-
+						</div>	
+					</div>
 				</div>
 			</div> <!-- End of Page Content -->
 

@@ -2,18 +2,26 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<main id="tab1">
-				<div class="container-fluid px-4">
-					<!-- Begin Page Content -->
-				<div class="container-fluid">
-
+		<div>
+			<!-- Begin Page Content -->
+			<div class="row">
 					<!-- Page Heading -->
-					<div
-						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<button class="h3 mb-0 text-gray-800 card h-100 py-2 btn1_title tabmenu active" data-tabmenu="1">보충제</button>
-						<button class="h3 mb-0 text-gray-800 card h-100 py-2 btn2_title tabmenu" data-tabmenu="2">닭가슴살</button>
-						
-						<a class="d-none d-sm-inline-block btn btn-sm btn-white shadow-sm" href="${pageContext.request.contextPath }/calendar"><i
-							class="fas fa-download fa-sm text-white-10"></i>calendar</a>
+					<div class="col-xl-3 col-md-6 headpage-btn">
+						<div class="h4 card bg-secondary text-white my-4">
+							<button class="btn1_title tabmenu card-body card-cursor active" data-tabmenu="1">보충제</button>
+						</div>
+					</div>
+					<div class="col-xl-3 col-md-6 headpage-btn">
+						<div class="h4 card bg-secondary text-white my-4">
+							<button class="btn2_title tabmenu card-body card-cursor" data-tabmenu="2">닭가슴살</button>
+						</div>
+					</div>
+					
+					<div class="col-xl-3 col-md-6">
+						<div class="card bg-success text-black my-4">
+							<a class="card-body" href="${pageContext.request.contextPath }/calendar">
+								<i class="fas fa-download fa-sm text-white-10"></i>calendar</a>
+						</div>
 					</div>
 
 					<!-- Content Row -->
@@ -54,7 +62,6 @@
 										<div class="col mr-2">
 											 <button class="h5 mb-0 font-weight-bold text-gray-800 card-body" onClick="location.href='https://www.myprotein.co.kr/'">단백질보충제 & 건강보조식품</button>
 										</div>
-										
 									</div>
 								</div>
 							</div>
