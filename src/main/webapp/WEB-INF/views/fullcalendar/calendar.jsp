@@ -323,7 +323,7 @@
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
 					
 						<div>   <!-- 일정추가버튼 눌렀을시 일정추가 -->
-						<button type="button" class="btn btn-primary"
+						<button type="button" class="btn btn-primary my-4"
 							data-bs-toggle="modal" data-bs-target="#insertPlan">
 							일정추가</button>
 						<div class="modal fade" id="insertPlan">
@@ -373,7 +373,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
 					<div class="modal fade" id="listPlan"> <!--날짜를 클릭했을떄 나오는 모달창  -->
 						<!-- 	tabindex="-1"
 						aria-labelledby="exampleModalLabel" aria-hidden="true" -->
@@ -407,7 +406,7 @@
 					</div>
 					
 					<div id='calendar'></div> <!-- 캘린더 불러오는 코드 -->
-					
+				</div>
 					<!-- 모달창 -->
 
 					<div class="modal fade" id="updatePlan"> <!--수정페이지 모달창  -->

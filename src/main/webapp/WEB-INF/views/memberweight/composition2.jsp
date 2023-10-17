@@ -92,7 +92,7 @@
 					<div class="row">
 
 					    <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
+                        <div class="col-xl-6 col-lg-6">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div
@@ -164,16 +164,15 @@
 													</span>
 												</div>
 
-											<div style="margin-top: 20px;">* 이미 값이 존재하는 경우, 새 값으로
-												갱신됩니다.</div>
+											<div class="my-4">* 이미 값이 존재하는 경우, 새 값으로 갱신됩니다.</div>
 										</div>
 											<input type="hidden" name="memberId" value="${member.memberId }" >
 										<div>
-											<button type="button" class="weightDate">
+											<button type="button" class="weightDate btn btn-outline-primary">
 												<span>저장하기</span>
 											</button>
-											<button type="button" style="margin-top: 20px;" class="deleteComposition">
-												<span>삭제</span>
+											<button type="button" class="deleteComposition btn btn-outline-primary">
+												<span>선택한 날짜의 데이터 삭제</span>
 											</button>
 											
 										</div>
@@ -186,10 +185,9 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 			</main>
 		</div>
-			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 	</div>
 	<script src="${pageContext.request.contextPath }/resources/resources1/js/Chart.min.js"></script>
 	<script
@@ -211,8 +209,11 @@
         const fpMemberWeightVoList = JSON.parse(fpMemberWeightVoListJson);
         for (var i=0; i<fpMemberWeightVoList.length; i++){
         	dates.push(fpMemberWeightVoList[i].weightDate);
-        	musclemass.push(fpMemberWeightVoList[i].muscleMass);
-        	bodyfatpet.push(fpMemberWeightVoList[i].bodyFatPet);
+        	// musclemass에서 null을 0으로 대체
+            musclemass.push(fpMemberWeightVoList[i].muscleMass || 0);
+
+            // bodyfatpet에서 null을 0으로 대체
+            bodyfatpet.push(fpMemberWeightVoList[i].bodyFatPet || 0);
         }
         
         // 캔버스 요소 가져오기
@@ -240,11 +241,15 @@
             },
             options: {
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                    },
-                },
-            },
+                    yAxes: [{
+                    	ticks: {
+                    		max: 100,
+                            min: 0,
+                            stepSize: 10
+                        }
+                    }]
+                }
+            }
         });
      
       //delete

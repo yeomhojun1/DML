@@ -37,7 +37,7 @@
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 .map_wrap {position:relative;width:100%;height:500px;}
-#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+#menu_wrap {top:0;left:0;bottom:0;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
 .bg_white {background:#fff;}
 #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
 #menu_wrap .option{text-align: center;}
@@ -94,30 +94,29 @@
 							</ul>
 						</div>
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
-					<div class="row"></div>
-				</div>
-				<div id="map" style="width: 500px; height: 400px;">
-					<!-- 지도 -->
-				</div>
-				<div class="map_wrap">
-					<div id="map"
-						style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
-
-					<div id="menu_wrap" class="bg_white">
-						<div class="option">
-							<div>
-								<form onsubmit="searchPlaces(); return false;">
-									<!-- 키워드 :  --> <input type="text" value="역삼역 헬스장" id="keyword" size="15">
-									<button type="submit">검색하기</button>
-								</form>
+					<div class="row">
+						<div class="map_wrap" style="display: flex;">
+							<div id="map" style="width: 500px; height: 400px;">
+								<!-- 지도 -->
+							</div>
+							<div id="menu_wrap" class="bg_white">
+								<div class="option">
+									<form onsubmit="searchPlaces(); return false;">
+										<!-- 키워드 :  -->
+										<input type="text" value="역삼역 헬스장" id="keyword" size="15">
+										<button type="submit">검색하기</button>
+									</form>
+								</div>
+								<hr>
+								<ul id="placesList"></ul>
+								<div id="pagination"></div>
 							</div>
 						</div>
-						<hr>
-						<ul id="placesList"></ul>
-						<div id="pagination"></div>
 					</div>
 				</div>
-
+			</main>
+		</div>
+	</div>
 				<script type="text/javascript"
 					src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0e24c012eccac57d7c64e5ed57b4c869"></script>
 				<!-- API 서비스키 등록 -->

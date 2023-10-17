@@ -42,8 +42,12 @@ public class FpDietDao {
 	public int update(FpDietVo vo) {
 		return sqlSession.update("diet.update", vo);
 	}
+	
+	public String mealCodeSearch(int foodGp) {
+		return sqlSession.selectOne("food.mealCodeSearch", foodGp);
+	}
 
-	public int delete(FpDietVo FpDietVo) {
-		return sqlSession.delete("diet.delete", FpDietVo);
+	public int delete(String mealCode) {
+		return sqlSession.delete("diet.delete", mealCode);
 	}
 }

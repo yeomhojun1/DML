@@ -76,10 +76,7 @@ public class FpFoodServiceImpl implements FpFoodService  {
 				}
 				
 			} else {				
-				
 				int check =	fpDietDao.update(vo);
-				
-			
 				
 				if(check > 0) 
 				{

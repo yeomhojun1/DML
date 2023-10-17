@@ -11,28 +11,52 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Daily Muscle Life | 제품 추천</title>
-<link rel="icon" type="image/x-icon" href="${pagecontext.request.contextPath }/resources/assets/favicon.ico" />
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+<link rel="icon" type="image/x-icon"
+	href="${pagecontext.request.contextPath }/resources/assets/favicon.ico" />
+<link
+	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
+	rel="stylesheet" />
 <!-- 템플릿의 기본 css -->
-<link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/styles.css"
+	rel="stylesheet" />
 <!-- 템플릿의 상세내용의 css -->
-<link href="${pageContext.request.contextPath}/css/scss.css" rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/mypage.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/scss.css"
+	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/mypage.css"
+	rel="stylesheet" />
 <!-- JQuery 사용 -->
-<script	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
+<script
+	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
 <!-- 템플릿 아이콘 사용 -->
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"	crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+	crossorigin="anonymous"></script>
 <!-- 템플릿에서 메뉴 클릭 시 서브메뉴 출력 -->
-<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<link href="${pageContext.request.contextPath}/resources/css/product.css" rel="stylesheet" />
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+	crossorigin="anonymous"></script>
+<link
+	href="${pageContext.request.contextPath}/resources/css/product.css"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link href="css/sb-admin-2.css" rel="stylesheet">
 <style>
-	.ranktable { margin-top : 10px; border : 1px solid #fff; padding: 5px; }
-	.rankth { text-align : center; }
-	.rankth, .ranktd { border : 1px solid #fff; padding: 5px; }
+.ranktable {
+	margin-top: 10px;
+	border: 1px solid #fff;
+	padding: 5px;
+}
+
+.rankth {
+	text-align: center;
+}
+
+.rankth, .ranktd {
+	border: 1px solid #fff;
+	padding: 5px;
+}
 </style>
 </head>
 <body class="sb-nav-fixed">
@@ -40,26 +64,27 @@
 	<div id="layoutSidenav">
 
 		<jsp:include page="/WEB-INF/views/frame/asidebar.jsp"></jsp:include>
-		
+
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
 					<div class="Menu_container">
-							<ul class="Menu_list">
-								<li style="font-weight: bold;"><a>제품 추천</a></li>
-							</ul>
-						</div>
+						<ul class="Menu_list">
+							<li style="font-weight: bold;"><a>제품 추천</a></li>
+						</ul>
+					</div>
 					<jsp:include page="/WEB-INF/views/frame/menu.jsp"></jsp:include>
-						<!-- 우리가 여기에 추가해야함 -->
-						<jsp:include page="/WEB-INF/views/product/productFristTab.jsp"></jsp:include>
-						<jsp:include page="/WEB-INF/views/product/productSecondTab.jsp"></jsp:include>
+					<!-- 우리가 여기에 추가해야함 -->
+					<jsp:include page="/WEB-INF/views/product/productFristTab.jsp"></jsp:include>
+					<jsp:include page="/WEB-INF/views/product/productSecondTab.jsp"></jsp:include>
 				</div>
 			</main>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
+
 		</div>
 		<!-- End of Page Wrapper  layoutSidenav_content -->
 	</div>
-	
+
 	<!-- Bootstrap core JavaScript-->
 	<!-- <script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
@@ -93,14 +118,14 @@
 			$('.menu-7').addClass('active');
 			$('.menu-comment').removeClass('active');
 		});
-		
+
 		$('.btn-sub1').click(function() {
 			$('.btn-menu').removeClass('active');
 			$('.btn-sub').addClass('active');
 			$('.menu-1').addClass('active');
 			$('.menu-comment').removeClass('active');
 			$('.comment1').addClass('active');
-			
+
 		});
 		$('.btn-sub2').click(function() {
 			$('.btn-menu').removeClass('active');
@@ -109,7 +134,7 @@
 			$('.menu-comment').removeClass('active');
 			$('.comment2').addClass('active');
 		});
-		
+
 		$('.btn-sub3').click(function() {
 			$('.btn-menu').removeClass('active');
 			$('.btn-sub').addClass('active');
@@ -182,18 +207,17 @@
 		});
 	</script>
 	<script>
-		$(".tabmenu").click(function(){
+		$(".tabmenu").click(function() {
 			console.log($(this).data("tabmenu"));
 			tabmenuDisplay($(this).data("tabmenu"));
 		});
 
-		const initTab = '${tab}';  //  controller에서 model . tab에 실어준 값  
-		tabmenuDisplay(initTab);  // 페이지 로딩되면 controller에서 정해준 tabmenu가 보이도록 함
-		
-		
-		function tabmenuDisplay(tabmenu){
+		const initTab = '${tab}'; //  controller에서 model . tab에 실어준 값  
+		tabmenuDisplay(initTab); // 페이지 로딩되면 controller에서 정해준 tabmenu가 보이도록 함
+
+		function tabmenuDisplay(tabmenu) {
 			console.log(tabmenu);
-			if(tabmenu == '1'){
+			if (tabmenu == '1') {
 				$("#tab1").show();
 				$("#tab2").hide();
 			} else {

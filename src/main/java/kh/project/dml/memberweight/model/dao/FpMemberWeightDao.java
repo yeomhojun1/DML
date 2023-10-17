@@ -23,17 +23,7 @@ public class FpMemberWeightDao {
 	public FpMemberWeightVo selectOne(String userId) {
 		return sqlSession.selectOne("memberweight.selectOne", userId);
 	}
-	
-	//근육량 체지방량 입력시 화면구현
-	public FpMemberWeightVo nowComposition(String selectDate, String memberId) {
-		Map<String, Object> map = new HashMap<>();
-		map.put("selectDate", selectDate);
-		map.put("memberId", memberId);
-		return sqlSession.selectOne("memberweight.nowComposition", map);
-	}
-	
-	
-	
+
 	//날짜 몸무게 입력시 화면구현
 	public FpMemberWeightVo nowWeight(String selectDate, String memberId) {
 		Map<String, Object> map = new HashMap<>();
@@ -42,6 +32,13 @@ public class FpMemberWeightDao {
 		return sqlSession.selectOne("memberweight.nowWeight", map);
 	}
 	
+	//근육량 체지방량 입력시 화면구현
+	public FpMemberWeightVo nowComposition(String selectDate, String memberId) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("selectDate", selectDate);
+		map.put("memberId", memberId);
+		return sqlSession.selectOne("memberweight.nowComposition", map);
+	}
 	
 	public FpMemberWeightVo checkDate(FpMemberWeightVo vo) {
 		return sqlSession.selectOne("memberweight.checkDate", vo);

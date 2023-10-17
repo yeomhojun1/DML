@@ -92,7 +92,7 @@
 					<div class="row">
 
 					    <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
+                        <div class="col-xl-6 col-lg-6">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div
@@ -145,16 +145,15 @@
 													</span>
 												</div>
 											</div>
-											<div style="margin-top: 20px;">* 이미 값이 존재하는 경우, 새 값으로
-												갱신됩니다.</div>
+											<div class="my-4">* 이미 값이 존재하는 경우, 새 값으로 갱신됩니다.</div>
 										</div>
 											<input type="hidden" name="memberId" value="${member.memberId }" >
 										<div>
-											<button type="button" class="weightDate">
+											<button type="button" class="weightDate btn btn-outline-primary">
 
 												<span>저장하기</span>
 											</button>
-											<button type="button" style="margin-top: 20px;" class="deleteWeight">
+											<button type="button" class="deleteWeight btn btn-outline-primary">
 												<span>선택한 날짜의 데이터 삭제</span>
 											</button>
 											
@@ -168,10 +167,9 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 			</main>
 		</div>
-			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 	</div>
 	<script src="${pageContext.request.contextPath }/resources/resources1/js/Chart.min.js"></script>
 	<script
@@ -181,34 +179,7 @@
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
 
-<%-- <script src="${pageContext.request.contextPath }/resources/resources1/js/chart-area-demo.js"></script> --%>
-<!-- <script>
-  const ctx = document.getElementById('myAreaChart');
-
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['${member.weight}', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# 날짜별 몸무게',
-        data: ['${member.weight}'],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script> -->
-
-
-
     <script>
-
         // 날짜 데이터 배열
         const dates = [];
         // 몸무게 데이터 배열
@@ -218,7 +189,7 @@
         const fpMemberWeightVoList = JSON.parse(fpMemberWeightVoListJson);
         for (var i=0; i<fpMemberWeightVoList.length; i++){
         	dates.push(fpMemberWeightVoList[i].weightDate);
-        	weights.push(fpMemberWeightVoList[i].weight);
+        	weights.push(fpMemberWeightVoList[i].weight || 0);
         }
         
         
@@ -240,18 +211,17 @@
             },
             options: {
                 scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+                    yAxes: [{
+                    	ticks: {
+                            min: 0,
+                            stepSize: 10
+                        }
+                    }]
                 }
             }
         });
     </script>
   
-
-
-
-
 	<script>
 		$(function() {
 			//input을 datepicker로 선언
