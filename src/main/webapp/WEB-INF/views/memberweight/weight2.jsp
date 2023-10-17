@@ -168,7 +168,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
 			</main>
 		</div>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
@@ -181,34 +180,7 @@
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
 
-<%-- <script src="${pageContext.request.contextPath }/resources/resources1/js/chart-area-demo.js"></script> --%>
-<!-- <script>
-  const ctx = document.getElementById('myAreaChart');
-
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['${member.weight}', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# 날짜별 몸무게',
-        data: ['${member.weight}'],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script> -->
-
-
-
     <script>
-
         // 날짜 데이터 배열
         const dates = [];
         // 몸무게 데이터 배열
@@ -218,7 +190,7 @@
         const fpMemberWeightVoList = JSON.parse(fpMemberWeightVoListJson);
         for (var i=0; i<fpMemberWeightVoList.length; i++){
         	dates.push(fpMemberWeightVoList[i].weightDate);
-        	weights.push(fpMemberWeightVoList[i].weight);
+        	weights.push(fpMemberWeightVoList[i].weight || 0);
         }
         
         
@@ -240,18 +212,17 @@
             },
             options: {
                 scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+                    yAxes: [{
+                    	ticks: {
+                            min: 0,
+                            stepSize: 10
+                        }
+                    }]
                 }
             }
         });
     </script>
   
-
-
-
-
 	<script>
 		$(function() {
 			//input을 datepicker로 선언

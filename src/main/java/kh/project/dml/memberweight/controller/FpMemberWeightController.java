@@ -38,13 +38,13 @@ public class FpMemberWeightController {
 		
 		FpMemberVo vo = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
 		mv.addObject("fpMemberWeightVoListJson", new Gson().toJson(fpMemberWeightServiceImpl.selectList(vo.getMemberId())));
-		mv.addObject("memberComposition", fpMemberWeightServiceImpl.nowWeight(nowDate, vo.getMemberId()));
+		mv.addObject("memberWeight", fpMemberWeightServiceImpl.nowWeight(nowDate, vo.getMemberId()));
 		mv.setViewName("memberweight/weight2");
 		return mv;
 	}
 	
 	//체중관리 입력시 화면구현 controller
-	@GetMapping("/weight/nowDate")
+	@PostMapping("/weight/nowDate")
 	@ResponseBody
 	public FpMemberWeightVo mainPageOpen17(@RequestParam String selectDate, ModelAndView mv, HttpSession session) {
 		FpMemberVo vo = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);

@@ -186,7 +186,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
 			</main>
 		</div>
 			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
@@ -211,8 +210,11 @@
         const fpMemberWeightVoList = JSON.parse(fpMemberWeightVoListJson);
         for (var i=0; i<fpMemberWeightVoList.length; i++){
         	dates.push(fpMemberWeightVoList[i].weightDate);
-        	musclemass.push(fpMemberWeightVoList[i].muscleMass);
-        	bodyfatpet.push(fpMemberWeightVoList[i].bodyFatPet);
+        	// musclemass에서 null을 0으로 대체
+            musclemass.push(fpMemberWeightVoList[i].muscleMass || 0);
+
+            // bodyfatpet에서 null을 0으로 대체
+            bodyfatpet.push(fpMemberWeightVoList[i].bodyFatPet || 0);
         }
         
         // 캔버스 요소 가져오기
@@ -240,11 +242,15 @@
             },
             options: {
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                    },
-                },
-            },
+                    yAxes: [{
+                    	ticks: {
+                    		max: 100,
+                            min: 0,
+                            stepSize: 10
+                        }
+                    }]
+                }
+            }
         });
      
       //delete
