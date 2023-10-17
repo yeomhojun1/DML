@@ -75,7 +75,7 @@
 							</div>
 							<div>
 								내용 :
-								<textarea rows="10" cols="20" name="boardContent" id="editor1"></textarea>
+								<textarea rows="20" cols="20" name="boardContent" id="editor1"></textarea>
 							</div>
 							<input type="submit" value="저장">
 					</div>

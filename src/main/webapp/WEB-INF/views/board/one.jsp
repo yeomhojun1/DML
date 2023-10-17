@@ -162,17 +162,16 @@
 		        	   $(".updatereply").click(updatereplyHandler);
 		        	   $(".insertreplyreply").click(insertreplyreplyHandler);
 		        	   $(".moreReply").click(moreReplyHandler);
-						/* if(${boardone.selectReplyNo}!=0){	
+						 if(${boardone.selectReplyNo}!=0){	
 						//	$(".forPlusRequtation").remove();
 							var firstReply = document.getElementsByClassName('firstReply');
 		 					for (var i = 0; i < firstReply.length; i++){
 					 			if($(firstReply[i]).data("replyno")==${boardone.selectReplyNo}){
 									firstReply[i].classList.add('text-bg-warning');
-									var forBadge = `<span class="badge rounded-pill bg-primary">Primary</span>`;
-									firstReply[i].append(forBadge);
+									
 								}   
 							} 
-						} */
+						} 
 					}, //success
 					error : (request, status, error) => {
 						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -245,7 +244,7 @@
 	    		   		$(eTarget).parents(".replyCard").find(".forAppendArea").append(htmlVal);
 					 }
         		      }  
-					 
+					
 		        },  // success,
 				error : function () {
 		        	  console.log("error");
@@ -321,6 +320,7 @@
 		    	   		$(".addreply").html("");
 		    			$(".updatereply").click(updatereplyHandler);
 		    			$(".insertreplyreply").click(insertreplyreplyHandler);
+		    			 location.reload(true);
 		    	   },
 				error : function (){
 					 console.log("error");
@@ -420,12 +420,13 @@
 			       data: {memberId:"${member.memberId}",  replyContent : replyreplyContent, boardNo:${boardone.boardNo},rref : $(this).parents(".replyCard").data("replyno") },
 			       success: function (result) {
 			    	   console.log("success");
-			    	   location.reload(true);
+			    	  
 			    	   },
 					error : function (){
 						 console.log("error");
 						},dataType:"json"
 				});
+		  location.reload(true);
 		}
 	</script>
 </body>
