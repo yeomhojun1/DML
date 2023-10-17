@@ -10,6 +10,8 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ 
+ /*!!!!!!!!!!!!!!!!!!!!!!!!!!제품추천 css 입니다!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 :root {
   --blue: #4e73df;
   --indigo: #6610f2;
@@ -71,7 +73,7 @@
 }
 
 .beginner, .export {
-	height: 500px;
+	/*height: 500px;*/
 }
 
 /* 보충제, 닭가슴살 */
