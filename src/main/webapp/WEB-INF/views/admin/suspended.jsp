@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Daily Muscle Life | 회원 관리 페이지</title>
+<title>Daily Muscle Life | 정지 멤버 관리 페이지</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
 	rel="stylesheet" />
@@ -85,27 +85,27 @@
 					<jsp:include page="./frame/adminmenu.jsp"></jsp:include>
 					<table>
 						<tr>
-							<th>리스트번호</th>
-							<th>아이디</th>
-							<th>이름</th>
-							<th>생년월일</th>
-							<th>성별</th>
-							<th>키</th>
-							<th>몸무게</th>
-							<th>활성화유무</th>
-							<th>권한</th>
-							<th>정지해제</th>
+							<th class="bg-secondary">리스트번호</th>
+							<th class="bg-secondary">아이디</th>
+							<th class="bg-secondary">이름</th>
+							<th class="bg-secondary">생년월일</th>
+							<th class="bg-secondary">성별</th>
+							<th class="bg-secondary">키</th>
+							<th class="bg-secondary">몸무게</th>
+							<th class="bg-secondary">활성화유무</th>
+							<th class="bg-secondary">권한</th>
+							<th class="bg-secondary">정지해제</th>
 						</tr>
 						<c:forEach items="${memberlist }" var="member">
 						<tr>
-							<td><c:out value="${member.rownum + ((pageMaker.cri.pageNum-1) * 10)}"/></td>
-							<td><c:out value="${member.memberId}"/></td>
-							<td><c:out value="${member.mname}"/></td>
-							<td><c:out value="${member.mbirthday}"/></td>
-							<td><c:out value="${member.gender}"/></td>
-							<td><c:out value="${member.height}"/></td>
-							<td><c:out value="${member.weight}"/></td>
-							<td>
+							<td class="bg-success"><c:out value="${member.rownum + ((pageMaker.cri.pageNum-1) * 10)}"/></td>
+							<td class="bg-success"><c:out value="${member.memberId}"/></td>
+							<td class="bg-success"><c:out value="${member.mname}"/></td>
+							<td class="bg-success"><c:out value="${member.mbirthday}"/></td>
+							<td class="bg-success"><c:out value="${member.gender}"/></td>
+							<td class="bg-success"><c:out value="${member.height}"/></td>
+							<td class="bg-success"><c:out value="${member.weight}"/></td>
+							<td class="bg-success">
 								<c:choose>
 									<c:when test="${member.userEnabled == 1}">
 										활성화
@@ -115,8 +115,8 @@
 									</c:when>
 								</c:choose>
 							</td>
-							<td><c:out value="${member.authorities}"/></td>
-							<td><button class="suspended_btn" value="${member.memberId}">
+							<td class="bg-success"><c:out value="${member.authorities}"/></td>
+							<td class="bg-success"><button class="suspended_btn btn btn-outline-primary" value="${member.memberId}">
 									정지해제</button></td>
 						</tr>	
 						</c:forEach>
@@ -130,7 +130,7 @@
 									<c:out value="${pageMaker.cri.type eq 'N'?'selected':'' }"/>>이름</option>
 							</select> 
 							<input type="text" name="keyword" class="searchInput" value="${pageMaker.cri.keyword }">
-							<button>Search</button>
+							<button class="btn btn-outline-primary">Search</button>
 						</div>
 					</div>
 					<div class="pageInfo_wrap">

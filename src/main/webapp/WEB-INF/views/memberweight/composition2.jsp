@@ -188,8 +188,8 @@
 					</div>
 				</div>
 			</main>
-			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 		</div>
+			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 	</div>
 	<script src="${pageContext.request.contextPath }/resources/resources1/js/Chart.min.js"></script>
 	<script
