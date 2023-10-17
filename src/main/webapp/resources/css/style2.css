@@ -847,7 +847,7 @@
 }
 
 .Plan_modal_food_bar_search__8h6t_ button {
-	background-color: #f6f6f6 !important;
+	background-color: #00aeef !important;
 	height: 60px !important;
 	width: 200px;
 	font-size: 18px !important;
@@ -872,7 +872,7 @@
 .Plan_modal_food_bar__ikK6Q {
 	display: flex;
 	flex-direction: row;
-	background-color: #99d3e9;
+	background-color: #4f5254;
 	padding: 10px 30px 10px 10px;
 	border-radius: 30px;
 	margin-bottom: 20px;
@@ -1012,7 +1012,7 @@
 }
 
 .Plan_modal_food_close_btn__QsNOd {
-	background-color: #e6e6e6;
+	background-color: #00aeef;
 	color: #000 !important;
 	border: 1px solid #e6e6e6 !important;
 	height: 45px !important;
