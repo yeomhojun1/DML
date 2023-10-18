@@ -20,7 +20,7 @@
 					<div class="col-xl-3 col-md-6">
 						<div class="card bg-success text-black my-4">
 							<a class="card-body" href="${pageContext.request.contextPath }/calendar">
-								<i class="fas fa-download fa-sm text-white-10"></i>calendar</a>
+								<i class="fas  fa-sm text-white-10"></i>calendar</a>
 						</div>
 					</div>
 
