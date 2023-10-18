@@ -767,6 +767,7 @@
 	font-weight: 700
 }
 
+
 .Plan_modal_food_container__cGtDo:has(>.Plan_ant-modal-content__5V4l2) {
 	padding: 0 !important
 }
@@ -825,13 +826,18 @@
 	font-size: 18px;
 	font-weight: 900;
 	line-height: 1.67;
-	letter-spacing: normal
+	letter-spacing: normal;
+	border: none;
+
+	
 }
 
 .Plan_modal_food_bar_search__8h6t_ input {
 	margin: 12px 0 12px 30px;
 	height: 40px;
 	width: 700px;
+	border: none;
+	outline: none;
 	
 	
 	
@@ -990,7 +996,7 @@
 	align-self: center;
 	justify-content: center;
 	display: flex;
-	float: right;
+	
 	
 }
 

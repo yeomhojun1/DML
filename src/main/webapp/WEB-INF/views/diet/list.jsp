@@ -702,7 +702,7 @@ $('#datepicker').datepicker('setDate', today);
 		<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
 			지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.fat * item.foodQuality}g</span>
 		</div>
-	<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
+		<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
 		<input class="foodgp" type="hidden" value=\${item.foodGp }>
 		<button class="btn btn-outline-primary" type="button" onclick="btnDeleteClickHandler(this)" value=\${item.foodCd}>삭제</button>
 
