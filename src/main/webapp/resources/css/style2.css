@@ -742,11 +742,10 @@
 }
 
 .Plan_modal_food_tab_each__3kNM_ {
-	width: 50%;
-	height: 80px;
-	line-height: 70px;
+	width: 30%;
+	height: 100%;
+	line-height: 60px;
 	text-align: center;
-	background-color: #e6e6e6;
 	align-self: center
 }
 
@@ -864,7 +863,9 @@
 .Plan_modal_food_bar_search__8h6t_ button,
 	.Plan_modal_food_bar_search__8h6t_ button:hover {
 	color: #000 !important;
-	border: 1px solid #f6f6f6 !important
+	border: 1px solid #f6f6f6 !important;
+	float: right;
+	
 }
 
 .Plan_bottom1_second_bar_each__cBwag {

@@ -18,7 +18,7 @@
 								style="width: 1000px; height: 837.28px;">
 								<div class="Plan_modal_food_tabs_bar__JHpPi">
 								<div class="Plan_modal_food_tab_each__3kNM_ Plan_modal_food_tab_selected__q_wCV">
-								 <button type="button" class="DietText" disabled>식품</button>
+								<div class="DietText" style="pointer-events: none;">식품</div>
 								</div>
 
 								</div>
@@ -156,14 +156,12 @@ $("[name=keyword]").on('keydown', function(event) {
 
 <style>
 .DietText {
-  background-color: #00aeef; /* 배경색 설정 */
+  background-color: skyblue; /* 배경색 설정 */
   color: #666; /* 텍스트 색상 설정 */
-  border: none; /* 테두리 없애기 */
+  border: 1px solid #00aeef; /* 테두리 없애기 */
   padding: 10px 20px; /* 여백 설정 */
-  cursor: not-allowed; /* 커서 모양 변경 (비활성 상태에서는 클릭되지 않음을 나타내기 위해) */
+
 }
-.DietText:hover {
-  /* 아무 스타일도 설정하지 않음 */
-}
+
 </style>
 
