@@ -366,7 +366,7 @@
 				,success : function(result){
 					console.log("success");
 					if(result == 0 ){
-						alert("sjflksdjflksjdfl");	
+						alert("경고");	
 					} else {
 					  location.href="${pageContext.request.contextPath}/memberweight/composition";
 					}

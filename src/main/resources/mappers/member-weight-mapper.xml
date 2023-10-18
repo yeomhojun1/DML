@@ -40,18 +40,18 @@
 		WHERE member_id=#{memberId} and weight_date=replace(#{weightDate}, '-', '')
 	</select>
 	
-	<!--체중입력  -->
+	<!-- 체중입력  -->
 	<insert id="insertWeight" parameterType="FpMemberWeightVo">
 		insert into member_weight (WEIGHT_DATE,MEMBER_ID, WEIGHT) values 
     	( #{weightDate} , #{memberId}, #{weight})
 	</insert>
-	
+	<!-- 날짜값에 대한 체중입력 -->
 	<update id="updateWeight" parameterType="FpMemberWeightVo">
 		UPDATE MEMBER_WEIGHT 
 		SET WEIGHT=#{weight}
 		WHERE member_id=#{memberId} and weight_date=#{weightDate}
 	</update>
-	
+	<!--체중삭제  -->
 	<update id="updateWeightMember" parameterType="FpMemberWeightVo">
 		UPDATE MEMBER SET WEIGHT=#{weight}
 		WHERE member_id=#{memberId}
