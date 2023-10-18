@@ -261,10 +261,6 @@
 							<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
 								지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.fat}</span>
 							</div>
-							<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
-								<button type="button" onclick="btnDeleteClickHandler(this)" value=\${item.foodGp}>삭제</button>
-								
-							</div>
 						</div>
 					`;
 					
