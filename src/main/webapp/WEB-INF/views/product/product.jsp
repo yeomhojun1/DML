@@ -77,9 +77,9 @@
 					<!-- 우리가 여기에 추가해야함 -->
 					<jsp:include page="/WEB-INF/views/product/productFristTab.jsp"></jsp:include>
 					<jsp:include page="/WEB-INF/views/product/productSecondTab.jsp"></jsp:include>
+				<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 				</div>
 			</main>
-			<jsp:include page="/WEB-INF/views/frame/footer.jsp"></jsp:include>
 
 		</div>
 		<!-- End of Page Wrapper  layoutSidenav_content -->
