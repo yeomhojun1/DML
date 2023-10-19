@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import kh.project.dml.common.auth.SnsLogin;
@@ -224,15 +225,36 @@ public class FpMemberController {
 		return "/member/signup";
 	}
 	
+	// 회원가입 ID 체크
+	@PostMapping("/member/signup/checkId")
+	@ResponseBody
+	public int signupCheckId(String username) {
+		int result = 0;
+		if(username.equals("")) {
+			return result;
+		}
+		String checkId = service.checkId(username);
+		System.out.println(checkId);
+		if(checkId == null) {
+			result = 1;
+			return result;
+		} else {
+			result = 2;
+			return result;
+		}
+	}
+	
 	// 회원가입 페이지에서 회원가입 버튼 클릭
 	@PostMapping("/member/signup")
-    public String signup(@Valid UserCreateForm userCreateForm, BindingResult bindingResult, HttpSession session, LoginVo vo) {
+    public String signup(@Valid UserCreateForm userCreateForm, BindingResult bindingResult, HttpSession session, LoginVo vo, Model model) {
 		if(bindingResult.hasErrors()) {
+			model.addAttribute("signupResult", "모든 항목에 내용이 입력되어야 합니다.");
             return "/member/signup";
         }
-
+		
         if(!userCreateForm.getPassword().equals(userCreateForm.getPassword2())) {
             bindingResult.rejectValue("password2", "passwordInCorrect", "2개의 비밀번호가 일치하지 않습니다.");
+            model.addAttribute("signupResult", "2개의 비밀번호가 일치하지 않습니다.");
             return "/member/signup";
         }
         try {

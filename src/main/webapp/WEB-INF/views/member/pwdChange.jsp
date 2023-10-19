@@ -29,11 +29,6 @@
 <script	src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 <link href="${pageContext.request.contextPath}/css/mypage.css" rel="stylesheet" />
 <style>
-	.ranktable { margin-top : 10px; border : 1px solid #fff; padding: 5px; }
-	.rankth { text-align : center; }
-	.rankth, .ranktd { border : 1px solid #fff; padding: 5px; }
-</style>
-<style>
 	.btn-outline-primary {
 		margin-top:10px;
 	}

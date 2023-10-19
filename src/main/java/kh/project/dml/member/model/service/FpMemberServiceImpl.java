@@ -114,7 +114,7 @@ public class FpMemberServiceImpl implements FpMemberService {
         return user;
     }
     
-    // 중복 아이디 체크(미사용)
+    // 중복 아이디 체크
     @Override
     public String checkId(String memberId) {
     	return dao.checkId(memberId);

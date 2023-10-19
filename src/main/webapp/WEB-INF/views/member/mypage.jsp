@@ -22,11 +22,6 @@
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"	crossorigin="anonymous"></script>
 <!-- 템플릿에서 메뉴 클릭 시 서브메뉴 출력 -->
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<style>
-	.ranktable { margin-top : 10px; border : 1px solid #fff; padding: 5px; }
-	.rankth { text-align : center; }
-	.rankth, .ranktd { border : 1px solid #fff; padding: 5px; }
-</style>
 </head>
 <body class="sb-nav-fixed">
 	<jsp:include page="/WEB-INF/views/frame/nav.jsp"></jsp:include>
