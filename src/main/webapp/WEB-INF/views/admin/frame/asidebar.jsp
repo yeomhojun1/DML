@@ -50,7 +50,7 @@
 								<a class="nav-link" href="${pageContext.request.contextPath }/notice/list">
 								공지사항</a> 
 								<a class="nav-link" href="${pageContext.request.contextPath }/board/list">
-								이벤트</a>
+								질문/답변</a>
 							</nav>
 						</div>
 					</div>

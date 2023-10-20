@@ -368,30 +368,58 @@ $('#datepicker').datepicker('setDate', today);
         
 		
 		
-	switch (foodTimeValue) {
-	  case 'A':
-		  foodTimeValueConvert = "아침"
-	    break;
-	  case 'B':
-		  foodTimeValueConvert = "점심"
-		break;
-	  case 'C':
-		  foodTimeValueConvert = "저녁"
-	    break;
-	  case 'Z':
-		  foodTimeValueConvert = "간식"
-	    break;	  
-	  default:
-		  foodTimeValueConvert = "전체"
-	}
-	
-	htmlVal = '';
-	htmlVal += `
-		<div class="Plan_bottom1_food_each__s9jUi" style="background-color: #00aeef;">	
-		 	<div class="Meal category foodTime">
-			<span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodTimeValueConvert}</span>
-			</div>				
-			<div class="Food1">\${foodName}
+		switch (foodTimeValue) {
+		  case 'A':
+			  foodTimeValueConvert = "아침"
+		    break;
+		  case 'B':
+			  foodTimeValueConvert = "점심"
+			break;
+		  case 'C':
+			  foodTimeValueConvert = "저녁"
+		    break;
+		  case 'Z':
+			  foodTimeValueConvert = "간식"
+		    break;	  
+		  default:
+			  foodTimeValueConvert = "전체"
+		}
+		
+		htmlVal = '';
+		htmlVal += `
+			<div class="Plan_bottom1_food_each__s9jUi" style="background-color: #00aeef;">	
+			 	<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH foodTime">
+				<span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodTimeValueConvert}</span>
+				</div>				
+				<div class="Plan_bottom1_second_bar_food__Nea0w">\${foodName}
+				</div>
+			    <div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
+	                수량<br>
+	                <span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodQuality}</span>
+	                <div class="quantity-box">
+	                    <button class="quantity btn minus_btn" onclick="changeFoodQuality(-1, this);">-</button>
+	                </div>
+	                <div class="quantity-box">
+	                    <button class="quantity btn plus_btn" onclick="changeFoodQuality(1, this);">+</button>
+	                </div>
+	            </div> 	
+				<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
+					칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${calorie}</span>
+				</div>
+				<div class="Plan_bottom1_second_bar_carb__0dt0o carbs">
+					탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${carbs}</span>
+				</div>
+				<div class="Plan_bottom1_second_bar_protein__BHBRu protein">
+					단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${protein}</span>
+				</div>
+				<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
+					지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${fat}</span>
+				</div>
+				<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
+					<input class="foodgp" type="hidden" value=\${foodGp }>
+					<button class="btn btn-outline-primary" type="button" onclick="btnPlusDeleteClickHandler(this)" value=\${foodcd}>삭제</button>
+					
+				</div>
 			</div>
 		    <div class="Quantity1">
                 수량<br>
@@ -491,6 +519,16 @@ $('#datepicker').datepicker('setDate', today);
 		
 	var pattern = /^[A-Za-z]/;
 		
+	function btnPlusDeleteClickHandler(thisElement) {
+    	var foodCdToDelete = $(thisElement).val();
+		console.log(foodCdToDelete);
+		if(foodCdToDelete == null){
+		}  else {
+			var pattern = /^[A-Za-z]/;
+			
+			$(thisElement).closest(".Plan_bottom1_food_each__s9jUi").remove();
+		}
+	}
 	
 	let objfinal = {foodGp : foodCdToDelete };
 	
