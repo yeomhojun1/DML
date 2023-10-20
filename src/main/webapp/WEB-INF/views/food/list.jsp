@@ -216,20 +216,20 @@
 							</div>
 						</div>
 					</div>
-					<div class="Plan_top1__f4K0_">
-						<div class="Plan_top1_title__wZHYO">섭취할 칼로리</div>
-						<div class="Plan_top1_value1__JkpyX">
+					<div class="Total_Result">
+						<div class="TotalCalorie">섭취할 칼로리</div>
+						<div class="Kcal">
 							<div>
 								<div>
-									<div class="Plan_top1_value1__JkpyX"></div>
+									<div class="Kcal"></div>
 								</div>
 							</div>
 						</div>
-						<div class="Plan_top1_kcal__wgGCD">Kcal</div>
+						<div class="Nutrients">Kcal</div>
 						<div class="Plan_top1_value3__USxBx"></div>
 						<div class="Plan_span__XoR2b"></div>
 						<div class="Plan_top1_value2__a0gQ9"></div>
-						<div class="Plan_top1_kcal__wgGCD">필요</div>
+						<div class="Nutrients">필요</div>
 					</div>
 					<div class="Plan_bottom1_title_bar__g02PR">
 						<div class="Plan_bottom1_item__L4ece">
@@ -269,7 +269,7 @@
 								</button>
 							</div>
 						</div>
-						<div class="Plan_bottom1_save____Cw1">
+						<div class="Save1">
 							<button type="button"
 								class="ant-btn css-1s3dcof ant-btn-default Plan_bottom1_save_btn__14v5t Global_button__iJeUH save">
 								<span>저장하기</span>
@@ -277,24 +277,24 @@
 						</div>
 					</div>
 					
-					<div id="wrapSelectedPlan">
-					<div class="Plan_bottom1_second_bar___Z7S8">
-						<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH">식사구분</div>
-						<div class="Plan_bottom1_second_bar_food__Nea0w">음식</div>
+					<div id="DietMenu">
+					<div class="DietFoodList">
+						<div class="Meal category">식사구분</div>
+						<div class="Food1">음식</div>
 
 						<div class="Plan_bottom1_second_bar_kcal__2i7Y2">
 							칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ"></span>
 						</div>
-						<div class="Plan_bottom1_second_bar_carb__0dt0o">
+						<div class="Carb1">
 							탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ"></span>
 						</div>
-						<div class="Plan_bottom1_second_bar_protein__BHBRu">
+						<div class="Protein1">
 							단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ"></span>
 						</div>
-						<div class="Plan_bottom1_second_bar_fat__8Tyy8">
+						<div class="fat1">
 							지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ"></span>
 						</div>
-						<div class="Plan_bottom1_second_bar_ctl__2Pelr">&nbsp;</div>
+						<div class="FOODCD">&nbsp;</div>
 					</div>
 					</div>
 
@@ -311,7 +311,7 @@
 								</div>
 							</div>
 						
-								<div class="Plan_bottom1_control_panel_add__F5yxB" >
+								<div class="DietButton" >
 									<!-- Button trigger modal -->
 									<button type="button" id="dietinsert"  data-bs-toggle="modal" data-bs-target="#dietInsertModal" class="ant-btn css-1s3dcof ant-btn-default Plan_bottom1_control_panel_btn__3jlBx Global_button__iJeUH" style="float: right;">
 										<span>식단 추가 +</span>
@@ -469,33 +469,33 @@
 						htmlVal = '';
 					htmlVal += `
 						<div class="Plan_bottom1_food_each__s9jUi">
-							<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH foodTime">
+							<div class="Meal category foodTime">
 							<span class="Plan_bottom1_second_bar_sub___m2EJ ">아침</span>
 							</div>
-							<div class="Plan_bottom1_second_bar_food__Nea0w">\${foodName}
+							<div class="Food1">\${foodName}
 							</div>
-							<div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
+							<div class="Quantity1">
 							수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">20</span>
 							</div>
-							<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
+							<div class="Calorie1">
 								칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${calorie}</span>
 							</div>
-							<div class="Plan_bottom1_second_bar_carb__0dt0o carbs">
+							<div class="Carb1">
 								탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${carbs}</span>
 							</div>
-							<div class="Plan_bottom1_second_bar_protein__BHBRu protein">
+							<div class="Protein1">
 								단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${protein}</span>
 							</div>
-							<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
+							<div class="fat1">
 								지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${fat}</span>
 							</div>
-							<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
+							<div class="FOODCD foodcd">
 								<button type="button" onclick="btnDeleteClickHandler(this)" data-foodcd="\${foodcd}" data-mealid="TODO">삭제</button>
 							</div>
 						</div>
 					`;
 		
-		$("#wrapSelectedPlan").append(htmlVal);
+		$("#DietMenu").append(htmlVal);
 		//modal ekdfdsfdsf
 	}
 	function btnDeleteClickHandler(thisElement){
@@ -504,7 +504,7 @@
 		// TODO :ajax : food table delete
 		
 		
-		$(thisElement).closest(".Plan_bottom1_second_bar___Z7S8").remove();
+		$(thisElement).closest(".DietFoodList").remove();
 	}
 
 		
@@ -523,15 +523,15 @@
 		Array.from(document.querySelectorAll(".Plan_bottom1_food_each__s9jUi")).map(function(eachElement){
 			console.log(eachElement);
 			console.log($(eachElement));
-			console.log($(eachElement).children(".foodQuality").children("span").text());
+			console.log($(eachElement).children(".foodQuantity").children("span").text());
 			console.log($(eachElement).children(".foodcd").children("button").data("foodcd"));
-			var quality = $(eachElement).children(".foodQuality").children("span").text();
+			var quality = $(eachElement).children(".foodQuantity").children("span").text();
 			var cd =$(eachElement).children(".foodcd").children("button").data("foodcd");
 			var foodTime =$(eachElement).children(".foodTime").children("span").text();
 
 			var obj2= {};
 			obj2.foodCd = cd;
-			obj2.foodQuality =quality;	
+			obj2.foodQuantity =quality;	
 			obj2.foodTime = foodTime;  // Service에서 조합할 예정 mealCode
 			arr1.push(obj2);
 		});
@@ -542,7 +542,7 @@
 		objfinal.memberId = memberId;
 	
 	//private String foodCd;
-	//private int foodQuality;
+	//private int foodQuantity;
 	//private String mealCode;
 	
 	

@@ -66,9 +66,9 @@ foodDate=2023-09-21,
 foodTime=null, 
 feedback=null, 
 foodlist=[
-	FpFoodVo(foodCd=D00009, foodQuality=20, foodTime=아침, mealCode=null), 
-	FpFoodVo(foodCd=D00008, foodQuality=20, foodTime=아침, mealCode=null), 
-	FpFoodVo(foodCd=D00011, foodQuality=20, foodTime=아침, mealCode=null)]
+	FpFoodVo(foodCd=D00009, foodQuantity=20, foodTime=아침, mealCode=null), 
+	FpFoodVo(foodCd=D00008, foodQuantity=20, foodTime=아침, mealCode=null), 
+	FpFoodVo(foodCd=D00011, foodQuantity=20, foodTime=아침, mealCode=null)]
 )
  */
 
@@ -79,9 +79,9 @@ foodlist=[
 /*
 {
 mealCode=, 
-foodlist=[{foodCd=D00008, foodQuality=20, foodTime=아침}, 
-		{foodCd=D00010, foodQuality=20, foodTime=아침}, 
-		{foodCd=D00009, foodQuality=20, foodTime=아침}], 
+foodlist=[{foodCd=D00008, foodQuantity=20, foodTime=아침}, 
+		{foodCd=D00010, foodQuantity=20, foodTime=아침}, 
+		{foodCd=D00009, foodQuantity=20, foodTime=아침}], 
 foodDate=2023-09-21, 
 memberId=77@77.77
 }

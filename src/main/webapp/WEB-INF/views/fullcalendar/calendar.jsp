@@ -213,7 +213,7 @@
 			
 			function renderData(data)
 			{
-				var planBarDiv = document.querySelector('.Plan_bottom1_second_bar___Z7S8');
+				var planBarDiv = document.querySelector('.DietFoodList');
 				var foodTimeValueConvert = '';
 				htmlVal = "";
 				
@@ -242,24 +242,24 @@
 			    	
 					htmlVal += `
 						<div class="Plan_bottom1_food_each__s9jUi">	
-						 	<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH foodTime">
+						 	<div class="Meal category foodTime">
 							<span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodTimeValueConvert}</span>
 							</div>				
-							<div class="Plan_bottom1_second_bar_food__Nea0w">\${item.foodName}
+							<div class="Food1">\${item.foodName}
 							</div>
-							 <div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
-							수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">\${item.foodQuality}</span>
+							 <div class="Quantity1">
+							수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">\${item.foodQuantity}</span>
 							</div> 
-							<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
+							<div class="Calorie1">
 								칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${item.calorie}</span>
 							</div>
-							<div class="Plan_bottom1_second_bar_carb__0dt0o carbs">
+							<div class="Carb1">
 								탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.crabs}</span>
 							</div>
-							<div class="Plan_bottom1_second_bar_protein__BHBRu protein">
+							<div class="Protein1">
 								단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.protein}</span>
 							</div>
-							<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
+							<div class="fat1">
 								지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.fat}</span>
 							</div>
 						</div>

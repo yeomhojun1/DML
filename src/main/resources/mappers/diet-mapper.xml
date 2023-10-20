@@ -13,7 +13,7 @@
 		     , b.FOOD_GP
 		     , b.food_cd
 		     , b.meal_code
-		     , b.food_quality
+		     , b.FOOD_QUANTITY
 		     , c.food_name
 		     , c.calorie
 		     , c.crabs
@@ -27,24 +27,19 @@
 		   AND b.food_cd = c.food_cd
 		   AND a.member_id = #{memberId}
 		   AND a.food_Date = #{foodDate}
-		  
 		   ]]>
-		   
 		   <if test="foodTime != null and foodTime != '' and foodTime != 'ALL'">
    			 AND a.food_time = #{foodTime}
 			</if>
-		   
 		   ORDER BY a.food_time asc, b.FOOD_GP desc 
-		   
 	</select>
 	
 	<select id = "totalSelectList" parameterType="FpDietVo" resultType="TotalFoodListDTO">
 	   SELECT 
-         
-	        sum(c.calorie*b.food_quality) as total_cal
-	      , sum(c.crabs*b.food_quality) as total_crabs
-	      , sum(c.protein*b.food_quality) as total_protein
-	      , sum(fat*b.food_quality) as total_fat
+	        sum(c.calorie*b.food_quantity) as total_cal
+	      , sum(c.crabs*b.food_quantity) as total_crabs
+	      , sum(c.protein*b.food_quantity) as total_protein
+	      , sum(fat*b.food_quantity) as total_fat
        FROM 
 	        diet a
 	      , FOOD b
@@ -53,15 +48,10 @@
 	    AND b.food_cd = c.food_cd
 	    AND a.member_id = #{memberId}
 	    AND a.food_Date = #{foodDate}
-	   
-	
-      
        <if test="foodTime != null and foodTime != '' and foodTime != 'ALL'">
    	   AND a.food_time = #{foodTime}
-   	   
    	   GROUP BY a.food_time
 	   </if>
-	   
       </select>
 
 	

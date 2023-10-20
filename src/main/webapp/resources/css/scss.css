@@ -142,7 +142,7 @@
 	margin-right: 30px
 }
 
-.Plan_top1__f4K0_ {
+.Total_Result {
 	background-color: #0dcaf0 !important;
 	border-radius: 20px;
 	padding: 10px 20px;
@@ -169,31 +169,31 @@
 	margin-top: 100px
 }
 
-.Plan_top1_title__wZHYO {
+.TotalCalorie {
 	font-size: 26px;
 	font-weight: 900;
 	color: #000;
 	align-self: center
 }
 
-.Plan_top1_value1__JkpyX  {
+.Kcal  {
 	font-family: Gotham Black;
 	font-size: 56px;
 	color: #98d3e9
 }
 
-.Plan_top1_value1__JkpyX , .Plan_top1_value2__a0gQ9 {
+.Kcal , .Plan_top1_value2__a0gQ9 {
 	align-self: center;
 	margin-left: 30px;
 	margin-right: 20px
 }
 
-.Plan_top1_kcal__wgGCD, .Plan_top1_value2__a0gQ9 {
+.Nutrients, .Plan_top1_value2__a0gQ9 {
 	font-size: 26px;
 	color: #000
 }
 
-.Plan_top1_kcal__wgGCD {
+.Nutrients {
 	align-self: center
 }
 
@@ -242,7 +242,7 @@
 	height: auto
 }
 
-.Plan_bottom1_save____Cw1 {
+.Save1 {
 	flex: 1 1;
 	font-family: Noto Sans KR Regular;
 	font-size: 18px;
@@ -286,7 +286,7 @@
 	align-self: center
 }
 
-.Plan_bottom1_second_bar___Z7S8 {
+.DietFoodList {
 	display: flex;
 	flex-direction: row;
 	background-color: #f6f6f6;
@@ -294,7 +294,7 @@
 	border-radius: 20px
 }
 
-.Plan_bottom1_second_bar___Z7S8>div {
+.DietFoodList>div {
 	font-size: 18px;
 	font-weight: 900;
 	color: #000;
@@ -315,24 +315,24 @@
 	color: #c6c6c6
 }
 
-.Plan_bottom1_second_bar_foodcategory__Ew3pH {
+.Meal category {
 	flex: 1.5 1 !important;
 	margin-left: 0
 }
 
-.Plan_bottom1_second_bar_food__Nea0w {
+.Food1 {
 	flex: 6 1 !important
 }
 
-.Plan_bottom1_second_bar_carb__0dt0o,
-	.Plan_bottom1_second_bar_fat__8Tyy8,
+.Carb1,
+	.fat1,
 	.Plan_bottom1_second_bar_gram__NKenc,
 	.Plan_bottom1_second_bar_kcal__2i7Y2,
-	.Plan_bottom1_second_bar_protein__BHBRu {
+	.Protein1 {
 	flex: 1 1
 }
 
-.Plan_bottom1_second_bar_ctl__2Pelr {
+.FOODCD {
 	min-width: 80px;
 	max-width: 80px;
 	width: 80px

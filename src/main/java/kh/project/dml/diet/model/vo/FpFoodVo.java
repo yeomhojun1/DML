@@ -6,7 +6,7 @@ import lombok.Data;
 public class FpFoodVo {
 
 	private String foodCd;
-	private int foodQuality;
+	private int foodQuantity;
 	private String foodTime; 
 	private String mealCode;  // Service에서 조합할 예정 mealCode
 	

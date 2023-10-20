@@ -74,18 +74,18 @@
 		</div></div></div>
 		<div id="totalSelectedPlan">
 		<div class="totalParentPlan">
-			<div class="Plan_top1__f4K0_">
-				<div class="Plan_top1_title__wZHYO">총 칼로리</div>
-				<div class="Plan_top1_value1__JkpyX">
+			<div class="Total_Result">
+				<div class="TotalCalorie">총 칼로리</div>
+				<div class="Kcal">
 					<div>
 						<div>
-							<div class="Plan_top1_value1__JkpyX"> ${totalDietList.totalCal} Kcal</div>
+							<div class="Kcal"> ${totalDietList.totalCal} Kcal</div>
 						</div>
 					</div>
 				</div>
-				<div class="Plan_top1_kcal__wgGCD"> 탄수화물 : ${totalDietList.totalCrabs}g / </div>
-				<div class="Plan_top1_kcal__wgGCD"> 단백질 : ${totalDietList.totalProtein}g / </div>
-				<div class="Plan_top1_kcal__wgGCD"> 지방 : ${totalDietList.totalFat}g</div>
+				<div class="Nutrients"> 탄수화물 : ${totalDietList.totalCrabs}g / </div>
+				<div class="Nutrients"> 단백질 : ${totalDietList.totalProtein}g / </div>
+				<div class="Nutrients"> 지방 : ${totalDietList.totalFat}g</div>
 				</div>
 			</div>
 			</div> 
@@ -99,28 +99,28 @@
 			  </select>
 			</form>
 			
-			<div class="Plan_bottom1_save____Cw1">
+			<div class="Save1">
 					<button type="button"
 						class="MyPage_basic_btn save">
 						<span>저장하기</span>
 					</button>						
 				</div>
 					
-					<div id="wrapSelectedPlan">
-					<div class="Plan_bottom1_second_bar___Z7S8">
-						<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH">식사구분</div>
-						<div class="Plan_bottom1_second_bar_food__Nea0w">음식</div>
-						<div class="Plan_bottom1_second_bar_kcal__2i7Y2">수량</div>
-						<div class="Plan_bottom1_second_bar_kcal__2i7Y2">
+					<div id="DietMenu">
+					<div class="DietFoodList">
+						<div class="Meal category">식사구분</div>
+						<div class="Food1">음식</div>
+						<div class="Quantity1">수량</div>
+						<div class="Calorie1">
 							칼로리<br> 
 						</div>
-						<div class="Plan_bottom1_second_bar_carb__0dt0o">
+						<div class="Carb1">
 							탄수화물 <br> 
 						</div>
-						<div class="Plan_bottom1_second_bar_protein__BHBRu">
+						<div class="Protein1">
 							단백질 <br> 
 						</div>
-						<div class="Plan_bottom1_second_bar_fat__8Tyy8">
+						<div class="fat1">
 							지방 <br> 
 						</div>
 						<div class="Plan_bottom1_second_bar_ctl__2Pelr">&nbsp;</div>
@@ -128,28 +128,28 @@
 					
 				 <c:forEach items="${dietList}" var="item"  varStatus="vs">	
 				 
-			<div class="Plan_bottom1_food_each__s9jUi">	
-			 	<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH foodTime">
+				<div class="Plan_bottom1_food_each__s9jUi">	
+			 	<div class="Meal category foodTime">
 				<span class="Plan_bottom1_second_bar_sub___m2EJ ">${item.foodTime}</span>
 				</div>				
-				<div class="Plan_bottom1_second_bar_food__Nea0w">${item.foodName}
+				<div class="Food1">${item.foodName}
 				</div>
-				 <div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
-				  수량 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">${item.foodQuality} </span>
+				 <div class="Quantity1">
+				  수량 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">${item.foodQuantity} </span>
 				</div> 
-				<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
-					칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >${item.calorie * item.foodQuality}Kcal</span>
+				<div class="Calorie1">
+					칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >${item.calorie * item.foodQuantity}Kcal</span>
 				</div>
-				<div class="Plan_bottom1_second_bar_carb__0dt0o carbs">
-					탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${item.crabs * item.foodQuality}g</span>
+				<div class="Carb1">
+					탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${item.crabs * item.foodQuantity}g</span>
 				</div>
-				<div class="Plan_bottom1_second_bar_protein__BHBRu protein">
-					단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${item.protein * item.foodQuality}g</span>
+				<div class="Protein1">
+					단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${item.protein * item.foodQuantity}g</span>
 				</div>
-				<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
-					지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${item.fat * item.foodQuality}g</span>
+				<div class="fat1">
+					지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">${item.fat * item.foodQuantity}g</span>
 				</div>
-				<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
+				<div class="FoodCd1">
 					<input class="foodgp" type="hidden" value=${item.foodGp }>
 					<button class="btn btn-outline-primary" type="button" onclick="btnDeleteClickHandler(this)" value="${item.foodCd}">삭제</button>
 				</div>
@@ -166,7 +166,7 @@
 								</div>
 							</div>
 						
-								<div class="Plan_bottom1_control_panel_add__F5yxB" >
+								<div class="DietButton" >
 									<!-- Button trigger modal -->
 									<button type="button" id="dietinsert"  onclick="doAction()" class="MyPage_basic_btn" style="float: right;">
 										<span>식단 추가 +</span>
@@ -336,7 +336,6 @@ $('#datepicker').datepicker('setDate', today);
 		if("ALL" == foodTimeValue)
 		{
 			alert("식사 구분으로 전체를 선택 할 수 없습니다.");
-			
 		
 		}
 		else{
@@ -345,170 +344,176 @@ $('#datepicker').datepicker('setDate', today);
  	}
 	
 	function btnPlusClickHandler(thisElement){
-			var foodTime = document.getElementById("selectbox");
-			var foodTimeValue = foodTime.options[foodTime.selectedIndex].value;
-			var foodTimeValueConvert = "";
-			var foodQuality = 1;
+	var foodTime = document.getElementById("selectbox");
+	var foodTimeValue = foodTime.options[foodTime.selectedIndex].value;
+	var foodTimeValueConvert = "";
+	var foodQuantity = 1;
 			
-		console.log("foodCd : " +  $(thisElement).data("foodcd"));
-		var foodcd = $(thisElement).data("foodcd");
-		foodName = $(thisElement).parent().prevAll(".foodName").text();
-		foodGp = $(thisElement).parent().prevAll(".foodgp").text();
-		//foodQuality = $(thisElement).parent().prevAll(".foodQuality").text();
-		calorie = $(thisElement).parent().prevAll(".calorie").text();
-		carbs = $(thisElement).parent().prevAll(".crabs").text();
-		protein = $(thisElement).parent().prevAll(".protein").text();
-		fat = $(thisElement).parent().prevAll(".fat").text();
+	console.log("foodCd : " +  $(thisElement).data("foodcd"));
+	var foodcd = $(thisElement).data("foodcd");
+	foodName = $(thisElement).parent().prevAll(".foodName").text();
+	foodGp = $(thisElement).parent().prevAll(".foodgp").text();
+	//foodQuantity = $(thisElement).parent().prevAll(".foodQuantity").text();
+	calorie = $(thisElement).parent().prevAll(".calorie").text();
+	carbs = $(thisElement).parent().prevAll(".crabs").text();
+	protein = $(thisElement).parent().prevAll(".protein").text();
+	fat = $(thisElement).parent().prevAll(".fat").text();
         
 		
 		
-		switch (foodTimeValue) {
-		  case 'A':
-			  foodTimeValueConvert = "아침"
-		    break;
-		  case 'B':
-			  foodTimeValueConvert = "점심"
-			break;
-		  case 'C':
-			  foodTimeValueConvert = "저녁"
-		    break;
-		  case 'Z':
-			  foodTimeValueConvert = "간식"
-		    break;	  
-		  default:
-			  foodTimeValueConvert = "전체"
-		}
-		
-		htmlVal = '';
-		htmlVal += `
-			<div class="Plan_bottom1_food_each__s9jUi" style="background-color: #00aeef;">	
-			 	<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH foodTime">
-				<span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodTimeValueConvert}</span>
-				</div>				
-				<div class="Plan_bottom1_second_bar_food__Nea0w">\${foodName}
-				</div>
-			    <div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
-	                수량<br>
-	                <span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodQuality}</span>
-	                <div class="quantity-box">
-	                    <button class="quantity btn minus_btn" onclick="changeFoodQuality(-1, this);">-</button>
-	                </div>
-	                <div class="quantity-box">
-	                    <button class="quantity btn plus_btn" onclick="changeFoodQuality(1, this);">+</button>
-	                </div>
-	            </div> 	
-				<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
-					칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${calorie}</span>
-				</div>
-				<div class="Plan_bottom1_second_bar_carb__0dt0o carbs">
-					탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${carbs}</span>
-				</div>
-				<div class="Plan_bottom1_second_bar_protein__BHBRu protein">
-					단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${protein}</span>
-				</div>
-				<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
-					지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${fat}</span>
-				</div>
-				<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
-					<input class="foodgp" type="hidden" value=\${foodGp }>
-					<button class="btn btn-outline-primary" type="button" onclick="btnDeleteClickHandler(this)" value=\${foodcd}>삭제</button>
-					
-				</div>
+	switch (foodTimeValue) {
+	  case 'A':
+		  foodTimeValueConvert = "아침"
+	    break;
+	  case 'B':
+		  foodTimeValueConvert = "점심"
+		break;
+	  case 'C':
+		  foodTimeValueConvert = "저녁"
+	    break;
+	  case 'Z':
+		  foodTimeValueConvert = "간식"
+	    break;	  
+	  default:
+		  foodTimeValueConvert = "전체"
+	}
+	
+	htmlVal = '';
+	htmlVal += `
+		<div class="Plan_bottom1_food_each__s9jUi" style="background-color: #00aeef;">	
+		 	<div class="Meal category foodTime">
+			<span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodTimeValueConvert}</span>
+			</div>				
+			<div class="Food1">\${foodName}
 			</div>
-		`;
-		
-		
-		$("#wrapSelectedPlan").append(htmlVal);
-		$(thisElement).prop('disabled', true);
-		//modal 
+		    <div class="Quantity1">
+                수량<br>
+                <span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodQuantity}</span>
+                <div class="quantity-box">
+                    <button class="quantity btn minus_btn" onclick="changeFoodQuantity(-1, this);">-</button>
+                </div>
+                <div class="quantity-box">
+                    <button class="quantity btn plus_btn" onclick="changeFoodQuantity(1, this);">+</button>
+                </div>
+            </div> 	
+			<div class="Calorie1 ">
+				칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${calorie}</span>
+			</div>
+			<div class="Carb1">
+				탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${carbs}</span>
+			</div>
+			<div class="Protein1">
+				단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${protein}</span>
+			</div>
+			<div class="fat1">
+				지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${fat}</span>
+			</div>
+			<div class="FoodCd1">
+				<input class="foodgp" type="hidden" value=\${foodGp }>
+				<button class="btn btn-outline-primary" type="button" onclick="btnPlusDeleteClickHandler(this)" value=\${foodcd}>삭제</button>
+			</div>
+		</div>
+	`;
+	
+	
+	$("#DietMenu").append(htmlVal);
+	$(thisElement).prop('disabled', true);
+	//modal 
 	
 	}  // btnPlusClickHandler
 	
-	function changeFoodQuality(change,aaaa) {
-		console.log(this);   // window
-		console.log(event.target);   // click element
-		console.log(aaaa);   // click element
-	    // 현재 수량을 가져옵니다.	
-	     var foodQualityElement = $(aaaa).parents(".Plan_bottom1_second_bar_kcal__2i7Y2.foodQuality").find(".Plan_bottom1_second_bar_sub___m2EJ");
-	    console.log(foodQualityElement)
-    	var currentQuality = parseInt(foodQualityElement.text());
+	function changeFoodQuantity(change,aaaa) {
+	console.log(this);   // window
+	console.log(event.target);   // click element
+	console.log(aaaa);   // click element
+    // 현재 수량을 가져옵니다.	
+    var foodQuantityElement = $(aaaa).parents(".Quantity1").find(".Plan_bottom1_second_bar_sub___m2EJ");
+    console.log(foodQuantityElement)
+   	var currentQuantity = parseInt(foodQuantityElement.text());
+   
+    //var currentQuantity = parseInt(foodQuantityElement.innerText);
+    $parentElement = $(aaaa).parents(".Plan_bottom1_food_each__s9jUi");
+    var calorie = parseFloat($parentElement.find(".Calorie1").children("span").text());
+    var carbs = parseFloat($parentElement.find(".Carb1").children("span").text());
+   	var protein = parseFloat($parentElement.find(".Protein1").children("span").text());
+    var fat = parseFloat($parentElement.find(".fat1").children("span").text()); 
+
+   	var originCalorie = calorie / currentQuantity;
+   	var originCarbs = carbs / currentQuantity;
+   	var originProtein = protein / currentQuantity;
+   	var originFat = fat / currentQuantity;
+   
+   	// 수량을 변경합니다.
+    var newQuantity = currentQuantity + change;
+    // 수량이 1 미만으로 내려가지 않도록 제한합니다.
+    if (newQuantity < 1) {
+        newQuantity = 1;
+    }
+    // 수량을 업데이트합니다.
+    foodQuantityElement.text(newQuantity);
+  
+    var newCalorie = originCalorie * newQuantity;
+    var newCarbs = originCarbs * newQuantity;
+    var newProtein = originProtein * newQuantity;
+    var newFat = originFat * newQuantity;
     
-	    //var currentQuality = parseInt(foodQualityElement.innerText);
-		    $parentElement = $(aaaa).parents(".Plan_bottom1_food_each__s9jUi");
-		    var calorie = parseFloat($parentElement.find(".calorie").children("span").text());
-		    var carbs = parseFloat($parentElement.find(".carbs").children("span").text());
-		   	var protein = parseFloat($parentElement.find(".protein").children("span").text());
-		    var fat = parseFloat($parentElement.find(".fat").children("span").text()); 
-
-	    	var originCalorie = calorie / currentQuality;
-	    	var originCarbs = carbs / currentQuality;
-	    	var originProtein = protein / currentQuality;
-	    	var originFat = fat / currentQuality;
-	    
-	    // 수량을 변경합니다.
-		    var newQuality = currentQuality + change;
+    $parentElement.find(".Calorie1").children("span").text(newCalorie+"kcal");
+    $parentElement.find(".Carb1").children("span").text(newCarbs+"g");
+    $parentElement.find(".Protein1").children("span").text(newProtein+"g");
+    $parentElement.find(".fat1").children("span").text(newFat+"g");
+	}
 	
-		    // 수량이 1 미만으로 내려가지 않도록 제한합니다.
-		    if (newQuality < 1) {
-		        newQuality = 1;
-		    }
-	
-		    // 수량을 업데이트합니다.
-		    foodQualityElement.text(newQuality);
-		    
+	function btnPlusDeleteClickHandler(thisElement) {
+	   	var foodCdToDelete = $(thisElement).val();
+		console.log(foodCdToDelete);
+		if(foodCdToDelete == null){
+		}  else {
+		var pattern = /^[A-Za-z]/;
 
-		    var newCalorie = originCalorie * newQuality;
-		    var newCarbs = originCarbs * newQuality;
-		    var newProtein = originProtein * newQuality;
-		    var newFat = originFat * newQuality;
-		    
-		 
-		    $parentElement.find(".calorie").children("span").text(newCalorie+"kcal");
-		    $parentElement.find(".carbs").children("span").text(newCarbs+"g");
-		    $parentElement.find(".protein").children("span").text(newProtein+"g");
-		    $parentElement.find(".fat").children("span").text(newFat+"g");
-		    
+		$(thisElement).closest(".Plan_bottom1_food_each__s9jUi").remove();
 		}
+	}
+	
+
+
+	function btnDeleteClickHandler(thisElement) {
+   	var foodCdToDelete = $(thisElement).prev().val();
+	console.log(foodCdToDelete);
+	if(foodCdToDelete == null){
+	}  else {
+		
+	var pattern = /^[A-Za-z]/;
 		
 	
-	function btnDeleteClickHandler(thisElement) {
-	    	var foodCdToDelete = $(thisElement).prev().val();
-			console.log(foodCdToDelete);
-			if(foodCdToDelete == null){
-			}  else {
-				
-				var pattern = /^[A-Za-z]/;
-				
-				
-				let objfinal = {foodGp : foodCdToDelete };
-				
-				$(thisElement).closest(".Plan_bottom1_food_each__s9jUi").remove();
-				
-				if(pattern.test(foodCdToDelete))
-					return;
-				
-				
-		   		// TODO: AJAX를 사용하여 서버로 삭제 요청 보내기
-		    	 $.ajax({
-		        url: "${pageContext.request.contextPath}/diet/delete", 
-		        type: "post",
-		        contentType: "application/json",
-			    data: JSON.stringify(objfinal),
+	let objfinal = {foodGp : foodCdToDelete };
 	
-		        success: function (result) {
-		            console.log(result); 
-		            console.log("result"); 
-		            
-		            chageLangSelect();
-		            
-			        },
-			        
-		        error: function (error) {
-		            console.log("error"); 
-		        }, 
-		    	 });
-		}  // else
-			
+	$(thisElement).closest(".Plan_bottom1_food_each__s9jUi").remove();
+	
+	if(pattern.test(foodCdToDelete))
+		return;
+	
+		
+  		// TODO: AJAX를 사용하여 서버로 삭제 요청 보내기
+   	 $.ajax({
+       url: "${pageContext.request.contextPath}/diet/delete", 
+       type: "post",
+       contentType: "application/json",
+    data: JSON.stringify(objfinal),
+
+       success: function (result) {
+           console.log(result); 
+           console.log("result"); 
+           
+           chageLangSelect();
+           
+        },
+        
+       error: function (error) {
+           console.log("error"); 
+       }, 
+   	});
+	}  // else
+	
 	}
 	
 	$("button.save").click(btnSaveHandler);
@@ -528,20 +533,20 @@ $('#datepicker').datepicker('setDate', today);
 		Array.from(document.querySelectorAll(".Plan_bottom1_food_each__s9jUi")).map(function(eachElement){
 			console.log(eachElement);
 			console.log($(eachElement));
-			console.log($(eachElement).children(".foodQuality").children("span").text());
+			console.log($(eachElement).children(".foodQuantity").children("span").text());
 			console.log($(eachElement).children(".foodcd").children("button").val());
-			var quality = $(eachElement).children(".foodQuality").children("span").text();
-			var cd =$(eachElement).children(".foodcd").children("button").val();
+			var quantity = $(eachElement).children(".Quantity1").children("span").text();
+			var cd =$(eachElement).children(".FoodCd1").children("button").val();
 			var foodTime =$(eachElement).children(".foodTime").children("span").text();
 			
-			/* var newCalorie = originCalorie * newQuality;
-		    var newCarbs = originCarbs * newQuality;
-		    var newProtein = originProtein * newQuality;
-		    var newFat = originFat * newQuality;
+			/* var newCalorie = originCalorie * newQuantity;
+		    var newCarbs = originCarbs * newQuantity;
+		    var newProtein = originProtein * newQuantity;
+		    var newFat = originFat * newQuantity;
 			 */
 			var obj2= {};
 			obj2.foodCd = cd;
-			obj2.foodQuality =quality;	
+			obj2.foodQuantity =quantity;	
 			obj2.foodTime = foodTime;  // Service에서 조합할 예정 mealCode
 			arr1.push(obj2);
 	/* 
@@ -558,7 +563,7 @@ $('#datepicker').datepicker('setDate', today);
 		objfinal.memberId = memberId;
 		objfinal.foodCd = $(".foodcdval").val();
 		//private String foodCd;
-		//private int foodQuality;
+		//private int foodQuantity;
 		//private String mealCode;
 		
 		console.log(objfinal);		
@@ -631,29 +636,29 @@ $('#datepicker').datepicker('setDate', today);
 	var planDiv = document.querySelector('.totalParentPlan');
 	htmlVal = "";
 	htmlVal += `	  
-	<div class="Plan_top1__f4K0_">
-		<div class="Plan_top1_title__wZHYO">총 칼로리 </div>
-		<div class="Plan_top1_value1__JkpyX">
+	<div class="Total_Result">
+		<div class="TotalCalorie">총 칼로리 </div>
+		<div class="Kcal">
 		<div>
 			<div>
-				<div class="Plan_top1_value1__JkpyX">\${data.totalCal} Kcal</div>
+				<div class="Kcal">\${data.totalCal} Kcal</div>
 				</div>
 			</div>
 		</div>
-		<div class="Plan_top1_kcal__wgGCD"> 탄수화물 : \${data.totalCrabs}g / </div>
-		<div class="Plan_top1_kcal__wgGCD"> 단백질 : \${data.totalProtein}g / </div>
-		<div class="Plan_top1_kcal__wgGCD"> 지방 : \${data.totalFat}g </div>
-		<div class="Plan_top1_kcal__wgGCD"></div>
+		<div class="Nutrients"> 탄수화물 : \${data.totalCrabs}g / </div>
+		<div class="Nutrients"> 단백질 : \${data.totalProtein}g / </div>
+		<div class="Nutrients"> 지방 : \${data.totalFat}g </div>
+		<div class="Nutrients"></div>
 		
 	</div>
 	`;
-	    $(".Plan_top1__f4K0_").remove();
+	    $(".Total_Result").remove();
 	    $("#totalSelectedPlan").append(htmlVal); 
 	} 
 	 
 	function renderData(data)
 	{
-		var planBarDiv = document.querySelector('.Plan_bottom1_second_bar___Z7S8');
+		var planBarDiv = document.querySelector('.DietFoodList');
 		var foodTimeValueConvert = '';
 		htmlVal = "";
 		
@@ -682,27 +687,27 @@ $('#datepicker').datepicker('setDate', today);
     	
 	htmlVal += `
 	<div class="Plan_bottom1_food_each__s9jUi">	
-	 	<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH foodTime">
+	 	<div class="Meal category foodTime">
 		<span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodTimeValueConvert}</span>
 		</div>				
-		<div class="Plan_bottom1_second_bar_food__Nea0w">\${item.foodName}
+		<div class="Food1">\${item.foodName}
 		</div>
-		 <div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
-		수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">\${item.foodQuality}</span>
+		 <div class="Quantity1">
+		수량<br> <span class="Plan_bottom1_second_bar_sub___m2EJ ">\${item.foodQuantity}</span>
 		</div> 
-		<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
-			칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${item.calorie * item.foodQuality}Kcal</span>
+		<div class="Calorie1">
+			칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${item.calorie * item.foodQuantity}Kcal</span>
 		</div>
-		<div class="Plan_bottom1_second_bar_carb__0dt0o carbs">
-			탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.crabs * item.foodQuality}g</span>
+		<div class="Carb1">
+			탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.crabs * item.foodQuantity}g</span>
 		</div>
-		<div class="Plan_bottom1_second_bar_protein__BHBRu protein">
-			단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.protein * item.foodQuality}g</span>
+		<div class="Protein1">
+			단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.protein * item.foodQuantity}g</span>
 		</div>
-		<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
-			지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.fat * item.foodQuality}g</span>
+		<div class="fat1">
+			지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${item.fat * item.foodQuantity}g</span>
 		</div>
-		<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
+		<div class="FoodCd1">
 		<input class="foodgp" type="hidden" value=\${item.foodGp }>
 		<button class="btn btn-outline-primary" type="button" onclick="btnDeleteClickHandler(this)" value=\${item.foodCd}>삭제</button>
 
@@ -711,7 +716,7 @@ $('#datepicker').datepicker('setDate', today);
 	`;
 	}); 
 	$(".Plan_bottom1_food_each__s9jUi").remove();
-	$("#wrapSelectedPlan").append(htmlVal);
+	$("#DietMenu").append(htmlVal);
 	}	
 </script>
 </body>

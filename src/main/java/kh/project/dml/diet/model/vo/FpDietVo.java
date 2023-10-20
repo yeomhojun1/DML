@@ -16,7 +16,7 @@ public class FpDietVo {
 	private String feedback;
 	private String foodCd;
 	private int foodGp;
-	private int foodQuality;
+	private int foodQuantity;
 	private String foodName;
 	private int calorie;
 	private int crabs;
