@@ -9,7 +9,6 @@
 		     , a.member_id
 		     , a.food_date
 		     , a.food_time
-		     , a.feedback
 		     , b.FOOD_GP
 		     , b.food_cd
 		     , b.meal_code
@@ -79,7 +78,6 @@
 	, member_id
 	, food_date
 	, food_time
-	, feedback
 	)
 	SELECT 
 	
@@ -87,34 +85,16 @@
     	, #{memberId, jdbcType=VARCHAR}
      	, #{foodDate, jdbcType=VARCHAR}
      	, #{foodTime, jdbcType=VARCHAR}
-     	, #{feedback, jdbcType=VARCHAR}
+ 
 	 FROM DUAL
      WHERE NOT EXISTS (
     SELECT 1 FROM diet WHERE meal_code = #{mealCode, jdbcType=VARCHAR}
     )
-	
-	
-	<!-- insert into diet
-	(
-	  meal_code
-	, member_id
-	, food_date
-	, food_time
-	, feedback
-	)
-	VALUES
-	(
-	   #{mealCode, jdbcType=VARCHAR}
-    	, #{memberId, jdbcType=VARCHAR}
-     	, #{foodDate, jdbcType=VARCHAR}
-     	, #{foodTime, jdbcType=VARCHAR}
-     	, #{feedback, jdbcType=VARCHAR}
-	) -->
   
 	</insert>
 	
 	<update id="update" parameterType="FpDietVo">
-		update diet set feedback = #{feedback}
+		update diet set foodQuantity = #{foodQuantity}
 		where MEAL_CODE = #{mealCode}
 	</update>
 	

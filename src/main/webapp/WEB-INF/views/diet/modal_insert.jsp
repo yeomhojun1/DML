@@ -117,21 +117,10 @@ function getSearchList(thisElement){
 					<div class="Plan_raw_food_bar_each__VYL98  protein">\${result[i].protein}</div>
 					<div class="Plan_raw_food_bar_each__VYL98  fat">\${result[i].fat}</div>
 				 	<div class="Plan_raw_food_bar_each__VYL98  foodcd Plan_raw_food_bar_ctl__bADrg">
-						<button type="button"  data-foodcd="\${result[i].foodCd}" onclick="btnPlusClickHandler(this); handleButtonClick(this);"
-							class="ant-btn css-1s3dcof ant-btn-circle ant-btn-default ant-btn-icon-only Plan_raw_food_bar_icon__GUMkf foodcdval" value="\${result[i].foodCd}"
-							ant-click-animating-without-extra-node="false">
-							<span role="img" aria-label="plus"
-								class="anticon anticon-plus Plan_raw_food_bar_icon_plus__lIKKS"><svg
-									viewBox="64 64 896 896" focusable="false"	
-									data-icon="plus" width="1em" height="1em"
-									fill="currentColor" aria-hidden=	"true">
-									<defs>
-									<style></style></defs>
-									<path
-										d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"></path>
-									<path
-										d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"></path></svg></span>
-						</button>
+					<button type="button"  data-foodcd="\${vo.foodCd}" onclick="btnPlusClickHandler(this);"
+						class="my-button" value="\${vo.foodCd}">
+						<span>+<span>
+					</button>
 					</div>
 				</div>
 			`;	 
@@ -155,13 +144,29 @@ $("[name=keyword]").on('keydown', function(event) {
 </script>
 
 <style>
-.DietText {
-  background-color: skyblue; /* 배경색 설정 */
-  color: #666; /* 텍스트 색상 설정 */
-  border: 1px solid #00aeef; /* 테두리 없애기 */
-  padding: 10px 20px; /* 여백 설정 */
+	.DietText {
+	  background-color: skyblue; /* 배경색 설정 */
+	  color: #666; /* 텍스트 색상 설정 */
+	  border: 1px solid #00aeef; /* 테두리 없애기 */
+	  padding: 10px 20px; /* 여백 설정 */
+	}
+	.my-button {
+  	background-color: #007bff;
+  	color: #fff;
+  	border: none;
+  	border-radius: 50%;
+  	width: 32px;
+ 	height: 32px;
+  	cursor: pointer;
+ 	display: flex;
+ 	justify-content: center;
+  	align-items: center;
+  	font-size: 18px;
+	}
 
-}
+	.my-button:hover {
+ 	background-color: #0056b3;
+	}
 
 </style>
 

@@ -13,7 +13,6 @@ public class FpDietVo {
 	private String memberId;
 	private String foodDate;
 	private String foodTime;   // Service에서 조합할 예정 TODO
-	private String feedback;
 	private String foodCd;
 	private int foodGp;
 	private int foodQuantity;
