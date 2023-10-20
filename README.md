@@ -49,4 +49,4 @@
 - 캘린더
 #
 ## 주요기능
-[발표자료]([https://github.com/codefatal/semi_project/blob/main/KCC_%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C_%EC%9C%A0%EC%88%98%ED%98%84.pdf](https://docs.google.com/presentation/d/1aFiRfCkb3Yd7xzLqmzZPHlQKbqLlj_A8/edit#slide=id.g27f8e26b356_16_20)https://docs.google.com/presentation/d/1aFiRfCkb3Yd7xzLqmzZPHlQKbqLlj_A8/edit#slide=id.g27f8e26b356_16_20)
+[발표자료](https://docs.google.com/presentation/d/1aFiRfCkb3Yd7xzLqmzZPHlQKbqLlj_A8/edit#slide=id.g27f8e26b356_16_20)
