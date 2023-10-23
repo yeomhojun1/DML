@@ -75,6 +75,7 @@
     font-size: 18px;
     color: #2dd42d;
     font-weight: bold;
+    margin: 10px;
 	}
 	
 	.dinnerTime1 {
