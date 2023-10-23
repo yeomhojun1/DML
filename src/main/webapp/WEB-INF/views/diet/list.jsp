@@ -49,7 +49,7 @@
 	.rankth, .ranktd { border : 1px solid #fff; padding: 5px;}
 
 	.my-button {
-  	background-color: #007bff;
+  	background-color: #0dcaf0;
   	color: #fff;
   	border: none;
   	border-radius: 50%;
@@ -65,7 +65,43 @@
 	.my-button:hover {
  	background-color: #0056b3;
 	}
-
+	
+	.dinnerTime {
+	background-color: #fff;
+    border-radius: 30px;
+    border: 1px solid #2dd42d;
+    height: 60px;
+    width: 100px;
+    font-size: 18px;
+    color: #2dd42d;
+    font-weight: bold;
+	}
+	
+	.dinnerTime1 {
+	color: #212529c4;
+	text-align: center;
+	font-weight: 900;	
+	font-size: 18px;
+	background-color: #2dd42d;
+	}
+	
+	.savebtn {
+  	height: 60px;
+    border-radius: 30px;
+    background-color: #fff;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #2dd42d;
+    font-family: Noto Sans KR;
+    font-size: 18px;
+    font-weight: 900;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.67;
+    letter-spacing: normal;
+    color: #2dd42d;
+}
+	
 </style>
 </head>
     
@@ -108,18 +144,18 @@
 			</div>
 			</div> 
 			<form>
-			  <select class="card bg-secondary text-white my-4 card-body" name="language" id="selectbox"" name="selectbox" onchange="chageLangSelect()">
-			    <option class="card-footer d-flex align-items-center justify-content-between card-cursor" value="ALL">전체</option>
-			    <option class="card-footer d-flex align-items-center justify-content-between card-cursor" value="A">아침</option>
-			    <option class="card-footer d-flex align-items-center justify-content-between card-cursor" value="B">점심</option>
-			    <option class="card-footer d-flex align-items-center justify-content-between card-cursor" value="C">저녁</option>
-			    <option class="card-footer d-flex align-items-center justify-content-between card-cursor" value="Z">간식</option> 
+			  <select class="dinnerTime" name="language" id="selectbox"" name="selectbox" onchange="chageLangSelect()">
+			    <option class="dinnerTime1" value="ALL">전체</option>
+			    <option class="dinnerTime1" value="A">아침</option>
+			    <option class="dinnerTime1" value="B">점심</option>
+			    <option class="dinnerTime1" value="C">저녁</option>
+			    <option class="dinnerTime1" value="Z">간식</option> 
 			  </select>
 			</form>
 			
-			<div class="Save1">
+				<div class="Save1">
 					<button type="button"
-						class="MyPage_basic_btn save">
+						class="savebtn save">
 						<span>저장하기</span>
 					</button>						
 				</div>
@@ -186,7 +222,7 @@
 						
 								<div class="DietButton" >
 									<!-- Button trigger modal -->
-									<button type="button" id="dietinsert"  onclick="doAction()" class="MyPage_basic_btn" style="float: right;">
+									<button type="button" id="dietinsert"  onclick="doAction()" class="savebtn" style="float: right;">
 										<span>식단 추가 +</span>
 										<!-- data-bs-toggle="modal" data-bs-target="#dietInsertModal"  -->
 									</button>
@@ -383,71 +419,44 @@ $('#datepicker').datepicker('setDate', today);
 		    break;	  
 		  default:
 			  foodTimeValueConvert = "전체"
-		}
+			}
 		
 		htmlVal = '';
 		htmlVal += `
-			<div class="Plan_bottom1_food_each__s9jUi" style="background-color: #00aeef;">	
-			 	<div class="Plan_bottom1_second_bar_foodcategory__Ew3pH foodTime">
+			<div class="Plan_bottom1_food_each__s9jUi" style="background-color: #ffdab900	;">	
+			 	<div class="Meal category foodTime">
 				<span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodTimeValueConvert}</span>
 				</div>				
-				<div class="Plan_bottom1_second_bar_food__Nea0w">\${foodName}
+				<div class="Food1">\${foodName}
 				</div>
-			    <div class="Plan_bottom1_second_bar_kcal__2i7Y2 foodQuality">
+			    <div class="Quantity1">
 	                수량<br>
-	                <span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodQuality}</span>
+	                <span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodQuantity}</span>
 	                <div class="quantity-box">
-	                    <button class="quantity btn minus_btn" onclick="changeFoodQuality(-1, this);">-</button>
+	                    <button class="quantity btn minus_btn" onclick="changeFoodQuantity(-1, this);">-</button>
 	                </div>
 	                <div class="quantity-box">
-	                    <button class="quantity btn plus_btn" onclick="changeFoodQuality(1, this);">+</button>
+	                    <button class="quantity btn plus_btn" onclick="changeFoodQuantity(1, this);">+</button>
 	                </div>
 	            </div> 	
-				<div class="Plan_bottom1_second_bar_kcal__2i7Y2 calorie">
+				<div class="Calorie1">
 					칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${calorie}</span>
 				</div>
-				<div class="Plan_bottom1_second_bar_carb__0dt0o carbs">
+				<div class="Carb1">
 					탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${carbs}</span>
 				</div>
-				<div class="Plan_bottom1_second_bar_protein__BHBRu protein">
+				<div class="Protein1">
 					단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${protein}</span>
 				</div>
-				<div class="Plan_bottom1_second_bar_fat__8Tyy8 fat">
+				<div class="fat1">
 					지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${fat}</span>
 				</div>
-				<div class="Plan_bottom1_second_bar_ctl__2Pelr foodcd">
+				<div class="FoodCd1">
 					<input class="foodgp" type="hidden" value=\${foodGp }>
 					<button class="btn btn-outline-primary" type="button" onclick="btnPlusDeleteClickHandler(this)" value=\${foodcd}>삭제</button>
 					
 				</div>
 			</div>
-		    <div class="Quantity1">
-                수량<br>
-                <span class="Plan_bottom1_second_bar_sub___m2EJ ">\${foodQuantity}</span>
-                <div class="quantity-box">
-                    <button class="quantity btn minus_btn" onclick="changeFoodQuantity(-1, this);">-</button>
-                </div>
-                <div class="quantity-box">
-                    <button class="quantity btn plus_btn" onclick="changeFoodQuantity(1, this);">+</button>
-                </div>
-            </div> 	
-			<div class="Calorie1 ">
-				칼로리<br> <span class="Plan_bottom1_second_bar_sub___m2EJ " >\${calorie}</span>
-			</div>
-			<div class="Carb1">
-				탄수화물 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${carbs}</span>
-			</div>
-			<div class="Protein1">
-				단백질 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${protein}</span>
-			</div>
-			<div class="fat1">
-				지방 <br> <span class="Plan_bottom1_second_bar_sub___m2EJ">\${fat}</span>
-			</div>
-			<div class="FoodCd1">
-				<input class="foodgp" type="hidden" value=\${foodGp }>
-				<button class="btn btn-outline-primary" type="button" onclick="btnPlusDeleteClickHandler(this)" value=\${foodcd}>삭제</button>
-			</div>
-		</div>
 	`;
 	
 	

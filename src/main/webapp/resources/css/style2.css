@@ -144,12 +144,12 @@
 }
 
 .Total_Result {
-	background-color: #00aeef !important;
-	border-radius: 20px;
-	padding: 10px 20px;
-	display: flex;
-	flex-direction: row;
-	min-height: 120px
+	background-color: #5ee633a8 !important;
+    border-radius: 20px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    min-height: 120px;
 }
 
 .Plan_flex__j6Bow {
@@ -290,7 +290,7 @@
 .DietFoodList {
 	display: flex;
 	flex-direction: row;
-	background-color: #4f5254;
+	background-color: #21f621;
 	padding: 10px 40px 10px 15px;
 	border-radius: 20px
 }
@@ -298,7 +298,7 @@
 .DietFoodList>div {
 	font-size: 18px;
 	font-weight: 900;
-	color: #fafeff;
+	color: #212529c4;
 	flex: 1 1;
 	text-align: center;
 	align-self: center
@@ -364,15 +364,14 @@
 }
 
 .Plan_bottom1_food_each__s9jUi {
-	border: 1px solid #97d4e9;
-	border-radius: 30px;
-	display: flex;
-	flex-direction: row;
-	padding: 8px 5px 8px 10px;
-	margin-top: 10px;
-	margin-right: 20px
+	border: 1px solid #2dd42d;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    padding: 8px 5px 8px 10px;
+    margin-top: 10px;
+    margin-right: 20px;
 }
-
 .Plan_bottom1_food_each__s9jUi>div {
 	color: #4f5254;
 	flex: 1 1;
@@ -742,7 +741,7 @@
 }
 
 .Plan_modal_food_tab_each__3kNM_ {
-	width: 30%;
+	width: 100%;
 	height: 100%;
 	line-height: 60px;
 	text-align: center;
@@ -798,7 +797,7 @@
 	flex: 1 1;
 	border-radius: 25px !important;
 	overflow: hidden;
-	border: 1px solid #97d4e9;
+	border: 1px solid #2dd42d;
 	margin-bottom: 20px;
 	height: 60px
 }
@@ -852,7 +851,7 @@
 }
 
 .Plan_modal_food_bar_search__8h6t_ button {
-	background-color: #00aeef !important;
+	background-color: #fff !important;
 	height: 60px !important;
 	width: 200px;
 	font-size: 18px !important;
@@ -862,8 +861,9 @@
 
 .Plan_modal_food_bar_search__8h6t_ button,
 	.Plan_modal_food_bar_search__8h6t_ button:hover {
-	color: #000 !important;
-	border: 1px solid #f6f6f6 !important;
+	color: #2dd42d;
+	border: 1px solid #2dd42d;
+	font-weight: bold;
 	float: right;
 	
 }
@@ -879,7 +879,7 @@
 .Plan_modal_food_bar__ikK6Q {
 	display: flex;
 	flex-direction: row;
-	background-color: #4f5254;
+	background-color: #21f621;
 	padding: 10px 30px 10px 10px;
 	border-radius: 30px;
 	margin-bottom: 20px;
@@ -913,7 +913,7 @@
 	display: flex;
 	flex-direction: row;
 	padding: 5px;
-	border: 1px solid #97d4e9;
+	border: 1px solid #2dd42d;
 	border-radius: 30px;
 	margin-bottom: 10px;
 	height: 60px;
@@ -929,7 +929,7 @@
 
 .Plan_modal_food_left__wihxs {
 	overflow-y: scroll;
-	max-height: 400px;
+	max-height: 570px;
 }
 
 .Plan_modal_food_right__sg_CE {
@@ -1019,13 +1019,13 @@
 }
 
 .Plan_modal_food_close_btn__QsNOd {
-	background-color: #00aeef;
-	color: #000 !important;
-	border: 1px solid #e6e6e6 !important;
+	background-color: #fff;
+	color: #2dd42d !important;
+	border: 1px solid #2dd42d !important;
 	height: 45px !important;
 	font-size: 18px;
-	font-weight: 700;
-	width: 200px;
+	font-weight: bold;
+	width: 300px;
 	border-radius: 25px
 }
 

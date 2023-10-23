@@ -117,8 +117,8 @@ function getSearchList(thisElement){
 					<div class="Plan_raw_food_bar_each__VYL98  protein">\${result[i].protein}</div>
 					<div class="Plan_raw_food_bar_each__VYL98  fat">\${result[i].fat}</div>
 				 	<div class="Plan_raw_food_bar_each__VYL98  foodcd Plan_raw_food_bar_ctl__bADrg">
-					<button type="button"  data-foodcd="\${vo.foodCd}" onclick="btnPlusClickHandler(this);"
-						class="my-button" value="\${vo.foodCd}">
+					<button type="button"  data-foodcd="\${result[i].foodCd}" onclick="btnPlusClickHandler(this);"
+						class="my-button" value="\${result[i].foodCd}">
 						<span>+<span>
 					</button>
 					</div>
@@ -145,13 +145,14 @@ $("[name=keyword]").on('keydown', function(event) {
 
 <style>
 	.DietText {
-	  background-color: skyblue; /* 배경색 설정 */
-	  color: #666; /* 텍스트 색상 설정 */
-	  border: 1px solid #00aeef; /* 테두리 없애기 */
-	  padding: 10px 20px; /* 여백 설정 */
+	background-color: #2dd42d;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+	  
 	}
 	.my-button {
-  	background-color: #007bff;
+  	background-color: #03c75ac7;
   	color: #fff;
   	border: none;
   	border-radius: 50%;
