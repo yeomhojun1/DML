@@ -11,7 +11,6 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Daily Muscle Life | 회원탈퇴</title>
-<link rel="icon" type="image/x-icon" href="${pagecontext.request.contextPath }/resources/assets/favicon.ico" />
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
 <!-- 템플릿의 기본 css -->
 <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" />

@@ -11,8 +11,6 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Daily Muscle Life | 제품 추천</title>
-<link rel="icon" type="image/x-icon"
-	href="${pagecontext.request.contextPath }/resources/assets/favicon.ico" />
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
 	rel="stylesheet" />
