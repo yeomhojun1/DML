@@ -334,6 +334,12 @@
 						alert("sjflksdjflksjdfl");	
 					} else {
 					  location.href="${pageContext.request.contextPath}/memberweight/weight";
+					  
+					  /*  //새로고침 방법2
+					  location.reload();
+					 
+					  //새로고침 방법3 
+					  location.replace();  */
 					}
 				}				
 				,error : function(){

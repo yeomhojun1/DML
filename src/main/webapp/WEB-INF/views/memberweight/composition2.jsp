@@ -368,7 +368,14 @@
 					if(result == 0 ){
 						alert("경고");	
 					} else {
+						//새로고침 방법1
 					  location.href="${pageContext.request.contextPath}/memberweight/composition";
+					  
+					 /*  //새로고침 방법2
+					  location.reload();
+					 
+					  //새로고침 방법3 
+					  location.replace();  */
 					}
 				}				
 				,error : function(){
