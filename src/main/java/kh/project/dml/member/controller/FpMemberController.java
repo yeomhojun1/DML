@@ -304,7 +304,6 @@ public class FpMemberController {
         try {
         	service.socialCreate(socialCreateForm);
         	FpMemberVo member = (FpMemberVo) session.getAttribute("snsMember");
-        	System.out.println(member);
 			Date expire = new Date(System.currentTimeMillis() + SessionNames.EXPIRE * 1000);
 			service.keepLogin(member.getMemberId(), session.getId(), expire);
 			session.setAttribute(SessionNames.LOGIN, member);

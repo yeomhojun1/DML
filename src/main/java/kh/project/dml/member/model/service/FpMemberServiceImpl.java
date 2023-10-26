@@ -78,7 +78,7 @@ public class FpMemberServiceImpl implements FpMemberService {
 						"<br/>"+member.getMname()+"님 "+
 						"<br/>Daily Muscle Life에 회원가입해주셔서 감사합니다."+
 						"<br/>아래 [이메일 인증 확인]을 눌러주세요."+
-						"<a href='http://localhost:8080/dml/member/signupEmail?memberId=" + member.getMemberId() +
+						"<a href='https://dailymusclelife.site/member/signupEmail?memberId=" + member.getMemberId() +
 						"&key=" + key +
 						"' target='_blenk'>이메일 인증 확인</a>");
 		sendMail.setFrom("dmlfinalproject@gmail.com", "DML");
@@ -173,7 +173,7 @@ public class FpMemberServiceImpl implements FpMemberService {
     						"<br/>"+vo.getMname()+"님 "+
     						"<br/>패스워드 재설정 요청으로 메일을 전달드립니다."+
     						"<br/>아래 [패스워드 재설정]을 눌러주세요."+
-    						"<a href='http://localhost:8080/dml/member/pwdSearchResult?memberId=" + vo.getMemberId() +
+    						"<a href='https://dailymusclelife.site/member/pwdSearchResult?memberId=" + vo.getMemberId() +
     						"&key=" + key +
     				"' target='_blenk'>패스워드 재설정</a>");
     		sendMail.setFrom("dmlfinalproject@gmail.com", "DML");

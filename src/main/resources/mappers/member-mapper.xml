@@ -94,7 +94,7 @@
     
     <!-- 세션값 저장 -->
     <update id="keepLogin" parameterType="map">
-        update member set sessionkey = #{sessionkey}, sessionlimit = #{sessionlimit}
+        update member set sessionkey = #{sessionkey}, sessionlimit = to_char(#{sessionlimit}, 'RR/MM/DD HH24:MI:SS.FF9')
 		where member_id = #{memberId}
     </update>
 	

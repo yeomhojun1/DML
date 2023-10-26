@@ -4,7 +4,8 @@
 	<select id="selectList" resultType="FpMemberWeightVo">
 		SELECT * FROM member_weight
 		WHERE member_id = #{memberId}
-		AND (weight_date between (SYSDATE - 7) and SYSDATE)  
+		AND (weight_date between (to_char(SYSDATE, 'YYYYMMDD') - 7) and to_char(SYSDATE, 'YYYYMMDD'))
+		order by weight_date
 	</select>
 <!-- 		private String userId;
 	private Date date;

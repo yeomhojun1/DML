@@ -35,7 +35,7 @@ public class OAuth2LoginConfig {
             .clientSecret(googleClientSecret)
             .tokenUri("https://www.googleapis.com/oauth2/v4/token")
             .authorizationUri("https://accounts.google.com/o/oauth2/v2/auth")
-            .redirectUri("http://localhost:8080/dmllocal/login/oauth2/code/google")
+            .redirectUri("https://dailymusclelife.site/login/oauth2/code/google")
             .scope("openid", "profile", "email")
             .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
             .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)

@@ -94,7 +94,7 @@
 	</beans:bean>
 	<beans:bean id="naverRedirectUrl" class="java.lang.String">
 		<beans:constructor-arg
-			value="http://localhost:8080/dml/auth/naver/callback" />
+			value="https://dailymusclelife.site/auth/naver/callback" />
 	</beans:bean>
 
 	<beans:bean id="naverSns"
@@ -115,7 +115,7 @@
 	</beans:bean>
 	<beans:bean id="googleRedirectUrl" class="java.lang.String">
 		<beans:constructor-arg
-			value="http://localhost:8080/dml/auth/google/callback" />
+			value="https://dailymusclelife.site/auth/google/callback" />
 	</beans:bean>
 
 	<beans:bean id="googleSns"
@@ -136,7 +136,7 @@
 	</beans:bean>
 	<beans:bean id="kakaoRedirectUrl" class="java.lang.String">
 		<beans:constructor-arg
-			value="http://localhost:8080/dml/auth/kakao/callback" />
+			value="https://dailymusclelife.site/auth/kakao/callback" />
 	</beans:bean>
 
 	<beans:bean id="kakaoSns"
