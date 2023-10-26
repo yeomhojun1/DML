@@ -4,7 +4,7 @@
 <%@ page import="java.util.Calendar"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"

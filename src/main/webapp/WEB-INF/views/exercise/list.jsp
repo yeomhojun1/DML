@@ -4,7 +4,7 @@
 <%@ page import="java.util.Calendar"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
 <meta name="viewport"
@@ -18,7 +18,7 @@
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link href="${pageContext.request.contextPath}/css/styles.css"
@@ -28,7 +28,7 @@
 <script language="javascript"
 	src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 <link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script

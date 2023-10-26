@@ -12,7 +12,6 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>DML | Daily Muscle Life</title>
-<link rel="icon" type="image/x-icon" href="${pagecontext.request.contextPath }/resources/assets/favicon.ico" />
 <link
 	href="${pageContext.request.contextPath }/resources/resources1/css/styles.css"
 	rel="stylesheet">

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="icon" type="image/x-icon" href="${pagecontext.request.contextPath }/resources/assets/favicon.ico" />
 <div id="layoutSidenav_nav">
 	<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 		<div class="sb-sidenav-menu">
