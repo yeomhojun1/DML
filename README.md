@@ -50,3 +50,8 @@
 #
 ## 주요기능
 [발표자료](https://docs.google.com/presentation/d/1aFiRfCkb3Yd7xzLqmzZPHlQKbqLlj_A8/edit#slide=id.g27f8e26b356_16_20)
+## 📌 ERD CLOUD
+  ![DML](https://github.com/yeomhojun1/DML/assets/135560342/bb3a6f18-6dac-4d4b-b235-f6a30134dcf9)
+#
+
+##
