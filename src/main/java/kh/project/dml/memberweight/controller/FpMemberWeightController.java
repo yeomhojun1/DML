@@ -31,7 +31,7 @@ public class FpMemberWeightController {
 	//체중관리차트 controller
 	
 	@GetMapping("/weight")
-	public ModelAndView mainPageOpen9(ModelAndView mv, HttpSession session) {
+	public ModelAndView chartDate(ModelAndView mv, HttpSession session) {
 		Date now = new Date(); // 오늘 날짜
 		SimpleDateFormat dFormat = new SimpleDateFormat("yyyyMMdd");
 		String nowDate = dFormat.format(now);
@@ -46,7 +46,7 @@ public class FpMemberWeightController {
 	//체중관리 입력시 화면구현 controller
 	@PostMapping("/weight/nowDate")
 	@ResponseBody
-	public FpMemberWeightVo mainPageOpen17(@RequestParam String selectDate, ModelAndView mv, HttpSession session) {
+	public FpMemberWeightVo weightInsert(@RequestParam String selectDate, ModelAndView mv, HttpSession session) {
 		FpMemberVo vo = (FpMemberVo) session.getAttribute(SessionNames.LOGIN);
 		FpMemberWeightVo result = fpMemberWeightServiceImpl.nowWeight(selectDate, vo.getMemberId());
 		return result;
@@ -55,7 +55,7 @@ public class FpMemberWeightController {
 //	update 체중관리
 	@PostMapping("/weight")
 	@ResponseBody
-	public Integer mainPageOpen10(String memberId, String weightDate, String weight) {
+	public Integer weightUpdate(String memberId, String weightDate, String weight) {
 		Date now = new Date(); // 오늘 날짜
 		SimpleDateFormat dFormat = new SimpleDateFormat("yyyyMMdd");
 		String nowDate = dFormat.format(now);
@@ -67,7 +67,7 @@ public class FpMemberWeightController {
 
 	// delete 선택한 날짜의 데이터 삭제
 	@PostMapping("/deleteWeight")
-	public String mainPageOpen13(@RequestParam String memberId, @RequestParam String weightDate) {
+	public String weightDelete(@RequestParam String memberId, @RequestParam String weightDate) {
 		/* FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(weight); */
 		fpMemberWeightServiceImpl.deleteWeight(memberId, weightDate);
 		return "memberweight/weight2";
@@ -76,7 +76,7 @@ public class FpMemberWeightController {
 	
 	//근육량 체지방량 차트 controller
 	@GetMapping("/composition")
-	public ModelAndView mainPageOpen11(ModelAndView mv, HttpSession session) { 
+	public ModelAndView chartComposition(ModelAndView mv, HttpSession session) { 
 		Date now = new Date(); // 오늘 날짜
 		SimpleDateFormat dFormat = new SimpleDateFormat("yyyyMMdd");
 		String nowDate = dFormat.format(now);
@@ -100,7 +100,7 @@ public class FpMemberWeightController {
 	  
 	// 근육량 체지방량 update
 	@PostMapping("/composition")
-	public String mainPageOpen15(
+	public String compositionUpdate(
 //			@RequestParam String memberId, @RequestParam String weightDate, @RequestParam int muscleMass, @RequestParam int bodyFatPet
 			FpMemberWeightVo fpMemberWeightVo, Model model) {
 		System.out.println(fpMemberWeightVo);
@@ -112,14 +112,14 @@ public class FpMemberWeightController {
 
 	// 근육량 체지방량 delete/
 	@PostMapping("/delete")
-	public String mainPageOpen17(@RequestParam String weightDate, @RequestParam String memberId, Model model) {
+	public String compositionDelete(@RequestParam String weightDate, @RequestParam String memberId, Model model) {
 		/* FpMemberWeightVo fpMemberWeightVo = new FpMemberWeightVo(weight); */
 		fpMemberWeightServiceImpl.delete(weightDate, memberId);
 		return "memberweight/composition2";
 	}
 
 	@GetMapping("/healthmap")
-	public String mainPageOpen12() {
+	public String mapApi() {
 		return "memberweight/healthmap";
 	}
 
