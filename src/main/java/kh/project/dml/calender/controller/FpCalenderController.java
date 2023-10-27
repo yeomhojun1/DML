@@ -161,12 +161,9 @@ public class FpCalenderController {
 			if (result < 1) {
 				map.put("key","failed");
 				map.put("msg","일정 삭제 실패");
-				
-				// reuturn ResponseEntity.bad
 			} else {
 				map.put("key","success");
-				map.put("msg","일정 삭제 성공");	
-				// reuturn ResponseEntity.ok
+				map.put("msg","일정 삭제 성공");		
 			}
 			return map;
 	} 
