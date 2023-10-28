@@ -309,7 +309,9 @@
 		sendDayExSet=$(this).parents(".exSetForDay_one").data("dayexset")
 		console.log("sendDayExSet : "+sendDayExSet);
 		//document.addEventListener("submit",updateDayExSetHandler(sendDayExSet));
-		$(".updateDayExSet").click(updateDayExSetHandler)
+		$(".updateDayExSet").click(updateDayExSetHandler);
+		console.log("test");
+		
 	}
 	function updateDayExSetHandler(result){
 		console.log("updateDayExSetHandler : ");
