@@ -17,7 +17,7 @@
             <div class="col-lg-3 col-md-2"></div>
             <div class="col-lg-6 col-md-8 login-box">
                 <div class="col-lg-12 login-key">
-                    <i class="fa fa-key" aria-hidden="true"></i>
+                    <img src="${pageContext.request.contextPath }/resources/images/dmlLogo.png" style="width:239px; height:100px;">
                 </div>
                 <div class="col-lg-12 login-title">
                 	소셜 회원가입
@@ -33,8 +33,8 @@
                             <div class="form-group">
                                 <label class="form-control-label">성별</label>
                                 <br>
-                                <input type="radio" id="man" name="gender" class="gender" checked="checked" value="남"><label for="man" style="color:#fff;">남</label>
-                                <input type="radio" id="woman" name="gender" class="gender" value="여"><label for="woman" style="color:#fff;">여</label>
+                                <input type="radio" id="man" name="gender" class="gender" checked="checked" value="남"><label for="man">남</label>
+                                <input type="radio" id="woman" name="gender" class="gender" value="여"><label for="woman">여</label>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">키</label>

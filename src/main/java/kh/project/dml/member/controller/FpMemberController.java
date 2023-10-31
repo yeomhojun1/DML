@@ -148,7 +148,8 @@ public class FpMemberController {
 	
 	// 로그인 페이지에서 로그인 버튼 클릭
 	@PostMapping("/member/login")
-	public String loginPost(LoginVo vo, @RequestParam(value = "useCookie", required = false) String useCookie, Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String loginPost(LoginVo vo, @RequestParam(value = "useCookie", required = false) String useCookie, Model model, 
+			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 	    logger.info("loginPost...LoginVo={}", vo);
         FpMemberVo memberLogin = service.login(vo);
         if(memberLogin != null) {
