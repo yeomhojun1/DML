@@ -3,6 +3,7 @@
 - 팀장 : 염호준
 - 팀원 : 유수현, 손범규, 유청하, 전범준
 #
+
 #
 ## 📖 Contents
 1. 프로젝트 소개
@@ -55,3 +56,19 @@
 #
 
 ##
+운동추가 화면구현<br>
+<img src="https://github.com/yeomhojun1/DML/assets/135560342/c866008e-97ff-4d93-bf06-d6464c0e3119">
+<br>
+내운동리스트 화면구현<br>
+<img src="https://github.com/yeomhojun1/DML/assets/135560342/4e059cfc-a573-4c3b-8601-fa1b89a13205">
+<br>
+게시글추가 화면구현<br>
+<img src="https://github.com/yeomhojun1/DML/assets/135560342/acd7f18b-8f4c-45ba-8c0d-fa0b8f823455">
+<br>
+게시글수정 화면구현<br>
+<img src="https://github.com/yeomhojun1/DML/assets/135560342/3f96595e-8d39-4773-90d7-5ede444affca">
+<br>
+댓글 화면구현<br>
+<img src="https://github.com/yeomhojun1/DML/assets/135560342/612c5db3-bb07-47c1-9c5c-57cbd13ca042">
+
+
