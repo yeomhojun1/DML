@@ -294,7 +294,7 @@
 			$.ajax({
 				url : "${pageContext.request.contextPath}/memberexset/delete",
 				type : "post",
-				data : {dayExSet : deleteForDayExSet},
+				data : {dayExSet : sendDayExSet},
 				success :  function(){
 					console.log("success");
 					location.reload(true);
@@ -314,9 +314,6 @@
 		
 	}
 	function updateDayExSetHandler(result){
-		console.log("updateDayExSetHandler : ");
-		console.log(sendDayExSet);
-		console.log(result);
 		 $.ajax({
 			url:"${pageContext.request.contextPath}/memberexset/update",
 			type: "post",

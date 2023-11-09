@@ -181,6 +181,7 @@
 		}
 		function forPlusReputationHandler(replyNo){
 			 $.ajax({
+				 async: false;
 				type : "post",
 				url : "${pageContext.request.contextPath}/board/selectReply",
 				data: { selectReplyNo: replyNo, boardNo: ${boardone.boardNo}},

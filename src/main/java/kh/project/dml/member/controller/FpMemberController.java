@@ -123,6 +123,7 @@ public class FpMemberController {
 	// 로그인 요청 팝업
 	@GetMapping("/member/loginPopup")
 	public String loginPopup(HttpSession session, HttpServletRequest request) {
+		System.out.println("loginPopup");
 		return "/member/loginPopup";
 	}
 	
