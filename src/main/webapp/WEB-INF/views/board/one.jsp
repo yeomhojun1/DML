@@ -168,8 +168,7 @@
 		 					for (var i = 0; i < firstReply.length; i++){
 					 			if($(firstReply[i]).data("replyno")==${boardone.selectReplyNo}){
 									firstReply[i].classList.add('text-bg-warning');
-									
-								}   
+									console.log("할랄");								}   
 							} 
 						} 
 					}, //success
